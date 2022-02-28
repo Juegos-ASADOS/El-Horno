@@ -6,10 +6,9 @@
 #include "ElHornoMain.h"
 #include "ElHornoBullet.h"
 
-int main()
+void ElHornoMain::init()
 {
     Ogre::Root* root;
     root = new Ogre::Root();
-
-    return 0;
+    ElHornoBullet::bullet();
 }

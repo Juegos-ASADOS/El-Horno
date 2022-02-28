@@ -1,4 +1,10 @@
-// ElHornoMain.cpp : Este archivo contiene la función "main". La ejecución del programa comienza y termina ahí.
-//
+#pragma once
+#ifndef _EL_HORNO_MAIN_EL_HORNO_MAIN_H
+#define _EL_HORNO_MAIN_EL_HORNO_MAIN_H
 
-class ElHornoBullet;
+class ElHornoMain {
+public:
+	static void init();
+};
+
+#endif _EL_HORNO_MAIN_EL_HORNO_MAIN_H
