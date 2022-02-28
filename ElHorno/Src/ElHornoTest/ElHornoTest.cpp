@@ -2,11 +2,11 @@
 //
 
 #include <iostream>
-#include "ElHornoMain.h"
+#include "ElHornoBase.h"
 
 int main()
 {
-    ElHornoMain::init();
+    ElHornoBase::init();
 }
 
 // Ejecutar programa: Ctrl + F5 o menú Depurar > Iniciar sin depurar

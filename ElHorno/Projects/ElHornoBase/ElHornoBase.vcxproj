@@ -19,21 +19,21 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\Src\ElHornoMain\ElHornoMain.cpp" />
+    <ClCompile Include="..\..\Src\ElHornoBase\ElHornoBase.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\Src\ElHornoBase\ElHornoBase.h" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ElHornoBullet\ElHornoBullet.vcxproj">
       <Project>{9dff8a63-cbc1-4e02-a642-992b5a527f5b}</Project>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="..\..\Src\ElHornoMain\ElHornoMain.h" />
-  </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
     <ProjectGuid>{9c97fa9f-4c60-470c-aaf4-4b946b30d58d}</ProjectGuid>
-    <RootNamespace>ElHornoMain</RootNamespace>
+    <RootNamespace>ElHornoBase</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />

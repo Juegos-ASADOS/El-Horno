@@ -15,12 +15,12 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\Src\ElHornoMain\ElHornoMain.cpp">
+    <ClCompile Include="..\..\Src\ElHornoBase\ElHornoBase.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\Src\ElHornoMain\ElHornoMain.h">
+    <ClInclude Include="..\..\Src\ElHornoBase\ElHornoBase.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
   </ItemGroup>
