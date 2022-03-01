@@ -1,0 +1,8 @@
+MINUSCULAS-MAYUSCULAS
+	-Clases mayuscula
+	-Métodos/variables minúsculas
+
+COMENTARIOS
+	-Encima del método en el .cpp resumen general
+	-Comentarios dentro de los métodos si es muy enrevesado
+	-Comentarios en variables en .h
