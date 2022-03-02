@@ -2,22 +2,59 @@
 
 #include <iostream>
 #include <OgreRoot.h>
+//#include <SDL.h>
+//#include <SDL_video.h>
+//#include <SDL_syswm.h>
 #include "ElHornoBase.h"
 #include "ElHornoBullet.h"
+//#include "OurFrameListener"
+
+ElHornoBase::ElHornoBase()
+{
+	//frameListener_ = new OurFrameListener();
+}
+
+ElHornoBase::~ElHornoBase()
+{
+
+}
+
+ElHornoBase* ElHornoBase::getInstance() {
+	if (instance_ == nullptr)
+		return nullptr;
+	else
+		return instance_;
+}
+
+bool ElHornoBase::setInstance()
+{
+	if (instance_ == 0) {
+		instance_ = new ElHornoBase();
+		return true;
+	}
+	return false;
+}
+
+void ElHornoBase::erase()
+{
+	delete instance_;
+}
 
 // Inicializa managers
 void ElHornoBase::init() {
 	Ogre::Root* root;
 	root = new Ogre::Root();
 	ElHornoBullet::bullet();
+
+	//SDL_Init(SDL_INIT_EVERYTHING);
 }
 
-// 
-ElHornoBase* ElHornoBase::getInstance() {
-	if (instance_ == nullptr)
-		return nullptr;
-	else
-		return instance_;
+void ElHornoBase::start()
+{
+}
+
+void ElHornoBase::exit()
+{
 }
 
 /*
