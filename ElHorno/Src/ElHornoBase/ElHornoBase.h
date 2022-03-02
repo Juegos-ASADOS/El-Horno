@@ -77,10 +77,6 @@ public:
 	bool getGamma();
 	void setGamma(bool value);
 
-	void setVolumeSFX(float value);
-	float getVolumeSFX();
-	void setVolumeMusic(float value);
-	float getVolumeMusic();
 	void setInvertedAxisX(bool value);
 	void setInvertedAxisY(bool value);
 	bool getInvertedAxisXInput();
@@ -100,6 +96,10 @@ public:
 	float getFarShadowDistance();
 	Ogre::ShadowTechnique getShadowTechnique();
 
+	//void setVolumeSFX(float value);
+	//float getVolumeSFX();
+	//void setVolumeMusic(float value);
+	//float getVolumeMusic();
 private:
 	ElHornoBase();
 	void setup();
@@ -114,8 +114,7 @@ private:
 	void setup();
 	void shutdown();
 	void pollEvents();
-	bool checkConfig();
-	void extraConfig(json& j);
+	//void extraConfig(json& j);
 	void setupFactories();
 
 	// Ogre
@@ -135,8 +134,8 @@ private:
 	// 
 	bool paused_;
 
-	json ExtraConfig;
-	json BackupExtraConfig;
+	//json ExtraConfig;
+	//json BackupExtraConfig;
 
 };
 
