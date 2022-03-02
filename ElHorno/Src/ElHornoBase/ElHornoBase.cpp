@@ -83,6 +83,9 @@ void ElHornoBase::exit()
 	root_->queueEndRendering();
 }
 
+/*
+* Inicializa SDL y todos los demás managers (importante capturar posibles excepciones)
+*/
 void ElHornoBase::setup() {
 
 }
@@ -116,9 +119,27 @@ SDL_Window* ElHornoBase::getSDLWindow()
 //pollEvents
 //Procesa los eventos de SDL y los envía al InputManager
 
+/*
+* Devuelve el timer que lleva el frameRenderer para ejecutar el ciclo de juego
+*/
+float ElHornoBase::getTime()
+{
+	return 0.0f;
+}
+
+/*
+* Devuelve el tiempo entre un frame y el anterior
+*/
 float ElHornoBase::deltaTime()
 {
 	//return 0.0f;
+}
+
+/*
+* Resetea el timer
+*/
+void ElHornoBase::resetTimer()
+{
 }
 
 void ElHornoBase::pause()
@@ -137,4 +158,24 @@ void ElHornoBase::resizeScreen(int width, int height)
 	//SDL_SetWindowSize(sdlWindow_, width, height);
 	//sdlWindow_->windowMovedOrResized();
 
+}
+
+/*
+* Pone o quita la pantalla completa 
+*/
+void ElHornoBase::setFullScreen(bool fullScreen)
+{
+}
+
+/*
+* Establece la resolución deseada
+*/
+void ElHornoBase::setResolution(std::string value)
+{
+}
+/*
+* Establece el gamma 
+*/
+void ElHornoBase::setGamma(bool value)
+{
 }
