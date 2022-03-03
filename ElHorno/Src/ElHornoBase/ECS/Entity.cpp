@@ -16,15 +16,17 @@ Entity::~Entity(){
 		delete e;
 
 	mngr_ = nullptr;
-	parent_;
-	parent_ = nullptr;
+	if (parent_ != nullptr) {
+		parent_->removeChild(this);
+		parent_ = nullptr;
+	}
 }
 
 template<typename T, typename ...Ts>
 T* Entity::addComponent(Ts && ...args){
 	T* c = new T(std::forward<Ts>(args)...);
 	c->setEntity(this);
-	c->init();
+	c->start();
 	constexpr auto id = 0;// ecs::cmpIdx<T>;
 
 	//Si se quieren componentes duplicados modificar aqui
@@ -92,13 +94,15 @@ void Entity::removeChild(Entity* e){
 void Entity::update() {
 	std::size_t n = comp_.size();
 	for (auto i = 0u; i < n; i++) {
-		if (comp_[i]->isActive()) comp_[i]->update();
+		if (comp_[i]->isActive()) 
+			comp_[i]->update();
 	}
 }
 
 void Entity::render() {
 	std::size_t n = comp_.size();
 	for (auto i = 0u; i < n; i++) {
-		if (comp_[i]->isActive()) comp_[i]->render();
+		if (comp_[i]->isActive()) 
+			comp_[i]->render();
 	}
 }
