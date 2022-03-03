@@ -28,24 +28,25 @@ ElHornoBase::~ElHornoBase()
 }
 
 ElHornoBase* ElHornoBase::getInstance() {
-	if (instance_ == nullptr)
+	/*if (instance_ == nullptr)
 		return nullptr;
 	else
-		return instance_;
+		return instance_;*/
+	return nullptr;
 }
 
 bool ElHornoBase::setInstance()
 {
-	if (instance_ == 0) {
+	/*if (instance_ == 0) {
 		instance_ = new ElHornoBase();
 		return true;
-	}
+	}*/
 	return false;
 }
 
 void ElHornoBase::erase()
 {
-	delete instance_;
+	//delete instance_;
 }
 
 /* Inicializa managers */
@@ -59,11 +60,11 @@ void ElHornoBase::init() {
 	// Aqui se inicializan las instancias de todos los managers
 
 	// Inicializa root de Ogre
-	setupRoot();
+	//setupRoot();
 
 	// Si hay configuraciones cargadas o inicia desde el cuadro de config de Ogre
-	if (root_->restoreConfig() || root_->showConfigDialog(nullptr))
-		setup();
+	//if (root_->restoreConfig() || root_->showConfigDialog(nullptr))
+		//setup();
 }
 
 /*
@@ -104,6 +105,7 @@ Ogre::Root* ElHornoBase::getRoot()
 Ogre::SceneManager* ElHornoBase::getSceneManager()
 {
 	//return SceneManager;
+	return nullptr;
 }
 
 Ogre::RenderWindow* ElHornoBase::getRenderWindow()
@@ -132,7 +134,7 @@ float ElHornoBase::getTime()
 */
 float ElHornoBase::deltaTime()
 {
-	//return 0.0f;
+	return 0.0f;
 }
 
 /*

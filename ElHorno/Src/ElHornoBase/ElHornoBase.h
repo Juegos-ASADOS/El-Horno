@@ -26,7 +26,7 @@ public:
 	static bool setInstance();
 	static void erase();
 
-	void init();
+	static void init();
 
 	void start();
 	void exit();
@@ -62,7 +62,7 @@ public:
 	void setVSyncOn();
 	void setVSyncOff();
 	void writeGraphicOptions();
-	json writeExtraOptions();
+	//json writeExtraOptions();
 	std::string getScreenProportion();
 	std::string getFullScreen(bool value);
 	void setScreenProportion(std::string value);
@@ -92,9 +92,9 @@ public:
 	void revertAdvancedGraphicChanges();
 
 	void setFarShadowDistance(float dist);
-	void setShadowTechnique(Ogre::ShadowTechnique type);
+	//void setShadowTechnique(Ogre::ShadowTechnique type);
 	float getFarShadowDistance();
-	Ogre::ShadowTechnique getShadowTechnique();
+	//Ogre::ShadowTechnique getShadowTechnique();
 
 	//void setVolumeSFX(float value);
 	//float getVolumeSFX();
@@ -104,14 +104,14 @@ private:
 	ElHornoBase();
 	void setup();
 
-	static ElHornoBase* instance_;
+	//static ElHornoBase* instance_;
 	OurFrameListener* frameListener_;
 
 	void currentSceneCleanup();
 
 	void setupWindow(std::string windowName);
 	void setupRoot();
-	void setup();
+	
 	void shutdown();
 	void pollEvents();
 	//void extraConfig(json& j);
