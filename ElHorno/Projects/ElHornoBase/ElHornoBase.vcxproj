@@ -23,12 +23,17 @@
     <ClCompile Include="..\..\Src\ElHornoBase\ECS\Entity.cpp" />
     <ClCompile Include="..\..\Src\ElHornoBase\ECS\Manager.cpp" />
     <ClCompile Include="..\..\Src\ElHornoBase\ElHornoBase.cpp" />
+    <ClCompile Include="EventListener.cpp" />
+    <ClCompile Include="EventManager.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\Src\ElHornoBase\ECS\Component.h" />
     <ClInclude Include="..\..\Src\ElHornoBase\ECS\Entity.h" />
     <ClInclude Include="..\..\Src\ElHornoBase\ECS\Manager.h" />
     <ClInclude Include="..\..\Src\ElHornoBase\ElHornoBase.h" />
+    <ClInclude Include="Event.h" />
+    <ClInclude Include="EventListener.h" />
+    <ClInclude Include="EventManager.h" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ElHornoBullet\ElHornoBullet.vcxproj">

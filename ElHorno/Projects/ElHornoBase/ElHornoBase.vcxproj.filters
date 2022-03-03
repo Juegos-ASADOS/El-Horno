@@ -19,6 +19,12 @@
     <Filter Include="Archivos de origen\ECS">
       <UniqueIdentifier>{ea6d89b3-6901-48d8-aff8-f4526eedeff0}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Archivos de encabezado\EventManager">
+      <UniqueIdentifier>{fec29e48-92bc-4cec-8abe-85dc09b48e16}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de origen\EventManager">
+      <UniqueIdentifier>{d39b7c61-52d2-4638-a207-939a3e3c7768}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\Src\ElHornoBase\ElHornoBase.cpp">
@@ -33,6 +39,12 @@
     <ClCompile Include="..\..\Src\ElHornoBase\ECS\Manager.cpp">
       <Filter>Archivos de origen\ECS</Filter>
     </ClCompile>
+    <ClCompile Include="EventManager.cpp">
+      <Filter>Archivos de origen\EventManager</Filter>
+    </ClCompile>
+    <ClCompile Include="EventListener.cpp">
+      <Filter>Archivos de origen\EventManager</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\Src\ElHornoBase\ElHornoBase.h">
@@ -46,6 +58,15 @@
     </ClInclude>
     <ClInclude Include="..\..\Src\ElHornoBase\ECS\Manager.h">
       <Filter>Archivos de encabezado\ECS</Filter>
+    </ClInclude>
+    <ClInclude Include="EventManager.h">
+      <Filter>Archivos de encabezado\EventManager</Filter>
+    </ClInclude>
+    <ClInclude Include="Event.h">
+      <Filter>Archivos de encabezado\EventManager</Filter>
+    </ClInclude>
+    <ClInclude Include="EventListener.h">
+      <Filter>Archivos de encabezado\EventManager</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
