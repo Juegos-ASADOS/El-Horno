@@ -10,8 +10,8 @@ call %BAT%
 cd ..\Bullet\
 call %BAT%
 
-::cd ..\FMOD\
-::call %BAT%
+cd ..\FMOD\
+call %BAT%
 
 ::cd ..\lua\
 ::call %BAT%

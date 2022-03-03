@@ -7,6 +7,7 @@
 //#include <SDL_syswm.h>
 #include "ElHornoBase.h"
 #include "ElHornoBullet.h"
+#include "ElHornoFMOD.h"
 //#include "OurFrameListener"
 
 /*
@@ -53,8 +54,8 @@ void ElHornoBase::erase()
 void ElHornoBase::init() {
 	Ogre::Root* root;
 	root = new Ogre::Root();
-	ElHornoBullet::bullet();
-
+	ElHornoBullet::init();
+	ElHornoFMOD::init();
 	//SDL_Init(SDL_INIT_EVERYTHING);
 
 	// Aqui se inicializan las instancias de todos los managers
