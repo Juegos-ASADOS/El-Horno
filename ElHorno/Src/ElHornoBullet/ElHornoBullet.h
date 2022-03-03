@@ -4,7 +4,7 @@
 
 class ElHornoBullet {
 public:
-	static void bullet();
+	static void init();
 };
 
 #endif _EL_HORNO_BULLET_EL_HORNO_BULLET_H
