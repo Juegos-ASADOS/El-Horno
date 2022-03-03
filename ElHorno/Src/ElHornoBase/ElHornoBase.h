@@ -52,19 +52,15 @@ public:
 	bool isPaused();
 
 	void resizeScreen(int width, int height);
-	void setFullScreen(bool fullScreen);
+	void setFullScreen();
 	bool getFullScreen();
 
 	bool getVSync();
-	std::string getVSync(bool value);
-	void setVSync(bool value);
-	void setVSync(std::string value);
-	void setVSyncOn();
-	void setVSyncOff();
-	void writeGraphicOptions();
+	void setVSync(bool val);
+	void toggleVSync();
+	void saveGraphicOptions();
 	//json writeExtraOptions();
 	std::string getScreenProportion();
-	std::string getFullScreen(bool value);
 	void setScreenProportion(std::string value);
 	void setScreenProportion(int height);
 	std::string getResolution();
@@ -96,10 +92,6 @@ public:
 	float getFarShadowDistance();
 	//Ogre::ShadowTechnique getShadowTechnique();
 
-	//void setVolumeSFX(float value);
-	//float getVolumeSFX();
-	//void setVolumeMusic(float value);
-	//float getVolumeMusic();
 private:
 	ElHornoBase();
 	void setup();
@@ -128,11 +120,12 @@ private:
 	// Config de pantalla
 	std::map<std::string, Ogre::ConfigOption> graphicOptions_, 
 										defaultGraphicOptions_;
-	int screenWidth,
-		screenHeight;
+	int screenWidth_,
+		screenHeight_;
 
-	// 
-	bool paused_;
+	bool paused_,
+		fullScreen_,
+		vSync_;
 
 	//json ExtraConfig;
 	//json BackupExtraConfig;

@@ -2,13 +2,15 @@
 
 #include <iostream>
 #include <OgreRoot.h>
+#include <iostream>
+#include <fstream>
 //#include <SDL.h>
 //#include <SDL_video.h>
 //#include <SDL_syswm.h>
 #include "ElHornoBase.h"
 #include "ElHornoBullet.h"
 #include "ElHornoFMOD.h"
-//#include "OurFrameListener"
+#include "OurFrameListener.h"
 
 /*
 CADENA DE LLAMADAS QUE EJECUTAN EL BUCLE PRINCIPAL
@@ -103,11 +105,6 @@ Ogre::Root* ElHornoBase::getRoot()
 	return root_;
 }
 
-Ogre::SceneManager* ElHornoBase::getSceneManager()
-{
-	//return SceneManager;
-	return nullptr;
-}
 
 Ogre::RenderWindow* ElHornoBase::getRenderWindow()
 {
@@ -122,27 +119,39 @@ SDL_Window* ElHornoBase::getSDLWindow()
 //pollEvents
 //Procesa los eventos de SDL y los envía al InputManager
 
+Ogre::SceneManager* ElHornoBase::getSceneManager()
+{
+	//return SceneManager;
+	return nullptr;
+}
+
+//InputManager* ElHornoBase::getInputManager()
+//{
+//	return nullptr;
+//}
+
 /*
-* Devuelve el timer que lleva el frameRenderer para ejecutar el ciclo de juego
+Devuelve el timer que lleva el frameRenderer para ejecutar el ciclo de juego
 */
 float ElHornoBase::getTime()
 {
-	return 0.0f;
+	return frameListener_->getTime();
 }
 
 /*
-* Devuelve el tiempo entre un frame y el anterior
+Devuelve el tiempo entre un frame y el anterior
 */
 float ElHornoBase::deltaTime()
 {
-	return 0.0f;
+	return 	frameListener_->DeltaTime();
 }
 
 /*
-* Resetea el timer
+Resetea el timer
 */
 void ElHornoBase::resetTimer()
 {
+	frameListener_->resetTimer();
 }
 
 void ElHornoBase::pause()
@@ -164,10 +173,75 @@ void ElHornoBase::resizeScreen(int width, int height)
 }
 
 /*
-* Pone o quita la pantalla completa 
+* Pone o quita la pantalla completa
 */
-void ElHornoBase::setFullScreen(bool fullScreen)
+void ElHornoBase::setFullScreen()
 {
+	if (fullScreen_) {
+		//SDL_SetWindowFullscreen(sdlWindow_, SDL_WINDOW_FULLSCREEN);
+		resizeScreen(screenWidth_, screenHeight_);
+		root_->getRenderSystem()->setConfigOption("Full Screen", "Yes");
+	}
+	else {
+		//!SDL_SetWindowFullscreen(sdlWindow_, !SDL_WINDOW_FULLSCREEN);
+		resizeScreen(screenWidth_, screenHeight_);
+		root_->getRenderSystem()->setConfigOption("Full Screen", "No");
+	}
+
+	fullScreen_ = !fullScreen_;
+}
+
+bool ElHornoBase::getFullScreen()
+{
+	return fullScreen_;
+}
+
+bool ElHornoBase::getVSync()
+{
+	return vSync_;
+}
+
+void ElHornoBase::setVSync(bool val)
+{
+	vSync_ = val;
+}
+
+void ElHornoBase::toggleVSync()
+{
+	if (vSync_) {
+		//SDL_GL_SetSwapInterval(1);
+		root_->getRenderSystem()->setConfigOption("VSync", "Yes");
+	}
+	else {
+		//SDL_GL_SetSwapInterval(0);
+		root_->getRenderSystem()->setConfigOption("VSync", "No");
+	}
+}
+
+// Guarda la configuración gráfica actual
+void ElHornoBase::saveGraphicOptions()
+{
+	std::ofstream outputFile;
+
+#ifdef  _DEBUG
+	outputFile.open("window_d.cfg");
+#else
+	outputFile.open("window.cfg");
+#endif
+
+	outputFile << "Render System=OpenGL Rendering Subsystem\n";
+	outputFile << "[OpenGL Rendering Subsystem]\n";
+	outputFile << "Colour Depth=32\n";
+	outputFile << "Display Frequency=N/A\n"; 
+	outputFile << "FSAA=" << graphicOptions_["FSAA"].currentValue << "\n";
+	outputFile << "Full Screen=" << graphicOptions_["Fulscreen"].currentValue << "\n";
+	outputFile << "RTT Preferred Mode=FBO\n";
+	outputFile << "VSync=" << graphicOptions_["VSync"].currentValue << "\n";
+	outputFile << "VSync Interval=1\n";
+	outputFile << "Video Mode=" << graphicOptions_["Video Mode"].currentValue << "\n";
+	outputFile << "sRGB Gamma Conversion=" << graphicOptions_["sRGB Gamma Conversion"].currentValue << "\n";
+
+	outputFile.close();
 }
 
 /*
@@ -177,7 +251,7 @@ void ElHornoBase::setResolution(std::string value)
 {
 }
 /*
-* Establece el gamma 
+* Establece el gamma
 */
 void ElHornoBase::setGamma(bool value)
 {

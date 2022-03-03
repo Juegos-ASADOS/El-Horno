@@ -19,11 +19,14 @@
     <Filter Include="Archivos de origen\ECS">
       <UniqueIdentifier>{ea6d89b3-6901-48d8-aff8-f4526eedeff0}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Archivos de encabezado\ElHornoBase">
+      <UniqueIdentifier>{b3d4cbf8-8741-4b88-990a-56ccf2ae6db6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de origen\ElHornoBase">
+      <UniqueIdentifier>{aa8b791d-a27b-4f29-9815-ff4e68b76faf}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\Src\ElHornoBase\ElHornoBase.cpp">
-      <Filter>Archivos de origen</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\Src\ElHornoBase\ECS\Entity.cpp">
       <Filter>Archivos de origen\ECS</Filter>
     </ClCompile>
@@ -33,11 +36,14 @@
     <ClCompile Include="..\..\Src\ElHornoBase\ECS\Manager.cpp">
       <Filter>Archivos de origen\ECS</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\Src\ElHornoBase\ElHornoBase.cpp">
+      <Filter>Archivos de origen\ElHornoBase</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Src\ElHornoBase\OurFrameListener.cpp">
+      <Filter>Archivos de origen\ElHornoBase</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\Src\ElHornoBase\ElHornoBase.h">
-      <Filter>Archivos de encabezado</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\Src\ElHornoBase\ECS\Entity.h">
       <Filter>Archivos de encabezado\ECS</Filter>
     </ClInclude>
@@ -46,6 +52,12 @@
     </ClInclude>
     <ClInclude Include="..\..\Src\ElHornoBase\ECS\Manager.h">
       <Filter>Archivos de encabezado\ECS</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Src\ElHornoBase\ElHornoBase.h">
+      <Filter>Archivos de encabezado\ElHornoBase</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Src\ElHornoBase\OurFrameListener.h">
+      <Filter>Archivos de encabezado\ElHornoBase</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
