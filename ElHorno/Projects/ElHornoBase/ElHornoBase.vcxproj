@@ -19,9 +19,9 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\Src\ElHornoBase\ECS\Component.cpp" />
     <ClCompile Include="..\..\Src\ElHornoBase\ECS\Entity.cpp" />
     <ClCompile Include="..\..\Src\ElHornoBase\ElHornoBase.cpp" />
-    <ClCompile Include="Component.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\Src\ElHornoBase\ECS\Component.h" />
