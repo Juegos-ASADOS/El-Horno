@@ -23,5 +23,5 @@ void ElHornoFMOD::init()
 		printf("FMOD error! (%d) %s\n", result, FMOD_ErrorString(result));
 		return;
 	}
-	std::cout << "FMOD inciado";
+	std::cout << "FMOD inciado.\n";
 }

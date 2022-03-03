@@ -5,5 +5,5 @@
 void ElHornoBullet::init()
 {
     btBox2dShape b(btVector3(1, 1, 1));
-    std::cout << "Bullet compilado." << "\n";
+    std::cout << "Bullet iniciado.\n";
 }
