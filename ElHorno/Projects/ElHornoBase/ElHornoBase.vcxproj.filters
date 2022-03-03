@@ -30,6 +30,9 @@
     <ClCompile Include="..\..\Src\ElHornoBase\ECS\Component.cpp">
       <Filter>Archivos de origen\ECS</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\Src\ElHornoBase\ECS\Manager.cpp">
+      <Filter>Archivos de origen\ECS</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\Src\ElHornoBase\ElHornoBase.h">
@@ -39,6 +42,9 @@
       <Filter>Archivos de encabezado\ECS</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Src\ElHornoBase\ECS\Component.h">
+      <Filter>Archivos de encabezado\ECS</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Src\ElHornoBase\ECS\Manager.h">
       <Filter>Archivos de encabezado\ECS</Filter>
     </ClInclude>
   </ItemGroup>
