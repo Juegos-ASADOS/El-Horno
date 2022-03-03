@@ -7,8 +7,8 @@ cd .\ElHorno\dependencies\
 cd .\Ogre\
 call %BAT%
 
-::cd ..\Bullet\
-::call %BAT%
+cd ..\Bullet\
+call %BAT%
 
 ::cd ..\FMOD\
 ::call %BAT%
