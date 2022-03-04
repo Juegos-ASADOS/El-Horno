@@ -26,7 +26,7 @@ public:
 	static bool setInstance();
 	static void erase();
 
-	static void init();
+	void init();
 
 	void start();
 	void exit();
@@ -101,7 +101,7 @@ private:
 
 	void currentSceneCleanup();
 
-	void setupWindow(std::string windowName);
+	void setupWindow();
 	void setupRoot();
 	
 	void shutdown();

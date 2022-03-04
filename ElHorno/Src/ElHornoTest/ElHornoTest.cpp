@@ -6,7 +6,7 @@
 
 int main()
 {
-    ElHornoBase::init();
+    ElHornoBase::setInstance();
 }
 
 // Ejecutar programa: Ctrl + F5 o menú Depurar > Iniciar sin depurar

@@ -4,9 +4,9 @@
 #include <OgreRoot.h>
 #include <iostream>
 #include <fstream>
-//#include <SDL.h>
-//#include <SDL_video.h>
-//#include <SDL_syswm.h>
+#include <SDL.h>
+#include <SDL_video.h>
+#include <SDL_syswm.h>
 #include "ElHornoBase.h"
 #include "ElHornoBullet.h"
 #include "ElHornoFMOD.h"
@@ -25,25 +25,32 @@ ElHornoBase::ElHornoBase()
 	//frameListener_ = new OurFrameListener();
 }
 
+/*
+Limpia managers y dependencias de bibliotecas externas
+*/
 ElHornoBase::~ElHornoBase()
 {
+	delete root_;
 
+	delete frameListener_;
+	frameListener_ = nullptr;
+	SDL_Quit();
 }
 
 ElHornoBase* ElHornoBase::getInstance() {
-	/*if (instance_ == nullptr)
-		return nullptr;
-	else
-		return instance_;*/
+	//if (instance_ == nullptr)
+	//	return nullptr;
+	//else
+	//	return instance_;
 	return nullptr;
 }
 
 bool ElHornoBase::setInstance()
 {
-	/*if (instance_ == 0) {
-		instance_ = new ElHornoBase();
-		return true;
-	}*/
+	//if (instance_ == 0) {
+	//	instance_ = new ElHornoBase();
+	//	return true;
+	//}
 	return false;
 }
 
@@ -54,20 +61,19 @@ void ElHornoBase::erase()
 
 /* Inicializa managers */
 void ElHornoBase::init() {
-	Ogre::Root* root;
-	root = new Ogre::Root();
+	root_ = new Ogre::Root();
 	ElHornoBullet::init();
 	ElHornoFMOD::init();
-	//SDL_Init(SDL_INIT_EVERYTHING);
+	SDL_Init(SDL_INIT_EVERYTHING);
 
 	// Aqui se inicializan las instancias de todos los managers
 
 	// Inicializa root de Ogre
-	//setupRoot();
+	setupRoot();
 
 	// Si hay configuraciones cargadas o inicia desde el cuadro de config de Ogre
-	//if (root_->restoreConfig() || root_->showConfigDialog(nullptr))
-		//setup();
+	if (root_->restoreConfig() || root_->showConfigDialog(nullptr))
+		setup();
 }
 
 /*
@@ -91,7 +97,56 @@ void ElHornoBase::exit()
 * Inicializa SDL y todos los demás managers (importante capturar posibles excepciones)
 */
 void ElHornoBase::setup() {
+	root_->initialise(false);
 
+	setupWindow();
+
+	// Setup de managers
+	ogreSceneManager_ = root_->createSceneManager();
+
+	root_->addFrameListener(frameListener_);
+
+
+}
+
+/*
+* Inicializa SDL, flags para resizable screen, cremamos la window sdl y comprobamos
+* que ha cogido bien la info. Despues inicializa la ventana de ogre con parametros
+* de configuracion. 
+*/
+void ElHornoBase::setupWindow()
+{
+	if (!SDL_WasInit(SDL_INIT_EVERYTHING)) 
+		SDL_InitSubSystem(SDL_INIT_EVERYTHING);
+
+	Uint32 flags = SDL_WINDOW_ALLOW_HIGHDPI;
+
+	sdlWindow_ = SDL_CreateWindow("ElHorno", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, screenWidth_, screenHeight_, flags);
+
+	SDL_SysWMinfo wmInfo;
+	SDL_VERSION(&wmInfo.version);
+	if (!SDL_GetWindowWMInfo(sdlWindow_, &wmInfo)) {
+		OGRE_EXCEPT(Ogre::Exception::ERR_INTERNAL_ERROR,
+			"Fallo info ventana SDL (SDL2)", "ElHornoBase::setupWindow()");
+	}
+
+	Ogre::NameValuePairList params;
+
+	//Inicializar el mapa de graphicOptions para que no de valores vacios
+	params["FSAA"] = graphicOptions_["FSAA"].currentValue;
+	params["vsync"] = graphicOptions_["VSync"].currentValue;
+	params["gamma"] = graphicOptions_["sRGB_Gamma"].currentValue;
+	params["externalWindowHandle"] = Ogre::StringConverter::toString(size_t(wmInfo.info.win.window));
+
+	ogreWindow_ = root_->createRenderWindow("ElHorno", screenWidth_, screenHeight_, false, &params);
+
+	//Ocultar raton
+	//SDL_SetWindowGrab(sdlWindow_, SDL_bool(false));
+	//SDL_ShowCursor(false);
+}
+
+void ElHornoBase::setupRoot()
+{
 }
 
 /*OgreRoot llama a frameListener_ que llama a processFrame que actualiza
