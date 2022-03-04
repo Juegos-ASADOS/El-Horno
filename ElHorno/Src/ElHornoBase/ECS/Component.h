@@ -16,7 +16,7 @@ public:
 	void setActive(bool a);
 	inline bool isActive() { return active_; };
 
-	virtual void start() {};		//VER SI QUEREMOS HACER UN START EN ENTITY PARA HACERLO AL FINAL DE LA CREACION DE ENTIDADES
+	virtual void start() {};		
 	virtual void update() {};
 	virtual void render() {};
 
