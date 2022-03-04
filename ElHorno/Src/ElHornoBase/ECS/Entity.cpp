@@ -1,6 +1,8 @@
 #include "Entity.h"
 #include "Component.h"
 
+
+
 Entity::Entity(string n, Manager* m, Entity* p) : name_(n), mngr_(m), compRef_(), active_(true) {
 	parent_ = p;
 	
