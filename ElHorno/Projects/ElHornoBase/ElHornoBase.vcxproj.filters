@@ -31,12 +31,21 @@
     <Filter Include="Archivos de origen\EventManager">
       <UniqueIdentifier>{d39b7c61-52d2-4638-a207-939a3e3c7768}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Archivos de encabezado\ElHornoInput">
+      <UniqueIdentifier>{6481fc65-c905-4cab-a112-9dd3b62c2bbb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de origen\ElHornoInput">
+      <UniqueIdentifier>{a044515a-4b8a-4b25-8129-73da9ae02d60}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\Src\ElHornoBase\ECS\Entity.cpp">
       <Filter>Archivos de origen\ECS</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Src\ElHornoBase\ECS\Component.cpp">
+      <Filter>Archivos de origen\ECS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Src\ElHornoBase\ECS\Manager.cpp">
       <Filter>Archivos de origen\ECS</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Src\ElHornoBase\ElHornoBase.cpp">
@@ -51,12 +60,24 @@
     <ClCompile Include="EventListener.cpp">
       <Filter>Archivos de origen\EventManager</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\Src\ElHornoBase\ECS\Factory.cpp">
+      <Filter>Archivos de origen\ECS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Src\ElHornoBase\ElHornoInput\InputManager.cpp">
+      <Filter>Archivos de origen\ElHornoInput</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Src\ElHornoBase\ECS\FactoryCreator.cpp">
+      <Filter>Archivos de origen\ECS</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\Src\ElHornoBase\ECS\Entity.h">
       <Filter>Archivos de encabezado\ECS</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Src\ElHornoBase\ECS\Component.h">
+      <Filter>Archivos de encabezado\ECS</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Src\ElHornoBase\ECS\Manager.h">
       <Filter>Archivos de encabezado\ECS</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Src\ElHornoBase\ElHornoBase.h">
@@ -74,8 +95,14 @@
     <ClInclude Include="EventListener.h">
       <Filter>Archivos de encabezado\EventManager</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Src\ElHornoBase\json.hpp">
-      <Filter>Archivos de origen</Filter>
+    <ClInclude Include="..\..\Src\ElHornoBase\ECS\Factory.h">
+      <Filter>Archivos de encabezado\ECS</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Src\ElHornoBase\ECS\FactoryCreator.h">
+      <Filter>Archivos de encabezado\ECS</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Src\ElHornoBase\ElHornoInput\InputManager.h">
+      <Filter>Archivos de encabezado\ElHornoInput</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
