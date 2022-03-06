@@ -1,5 +1,6 @@
 #include "Entity.h"
 #include "Component.h"
+#include "FactoryCreator.h"
 
 Entity::Entity(string n, Manager* m, Entity* p) : name_(n), mngr_(m), active_(true), comp_(), compRef_() {
 	parent_ = p;
@@ -28,7 +29,7 @@ void Entity::addComponent(json& args) {
 
 	//if it doesn't exist, it's created
 	if (!hasComponent(tag)) {
-		Component* c(JsonFactoryParser::getInstance()->getComponentFromJSON(tag, args));
+		Component* c(FactoryCreator::getInstance()->getComponentFromJson(tag, args));
 		if (c == nullptr)
 			return;
 
