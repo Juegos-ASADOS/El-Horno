@@ -24,21 +24,26 @@ Entity::~Entity() {
 	}
 }
 
-void Entity::addComponent(json& args) {
+void Entity::addComponent(json& args) 
+{
 	string tag = args["type"];
 
-	//if it doesn't exist, it's created
-	if (!hasComponent(tag)) {
+	// Si la entidad no tiene el componente
+	if (!hasComponent(tag)) 
+	{
+		// Miramos si esta en el json
 		Component* c(FactoryCreator::getInstance()->getComponentFromJson(tag, args));
 		if (c == nullptr)
 			return;
 
+		// Si esta lo metemos lo añadimos a la entidad
 		comp_.insert({ tag, c });
 		compRef_.push_back(c);
 		c->setEntity(this);
 	}
-	//if it already exists, it's being redefined (ideally only used with prefabs)
-	else {
+	// Si ya existe 
+	else 
+	{
 		throw "Componente " + tag + " duplicado para la entidad " + name_;
 	}
 }
