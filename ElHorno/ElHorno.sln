@@ -11,12 +11,6 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ElHornoBase", "Projects\ElH
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ElHornoFMOD", "Projects\ElHornoFMOD\ElHornoFMOD.vcxproj", "{934AD8B7-D3A6-4568-B66E-DBF0E75A5B3B}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{FF121103-539E-4C69-B541-B4EA23B6096C}"
-	ProjectSection(SolutionItems) = preProject
-		Src\ElHornoInput\InputManager.cpp = Src\ElHornoInput\InputManager.cpp
-		Src\ElHornoInput\InputManager.h = Src\ElHornoInput\InputManager.h
-	EndProjectSection
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64

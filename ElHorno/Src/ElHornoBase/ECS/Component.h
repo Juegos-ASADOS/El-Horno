@@ -1,4 +1,8 @@
 #pragma once
+#include <string>
+
+using namespace std;
+
 class Entity;
 
 class Component
@@ -6,6 +10,7 @@ class Component
 private:
 	bool active_;
 	Entity* entity_;
+	string name_;
 public:
 	Component() : entity_(nullptr), active_(true) {};
 	~Component();
@@ -22,5 +27,8 @@ public:
 
 	virtual void onEnable() {};
 	virtual void onDisable() {};
+
+	inline string getName() { return name_; };
+	inline void setName(string n) { name_ = n; };
 };
 
