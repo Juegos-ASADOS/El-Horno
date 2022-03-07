@@ -4,6 +4,7 @@
 
 #include <map>
 #include <string>
+#include "json.hpp"
 
 namespace Ogre {
 	class Root;
@@ -59,7 +60,7 @@ public:
 	void setVSync(bool val);
 	void toggleVSync();
 	void saveGraphicOptions();
-	//json writeExtraOptions();
+	nlohmann::json saveExtraOptions();
 	std::string getResolution();
 	void setResolution(std::string value);
 	int getScreenWidth();
@@ -95,14 +96,14 @@ private:
 	//static ElHornoBase* instance_;
 	OurFrameListener* frameListener_;
 
-	void currentSceneCleanup();
+	void cleanScene();
 
 	void setupWindow();
 	void setupRoot();
 	
 	void shutdown();
 	void pollEvents();
-	//void extraConfig(json& j);
+	void extraConfig(nlohmann::json& j);
 	void setupFactories();
 
 	// Ogre
@@ -114,8 +115,7 @@ private:
 	SDL_Window* sdlWindow_;
 
 	// Config de pantalla
-	std::map<std::string, Ogre::ConfigOption> graphicOptions_, 
-										defaultGraphicOptions_;
+	std::map<std::string, Ogre::ConfigOption> graphicOptions_;
 
 	std::string resolution,
 				fsaa;
@@ -129,9 +129,7 @@ private:
 		invertedAxisX_,
 		invertedAxisY_;
 
-	//json ExtraConfig;
-	//json BackupExtraConfig;
-
+	nlohmann::json ExtraConfig;
 };
 
 #endif _EL_HORNO_BASE_EL_HORNO_BASE_H

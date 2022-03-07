@@ -1,4 +1,4 @@
-// ElHornoMain.cpp
+Ôªø// ElHornoMain.cpp
 
 #include <iostream>
 #include <OgreRoot.h>
@@ -12,6 +12,9 @@
 #include "ElHornoBullet.h"
 #include "ElHornoFMOD.h"
 #include "OurFrameListener.h"
+#include "ECS/FactoryCreator.h"
+
+using json = nlohmann::json;
 
 /*
 CADENA DE LLAMADAS QUE EJECUTAN EL BUCLE PRINCIPAL
@@ -95,19 +98,44 @@ void ElHornoBase::exit()
 }
 
 /*
-* Inicializa SDL y todos los dem·s managers (importante capturar posibles excepciones)
+* Inicializa SDL y todos los dem√°s managers (importante capturar posibles excepciones)
 */
 void ElHornoBase::setup() {
 	root_->initialise(false);
 
+	json extCfg;
+
+	std::ifstream i("config.cfg");
+
+	if (i.is_open())
+	{
+		i >> extCfg;
+		i.close();
+	}
+	else
+		std::cout << "File not found: config.cfg\n";
+
+	ExtraConfig = extCfg;
+
+	extraConfig(extCfg);
+
 	setupWindow();
 
 	// Setup de managers
+
+
 	ogreSceneManager_ = root_->createSceneManager();
 
 	root_->addFrameListener(frameListener_);
 
 
+}
+
+/*
+Limpia la escena desde el SceneManager
+*/
+void ElHornoBase::cleanScene()
+{
 }
 
 /*
@@ -182,10 +210,46 @@ void ElHornoBase::shutdown()
 	}
 }
 
+/*
+Gestion de eventos por input
+*/
+void ElHornoBase::pollEvents()
+{
+	if(sdlWindow_ == nullptr)
+		return;  // SDL events not initialized
+	SDL_Event event;
+	while (SDL_PollEvent(&event))
+	{
+		switch (event.type)
+		{
+		case SDL_QUIT:
+			root_->queueEndRendering();
+			break;
+		default:
+			//llamar a InputManager
+			//InputManager::getInstance()->GeneralInputManagement(event);
+			break;
+		}
+	}
+}
+
+void ElHornoBase::extraConfig(nlohmann::json& j)
+{
+}
+
+void ElHornoBase::setupFactories()
+{
+	//FactoryCreator* facCreat = FactoryCreator::getInstance();
+	// Factor√≠as de componentes principales (transform, rigidbody, etc.)
+	// facCreat->addFactory([...])
+}
+
 /*OgreRoot llama a frameListener_ que llama a processFrame que actualiza
 la instancia de cada manager dependiendo del estado del juego*/
 void ElHornoBase::processFrame() {
+	pollEvents();
 
+	// Updates de managers
 }
 
 Ogre::Root* ElHornoBase::getRoot()
@@ -203,9 +267,6 @@ SDL_Window* ElHornoBase::getSDLWindow()
 {
 	return sdlWindow_;
 }
-
-//pollEvents
-//Procesa los eventos de SDL y los envÌa al InputManager
 
 Ogre::SceneManager* ElHornoBase::getSceneManager()
 {
@@ -252,7 +313,7 @@ bool ElHornoBase::isPaused()
 	return paused_;
 }
 
-// actualiza el tamaÒo de la ventana de SDL y de CEGUI
+// actualiza el tama√±o de la ventana de SDL y de CEGUI
 void ElHornoBase::resizeScreen(int width, int height)
 {
 	//SDL_SetWindowSize(sdlWindow_, width, height);
@@ -306,7 +367,7 @@ void ElHornoBase::toggleVSync()
 	}
 }
 
-// Guarda la configuraciÛn gr·fica actual
+// Guarda la configuraci√≥n gr√°fica actual
 void ElHornoBase::saveGraphicOptions()
 {
 	std::ofstream outputFile;
@@ -332,13 +393,22 @@ void ElHornoBase::saveGraphicOptions()
 	outputFile.close();
 }
 
+/*
+Devuelve en json opciones de ejes invertidos de input manager
+y volumenes de musica (a espera de crear estos managers)
+*/
+nlohmann::json ElHornoBase::saveExtraOptions()
+{
+	return nlohmann::json();
+}
+
 std::string ElHornoBase::getResolution()
 {
 	return resolution;
 }
 
 /*
-* Establece la resoluciÛn deseada (Podemos cambiar el formato)
+* Establece la resoluci√≥n deseada (Podemos cambiar el formato)
 */
 void ElHornoBase::setResolution(std::string value)
 {
@@ -426,7 +496,8 @@ bool ElHornoBase::getInvertedAxisYTemp()
 }
 
 /*
-* cambia opciones b·sicas en otros managers (Axis de input manager y  volume de audio manager)
+cambia opciones b√°sicas en otros managers (Axis de input manager y 
+volume de audio manager)
 */
 void ElHornoBase::changeBasicOptions()
 {
@@ -450,6 +521,10 @@ void ElHornoBase::changeGraphicComponents()
 		setVSync(vSync_);
 		graphicOptions_["VSync"].currentValue = vSync_ ? "Yes" : "No";
 	}
+
+	saveGraphicOptions();
+	saveExtraOptions();
+
 }
 
 void ElHornoBase::changeAdvancedGraphicComponents()
@@ -461,8 +536,6 @@ void ElHornoBase::changeAdvancedGraphicComponents()
 
 void ElHornoBase::revertGraphicChanges()
 {
-	graphicOptions_ = defaultGraphicOptions_;
-
 	resolution = graphicOptions_["Video Mode"].currentValue;
 
 	setResolution(resolution);
@@ -478,8 +551,6 @@ void ElHornoBase::revertGraphicChanges()
 
 void ElHornoBase::revertAdvancedGraphicChanges()
 {
-	graphicOptions_ = defaultGraphicOptions_;
-
 	fsaa = graphicOptions_["FSAA"].currentValue;
 
 	if (graphicOptions_["sRGB Gamma Conversion"].currentValue == "Yes")
