@@ -2,11 +2,12 @@
 
 #include <iostream>
 #include <OgreRoot.h>
+#include <OgreFileSystemLayer.h>
 #include <iostream>
 #include <fstream>
-//#include <SDL.h>
-//#include <SDL_video.h>
-//#include <SDL_syswm.h>
+#include <SDL.h>
+#include <SDL_video.h>
+#include <SDL_syswm.h>
 #include "ElHornoBase.h"
 #include "ElHornoBullet.h"
 #include "ElHornoFMOD.h"
@@ -25,25 +26,32 @@ ElHornoBase::ElHornoBase()
 	//frameListener_ = new OurFrameListener();
 }
 
+/*
+Limpia managers y dependencias de bibliotecas externas
+*/
 ElHornoBase::~ElHornoBase()
 {
+	delete root_;
 
+	delete frameListener_;
+	frameListener_ = nullptr;
+	SDL_Quit();
 }
 
 ElHornoBase* ElHornoBase::getInstance() {
-	/*if (instance_ == nullptr)
-		return nullptr;
-	else
-		return instance_;*/
+	//if (instance_ == nullptr)
+	//	return nullptr;
+	//else
+	//	return instance_;
 	return nullptr;
 }
 
 bool ElHornoBase::setInstance()
 {
-	/*if (instance_ == 0) {
-		instance_ = new ElHornoBase();
-		return true;
-	}*/
+	//if (instance_ == 0) {
+	//	instance_ = new ElHornoBase();
+	//	return true;
+	//}
 	return false;
 }
 
@@ -54,20 +62,19 @@ void ElHornoBase::erase()
 
 /* Inicializa managers */
 void ElHornoBase::init() {
-	Ogre::Root* root;
-	root = new Ogre::Root();
+	root_ = new Ogre::Root();
 	ElHornoBullet::init();
 	ElHornoFMOD::init();
-	//SDL_Init(SDL_INIT_EVERYTHING);
+	SDL_Init(SDL_INIT_EVERYTHING);
 
 	// Aqui se inicializan las instancias de todos los managers
 
 	// Inicializa root de Ogre
-	//setupRoot();
+	setupRoot();
 
 	// Si hay configuraciones cargadas o inicia desde el cuadro de config de Ogre
-	//if (root_->restoreConfig() || root_->showConfigDialog(nullptr))
-		//setup();
+	if (root_->restoreConfig() || root_->showConfigDialog(nullptr))
+		setup();
 }
 
 /*
@@ -91,7 +98,88 @@ void ElHornoBase::exit()
 * Inicializa SDL y todos los demás managers (importante capturar posibles excepciones)
 */
 void ElHornoBase::setup() {
+	root_->initialise(false);
 
+	setupWindow();
+
+	// Setup de managers
+	ogreSceneManager_ = root_->createSceneManager();
+
+	root_->addFrameListener(frameListener_);
+
+
+}
+
+/*
+* Inicializa SDL, flags para resizable screen, cremamos la window sdl y comprobamos
+* que ha cogido bien la info. Despues inicializa la ventana de ogre con parametros
+* de configuracion. 
+*/
+void ElHornoBase::setupWindow()
+{
+	if (!SDL_WasInit(SDL_INIT_EVERYTHING)) 
+		SDL_InitSubSystem(SDL_INIT_EVERYTHING);
+
+	Uint32 flags = SDL_WINDOW_ALLOW_HIGHDPI;
+
+	sdlWindow_ = SDL_CreateWindow("ElHorno", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, screenWidth_, screenHeight_, flags);
+
+	SDL_SysWMinfo wmInfo;
+	SDL_VERSION(&wmInfo.version);
+	if (!SDL_GetWindowWMInfo(sdlWindow_, &wmInfo)) {
+		OGRE_EXCEPT(Ogre::Exception::ERR_INTERNAL_ERROR,
+			"Fallo info ventana SDL (SDL2)", "ElHornoBase::setupWindow()");
+	}
+
+	Ogre::NameValuePairList params;
+
+	//Inicializar el mapa de graphicOptions para que no de valores vacios
+	params["FSAA"] = graphicOptions_["FSAA"].currentValue;
+	params["VSync"] = graphicOptions_["VSync"].currentValue;
+	params["sRGB Gamma Conversion"] = graphicOptions_["sRGB Gamma Conversion"].currentValue;
+	params["externalWindowHandle"] = Ogre::StringConverter::toString(size_t(wmInfo.info.win.window));
+
+	ogreWindow_ = root_->createRenderWindow("ElHorno", screenWidth_, screenHeight_, false, &params);
+
+	//Ocultar raton
+	//SDL_SetWindowGrab(sdlWindow_, SDL_bool(false));
+	//SDL_ShowCursor(false);
+}
+
+/*
+* Setter de ogre root utilizando archivo plugins, si este no existe se lanza una excepcion de ogre.
+*/
+void ElHornoBase::setupRoot()
+{
+	Ogre::String pluginPath;
+
+#ifdef  _DEBUG
+	pluginPath = "plugins_d.cfg";
+	root_ = new Ogre::Root("plugins_d.cfg", "window_d.cfg");
+#else
+	pluginPath = "plugins.cfg";
+	root_ = new Ogre::Root("plugins.cfg", "window.cfg");
+#endif
+
+	if (!Ogre::FileSystemLayer::fileExists(pluginPath)) {
+		OGRE_EXCEPT(Ogre::Exception::ERR_FILE_NOT_FOUND, pluginPath, "No existe plugins.cfg o plugins_d.cfg");
+	}
+}
+
+void ElHornoBase::shutdown()
+{
+	if (ogreWindow_ != nullptr)
+	{
+		//root_->destroyRenderTarget(ogreWindow_);
+		ogreWindow_ = nullptr;
+	}
+
+	if (sdlWindow_ != nullptr)
+	{
+		SDL_DestroyWindow(sdlWindow_);
+		SDL_QuitSubSystem(SDL_INIT_VIDEO);
+		sdlWindow_ = nullptr;
+	}
 }
 
 /*OgreRoot llama a frameListener_ que llama a processFrame que actualiza
@@ -244,15 +332,168 @@ void ElHornoBase::saveGraphicOptions()
 	outputFile.close();
 }
 
+std::string ElHornoBase::getResolution()
+{
+	return resolution;
+}
+
 /*
-* Establece la resolución deseada
+* Establece la resolución deseada (Podemos cambiar el formato)
 */
 void ElHornoBase::setResolution(std::string value)
 {
+	resolution = value;
+
+	std::stringstream mode(value);
+
+	Ogre::String token;
+	mode >> screenWidth_;
+	mode >> token;
+	mode >> screenHeight_;
+}
+
+int ElHornoBase::getScreenWidth()
+{
+	return screenWidth_;
+}
+
+int ElHornoBase::getScreenHeight()
+{
+	return screenHeight_;
+}
+
+std::string ElHornoBase::getFSAA()
+{
+	return fsaa;
+}
+
+void ElHornoBase::setFSAA(int value)
+{
+	fsaa = std::to_string(value);
+
+	graphicOptions_["FSAA"].currentValue = fsaa;
+}
+
+bool ElHornoBase::getGamma()
+{
+	return gamma_;
 }
 /*
 * Establece el gamma
 */
 void ElHornoBase::setGamma(bool value)
 {
+	std::string currValue;
+	currValue = value ? "Yes" : "No";
+	gamma_ = value;
+	graphicOptions_["sRGB Gamma Conversion"].currentValue = currValue;
+}
+
+void ElHornoBase::setInvertedAxisX(bool value)
+{
+	invertedAxisX_ = value;
+}
+
+void ElHornoBase::setInvertedAxisY(bool value)
+{
+	invertedAxisY_ = value;
+}
+
+/*
+* Preguntan el invertedAxisX al input manager
+*/
+bool ElHornoBase::getInvertedAxisXInput()
+{
+	return false;
+}
+
+/*
+*  Preguntan el invertedAxisY al input manager
+*/
+bool ElHornoBase::getInvertedAxisYInput()
+{
+	return false;
+}
+
+bool ElHornoBase::getInvertedAxisXTemp()
+{
+	return invertedAxisX_;
+}
+
+bool ElHornoBase::getInvertedAxisYTemp()
+{
+	return invertedAxisY_;
+}
+
+/*
+* cambia opciones básicas en otros managers (Axis de input manager y  volume de audio manager)
+*/
+void ElHornoBase::changeBasicOptions()
+{
+
+}
+
+/*
+* Devuelve los ajustes al default
+*/
+void ElHornoBase::revertBasicOptions()
+{
+}
+
+void ElHornoBase::changeGraphicComponents()
+{
+	setFullScreen();
+
+	graphicOptions_["Video Mode"].currentValue = resolution;
+	
+	if (graphicOptions_["VSync"].currentValue != (vSync_ ? "Yes" : "No")) {
+		setVSync(vSync_);
+		graphicOptions_["VSync"].currentValue = vSync_ ? "Yes" : "No";
+	}
+}
+
+void ElHornoBase::changeAdvancedGraphicComponents()
+{
+	graphicOptions_["FSAA"].currentValue = fsaa;
+
+	graphicOptions_["sRGB Gamma Conversion"].currentValue = gamma_ ? "Yes" : "No";
+}
+
+void ElHornoBase::revertGraphicChanges()
+{
+	graphicOptions_ = defaultGraphicOptions_;
+
+	resolution = graphicOptions_["Video Mode"].currentValue;
+
+	setResolution(resolution);
+
+	setFullScreen();
+
+	if (graphicOptions_["VSync"].currentValue == "Yes") {
+		vSync_ = true;
+	}
+	else
+		vSync_ = false;
+}
+
+void ElHornoBase::revertAdvancedGraphicChanges()
+{
+	graphicOptions_ = defaultGraphicOptions_;
+
+	fsaa = graphicOptions_["FSAA"].currentValue;
+
+	if (graphicOptions_["sRGB Gamma Conversion"].currentValue == "Yes")
+		gamma_ = true;
+	else if (graphicOptions_["sRGB Gamma Conversion"].currentValue == "No")
+		gamma_ = false;
+}
+
+void ElHornoBase::setFarShadowDistance(float dist)
+{
+	ogreSceneManager_->setShadowFarDistance(dist);
+}
+
+float ElHornoBase::getFarShadowDistance()
+{
+	return ogreSceneManager_->getShadowFarDistance();
 }

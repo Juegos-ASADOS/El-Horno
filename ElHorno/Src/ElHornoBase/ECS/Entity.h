@@ -1,10 +1,14 @@
 #pragma once
 #include <vector>
 #include <array>
+#include <map>
 #include <string>
 #include <bitset>
 
+#include "../json.hpp"
+
 using namespace std;
+using json = nlohmann::json;
 
 class Component;
 class Manager;
@@ -14,34 +18,29 @@ class Entity
 private:
 	string name_;
 	bool active_;
-	vector<Component*> comp_;
 	
 	Manager* mngr_;
-	array<Component*, 1> compRef_;			//CAMBIAR EL 1 POR CANTIDAD DE COMPONENTES
+
+	map<string, Component*> comp_;
+	vector<Component*> compRef_;
 	//bitset<ecs::maxGroup> groups_;
 	
 	Entity* parent_;
 	vector<Entity*> children_;
 public:
 	Entity(string n, Manager* m, Entity* p = nullptr);
-	Entity(Manager* m) : name_(""), mngr_(m), parent_(nullptr), compRef_(), active_(true) {};
+	Entity(Manager* m) : name_(""), mngr_(m), parent_(nullptr), compRef_(), comp_(), active_(true) {};
 	~Entity();
 
 	void update();
 	void render();
 
 	//Métodos para añadir/quitar/comprobar sobre los compoenentes de la entidad
-	template<typename T, typename ...Ts>
-	T* addComponent(Ts &&... args);
+	void addComponent(json& args);
 
-	template<typename T>
-	bool hasComponent();
-	
-	template<typename T>
-	T* getComponent();
-
-	template<typename T>
-	void removeComponent();
+	bool hasComponent(string name);	
+	Component* getComponent(string name);
+	void removeComponent(string name);
 
 	//Get/Set entidad padres
 	inline Entity* getParent() { return parent_; };

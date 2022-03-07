@@ -1,4 +1,8 @@
 #pragma once
+#include <string>
+
+using namespace std;
+
 class Entity;
 
 class Component
@@ -6,6 +10,7 @@ class Component
 private:
 	bool active_;
 	Entity* entity_;
+	string name_;
 public:
 	Component() : entity_(nullptr), active_(true) {};
 	~Component();
@@ -16,11 +21,14 @@ public:
 	void setActive(bool a);
 	inline bool isActive() { return active_; };
 
-	virtual void start() {};		//VER SI QUEREMOS HACER UN START EN ENTITY PARA HACERLO AL FINAL DE LA CREACION DE ENTIDADES
+	virtual void start() {};		
 	virtual void update() {};
 	virtual void render() {};
 
 	virtual void onEnable() {};
 	virtual void onDisable() {};
+
+	inline string getName() { return name_; };
+	inline void setName(string n) { name_ = n; };
 };
 

@@ -1,17 +1,19 @@
 #include "Entity.h"
 #include "Component.h"
+#include "FactoryCreator.h"
 
-Entity::Entity(string n, Manager* m, Entity* p) : name_(n), mngr_(m), compRef_(), active_(true) {
+Entity::Entity(string n, Manager* m, Entity* p) : name_(n), mngr_(m), active_(true), comp_(), compRef_() {
 	parent_ = p;
-	
+
 	if (parent_ != nullptr) {
 		parent_->addChild(this);
 	}
 }
 
-Entity::~Entity(){
-	for (Component* c : comp_)
-		delete c;
+Entity::~Entity() {
+	for (Component* c : compRef_)
+		c = nullptr;
+	comp_.clear();
 	for (Entity* e : children_)
 		delete e;
 
@@ -22,65 +24,61 @@ Entity::~Entity(){
 	}
 }
 
-template<typename T, typename ...Ts>
-T* Entity::addComponent(Ts && ...args){
-	T* c = new T(std::forward<Ts>(args)...);
-	c->setEntity(this);
-	c->start();
-	constexpr auto id = 0;// ecs::cmpIdx<T>;
+void Entity::addComponent(json& args) 
+{
+	string tag = args["type"];
 
-	//Si se quieren componentes duplicados modificar aqui
-	if (compRef_[id] != nullptr) {
-		removeComponent<T>();
+	// Si la entidad no tiene el componente
+	if (!hasComponent(tag)) 
+	{
+		// Miramos si esta en el json
+		Component* c(FactoryCreator::getInstance()->getComponentFromJson(tag, args));
+		if (c == nullptr)
+			return;
+
+		// Si esta lo metemos lo añadimos a la entidad
+		comp_.insert({ tag, c });
+		compRef_.push_back(c);
+		c->setEntity(this);
 	}
-
-	compRef_[id] = c;
-	comp_.emplace_back(c);
-
-	return c;
-}
-
-template<typename T>
-bool Entity::hasComponent(){
-	auto id = 0;// ecs::cmpIdx<T>;
-	return compRef_[id] != nullptr;
-}
-
-template<typename T>
-T* Entity::getComponent(){
-	auto id = 0;// ecs::cmpIdx<T>;
-	return static_cast<T*>(compRef_[id]);
-}
-
-template<typename T>
-void Entity::removeComponent(){
-	auto id = 0;// ecs::cmpIdx<T>;
-	if (compRef_[id] != nullptr) {
-		Component* old_cmp = compRef_[id];
-		compRef_[id] = nullptr;
-		comp_.erase(
-			std::find_if( 
-				comp_.begin(),
-				comp_.end(),
-				[old_cmp](const Component* c) { 
-					return c == old_cmp;
-				}));
-		delete old_cmp;
+	// Si ya existe 
+	else 
+	{
+		throw "Componente " + tag + " duplicado para la entidad " + name_;
 	}
 }
 
-Entity* Entity::getChild(string name){
+bool Entity::hasComponent(string name) {
+	return comp_.find(name) != comp_.end();
+}
+
+Component* Entity::getComponent(string name) {
+	auto it = comp_.find(name);
+	if (it == comp_.end())
+		throw "No se ha encontrado el componente " + name + " en la entidad " + name_;
+	return it->second;
+}
+
+void Entity::removeComponent(string name) {
+	if (hasComponent(name)) {
+		for (Component* c : compRef_)
+			if (c->getName() == name) delete c;
+		comp_.erase(name);
+	}
+}
+
+Entity* Entity::getChild(string name) {
 	for (Entity* e : children_)
 		if (e->getName() == name) return e;
 
 	return nullptr;
 }
 
-void Entity::addChild(Entity* c){
+void Entity::addChild(Entity* c) {
 	children_.push_back(c);
 }
 
-void Entity::removeChild(Entity* e){
+void Entity::removeChild(Entity* e) {
 	int i = 0;
 	for (Entity* c : children_) {
 		if (c == e) {
@@ -92,17 +90,17 @@ void Entity::removeChild(Entity* e){
 }
 
 void Entity::update() {
-	std::size_t n = comp_.size();
+	std::size_t n = compRef_.size();
 	for (auto i = 0u; i < n; i++) {
-		if (comp_[i]->isActive()) 
-			comp_[i]->update();
+		if (compRef_[i]->isActive())
+			compRef_[i]->update();
 	}
 }
 
 void Entity::render() {
-	std::size_t n = comp_.size();
+	std::size_t n = compRef_.size();
 	for (auto i = 0u; i < n; i++) {
-		if (comp_[i]->isActive()) 
-			comp_[i]->render();
+		if (compRef_[i]->isActive())
+			compRef_[i]->render();
 	}
 }
