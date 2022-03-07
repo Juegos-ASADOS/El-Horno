@@ -2,6 +2,13 @@
 
 #include <vector>
 
+
+#include "SDL_keyboard.h"
+#include "SDL_keycode.h"
+#include <Vector>
+
+#include <SDL_events.h>
+
 union SDL_Event;
 class InputManager
 {
@@ -29,7 +36,7 @@ public:
 
 	//el resto sera para arreglar lo que SDL no hace, (raton, mando xbox, etc)
 
-	bool IsKeyDown(Scancode key);
+	bool IsKeyDown(SDL_Scancode key);
 
 
 };
