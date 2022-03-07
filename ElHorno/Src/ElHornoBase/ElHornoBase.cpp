@@ -176,9 +176,9 @@ void ElHornoBase::shutdown()
 
 	if (sdlWindow_ != nullptr)
 	{
-		SDL_DestroyWindow(sdlWindow);
+		SDL_DestroyWindow(sdlWindow_);
 		SDL_QuitSubSystem(SDL_INIT_VIDEO);
-		sdlWindow = nullptr;
+		sdlWindow_ = nullptr;
 	}
 }
 
