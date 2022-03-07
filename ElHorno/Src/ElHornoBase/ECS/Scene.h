@@ -1,5 +1,5 @@
 #pragma once
-#include <vector>
+#include <map>
 #include "Entity.h"
 
 using namespace std;
@@ -9,10 +9,11 @@ using namespace std;
 class Scene
 {
 private:
-	vector<Entity*> entities;
+	//La idea es dividir las entidades en capas(serían la key del map)
+	map<string, Entity*> entities;
 
 public:
-	Scene() {};
+	Scene();
 	~Scene();
 
 	virtual void start() {};		
