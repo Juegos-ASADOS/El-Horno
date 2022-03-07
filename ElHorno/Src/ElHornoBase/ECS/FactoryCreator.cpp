@@ -1,6 +1,7 @@
 #include "FactoryCreator.h"
 #include "Factory.h"
 
+using json = nlohmann::json;
 
 // DEFINIR EL SINGLETONE
 FactoryCreator* FactoryCreator::getInstance()
