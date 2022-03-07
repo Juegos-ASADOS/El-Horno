@@ -60,16 +60,12 @@ public:
 	void toggleVSync();
 	void saveGraphicOptions();
 	//json writeExtraOptions();
-	std::string getScreenProportion();
-	void setScreenProportion(std::string value);
-	void setScreenProportion(int height);
 	std::string getResolution();
 	void setResolution(std::string value);
 	int getScreenWidth();
 	int getScreenHeight();
 	std::string getFSAA();
 	void setFSAA(int value);
-	void setFSAA(std::string value);
 	bool getGamma();
 	void setGamma(bool value);
 
@@ -120,12 +116,18 @@ private:
 	// Config de pantalla
 	std::map<std::string, Ogre::ConfigOption> graphicOptions_, 
 										defaultGraphicOptions_;
+
+	std::string resolution,
+				fsaa;
 	int screenWidth_,
 		screenHeight_;
 
 	bool paused_,
 		fullScreen_,
-		vSync_;
+		vSync_,
+		gamma_,
+		invertedAxisX_,
+		invertedAxisY_;
 
 	//json ExtraConfig;
 	//json BackupExtraConfig;
