@@ -21,4 +21,5 @@ XCOPY /y /s .\bin\release\zlib.dll %EXES%
 XCOPY /y /s .\bin\debug\RenderSystem_GL3Plus_d.dll %EXES%
 XCOPY /y /s .\bin\release\RenderSystem_GL3Plus.dll %EXES%
 
+XCOPY /y /s .\SDL2-build\RelWithDebInfo\SDL2.dll %EXES%
 cd..
