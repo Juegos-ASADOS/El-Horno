@@ -44,6 +44,8 @@ bld/
 
 #Ignore cegui dependencies build
 [Dd]ependencies/[Cc]egui/dependencies/build*
+[Dd]ependencies/[Cc]egui/Src/lib/dynamic*
+[Dd]ependencies/[Cc]egui/Src/lib/static*
 
 # Visual Studio 2015/2017 cache/options directory
 .vs/

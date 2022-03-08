@@ -17,7 +17,7 @@ cd .\..\..
 
 mkdir .\build
 cd .\build 
-%CMAKE% -DCEGUI_BUILD_APPLICATION_TEMPLATES:BOOL="0" -DCEGUI_BUILD_IMAGECODEC_SDL2:BOOL="1" -DCEGUI_BUILD_RENDERER_OGRE:BOOL="1" -DCEGUI_BUILD_OPENGL:BOOL="0" -DOGRE_LIB_DBG:FILEPATH=".\..\..\Ogre\Build\lib\Debug\OgreMain_d.lib" -DOGRE_H_PATH:PATH=".\..\..\Ogre\Src\OgreMain\include" -DOGRE_LIB:FILEPATH=".\..\..\Ogre\Build\lib\Release\OgreMain.lib" -DOGRE_H_BUILDSETTINGS_PATH:PATH=".\..\..\Ogre\Build\include" ..\Src
+%CMAKE% -DCEGUI_BUILD_APPLICATION_TEMPLATES:BOOL="0" -DCEGUI_BUILD_IMAGECODEC_SDL2:BOOL="1" -DCEGUI_BUILD_RENDERER_OGRE:BOOL="1" -DCEGUI_BUILD_OPENGL:BOOL="0" -DOGRE_LIB_DBG:FILEPATH=".\..\..\Ogre\Build\lib\Debug\OgreMain_d.lib" -DOGRE_H_PATH:PATH=".\..\..\Ogre\Src\OgreMain\include" -DOGRE_LIB:FILEPATH=".\..\..\Ogre\Build\lib\Release\OgreMain.lib" -DOGRE_H_BUILD_SETTINGS_PATH:PATH=".\..\..\Ogre\Build\include" ..\Src
 msbuild "cegui.sln" /p:configuration=Release /maxcpucount
 msbuild "cegui.sln" /p:configuration=Debug /maxcpucount
 
