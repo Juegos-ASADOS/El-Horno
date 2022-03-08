@@ -20,6 +20,7 @@ class OurFrameListener;
 
 class ElHornoBase {
 public:
+	ElHornoBase();
 	~ElHornoBase();
 
 	// Gestion de instancias
@@ -90,10 +91,9 @@ public:
 	//Ogre::ShadowTechnique getShadowTechnique();
 
 private:
-	ElHornoBase();
 	void setup();
 
-	//static ElHornoBase* instance_;
+	static ElHornoBase* instance_;
 	OurFrameListener* frameListener_;
 
 	void cleanScene();

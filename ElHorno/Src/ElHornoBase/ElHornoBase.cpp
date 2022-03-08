@@ -16,6 +16,8 @@
 
 using json = nlohmann::json;
 
+ElHornoBase* ElHornoBase::instance_;
+
 /*
 CADENA DE LLAMADAS QUE EJECUTAN EL BUCLE PRINCIPAL
 Llamamos a Ogre::root->addFrameListener() y le metemos nuestro listener
@@ -26,7 +28,7 @@ cada manager
 
 ElHornoBase::ElHornoBase()
 {
-	//frameListener_ = new OurFrameListener();
+	frameListener_ = new OurFrameListener();
 }
 
 /*
@@ -42,25 +44,21 @@ ElHornoBase::~ElHornoBase()
 }
 
 ElHornoBase* ElHornoBase::getInstance() {
-	//if (instance_ == nullptr)
-	//	return nullptr;
-	//else
-	//	return instance_;
-	return nullptr;
+	return instance_;
 }
 
 bool ElHornoBase::setInstance()
 {
-	//if (instance_ == 0) {
-	//	instance_ = new ElHornoBase();
-	//	return true;
-	//}
+	if (instance_ == nullptr) {
+		instance_ = new ElHornoBase();
+		return true;
+	}
 	return false;
 }
 
 void ElHornoBase::erase()
 {
-	//delete instance_;
+	delete instance_;
 }
 
 /* Inicializa managers */
@@ -239,7 +237,7 @@ void ElHornoBase::extraConfig(nlohmann::json& j)
 
 void ElHornoBase::setupFactories()
 {
-	//FactoryCreator* facCreat = FactoryCreator::getInstance();
+	FactoryCreator* facCreat = FactoryCreator::getInstance();
 	// Factorías de componentes principales (transform, rigidbody, etc.)
 	// facCreat->addFactory([...])
 }

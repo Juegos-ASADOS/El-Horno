@@ -11,9 +11,9 @@ class FactoryCreator
 {
 
 private:
-	FactoryCreator();
+	FactoryCreator() {};
 
-	static FactoryCreator* instance;
+	static FactoryCreator* instance_;
 
 	//Lleva todas las factorias de todos los componentes que creas en el juego
 	std::map<std::string, Factory*> map;
