@@ -63,7 +63,7 @@ void ElHornoBase::erase()
 
 /* Inicializa managers */
 void ElHornoBase::init() {
-	root_ = new Ogre::Root();
+	//root_ = new Ogre::Root();
 	ElHornoBullet::init();
 	ElHornoFMOD::init();
 	SDL_Init(SDL_INIT_EVERYTHING);
@@ -76,6 +76,9 @@ void ElHornoBase::init() {
 	// Si hay configuraciones cargadas o inicia desde el cuadro de config de Ogre
 	if (root_->restoreConfig() || root_->showConfigDialog(nullptr))
 		setup();
+
+	//PONER AQUI EL BUCLE PARA COMENZAR EL JUEGO (Para el hito)
+	//Update
 }
 
 /*
@@ -179,17 +182,13 @@ void ElHornoBase::setupRoot()
 {
 	Ogre::String pluginPath;
 
-#ifdef  _DEBUG
-	pluginPath = "plugins_d.cfg";
-	root_ = new Ogre::Root("plugins_d.cfg", "window_d.cfg");
-#else
 	pluginPath = "plugins.cfg";
-	root_ = new Ogre::Root("plugins.cfg", "window.cfg");
-#endif
 
 	if (!Ogre::FileSystemLayer::fileExists(pluginPath)) {
 		OGRE_EXCEPT(Ogre::Exception::ERR_FILE_NOT_FOUND, pluginPath, "No existe plugins.cfg o plugins_d.cfg");
 	}
+
+	root_ = new Ogre::Root("plugins.cfg", "window.cfg");
 }
 
 void ElHornoBase::shutdown()
