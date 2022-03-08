@@ -51,12 +51,6 @@
     <ClCompile Include="..\..\Src\ElHornoBase\OurFrameListener.cpp">
       <Filter>Archivos de origen\ElHornoBase</Filter>
     </ClCompile>
-    <ClCompile Include="EventManager.cpp">
-      <Filter>Archivos de origen\EventManager</Filter>
-    </ClCompile>
-    <ClCompile Include="EventListener.cpp">
-      <Filter>Archivos de origen\EventManager</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\Src\ElHornoBase\ECS\Factory.cpp">
       <Filter>Archivos de origen\ECS</Filter>
     </ClCompile>
@@ -65,6 +59,12 @@
     </ClCompile>
     <ClCompile Include="..\..\Src\ElHornoBase\ECS\FactoryCreator.cpp">
       <Filter>Archivos de origen\ECS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Src\ElHornoBase\EventManager\EventListener.cpp">
+      <Filter>Archivos de origen\EventManager</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Src\ElHornoBase\EventManager\EventManager.cpp">
+      <Filter>Archivos de origen\EventManager</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -80,15 +80,6 @@
     <ClInclude Include="..\..\Src\ElHornoBase\OurFrameListener.h">
       <Filter>Archivos de encabezado\ElHornoBase</Filter>
     </ClInclude>
-    <ClInclude Include="EventManager.h">
-      <Filter>Archivos de encabezado\EventManager</Filter>
-    </ClInclude>
-    <ClInclude Include="Event.h">
-      <Filter>Archivos de encabezado\EventManager</Filter>
-    </ClInclude>
-    <ClInclude Include="EventListener.h">
-      <Filter>Archivos de encabezado\EventManager</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\Src\ElHornoBase\ECS\Factory.h">
       <Filter>Archivos de encabezado\ECS</Filter>
     </ClInclude>
@@ -97,6 +88,15 @@
     </ClInclude>
     <ClInclude Include="..\..\Src\ElHornoBase\ElHornoInput\InputManager.h">
       <Filter>Archivos de encabezado\ElHornoInput</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Src\ElHornoBase\EventManager\Event.h">
+      <Filter>Archivos de encabezado\EventManager</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Src\ElHornoBase\EventManager\EventListener.h">
+      <Filter>Archivos de encabezado\EventManager</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Src\ElHornoBase\EventManager\EventManager.h">
+      <Filter>Archivos de encabezado\EventManager</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -25,9 +25,9 @@
     <ClCompile Include="..\..\Src\ElHornoBase\ECS\FactoryCreator.cpp" />
     <ClCompile Include="..\..\Src\ElHornoBase\ElHornoBase.cpp" />
     <ClCompile Include="..\..\Src\ElHornoBase\ElHornoInput\InputManager.cpp" />
+    <ClCompile Include="..\..\Src\ElHornoBase\EventManager\EventListener.cpp" />
+    <ClCompile Include="..\..\Src\ElHornoBase\EventManager\EventManager.cpp" />
     <ClCompile Include="..\..\Src\ElHornoBase\OurFrameListener.cpp" />
-    <ClCompile Include="EventListener.cpp" />
-    <ClCompile Include="EventManager.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\Src\ElHornoBase\ECS\Component.h" />
@@ -36,10 +36,10 @@
     <ClInclude Include="..\..\Src\ElHornoBase\ECS\FactoryCreator.h" />
     <ClInclude Include="..\..\Src\ElHornoBase\ElHornoBase.h" />
     <ClInclude Include="..\..\Src\ElHornoBase\ElHornoInput\InputManager.h" />
+    <ClInclude Include="..\..\Src\ElHornoBase\EventManager\Event.h" />
+    <ClInclude Include="..\..\Src\ElHornoBase\EventManager\EventListener.h" />
+    <ClInclude Include="..\..\Src\ElHornoBase\EventManager\EventManager.h" />
     <ClInclude Include="..\..\Src\ElHornoBase\OurFrameListener.h" />
-    <ClInclude Include="Event.h" />
-    <ClInclude Include="EventListener.h" />
-    <ClInclude Include="EventManager.h" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ElHornoBullet\ElHornoBullet.vcxproj">
