@@ -268,6 +268,9 @@ SDL_Window* ElHornoBase::getSDLWindow()
 Ogre::SceneManager* ElHornoBase::getSceneManager()
 {
 	//return SceneManager;
+	//HE TOCAO ESTO CUIDAO
+	return ogreSceneManager_;
+	//HE TOCAO ESTO
 	return nullptr;
 }
 
