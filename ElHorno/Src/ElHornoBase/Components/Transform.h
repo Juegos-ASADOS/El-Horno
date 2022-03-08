@@ -32,6 +32,7 @@ public:
 
 	~Transform();
 
+	Ogre::SceneNode* getNode() { return node; }
 private:
 
 	// Variables de transformacion

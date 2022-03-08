@@ -1,4 +1,6 @@
 #pragma once
+#ifndef _COMPONENT_H
+#define _COMPONENT_H
 #include <string>
 
 using namespace std;
@@ -7,7 +9,7 @@ class Entity;
 
 class Component
 {
-private:
+protected:
 	bool active_;
 	Entity* entity_;
 	string name_;
@@ -31,3 +33,5 @@ public:
 	inline string getName() { return name_; };
 	inline void setName(string n) { name_ = n; };
 };
+
+#endif _COMPONENT_H
