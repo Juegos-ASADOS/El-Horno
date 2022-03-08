@@ -1,32 +1,29 @@
 #pragma once
 #include "../ECS/Component.h"
 #include <OgreVector3.h>
-
-
-
 #include <vector>
+#include <OgreCamera.h>
 
-class Transform : public Component
+class HornoCamera : public Component
 {
 public:
 
 	//lo uncio necesario para recoger input del teclado a traves de SDL
-	Transform();
+	HornoCamera();
 
 	virtual void start() override {};
 	virtual void update() override {};
 	virtual void render() override {};
 	Ogre::Vector3 a;
 
-	~Transform();
+	~HornoCamera();
 
 private:
 
 
-	Ogre::Vector3 position_;
-	Ogre::Vector3 velocity_;
-	Ogre::Vector3 scale_;
-
+	
+	Ogre::Camera* cam;
+	Ogre::Viewport* vp;
 	Ogre::SceneNode* node = nullptr;
 
 	//pendiente de agregar mandos
