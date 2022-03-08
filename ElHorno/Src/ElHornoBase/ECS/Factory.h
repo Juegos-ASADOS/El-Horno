@@ -1,16 +1,13 @@
 #pragma once
 #include "../json.hpp"
 
-using json = nlohmann::json;
 class Component;
 
 class Factory
 {
-
 public:
 	Factory() {};
 
-	virtual Component* createComponent(json& args) = 0;
-
+	virtual Component* createComponent(nlohmann::json& args) = 0;
 };
 

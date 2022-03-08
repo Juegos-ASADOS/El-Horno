@@ -24,12 +24,12 @@ Entity::~Entity() {
 	}
 }
 
-void Entity::addComponent(json& args) 
+void Entity::addComponent(json& args)
 {
 	string tag = args["type"];
 
 	// Si la entidad no tiene el componente
-	if (!hasComponent(tag)) 
+	if (!hasComponent(tag))
 	{
 		// Miramos si esta en el json
 		Component* c(FactoryCreator::getInstance()->getComponentFromJson(tag, args));
@@ -42,7 +42,7 @@ void Entity::addComponent(json& args)
 		c->setEntity(this);
 	}
 	// Si ya existe 
-	else 
+	else
 	{
 		throw "Componente " + tag + " duplicado para la entidad " + name_;
 	}
@@ -55,7 +55,7 @@ bool Entity::hasComponent(string name) {
 Component* Entity::getComponent(string name) {
 	auto it = comp_.find(name);
 	if (it == comp_.end())
-		throw "No se ha encontrado el componente " + name + " en la entidad " + name_;
+		return nullptr;
 	return it->second;
 }
 
@@ -65,6 +65,12 @@ void Entity::removeComponent(string name) {
 			if (c->getName() == name) delete c;
 		comp_.erase(name);
 	}
+}
+
+void Entity::removeComponent() {
+	for (Component* c : compRef_)
+		delete c;
+	comp_.clear();
 }
 
 Entity* Entity::getChild(string name) {

@@ -31,4 +31,3 @@ public:
 	inline string getName() { return name_; };
 	inline void setName(string n) { name_ = n; };
 };
-

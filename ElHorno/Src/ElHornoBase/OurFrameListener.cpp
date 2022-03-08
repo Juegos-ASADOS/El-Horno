@@ -35,7 +35,7 @@ bool OurFrameListener::frameStarted(const Ogre::FrameEvent& evt)
 // Tiempo que lleva el programa en ejecución en segundos
 double OurFrameListener::getTime()
 {
-	return (double)GetTickCount() / 1000.0;
+	return (double)GetTickCount64() / 1000.0;
 }
 
 // Diferencia en segundos

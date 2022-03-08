@@ -1,24 +1,22 @@
 #include "FactoryCreator.h"
 #include "Factory.h"
 
+using json = nlohmann::json;
+
+FactoryCreator* FactoryCreator::instance_;
 
 // DEFINIR EL SINGLETONE
 FactoryCreator* FactoryCreator::getInstance()
 {
 	// si no hay instancia devolvemos null
-	if (instance == 0 || instance == nullptr)
-	{
-		return nullptr;
-	}
-
-	return instance;
+	return instance_;
 }
 bool FactoryCreator::setupInstance()
 {
 	// Si no hay instancia creamos el singletone
-	if (instance == 0)
+	if (instance_ == 0)
 	{
-		instance = new FactoryCreator();
+		instance_ = new FactoryCreator();
 		return true;
 	}
 
@@ -26,7 +24,7 @@ bool FactoryCreator::setupInstance()
 }
 void FactoryCreator::clean()
 {
-	delete instance;
+	delete instance_;
 }
 // FIN DEFINIR SINGLETON
 

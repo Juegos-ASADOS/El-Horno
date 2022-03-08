@@ -41,6 +41,7 @@ public:
 	bool hasComponent(string name);	
 	Component* getComponent(string name);
 	void removeComponent(string name);
+	void removeComponent();
 
 	//Get/Set entidad padres
 	inline Entity* getParent() { return parent_; };
