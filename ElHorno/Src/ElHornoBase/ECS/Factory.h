@@ -11,3 +11,7 @@ public:
 	virtual Component* createComponent(nlohmann::json& args) = 0;
 };
 
+class MeshFactory : public Factory {
+public:
+	virtual Component* createComponent(nlohmann::json& args) override;
+};
