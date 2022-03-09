@@ -45,7 +45,7 @@ void Transform::setRotation(Quaternion rot)
 // Funciones
 void Transform::lookAt(Vector3 targetPos)
 {
-	node->lookAt(targetPos);
+	node->lookAt(targetPos, Node::TS_PARENT);
 }
 
 

@@ -3,7 +3,7 @@
 #include <OgreVector3.h>
 
 namespace Ogre {
-	class Vector3;
+	//class Vector3;
 	class Quaternion;
 	class SceneNode;
 }
@@ -14,7 +14,7 @@ public:
 
 	Transform();
 
-	virtual void start() override {};
+	virtual void start() override;
 	virtual void update() override {};
 	virtual void render() override {};
 
@@ -41,7 +41,7 @@ private:
 	Ogre::Vector3 rotation_;
 
 	// Nodo de ogre base
-	SceneNode* node = nullptr;
+	Ogre::SceneNode* node = nullptr;
 
 };
 

@@ -1,9 +1,8 @@
 #pragma once
 #ifndef _COMPONENT_H
 #define _COMPONENT_H
-#include <string>
 
-using namespace std;
+#include <string>
 
 class Entity;
 
@@ -12,7 +11,7 @@ class Component
 protected:
 	bool active_;
 	Entity* entity_;
-	string name_;
+	std::string name_;
 public:
 	Component() : entity_(nullptr), active_(true) {};
 	~Component();
@@ -30,8 +29,8 @@ public:
 	virtual void onEnable() {};
 	virtual void onDisable() {};
 
-	inline string getName() { return name_; };
-	inline void setName(string n) { name_ = n; };
+	inline std::string getName() { return name_; };
+	inline void setName(std::string n) { name_ = n; };
 };
 
 #endif _COMPONENT_H

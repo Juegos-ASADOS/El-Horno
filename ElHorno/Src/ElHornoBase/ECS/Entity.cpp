@@ -1,8 +1,9 @@
 #include "Entity.h"
 #include "Component.h"
 #include "FactoryCreator.h"
+#include <string>
 
-Entity::Entity(string n, Manager* m, Entity* p) : name_(n), mngr_(m), active_(true), comp_(), compRef_() {
+Entity::Entity(std::string n, Manager* m, Entity* p) : name_(n), mngr_(m), active_(true), comp_(), compRef_() {
 	parent_ = p;
 
 	if (parent_ != nullptr) {
@@ -26,7 +27,7 @@ Entity::~Entity() {
 
 void Entity::addComponent(json& args)
 {
-	string tag = args["type"];
+	std::string tag = args["type"];
 
 	// Si la entidad no tiene el componente
 	if (!hasComponent(tag))
@@ -48,18 +49,18 @@ void Entity::addComponent(json& args)
 	}
 }
 
-bool Entity::hasComponent(string name) {
+bool Entity::hasComponent(std::string name) {
 	return comp_.find(name) != comp_.end();
 }
 
-Component* Entity::getComponent(string name) {
+Component* Entity::getComponent(std::string name) {
 	auto it = comp_.find(name);
 	if (it == comp_.end())
 		return nullptr;
 	return it->second;
 }
 
-void Entity::removeComponent(string name) {
+void Entity::removeComponent(std::string name) {
 	if (hasComponent(name)) {
 		for (Component* c : compRef_)
 			if (c->getName() == name) delete c;
@@ -73,7 +74,7 @@ void Entity::removeComponent() {
 	comp_.clear();
 }
 
-Entity* Entity::getChild(string name) {
+Entity* Entity::getChild(std::string name) {
 	for (Entity* e : children_)
 		if (e->getName() == name) return e;
 
