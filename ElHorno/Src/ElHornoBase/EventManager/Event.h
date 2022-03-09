@@ -1,7 +1,8 @@
 #pragma once
 
+//No se si deberia de ser un ChangeScene o que directamente sea Scene1 y que te cambie al menú o a X scena en concreto
 enum EventType {
-	EventoBase
+	EventoBase,ChangeScene
 };
 
 struct Event {

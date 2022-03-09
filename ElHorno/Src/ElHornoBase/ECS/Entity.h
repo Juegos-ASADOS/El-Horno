@@ -67,5 +67,8 @@ public:
 	inline string getName() { return name_; };
 	inline Manager* getMngr() { return mngr_; };
 
+
+	bool dontDestroyOnLoad = false;
+
 	//GROUPS, layers, transform
 };
