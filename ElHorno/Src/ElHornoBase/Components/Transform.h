@@ -14,6 +14,7 @@ public:
 
 	Transform();
 
+	virtual void init() override {};
 	virtual void start() override {};
 	virtual void update() override {};
 	virtual void render() override {};
@@ -41,7 +42,7 @@ private:
 	Ogre::Vector3 rotation_;
 
 	// Nodo de ogre base
-	SceneNode* node = nullptr;
+	Ogre::SceneNode* node = nullptr;
 
 };
 

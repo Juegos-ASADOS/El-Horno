@@ -39,7 +39,8 @@ public:
 	void addComponent(json& args);
 
 	bool hasComponent(string name);	
-	Component* getComponent(string name);
+	template <typename T>
+	T* getComponent(string name);
 	void removeComponent(string name);
 	void removeComponent();
 

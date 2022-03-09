@@ -52,7 +52,8 @@ bool Entity::hasComponent(string name) {
 	return comp_.find(name) != comp_.end();
 }
 
-Component* Entity::getComponent(string name) {
+template <typename T>
+T* Entity::getComponent(string name) {
 	auto it = comp_.find(name);
 	if (it == comp_.end())
 		return nullptr;

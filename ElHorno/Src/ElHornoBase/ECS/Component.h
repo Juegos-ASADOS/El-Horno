@@ -23,6 +23,7 @@ public:
 	void setActive(bool a);
 	inline bool isActive() { return active_; };
 
+	virtual void init() {};
 	virtual void start() {};		
 	virtual void update() {};
 	virtual void render() {};
