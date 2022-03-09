@@ -1,4 +1,6 @@
 #pragma once
+#ifndef _EVENT_MANAGER_H
+#define _EVENT_MANAGER_H
 
 #include <vector>
 #include <queue>
@@ -31,3 +33,5 @@ private:
 	std::queue<Event*> eventsQueue;
 	std::vector<EventListener*> eventListeners;
 };
+
+#endif _EVENT_MANAGER_H

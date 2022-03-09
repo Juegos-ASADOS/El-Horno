@@ -1,7 +1,7 @@
-#include "../ElHornoBase.h"; 
+#include "ElHornoBase.h"; 
 #include "OgreSceneManager.h"
 #include "OgreEntity.h"
-#include "../ECS/Entity.h"
+#include "Entity.h"
 #include "Mesh.h"
 #include "Transform.h"
 

@@ -1,8 +1,8 @@
 #include "CameraComponent.h"
-#include "../ElHornoBase.h"
+#include "ElHornoBase.h"
 #include <OgreCamera.h>
 #include <OgreSceneManager.h>
-#include "../ECS/Entity.h"
+#include "Entity.h"
 #include "Transform.h"
 #include <OgreSceneNode.h>
 #include <OgreRenderWindow.h>

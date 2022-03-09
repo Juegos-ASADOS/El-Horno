@@ -1,6 +1,9 @@
 #pragma once
-#include "../ECS/Component.h"
-#include "../json.hpp"
+#ifndef _TRANSFORM_H
+#define _TRANSFORM_H
+
+#include "Component.h"
+#include "json.hpp"
 #include <OgreVector3.h>
 
 namespace Ogre {}
@@ -32,4 +35,4 @@ private:
 	Ogre::SceneNode* node_ = nullptr;
 };
 
-
+#endif _TRANSFORM_H

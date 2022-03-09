@@ -1,4 +1,6 @@
 #pragma once
+#ifndef _EVENT_H
+#define _EVENT_H
 
 //No se si deberia de ser un ChangeScene o que directamente sea Scene1 y que te cambie al menú o a X scena en concreto
 enum EventType {
@@ -11,3 +13,5 @@ struct Event {
 
 	virtual ~Event() {};
 };
+
+#endif _EVENT_H

@@ -1,6 +1,6 @@
 #include "Scene.h"
 
-#include "../ECS/Entity.h"
+#include "Entity.h"
 
 
 //TODO REVISAR QUE ES UN UNIQUE_LOCK Y TODAS ESTAS VAINAS
@@ -9,8 +9,6 @@
 
 std::mutex mtx;
 std::condition_variable cv;
-
-//#include "../ElHornoBase.h"
 
 Scene::Scene()
 {
@@ -36,7 +34,7 @@ Scene::~Scene()
 	dontDelete.clear();
 }
 
-void Scene::setupScene(json& j)
+void Scene::setupScene(nlohmann::json& j)
 {	
 	std::unique_lock<std::mutex> lck(mtx);
 	setupProcess(j);
@@ -47,7 +45,7 @@ void Scene::setupScene(json& j)
 
 Entity* Scene::getEntity(const std::string& name)
 {
-	std::map<string, Entity*>::iterator entity = entities.find(name);
+	std::map<std::string, Entity*>::iterator entity = entities.find(name);
 	if (entity == entities.end())
 		return nullptr;
 	else
@@ -60,7 +58,7 @@ void Scene::start()
 
 void Scene::update()
 {
-	for(pair<string, Entity*> e : entities) {
+	for(std::pair<std::string, Entity*> e : entities) {
 		if (e.second->isActive()) e.second->update();
 	}
 }

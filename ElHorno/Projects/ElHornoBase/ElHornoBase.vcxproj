@@ -19,37 +19,37 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\Src\ElHornoBase\Components\CameraComponent.cpp" />
-    <ClCompile Include="..\..\Src\ElHornoBase\Components\Mesh.cpp" />
-    <ClCompile Include="..\..\Src\ElHornoBase\Components\Transform.cpp" />
-    <ClCompile Include="..\..\Src\ElHornoBase\ECS\Component.cpp" />
-    <ClCompile Include="..\..\Src\ElHornoBase\ECS\Entity.cpp" />
-    <ClCompile Include="..\..\Src\ElHornoBase\ECS\Factory.cpp" />
-    <ClCompile Include="..\..\Src\ElHornoBase\ECS\FactoryCreator.cpp" />
+    <ClCompile Include="..\..\Src\ElHornoBase\CameraComponent.cpp" />
+    <ClCompile Include="..\..\Src\ElHornoBase\Component.cpp" />
     <ClCompile Include="..\..\Src\ElHornoBase\ElHornoBase.cpp" />
-    <ClCompile Include="..\..\Src\ElHornoBase\ElHornoInput\InputManager.cpp" />
-    <ClCompile Include="..\..\Src\ElHornoBase\EventManager\EventListener.cpp" />
-    <ClCompile Include="..\..\Src\ElHornoBase\EventManager\EventManager.cpp" />
+    <ClCompile Include="..\..\Src\ElHornoBase\Entity.cpp" />
+    <ClCompile Include="..\..\Src\ElHornoBase\EventListener.cpp" />
+    <ClCompile Include="..\..\Src\ElHornoBase\EventManager.cpp" />
+    <ClCompile Include="..\..\Src\ElHornoBase\Factory.cpp" />
+    <ClCompile Include="..\..\Src\ElHornoBase\FactoryCreator.cpp" />
+    <ClCompile Include="..\..\Src\ElHornoBase\InputManager.cpp" />
+    <ClCompile Include="..\..\Src\ElHornoBase\Mesh.cpp" />
     <ClCompile Include="..\..\Src\ElHornoBase\OurFrameListener.cpp" />
-    <ClCompile Include="..\..\Src\ElHornoBase\SceneManager\Scene.cpp" />
-    <ClCompile Include="..\..\Src\ElHornoBase\SceneManager\SceneManager.cpp" />
+    <ClCompile Include="..\..\Src\ElHornoBase\Scene.cpp" />
+    <ClCompile Include="..\..\Src\ElHornoBase\SceneManager.cpp" />
+    <ClCompile Include="..\..\Src\ElHornoBase\Transform.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\Src\ElHornoBase\Components\CameraComponent.h" />
-    <ClInclude Include="..\..\Src\ElHornoBase\Components\Mesh.h" />
-    <ClInclude Include="..\..\Src\ElHornoBase\Components\Transform.h" />
-    <ClInclude Include="..\..\Src\ElHornoBase\ECS\Component.h" />
-    <ClInclude Include="..\..\Src\ElHornoBase\ECS\Entity.h" />
-    <ClInclude Include="..\..\Src\ElHornoBase\ECS\Factory.h" />
-    <ClInclude Include="..\..\Src\ElHornoBase\ECS\FactoryCreator.h" />
+    <ClInclude Include="..\..\Src\ElHornoBase\CameraComponent.h" />
+    <ClInclude Include="..\..\Src\ElHornoBase\Component.h" />
     <ClInclude Include="..\..\Src\ElHornoBase\ElHornoBase.h" />
-    <ClInclude Include="..\..\Src\ElHornoBase\ElHornoInput\InputManager.h" />
-    <ClInclude Include="..\..\Src\ElHornoBase\EventManager\Event.h" />
-    <ClInclude Include="..\..\Src\ElHornoBase\EventManager\EventListener.h" />
-    <ClInclude Include="..\..\Src\ElHornoBase\EventManager\EventManager.h" />
+    <ClInclude Include="..\..\Src\ElHornoBase\Entity.h" />
+    <ClInclude Include="..\..\Src\ElHornoBase\Event.h" />
+    <ClInclude Include="..\..\Src\ElHornoBase\EventListener.h" />
+    <ClInclude Include="..\..\Src\ElHornoBase\EventManager.h" />
+    <ClInclude Include="..\..\Src\ElHornoBase\Factory.h" />
+    <ClInclude Include="..\..\Src\ElHornoBase\FactoryCreator.h" />
+    <ClInclude Include="..\..\Src\ElHornoBase\InputManager.h" />
+    <ClInclude Include="..\..\Src\ElHornoBase\Mesh.h" />
     <ClInclude Include="..\..\Src\ElHornoBase\OurFrameListener.h" />
-    <ClInclude Include="..\..\Src\ElHornoBase\SceneManager\Scene.h" />
-    <ClInclude Include="..\..\Src\ElHornoBase\SceneManager\SceneManager.h" />
+    <ClInclude Include="..\..\Src\ElHornoBase\Scene.h" />
+    <ClInclude Include="..\..\Src\ElHornoBase\SceneManager.h" />
+    <ClInclude Include="..\..\Src\ElHornoBase\Transform.h" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ElHornoBullet\ElHornoBullet.vcxproj">

@@ -3,8 +3,8 @@
 #define _MESH_H
 
 #include <string>
-#include "../json.hpp"
-#include "../ECS/Component.h"
+#include "json.hpp"
+#include "Component.h"
 
 namespace Ogre {
 	class AxisAlignedBox;

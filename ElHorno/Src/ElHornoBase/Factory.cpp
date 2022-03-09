@@ -1,7 +1,7 @@
 #include "Factory.h"
-#include "../Components/Transform.h"
-#include "../Components/Mesh.h"
-#include "../Components/CameraComponent.h"
+#include "Transform.h"
+#include "Mesh.h"
+#include "CameraComponent.h"
 
 Component* TransformFactory::createComponent(nlohmann::json& args)
 {

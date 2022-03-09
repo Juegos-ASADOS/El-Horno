@@ -1,10 +1,9 @@
 #pragma once
+#ifndef _SCENE_H
+#define _SCENE_H
 
-//ELIMINAR INCLUDES
 #include <string>
-#include "../json.hpp"
-
-using json = nlohmann::json;
+#include "json.hpp"
 
 class Entity;
 class Scene
@@ -13,13 +12,13 @@ public:
 	Scene();
 	~Scene();
 
-	void setupScene(json& j);
-	void setupProcess(json& j);
+	void setupScene(nlohmann::json& j);
+	void setupProcess(nlohmann::json& j);
 
 	Entity* getEntity(const std::string& name);
 	
 	//No se como hacer estas vainas
-	Entity* createEntity(json& j);
+	Entity* createEntity(nlohmann::json& j);
 	Entity* addEntity(std::string name, std::string tag = "Untagged", bool callStart = true);
 	bool deleteEntity(const std::string name);
 	void deleteInstances();
@@ -38,3 +37,5 @@ private:
 
 	//Buscar entidades por tag? , Eliminar/crear entidades e instancias, Crear en la entidad physicsUpdate,pausedUpdates etc...
 };
+
+#endif _SCENE_H

@@ -1,12 +1,12 @@
 #pragma once
-#ifndef _HORNOCAMERA_H
-#define _HORNOCAMERA_H
+#ifndef _CAMERA_COMPONENT_H
+#define _CAMERA_COMPONENT_H
 
-#include "../ECS/Component.h"
+#include "Component.h"
 #include <OgreVector3.h>
 #include <vector>
 #include <string>
-#include "../json.hpp"
+#include "json.hpp"
 
 class OgreCamera;
 class Transform;
@@ -33,4 +33,4 @@ private:
 	Transform* tr_ = nullptr;
 };
 
-#endif _HORNOCAMERA_H
+#endif _CAMERA_COMPONENT_H

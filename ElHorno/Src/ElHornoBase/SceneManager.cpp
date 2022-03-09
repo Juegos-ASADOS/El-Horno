@@ -1,11 +1,11 @@
 #include "SceneManager.h"
 #include "Scene.h"
-#include "../EventManager/EventManager.h"
-#include "../EventManager/Event.h"
+#include "EventManager.h"
+#include "Event.h"
 
 #include <string>
 
-#include "../json.hpp"
+#include "json.hpp"
 
 using json = nlohmann::json;
 

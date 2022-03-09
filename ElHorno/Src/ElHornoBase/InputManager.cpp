@@ -1,4 +1,8 @@
 #include "InputManager.h" //ajusten a ruta cuano organicemos carpetas
+#include "SDL_keyboard.h"
+#include "SDL_keycode.h"
+#include <Vector>
+#include <SDL_events.h>
 #include <iostream>
 
 //#include <CEGUI/CEGUI.h>
