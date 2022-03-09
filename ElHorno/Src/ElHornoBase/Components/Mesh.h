@@ -19,7 +19,7 @@ public:
 	Mesh(nlohmann::json& args);
 	~Mesh();
 
-	void init(nlohmann::json& args);
+	virtual void start() override;
 	void redefine(nlohmann::json& args);
 
 	void onEnable() override;

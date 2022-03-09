@@ -3,11 +3,7 @@
 #include "../json.hpp"
 #include <OgreVector3.h>
 
-namespace Ogre {
-	//class Vector3;
-	class Quaternion;
-	class SceneNode;
-}
+namespace Ogre {}
 
 class Transform : public Component
 {

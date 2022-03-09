@@ -9,32 +9,7 @@ using namespace Ogre;
 
 Transform::Transform(nlohmann::json& args)
 {
-	Vector3 position = Vector3(0,0,0);
-	Ogre::Vector3 rotation = Vector3(0, 0, 0);
-	Vector3 scale = Vector3(0, 0, 0);
-
-	if (!args["position"].is_null())
-	{
-		position.x = args["position"][0];
-		position.y = args["position"][1];
-		position.z = args["position"][2];
-	}
-	if (!args["rotation"].is_null())
-	{
-		rotation.x = args["rotation"][0];
-		rotation.y = args["rotation"][1];
-		rotation.z = args["rotation"][2];
-	}
-	if (!args["scale"].is_null())
-	{
-		scale.x = args["scale"][0];
-		scale.y = args["scale"][1];
-		scale.z = args["scale"][2];
-	}
-
-	setPosition(position);
-	setRotation(Quaternion::Quaternion(&rotation));
-	setScale(scale);
+	args_ = args;
 }
 
 Transform::~Transform()
@@ -45,6 +20,32 @@ Transform::~Transform()
 
 void Transform::start()
 {
+	Vector3 position = Vector3(0, 0, 0);
+	Ogre::Vector3 rotation = Vector3(0, 0, 0);
+	Vector3 scale = Vector3(0, 0, 0);
+
+	if (!args_["position"].is_null())
+	{
+		position.x = args_["position"][0];
+		position.y = args_["position"][1];
+		position.z = args_["position"][2];
+	}
+	if (!args_["rotation"].is_null())
+	{
+		rotation.x = args_["rotation"][0];
+		rotation.y = args_["rotation"][1];
+		rotation.z = args_["rotation"][2];
+	}
+	if (!args_["scale"].is_null())
+	{
+		scale.x = args_["scale"][0];
+		scale.y = args_["scale"][1];
+		scale.z = args_["scale"][2];
+	}
+
+	setPosition(position);
+	setRotation(Quaternion::Quaternion(&rotation));
+	setScale(scale);
 	//Aqui va la incializacion del nodo pero no estan las cosas que tienen que estar todavia
 	//node = ElHornoBase::getInstance()->getSceneManager()...
 }

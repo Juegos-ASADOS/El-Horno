@@ -3,6 +3,7 @@
 #define _COMPONENT_H
 
 #include <string>
+#include "../json.hpp"
 
 class Entity;
 
@@ -12,6 +13,7 @@ protected:
 	bool active_;
 	Entity* entity_;
 	std::string name_;
+	nlohmann::json& args_;
 public:
 	Component() : entity_(nullptr), active_(true) {};
 	~Component();
