@@ -20,3 +20,8 @@ class MeshFactory : public Factory {
 public:
 	virtual Component* createComponent(nlohmann::json& args) override;
 };
+
+class CameraFactory : public Factory {
+public:
+	virtual Component* createComponent(nlohmann::json& args) override;
+};

@@ -81,9 +81,6 @@
     <ClCompile Include="..\..\Src\ElHornoBase\Components\Transform.cpp">
       <Filter>Archivos de origen\Components</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Src\ElHornoBase\Components\HornoCamera.cpp">
-      <Filter>Archivos de origen\Components</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\Src\ElHornoBase\Components\Mesh.cpp">
       <Filter>Archivos de origen\Components</Filter>
     </ClCompile>
@@ -92,6 +89,9 @@
     </ClCompile>
     <ClCompile Include="..\..\Src\ElHornoBase\SceneManager\Scene.cpp">
       <Filter>Archivos de origen\SceneManager</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Src\ElHornoBase\Components\CameraComponent.cpp">
+      <Filter>Archivos de origen\Components</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -128,9 +128,6 @@
     <ClInclude Include="..\..\Src\ElHornoBase\Components\Transform.h">
       <Filter>Archivos de encabezado\Components</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Src\ElHornoBase\Components\HornoCamera.h">
-      <Filter>Archivos de encabezado\Components</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\Src\ElHornoBase\Components\Mesh.h">
       <Filter>Archivos de encabezado\Components</Filter>
     </ClInclude>
@@ -139,6 +136,9 @@
     </ClInclude>
     <ClInclude Include="..\..\Src\ElHornoBase\SceneManager\Scene.h">
       <Filter>Archivos de encabezado\SceneManager</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Src\ElHornoBase\Components\CameraComponent.h">
+      <Filter>Archivos de encabezado\Components</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

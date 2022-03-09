@@ -5,7 +5,7 @@
 #include "Mesh.h"
 #include "Transform.h"
 
-Mesh::Mesh(nlohmann::json& args) : Component() { args_ = args; }
+Mesh::Mesh(nlohmann::json& args) : Component(args) {}
 
 /*
 Desconecta el nodo del padre y destruye la entidad
@@ -66,7 +66,8 @@ void Mesh::redefine(nlohmann::json& args)
 	if (args["isAnimated_"].is_null())
 		args["isAnimated_"] = isAnimated_;
 
-	init(args);
+	args_ = args;
+	start();
 }
 
 void Mesh::onEnable()

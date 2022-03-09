@@ -4,10 +4,11 @@
 
 #include <string>
 #include "../json.hpp"
+#include "../EventManager/EventListener.h"
 
 class Entity;
 
-class Component
+class Component : EventListener
 {
 protected:
 	bool active_;
@@ -15,7 +16,7 @@ protected:
 	std::string name_;
 	nlohmann::json& args_;
 public:
-	Component() : entity_(nullptr), active_(true) {};
+	Component(nlohmann::json& args) : args_(args), entity_(nullptr), active_(true) {};
 	~Component();
 
 	inline void setEntity(Entity* e) { entity_ = e; };

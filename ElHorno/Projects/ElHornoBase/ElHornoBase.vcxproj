@@ -19,7 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\Src\ElHornoBase\Components\HornoCamera.cpp" />
+    <ClCompile Include="..\..\Src\ElHornoBase\Components\CameraComponent.cpp" />
     <ClCompile Include="..\..\Src\ElHornoBase\Components\Mesh.cpp" />
     <ClCompile Include="..\..\Src\ElHornoBase\Components\Transform.cpp" />
     <ClCompile Include="..\..\Src\ElHornoBase\ECS\Component.cpp" />
@@ -35,7 +35,7 @@
     <ClCompile Include="..\..\Src\ElHornoBase\SceneManager\SceneManager.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\Src\ElHornoBase\Components\HornoCamera.h" />
+    <ClInclude Include="..\..\Src\ElHornoBase\Components\CameraComponent.h" />
     <ClInclude Include="..\..\Src\ElHornoBase\Components\Mesh.h" />
     <ClInclude Include="..\..\Src\ElHornoBase\Components\Transform.h" />
     <ClInclude Include="..\..\Src\ElHornoBase\ECS\Component.h" />

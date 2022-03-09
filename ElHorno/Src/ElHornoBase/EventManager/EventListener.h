@@ -6,5 +6,5 @@ class EventListener
 {
 public:
 	virtual ~EventListener();
-	virtual bool recieveEvent(Event* e) = 0;
+	virtual bool recieveEvent(Event* e);
 };

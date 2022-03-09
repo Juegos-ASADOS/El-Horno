@@ -7,9 +7,8 @@
 
 using namespace Ogre;
 
-Transform::Transform(nlohmann::json& args)
+Transform::Transform(nlohmann::json& args) : Component(args)
 {
-	args_ = args;
 }
 
 Transform::~Transform()
