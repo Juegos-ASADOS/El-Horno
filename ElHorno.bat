@@ -4,22 +4,21 @@ set BAT=build.bat
 
 cd .\ElHorno\dependencies\
 
-cd .\Ogre\
-call %BAT%
-
-cd ..\Bullet\
-call %BAT%
-
-cd ..\FMOD\
-call %BAT%
-
-cd ..\lua\
-call %BAT%
-
-::cd ..\cegui\
+::cd .\Ogre\
 ::call %BAT%
 
-cd ..\..
+::cd ..\Bullet\
+::call %BAT%
+
+::cd ..\FMOD\
+::call %BAT%
+
+::cd ..\lua\
+::call %BAT%
+
+cd .\cegui\
+call %BAT%
+
 msbuild "ElHorno.sln" /p:configuration=Debug
 msbuild "ElHorno.sln" /p:configuration=Release
 pause

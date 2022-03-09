@@ -32,6 +32,7 @@ THE SOFTWARE.
 #include "OgreVector.h"
 #include "OgreHeaderPrefix.h"
 #include "OgreMurmurHash3.h"
+#include <sstream>
 
 namespace Ogre {
 
