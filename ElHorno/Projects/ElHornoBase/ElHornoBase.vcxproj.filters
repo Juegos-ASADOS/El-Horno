@@ -43,6 +43,12 @@
     <Filter Include="Archivos de origen\Components">
       <UniqueIdentifier>{029e4acb-789c-4f1e-b555-e3c88202ba34}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Archivos de origen\SceneManager">
+      <UniqueIdentifier>{39e6fa96-52a7-4bb0-aacf-79073b0ab73d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de encabezado\SceneManager">
+      <UniqueIdentifier>{6708f662-9333-4b01-99ba-9b4572bf6fc6}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\Src\ElHornoBase\ECS\Entity.cpp">
@@ -80,6 +86,9 @@
     </ClCompile>
     <ClCompile Include="..\..\Src\ElHornoBase\Components\Mesh.cpp">
       <Filter>Archivos de origen\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Src\ElHornoBase\SceneManager\SceneManager.cpp">
+      <Filter>Archivos de origen\SceneManager</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -121,6 +130,9 @@
     </ClInclude>
     <ClInclude Include="..\..\Src\ElHornoBase\Components\Mesh.h">
       <Filter>Archivos de encabezado\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Src\ElHornoBase\SceneManager\SceneManager.h">
+      <Filter>Archivos de encabezado\SceneManager</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -31,6 +31,7 @@
     <ClCompile Include="..\..\Src\ElHornoBase\EventManager\EventListener.cpp" />
     <ClCompile Include="..\..\Src\ElHornoBase\EventManager\EventManager.cpp" />
     <ClCompile Include="..\..\Src\ElHornoBase\OurFrameListener.cpp" />
+    <ClCompile Include="..\..\Src\ElHornoBase\SceneManager\SceneManager.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\Src\ElHornoBase\Components\HornoCamera.h" />
@@ -46,6 +47,7 @@
     <ClInclude Include="..\..\Src\ElHornoBase\EventManager\EventListener.h" />
     <ClInclude Include="..\..\Src\ElHornoBase\EventManager\EventManager.h" />
     <ClInclude Include="..\..\Src\ElHornoBase\OurFrameListener.h" />
+    <ClInclude Include="..\..\Src\ElHornoBase\SceneManager\SceneManager.h" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ElHornoBullet\ElHornoBullet.vcxproj">
