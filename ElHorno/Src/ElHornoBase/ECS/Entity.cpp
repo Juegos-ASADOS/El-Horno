@@ -37,7 +37,7 @@ void Entity::addComponent(json& args)
 		if (c == nullptr)
 			return;
 
-		// Si esta lo metemos lo añadimos a la entidad
+		// Si esta lo metemos lo aï¿½adimos a la entidad
 		comp_.insert({ tag, c });
 		compRef_.push_back(c);
 		c->setEntity(this);
