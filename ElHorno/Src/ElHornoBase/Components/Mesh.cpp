@@ -1,4 +1,4 @@
-#include "Mesh.h"
+//#include "Mesh.h"
 //#include "../ElHornoBase.h"; 
 //
 //
@@ -37,12 +37,12 @@
 //	isAnimated_ = ((!args["isAnimated_"].is_null()) && (args["isAnimated_"]));
 //
 //	ogreEntity_->setCastShadows(castShadow_);
-//	static_cast<Transform*>(entity_->getComponent("Transform"))->getNode()->attachObject(ogreEntity_);
+//	entity_->getComponent<Transform>("Transform")->getNode()->attachObject(ogreEntity_);
 //}
 //
 //void Mesh::redefine(nlohmann::json& args)
 //{
-//	static_cast<Transform*>(entity_->getComponent("Transform"))->getNode()->detachObject(ogreEntity_);
+//	entity_->getComponent<Transform>("Transform")->getNode()->detachObject(ogreEntity_);
 //
 //	delete ogreEntity_;
 //	ogreEntity_ = nullptr;

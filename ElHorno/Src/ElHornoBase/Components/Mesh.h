@@ -1,10 +1,11 @@
-#pragma once
-#ifndef _MESH_H
-#define _MESH_H
+//#pragma once
+//#ifndef _MESH_H
+//#define _MESH_H
 //
 //#include <string>
 //#include "../json.hpp"
 //#include "../ECS/Component.h"
+////class Component;
 //
 //namespace Ogre {
 //	class AxisAlignedBox;
@@ -41,5 +42,5 @@
 //	Ogre::String meshFile_;
 //	Ogre::String materialName_;
 //};
-
-#endif _MESH_H
+//
+//#endif _MESH_H

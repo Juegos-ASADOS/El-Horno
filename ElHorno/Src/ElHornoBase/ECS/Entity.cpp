@@ -53,7 +53,8 @@ bool Entity::hasComponent(std::string name) {
 	return comp_.find(name) != comp_.end();
 }
 
-Component* Entity::getComponent(std::string name) {
+template <typename T>
+T* Entity::getComponent(std::string name) {
 	auto it = comp_.find(name);
 	if (it == comp_.end())
 		return nullptr;
