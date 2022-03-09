@@ -22,8 +22,7 @@ public:
 	void setActive(bool a);
 	inline bool isActive() { return active_; };
 
-	virtual void init() {};
-	virtual void start() {};		
+	virtual void start() {};	//Esto es el init de nuestros componentes
 	virtual void update() {};
 	virtual void render() {};
 

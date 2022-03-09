@@ -1,5 +1,6 @@
 #pragma once
 #include "../ECS/Component.h"
+#include "../json.hpp"
 #include <OgreVector3.h>
 
 namespace Ogre {
@@ -11,11 +12,10 @@ namespace Ogre {
 class Transform : public Component
 {
 public:
-
-	Transform();
+	Transform(nlohmann::json& args);
+	~Transform();
 
 	virtual void start() override;
-	virtual void init() override {};
 	virtual void update() override {};
 	virtual void render() override {};
 
@@ -30,20 +30,10 @@ public:
 	void setRotation(Ogre::Quaternion rot);
 	void lookAt(Ogre::Vector3 targetPos);
 
-
-	~Transform();
-
-	Ogre::SceneNode* getNode() { return node; }
+	Ogre::SceneNode* getNode() { return node_; }
 private:
-
-	// Variables de transformacion
-	Ogre::Vector3 position_;
-	Ogre::Vector3 scale_;
-	Ogre::Vector3 rotation_;
-
 	// Nodo de ogre base
-	Ogre::SceneNode* node = nullptr;
-
+	Ogre::SceneNode* node_ = nullptr;
 };
 
 

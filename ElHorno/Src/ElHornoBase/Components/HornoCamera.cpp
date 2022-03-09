@@ -30,7 +30,7 @@ HornoCamera::~HornoCamera()
 * Lo añade como viewport y seleccionames un color de fondo
 * Todas las variable están cableadas hasta la existencia de un json que setee los parametros
 */
-void HornoCamera::init()
+void HornoCamera::start()
 {
 	cam = ElHornoBase::getInstance()->getSceneManager()->createCamera("cam");
 	cam->setNearClipDistance(5);

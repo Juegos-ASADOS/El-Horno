@@ -15,7 +15,7 @@ public:
 	HornoCamera();
 	~HornoCamera();
 
-	virtual void init() override;
+	virtual void start() override;
 	Ogre::Vector3 a;
 
 	Ogre::Camera* getCamera();
