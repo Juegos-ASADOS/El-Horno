@@ -4,6 +4,13 @@
 #include "fmod_errors.h"
 #include <iostream>
 
+#include "fmod_studio.hpp"
+#include "fmod.hpp"
+#include <string>
+#include <map>
+#include <vector>
+#include <math.h>
+
 void ElHornoFMOD::init()
 {
 	// Inicialización de FMOD core
