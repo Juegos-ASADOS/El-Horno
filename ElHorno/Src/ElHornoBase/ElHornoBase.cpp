@@ -12,7 +12,7 @@
 #include "ElHornoBullet.h"
 #include "ElHornoFMOD.h"
 #include "OurFrameListener.h"
-#include "ECS/FactoryCreator.h"
+#include "FactoryCreator.h"
 
 using json = nlohmann::json;
 
@@ -268,6 +268,9 @@ SDL_Window* ElHornoBase::getSDLWindow()
 Ogre::SceneManager* ElHornoBase::getSceneManager()
 {
 	//return SceneManager;
+	//HE TOCAO ESTO CUIDAO
+	return ogreSceneManager_;
+	//HE TOCAO ESTO
 	return nullptr;
 }
 

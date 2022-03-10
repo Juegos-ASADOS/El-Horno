@@ -1,1 +1,0 @@
-el input, muevanlo de carpeta si conviene

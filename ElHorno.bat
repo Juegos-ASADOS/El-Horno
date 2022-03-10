@@ -16,10 +16,9 @@ call %BAT%
 cd ..\lua\
 call %BAT%
 
-::cd ..\cegui\
-::call %BAT%
+cd ..\cegui\
+call %BAT%
 
-cd ..\..
 msbuild "ElHorno.sln" /p:configuration=Debug
 msbuild "ElHorno.sln" /p:configuration=Release
 pause

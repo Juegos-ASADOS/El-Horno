@@ -46,6 +46,7 @@ bld/
 [Dd]ependencies/[Cc]egui/dependencies/build*
 [Dd]ependencies/[Cc]egui/Src/lib/dynamic*
 [Dd]ependencies/[Cc]egui/Src/lib/static*
+[Dd]ependencies/[Cc]egui/Src/dependencies*
 
 # Visual Studio 2015/2017 cache/options directory
 .vs/
