@@ -106,6 +106,8 @@ private:
 	void extraConfig(nlohmann::json& j);
 	void setupFactories();
 
+	void setConfigOptions();
+
 	// Ogre
 	Ogre::Root* root_;
 	Ogre::SceneManager* ogreSceneManager_;
