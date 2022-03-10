@@ -4,19 +4,19 @@ set BAT=build.bat
 
 cd .\ElHorno\dependencies\
 
-::cd .\Ogre\
-::call %BAT%
+cd .\Ogre\
+call %BAT%
 
-::cd ..\Bullet\
-::call %BAT%
+cd ..\Bullet\
+call %BAT%
 
-::cd ..\FMOD\
-::call %BAT%
+cd ..\FMOD\
+call %BAT%
 
-::cd ..\lua\
-::call %BAT%
+cd ..\lua\
+call %BAT%
 
-cd .\cegui\
+cd ..\cegui\
 call %BAT%
 
 msbuild "ElHorno.sln" /p:configuration=Debug
