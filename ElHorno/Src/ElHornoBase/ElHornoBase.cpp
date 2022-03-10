@@ -63,6 +63,10 @@ void ElHornoBase::erase()
 
 /* Inicializa managers */
 void ElHornoBase::init() {
+	//ESTO ES UNA PRUEBA
+	screenWidth_ = 1280;
+	screenHeight_ = 720;
+
 	//root_ = new Ogre::Root();
 	ElHornoBullet::init();
 	ElHornoFMOD::init();
@@ -146,6 +150,8 @@ void ElHornoBase::cleanScene()
 */
 void ElHornoBase::setupWindow()
 {
+	setConfigOptions();
+
 	if (!SDL_WasInit(SDL_INIT_EVERYTHING)) 
 		SDL_InitSubSystem(SDL_INIT_EVERYTHING);
 
@@ -239,6 +245,32 @@ void ElHornoBase::setupFactories()
 	FactoryCreator* facCreat = FactoryCreator::getInstance();
 	// Factorías de componentes principales (transform, rigidbody, etc.)
 	// facCreat->addFactory([...])
+}
+
+void ElHornoBase::setConfigOptions()
+{
+	graphicOptions_ = root_->getRenderSystem()->getConfigOptions();
+
+	fsaa = graphicOptions_["FSAA"].currentValue;
+
+	if (graphicOptions_["VSync"].currentValue == "Yes")
+		vSync_ = true;
+	else if (graphicOptions_["VSync"].currentValue == "No")
+		vSync_ = false;
+
+	if (graphicOptions_["sRGB Gamma Conversion"].currentValue == "Yes")
+		gamma_ = true;
+	else if (graphicOptions_["sRGB Gamma Conversion"].currentValue == "No")
+		gamma_ = false;
+
+	std::istringstream mode(graphicOptions_["Video Mode"].currentValue);
+	resolution = graphicOptions_["Video Mode"].currentValue;
+
+	//TEMPORAL HASTA QUE SE PUEDA LEER EL CONFIG
+	/*Ogre::String token;
+	mode >> screenWidth_;
+	mode >> token;
+	mode >> screenHeight_;*/
 }
 
 /*OgreRoot llama a frameListener_ que llama a processFrame que actualiza
