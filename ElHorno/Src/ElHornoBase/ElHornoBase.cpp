@@ -13,6 +13,8 @@
 #include "ElHornoFMOD.h"
 #include "OurFrameListener.h"
 #include "FactoryCreator.h"
+#include "SceneManager.h"
+#include "Factory.h"
 
 using json = nlohmann::json;
 
@@ -69,7 +71,7 @@ void ElHornoBase::init() {
 
 	//root_ = new Ogre::Root();
 	ElHornoBullet::init();
-	ElHornoFMOD::init();
+	//ElHornoFMOD::init();
 	SDL_Init(SDL_INIT_EVERYTHING);
 
 	// Aqui se inicializan las instancias de todos los managers
@@ -81,8 +83,8 @@ void ElHornoBase::init() {
 	if (root_->restoreConfig() || root_->showConfigDialog(nullptr))
 		setup();
 
-	//PONER AQUI EL BUCLE PARA COMENZAR EL JUEGO (Para el hito)
-	//Update
+	//Creacion del factoryCreator y declaracion de los componentes del motor
+	setupFactories();
 }
 
 /*
@@ -146,13 +148,13 @@ void ElHornoBase::cleanScene()
 /*
 * Inicializa SDL, flags para resizable screen, cremamos la window sdl y comprobamos
 * que ha cogido bien la info. Despues inicializa la ventana de ogre con parametros
-* de configuracion. 
+* de configuracion.
 */
 void ElHornoBase::setupWindow()
 {
 	setConfigOptions();
 
-	if (!SDL_WasInit(SDL_INIT_EVERYTHING)) 
+	if (!SDL_WasInit(SDL_INIT_EVERYTHING))
 		SDL_InitSubSystem(SDL_INIT_EVERYTHING);
 
 	Uint32 flags = SDL_WINDOW_ALLOW_HIGHDPI;
@@ -218,7 +220,7 @@ Gestion de eventos por input
 */
 void ElHornoBase::pollEvents()
 {
-	if(sdlWindow_ == nullptr)
+	if (sdlWindow_ == nullptr)
 		return;  // SDL events not initialized
 	SDL_Event event;
 	while (SDL_PollEvent(&event))
@@ -244,7 +246,9 @@ void ElHornoBase::setupFactories()
 {
 	FactoryCreator* facCreat = FactoryCreator::getInstance();
 	// Factorías de componentes principales (transform, rigidbody, etc.)
-	// facCreat->addFactory([...])
+	facCreat->addFactory("transform", new TransformFactory());
+	facCreat->addFactory("camera", new CameraFactory());
+	facCreat->addFactory("mesh", new MeshFactory());
 }
 
 void ElHornoBase::setConfigOptions()
@@ -279,6 +283,7 @@ void ElHornoBase::processFrame() {
 	pollEvents();
 
 	// Updates de managers
+	SceneManager::getInstance()->update();
 }
 
 Ogre::Root* ElHornoBase::getRoot()
@@ -413,7 +418,7 @@ void ElHornoBase::saveGraphicOptions()
 	outputFile << "Render System=OpenGL Rendering Subsystem\n";
 	outputFile << "[OpenGL Rendering Subsystem]\n";
 	outputFile << "Colour Depth=32\n";
-	outputFile << "Display Frequency=N/A\n"; 
+	outputFile << "Display Frequency=N/A\n";
 	outputFile << "FSAA=" << graphicOptions_["FSAA"].currentValue << "\n";
 	outputFile << "Full Screen=" << graphicOptions_["Fulscreen"].currentValue << "\n";
 	outputFile << "RTT Preferred Mode=FBO\n";
@@ -528,7 +533,7 @@ bool ElHornoBase::getInvertedAxisYTemp()
 }
 
 /*
-cambia opciones básicas en otros managers (Axis de input manager y 
+cambia opciones básicas en otros managers (Axis de input manager y
 volume de audio manager)
 */
 void ElHornoBase::changeBasicOptions()
@@ -548,7 +553,7 @@ void ElHornoBase::changeGraphicComponents()
 	setFullScreen();
 
 	graphicOptions_["Video Mode"].currentValue = resolution;
-	
+
 	if (graphicOptions_["VSync"].currentValue != (vSync_ ? "Yes" : "No")) {
 		setVSync(vSync_);
 		graphicOptions_["VSync"].currentValue = vSync_ ? "Yes" : "No";

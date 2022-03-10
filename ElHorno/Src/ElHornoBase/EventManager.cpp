@@ -2,6 +2,8 @@
 #include "Event.h"
 #include "EventListener.h"
 
+EventManager* EventManager::instance = 0;
+
 EventManager* EventManager::getInstance()
 {
 	if (instance == 0)

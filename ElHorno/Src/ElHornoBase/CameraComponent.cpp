@@ -66,7 +66,7 @@ void CameraComponent::start()
 	cam->setNearClipDistance(camNearClipDistance);
 	cam->setFarClipDistance(setFarClipDistance);
 
-	tr_ = entity_->getComponent<Transform>("Transform");
+	tr_ = entity_->getComponent<Transform>("transform");
 	tr_->getNode()->attachObject(cam);
 	tr_->setPosition(camPos);
 	tr_->lookAt(lookAtVec);
