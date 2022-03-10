@@ -44,7 +44,7 @@ void Mesh::start()
 	isAnimated_ = ((!args_["isAnimated_"].is_null()) && (args_["isAnimated_"]));
 
 	ogreEntity_->setCastShadows(castShadow_);
-	entity_->getComponent<Transform>("Transform")->getNode()->attachObject(ogreEntity_);
+	entity_->getComponent<Transform>("transform")->getNode()->attachObject(ogreEntity_); 
 }
 
 /*
@@ -52,7 +52,7 @@ Reestablece varibles de init para recomponer la malla
 */
 void Mesh::redefine(nlohmann::json& args)
 {
-	entity_->getComponent<Transform>("Transform")->getNode()->detachObject(ogreEntity_);
+	/*entity_->getComponent<Transform>("Transform")->getNode()->detachObject(ogreEntity_);
 
 	delete ogreEntity_;
 	ogreEntity_ = nullptr;
@@ -67,7 +67,7 @@ void Mesh::redefine(nlohmann::json& args)
 		args["isAnimated_"] = isAnimated_;
 
 	args_ = args;
-	start();
+	start();*/
 }
 
 void Mesh::onEnable()

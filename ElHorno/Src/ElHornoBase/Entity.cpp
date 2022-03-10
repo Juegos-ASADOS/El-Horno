@@ -1,9 +1,10 @@
 #include "Entity.h"
 #include "Component.h"
 #include "FactoryCreator.h"
+#include "Scene.h"
 #include <string>
 
-Entity::Entity(std::string n, Manager* m, Entity* p) : name_(n), mngr_(m), active_(true), comp_(), compRef_() {
+Entity::Entity(std::string n, Scene* m, Entity* p) : name_(n), mngr_(m), active_(true), comp_(), compRef_() {
 	parent_ = p;
 
 	if (parent_ != nullptr) {
@@ -51,14 +52,6 @@ void Entity::addComponent(nlohmann::json& args)
 
 bool Entity::hasComponent(std::string name) {
 	return comp_.find(name) != comp_.end();
-}
-
-template <typename T>
-T* Entity::getComponent(std::string name) {
-	auto it = comp_.find(name);
-	if (it == comp_.end())
-		return nullptr;
-	return it->second;
 }
 
 void Entity::removeComponent(std::string name) {
