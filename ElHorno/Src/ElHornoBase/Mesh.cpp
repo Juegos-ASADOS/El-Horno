@@ -27,10 +27,12 @@ Se le adjunta al nodo del transform
 */
 void Mesh::start()
 {
-	meshName_ = to_string(args_["mesh"]);
-	ogreEntity_ = ElHornoBase::getInstance()->getSceneManager()->createEntity(meshName_);
-	castShadow_ = true;
-
+	if (!args_["mesh"].is_null())
+	{
+		meshName_ = to_string(args_["mesh"]);
+		ogreEntity_ = ElHornoBase::getInstance()->getSceneManager()->createEntity(meshName_);
+		castShadow_ = true;
+	}
 	if (!args_["material"].is_null())
 	{
 		std::string aux = args_["material"];
@@ -38,12 +40,13 @@ void Mesh::start()
 		ogreEntity_->setMaterialName(args_["material"], "Materials");
 	}
 
-	if (!args_["castShadow_"].is_null())
+	if (!args_["castShadow_"].is_null()) {
 		castShadow_ = args_["castShadow_"];
+		ogreEntity_->setCastShadows(castShadow_);
+	}
 
 	isAnimated_ = ((!args_["isAnimated_"].is_null()) && (args_["isAnimated_"]));
 
-	ogreEntity_->setCastShadows(castShadow_);
 	entity_->getComponent<Transform>("transform")->getNode()->attachObject(ogreEntity_); 
 }
 

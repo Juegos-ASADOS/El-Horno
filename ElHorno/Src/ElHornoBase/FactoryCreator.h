@@ -13,7 +13,9 @@ class FactoryCreator
 {
 
 private:
-	FactoryCreator() {};
+	FactoryCreator() {
+		map = std::map<std::string, Factory*>();
+	};
 
 	static FactoryCreator* instance_;
 

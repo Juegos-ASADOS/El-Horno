@@ -14,6 +14,7 @@
 #include "OurFrameListener.h"
 #include "FactoryCreator.h"
 #include "SceneManager.h"
+#include "Scene.h"
 #include "Factory.h"
 
 using json = nlohmann::json;
@@ -75,6 +76,11 @@ void ElHornoBase::init() {
 	SDL_Init(SDL_INIT_EVERYTHING);
 
 	// Aqui se inicializan las instancias de todos los managers
+	FactoryCreator::setupInstance();
+	//Creacion del factoryCreator y declaracion de los componentes del motor
+	setupFactories();
+
+	SceneManager::setupInstance();
 
 	// Inicializa root de Ogre
 	setupRoot();
@@ -83,8 +89,6 @@ void ElHornoBase::init() {
 	if (root_->restoreConfig() || root_->showConfigDialog(nullptr))
 		setup();
 
-	//Creacion del factoryCreator y declaracion de los componentes del motor
-	setupFactories();
 }
 
 /*
@@ -92,7 +96,7 @@ Ejecuta el start del SceenManager y comienza el renderizado de Ogre
 */
 void ElHornoBase::start()
 {
-
+	SceneManager::getInstance()->getCurrentScene()->start();
 	root_->startRendering();
 }
 

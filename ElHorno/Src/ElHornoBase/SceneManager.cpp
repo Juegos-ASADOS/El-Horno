@@ -6,10 +6,22 @@
 #include <string>
 
 #include "json.hpp"
+#include <iostream>
 
 using json = nlohmann::json;
 
 SceneManager* SceneManager::instance = 0;
+
+SceneManager::SceneManager() 
+{ 
+	try {
+
+		currentScene_ = new Scene(); 
+	}
+	catch (std::string a) {
+		std::cout << a;
+	}
+}
 
 SceneManager* SceneManager::getInstance()
 {

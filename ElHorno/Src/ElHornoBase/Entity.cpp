@@ -90,6 +90,15 @@ void Entity::removeChild(Entity* e) {
 	}
 }
 
+void Entity::start()
+{
+	std::size_t n = compRef_.size();
+	for (auto i = 0u; i < n; i++) {
+		if (compRef_[i]->isActive())
+			compRef_[i]->start();
+	}
+}
+
 void Entity::update() {
 	std::size_t n = compRef_.size();
 	for (auto i = 0u; i < n; i++) {

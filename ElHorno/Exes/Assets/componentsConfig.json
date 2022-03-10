@@ -11,9 +11,7 @@
                 "type" : "camera"
             },
             {
-                "type" : "mesh",
-                "mesh" : "",
-                "material" : ""
+                "type" : "mesh"
             }
         ]
     }

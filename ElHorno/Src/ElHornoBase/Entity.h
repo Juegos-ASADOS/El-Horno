@@ -32,6 +32,7 @@ public:
 	Entity(Scene* m) : name_(""), mngr_(m), parent_(nullptr), compRef_(), comp_(), active_(true) {};
 	~Entity();
 
+	void start();
 	void update();
 	void render();
 

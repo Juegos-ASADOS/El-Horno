@@ -1,14 +1,16 @@
 #include "Transform.h"
 #include "OgreEntity.h"
 #include <OgreSceneNode.h>
+#include <OgreSceneManager.h>
 #include <OgreVector3.h>
 #include <OgreQuaternion.h>
 #include "ElHornoBase.h"
+#include <iostream>
 
 using namespace Ogre;
 
 Transform::Transform(nlohmann::json& args) : Component(args)
-{
+{ 
 }
 
 Transform::~Transform()
@@ -19,6 +21,7 @@ Transform::~Transform()
 
 void Transform::start()
 {
+	node_ = ElHornoBase::getInstance()->getSceneManager()->getRootSceneNode()->createChildSceneNode();
 	Vector3 position = Vector3(0, 0, 0);
 	Ogre::Vector3 rotation = Vector3(0, 0, 0);
 	Vector3 scale = Vector3(0, 0, 0);

@@ -14,7 +14,7 @@ protected:
 	bool active_;
 	Entity* entity_;
 	std::string name_;
-	nlohmann::json& args_;
+	nlohmann::json args_;
 public:
 	Component(nlohmann::json& args) : args_(args), entity_(nullptr), active_(true) {};
 	~Component();

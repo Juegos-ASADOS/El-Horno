@@ -9,13 +9,13 @@ using json = nlohmann::json;
 Scene::Scene()
 {
 	json j;
-	std::ifstream i("../../Exes/Assets/componentsConfig.json");
+	std::ifstream i("Assets/componentsConfig.json");
 	if (i.is_open()) {
 		i >> j;
 		i.close();
 	}
 	else {
-		throw "File not found: .. / .. / Exes / Assets / componentsConfig.json \n";
+		throw "File not found: Assets/componentsConfig.json \n";
 	}
 
 	std::vector<json> comp = j["components"];
@@ -23,7 +23,7 @@ Scene::Scene()
 	Entity* a = addEntity("camera", "prueba");
 	a->addComponent(comp[0]);
 	a->addComponent(comp[1]);
-	
+
 	Entity* b = addEntity("object", "prueba");
 	b->addComponent(comp[0]);
 	b->addComponent(comp[2]);
@@ -33,46 +33,69 @@ Scene::Scene()
 Scene::~Scene()
 {
 	std::map<std::string, Entity*> dontDelete;
-	for (std::pair<std::string, Entity*> i : entities_) {
-		if (!i.second->dontDestroyOnLoad)
-			delete i.second;
-		else
-			dontDelete.insert(i);
+	auto it = entities_.begin();
+	while (it != entities_.end()) {
+		for (auto e : it->second) {
+			if (!e->dontDestroyOnLoad)
+				delete e;
+			else
+				dontDelete.insert({ it->first, e });
+		}
+		it++;
 	}
 	entities_.clear();
 
 	//Metemos las entidades que decidimos NO borrar
 	for (std::pair<std::string, Entity*> i : dontDelete)
 	{
-		entities_.insert(i);
+		addEntity(i.second->getName(), i.first);
 	}
 	dontDelete.clear();
 }
 
-Entity* Scene::getEntity(const std::string& name)
+Entity* Scene::getEntity(const std::string& name, const std::string& layer)
 {
-	std::map<std::string, Entity*>::iterator entity = entities_.find(name);
+	std::map<std::string, std::vector<Entity*>>::iterator entity = entities_.find(layer);
 	if (entity == entities_.end())
 		return nullptr;
-	else
-		return entity->second;
+	else {
+		for (Entity* e : entity->second)
+			if (e->getName() == name) return e;
+		return nullptr;
+	}
 }
 
-Entity* Scene::addEntity(std::string name, std::string layer)
+Entity* Scene::addEntity(const std::string& name, const std::string& layer)
 {
 	Entity* e = new Entity(name, this);
-	entities_.insert({ layer, e });
+	auto it = entities_.find(layer);
+	if (it != entities_.end())
+		it->second.push_back(e);
+	else {
+		std::vector<Entity*> a = std::vector<Entity*>();
+		a.push_back(e);
+		entities_.insert(std::pair<std::string, std::vector<Entity*>>(layer, a));
+	}
 
 	return e;
 }
 
 void Scene::start()
 {
+	auto iter = entities_.begin();
+	while (iter != entities_.end()) {
+		for(Entity* e : iter->second)
+			if (e->isActive()) e->start();
+		iter++;
+	}
 }
 
 void Scene::update()
 {
-	for (std::pair<std::string, Entity*> e : entities_) {
-		if (e.second->isActive()) e.second->update();
+	auto iter = entities_.begin();
+	while (iter != entities_.end()) {
+		for (Entity* e : iter->second)
+			if (e->isActive()) e->update();
+		iter++;
 	}
 }

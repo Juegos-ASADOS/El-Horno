@@ -15,12 +15,12 @@ public:
 	void setupScene(nlohmann::json& j) {};
 	void setupProcess(nlohmann::json& j) {};
 
-	Entity* getEntity(const std::string& name);
+	Entity* getEntity(const std::string& name, const std::string& layer);
 	
 	//No se como hacer estas vainas
 	Entity* createEntity(nlohmann::json& j){};
-	Entity* addEntity(std::string name, std::string layer);
-	bool deleteEntity(const std::string name) {};
+	Entity* addEntity(const std::string& name, const std::string& layer);
+	bool deleteEntity(const std::string& name) {};
 	void deleteInstances() {};
 
 	void start();
@@ -29,7 +29,7 @@ public:
 	inline std::string getName() const { return name_; };
 
 private:
-	std::map<std::string, Entity*> entities_;
+	std::map<std::string, std::vector<Entity*>> entities_;
 
 	std::string name_;
 	bool sceneLoaded_ = false;

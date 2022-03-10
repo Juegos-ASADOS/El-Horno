@@ -28,7 +28,7 @@ private:
 
 	Scene* currentScene_ = nullptr;
 
-	SceneManager() {};
+	SceneManager();
 	~SceneManager();
 
 	std::string nextScene_ = "";
