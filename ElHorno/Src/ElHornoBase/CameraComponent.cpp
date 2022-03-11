@@ -37,7 +37,7 @@ void CameraComponent::start()
 
 	Ogre::Vector3 camPos = Ogre::Vector3(100, 100, 100);
 	Ogre::Vector3 lookAtVec = Ogre::Vector3(0, 0, 0);
-	Ogre::ColourValue bgColor = Ogre::ColourValue(1, 1, 1, 1);
+	Ogre::ColourValue bgColor = Ogre::ColourValue(0, 0, 1, 1);
 
 	if (!args_["nearClipDistance"].is_null())	camNearClipDistance = args_["nearClipDistance"];
 	if (!args_["farClipDistance"].is_null())	setFarClipDistance = args_["farClipDistance"];

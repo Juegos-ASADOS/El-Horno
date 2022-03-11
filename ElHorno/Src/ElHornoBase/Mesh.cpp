@@ -4,6 +4,7 @@
 #include "Entity.h"
 #include "Mesh.h"
 #include "Transform.h"
+#include <OgreFileSystemLayer.h>
 
 Mesh::Mesh(nlohmann::json& args) : Component(args) {}
 
