@@ -72,6 +72,9 @@
 //
 //	int ErrorCheck(FMOD_RESULT result);
 //
+//	void updateListener(int Listener, const Vector3& position, const Vector3& velocity, const Vector3& forward, const Vector3& up);
+//	void updateSound(const Vector3& position, const Vector3& velocity, int channel);
+//
 //private:
 //	static Implementation* sgpImplementation;
 //};
