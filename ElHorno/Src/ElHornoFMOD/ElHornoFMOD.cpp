@@ -220,3 +220,15 @@
 //	fVec.z = vPosition.z;
 //	return fVec;
 //}
+//
+//
+//void ElHornoFMOD::updateListener(int Listener, const Vector3& position, const Vector3& velocity, const Vector3& forward, const Vector3& up)
+//{
+//	sgpImplementation->mpSystem->set3DListenerAttributes(Listener, VectorToFmod(position), VectorToFmod(velocity), VectorToFmod(forward), VectorToFmod(up));
+//}
+//
+//
+//void ElHornoFMOD::updateSound(const Vector3& position, const Vector3& velocity, int channel)
+//{
+//	sgpImplementation->mChannels[channel]->set3DAttributes(VectorToFmod(position), VectorToFmod(velocity));
+//}

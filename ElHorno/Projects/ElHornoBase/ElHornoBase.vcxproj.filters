@@ -93,6 +93,12 @@
     <ClCompile Include="..\..\Src\ElHornoBase\SceneManager.cpp">
       <Filter>Archivos de origen\SceneManager</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\Src\ElHornoBase\AudioListenerComponent.cpp">
+      <Filter>Archivos de origen\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Src\ElHornoBase\AudioComponent.cpp">
+      <Filter>Archivos de origen\Components</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\Src\ElHornoBase\ElHornoBase.h">
@@ -139,6 +145,12 @@
     </ClInclude>
     <ClInclude Include="..\..\Src\ElHornoBase\SceneManager.h">
       <Filter>Archivos de encabezado\SceneManager</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Src\ElHornoBase\AudioListenerComponent.h">
+      <Filter>Archivos de encabezado\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Src\ElHornoBase\AudioComponent.h">
+      <Filter>Archivos de encabezado\Components</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
