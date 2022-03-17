@@ -49,6 +49,12 @@
     <Filter Include="Archivos de encabezado\SceneManager">
       <UniqueIdentifier>{6708f662-9333-4b01-99ba-9b4572bf6fc6}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Archivos de encabezado\Other">
+      <UniqueIdentifier>{a73bc669-22b0-4f0a-ad9b-7679584cbade}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de origen\Other">
+      <UniqueIdentifier>{085b2b2c-b202-4284-843a-81e8dd36686f}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\Src\ElHornoBase\ElHornoBase.cpp">
@@ -98,6 +104,9 @@
     </ClCompile>
     <ClCompile Include="..\..\Src\ElHornoBase\AudioComponent.cpp">
       <Filter>Archivos de origen\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Src\ElHornoBase\HornoConversions.cpp">
+      <Filter>Archivos de origen\Other</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -151,6 +160,9 @@
     </ClInclude>
     <ClInclude Include="..\..\Src\ElHornoBase\AudioComponent.h">
       <Filter>Archivos de encabezado\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Src\ElHornoBase\HornoConversions.h">
+      <Filter>Archivos de encabezado\Other</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
