@@ -21,10 +21,12 @@
   <ItemGroup>
     <ClInclude Include="..\..\Src\ElHornoBullet\ElHornoBullet.h" />
     <ClInclude Include="..\..\Src\ElHornoBullet\PhysicsManager.h" />
+    <ClInclude Include="..\..\Src\ElHornoBullet\Rigibody.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\Src\ElHornoBullet\ElHornoBullet.cpp" />
     <ClCompile Include="..\..\Src\ElHornoBullet\PhysicsManager.cpp" />
+    <ClCompile Include="..\..\Src\ElHornoBullet\Rigibody.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
@@ -104,7 +106,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)dependencies\Bullet\Src\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)dependencies\Bullet\Src\src;$(SolutionDir)dependencies\Ogre\Src\OgreMain\include;$(SolutionDir)dependencies\Ogre\Build\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
     </ClCompile>
     <Link>
@@ -124,7 +126,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)dependencies\Bullet\Src\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)dependencies\Bullet\Src\src;$(SolutionDir)dependencies\Ogre\Src\OgreMain\include;$(SolutionDir)dependencies\Ogre\Build\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -143,7 +145,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)dependencies\Bullet\Src\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)dependencies\Bullet\Src\src;$(SolutionDir)dependencies\Ogre\Src\OgreMain\include;$(SolutionDir)dependencies\Ogre\Build\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
     </ClCompile>
     <Link>
@@ -163,7 +165,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)dependencies\Bullet\Src\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)dependencies\Bullet\Src\src;$(SolutionDir)dependencies\Ogre\Src\OgreMain\include;$(SolutionDir)dependencies\Ogre\Build\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>

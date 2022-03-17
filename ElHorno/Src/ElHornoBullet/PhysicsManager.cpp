@@ -1,6 +1,7 @@
 #include "PhysicsManager.h"
+#include "HornoConversions.h"
 #include "btBulletDynamicsCommon.h"
-//#include "../ElHornoBase/Transform.h"
+#include "Transform.h"
 
 
 /*
@@ -47,28 +48,33 @@ void PhysicsManager::addBody(btRigidBody* body, const short& group, const short&
 
 btRigidBody* PhysicsManager::createRigidBody(Transform* tr, const float& mass = 0, ColliderShape sha = ColliderShape::Box)
 {
-	/*float mass;
-	btDefaultMotionState* state = new btDefaultMotionState({ tr->getRotation(), tr->getPosition()});
-
+	//MotionState generado a partir de un Transform de bullet, 
+	//generado a partir de un componente Transform 
+	//======
+	//	-SI FALLA ES PORQUE NO GUARDAMOS EL TRANSFORM QUE SE CREA DIRECTAMENTE EN LA LLAMADA AL MÉTODO
+	//	-PARA ARREGLAR ESO HABRÍA QUE ALMACENARLO EN ALGÚN LADO
+	//======
+	btDefaultMotionState* state = new btDefaultMotionState(btTransform(QuaternionToBullet(tr->getRotation()), 
+																	   VectorToBullet(tr->getPosition())));
+	btVector3 v;
 	btCollisionShape* shape;
 	switch (sha) {
-		case ColliderShape::Box :
-			shape = new btBoxShape(tr->getScale());
+		case ColliderShape::Box : //HALF-EXTENTS = Transform.Escala
+			shape = new btBoxShape(VectorToBullet(tr->getScale()));
 			break;
-		case ColliderShape::Sphere :
-			shape = new btSphereShape(tr->getScale());
+		case ColliderShape::Sphere : //RADIO = Transform.Scale.Length
+			shape = new btSphereShape(VectorToBullet(tr->getScale()).length());
 			break;
-		case ColliderShape::Cylinder:
-			shape = new btCylinderShape(tr->getScale());
+		case ColliderShape::Cylinder: //HALF-EXTENTS = Transform.Escala
+			shape = new btCylinderShape(VectorToBullet(tr->getScale()));
 			break;
-		case ColliderShape::Capsule:
-			shape = new btCapsuleShape(tr->getScale());
+		case ColliderShape::Capsule: //RADIO = Transform.Scale.X --- ALTURA = Transform.Scale.Y
+			shape = new btCapsuleShape(VectorToBullet(tr->getScale()).x(), VectorToBullet(tr->getScale()).y());
 			break;
 	}
 
 	btRigidBody* body = new btRigidBody(mass, state, shape);
-	return body;*/
-	return nullptr;
+	return body;
 }
 
 //btRigidBody::setAngularFactor evita rotaciones 

@@ -19,6 +19,12 @@
     <Filter Include="Archivos de origen\PhysicsManager">
       <UniqueIdentifier>{2fddc9b7-5be8-49a5-9e30-69b64b95662a}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Archivos de encabezado\Components">
+      <UniqueIdentifier>{08f7e922-dd1f-467c-9b15-bcf07286eaa3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de origen\Components">
+      <UniqueIdentifier>{c5017b71-bd6c-4869-a0a6-73f2c63a5e8e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\Src\ElHornoBullet\ElHornoBullet.h">
@@ -27,6 +33,9 @@
     <ClInclude Include="..\..\Src\ElHornoBullet\PhysicsManager.h">
       <Filter>Archivos de encabezado\PhysicsManager</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\Src\ElHornoBullet\Rigibody.h">
+      <Filter>Archivos de encabezado\Components</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\Src\ElHornoBullet\ElHornoBullet.cpp">
@@ -34,6 +43,9 @@
     </ClCompile>
     <ClCompile Include="..\..\Src\ElHornoBullet\PhysicsManager.cpp">
       <Filter>Archivos de origen\PhysicsManager</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Src\ElHornoBullet\Rigibody.cpp">
+      <Filter>Archivos de origen\Components</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
