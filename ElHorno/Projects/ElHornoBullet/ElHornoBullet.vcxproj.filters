@@ -13,15 +13,27 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Archivos de encabezado\PhysicsManager">
+      <UniqueIdentifier>{07795b29-638a-45e9-86f0-59cd93c38d11}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de origen\PhysicsManager">
+      <UniqueIdentifier>{2fddc9b7-5be8-49a5-9e30-69b64b95662a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\Src\ElHornoBullet\ElHornoBullet.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\Src\ElHornoBullet\PhysicsManager.h">
+      <Filter>Archivos de encabezado\PhysicsManager</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\Src\ElHornoBullet\ElHornoBullet.cpp">
       <Filter>Archivos de origen</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Src\ElHornoBullet\PhysicsManager.cpp">
+      <Filter>Archivos de origen\PhysicsManager</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

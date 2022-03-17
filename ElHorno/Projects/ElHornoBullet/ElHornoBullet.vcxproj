@@ -20,9 +20,11 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\Src\ElHornoBullet\ElHornoBullet.h" />
+    <ClInclude Include="..\..\Src\ElHornoBullet\PhysicsManager.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\Src\ElHornoBullet\ElHornoBullet.cpp" />
+    <ClCompile Include="..\..\Src\ElHornoBullet\PhysicsManager.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
