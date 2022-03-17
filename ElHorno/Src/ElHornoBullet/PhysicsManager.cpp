@@ -24,17 +24,23 @@ void PhysicsManager::addBody(btRigidBody* body)
 
 /*
 * Con bits, desde el componente rigidBody se implementa como en este ejemplo:
+* 
 * #define BASE_GROUP    1<<0
 * #define WHEEL_GROUP   1<<1
 * #define BALL_GROUP    1<<2
 *
-* const short ball_group = BALL_GROUP
-* const short ball_mask  = BASE_GROUP | WHEEL_GROUP | BALL_GROUP  ///< assuming the ball collides with everything
+* const short ball_group = BALL_GROUP ///< la pelota pertenece a este grupo
+* const short ball_mask  = BASE_GROUP | WHEEL_GROUP | BALL_GROUP  ///< la pelota choca con estos grupos
 *
 * const short wheel_group = WHEEL_GROUP
-* const short wheel_mask =  BALL_GROUP   ///< assuming we only want to wheel to collide with the ball
+* const short wheel_mask =  BALL_GROUP   ///< la rueda solo choca con la pelota
+* 
+* ---------------------
+* 
+* Máximo de 15 capas de colisión : (usa un short por eso)
+* 
 */
-void PhysicsManager::addBody(btRigidBody* body, const int& group, const int& layerMask)
+void PhysicsManager::addBody(btRigidBody* body, const short& group, const short& layerMask)
 {
 	world->addRigidBody(body, group, layerMask);
 }
@@ -62,6 +68,7 @@ btRigidBody* PhysicsManager::createRigidBody(Transform* tr, const float& mass = 
 
 	btRigidBody* body = new btRigidBody(mass, state, shape);
 	return body;*/
+	return nullptr;
 }
 
 //btRigidBody::setAngularFactor evita rotaciones 

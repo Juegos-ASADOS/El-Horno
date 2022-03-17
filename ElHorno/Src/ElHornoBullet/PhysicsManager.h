@@ -27,7 +27,7 @@ public:
 	
 	btRigidBody* createRigidBody(Transform* tr, const float& mass, ColliderShape shape);
 	void addBody(btRigidBody* body);
-	void addBody(btRigidBody* body, const int& group, const int& layerMask);
+	void addBody(btRigidBody* body, const short& group, const short& layerMask);
 private:
 	static PhysicsManager* instance;
 
