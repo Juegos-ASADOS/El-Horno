@@ -1,4 +1,5 @@
-#include "ElHornoOgre.h"
+#include "GraphicsManager.h"
+#include "InputManager.h"
 #include <iostream>
 #include <fstream>
 #include <Ogre.h>
@@ -8,34 +9,38 @@
 #include <SDL_video.h>
 #include <SDL_syswm.h>
 
-ElHornoOgre* ElHornoOgre::instance_;
+GraphicsManager* GraphicsManager::instance_;
 
-ElHornoOgre::~ElHornoOgre()
+GraphicsManager::GraphicsManager() {
+
+}
+
+GraphicsManager::~GraphicsManager()
 {
 	delete root_;
 	SDL_Quit();
 }
 
-ElHornoOgre* ElHornoOgre::getInstance()
+GraphicsManager* GraphicsManager::getInstance()
 {
 	return instance_;
 }
 
-bool ElHornoOgre::setInstance()
+bool GraphicsManager::setInstance()
 {
 	if (instance_ == nullptr) {
-		instance_ = new ElHornoOgre();
+		instance_ = new GraphicsManager();
 		return true;
 	}
 	return false;
 }
 
-void ElHornoOgre::erase()
+void GraphicsManager::erase()
 {
 	delete instance_;
 }
 
-void ElHornoOgre::init()
+void GraphicsManager::init()
 {
 	//ESTO ES UNA PRUEBA
 	screenWidth_ = 1280;
@@ -51,17 +56,17 @@ void ElHornoOgre::init()
 		setup();
 }
 
-void ElHornoOgre::start()
+void GraphicsManager::start()
 {
 	root_->startRendering();
 }
 
-void ElHornoOgre::exit()
+void GraphicsManager::exit()
 {
 	root_->queueEndRendering();
 }
 
-void ElHornoOgre::setup()
+void GraphicsManager::setup()
 {
 	root_->initialise(false);
 	setupWindow();
@@ -77,7 +82,7 @@ void ElHornoOgre::setup()
 * que ha cogido bien la info. Despues inicializa la ventana de ogre con parametros
 * de configuracion.
 */
-void ElHornoOgre::setupWindow()
+void GraphicsManager::setupWindow()
 {
 	setConfigOptions();
 
@@ -113,7 +118,7 @@ void ElHornoOgre::setupWindow()
 /*
 * Setter de ogre root utilizando archivo plugins, si este no existe se lanza una excepcion de ogre.
 */
-void ElHornoOgre::setupRoot()
+void GraphicsManager::setupRoot()
 {
 	Ogre::String pluginPath;
 
@@ -126,7 +131,7 @@ void ElHornoOgre::setupRoot()
 	root_ = new Ogre::Root("plugins.cfg", "window.cfg");
 }
 
-void ElHornoOgre::shutdown()
+void GraphicsManager::shutdown()
 {
 	if (ogreWindow_ != nullptr)
 	{
@@ -145,7 +150,7 @@ void ElHornoOgre::shutdown()
 /*
 Gestion de eventos por input
 */
-void ElHornoOgre::pollEvents()
+void GraphicsManager::pollEvents()
 {
 	if (sdlWindow_ == nullptr)
 		return;  // SDL events not initialized
@@ -159,13 +164,13 @@ void ElHornoOgre::pollEvents()
 			break;
 		default:
 			//llamar a InputManager
-			//InputManager::getInstance()->GeneralInputManagement(event);
+			InputManager::getInstance()->GeneralInputManagement(event);
 			break;
 		}
 	}
 }
 
-void ElHornoOgre::setConfigOptions()
+void GraphicsManager::setConfigOptions()
 {
 	graphicOptions_ = root_->getRenderSystem()->getConfigOptions();
 
@@ -191,23 +196,23 @@ void ElHornoOgre::setConfigOptions()
 	mode >> screenHeight_;*/
 }
 
-Ogre::Root* ElHornoOgre::getRoot()
+Ogre::Root* GraphicsManager::getRoot()
 {
 	return root_;
 }
 
 
-Ogre::RenderWindow* ElHornoOgre::getRenderWindow()
+Ogre::RenderWindow* GraphicsManager::getRenderWindow()
 {
 	return ogreWindow_;
 }
 
-SDL_Window* ElHornoOgre::getSDLWindow()
+SDL_Window* GraphicsManager::getSDLWindow()
 {
 	return sdlWindow_;
 }
 
-Ogre::SceneManager* ElHornoOgre::getSceneManager()
+Ogre::SceneManager* GraphicsManager::getSceneManager()
 {
 	//return SceneManager;
 	//HE TOCAO ESTO CUIDAO
@@ -217,7 +222,7 @@ Ogre::SceneManager* ElHornoOgre::getSceneManager()
 }
 
 // actualiza el tamaño de la ventana de SDL y de CEGUI
-void ElHornoOgre::resizeScreen(int width, int height)
+void GraphicsManager::resizeScreen(int width, int height)
 {
 	//SDL_SetWindowSize(sdlWindow_, width, height);
 	//sdlWindow_->windowMovedOrResized();
@@ -227,7 +232,7 @@ void ElHornoOgre::resizeScreen(int width, int height)
 /*
 * Pone o quita la pantalla completa
 */
-void ElHornoOgre::setFullScreen()
+void GraphicsManager::setFullScreen()
 {
 	if (fullScreen_) {
 		//SDL_SetWindowFullscreen(sdlWindow_, SDL_WINDOW_FULLSCREEN);
@@ -243,22 +248,22 @@ void ElHornoOgre::setFullScreen()
 	fullScreen_ = !fullScreen_;
 }
 
-bool ElHornoOgre::getFullScreen()
+bool GraphicsManager::getFullScreen()
 {
 	return fullScreen_;
 }
 
-bool ElHornoOgre::getVSync()
+bool GraphicsManager::getVSync()
 {
 	return vSync_;
 }
 
-void ElHornoOgre::setVSync(bool val)
+void GraphicsManager::setVSync(bool val)
 {
 	vSync_ = val;
 }
 
-void ElHornoOgre::toggleVSync()
+void GraphicsManager::toggleVSync()
 {
 	if (vSync_) {
 		//SDL_GL_SetSwapInterval(1);
@@ -271,7 +276,7 @@ void ElHornoOgre::toggleVSync()
 }
 
 
-std::string ElHornoOgre::getResolution()
+std::string GraphicsManager::getResolution()
 {
 	return resolution;
 }
@@ -279,7 +284,7 @@ std::string ElHornoOgre::getResolution()
 /*
 * Establece la resolución deseada (Podemos cambiar el formato)
 */
-void ElHornoOgre::setResolution(std::string value)
+void GraphicsManager::setResolution(std::string value)
 {
 	resolution = value;
 
@@ -291,39 +296,128 @@ void ElHornoOgre::setResolution(std::string value)
 	mode >> screenHeight_;
 }
 
-int ElHornoOgre::getScreenWidth()
+int GraphicsManager::getScreenWidth()
 {
 	return screenWidth_;
 }
 
-int ElHornoOgre::getScreenHeight()
+int GraphicsManager::getScreenHeight()
 {
 	return screenHeight_;
 }
 
-std::string ElHornoOgre::getFSAA()
+std::string GraphicsManager::getFSAA()
 {
 	return fsaa;
 }
 
-void ElHornoOgre::setFSAA(int value)
+void GraphicsManager::setFSAA(int value)
 {
 	fsaa = std::to_string(value);
 
 	graphicOptions_["FSAA"].currentValue = fsaa;
 }
 
-bool ElHornoOgre::getGamma()
+bool GraphicsManager::getGamma()
 {
 	return gamma_;
 }
 /*
 * Establece el gamma
 */
-void ElHornoOgre::setGamma(bool value)
+void GraphicsManager::setGamma(bool value)
 {
 	std::string currValue;
 	currValue = value ? "Yes" : "No";
 	gamma_ = value;
 	graphicOptions_["sRGB Gamma Conversion"].currentValue = currValue;
+}
+
+// Guarda la configuración gráfica actual
+void GraphicsManager::saveGraphicOptions()
+{
+	std::ofstream outputFile;
+
+#ifdef  _DEBUG
+	outputFile.open("window_d.cfg");
+#else
+	outputFile.open("window.cfg");
+#endif
+
+	outputFile << "Render System=OpenGL Rendering Subsystem\n";
+	outputFile << "[OpenGL Rendering Subsystem]\n";
+	outputFile << "Colour Depth=32\n";
+	outputFile << "Display Frequency=N/A\n";
+	outputFile << "FSAA=" << graphicOptions_["FSAA"].currentValue << "\n";
+	outputFile << "Full Screen=" << graphicOptions_["Fulscreen"].currentValue << "\n";
+	outputFile << "RTT Preferred Mode=FBO\n";
+	outputFile << "VSync=" << graphicOptions_["VSync"].currentValue << "\n";
+	outputFile << "VSync Interval=1\n";
+	outputFile << "Video Mode=" << graphicOptions_["Video Mode"].currentValue << "\n";
+	outputFile << "sRGB Gamma Conversion=" << graphicOptions_["sRGB Gamma Conversion"].currentValue << "\n";
+
+	outputFile.close();
+}
+
+void GraphicsManager::changeGraphicComponents()
+{
+	setFullScreen();
+
+	graphicOptions_["Video Mode"].currentValue = resolution;
+
+	if (graphicOptions_["VSync"].currentValue != (vSync_ ? "Yes" : "No")) {
+		setVSync(vSync_);
+		graphicOptions_["VSync"].currentValue = vSync_ ? "Yes" : "No";
+	}
+
+	saveGraphicOptions();
+}
+
+/*
+* Devuelve los ajustes al default
+*/
+void GraphicsManager::revertBasicOptions()
+{
+}
+
+void GraphicsManager::changeAdvancedGraphicComponents()
+{
+	graphicOptions_["FSAA"].currentValue = fsaa;
+
+	graphicOptions_["sRGB Gamma Conversion"].currentValue = gamma_ ? "Yes" : "No";
+}
+
+void GraphicsManager::revertGraphicChanges()
+{
+	resolution = graphicOptions_["Video Mode"].currentValue;
+
+	setResolution(resolution);
+
+	setFullScreen();
+
+	if (graphicOptions_["VSync"].currentValue == "Yes") {
+		vSync_ = true;
+	}
+	else
+		vSync_ = false;
+}
+
+void GraphicsManager::revertAdvancedGraphicChanges()
+{
+	fsaa = graphicOptions_["FSAA"].currentValue;
+
+	if (graphicOptions_["sRGB Gamma Conversion"].currentValue == "Yes")
+		gamma_ = true;
+	else if (graphicOptions_["sRGB Gamma Conversion"].currentValue == "No")
+		gamma_ = false;
+}
+
+void GraphicsManager::setFarShadowDistance(float dist)
+{
+	ogreSceneManager_->setShadowFarDistance(dist);
+}
+
+float GraphicsManager::getFarShadowDistance()
+{
+	return ogreSceneManager_->getShadowFarDistance();
 }

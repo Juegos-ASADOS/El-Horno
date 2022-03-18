@@ -6,6 +6,10 @@
 #include <string>
 #include "json.hpp"
 
+class SceneManager;
+class InputManager;
+class GraphicsManager;
+
 class ElHornoBase {
 public:
 	ElHornoBase();
@@ -23,23 +27,21 @@ public:
 	void processFrame();
 	void update();
 
+	// Managers
 	//GUI_Manager* getGUIManager();
 	//ResourceManager* getResourceManager();
-
-	//Propios
-	//SceneManager* getSceneManager();
-	//InputManager* getInputManager();
+	static SceneManager* getSceneManager();
+	static InputManager* getInputManager();
+	static GraphicsManager* getGraphicsManager();
 	//AudioManager* getAudioManager();
 
-	float getTime();
-	float deltaTime();
-	void resetTimer();
+
+	/*float getTime();*/
+	//float deltaTime();
+	//void resetTimer();
 
 	void pause();
 	bool isPaused();
-
-	void saveGraphicOptions();
-	nlohmann::json saveExtraOptions();
 
 	void setInvertedAxisX(bool value);
 	void setInvertedAxisY(bool value);
@@ -48,15 +50,15 @@ public:
 	bool getInvertedAxisXTemp();
 	bool getInvertedAxisYTemp();
 
+	void changeBasicOptions();
+
 private:
 	void setup();
 
 	static ElHornoBase* instance_;
-	OurFrameListener* frameListener_;
 
 	void cleanScene();
 	
-	void pollEvents();
 	void extraConfig(nlohmann::json& j);
 	void setupFactories();
 

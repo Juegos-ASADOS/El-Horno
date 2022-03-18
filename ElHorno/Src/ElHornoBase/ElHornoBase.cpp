@@ -3,8 +3,10 @@
 #include <iostream>
 #include <fstream>
 #include "ElHornoBase.h"
-#include "ElHornoBullet.h"
+#include "PhysicsManager.h"
+#include "InputManager.h"
 #include "ElHornoFMOD.h"
+#include "GraphicsManager.h"
 #include "OurFrameListener.h"
 #include "FactoryCreator.h"
 #include "SceneManager.h"
@@ -25,7 +27,7 @@ cada manager
 
 ElHornoBase::ElHornoBase()
 {
-	frameListener_ = new OurFrameListener();
+	//frameListener_ = new OurFrameListener();
 }
 
 /*
@@ -33,8 +35,8 @@ Limpia managers y dependencias de bibliotecas externas
 */
 ElHornoBase::~ElHornoBase()
 {
-	delete frameListener_;
-	frameListener_ = nullptr;
+	/*delete frameListener_;
+	frameListener_ = nullptr;*/
 }
 
 ElHornoBase* ElHornoBase::getInstance() {
@@ -57,9 +59,6 @@ void ElHornoBase::erase()
 
 /* Inicializa managers */
 void ElHornoBase::init() {
-	//root_ = new Ogre::Root();
-	ElHornoBullet::init();
-	//ElHornoFMOD::init();
 
 	// Aqui se inicializan las instancias de todos los managers
 	FactoryCreator::setupInstance();
@@ -135,7 +134,7 @@ void ElHornoBase::setupFactories()
 /*OgreRoot llama a frameListener_ que llama a processFrame que actualiza
 la instancia de cada manager dependiendo del estado del juego*/
 void ElHornoBase::processFrame() {
-	pollEvents();
+	GraphicsManager::getInstance()->pollEvents();
 
 	// Updates de managers
 	SceneManager::getInstance()->update();
@@ -150,34 +149,44 @@ void ElHornoBase::update()
 	}
 }
 
-//InputManager* ElHornoBase::getInputManager()
-//{
-//	return nullptr;
-//}
+SceneManager* ElHornoBase::getSceneManager()
+{
+	return nullptr;
+}
+
+InputManager* ElHornoBase::getInputManager()
+{
+	return InputManager::getInstance();
+}
+
+GraphicsManager* ElHornoBase::getGraphicsManager()
+{
+	return GraphicsManager::getInstance();
+}
 
 /*
 Devuelve el timer que lleva el frameRenderer para ejecutar el ciclo de juego
 */
-float ElHornoBase::getTime()
-{
-	return frameListener_->getTime();
-}
+//float ElHornoBase::getTime()
+//{
+//	/*return frameListener_->getTime();*/
+//}
 
 /*
-Devuelve el tiempo entre un frame y el anterior
-*/
-float ElHornoBase::deltaTime()
-{
-	return 	frameListener_->DeltaTime();
-}
+//Devuelve el tiempo entre un frame y el anterior
+//*/
+//float ElHornoBase::deltaTime()
+//{
+//	return 	frameListener_->DeltaTime();
+//}
 
 /*
 Resetea el timer
 */
-void ElHornoBase::resetTimer()
-{
-	frameListener_->resetTimer();
-}
+//void ElHornoBase::resetTimer()
+//{
+//	frameListener_->resetTimer();
+//}
 
 void ElHornoBase::pause()
 {
@@ -188,43 +197,6 @@ bool ElHornoBase::isPaused()
 {
 	return paused_;
 }
-
-
-// Guarda la configuración gráfica actual
-void ElHornoBase::saveGraphicOptions()
-{
-	std::ofstream outputFile;
-
-#ifdef  _DEBUG
-	outputFile.open("window_d.cfg");
-#else
-	outputFile.open("window.cfg");
-#endif
-
-	outputFile << "Render System=OpenGL Rendering Subsystem\n";
-	outputFile << "[OpenGL Rendering Subsystem]\n";
-	outputFile << "Colour Depth=32\n";
-	outputFile << "Display Frequency=N/A\n";
-	//outputFile << "FSAA=" << graphicOptions_["FSAA"].currentValue << "\n";
-	/*outputFile << "Full Screen=" << graphicOptions_["Fulscreen"].currentValue << "\n";
-	outputFile << "RTT Preferred Mode=FBO\n";
-	outputFile << "VSync=" << graphicOptions_["VSync"].currentValue << "\n";
-	outputFile << "VSync Interval=1\n";
-	outputFile << "Video Mode=" << graphicOptions_["Video Mode"].currentValue << "\n";
-	outputFile << "sRGB Gamma Conversion=" << graphicOptions_["sRGB Gamma Conversion"].currentValue << "\n";*/
-
-	outputFile.close();
-}
-
-/*
-Devuelve en json opciones de ejes invertidos de input manager
-y volumenes de musica (a espera de crear estos managers)
-*/
-nlohmann::json ElHornoBase::saveExtraOptions()
-{
-	return nlohmann::json();
-}
-
 
 void ElHornoBase::setInvertedAxisX(bool value)
 {
@@ -266,72 +238,7 @@ bool ElHornoBase::getInvertedAxisYTemp()
 cambia opciones básicas en otros managers (Axis de input manager y
 volume de audio manager)
 */
-//void ElHornoBase::changeBasicOptions()
-//{
-//
-//}
+void ElHornoBase::changeBasicOptions()
+{
 
-/*
-* Devuelve los ajustes al default
-*/
-//void ElHornoBase::revertBasicOptions()
-//{
-//}
-
-//void ElHornoBase::changeGraphicComponents()
-//{
-//	setFullScreen();
-//
-//	graphicOptions_["Video Mode"].currentValue = resolution;
-//
-//	if (graphicOptions_["VSync"].currentValue != (vSync_ ? "Yes" : "No")) {
-//		setVSync(vSync_);
-//		graphicOptions_["VSync"].currentValue = vSync_ ? "Yes" : "No";
-//	}
-//
-//	saveGraphicOptions();
-//	saveExtraOptions();
-//
-//}
-//
-//void ElHornoBase::changeAdvancedGraphicComponents()
-//{
-//	graphicOptions_["FSAA"].currentValue = fsaa;
-//
-//	graphicOptions_["sRGB Gamma Conversion"].currentValue = gamma_ ? "Yes" : "No";
-//}
-//
-//void ElHornoBase::revertGraphicChanges()
-//{
-//	resolution = graphicOptions_["Video Mode"].currentValue;
-//
-//	setResolution(resolution);
-//
-//	setFullScreen();
-//
-//	if (graphicOptions_["VSync"].currentValue == "Yes") {
-//		vSync_ = true;
-//	}
-//	else
-//		vSync_ = false;
-//}
-//
-//void ElHornoBase::revertAdvancedGraphicChanges()
-//{
-//	fsaa = graphicOptions_["FSAA"].currentValue;
-//
-//	if (graphicOptions_["sRGB Gamma Conversion"].currentValue == "Yes")
-//		gamma_ = true;
-//	else if (graphicOptions_["sRGB Gamma Conversion"].currentValue == "No")
-//		gamma_ = false;
-//}
-//
-//void ElHornoBase::setFarShadowDistance(float dist)
-//{
-//	ogreSceneManager_->setShadowFarDistance(dist);
-//}
-//
-//float ElHornoBase::getFarShadowDistance()
-//{
-//	return ogreSceneManager_->getShadowFarDistance();
-//}
+}

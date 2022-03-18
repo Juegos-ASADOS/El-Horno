@@ -1,4 +1,5 @@
 #include "ElHornoBase.h"; 
+#include "GraphicsManager.h"; 
 #include "OgreSceneManager.h"
 #include "OgreEntity.h"
 #include "Entity.h"
@@ -16,7 +17,7 @@ Mesh::~Mesh()
 	Ogre::SceneNode* node = ogreEntity_->getParentSceneNode();
 	if (node != nullptr)
 		node->detachAllObjects();
-	ElHornoBase::getInstance()->getSceneManager()->destroyEntity(ogreEntity_->getName());
+	ElHornoBase::getGraphicsManager()->getSceneManager()->destroyEntity(ogreEntity_->getName());
 }
 
 /*
@@ -31,7 +32,7 @@ void Mesh::start()
 	if (!args_["mesh"].is_null())
 	{
 		meshName_ = to_string(args_["mesh"]);
-		ogreEntity_ = ElHornoBase::getInstance()->getSceneManager()->createEntity(meshName_);
+		ogreEntity_ = ElHornoBase::getGraphicsManager()->getSceneManager()->createEntity(meshName_);
 		castShadow_ = true;
 	}
 	if (!args_["material"].is_null())

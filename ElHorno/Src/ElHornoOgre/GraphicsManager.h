@@ -1,6 +1,6 @@
 #pragma once
-#ifndef _EL_HORNO_OGRE_EL_HORNO_OGRE_H
-#define _EL_HORNO_OGRE_EL_HORNO_OGRE_H
+#ifndef _GRAPHICS_MANAGER_GRAPHICS_MANAGER_H
+#define _GRAPHICS_MANAGER_GRAPHICS_MANAGER_H
 
 #include <string>
 #include <map>
@@ -17,13 +17,13 @@ namespace Ogre {
 class SDL_Window;
 class OurFrameListener;
 
-class ElHornoOgre
+class GraphicsManager
 {
 public:
-	ElHornoOgre() {};
-	~ElHornoOgre();
+	GraphicsManager();
+	~GraphicsManager();
 
-	static ElHornoOgre* getInstance();
+	static GraphicsManager* getInstance();
 	static bool setInstance();
 	static void erase();
 
@@ -55,7 +55,7 @@ public:
 	bool getGamma();
 	void setGamma(bool value);
 
-	void changeBasicOptions();
+	void saveGraphicOptions();
 	void revertBasicOptions();
 	void changeGraphicComponents();
 	void changeAdvancedGraphicComponents();
@@ -63,13 +63,13 @@ public:
 	void revertAdvancedGraphicChanges();
 
 	void setFarShadowDistance(float dist);
-	//void setShadowTechnique(Ogre::ShadowTechnique type);
 	float getFarShadowDistance();
+	//void setShadowTechnique(Ogre::ShadowTechnique type);
 	//Ogre::ShadowTechnique getShadowTechnique();
 
 private:
 
-	static ElHornoOgre* instance_;
+	static GraphicsManager* instance_;
 
 	void setupWindow();
 	void setupRoot();
@@ -99,7 +99,7 @@ private:
 		gamma_;
 };
 
-#endif _EL_HORNO_OGRE_EL_HORNO_OGRE_H
+#endif _GRAPHICS_MANAGER_GRAPHICS_MANAGER_H
 
 
 

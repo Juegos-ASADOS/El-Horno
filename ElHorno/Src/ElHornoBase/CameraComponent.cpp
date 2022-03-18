@@ -1,5 +1,6 @@
 #include "CameraComponent.h"
 #include "ElHornoBase.h"
+#include "GraphicsManager.h"
 #include <OgreCamera.h>
 #include <OgreSceneManager.h>
 #include "Entity.h"
@@ -15,7 +16,7 @@ CameraComponent::CameraComponent(nlohmann::json& args) : Component(args)
 CameraComponent::~CameraComponent()
 {
 	Component::~Component();
-	ElHornoBase::getInstance()->getRenderWindow()->removeViewport(vp->getZOrder());
+	ElHornoBase::getGraphicsManager()->getRenderWindow()->removeViewport(vp->getZOrder());
 	cam->getSceneManager()->destroyCamera("cam");
 	delete vp;
 	vp = nullptr;
@@ -62,7 +63,7 @@ void CameraComponent::start()
 		bgColor.a = args_["bgColour"][3];
 	}
 
-	cam = ElHornoBase::getInstance()->getSceneManager()->createCamera("cam");
+	cam = ElHornoBase::getGraphicsManager()->getSceneManager()->createCamera("cam");
 	cam->setNearClipDistance(camNearClipDistance);
 	cam->setFarClipDistance(setFarClipDistance);
 
@@ -71,7 +72,7 @@ void CameraComponent::start()
 	tr_->setPosition(camPos);
 	tr_->lookAt(lookAtVec);
 
-	vp = ElHornoBase::getInstance()->getRenderWindow()->addViewport(cam);
+	vp = ElHornoBase::getGraphicsManager()->getRenderWindow()->addViewport(cam);
 	vp->setBackgroundColour(bgColor);
 }
 

@@ -19,10 +19,12 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\Src\ElHornoOgre\ElHornoOgre.h" />
+    <ClCompile Include="..\..\Src\ElHornoOgre\GraphicsManager.cpp" />
+    <ClCompile Include="..\..\Src\ElHornoOgre\InputManager.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\Src\ElHornoOgre\ElHornoOgre.cpp" />
+    <ClInclude Include="..\..\Src\ElHornoOgre\GraphicsManager.h" />
+    <ClInclude Include="..\..\Src\ElHornoOgre\InputManager.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
@@ -102,7 +104,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)Src\$(ProjectName);$(SolutionDir)dependencies\Ogre\Build\SDL2-2.0.20\include;$(SolutionDir)dependencies\Ogre\Src\OgreMain\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)Src\$(ProjectName);$(SolutionDir)dependencies\Ogre\Build\SDL2-2.0.20\include;$(SolutionDir)dependencies\Ogre\Src\OgreMain\include;$(SolutionDir)dependencies\Ogre\Build\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -121,7 +123,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)Src\$(ProjectName);$(SolutionDir)dependencies\Ogre\Build\SDL2-2.0.20\include;$(SolutionDir)dependencies\Ogre\Src\OgreMain\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)Src\$(ProjectName);$(SolutionDir)dependencies\Ogre\Build\SDL2-2.0.20\include;$(SolutionDir)dependencies\Ogre\Src\OgreMain\include;$(SolutionDir)dependencies\Ogre\Build\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -140,7 +142,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)Src\$(ProjectName);$(SolutionDir)dependencies\Ogre\Build\SDL2-2.0.20\include;$(SolutionDir)dependencies\Ogre\Src\OgreMain\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)Src\$(ProjectName);$(SolutionDir)dependencies\Ogre\Build\SDL2-2.0.20\include;$(SolutionDir)dependencies\Ogre\Src\OgreMain\include;$(SolutionDir)dependencies\Ogre\Build\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -159,7 +161,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)Src\$(ProjectName);$(SolutionDir)dependencies\Ogre\Build\SDL2-2.0.20\include;$(SolutionDir)dependencies\Ogre\Src\OgreMain\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)Src\$(ProjectName);$(SolutionDir)dependencies\Ogre\Build\SDL2-2.0.20\include;$(SolutionDir)dependencies\Ogre\Src\OgreMain\include;$(SolutionDir)dependencies\Ogre\Build\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
