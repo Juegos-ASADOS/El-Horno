@@ -56,8 +56,8 @@ btRigidBody* PhysicsManager::createRigidBody(Transform* tr, const float& mass = 
 	//======
 	btDefaultMotionState* state = new btDefaultMotionState(btTransform(QuaternionToBullet(tr->getRotation()), 
 																	   VectorToBullet(tr->getPosition())));
-	btVector3 v;
-	btCollisionShape* shape;
+	
+	btCollisionShape* shape = nullptr;
 	switch (sha) {
 		case ColliderShape::Box : //HALF-EXTENTS = Transform.Escala
 			shape = new btBoxShape(VectorToBullet(tr->getScale()));

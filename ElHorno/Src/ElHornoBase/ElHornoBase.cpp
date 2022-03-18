@@ -91,12 +91,8 @@ void ElHornoBase::init() {
 	// Si hay configuraciones cargadas o inicia desde el cuadro de config de Ogre
 	if (root_->restoreConfig() || root_->showConfigDialog(nullptr))
 		setup();
-	try {
-		setupResources();
-	}
-	catch(const std::exception&) {
-		return;
-	}
+
+	setupResources();
 }
 
 /*
