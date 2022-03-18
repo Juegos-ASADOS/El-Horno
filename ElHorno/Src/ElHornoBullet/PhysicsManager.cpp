@@ -1,8 +1,36 @@
 #include "PhysicsManager.h"
 #include "HornoConversions.h"
 #include "btBulletDynamicsCommon.h"
+#include "btBulletCollisionCommon.h"
 #include "Transform.h"
 
+
+PhysicsManager* PhysicsManager::getInstance()
+{
+	if (instance == 0)
+		return nullptr;
+
+	return instance;
+}
+
+bool PhysicsManager::setupInstance()
+{
+	if (instance == 0) {
+		instance = new PhysicsManager();
+		return true;
+	}
+	return false;
+}
+
+void PhysicsManager::erase()
+{
+	delete instance;
+}
+
+void PhysicsManager::start(const std::string& initialScene)
+{
+
+}
 
 /*
 * Se tiene que llamar varias veces por frame
@@ -46,6 +74,55 @@ void PhysicsManager::addBody(btRigidBody* body, const short& group, const short&
 	world->addRigidBody(body, group, layerMask);
 }
 
+void PhysicsManager::addCollisionObject(btCollisionObject* col, const short& group, const short& layerMask)
+{
+	world->addCollisionObject(col, group, layerMask);
+}
+
+PhysicsManager::PhysicsManager()
+{
+	//dispatcher = new btDispatcher();
+	world = new btDiscreteDynamicsWorld(dispatcher, broadphaseInterface, constraintSolver, collisionConfiguration);
+}
+
+PhysicsManager::~PhysicsManager()
+{
+	delete world;
+}
+
+btCollisionShape* PhysicsManager::createShape(Transform* tr, ColliderShape sha = ColliderShape::Box)
+{
+	btCollisionShape* shape = nullptr;
+	switch (sha) {
+	case ColliderShape::Box: //HALF-EXTENTS = Transform.Escala
+		shape = new btBoxShape(VectorToBullet(tr->getScale()));
+		break;
+	case ColliderShape::Sphere: //RADIO = Transform.Scale.Length
+		shape = new btSphereShape(VectorToBullet(tr->getScale()).length());
+		break;
+	case ColliderShape::Cylinder: //HALF-EXTENTS = Transform.Escala
+		shape = new btCylinderShape(VectorToBullet(tr->getScale()));
+		break;
+	case ColliderShape::Capsule: //RADIO = Transform.Scale.X --- ALTURA = Transform.Scale.Y
+		shape = new btCapsuleShape(VectorToBullet(tr->getScale()).x(), VectorToBullet(tr->getScale()).y());
+		break;
+	}
+	return shape;
+}
+
+btGhostObject* PhysicsManager::createTrigger(Transform* tr, ColliderShape sha = ColliderShape::Box)
+{
+	btGhostObject* gO = new btGhostObject();
+	gO->setInterpolationWorldTransform(btTransform(QuaternionToBullet(tr->getRotation()),
+		VectorToBullet(tr->getPosition())));
+
+	btCollisionShape* shape = createShape(tr, sha);
+
+	gO->setCollisionShape(shape);
+	return gO;
+
+}
+
 btRigidBody* PhysicsManager::createRigidBody(Transform* tr, const float& mass = 0, ColliderShape sha = ColliderShape::Box)
 {
 	//MotionState generado a partir de un Transform de bullet, 
@@ -56,22 +133,7 @@ btRigidBody* PhysicsManager::createRigidBody(Transform* tr, const float& mass = 
 	//======
 	btDefaultMotionState* state = new btDefaultMotionState(btTransform(QuaternionToBullet(tr->getRotation()), 
 																	   VectorToBullet(tr->getPosition())));
-	
-	btCollisionShape* shape = nullptr;
-	switch (sha) {
-		case ColliderShape::Box : //HALF-EXTENTS = Transform.Escala
-			shape = new btBoxShape(VectorToBullet(tr->getScale()));
-			break;
-		case ColliderShape::Sphere : //RADIO = Transform.Scale.Length
-			shape = new btSphereShape(VectorToBullet(tr->getScale()).length());
-			break;
-		case ColliderShape::Cylinder: //HALF-EXTENTS = Transform.Escala
-			shape = new btCylinderShape(VectorToBullet(tr->getScale()));
-			break;
-		case ColliderShape::Capsule: //RADIO = Transform.Scale.X --- ALTURA = Transform.Scale.Y
-			shape = new btCapsuleShape(VectorToBullet(tr->getScale()).x(), VectorToBullet(tr->getScale()).y());
-			break;
-	}
+	btCollisionShape* shape = createShape(tr, sha);
 
 	btRigidBody* body = new btRigidBody(mass, state, shape);
 	return body;
