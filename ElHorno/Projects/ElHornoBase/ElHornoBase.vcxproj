@@ -64,6 +64,9 @@
     <ProjectReference Include="..\ElHornoFMOD\ElHornoFMOD.vcxproj">
       <Project>{934ad8b7-d3a6-4568-b66e-dbf0e75a5b3b}</Project>
     </ProjectReference>
+    <ProjectReference Include="..\ElHornoOgre\ElHornoOgre.vcxproj">
+      <Project>{6b56414a-6d93-4a8a-940f-255b82fbe4e7}</Project>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
