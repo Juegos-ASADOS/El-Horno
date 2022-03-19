@@ -12,7 +12,7 @@
             },
             {
                 "type": "mesh",
-                "mesh" :  "Sinbad.mesh"
+                "mesh" : "cube.mesh"
             }
         ]
     }

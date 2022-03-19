@@ -32,15 +32,17 @@ CameraComponent::~CameraComponent()
 */
 void CameraComponent::start()
 {
-	int camNearClipDistance = 5;
-	int setFarClipDistance = 100000;
+	int camNearClipDistance = 1;
+	int setFarClipDistance = 10000;
 
 	Ogre::Vector3 camPos = Ogre::Vector3(100, 100, 100);
 	Ogre::Vector3 lookAtVec = Ogre::Vector3(0, 0, 0);
 	Ogre::ColourValue bgColor = Ogre::ColourValue(0, 0, 1, 1);
 
-	if (!args_["nearClipDistance"].is_null())	camNearClipDistance = args_["nearClipDistance"];
-	if (!args_["farClipDistance"].is_null())	setFarClipDistance = args_["farClipDistance"];
+	/*if (!args_["nearClipDistance"].is_null())	
+		camNearClipDistance = args_["nearClipDistance"];
+	if (!args_["farClipDistance"].is_null())	
+		setFarClipDistance = args_["farClipDistance"];
 	if (!args_["lookAt"].is_null())
 	{
 		lookAtVec.x = args_["lookAt"][0];
@@ -60,11 +62,12 @@ void CameraComponent::start()
 		bgColor.g = args_["bgColour"][1];
 		bgColor.b = args_["bgColour"][2];
 		bgColor.a = args_["bgColour"][3];
-	}
+	}*/
 
 	cam = ElHornoBase::getInstance()->getSceneManager()->createCamera("cam");
 	cam->setNearClipDistance(camNearClipDistance);
 	cam->setFarClipDistance(setFarClipDistance);
+	cam->setAspectRatio(true); 
 
 	tr_ = entity_->getComponent<Transform>("transform");
 	tr_->getNode()->attachObject(cam);

@@ -30,11 +30,11 @@ void Mesh::start()
 {
 	if (!args_["mesh"].is_null())
 	{
-		meshName_ = to_string(args_["mesh"]);
+		meshName_ = "cube.mesh";
 		ogreEntity_ = ElHornoBase::getInstance()->getSceneManager()->createEntity(meshName_);
-		castShadow_ = true;
+		castShadow_ = false;
 	}
-	if (!args_["material"].is_null())
+	/*if (!args_["material"].is_null())
 	{
 		std::string aux = args_["material"];
 		materialName_ = aux;
@@ -46,7 +46,7 @@ void Mesh::start()
 		ogreEntity_->setCastShadows(castShadow_);
 	}
 
-	isAnimated_ = ((!args_["isAnimated_"].is_null()) && (args_["isAnimated_"]));
+	isAnimated_ = ((!args_["isAnimated_"].is_null()) && (args_["isAnimated_"]));*/
 
 	entity_->getComponent<Transform>("transform")->getNode()->attachObject(ogreEntity_); 
 }
