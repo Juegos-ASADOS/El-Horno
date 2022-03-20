@@ -9,6 +9,10 @@ namespace std {
 	class string;
 }
 
+namespace CEGUI {
+	class Window;
+}
+
 class UIElement
 {
 
@@ -16,7 +20,7 @@ private:
 	UIElement();
 
 	//Entidad de la interfaz
-	//CEGUI:Window* elementInterface;
+	CEGUI::Window* elementInterface;
 public:
 
 	~UIElement();

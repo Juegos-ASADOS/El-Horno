@@ -6,7 +6,7 @@ UIManager* UIManager::instance = 0;
 
 UIManager::UIManager()
 {
-
+	
 }
 
 UIManager::~UIManager()

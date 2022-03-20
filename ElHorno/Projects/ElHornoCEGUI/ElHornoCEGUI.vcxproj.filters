@@ -27,6 +27,9 @@
     <ClInclude Include="..\..\Src\ElHornoCEGUI\UIManager.h">
       <Filter>Archivos de encabezado\UIManager</Filter>
     </ClInclude>
+    <ClInclude Include="ElHornoCEGUI.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\Src\ElHornoCEGUI\UIElement.cpp">
@@ -34,6 +37,9 @@
     </ClCompile>
     <ClCompile Include="..\..\Src\ElHornoCEGUI\UIManager.cpp">
       <Filter>Archivos de origen\UIManager</Filter>
+    </ClCompile>
+    <ClCompile Include="ElHornoCEGUI.cpp">
+      <Filter>Archivos de origen</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
