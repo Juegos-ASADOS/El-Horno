@@ -35,10 +35,10 @@ public:
 	static GraphicsManager* getGraphicsManager();
 	//AudioManager* getAudioManager();
 
-
-	/*float getTime();*/
-	//float deltaTime();
-	//void resetTimer();
+	// Esto ahora lo lleva Timer (excepto deltaTime que lo lleva el bucle)
+	/*float getTime();
+	float deltaTime();
+	void resetTimer();*/
 
 	void pause();
 	bool isPaused();

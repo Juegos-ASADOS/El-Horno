@@ -47,6 +47,7 @@ subject to the following restrictions:
 
 //#include "BulletCollision/CollisionDispatch/btSphereBoxCollisionAlgorithm.h"
 #include "BulletCollision/CollisionDispatch/btDefaultCollisionConfiguration.h"
+#include "BulletCollision/CollisionDispatch/btGhostObject.h"
 
 ///Dispatching and generation of collision pairs (broadphase)
 #include "BulletCollision/CollisionDispatch/btCollisionDispatcher.h"

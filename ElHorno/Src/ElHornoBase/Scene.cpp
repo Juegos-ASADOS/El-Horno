@@ -26,7 +26,7 @@ Scene::Scene()
 
 	Entity* b = addEntity("object", "prueba");
 	b->addComponent(comp[0]);
-	//b->addComponent(comp[2]);
+	b->addComponent(comp[2]);
 }
 
 //TODO Destruir VierwPorts y cámaras lo primero de todo

@@ -23,15 +23,15 @@ public:
 	virtual void windowClosed(Ogre::RenderWindow* rw) {}
 	virtual void windowFocusChange(Ogre::RenderWindow* rw) {}
 
-	double getTime();
-	double getTimeDifference(double prevTime);
-	double DeltaTime();
-	void resetTimer();
+	//double getTime();
+	//double getTimeDifference(double prevTime);
+	//double DeltaTime();
+	//void resetTimer();
 
 private:
-	std::chrono::time_point<std::chrono::high_resolution_clock> prevTime;
-	double deltaTime_;
-	Ogre::Timer* timer_;
+	//std::chrono::time_point<std::chrono::high_resolution_clock> prevTime;
+	//double deltaTime_;
+	//Ogre::Timer* timer_;
 };
 
 #endif _OUR_FRAME_LISTENER_H

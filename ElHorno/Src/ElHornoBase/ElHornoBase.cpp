@@ -67,6 +67,7 @@ void ElHornoBase::init() {
 
 	SceneManager::setupInstance();
 
+
 }
 
 /*
@@ -169,12 +170,14 @@ Devuelve el timer que lleva el frameRenderer para ejecutar el ciclo de juego
 */
 //float ElHornoBase::getTime()
 //{
+
 //	/*return frameListener_->getTime();*/
 //}
 
 /*
 //Devuelve el tiempo entre un frame y el anterior
 //*/
+
 //float ElHornoBase::deltaTime()
 //{
 //	return 	frameListener_->DeltaTime();
