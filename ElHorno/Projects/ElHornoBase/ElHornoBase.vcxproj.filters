@@ -31,12 +31,6 @@
     <Filter Include="Archivos de origen\EventManager">
       <UniqueIdentifier>{d39b7c61-52d2-4638-a207-939a3e3c7768}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Archivos de encabezado\ElHornoInput">
-      <UniqueIdentifier>{6481fc65-c905-4cab-a112-9dd3b62c2bbb}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Archivos de origen\ElHornoInput">
-      <UniqueIdentifier>{a044515a-4b8a-4b25-8129-73da9ae02d60}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Archivos de encabezado\Components">
       <UniqueIdentifier>{2dd4bb45-424b-4314-8bda-a4341a2289c5}</UniqueIdentifier>
     </Filter>
@@ -83,9 +77,6 @@
     </ClCompile>
     <ClCompile Include="..\..\Src\ElHornoBase\FactoryCreator.cpp">
       <Filter>Archivos de origen\ECS</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Src\ElHornoBase\InputManager.cpp">
-      <Filter>Archivos de origen\ElHornoInput</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Src\ElHornoBase\EventListener.cpp">
       <Filter>Archivos de origen\EventManager</Filter>
@@ -139,9 +130,6 @@
     </ClInclude>
     <ClInclude Include="..\..\Src\ElHornoBase\FactoryCreator.h">
       <Filter>Archivos de encabezado\ECS</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Src\ElHornoBase\InputManager.h">
-      <Filter>Archivos de encabezado\ElHornoInput</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Src\ElHornoBase\Event.h">
       <Filter>Archivos de encabezado\EventManager</Filter>

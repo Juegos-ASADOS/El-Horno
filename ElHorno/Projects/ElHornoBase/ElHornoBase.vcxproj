@@ -30,7 +30,6 @@
     <ClCompile Include="..\..\Src\ElHornoBase\Factory.cpp" />
     <ClCompile Include="..\..\Src\ElHornoBase\FactoryCreator.cpp" />
     <ClCompile Include="..\..\Src\ElHornoBase\HornoConversions.cpp" />
-    <ClCompile Include="..\..\Src\ElHornoBase\InputManager.cpp" />
     <ClCompile Include="..\..\Src\ElHornoBase\Mesh.cpp" />
     <ClCompile Include="..\..\Src\ElHornoBase\OurFrameListener.cpp" />
     <ClCompile Include="..\..\Src\ElHornoBase\Scene.cpp" />
@@ -51,7 +50,6 @@
     <ClInclude Include="..\..\Src\ElHornoBase\Factory.h" />
     <ClInclude Include="..\..\Src\ElHornoBase\FactoryCreator.h" />
     <ClInclude Include="..\..\Src\ElHornoBase\HornoConversions.h" />
-    <ClInclude Include="..\..\Src\ElHornoBase\InputManager.h" />
     <ClInclude Include="..\..\Src\ElHornoBase\Mesh.h" />
     <ClInclude Include="..\..\Src\ElHornoBase\OurFrameListener.h" />
     <ClInclude Include="..\..\Src\ElHornoBase\Scene.h" />
@@ -65,6 +63,9 @@
     </ProjectReference>
     <ProjectReference Include="..\ElHornoFMOD\ElHornoFMOD.vcxproj">
       <Project>{934ad8b7-d3a6-4568-b66e-dbf0e75a5b3b}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\ElHornoOgre\ElHornoOgre.vcxproj">
+      <Project>{6b56414a-6d93-4a8a-940f-255b82fbe4e7}</Project>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup Label="Globals">
@@ -149,7 +150,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)Src\ElHornoBullet;$(SolutionDir)dependencies\Ogre\Src\OgreMain\include;$(SolutionDir)dependencies\Ogre\Build\include;$(SolutionDir)dependencies\Bullet\Src\src;$(SolutionDir)Src\ElHornoFMOD;%(AdditionalIncludeDirectories);$(SolutionDir)dependencies/Ogre/Build/SDL2-2.0.20/include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)Src\ElHornoBullet;$(SolutionDir)dependencies\Ogre\Src\OgreMain\include;$(SolutionDir)dependencies\Ogre\Build\include;$(SolutionDir)dependencies\Bullet\Src\src;$(SolutionDir)Src\ElHornoFMOD;%(AdditionalIncludeDirectories);$(SolutionDir)dependencies/Ogre/Build/SDL2-2.0.20/include;$(SolutionDir)Src\ElHornoOgre</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
     </ClCompile>
     <Link>
@@ -174,7 +175,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)Src\ElHornoBullet;$(SolutionDir)dependencies\Ogre\Src\OgreMain\include;$(SolutionDir)dependencies\Ogre\Build\include;$(SolutionDir)dependencies\Bullet\Src\src;$(SolutionDir)Src\ElHornoFMOD;%(AdditionalIncludeDirectories);$(SolutionDir)dependencies/Ogre/Build/SDL2-2.0.20/include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)Src\ElHornoBullet;$(SolutionDir)dependencies\Ogre\Src\OgreMain\include;$(SolutionDir)dependencies\Ogre\Build\include;$(SolutionDir)dependencies\Bullet\Src\src;$(SolutionDir)Src\ElHornoFMOD;%(AdditionalIncludeDirectories);$(SolutionDir)dependencies/Ogre/Build/SDL2-2.0.20/include;$(SolutionDir)Src\ElHornoOgre</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -198,7 +199,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)Src\ElHornoBullet;$(SolutionDir)dependencies\Ogre\Src\OgreMain\include;$(SolutionDir)dependencies\Ogre\Build\include;$(SolutionDir)dependencies\Bullet\Src\src;$(SolutionDir)Src\ElHornoFMOD;%(AdditionalIncludeDirectories);$(SolutionDir)dependencies/Ogre/Build/SDL2-2.0.20/include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)Src\ElHornoBullet;$(SolutionDir)dependencies\Ogre\Src\OgreMain\include;$(SolutionDir)dependencies\Ogre\Build\include;$(SolutionDir)dependencies\Bullet\Src\src;$(SolutionDir)Src\ElHornoFMOD;%(AdditionalIncludeDirectories);$(SolutionDir)dependencies/Ogre/Build/SDL2-2.0.20/include;$(SolutionDir)Src\ElHornoOgre</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
     </ClCompile>
     <Link>
@@ -223,7 +224,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)Src\ElHornoBullet;$(SolutionDir)dependencies\Ogre\Src\OgreMain\include;$(SolutionDir)dependencies\Ogre\Build\include;$(SolutionDir)dependencies\Bullet\Src\src;$(SolutionDir)Src\ElHornoFMOD;$(SolutionDir)dependencies\Ogre\Build\SDL2-2.0.20\include;%(AdditionalIncludeDirectories);$(SolutionDir)dependencies/Ogre/Build/SDL2-2.0.20/include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)Src\ElHornoBullet;$(SolutionDir)dependencies\Ogre\Src\OgreMain\include;$(SolutionDir)dependencies\Ogre\Build\include;$(SolutionDir)dependencies\Bullet\Src\src;$(SolutionDir)Src\ElHornoFMOD;$(SolutionDir)dependencies\Ogre\Build\SDL2-2.0.20\include;%(AdditionalIncludeDirectories);$(SolutionDir)dependencies/Ogre/Build/SDL2-2.0.20/include;$(SolutionDir)Src\ElHornoOgre</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>

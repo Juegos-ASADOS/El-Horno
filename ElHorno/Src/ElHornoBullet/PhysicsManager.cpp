@@ -4,6 +4,7 @@
 #include "btBulletCollisionCommon.h"
 #include "Transform.h"
 
+PhysicsManager* PhysicsManager::instance;
 
 PhysicsManager* PhysicsManager::getInstance()
 {
@@ -66,7 +67,7 @@ void PhysicsManager::addBody(btRigidBody* body)
 * 
 * ---------------------
 * 
-* Máximo de 15 capas de colisión : (usa un short por eso)
+* MÃ¡ximo de 15 capas de colisiÃ³n : (usa un short por eso)
 * 
 */
 void PhysicsManager::addBody(btRigidBody* body, const short& group, const short& layerMask)
@@ -128,11 +129,12 @@ btRigidBody* PhysicsManager::createRigidBody(Transform* tr, const float& mass = 
 	//MotionState generado a partir de un Transform de bullet, 
 	//generado a partir de un componente Transform 
 	//======
-	//	-SI FALLA ES PORQUE NO GUARDAMOS EL TRANSFORM QUE SE CREA DIRECTAMENTE EN LA LLAMADA AL MÉTODO
-	//	-PARA ARREGLAR ESO HABRÍA QUE ALMACENARLO EN ALGÚN LADO
+	//	-SI FALLA ES PORQUE NO GUARDAMOS EL TRANSFORM QUE SE CREA DIRECTAMENTE EN LA LLAMADA AL MÃ‰TODO
+	//	-PARA ARREGLAR ESO HABRÃA QUE ALMACENARLO EN ALGÃšN LADO
 	//======
 	btDefaultMotionState* state = new btDefaultMotionState(btTransform(QuaternionToBullet(tr->getRotation()), 
 																	   VectorToBullet(tr->getPosition())));
+
 	btCollisionShape* shape = createShape(tr, sha);
 
 	btRigidBody* body = new btRigidBody(mass, state, shape);
