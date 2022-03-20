@@ -35,6 +35,7 @@
     <ClCompile Include="..\..\Src\ElHornoBase\OurFrameListener.cpp" />
     <ClCompile Include="..\..\Src\ElHornoBase\Scene.cpp" />
     <ClCompile Include="..\..\Src\ElHornoBase\SceneManager.cpp" />
+    <ClCompile Include="..\..\Src\ElHornoBase\Timer.cpp" />
     <ClCompile Include="..\..\Src\ElHornoBase\Transform.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -55,6 +56,7 @@
     <ClInclude Include="..\..\Src\ElHornoBase\OurFrameListener.h" />
     <ClInclude Include="..\..\Src\ElHornoBase\Scene.h" />
     <ClInclude Include="..\..\Src\ElHornoBase\SceneManager.h" />
+    <ClInclude Include="..\..\Src\ElHornoBase\Timer.h" />
     <ClInclude Include="..\..\Src\ElHornoBase\Transform.h" />
   </ItemGroup>
   <ItemGroup>

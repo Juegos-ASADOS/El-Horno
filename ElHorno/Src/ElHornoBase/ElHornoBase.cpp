@@ -362,26 +362,26 @@ Ogre::SceneManager* ElHornoBase::getSceneManager()
 /*
 Devuelve el timer que lleva el frameRenderer para ejecutar el ciclo de juego
 */
-float ElHornoBase::getTime()
-{
-	return frameListener_->getTime();
-}
+//float ElHornoBase::getTime()
+//{
+//	return frameListener_->getTime();
+//}
 
 /*
 Devuelve el tiempo entre un frame y el anterior
 */
-float ElHornoBase::deltaTime()
-{
-	return 	frameListener_->DeltaTime();
-}
+//float ElHornoBase::deltaTime()
+//{
+//	return 	frameListener_->DeltaTime();
+//}
 
 /*
 Resetea el timer
 */
-void ElHornoBase::resetTimer()
-{
-	frameListener_->resetTimer();
-}
+//void ElHornoBase::resetTimer()
+//{
+//	frameListener_->resetTimer();
+//}
 
 void ElHornoBase::pause()
 {

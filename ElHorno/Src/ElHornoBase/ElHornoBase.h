@@ -46,9 +46,10 @@ public:
 	//InputManager* getInputManager();
 	//AudioManager* getAudioManager();
 
-	float getTime();
+	// Esto ahora lo lleva Timer (excepto deltaTime que lo lleva el bucle)
+	/*float getTime();
 	float deltaTime();
-	void resetTimer();
+	void resetTimer();*/
 
 	void pause();
 	bool isPaused();
