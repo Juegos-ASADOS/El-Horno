@@ -32,6 +32,7 @@ bld/
 [Ll]og/
 [Ll]ogs/
 [Ee]xes/*
+[Tt]emp/
 ![Ee]xes/assets
 ![Ee]xes/*.cfg
 ![Dd]ependencies/Ogre/Src/[Cc]make/[Pp]ackages/
