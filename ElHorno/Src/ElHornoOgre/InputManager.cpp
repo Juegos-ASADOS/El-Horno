@@ -58,7 +58,7 @@ void InputManager::setup()
 }
 
 //recoge los principales eventos de SDL y los gestiona de ser necesario
-void InputManager::GeneralInputManagement(SDL_Event event)
+bool InputManager::GeneralInputManagement(SDL_Event event)
 {
 
 	switch (event.type)
@@ -108,9 +108,11 @@ void InputManager::GeneralInputManagement(SDL_Event event)
 			break;
 		}
 		break;
+
 	default:
 		break;
 	}
+	return false;
 
 }
 

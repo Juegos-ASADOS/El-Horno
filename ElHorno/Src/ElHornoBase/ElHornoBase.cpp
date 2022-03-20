@@ -66,7 +66,9 @@ void ElHornoBase::init() {
 	//Creacion del factoryCreator y declaracion de los componentes del motor
 	setupFactories();
 
-	SceneManager::setupInstance();
+	//SceneManager::setupInstance();
+	GraphicsManager::setInstance();
+	InputManager::setupInstance();
 }
 
 /*
@@ -74,7 +76,7 @@ Ejecuta el start del SceenManager y comienza el renderizado de Ogre
 */
 void ElHornoBase::start()
 {
-	SceneManager::getInstance()->getCurrentScene()->start();
+	//SceneManager::getInstance()->getCurrentScene()->start();
 }
 
 /*
@@ -136,18 +138,19 @@ la instancia de cada manager dependiendo del estado del juego*/
 void ElHornoBase::processFrame(float deltaTime) {
 	exit_ = GraphicsManager::getInstance()->pollEvents();
 
+	
 	// Updates de managers
 	if (!paused_) {
 		//SceneManager::getInstance()->preUpdate();
 		PhysicsManager::getInstance()->update(deltaTime);
-		SceneManager::getInstance()->update();
+		//SceneManager::getInstance()->update();
 	}
 	else {
 		//SceneManager::getInstance()->pausedUpdate();
 	}
 
 	//AudioManager::getInstance()->update();
-	SceneManager::getInstance()->deleteEntities();
+	//SceneManager::getInstance()->deleteEntities();
 	//UIManager::getInstance()->update();
 	//SceneManager::getInstance()->endFrame();
 }
@@ -155,17 +158,20 @@ void ElHornoBase::processFrame(float deltaTime) {
 void ElHornoBase::update()
 {
 	exit_ = false;
-	Timer mainTimer;
+	Timer* mainTimer = new Timer();
 	float deltaTime = 0;
+
+	GraphicsManager::getInstance()->init();
 
 	while (!exit_) {
 		
-		mainTimer.resetTimer();
+		mainTimer->resetTimer();
 		processFrame(deltaTime);
 
-		deltaTime = mainTimer.getTime();
+		deltaTime = mainTimer->getTime();
 
 		std::cout << deltaTime << "\n";
+
 	}
 }
 

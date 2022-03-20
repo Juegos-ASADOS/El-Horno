@@ -28,7 +28,7 @@ public:
 
 	void setup();
 
-	void GeneralInputManagement(SDL_Event event);
+	bool GeneralInputManagement(SDL_Event event);
 
 	//el resto sera para arreglar lo que SDL no hace, (raton, mando xbox, etc)
 	bool IsKeyDown(SDL_Scancode key);

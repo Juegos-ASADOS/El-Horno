@@ -167,8 +167,12 @@ bool GraphicsManager::pollEvents()
 		default:
 			//llamar a InputManager
 			InputManager::getInstance()->GeneralInputManagement(event);
+
+			//TODO es provisional con la tecla escape se cierra el juego
+			return InputManager::getInstance()->IsKeyDown(SDL_SCANCODE_ESCAPE);
 			break;
 		}
+
 	}
 	return false;
 }
