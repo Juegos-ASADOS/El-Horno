@@ -12,6 +12,7 @@
 #include "SceneManager.h"
 #include "Scene.h"
 #include "Factory.h"
+#include "Timer.h"
 
 using json = nlohmann::json;
 
@@ -134,25 +135,42 @@ void ElHornoBase::setupFactories()
 
 /*OgreRoot llama a frameListener_ que llama a processFrame que actualiza
 la instancia de cada manager dependiendo del estado del juego*/
-void ElHornoBase::processFrame() {
+void ElHornoBase::processFrame(float deltaTime) {
 	GraphicsManager::getInstance()->pollEvents();
 
 	// Updates de managers
-	SceneManager::getInstance()->update();
+	if (!paused_) {
+		//SceneManager::getInstance()->preUpdate();
+		PhysicsManager::getInstance()->update(deltaTime);
+		SceneManager::getInstance()->update();
+	}
+	else {
+		//SceneManager::getInstance()->pausedUpdate();
+	}
+
+	//AudioManager::getInstance()->update();
+	SceneManager::getInstance()->deleteEntities();
+	//UIManager::getInstance()->update();
+	//SceneManager::getInstance()->endFrame();
 }
 
 void ElHornoBase::update()
 {
 	exit_ = false;
+	Timer mainTimer;
+	float deltaTime = 0;
 
 	while (!exit_) {
+		mainTimer.resetTimer();
+		processFrame(deltaTime);
 
+		deltaTime = mainTimer.getTime();
 	}
 }
 
 SceneManager* ElHornoBase::getSceneManager()
 {
-	return nullptr;
+	return SceneManager::getInstance();
 }
 
 InputManager* ElHornoBase::getInputManager()

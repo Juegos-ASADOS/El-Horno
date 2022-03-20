@@ -1,5 +1,6 @@
 #include "ElHornoBase.h"; 
 #include "GraphicsManager.h"; 
+#include "SceneManager.h"; 
 #include "OgreSceneManager.h"
 #include "OgreEntity.h"
 #include "Entity.h"
@@ -33,7 +34,7 @@ void Mesh::start()
 	{
 
 		meshName_ = "cube.mesh";
-		ogreEntity_ = ElHornoBase::getInstance()->getSceneManager()->createEntity(meshName_);
+		//ogreEntity_ = ElHornoBase::getInstance()->getSceneManager()->createEntity(meshName_);
 		castShadow_ = false;
 	}
 	/*if (!args_["material"].is_null())

@@ -24,7 +24,7 @@ public:
 
 	void start();
 	void exit();
-	void processFrame();
+	void processFrame(const float dt);
 	void update();
 
 	// Managers

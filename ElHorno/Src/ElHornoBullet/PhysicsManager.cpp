@@ -4,6 +4,7 @@
 #include "btBulletCollisionCommon.h"
 #include "Transform.h"
 
+PhysicsManager* PhysicsManager::instance;
 
 PhysicsManager* PhysicsManager::getInstance()
 {

@@ -27,7 +27,7 @@ bool OurFrameListener::frameStarted(const Ogre::FrameEvent& evt)
 
 	//prevTime = std::chrono::high_resolution_clock::now(); //Necesita Windows.h
 
-	ElHornoBase::getInstance()->processFrame();
+	//ElHornoBase::getInstance()->processFrame();
 
 	return true;
 }
