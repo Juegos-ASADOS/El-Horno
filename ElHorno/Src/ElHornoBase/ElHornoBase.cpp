@@ -66,7 +66,9 @@ void ElHornoBase::init() {
 	//Creacion del factoryCreator y declaracion de los componentes del motor
 	setupFactories();
 
-	SceneManager::setupInstance();
+	//SceneManager::setupInstance();
+
+
 }
 
 /*
