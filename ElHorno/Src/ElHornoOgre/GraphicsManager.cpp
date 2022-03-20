@@ -150,10 +150,10 @@ void GraphicsManager::shutdown()
 /*
 Gestion de eventos por input
 */
-void GraphicsManager::pollEvents()
+bool GraphicsManager::pollEvents()
 {
 	if (sdlWindow_ == nullptr)
-		return;  // SDL events not initialized
+		return false;  // SDL events not initialized
 	SDL_Event event;
 	while (SDL_PollEvent(&event))
 	{
@@ -161,6 +161,8 @@ void GraphicsManager::pollEvents()
 		{
 		case SDL_QUIT:
 			root_->queueEndRendering();
+			return true;
+
 			break;
 		default:
 			//llamar a InputManager
@@ -168,6 +170,7 @@ void GraphicsManager::pollEvents()
 			break;
 		}
 	}
+	return false;
 }
 
 void GraphicsManager::setConfigOptions()
@@ -421,3 +424,4 @@ float GraphicsManager::getFarShadowDistance()
 {
 	return ogreSceneManager_->getShadowFarDistance();
 }
+

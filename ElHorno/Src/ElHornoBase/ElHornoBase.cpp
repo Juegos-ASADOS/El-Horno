@@ -67,8 +67,6 @@ void ElHornoBase::init() {
 	setupFactories();
 
 	SceneManager::setupInstance();
-
-
 }
 
 /*
@@ -136,7 +134,7 @@ void ElHornoBase::setupFactories()
 /*OgreRoot llama a frameListener_ que llama a processFrame que actualiza
 la instancia de cada manager dependiendo del estado del juego*/
 void ElHornoBase::processFrame(float deltaTime) {
-	GraphicsManager::getInstance()->pollEvents();
+	exit_ = GraphicsManager::getInstance()->pollEvents();
 
 	// Updates de managers
 	if (!paused_) {
@@ -161,10 +159,13 @@ void ElHornoBase::update()
 	float deltaTime = 0;
 
 	while (!exit_) {
+		
 		mainTimer.resetTimer();
 		processFrame(deltaTime);
 
 		deltaTime = mainTimer.getTime();
+
+		std::cout << deltaTime << "\n";
 	}
 }
 
