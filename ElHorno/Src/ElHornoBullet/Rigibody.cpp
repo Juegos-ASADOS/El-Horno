@@ -28,10 +28,10 @@ void RigidBody::start()
 	bttrasform = new btTransform(QuaternionToBullet(transform->getRotation()), VectorToBullet(transform->getPosition()));
 
 	if (!isTrigger) {
-		rb.rigid = phManager->createRigidBody(bttrasform, shape, mass);
+		rb.rigid = phManager->createRigidBody(bttrasform, shape, userIdx, mass);
 	}
 	else {
-		rb.ghost = phManager->createTrigger(bttrasform, shape);
+		rb.ghost = phManager->createTrigger(bttrasform, shape, userIdx);
 	}
 
 }

@@ -48,7 +48,11 @@ private:
 	//Transform de la entidad 
 	Transform* transform = nullptr;
 
+	//Referencia al manager de física
 	PhysicsManager* phManager = nullptr;
+
+	//Indice en Bullet
+	int userIdx;
 };
 
 

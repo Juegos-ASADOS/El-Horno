@@ -14,7 +14,9 @@ class btCollisionShape;
 class btCollisionObject;
 class btGhostObject;
 class btTransform;
-//class btAlignedObjectArray;
+
+template<typename T>
+class btAlignedObjectArray;
 
 class Transform;
 
@@ -36,21 +38,24 @@ public:
 	void update(const float& dt);
 	void updateDebug(const int& debugFlags);
 	
-	btRigidBody* createRigidBody(btTransform* tr, btCollisionShape* shape, const float& mass = 0);
-	btGhostObject* createTrigger(btTransform* tr, btCollisionShape* shape);
+	btRigidBody* createRigidBody(btTransform* tr, btCollisionShape* shape, int& userIdx, const float& mass = 1.0f);
+	btGhostObject* createTrigger(btTransform* tr, btCollisionShape* shape, int& userIdx);
 	btCollisionShape* createShape(Transform* tra, ColliderShape sha);
 	
 	void addBody(btRigidBody* body);
 	void addBody(btRigidBody* body, const short& group, const short& layerMask);
 	void addCollisionObject(btCollisionObject* col, const short& group, const short& layerMask);
+
+	void deleteBody(btRigidBody* body);
 private:
 	static PhysicsManager* instance;
 
 	PhysicsManager();
 	~PhysicsManager();
 
-
 	float fixedTimeStep = 0.0f;
+
+	int userIdxCount = 0;
 
 	btDiscreteDynamicsWorld* world;
 	btDispatcher* dispatcher;
@@ -59,7 +64,7 @@ private:
 	btCollisionConfiguration* collisionConfiguration;
 
 	//Para borrarlas al terminar
-	//btAlignedObjectArray<btCollisionShape*>* collisionShapes;
+	btAlignedObjectArray<btCollisionShape*>* collisionShapes;
 };
 
 #endif _PHYSHICS_MANAGER_H

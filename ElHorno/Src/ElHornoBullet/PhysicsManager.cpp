@@ -88,6 +88,14 @@ void PhysicsManager::addCollisionObject(btCollisionObject* col, const short& gro
 	world->addCollisionObject(col, group, layerMask);
 }
 
+void PhysicsManager::deleteBody(btRigidBody* body)
+{
+	world->removeRigidBody(body);
+	btMotionState* ms = body->getMotionState();
+	delete body;
+	delete ms;
+}
+
 PhysicsManager::PhysicsManager()
 {
 	collisionConfiguration = new btDefaultCollisionConfiguration();
@@ -106,24 +114,34 @@ PhysicsManager::PhysicsManager()
 
 PhysicsManager::~PhysicsManager()
 {
-
-	//for (int i = world->getNumCollisionObjects() - 1; i >= 0; i--) {
-	//	btCollisionObject* obj = world->getCollisionObjectArray()[i];
-	//	btRigidBody* body = btRigidBody::upcast(obj);
-	//	if (body && body->getMotionState())
-	//		delete body->getMotionState();
-	//	world->removeCollisionObject(obj);
-	//	delete obj;
+	//Borrado en reverso, de último creado a primero
+	
+	//No tenemos constraints, así que no se borran de momento 
+	
+	//int i;
+	//for (i = world->getNumConstraints() - 1; i >= 0; i--){
+	//	world->removeConstraint(m_dynamicsWorld->getConstraint(i));
 	//}
 
-	////delete collision shapes
-	//for (int j = 0; j < collisionShapes->size(); j++) {
-	//	btCollisionShape* shape = (*collisionShapes)[j];
-	//	(*collisionShapes)[j] = 0;
-	//	delete shape;
-	//}
+	//Borrado de los rigidbodies
 
-	//collisionShapes.clear();
+	for (int i = world->getNumCollisionObjects() - 1; i >= 0; i--) {
+		btCollisionObject* obj = world->getCollisionObjectArray()[i];
+		btRigidBody* body = btRigidBody::upcast(obj);
+		if (body && body->getMotionState())
+			delete body->getMotionState();
+		world->removeCollisionObject(obj);
+		delete obj;
+	}
+
+	//Borrado de las Collision Shape
+
+	for (int j = 0; j < collisionShapes->size(); j++) {
+		btCollisionShape* shape = (*collisionShapes)[j];
+		(*collisionShapes)[j] = 0;
+		delete shape;
+	}
+	collisionShapes->clear();
 
 	delete world; world = nullptr;
 
@@ -156,11 +174,12 @@ btCollisionShape* PhysicsManager::createShape(Transform* tr, ColliderShape sha =
 	return shape;
 }
 
-btGhostObject* PhysicsManager::createTrigger(btTransform* tr, btCollisionShape* shape)
+btGhostObject* PhysicsManager::createTrigger(btTransform* tr, btCollisionShape* shape, int& userIdx)
 {
+	//Si la forma es inv�lida, tira la ejecuci�n
 	btAssert((!shape || shape->getShapeType() != INVALID_SHAPE_PROXYTYPE));
 
-	//collisionShapes->push_back(shape);
+	collisionShapes->push_back(shape);
 
 	btGhostObject* body = new btGhostObject();
 	
@@ -172,7 +191,7 @@ btGhostObject* PhysicsManager::createTrigger(btTransform* tr, btCollisionShape* 
 
 }
 
-btRigidBody* PhysicsManager::createRigidBody(btTransform* tr, btCollisionShape* shape, const float& mass)
+btRigidBody* PhysicsManager::createRigidBody(btTransform* tr, btCollisionShape* shape, int& userIdx, const float& mass)
 {
 	//Si la forma es inv�lida, tira la ejecuci�n
 	btAssert((!shape || shape->getShapeType() != INVALID_SHAPE_PROXYTYPE));
@@ -182,17 +201,26 @@ btRigidBody* PhysicsManager::createRigidBody(btTransform* tr, btCollisionShape* 
 
 	btVector3 localInertia(0, 0, 0);
 
-	//collisionShapes->push_back(shape);
+	collisionShapes->push_back(shape);
 
 	//Solo si es din�mico se calcula la inercia
 	if (isDynamic)
 		shape->calculateLocalInertia(mass, localInertia);
 	
+	//Crea el Rigidbody a partir de: 
+	//- Un MotionState (interno de Bullet)
+	//- Un ConstructionInfo (interno de Bullet)
+
 	btDefaultMotionState* state = new btDefaultMotionState(*tr);
 
 	btRigidBody::btRigidBodyConstructionInfo cInfo(mass, state, shape, localInertia);
 
 	btRigidBody* body = new btRigidBody(cInfo);
+
+	//Guardamos y sumamos para el siguiente
+	userIdx = userIdxCount;
+
+	body->setUserIndex(userIdxCount++);
 
 	return body;
 }
