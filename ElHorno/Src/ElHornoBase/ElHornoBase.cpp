@@ -4,6 +4,11 @@
 #include <OgreRoot.h>
 #include <OgreFileSystemLayer.h>
 #include <OgreConfigFile.h>
+#include <OgreLogManager.h>
+#include <OgreRTShaderConfig.h>
+#include <OgreRTShaderExports.h>
+#include <OgreRTShaderSystem.h>
+
 #include <iostream>
 #include <fstream>
 
@@ -100,8 +105,13 @@ Ejecuta el start del SceenManager y comienza el renderizado de Ogre
 */
 void ElHornoBase::start()
 {
-	SceneManager::getInstance()->getCurrentScene()->start();
-	root_->startRendering();
+	try {
+		SceneManager::getInstance()->getCurrentScene()->start();
+		root_->startRendering();
+	}
+	catch (Ogre::Exception& e) {
+		Ogre::LogManager::getSingleton().logMessage("An exception has occured: " + e.getFullDescription() + "\n");
+	}
 }
 
 /*
@@ -140,10 +150,8 @@ void ElHornoBase::setup() {
 
 
 	ogreSceneManager_ = root_->createSceneManager();
-
-	root_->addFrameListener(frameListener_);
-
-
+	initRTShaderSystem();
+ 	root_->addFrameListener(frameListener_);
 }
 
 /*
@@ -258,6 +266,14 @@ void ElHornoBase::shutdown()
 	}
 }
 
+void ElHornoBase::initRTShaderSystem()
+{
+	Ogre::RTShader::ShaderGenerator::initialize();
+	
+	mShaderGenerator_ = Ogre::RTShader::ShaderGenerator::getSingletonPtr();
+	
+	mShaderGenerator_->addSceneManager(ogreSceneManager_);
+}
 /*
 Gestion de eventos por input
 */

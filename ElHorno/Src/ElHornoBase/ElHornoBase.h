@@ -11,6 +11,9 @@ namespace Ogre {
 	class SceneManager;
 	class RenderWindow;
 	struct ConfigOption;
+	namespace RTShader {
+		class ShaderGenerator;
+	}
 };
 
 // Ogre includes
@@ -38,6 +41,7 @@ public:
 	Ogre::SceneManager* getSceneManager();
 	Ogre::RenderWindow* getRenderWindow();
 	SDL_Window* getSDLWindow();
+	void initRTShaderSystem();
 	//GUI_Manager* getGUIManager();
 	//ResourceManager* getResourceManager();
 
@@ -113,7 +117,7 @@ private:
 	Ogre::Root* root_;
 	Ogre::SceneManager* ogreSceneManager_;
 	Ogre::RenderWindow* ogreWindow_;
-
+	Ogre::RTShader::ShaderGenerator* mShaderGenerator_;
 	// SDL
 	SDL_Window* sdlWindow_;
 

@@ -47,7 +47,7 @@ void Mesh::start()
 	}
 
 	isAnimated_ = ((!args_["isAnimated_"].is_null()) && (args_["isAnimated_"]));*/
-
+	materialName_ = "";
 	entity_->getComponent<Transform>("transform")->getNode()->attachObject(ogreEntity_); 
 }
 
