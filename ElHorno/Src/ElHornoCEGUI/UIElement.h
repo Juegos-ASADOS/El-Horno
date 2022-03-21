@@ -35,6 +35,15 @@ public:
 	float getPosYscale();
 	float getPosXoffset();
 	float getPosYoffset();
+	float getPivotCenterX();
+	float getPivotCenterY();
+
+	float getAlpha();
+
+
+	void addChild(CEGUI::Window* windowChild);
+	UIElement getChild(const std::string & childNamePath);
+	UIElement getChildByIndex(int index);
 
 	bool isActive();
 	void setActive(bool valor);

@@ -24,8 +24,7 @@ void UIElement::setPos(int x, int y)
 
 void UIElement::setSize(int x, int y)
 {
-	CEGUI::USize v2 = elementInterface->getSize();
-	elementInterface->setSize(v2);
+	elementInterface->setSize(CEGUI::USize(CEGUI::UDim(x, 0), CEGUI::UDim(y, 0)));
 }
 
 void UIElement::setText(const std::string& text)
@@ -38,24 +37,78 @@ void UIElement::setAlpha(float valor)
 	elementInterface->setAlpha(valor);
 }
 
+
+//POSICION RELATIVA [0,1]
 float UIElement::getPosXscale()
 {
-	return 0.0f;
+	CEGUI::UVector2 v2 = elementInterface->getPosition();
+	return (v2.d_x.d_scale);
 }
 
 float UIElement::getPosYscale()
 {
-	return 0.0f;
+	CEGUI::UVector2 v2 = elementInterface->getPosition();
+	return (v2.d_y.d_scale);
 }
 
+//POSICION ABSOLUTA (A cholón)
 float UIElement::getPosXoffset()
 {
-	return 0.0f;
+	CEGUI::UVector2 v2 = elementInterface->getPosition();
+	return (v2.d_x.d_offset);
 }
 
 float UIElement::getPosYoffset()
 {
-	return 0.0f;
+	CEGUI::UVector2 v2 = elementInterface->getPosition();
+	return (v2.d_y.d_offset);
+}
+
+//No devuelvo el rect dividido porque no es publico, solo sus valores
+float UIElement::getPivotCenterX()
+{
+	//Cogemos la parte de arriba izquierda y abajo derecha
+	float i = elementInterface->getOuterRectClipper().d_min.d_x;
+	float j = elementInterface->getOuterRectClipper().d_max.d_x;
+
+	//Y hacemos media
+	float x = (i + j) / 2;
+
+	return x;
+}
+
+float UIElement::getPivotCenterY()
+{
+	//Reutilizamos variables
+	float i = elementInterface->getOuterRectClipper().d_min.d_y;
+	float j = elementInterface->getOuterRectClipper().d_max.d_y;
+
+	//Y hacemos media
+	float y = (i + j) / 2;
+
+	return y;
+}
+
+
+float UIElement::getAlpha()
+{
+	return elementInterface->getAlpha();
+}
+
+void UIElement::addChild(CEGUI::Window* windowChild)
+{
+	elementInterface->addChild(windowChild);
+}
+
+UIElement UIElement::getChild(const std::string& namePath)
+{
+	return elementInterface->getChild(namePath);
+}
+
+UIElement UIElement::getChildByIndex(int index)
+{
+	//VIGILAR ESTO CON EL GETCHILDCOUNT
+	return elementInterface->getChildAtIdx(index);
 }
 
 bool UIElement::isActive()
