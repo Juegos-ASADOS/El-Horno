@@ -3,7 +3,6 @@
 #define _MESH_H
 
 #include <string>
-#include "json.hpp"
 #include "Component.h"
 
 namespace Ogre {
@@ -16,11 +15,11 @@ class Mesh : public Component
 {
 public:
 
-	Mesh(nlohmann::json& args);
+	Mesh(std::string name = "cube", bool castShadow = false, bool isAnimated = false);
 	~Mesh();
 
 	virtual void start() override;
-	void redefine(nlohmann::json& args);
+	void redefine();
 
 	void onEnable() override;
 	void onDisable() override;

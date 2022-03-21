@@ -3,17 +3,20 @@
 #include "Mesh.h"
 #include "CameraComponent.h"
 
-Component* TransformFactory::createComponent(nlohmann::json& args)
-{
-	return new Transform(args);
-}
-
-Component* MeshFactory::createComponent(nlohmann::json& args)
-{
-    return new Mesh(args);
-}
-
-Component* CameraFactory::createComponent(nlohmann::json& args)
-{
-	return new CameraComponent(args);
-}
+//template<typename ...Ts>
+//Component* TransformFactory::createComponent(Ts &&...args)
+//{
+//	return new Transform(args);
+//}
+//
+//template<typename ...Ts>
+//Component* MeshFactory::createComponent(Ts &&...args)
+//{
+//    return new Mesh(args);
+//}
+//
+//template<typename ...Ts>
+//Component* CameraFactory::createComponent(Ts &&...args)
+//{
+//	return new CameraComponent(args);
+//}

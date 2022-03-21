@@ -8,7 +8,7 @@
 //#include "Entity.h"
 //
 //
-//AudioListenerComponent::AudioListenerComponent(nlohmann::json& args) : Component(args) {}
+//AudioListenerComponent::AudioListenerComponent() {}
 //
 //AudioListenerComponent::~AudioListenerComponent() {}
 //

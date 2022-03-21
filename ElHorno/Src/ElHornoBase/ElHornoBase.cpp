@@ -128,9 +128,9 @@ void ElHornoBase::setupFactories()
 {
 	FactoryCreator* facCreat = FactoryCreator::getInstance();
 	// Factorías de componentes principales (transform, rigidbody, etc.)
-	facCreat->addFactory("transform", new TransformFactory());
+	/*facCreat->addFactory("transform", new TransformFactory());
 	facCreat->addFactory("camera", new CameraFactory());
-	facCreat->addFactory("mesh", new MeshFactory());
+	facCreat->addFactory("mesh", new MeshFactory());*/
 }
 
 /*OgreRoot llama a frameListener_ que llama a processFrame que actualiza
