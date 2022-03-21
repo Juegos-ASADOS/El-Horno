@@ -3,7 +3,6 @@
 //#define _AudioComponent_H
 //
 //#include <string>
-//#include "json.hpp"
 //#include "Component.h"
 //
 //namespace Ogre {
@@ -18,7 +17,7 @@
 //{
 //public:
 //
-//	AudioComponent(nlohmann::json& args);
+//	AudioComponent();
 //	~AudioComponent();
 //
 //	//void start() override;

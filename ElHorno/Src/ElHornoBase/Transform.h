@@ -3,7 +3,6 @@
 #define _TRANSFORM_H
 
 #include "Component.h"
-#include "json.hpp"
 #include <OgreVector3.h>
 
 namespace Ogre {}
@@ -11,7 +10,7 @@ namespace Ogre {}
 class Transform : public Component
 {
 public:
-	Transform(nlohmann::json& args);
+	Transform(Ogre::Vector3 pos, Ogre::Vector3 rot, Ogre::Vector3 scal);
 	~Transform();
 
 	virtual void start() override;

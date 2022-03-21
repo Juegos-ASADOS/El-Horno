@@ -39,7 +39,7 @@ Component* FactoryCreator::getComponentFromJson(const std::string type, json& ar
 	if (it != map.end())
 	{
 		// Cogemos la factoria del componente y lo creamos
-		return (it)->second->createComponent(args);
+		//return (it)->second->createComponent(args);
 	}
 
 	//Si no esta en el mapa

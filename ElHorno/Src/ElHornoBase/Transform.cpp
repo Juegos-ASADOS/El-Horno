@@ -10,8 +10,11 @@
 
 using namespace Ogre;
 
-Transform::Transform(nlohmann::json& args) : Component(args)
+Transform::Transform(Vector3 pos, Vector3 rot, Vector3 scal)
 { 
+	setPosition(pos);
+	setRotation(Quaternion::Quaternion(&rot));
+	setScale(scal);
 }
 
 Transform::~Transform()
@@ -23,34 +26,6 @@ Transform::~Transform()
 void Transform::start()
 {
 	node_ = ElHornoBase::getGraphicsManager()->getSceneManager()->getRootSceneNode()->createChildSceneNode();
-	Vector3 position = Vector3(0, 0, 0);
-	Ogre::Vector3 rotation = Vector3(0, 0, 0);
-	Vector3 scale = Vector3(0, 0, 0);
-
-	if (!args_["position"].is_null())
-	{
-		position.x = args_["position"][0];
-		position.y = args_["position"][1];
-		position.z = args_["position"][2];
-	}
-	if (!args_["rotation"].is_null())
-	{
-		rotation.x = args_["rotation"][0];
-		rotation.y = args_["rotation"][1];
-		rotation.z = args_["rotation"][2];
-	}
-	if (!args_["scale"].is_null())
-	{
-		scale.x = args_["scale"][0];
-		scale.y = args_["scale"][1];
-		scale.z = args_["scale"][2];
-	}
-
-	setPosition(position);
-	setRotation(Quaternion::Quaternion(&rotation));
-	setScale(scale);
-	//Aqui va la incializacion del nodo pero no estan las cosas que tienen que estar todavia
-	//node = ElHornoBase::getInstance()->getSceneManager()...
 }
 
 // Getters

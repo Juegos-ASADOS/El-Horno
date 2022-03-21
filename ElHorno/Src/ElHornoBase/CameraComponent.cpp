@@ -9,8 +9,14 @@
 #include <OgreRenderWindow.h>
 #include <OgreViewport.h>
 
-CameraComponent::CameraComponent(nlohmann::json& args) : Component(args)
+CameraComponent::CameraComponent(Ogre::Vector3 pos, Ogre::Vector3 lookAt, Ogre::ColourValue color, int nearClDis, int farClDis)
 {
+	camPos = pos;
+	lookAtVec = lookAt;
+	bgColor = color;
+	
+	camNearClipDistance = nearClDis;
+	setFarClipDistance = farClDis;
 }
 
 CameraComponent::~CameraComponent()
@@ -33,38 +39,6 @@ CameraComponent::~CameraComponent()
 */
 void CameraComponent::start()
 {
-	int camNearClipDistance = 1;
-	int setFarClipDistance = 10000;
-
-	Ogre::Vector3 camPos = Ogre::Vector3(100, 100, 100);
-	Ogre::Vector3 lookAtVec = Ogre::Vector3(0, 0, 0);
-	Ogre::ColourValue bgColor = Ogre::ColourValue(0, 0, 1, 1);
-
-	/*if (!args_["nearClipDistance"].is_null())	
-		camNearClipDistance = args_["nearClipDistance"];
-	if (!args_["farClipDistance"].is_null())	
-		setFarClipDistance = args_["farClipDistance"];
-	if (!args_["lookAt"].is_null())
-	{
-		lookAtVec.x = args_["lookAt"][0];
-		lookAtVec.y = args_["lookAt"][1];
-		lookAtVec.z = args_["lookAt"][2];
-	}
-	if (!args_["bgColor"].is_null())
-	{
-		bgColor.r = args_["bgColor"][0];
-		bgColor.g = args_["bgColor"][1];
-		bgColor.b = args_["bgColor"][2];
-		bgColor.a = args_["bgColor"][3];
-	}
-	else if (!args_["bgColour"].is_null())
-	{
-		bgColor.r = args_["bgColour"][0];
-		bgColor.g = args_["bgColour"][1];
-		bgColor.b = args_["bgColour"][2];
-		bgColor.a = args_["bgColour"][3];
-	}*/
-
 	cam = ElHornoBase::getGraphicsManager()->getSceneManager()->createCamera("cam");
 	cam->setNearClipDistance(camNearClipDistance);
 	cam->setFarClipDistance(setFarClipDistance);
