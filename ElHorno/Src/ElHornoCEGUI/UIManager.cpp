@@ -1,7 +1,5 @@
 #include "UIManager.h"
 
-//#include <CEGUI/CEGUI.h>
-
 UIManager* UIManager::instance = 0;
 
 UIManager::UIManager()

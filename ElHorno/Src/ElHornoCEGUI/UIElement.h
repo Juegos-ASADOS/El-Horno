@@ -2,12 +2,7 @@
 #ifndef _UI_ELEMENT_H
 #define _UI_ELEMENT_H
 
-
-//PREGUNTAR QUE NARISES HAY QUE PONER
-
-namespace std {
-	class string;
-}
+#include <string>
 
 namespace CEGUI {
 	class Window;
@@ -17,25 +12,29 @@ class UIElement
 {
 
 private:
-	UIElement();
+	UIElement(CEGUI::Window* window);
 
 	//Entidad de la interfaz
 	CEGUI::Window* elementInterface;
 public:
 
+	CEGUI::Window* getElement();
 	~UIElement();
 
 	//Metodos iguales que una entidad/transform
 
 	void setPos(int x, int y);
 	void setSize(int x,int y);
-	void setText(std::string text);
+	void setText(const std::string & text);
 
 	//Transparencia del objeto
-	void setAlpha();
+	void setAlpha(float valor);
 
-	//No creo que vayamos a necesitarlo
-	//inline void getAlpha();
+	//GETTERS
+	float getPosXscale();
+	float getPosYscale();
+	float getPosXoffset();
+	float getPosYoffset();
 
 	bool isActive();
 	void setActive(bool valor);
