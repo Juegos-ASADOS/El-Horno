@@ -13,6 +13,9 @@ class btRigidBody;
 class btCollisionShape;
 class btCollisionObject;
 class btGhostObject;
+class btTransform;
+//class btAlignedObjectArray;
+
 class Transform;
 
 enum ColliderShape {
@@ -31,9 +34,12 @@ public:
 
 	void start(const std::string& initialScene);
 	void update(const float& dt);
+	void updateDebug(const int& debugFlags);
 	
-	btRigidBody* createRigidBody(Transform* tr, const float& mass, ColliderShape shape);
-	btGhostObject* createTrigger(Transform* tr_, ColliderShape sha);
+	btRigidBody* createRigidBody(btTransform* tr, btCollisionShape* shape, const float& mass = 0);
+	btGhostObject* createTrigger(btTransform* tr, btCollisionShape* shape);
+	btCollisionShape* createShape(Transform* tra, ColliderShape sha);
+	
 	void addBody(btRigidBody* body);
 	void addBody(btRigidBody* body, const short& group, const short& layerMask);
 	void addCollisionObject(btCollisionObject* col, const short& group, const short& layerMask);
@@ -43,7 +49,6 @@ private:
 	PhysicsManager();
 	~PhysicsManager();
 
-	btCollisionShape* createShape(Transform* tra, ColliderShape sha);
 
 	float fixedTimeStep = 0.0f;
 
@@ -52,6 +57,9 @@ private:
 	btBroadphaseInterface* broadphaseInterface;
 	btConstraintSolver* constraintSolver;
 	btCollisionConfiguration* collisionConfiguration;
+
+	//Para borrarlas al terminar
+	//btAlignedObjectArray<btCollisionShape*>* collisionShapes;
 };
 
 #endif _PHYSHICS_MANAGER_H

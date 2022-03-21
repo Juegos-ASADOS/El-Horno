@@ -17,6 +17,7 @@ protected:
 	nlohmann::json args_;
 public:
 	Component(nlohmann::json& args) : args_(args), entity_(nullptr), active_(true) {};
+	Component() : entity_(nullptr), active_(true) {};
 	~Component();
 
 	inline void setEntity(Entity* e) { entity_ = e; };

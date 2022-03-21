@@ -41,9 +41,17 @@ void PhysicsManager::start(const std::string& initialScene)
 */
 void PhysicsManager::update(const float& dt)
 {
-	world->stepSimulation(dt);
-	//if(DEBUG)
-	world->debugDrawWorld();
+	if (world) {
+		world->stepSimulation(dt);
+	}
+}
+
+void PhysicsManager::updateDebug(const int& debugFlags)
+{
+	if (world && world->getDebugDrawer()) {
+		world->getDebugDrawer()->setDebugMode(debugFlags);
+		world->debugDrawWorld();
+	}
 }
 
 void PhysicsManager::addBody(btRigidBody* body)
@@ -81,13 +89,50 @@ void PhysicsManager::addCollisionObject(btCollisionObject* col, const short& gro
 
 PhysicsManager::PhysicsManager()
 {
-	//dispatcher = new btDispatcher();
+	collisionConfiguration = new btDefaultCollisionConfiguration();
+
+	dispatcher = new btCollisionDispatcher(collisionConfiguration);
+
+	broadphaseInterface = new btDbvtBroadphase();
+
+	btSequentialImpulseConstraintSolver* sol = new btSequentialImpulseConstraintSolver;
+	constraintSolver = sol;
+
 	world = new btDiscreteDynamicsWorld(dispatcher, broadphaseInterface, constraintSolver, collisionConfiguration);
+
+	//world->setGravity(gravity);
 }
 
 PhysicsManager::~PhysicsManager()
 {
-	delete world;
+
+	//for (int i = world->getNumCollisionObjects() - 1; i >= 0; i--) {
+	//	btCollisionObject* obj = world->getCollisionObjectArray()[i];
+	//	btRigidBody* body = btRigidBody::upcast(obj);
+	//	if (body && body->getMotionState())
+	//		delete body->getMotionState();
+	//	world->removeCollisionObject(obj);
+	//	delete obj;
+	//}
+
+	////delete collision shapes
+	//for (int j = 0; j < collisionShapes->size(); j++) {
+	//	btCollisionShape* shape = (*collisionShapes)[j];
+	//	(*collisionShapes)[j] = 0;
+	//	delete shape;
+	//}
+
+	//collisionShapes.clear();
+
+	delete world; world = nullptr;
+
+	delete constraintSolver; constraintSolver = nullptr;
+
+	delete broadphaseInterface; broadphaseInterface = nullptr;
+
+	delete dispatcher; dispatcher = nullptr;
+
+	delete collisionConfiguration; collisionConfiguration = nullptr;
 }
 
 btCollisionShape* PhysicsManager::createShape(Transform* tr, ColliderShape sha = ColliderShape::Box)
@@ -110,32 +155,44 @@ btCollisionShape* PhysicsManager::createShape(Transform* tr, ColliderShape sha =
 	return shape;
 }
 
-btGhostObject* PhysicsManager::createTrigger(Transform* tr, ColliderShape sha = ColliderShape::Box)
+btGhostObject* PhysicsManager::createTrigger(btTransform* tr, btCollisionShape* shape)
 {
-	btGhostObject* gO = new btGhostObject();
-	gO->setInterpolationWorldTransform(btTransform(QuaternionToBullet(tr->getRotation()),
-		VectorToBullet(tr->getPosition())));
+	btAssert((!shape || shape->getShapeType() != INVALID_SHAPE_PROXYTYPE));
 
-	btCollisionShape* shape = createShape(tr, sha);
+	//collisionShapes->push_back(shape);
 
-	gO->setCollisionShape(shape);
-	return gO;
+	btGhostObject* body = new btGhostObject();
+	
+	body->setInterpolationWorldTransform(*tr);
+
+	body->setCollisionShape(shape);
+
+	return body;
 
 }
 
-btRigidBody* PhysicsManager::createRigidBody(Transform* tr, const float& mass = 0, ColliderShape sha = ColliderShape::Box)
+btRigidBody* PhysicsManager::createRigidBody(btTransform* tr, btCollisionShape* shape, const float& mass)
 {
-	//MotionState generado a partir de un Transform de bullet, 
-	//generado a partir de un componente Transform 
-	//======
-	//	-SI FALLA ES PORQUE NO GUARDAMOS EL TRANSFORM QUE SE CREA DIRECTAMENTE EN LA LLAMADA AL MÉTODO
-	//	-PARA ARREGLAR ESO HABRÍA QUE ALMACENARLO EN ALGÚN LADO
-	//======
-	btDefaultMotionState* state = new btDefaultMotionState(btTransform(QuaternionToBullet(tr->getRotation()), 
-																	   VectorToBullet(tr->getPosition())));
-	btCollisionShape* shape = createShape(tr, sha);
+	//Si la forma es inválida, tira la ejecución
+	btAssert((!shape || shape->getShapeType() != INVALID_SHAPE_PROXYTYPE));
 
-	btRigidBody* body = new btRigidBody(mass, state, shape);
+	//Rigidbody es dinámico si la masa es distinta de cero, si no, estático
+	bool isDynamic = (mass != 0.f);
+
+	btVector3 localInertia(0, 0, 0);
+
+	//collisionShapes->push_back(shape);
+
+	//Solo si es dinámico se calcula la inercia
+	if (isDynamic)
+		shape->calculateLocalInertia(mass, localInertia);
+	
+	btDefaultMotionState* state = new btDefaultMotionState(*tr);
+
+	btRigidBody::btRigidBodyConstructionInfo cInfo(mass, state, shape, localInertia);
+
+	btRigidBody* body = new btRigidBody(cInfo);
+
 	return body;
 }
 
