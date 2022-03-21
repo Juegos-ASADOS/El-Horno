@@ -83,11 +83,22 @@ void PhysicsManager::addBody(btRigidBody* body, const short& group, const short&
 	world->addRigidBody(body, group, layerMask);
 }
 
+void PhysicsManager::addCollisionObject(btCollisionObject* col)
+{
+	world->addCollisionObject(col);
+}
+
 void PhysicsManager::addCollisionObject(btCollisionObject* col, const short& group, const short& layerMask)
 {
 	world->addCollisionObject(col, group, layerMask);
 }
 
+//Sólo elimina del mundo Bullet un rigidbody, pero no lo borra
+void PhysicsManager::removeBody(btRigidBody* body) {
+	world->removeRigidBody(body);
+}
+
+//Borra y elimina del mundo Bullet un rigidbody
 void PhysicsManager::deleteBody(btRigidBody* body)
 {
 	world->removeRigidBody(body);
@@ -96,8 +107,30 @@ void PhysicsManager::deleteBody(btRigidBody* body)
 	delete ms;
 }
 
+//Sólo elimina del mundo Bullet un collisionObject, pero no lo borra
+void PhysicsManager::removeCollisionObject(btCollisionObject* body) {
+	world->removeCollisionObject(body);
+}
+
+//Borra y elimina del mundo Bullet un collisionObject
+void PhysicsManager::deleteCollisionObject(btCollisionObject* body)
+{
+	world->removeCollisionObject(body);
+	delete body;
+}
+
+
+void PhysicsManager::setGravity(const btVector3& g)
+{
+	if (gravity) delete gravity;
+	gravity = new btVector3(g);
+	world->setGravity(*gravity);
+}
+
 PhysicsManager::PhysicsManager()
 {
+	collisionShapes = new btAlignedObjectArray<btCollisionShape*>();
+
 	collisionConfiguration = new btDefaultCollisionConfiguration();
 
 	dispatcher = new btCollisionDispatcher(collisionConfiguration);
@@ -109,23 +142,22 @@ PhysicsManager::PhysicsManager()
 
 	world = new btDiscreteDynamicsWorld(dispatcher, broadphaseInterface, constraintSolver, collisionConfiguration);
 
-	//world->setGravity(gravity);
+	//world->setGravity(*gravity);
 }
 
 PhysicsManager::~PhysicsManager()
 {
 	//Borrado en reverso, de último creado a primero
+	//No tenemos constraints, pero las borramos de todos modos
 	
-	//No tenemos constraints, así que no se borran de momento 
-	
-	//int i;
-	//for (i = world->getNumConstraints() - 1; i >= 0; i--){
-	//	world->removeConstraint(m_dynamicsWorld->getConstraint(i));
-	//}
+	int i;
+	for (i = world->getNumConstraints() - 1; i >= 0; i--){
+		world->removeConstraint(world->getConstraint(i));
+	}
 
 	//Borrado de los rigidbodies
 
-	for (int i = world->getNumCollisionObjects() - 1; i >= 0; i--) {
+	for (i = world->getNumCollisionObjects() - 1; i >= 0; i--) {
 		btCollisionObject* obj = world->getCollisionObjectArray()[i];
 		btRigidBody* body = btRigidBody::upcast(obj);
 		if (body && body->getMotionState())
@@ -136,12 +168,15 @@ PhysicsManager::~PhysicsManager()
 
 	//Borrado de las Collision Shape
 
-	for (int j = 0; j < collisionShapes->size(); j++) {
-		btCollisionShape* shape = (*collisionShapes)[j];
-		(*collisionShapes)[j] = 0;
+	for (i = 0; i < collisionShapes->size(); i++) {
+		btCollisionShape* shape = (*collisionShapes)[i];
+		(*collisionShapes)[i] = 0;
 		delete shape;
 	}
 	collisionShapes->clear();
+	delete collisionShapes; collisionShapes = nullptr;
+
+	delete gravity; gravity = nullptr;
 
 	delete world; world = nullptr;
 

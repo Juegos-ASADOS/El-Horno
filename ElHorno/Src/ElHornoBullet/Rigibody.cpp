@@ -27,13 +27,23 @@ void RigidBody::start()
 
 	bttrasform = new btTransform(QuaternionToBullet(transform->getRotation()), VectorToBullet(transform->getPosition()));
 
+	//Por defecto
+	friction = 0.3f;
+
+	restitution = 0.1f;
+
 	if (!isTrigger) {
 		rb.rigid = phManager->createRigidBody(bttrasform, shape, userIdx, mass);
+		rb.rigid->setRestitution(restitution);
+		rb.rigid->setFriction(friction);
+		phManager->addBody(rb.rigid);
 	}
 	else {
 		rb.ghost = phManager->createTrigger(bttrasform, shape, userIdx);
+		rb.ghost->setRestitution(restitution);
+		rb.ghost->setFriction(friction);
+		phManager->addCollisionObject(rb.ghost);
 	}
-
 }
 
 void RigidBody::update()
@@ -42,7 +52,7 @@ void RigidBody::update()
 	btQuaternion rot;
 	if (!isTrigger) {
 		pos = rb.rigid->getWorldTransform().getOrigin();
-		rot = rb.ghost->getWorldTransform().getRotation();
+		rot = rb.rigid->getWorldTransform().getRotation();
 	}
 	else {
 		pos = rb.ghost->getWorldTransform().getOrigin();
@@ -51,4 +61,41 @@ void RigidBody::update()
 
 	transform->setPosition(VectorToOgre(pos));
 	transform->setRotation(QuaternionToOgre(rot));
+}
+
+void RigidBody::setFriction(const float& f)
+{
+	friction = f;
+
+	!isTrigger ? rb.rigid->setFriction(f) : rb.ghost->setFriction(f);
+}
+
+void RigidBody::setRestitution(const float& r)
+{
+	restitution = r;
+
+	!isTrigger ? rb.rigid->setRestitution(r) : rb.ghost->setRestitution(r);
+}
+
+void RigidBody::setMass(const float& m)
+{
+	mass = m;
+
+	btVector3 inertia;
+	if (!isTrigger) {
+		phManager->removeBody(rb.rigid);
+		rb.rigid->getCollisionShape()->calculateLocalInertia(mass, inertia);
+		rb.rigid->setMassProps(mass, inertia);
+		phManager->addBody(rb.rigid);
+	}
+
+	//GhostObject no permite cambio de masa <<<
+	
+	//else {
+	//	phManager->removeCollisionObject(rb.ghost);
+	//	rb.ghost->getCollisionShape()->calculateLocalInertia(mass, inertia);
+	//	
+	//	phManager->addCollisionObject(rb.ghost);
+	//}
+
 }
