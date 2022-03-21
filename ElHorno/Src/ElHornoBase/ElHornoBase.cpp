@@ -151,6 +151,7 @@ void ElHornoBase::processFrame(float deltaTime) {
 
 	//AudioManager::getInstance()->update();
 	//SceneManager::getInstance()->deleteEntities();
+	GraphicsManager::getInstance()->render();
 	//UIManager::getInstance()->update();
 	//SceneManager::getInstance()->endFrame();
 }
@@ -164,14 +165,10 @@ void ElHornoBase::update()
 	GraphicsManager::getInstance()->init();
 
 	while (!exit_) {
-		
 		mainTimer->resetTimer();
 		processFrame(deltaTime);
 
 		deltaTime = mainTimer->getTime();
-
-		std::cout << deltaTime << "\n";
-
 	}
 }
 

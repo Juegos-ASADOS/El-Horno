@@ -33,6 +33,7 @@ public:
 	void exit();
 	void setup();
 	bool pollEvents();
+	void render();
 
 	Ogre::Root* getRoot();
 	Ogre::SceneManager* getSceneManager();

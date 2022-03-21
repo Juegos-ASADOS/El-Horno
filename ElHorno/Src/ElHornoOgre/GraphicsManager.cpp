@@ -58,6 +58,7 @@ void GraphicsManager::init()
 
 void GraphicsManager::start()
 {
+	// Si usamos renderOneFrame manualmente esto no es necesario
 	root_->startRendering();
 }
 
@@ -175,6 +176,12 @@ bool GraphicsManager::pollEvents()
 
 	}
 	return false;
+}
+
+void GraphicsManager::render()
+{
+	//Actualiza render targets
+	root_->renderOneFrame();
 }
 
 void GraphicsManager::setConfigOptions()
