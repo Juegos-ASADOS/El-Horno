@@ -8,7 +8,13 @@
 #include "Transform.h"
 #include <OgreFileSystemLayer.h>
 
-Mesh::Mesh(nlohmann::json& args) : Component(args) {}
+Mesh::Mesh(std::string name, bool castShadow, bool isAnimated)
+{
+	meshName_ = name + ".mesh";
+	materialName_ = name + ".mesh";
+	castShadow_ = castShadow;
+	isAnimated_ = isAnimated;
+}
 
 /*
 Desconecta el nodo del padre y destruye la entidad
@@ -22,7 +28,7 @@ Mesh::~Mesh()
 }
 
 /*
-Coge desde un json la malla y crea una entidad. Establece:
+Crea una entidad. Establece:
 	- Material
 	- Casteo de sombras
 	- Animación
@@ -30,51 +36,18 @@ Se le adjunta al nodo del transform
 */
 void Mesh::start()
 {
-	if (!args_["mesh"].is_null())
-	{
-
-		meshName_ = "cube.mesh";
-		//ogreEntity_ = ElHornoBase::getInstance()->getSceneManager()->createEntity(meshName_);
-		castShadow_ = false;
-	}
-	/*if (!args_["material"].is_null())
-	{
-		std::string aux = args_["material"];
-		materialName_ = aux;
-		ogreEntity_->setMaterialName(args_["material"], "Materials");
-	}
-
-	if (!args_["castShadow_"].is_null()) {
-		castShadow_ = args_["castShadow_"];
-		ogreEntity_->setCastShadows(castShadow_);
-	}
-
-	isAnimated_ = ((!args_["isAnimated_"].is_null()) && (args_["isAnimated_"]));*/
-
+	ogreEntity_ = ElHornoBase::getInstance()->getGraphicsManager()->createEntity(meshName_);
+	ogreEntity_->setMaterialName(materialName_);
+	ogreEntity_->setCastShadows(castShadow_);
 	entity_->getComponent<Transform>("transform")->getNode()->attachObject(ogreEntity_); 
 }
 
 /*
 Reestablece varibles de init para recomponer la malla
 */
-void Mesh::redefine(nlohmann::json& args)
+void Mesh::redefine()
 {
-	/*entity_->getComponent<Transform>("Transform")->getNode()->detachObject(ogreEntity_);
-
-	delete ogreEntity_;
-	ogreEntity_ = nullptr;
-
-	if (args["mesh"].is_null())
-		args["mesh"] = meshName_;
-
-	if (args["material"].is_null())
-		args["material"] = materialName_;
-
-	if (args["isAnimated_"].is_null())
-		args["isAnimated_"] = isAnimated_;
-
-	args_ = args;
-	start();*/
+	
 }
 
 void Mesh::onEnable()

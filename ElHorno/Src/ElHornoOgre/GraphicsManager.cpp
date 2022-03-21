@@ -429,3 +429,7 @@ float GraphicsManager::getFarShadowDistance()
 	return ogreSceneManager_->getShadowFarDistance();
 }
 
+Ogre::Entity* GraphicsManager::createEntity(std::string meshName) 
+{
+	return ogreSceneManager_->createEntity(meshName);
+}

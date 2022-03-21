@@ -4,11 +4,10 @@
 
 #include "Component.h"
 #include <OgreVector3.h>
+#include <OgreColourValue.h>
 #include <vector>
 #include <string>
-#include "json.hpp"
 
-class OgreCamera;
 class Transform;
 
 class CameraComponent : public Component
@@ -16,7 +15,7 @@ class CameraComponent : public Component
 public:
 
 	//lo uncio necesario para recoger input del teclado a traves de SDL
-	CameraComponent(nlohmann::json& args);
+	CameraComponent(Ogre::Vector3 pos, Ogre::Vector3 lookAt, Ogre::ColourValue color, int nearClDis, int farClDis);
 	~CameraComponent();
 
 	virtual void start() override;
@@ -31,6 +30,13 @@ private:
 	Ogre::Viewport* vp;
 	Ogre::SceneNode* node = nullptr;
 	Transform* tr_ = nullptr;
+
+	Ogre::Vector3 camPos;
+	Ogre::Vector3 lookAtVec;
+	Ogre::ColourValue bgColor;
+
+	int camNearClipDistance;
+	int setFarClipDistance;
 };
 
 #endif _CAMERA_COMPONENT_H
