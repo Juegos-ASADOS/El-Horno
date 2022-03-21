@@ -1,10 +1,11 @@
 #include "Transform.h"
+#include "ElHornoBase.h"
+#include "GraphicsManager.h"
 #include "OgreEntity.h"
 #include <OgreSceneNode.h>
 #include <OgreSceneManager.h>
 #include <OgreVector3.h>
 #include <OgreQuaternion.h>
-#include "ElHornoBase.h"
 #include <iostream>
 
 using namespace Ogre;
@@ -21,7 +22,7 @@ Transform::~Transform()
 
 void Transform::start()
 {
-	node_ = ElHornoBase::getInstance()->getSceneManager()->getRootSceneNode()->createChildSceneNode();
+	node_ = ElHornoBase::getGraphicsManager()->getSceneManager()->getRootSceneNode()->createChildSceneNode();
 	Vector3 position = Vector3(0, 0, 0);
 	Ogre::Vector3 rotation = Vector3(0, 0, 0);
 	Vector3 scale = Vector3(0, 0, 0);

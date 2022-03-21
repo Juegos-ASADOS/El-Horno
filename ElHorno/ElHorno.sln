@@ -11,6 +11,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ElHornoBase", "Projects\ElH
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ElHornoFMOD", "Projects\ElHornoFMOD\ElHornoFMOD.vcxproj", "{934AD8B7-D3A6-4568-B66E-DBF0E75A5B3B}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ElHornoOgre", "Projects\ElHornoOgre\ElHornoOgre.vcxproj", "{6B56414A-6D93-4A8A-940F-255B82FBE4E7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -51,6 +53,14 @@ Global
 		{934AD8B7-D3A6-4568-B66E-DBF0E75A5B3B}.Release|x64.Build.0 = Release|x64
 		{934AD8B7-D3A6-4568-B66E-DBF0E75A5B3B}.Release|x86.ActiveCfg = Release|Win32
 		{934AD8B7-D3A6-4568-B66E-DBF0E75A5B3B}.Release|x86.Build.0 = Release|Win32
+		{6B56414A-6D93-4A8A-940F-255B82FBE4E7}.Debug|x64.ActiveCfg = Debug|x64
+		{6B56414A-6D93-4A8A-940F-255B82FBE4E7}.Debug|x64.Build.0 = Debug|x64
+		{6B56414A-6D93-4A8A-940F-255B82FBE4E7}.Debug|x86.ActiveCfg = Debug|Win32
+		{6B56414A-6D93-4A8A-940F-255B82FBE4E7}.Debug|x86.Build.0 = Debug|Win32
+		{6B56414A-6D93-4A8A-940F-255B82FBE4E7}.Release|x64.ActiveCfg = Release|x64
+		{6B56414A-6D93-4A8A-940F-255B82FBE4E7}.Release|x64.Build.0 = Release|x64
+		{6B56414A-6D93-4A8A-940F-255B82FBE4E7}.Release|x86.ActiveCfg = Release|Win32
+		{6B56414A-6D93-4A8A-940F-255B82FBE4E7}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

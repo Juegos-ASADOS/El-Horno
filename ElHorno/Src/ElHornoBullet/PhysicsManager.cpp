@@ -4,6 +4,7 @@
 #include "btBulletCollisionCommon.h"
 #include "Transform.h"
 
+PhysicsManager* PhysicsManager::instance;
 
 PhysicsManager* PhysicsManager::getInstance()
 {
@@ -74,7 +75,7 @@ void PhysicsManager::addBody(btRigidBody* body)
 * 
 * ---------------------
 * 
-* Máximo de 15 capas de colisión : (usa un short por eso)
+* MÃ¡ximo de 15 capas de colisiÃ³n : (usa un short por eso)
 * 
 */
 void PhysicsManager::addBody(btRigidBody* body, const short& group, const short& layerMask)
@@ -173,17 +174,17 @@ btGhostObject* PhysicsManager::createTrigger(btTransform* tr, btCollisionShape* 
 
 btRigidBody* PhysicsManager::createRigidBody(btTransform* tr, btCollisionShape* shape, const float& mass)
 {
-	//Si la forma es inválida, tira la ejecución
+	//Si la forma es invï¿½lida, tira la ejecuciï¿½n
 	btAssert((!shape || shape->getShapeType() != INVALID_SHAPE_PROXYTYPE));
 
-	//Rigidbody es dinámico si la masa es distinta de cero, si no, estático
+	//Rigidbody es dinï¿½mico si la masa es distinta de cero, si no, estï¿½tico
 	bool isDynamic = (mass != 0.f);
 
 	btVector3 localInertia(0, 0, 0);
 
 	//collisionShapes->push_back(shape);
 
-	//Solo si es dinámico se calcula la inercia
+	//Solo si es dinï¿½mico se calcula la inercia
 	if (isDynamic)
 		shape->calculateLocalInertia(mass, localInertia);
 	
