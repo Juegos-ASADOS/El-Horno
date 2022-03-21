@@ -58,4 +58,6 @@ xcopy /y /s .\expat_d.dll %EXESDEP%
 xcopy /y /s .\pcre.dll %EXESDEP%
 xcopy /y /s .\pcre_d.dll %EXESDEP%
 
+pause
+
 cd %DEPENDENCIESPATH%\..\
