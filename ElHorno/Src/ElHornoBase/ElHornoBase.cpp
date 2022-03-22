@@ -8,6 +8,8 @@
 #include <OgreRTShaderConfig.h>
 #include <OgreRTShaderExports.h>
 #include <OgreRTShaderSystem.h>
+#include <OgreGpuProgramManager.h>
+#include <OgreResourceGroupManager.h>
 
 #include <iostream>
 #include <fstream>
@@ -151,7 +153,7 @@ void ElHornoBase::setup() {
 
 	ogreSceneManager_ = root_->createSceneManager();
 	initRTShaderSystem();
- 	root_->addFrameListener(frameListener_);
+	root_->addFrameListener(frameListener_);
 }
 
 /*
@@ -244,10 +246,63 @@ void ElHornoBase::setupResources()
 		}
 	}
 
-	sec = Ogre::ResourceGroupManager::DEFAULT_RESOURCE_GROUP_NAME;
+	Ogre::ResourceGroupManager::getSingleton().initialiseAllResourceGroups();
+
+	setUpRTSS();
+}
+
+void ElHornoBase::setUpRTSS()
+{
+	Ogre::String sec = Ogre::ResourceGroupManager::DEFAULT_RESOURCE_GROUP_NAME;
 	const Ogre::ResourceGroupManager::LocationList genLocs = Ogre::ResourceGroupManager::getSingleton().getResourceLocationList(sec);
 
-	Ogre::ResourceGroupManager::getSingleton().initialiseAllResourceGroups();
+	Ogre::String arch = genLocs.front().archive->getName();
+	Ogre::String type = genLocs.front().archive->getType();
+
+	// Add locations for supported shader languages
+	if (Ogre::GpuProgramManager::getSingleton().isSyntaxSupported("glsles"))
+	{
+		Ogre::ResourceGroupManager::getSingleton().addResourceLocation(arch + "/materials/programs/GLSLES", type, sec);
+	}
+	else if (Ogre::GpuProgramManager::getSingleton().isSyntaxSupported("glsl"))
+	{
+		Ogre::ResourceGroupManager::getSingleton().addResourceLocation(arch + "/materials/programs/GLSL120", type, sec);
+
+		if (Ogre::GpuProgramManager::getSingleton().isSyntaxSupported("glsl150"))
+		{
+			Ogre::ResourceGroupManager::getSingleton().addResourceLocation(arch + "/materials/programs/GLSL150", type, sec);
+		}
+		else
+		{
+			Ogre::ResourceGroupManager::getSingleton().addResourceLocation(arch + "/materials/programs/GLSL", type, sec);
+		}
+
+		if (Ogre::GpuProgramManager::getSingleton().isSyntaxSupported("glsl400"))
+		{
+			Ogre::ResourceGroupManager::getSingleton().addResourceLocation(arch + "/materials/programs/GLSL400", type, sec);
+		}
+	}
+	else if (Ogre::GpuProgramManager::getSingleton().isSyntaxSupported("hlsl"))
+	{
+		Ogre::ResourceGroupManager::getSingleton().addResourceLocation(arch + "/materials/programs/HLSL", type, sec);
+	}
+
+	Ogre::String mRTShaderLibPath = arch + "/RTShaderLib";
+	Ogre::ResourceGroupManager::getSingleton().addResourceLocation(mRTShaderLibPath + "/materials", type, sec);
+
+	if (Ogre::GpuProgramManager::getSingleton().isSyntaxSupported("glsles"))
+	{
+		Ogre::ResourceGroupManager::getSingleton().addResourceLocation(mRTShaderLibPath + "/GLSL", type, sec);
+		Ogre::ResourceGroupManager::getSingleton().addResourceLocation(mRTShaderLibPath + "/GLSLES", type, sec);
+	}
+	else if (Ogre::GpuProgramManager::getSingleton().isSyntaxSupported("glsl"))
+	{
+		Ogre::ResourceGroupManager::getSingleton().addResourceLocation(mRTShaderLibPath + "/GLSL", type, sec);
+	}
+	else if (Ogre::GpuProgramManager::getSingleton().isSyntaxSupported("hlsl"))
+	{
+		Ogre::ResourceGroupManager::getSingleton().addResourceLocation(mRTShaderLibPath + "/HLSL", type, sec);
+	}
 }
 
 void ElHornoBase::shutdown()
@@ -269,10 +324,16 @@ void ElHornoBase::shutdown()
 void ElHornoBase::initRTShaderSystem()
 {
 	Ogre::RTShader::ShaderGenerator::initialize();
-	
+
 	mShaderGenerator_ = Ogre::RTShader::ShaderGenerator::getSingletonPtr();
-	
+
 	mShaderGenerator_->addSceneManager(ogreSceneManager_);
+
+	// Create and register the material manager listener if it doesn't exist yet.
+	if (!mMaterialMgrListener) {
+		mMaterialMgrListener = new SGTechniqueResolverListener(mShaderGenerator);
+		Ogre::MaterialManager::getSingleton().addListener(mMaterialMgrListener);
+	}
 }
 /*
 Gestion de eventos por input

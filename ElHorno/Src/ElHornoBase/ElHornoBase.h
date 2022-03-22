@@ -13,11 +13,11 @@ namespace Ogre {
 	struct ConfigOption;
 	namespace RTShader {
 		class ShaderGenerator;
-	}
+	};
 };
+class SGTechniqueResolverListener;
 
 // Ogre includes
-
 class SDL_Window;
 class OurFrameListener;
 
@@ -105,6 +105,7 @@ private:
 	void setupWindow();
 	void setupRoot();
 	void setupResources();
+	void setUpRTSS();
 	
 	void shutdown();
 	void pollEvents();
@@ -117,7 +118,9 @@ private:
 	Ogre::Root* root_;
 	Ogre::SceneManager* ogreSceneManager_;
 	Ogre::RenderWindow* ogreWindow_;
+	Ogre::String mRTShaderLibPath;
 	Ogre::RTShader::ShaderGenerator* mShaderGenerator_;
+	SGTechniqueResolverListener* mMaterialMgrListener; // Shader generator material manager listener.
 	// SDL
 	SDL_Window* sdlWindow_;
 

@@ -34,20 +34,8 @@ void Mesh::start()
 		ogreEntity_ = ElHornoBase::getInstance()->getSceneManager()->createEntity(meshName_);
 		castShadow_ = false;
 	}
-	/*if (!args_["material"].is_null())
-	{
-		std::string aux = args_["material"];
-		materialName_ = aux;
-		ogreEntity_->setMaterialName(args_["material"], "Materials");
-	}
-
-	if (!args_["castShadow_"].is_null()) {
-		castShadow_ = args_["castShadow_"];
-		ogreEntity_->setCastShadows(castShadow_);
-	}
-
-	isAnimated_ = ((!args_["isAnimated_"].is_null()) && (args_["isAnimated_"]));*/
-	materialName_ = "";
+	materialName_ = "BombaTeselada";
+	//ogreEntity_->setMaterialName(materialName_);
 	entity_->getComponent<Transform>("transform")->getNode()->attachObject(ogreEntity_); 
 }
 
