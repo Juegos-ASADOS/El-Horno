@@ -32,6 +32,7 @@
     <ClCompile Include="..\..\Src\ElHornoBase\HornoConversions.cpp" />
     <ClCompile Include="..\..\Src\ElHornoBase\Mesh.cpp" />
     <ClCompile Include="..\..\Src\ElHornoBase\OurFrameListener.cpp" />
+    <ClCompile Include="..\..\Src\ElHornoBase\ParticleSystem.cpp" />
     <ClCompile Include="..\..\Src\ElHornoBase\Scene.cpp" />
     <ClCompile Include="..\..\Src\ElHornoBase\SceneManager.cpp" />
     <ClCompile Include="..\..\Src\ElHornoBase\Timer.cpp" />
@@ -52,6 +53,7 @@
     <ClInclude Include="..\..\Src\ElHornoBase\HornoConversions.h" />
     <ClInclude Include="..\..\Src\ElHornoBase\Mesh.h" />
     <ClInclude Include="..\..\Src\ElHornoBase\OurFrameListener.h" />
+    <ClInclude Include="..\..\Src\ElHornoBase\ParticleSystem.h" />
     <ClInclude Include="..\..\Src\ElHornoBase\Scene.h" />
     <ClInclude Include="..\..\Src\ElHornoBase\SceneManager.h" />
     <ClInclude Include="..\..\Src\ElHornoBase\Timer.h" />
