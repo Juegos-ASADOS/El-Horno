@@ -5,14 +5,13 @@ extern "C"
     #include <lua.h>
     #include <lauxlib.h>
     #include <lualib.h>
-    #include <luaconf.h>
-    #include <lua.hpp>
 }
+
+#include "LuaBridge.h"
 
 #include <memory>
 #include <iostream>
 
-#include "LuaBridge.h"
 ElHornoLua* ElHornoLua::instance;
 
 ElHornoLua* ElHornoLua::getInstance()
@@ -45,9 +44,9 @@ void ElHornoLua::init()
     // load standard libs
     luaL_openlibs(luaState);
 
-    // expose the Greeter class to the Lua scripts
+    // expose the Example class to the Lua scripts
     luabridge::getGlobalNamespace(luaState)
-        .beginClass<Example>("Greeter")
+        .beginClass<Example>("Example")
         .addConstructor<void(*) (const std::string&)>()
         .addFunction("getName", &(Example::getName))
         .addFunction("printName", &(Example::printName))
@@ -60,7 +59,7 @@ void ElHornoLua::init()
     lua_setglobal(luaState, "example");
 
     // load some code from Lua file
-    int scriptLoadStatus = luaL_dofile(luaState, "sample.lua");
+    int scriptLoadStatus = luaL_dofile(luaState, "C:/Users/almuf/OneDrive/Documentos/Repos/El-Horno/ElHorno/Src/ElHornoLua/sample.lua");
 
     // define error reporter for any Lua error
     report_errors(luaState, scriptLoadStatus);

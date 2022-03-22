@@ -1,5 +1,5 @@
 example:printName()
 
-local b = Example('moo')
+local b = Example("moo")
 
 b:printName()

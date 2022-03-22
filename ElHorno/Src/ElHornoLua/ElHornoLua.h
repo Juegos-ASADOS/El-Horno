@@ -8,7 +8,7 @@ class lua_State;
 
 class Example {
 public:
-    Example(std::string name) : m_name(name) {}
+    Example(const std::string& name) : m_name(name) {}
 
     std::string getName() const;
 
