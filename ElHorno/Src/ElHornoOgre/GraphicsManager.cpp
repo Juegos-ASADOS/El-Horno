@@ -58,6 +58,7 @@ void GraphicsManager::init()
 
 void GraphicsManager::start()
 {
+	// Si usamos renderOneFrame manualmente esto no es necesario
 	root_->startRendering();
 }
 
@@ -175,6 +176,12 @@ bool GraphicsManager::pollEvents()
 
 	}
 	return false;
+}
+
+void GraphicsManager::render()
+{
+	//Actualiza render targets
+	root_->renderOneFrame();
 }
 
 void GraphicsManager::setConfigOptions()
@@ -429,3 +436,7 @@ float GraphicsManager::getFarShadowDistance()
 	return ogreSceneManager_->getShadowFarDistance();
 }
 
+Ogre::Entity* GraphicsManager::createEntity(std::string meshName) 
+{
+	return ogreSceneManager_->createEntity(meshName);
+}

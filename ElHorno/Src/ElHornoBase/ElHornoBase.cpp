@@ -5,7 +5,7 @@
 #include "ElHornoBase.h"
 #include "PhysicsManager.h"
 #include "InputManager.h"
-#include "ElHornoFMOD.h"
+#include "AudioManager.h"
 #include "GraphicsManager.h"
 #include "OurFrameListener.h"
 #include "FactoryCreator.h"
@@ -135,9 +135,9 @@ void ElHornoBase::setupFactories()
 {
 	FactoryCreator* facCreat = FactoryCreator::getInstance();
 	// Factorías de componentes principales (transform, rigidbody, etc.)
-	facCreat->addFactory("transform", new TransformFactory());
+	/*facCreat->addFactory("transform", new TransformFactory());
 	facCreat->addFactory("camera", new CameraFactory());
-	facCreat->addFactory("mesh", new MeshFactory());
+	facCreat->addFactory("mesh", new MeshFactory());*/
 }
 
 /*OgreRoot llama a frameListener_ que llama a processFrame que actualiza
@@ -158,6 +158,7 @@ void ElHornoBase::processFrame(float deltaTime) {
 
 	//AudioManager::getInstance()->update();
 	//SceneManager::getInstance()->deleteEntities();
+	GraphicsManager::getInstance()->render();
 	//UIManager::getInstance()->update();
 	//SceneManager::getInstance()->endFrame();
 }
@@ -171,14 +172,10 @@ void ElHornoBase::update()
 	GraphicsManager::getInstance()->init();
 
 	while (!exit_) {
-		
 		mainTimer->resetTimer();
 		processFrame(deltaTime);
 
 		deltaTime = mainTimer->getTime();
-
-		std::cout << deltaTime << "\n";
-
 	}
 }
 
@@ -195,6 +192,11 @@ InputManager* ElHornoBase::getInputManager()
 GraphicsManager* ElHornoBase::getGraphicsManager()
 {
 	return GraphicsManager::getInstance();
+}
+
+AudioManager* ElHornoBase::getAudioManager()
+{
+	return AudioManager::getInstance();
 }
 
 /*

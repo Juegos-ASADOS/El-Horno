@@ -3,7 +3,6 @@
 #define _COMPONENT_H
 
 #include <string>
-#include "json.hpp"
 #include "EventListener.h"
 
 class Entity;
@@ -14,9 +13,7 @@ protected:
 	bool active_;
 	Entity* entity_;
 	std::string name_;
-	nlohmann::json args_;
 public:
-	Component(nlohmann::json& args) : args_(args), entity_(nullptr), active_(true) {};
 	Component() : entity_(nullptr), active_(true) {};
 	~Component();
 

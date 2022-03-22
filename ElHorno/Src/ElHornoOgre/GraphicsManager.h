@@ -9,6 +9,7 @@ namespace Ogre {
 	class Root;
 	class SceneManager;
 	class RenderWindow;
+	class Entity;
 	struct ConfigOption;
 };
 
@@ -32,6 +33,7 @@ public:
 	void exit();
 	void setup();
 	bool pollEvents();
+	void render();
 
 	Ogre::Root* getRoot();
 	Ogre::SceneManager* getSceneManager();
@@ -66,6 +68,7 @@ public:
 	float getFarShadowDistance();
 	//void setShadowTechnique(Ogre::ShadowTechnique type);
 	//Ogre::ShadowTechnique getShadowTechnique();
+	Ogre::Entity* createEntity(std::string meshName);
 
 private:
 

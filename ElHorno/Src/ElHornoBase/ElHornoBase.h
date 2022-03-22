@@ -9,6 +9,7 @@
 class SceneManager;
 class InputManager;
 class GraphicsManager;
+class AudioManager;
 
 class ElHornoBase {
 public:
@@ -33,7 +34,7 @@ public:
 	static SceneManager* getSceneManager();
 	static InputManager* getInputManager();
 	static GraphicsManager* getGraphicsManager();
-	//AudioManager* getAudioManager();
+	static AudioManager* getAudioManager();
 
 	// Esto ahora lo lleva Timer (excepto deltaTime que lo lleva el bucle)
 	/*float getTime();

@@ -14,6 +14,7 @@ class btCollisionShape;
 class btCollisionObject;
 class btGhostObject;
 class btTransform;
+class btVector3;
 
 template<typename T>
 class btAlignedObjectArray;
@@ -42,11 +43,22 @@ public:
 	btGhostObject* createTrigger(btTransform* tr, btCollisionShape* shape, int& userIdx);
 	btCollisionShape* createShape(Transform* tra, ColliderShape sha);
 	
+	//Para añadir al mundo de Bullet rigidbodies
 	void addBody(btRigidBody* body);
 	void addBody(btRigidBody* body, const short& group, const short& layerMask);
+	
+	//Para objetos que no son rigidbodies
+	void addCollisionObject(btCollisionObject* col);
 	void addCollisionObject(btCollisionObject* col, const short& group, const short& layerMask);
 
+	void removeBody(btRigidBody* body);
 	void deleteBody(btRigidBody* body);
+
+	void removeCollisionObject(btCollisionObject* body);
+
+	void deleteCollisionObject(btCollisionObject* body);
+
+	void setGravity(const btVector3& g);
 private:
 	static PhysicsManager* instance;
 
@@ -56,6 +68,8 @@ private:
 	float fixedTimeStep = 0.0f;
 
 	int userIdxCount = 0;
+
+	btVector3* gravity = nullptr;
 
 	btDiscreteDynamicsWorld* world;
 	btDispatcher* dispatcher;

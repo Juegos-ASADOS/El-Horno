@@ -8,8 +8,8 @@ class btRigidBody;
 class btTransform;
 class btCollisionShape;
 class btCollisionObject;
-class PhysicsManager;
 
+class PhysicsManager;
 class Transform;
 
 union rb_union
@@ -27,11 +27,22 @@ public:
 	virtual void start() override;
 	virtual void update() override;
 
+	inline float getFriction() const { return friction; };
+	inline float getRestitution() const { return restitution; };
+	inline float getMass() const { return mass; };
 
+
+	void setFriction(const float& f);
+	void setRestitution(const float& r);
+	void setMass(const float& m);
 private:
 	//Masa por defecto 
 	//[DINÁMICO > 0 | ESTÁTICO == 0]
 	float mass = 1.0f;
+
+	float friction;
+
+	float restitution;
 
 	bool isTrigger = false;
 	
