@@ -15,12 +15,12 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\Src\ElHornoFMOD\ElHornoFMOD.cpp">
+    <ClCompile Include="..\..\Src\ElHornoFMOD\AudioManager.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\Src\ElHornoFMOD\ElHornoFMOD.h">
+    <ClInclude Include="..\..\Src\ElHornoFMOD\AudioManager.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
   </ItemGroup>

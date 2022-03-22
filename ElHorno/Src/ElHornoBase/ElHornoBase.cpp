@@ -187,6 +187,11 @@ GraphicsManager* ElHornoBase::getGraphicsManager()
 	return GraphicsManager::getInstance();
 }
 
+AudioManager* ElHornoBase::getAudioManager()
+{
+	return AudioManager::getInstance();
+}
+
 /*
 Devuelve el timer que lleva el frameRenderer para ejecutar el ciclo de juego
 */
