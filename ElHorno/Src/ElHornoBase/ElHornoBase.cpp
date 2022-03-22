@@ -5,7 +5,7 @@
 #include "ElHornoBase.h"
 #include "PhysicsManager.h"
 #include "InputManager.h"
-#include "ElHornoFMOD.h"
+#include "AudioManager.h"
 #include "GraphicsManager.h"
 #include "OurFrameListener.h"
 #include "FactoryCreator.h"
@@ -185,6 +185,11 @@ InputManager* ElHornoBase::getInputManager()
 GraphicsManager* ElHornoBase::getGraphicsManager()
 {
 	return GraphicsManager::getInstance();
+}
+
+AudioManager* ElHornoBase::getAudioManager()
+{
+	return AudioManager::getInstance();
 }
 
 /*
