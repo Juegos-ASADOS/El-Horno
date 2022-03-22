@@ -4,9 +4,9 @@
 
 #include <string>
 #include "Component.h"
+#include <OgreVector3.h>
 
 namespace Ogre {
-	class Vector3;
 }
 
 class AudioComponent : public Component

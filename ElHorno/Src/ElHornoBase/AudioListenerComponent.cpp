@@ -8,6 +8,7 @@
 #include "Entity.h"
 #include "AudioManager.h"
 #include "HornoConversions.h"
+#include "fmod.h"
 
 AudioListenerComponent::AudioListenerComponent() {}
 

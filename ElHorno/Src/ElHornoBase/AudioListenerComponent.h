@@ -4,13 +4,9 @@
 
 #include <string>
 #include "Component.h"
+#include <OgreVector3.h>
 
 namespace Ogre {
-	/*class AxisAlignedBox;
-	class Entity;
-	class Mesh;*/
-	//class Camera;
-	class Vector3;
 }
 
 class AudioListenerComponent : public Component

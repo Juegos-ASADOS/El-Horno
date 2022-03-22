@@ -4,14 +4,15 @@
 #include "fmod.hpp"
 #include "fmod.h"
 
-//#include "fmod_errors.h"
+#include "fmod_common.h"
+
 #include <iostream>
 #include <vector>
-//#include <math.h>
 
 
 using namespace FMOD;
 AudioManager* AudioManager::instance_;
+Implementation* AudioManager::sgpImplementation;
 
 Implementation::Implementation()
 {
@@ -146,7 +147,7 @@ void AudioManager::UnLoadSound(const std::string& strSoundName)
 	sgpImplementation->mSounds.erase(tFoundIt);
 }
 
-int AudioManager::PlaySound(const std::string& strSoundName, const FMOD_VECTOR& vPosition, float fVolumedB)
+int AudioManager::PlaySound(const std::string& strSoundName, const FMOD_VECTOR& vPosition = { 0, 0, 0 }, float fVolumedB = 0.0f)
 {
 	int nChannelId = sgpImplementation->mnNextChannelId++;
 	auto tFoundIt = sgpImplementation->mSounds.find(strSoundName);

@@ -1,17 +1,25 @@
 #pragma once
-#ifndef _FMOD_H
-#define _FMOD_H
+#ifndef _AUDIO_MANAGER_AUDIO_MANAGER_H
+#define _AUDIO_MANAGER_AUDIO_MANAGER_H
 
 #include <string>
 #include <map>
 
+struct FMOD_VECTOR;
+enum FMOD_RESULT;
 
 namespace FMOD {
 	class ChannelGroup;
 	class Channel;
 	class System;
-	class fmod_studio;
+	class Sound;
+	namespace Studio {
+		class System;
+		class Bank;
+	}
 }
+
+
 
 class Implementation {
 public:
@@ -50,8 +58,8 @@ public:
 	//void LoadEvent(const string& strEventName);
 	void Loadsound(const std::string& strSoundName, bool b3d = true, bool bLooping = false, bool bStream = false);
 	void UnLoadSound(const std::string& strSoundName);
-	void Set3dListenerAndOrientation(const FMOD_VECTOR& vPos = { 0, 0, 0 }, float fVolumedB = 0.0f);
-	int PlaySound(const std::string& strSoundName, const FMOD_VECTOR& vPos = { 0, 0, 0 }, float fVolumedB = 0.0f);
+	//void Set3dListenerAndOrientation(const FMOD_VECTOR& vPos = { 0, 0, 0 }, float fVolumedB = 0.0f);
+	int PlaySound(const std::string& strSoundName, const FMOD_VECTOR& vPos, float fVolumedB);
 	//void PlayEvent(const string& strEventName);
 	void StopChannel(int nChannelId);
 	//void StopEvent(const string& strEventName, bool bImmediate = false);
@@ -65,7 +73,7 @@ public:
 	float dbToVolume(float db);
 	float VolumeTodb(float volume);
 
-	int ErrorCheck(FMOD_RESULT result);
+	//int ErrorCheck(FMOD_RESULT result);
 
 	void updateListener(int Listener, const FMOD_VECTOR& position, const FMOD_VECTOR& velocity, const FMOD_VECTOR& forward, const FMOD_VECTOR& up);
 	void updateSound(const FMOD_VECTOR& position, const FMOD_VECTOR& velocity, int channel);
@@ -75,4 +83,4 @@ private:
 	static AudioManager* instance_;
 };
 
-#endif _FMOD_H
+#endif _AUDIO_MANAGER_AUDIO_MANAGER_H

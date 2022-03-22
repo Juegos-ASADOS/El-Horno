@@ -5,7 +5,7 @@
 #include "ElHornoBase.h"
 #include "PhysicsManager.h"
 #include "InputManager.h"
-#include "ElHornoFMOD.h"
+#include "AudioManager.h"
 #include "GraphicsManager.h"
 #include "OurFrameListener.h"
 #include "FactoryCreator.h"
