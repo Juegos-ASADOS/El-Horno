@@ -3,6 +3,8 @@
 #include "OgreVector3.h"
 #include "btBulletCollisionCommon.h"
 
+#include "fmod_common.h"
+
 btVector3 VectorToBullet(const Ogre::Vector3& v)
 {
 	return btVector3(v.x, v.y, v.z);
@@ -11,6 +13,15 @@ btVector3 VectorToBullet(const Ogre::Vector3& v)
 Ogre::Vector3 VectorToOgre(const btVector3& v)
 {
 	return Ogre::Vector3(v.x(), v.y(), v.z());
+}
+
+FMOD_VECTOR VectorToFmod(const Ogre::Vector3& vPosition)
+{
+	FMOD_VECTOR fVec;
+	fVec.x = vPosition.x;
+	fVec.y = vPosition.y;
+	fVec.z = vPosition.z;
+	return fVec;
 }
 
 btQuaternion QuaternionToBullet(const Ogre::Quaternion& q)

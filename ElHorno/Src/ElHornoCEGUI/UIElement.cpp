@@ -95,6 +95,11 @@ float UIElement::getAlpha()
 	return elementInterface->getAlpha();
 }
 
+CEGUI::Window* UIElement::getWindowElement()
+{
+	return elementInterface;
+}
+
 void UIElement::addChild(CEGUI::Window* windowChild)
 {
 	elementInterface->addChild(windowChild);

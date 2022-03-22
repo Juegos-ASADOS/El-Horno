@@ -19,10 +19,10 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\Src\ElHornoFMOD\ElHornoFMOD.cpp" />
+    <ClCompile Include="..\..\Src\ElHornoFMOD\AudioManager.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\Src\ElHornoFMOD\ElHornoFMOD.h" />
+    <ClInclude Include="..\..\Src\ElHornoFMOD\AudioManager.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>

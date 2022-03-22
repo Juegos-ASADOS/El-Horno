@@ -40,6 +40,7 @@ public:
 
 	float getAlpha();
 
+	CEGUI::Window* getWindowElement();
 
 	void addChild(CEGUI::Window* windowChild);
 	UIElement getChild(const std::string & childNamePath);
