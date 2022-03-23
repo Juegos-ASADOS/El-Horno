@@ -11,8 +11,9 @@ namespace CEGUI {
 	class Window;
 	class OgreRenderer;
 	class WindowManager;
+	class DefaultWindow;
+	class GUIContext;
 }
-
 
 namespace Ogre {
 	class RenderWindow;
@@ -26,24 +27,28 @@ private:
 
 	static UIManager* instance;
 
-	//Canvas +/-
-	UIElement* root;
 
 	CEGUI::WindowManager* winMngr;
 	CEGUI::OgreRenderer* renderer;
+
 	//Para diferenciar las capas
 	std::vector<CEGUI::Window*> layouts;
 
+
+	CEGUI::DefaultWindow* root;
+	CEGUI::GUIContext* guiContext;
 public:
 
 	~UIManager();
 
 	static UIManager* getInstance();
 	static bool setupInstance(Ogre::RenderWindow* window);
+	void setUpResources();
 	static void clean();
 
 
 	void createRoot();
+	void createContext();
 
 	void changeScreenSize(int width,int height);
 	//Para añadir los eventos a los botones
@@ -61,7 +66,7 @@ public:
 
 	//Eventos
 
-	UIElement* getRoot();
+	CEGUI::DefaultWindow* getRoot();
 
 	//Para coger la ventana que quieras
 	CEGUI::Window* getWindow(const std::string & name);
