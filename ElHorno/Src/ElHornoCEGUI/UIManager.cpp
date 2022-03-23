@@ -14,12 +14,9 @@ UIManager::UIManager(Ogre::RenderWindow* renderWindow)
 	CEGUI::OgreRenderer& auxiliar = CEGUI::OgreRenderer::bootstrapSystem(*renderWindow);
 	renderer = &auxiliar;
 
-
 	setUpResources();
 
-	createRoot();
-	
-	
+	createRoot();	
 }
 
 UIManager::~UIManager()
@@ -65,6 +62,19 @@ void UIManager::createRoot()
 
 void UIManager::createContext()
 {
+	//Seleccionamos el RenderTarget que usamos de ogre que usamos de Root de Renderizado
+	renderer = &CEGUI::OgreRenderer::bootstrapSystem(*GraphicsManager::getInstance()->getRenderWindow());
+
+	//Creo que se crea así
+	guiContext = &CEGUI::System::getSingleton().createGUIContext(renderer->getDefaultRenderTarget());
+}
+
+void UIManager::deleteContext()
+{
+	//Eliminamos todas las ventanas, destruimos el GUIContext y el render de ogre
+	winMngr->destroyAllWindows();
+	CEGUI::System::getSingleton().destroyGUIContext(*guiContext);
+	renderer->destroySystem();
 }
 
 void UIManager::changeScreenSize(int width, int height)
@@ -81,7 +91,7 @@ void UIManager::changeText(CEGUI::Window* window, std::string text)
 	window->setText(text);
 }
 
-//Para cambiar el ratón
+//Para cambiar la imagen del ratón
 void UIManager::setMouseCursor(const std::string& imageFile)
 {
 	CEGUI::System::getSingleton().getDefaultGUIContext().getMouseCursor().setDefaultImage(imageFile);

@@ -27,11 +27,10 @@ private:
 
 	static UIManager* instance;
 
-
 	CEGUI::WindowManager* winMngr;
 	CEGUI::OgreRenderer* renderer;
 
-	//Para diferenciar las capas
+	//HABRÁ QUE QUITAR ESTO E INFORMARSE DE LOS CEGUI::LAYOUTS
 	std::vector<CEGUI::Window*> layouts;
 
 
@@ -46,12 +45,15 @@ public:
 	void setUpResources();
 	static void clean();
 
-
 	void createRoot();
 	void createContext();
+	void deleteContext();
+	//void shutdown?¿ cerrar el context y resetear la instancia?
 
+	//INVESTIGAR FRAMEWINDOW
 	void changeScreenSize(int width,int height);
-	//Para añadir los eventos a los botones
+
+	//Para añadir los eventos a los botones???
 	//void setEvents(CEGUI::PushButton* button, CALLBACK DE FUNCION);
 
 	void update();
@@ -64,21 +66,25 @@ public:
 	void showMouseCursor();
 	void hideMouseCursor();
 
-	//Eventos
 
 	CEGUI::DefaultWindow* getRoot();
 
-	//Para coger la ventana que quieras
+	//Para coger la entidad que quieras
 	CEGUI::Window* getWindow(const std::string & name);
 
 	CEGUI::WindowManager* getWinMngr();
-	void setVisibleLayout(bool visible, int layout);
 
+	//Habrá que modificarlo por el vector de windows provisional
+	void setVisibleLayout(bool visible, int layout);
+	std::vector<CEGUI::Window*> getLayouts();
+
+
+
+	//Cambiar la transparencia de una entidad
 	void changeAlpha(const std::string & image ,float alpha);
 	float getAlpha(const std::string & namePath);
 
 
-	std::vector<CEGUI::Window*> getLayouts();
 };
 
 #endif _UI_MANAGER_H
