@@ -10,6 +10,7 @@ class SceneManager;
 class InputManager;
 class GraphicsManager;
 class AudioManager;
+class Timer;
 
 class ElHornoBase {
 public:
@@ -40,6 +41,7 @@ public:
 	/*float getTime();
 	float deltaTime();
 	void resetTimer();*/
+	Timer* getGlobalTime();
 
 	void pause();
 	bool isPaused();
@@ -67,6 +69,8 @@ private:
 		invertedAxisX_,
 		invertedAxisY_,
 		exit_;
+
+	Timer* globalTimer_;
 
 	nlohmann::json ExtraConfig;
 };

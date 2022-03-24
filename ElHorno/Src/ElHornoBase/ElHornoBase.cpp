@@ -166,16 +166,16 @@ void ElHornoBase::processFrame(float deltaTime) {
 void ElHornoBase::update()
 {
 	exit_ = false;
-	Timer* mainTimer = new Timer();
+	globalTimer_ = new Timer();
 	float deltaTime = 0;
 
 	GraphicsManager::getInstance()->init();
 
 	while (!exit_) {
-		mainTimer->resetTimer();
+		globalTimer_->resetTimer();
 		processFrame(deltaTime);
 
-		deltaTime = mainTimer->getTime();
+		deltaTime = globalTimer_->getTime();
 	}
 }
 
@@ -278,4 +278,12 @@ volume de audio manager)
 void ElHornoBase::changeBasicOptions()
 {
 
+}
+
+/*
+* Devuelve el Timer global del proyecto
+*/
+Timer* ElHornoBase::getGlobalTime()
+{
+	return globalTimer_;
 }
