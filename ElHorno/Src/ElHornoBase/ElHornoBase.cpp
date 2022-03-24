@@ -149,7 +149,7 @@ void ElHornoBase::processFrame(float deltaTime) {
 	// Updates de managers
 	if (!paused_) {
 		//SceneManager::getInstance()->preUpdate();
-		PhysicsManager::getInstance()->update(deltaTime);
+		//PhysicsManager::getInstance()->update(deltaTime);
 		//SceneManager::getInstance()->update();
 	}
 	else {
@@ -159,7 +159,7 @@ void ElHornoBase::processFrame(float deltaTime) {
 	//AudioManager::getInstance()->update();
 	GraphicsManager::getInstance()->render();
 	//UIManager::getInstance()->update();
-	SceneManager::getInstance()->deleteEntities();
+	//SceneManager::getInstance()->deleteEntities();
 	//SceneManager::getInstance()->endFrame();
 }
 

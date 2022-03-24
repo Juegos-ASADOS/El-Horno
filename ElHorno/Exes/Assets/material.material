@@ -1,0 +1,35 @@
+vertex_program DefaultVS glsl
+{ 
+	source DefaultVS.glsl
+	default_params{
+		param_named_auto modelViewProjMat worldviewproj_matrix
+	}
+}
+
+fragment_program DefaultFS glsl
+{ 
+	source DefaultFS.glsl
+	default_params
+	{
+	
+	}
+}
+
+
+material Sandokan {
+	technique {
+		pass {
+			vertex_program_ref DefaultVS 
+			{
+			}
+			fragment_program_ref DefaultFS 
+			{
+			}
+			texture_unit { 
+				texture carlosbolon.jpg 2d // archivo
+				tex_address_mode wrap // sólo configuración
+			}
+		} 
+	} 
+}
+
