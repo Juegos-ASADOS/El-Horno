@@ -96,7 +96,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)Src\ElHornoOgre;$(SolutionDir)dependencies\Ogre\Src\OgreMain\include;$(SolutionDir)dependencies\cegui\build\cegui\include;$(SolutionDir)dependencies\Ogre\Build\include;$(SolutionDir)dependencies\cegui\Src\cegui\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)Src\ElHornoBase;$(SolutionDir)Src\ElHornoOgre;$(SolutionDir)dependencies\Ogre\Src\OgreMain\include;$(SolutionDir)dependencies\cegui\build\cegui\include;$(SolutionDir)dependencies\Ogre\Build\include;$(SolutionDir)dependencies\cegui\Src\cegui\include</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -114,7 +114,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)Src\ElHornoOgre;$(SolutionDir)dependencies\Ogre\Src\OgreMain\include;$(SolutionDir)dependencies\cegui\build\cegui\include;$(SolutionDir)dependencies\Ogre\Build\include;$(SolutionDir)dependencies\cegui\Src\cegui\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)Src\ElHornoBase;$(SolutionDir)Src\ElHornoOgre;$(SolutionDir)dependencies\Ogre\Src\OgreMain\include;$(SolutionDir)dependencies\cegui\build\cegui\include;$(SolutionDir)dependencies\Ogre\Build\include;$(SolutionDir)dependencies\cegui\Src\cegui\include</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -132,7 +132,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)Src\ElHornoOgre;$(SolutionDir)dependencies\Ogre\Src\OgreMain\include;$(SolutionDir)dependencies\cegui\build\cegui\include;$(SolutionDir)dependencies\Ogre\Build\include;$(SolutionDir)dependencies\cegui\Src\cegui\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)Src\ElHornoBase;$(SolutionDir)Src\ElHornoOgre;$(SolutionDir)dependencies\Ogre\Src\OgreMain\include;$(SolutionDir)dependencies\cegui\build\cegui\include;$(SolutionDir)dependencies\Ogre\Build\include;$(SolutionDir)dependencies\cegui\Src\cegui\include</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -150,7 +150,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)Src\ElHornoOgre;$(SolutionDir)dependencies\Ogre\Src\OgreMain\include;$(SolutionDir)dependencies\cegui\build\cegui\include;$(SolutionDir)dependencies\Ogre\Build\include;$(SolutionDir)dependencies\cegui\Src\cegui\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)Src\ElHornoBase;$(SolutionDir)Src\ElHornoOgre;$(SolutionDir)dependencies\Ogre\Src\OgreMain\include;$(SolutionDir)dependencies\cegui\build\cegui\include;$(SolutionDir)dependencies\Ogre\Build\include;$(SolutionDir)dependencies\cegui\Src\cegui\include</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -163,11 +163,13 @@
     </Lib>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\Src\ElHornoCEGUI\UIPushButton.h" />
     <ClInclude Include="..\..\Src\ElHornoCEGUI\UIElement.h" />
     <ClInclude Include="..\..\Src\ElHornoCEGUI\UIManager.h" />
     <ClInclude Include="ElHornoCEGUI.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\Src\ElHornoCEGUI\UIPushButton.cpp" />
     <ClCompile Include="..\..\Src\ElHornoCEGUI\UIElement.cpp" />
     <ClCompile Include="..\..\Src\ElHornoCEGUI\UIManager.cpp" />
     <ClCompile Include="ElHornoCEGUI.cpp" />
