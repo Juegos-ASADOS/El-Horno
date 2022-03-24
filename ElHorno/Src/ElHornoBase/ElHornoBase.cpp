@@ -13,7 +13,7 @@
 #include "Scene.h"
 #include "Factory.h"
 #include "Timer.h"
-#include "ElHornoLua.h"
+#include "LuaManager.h"
 
 using json = nlohmann::json;
 
@@ -72,7 +72,7 @@ void ElHornoBase::init() {
 	InputManager::setupInstance();
 
 	//HornoLua
-	//ElHornoLua::setupInstance();
+	LuaManager::setupInstance();
 
 
 }
@@ -83,7 +83,9 @@ Ejecuta el start del SceenManager y comienza el renderizado de Ogre
 void ElHornoBase::start()
 {
 	//SceneManager::getInstance()->getCurrentScene()->start();
-	//ElHornoLua::getInstance()->init();
+	LuaManager::getInstance()->init();
+
+	LuaManager::getInstance()->reedLuaScript("Assets/Scripts/sample.lua");
 }
 
 /*

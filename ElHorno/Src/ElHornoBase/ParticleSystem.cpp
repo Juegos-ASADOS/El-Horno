@@ -9,7 +9,7 @@
 #include "Entity.h"
 #include "Scene.h"
 
-ParticleSystem::ParticleSystem(std::string& name, std::string& temp, float timelim, bool destroyTL)
+ParticleSystem::ParticleSystem(const std::string& name, const std::string& temp, float timelim, bool destroyTL)
 {
 	particleSystemName_ = name;
 	particleSystemTemplate_ = temp;

@@ -13,7 +13,7 @@ class ParticleSystem : public Component
 {
 public:
 
-	ParticleSystem(std::string& name, std::string& temp, float timelim, bool destroyTL);
+	ParticleSystem(const std::string& name,const std::string& temp, float timelim, bool destroyTL);
 	~ParticleSystem();
 
 	void start() override;
