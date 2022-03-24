@@ -80,44 +80,79 @@ Entity* Scene::addEntity(const std::string& name, const std::string& layer)
 	return e;
 }
 
+/*
+Recorre las layers y sus entidades hasta encontrar la entidad
+de nombre "name", entonces la añade al vector de entidades a
+destruir.
+
+Devuelve false si no la encuentra
+*/
 bool Scene::deleteEntity(const std::string& name)
 {
-	//auto it = entities_.find(name);
-	//if (it != entities_.end()) {
-	//	entitiesToDestroy_.insert(*it);
-	//	return true;
-	//}
+	// Recorre layers
+	auto it = entities_.begin();
+	while (it != entities_.end()) {
+		// Recorre vector de entidades
+		for (int i = 0; i < it->second.size(); i++) {
+			Entity* ent = it->second[i];
+
+			if (ent->getName() == name) {
+				// Mete la entidad al vector de entidades a destruir
+				entitiesToDestroy_.push_back({ it->first, ent });
+				return true;
+			}
+		}
+	}
 
 	return false;
 }
 
+/*
+Elimina las entidades del vector a de entidades a destruir y
+las borra de los vectores pertinentes
+*/
 void Scene::deleteInstances()
 {
-	//for (auto it = entitiesToDestroy_.begin(); it != entitiesToDestroy_.end();)
-	//{
-	//	auto aux = it;
-	//	auto originalEntity = entitiesToDestroy_.find(it->first);
-	//	aux++;
+	// Elementos a borrar
+	for (int i = 0; i < entitiesToDestroy_.size(); i++)
+	{
+		if (entitiesToDestroy_[i].second->dontDestroyOnLoad) {
+			entitiesToDestroy_.erase(entitiesToDestroy_.begin() + i);
+			i--;
+			continue;
+		}
 
-	//	if (it->second->dontDestroyOnLoad) {
-	//		it = aux;
-	//		continue;
-	//	}
-	//	delete it->second;
-	//	it->second = nullptr;
-	//	entitiesToDestroy_.erase(it);
+		// Obtiene la layer
+		auto it = entities_.find(entitiesToDestroy_[i].first);
 
-	//	// recorrer layers
-	//	entities_.erase(originalEntity);
-	//	it = aux;
-	//}
+		if (it != entities_.end()) {
+			int e = 0;
+			bool found = false;
+
+			// Busca la entidad a borrar
+			while (e < it->second.size() && !found) {
+
+				// Si la encuentra, se elimina en ambos vectores
+				if (it->second[e] == entitiesToDestroy_[i].second) {
+					delete it->second[e];
+
+					entitiesToDestroy_.erase(entitiesToDestroy_.begin() + i);
+					it->second.erase(it->second.begin() + e);
+
+					i--;
+					found = true;
+				}
+				e++;
+			}
+		}
+	}
 }
 
 void Scene::start()
 {
 	auto iter = entities_.begin();
 	while (iter != entities_.end()) {
-		for(Entity* e : iter->second)
+		for (Entity* e : iter->second)
 			if (e->isActive()) e->start();
 		iter++;
 	}

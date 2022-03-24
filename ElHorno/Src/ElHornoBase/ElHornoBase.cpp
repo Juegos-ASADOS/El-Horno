@@ -157,9 +157,9 @@ void ElHornoBase::processFrame(float deltaTime) {
 	}
 
 	//AudioManager::getInstance()->update();
-	//SceneManager::getInstance()->deleteEntities();
 	GraphicsManager::getInstance()->render();
 	//UIManager::getInstance()->update();
+	SceneManager::getInstance()->deleteEntities();
 	//SceneManager::getInstance()->endFrame();
 }
 
