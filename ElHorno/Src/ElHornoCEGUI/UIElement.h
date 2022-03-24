@@ -3,25 +3,27 @@
 #define _UI_ELEMENT_H
 
 #include <string>
-
+#include <Component.h>
 namespace CEGUI {
 	class Window;
 }
 
-class UIElement
+//AHORA LA UIElement hereda de Component
+class UIElement: Component
 {
-
-private:
-	UIElement(CEGUI::Window* window);
+protected:
+	UIElement();
 
 	//Entidad de la interfaz
 	CEGUI::Window* elementInterface;
-public:
 
 	CEGUI::Window* getElement();
-	~UIElement();
+	virtual ~UIElement();
 
 	//Metodos iguales que una entidad/transform
+
+	//ELIMINAR ESTAS VAINAS
+
 
 	void setPos(int x, int y);
 	void setSize(int x,int y);
@@ -35,6 +37,9 @@ public:
 	float getPosYscale();
 	float getPosXoffset();
 	float getPosYoffset();
+	//------------------
+
+
 	float getPivotCenterX();
 	float getPivotCenterY();
 
@@ -43,14 +48,11 @@ public:
 	CEGUI::Window* getWindowElement();
 
 	void addChild(CEGUI::Window* windowChild);
-	UIElement getChild(const std::string & childNamePath);
-	UIElement getChildByIndex(int index);
+	CEGUI::Window* getChild(const std::string & childNamePath);
+	CEGUI::Window* getChildByIndex(int index);
 
 	bool isActive();
 	void setActive(bool valor);
-
-	//Hacemos como las entidades y le metemos hijos y que hereden de un padre X?
-	//Hay metodos en Cegui que sirven para saber facilmete si una ventana es objeto de otra etc
 };
 
 #endif _UI_ELEMENT_H

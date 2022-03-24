@@ -11,6 +11,7 @@
 Mesh::Mesh(std::string name, bool castShadow, bool isAnimated)
 {
 	meshName_ = name + ".mesh";
+	//materialName_ = name + ".mesh";
 	materialName_ = name + ".mesh";
 	castShadow_ = castShadow;
 	isAnimated_ = isAnimated;
@@ -37,7 +38,8 @@ Se le adjunta al nodo del transform
 void Mesh::start()
 {
 	ogreEntity_ = ElHornoBase::getInstance()->getGraphicsManager()->createEntity(meshName_);
-	ogreEntity_->setMaterialName(materialName_);
+	//ogreEntity_->setMaterialName(materialName_);
+	ogreEntity_->setMaterialName("Sandokan");
 	ogreEntity_->setCastShadows(castShadow_);
 	entity_->getComponent<Transform>("transform")->getNode()->attachObject(ogreEntity_); 
 }

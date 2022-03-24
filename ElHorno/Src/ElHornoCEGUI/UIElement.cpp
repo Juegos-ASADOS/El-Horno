@@ -2,9 +2,9 @@
 
 #include <CEGUI/CEGUI.h>
 
-UIElement::UIElement(CEGUI::Window* window)
+UIElement::UIElement()
 {
-	elementInterface = window;
+
 }
 
 CEGUI::Window* UIElement::getElement()
@@ -22,6 +22,7 @@ void UIElement::setPos(int x, int y)
 	elementInterface->setPosition(CEGUI::UVector2(CEGUI::UDim(0,x),CEGUI::UDim(0,y)));
 }
 
+//No tocar estos 3 metodos
 void UIElement::setSize(int x, int y)
 {
 	elementInterface->setSize(CEGUI::USize(CEGUI::UDim(x, 0), CEGUI::UDim(y, 0)));
@@ -105,12 +106,12 @@ void UIElement::addChild(CEGUI::Window* windowChild)
 	elementInterface->addChild(windowChild);
 }
 
-UIElement UIElement::getChild(const std::string& namePath)
+CEGUI::Window* UIElement::getChild(const std::string& namePath)
 {
 	return elementInterface->getChild(namePath);
 }
 
-UIElement UIElement::getChildByIndex(int index)
+CEGUI::Window* UIElement::getChildByIndex(int index)
 {
 	//VIGILAR ESTO CON EL GETCHILDCOUNT
 	return elementInterface->getChildAtIdx(index);

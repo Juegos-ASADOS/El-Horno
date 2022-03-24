@@ -21,6 +21,7 @@ public:
 	Ogre::Vector3 getPosition();
 	Ogre::Vector3 getScale();
 	Ogre::Quaternion getRotation();
+	Ogre::SceneNode* getNode() { return node_; }
 
 	// Setters
 	void setPosition(Ogre::Vector3 pos);
@@ -28,7 +29,6 @@ public:
 	void setRotation(Ogre::Quaternion rot);
 	void lookAt(Ogre::Vector3 targetPos);
 
-	Ogre::SceneNode* getNode() { return node_; }
 private:
 	// Nodo de ogre base
 	Ogre::SceneNode* node_ = nullptr;

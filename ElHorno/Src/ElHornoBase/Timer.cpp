@@ -4,7 +4,6 @@
 Timer::Timer()
 {
 	resetTimer();
-	originalTime_ = firstTime_;
 }
 
 Timer::~Timer()
@@ -14,7 +13,7 @@ Timer::~Timer()
 // Tiempo que lleva el programa en ejecución en segundos
 double Timer::getExeTime()
 {
-	return (double)GetTickCount64() / 1000.0;// -originalTime_;
+	return (double)GetTickCount64() / 1000.0;
 }
 
 // Tiempo desde firstTime_ (desde que se resetea el timer)

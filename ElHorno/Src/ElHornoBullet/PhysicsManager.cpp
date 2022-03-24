@@ -42,9 +42,9 @@ void PhysicsManager::start(const std::string& initialScene)
 */
 void PhysicsManager::update(const float& dt)
 {
-	if (world) {
+	/*if (world) {
 		world->stepSimulation(dt);
-	}
+	}*/
 }
 
 void PhysicsManager::updateDebug(const int& debugFlags)

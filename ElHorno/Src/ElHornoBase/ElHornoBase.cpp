@@ -151,7 +151,7 @@ void ElHornoBase::processFrame(float deltaTime) {
 	// Updates de managers
 	if (!paused_) {
 		//SceneManager::getInstance()->preUpdate();
-		PhysicsManager::getInstance()->update(deltaTime);
+		//PhysicsManager::getInstance()->update(deltaTime);
 		//SceneManager::getInstance()->update();
 	}
 	else {
@@ -159,25 +159,25 @@ void ElHornoBase::processFrame(float deltaTime) {
 	}
 
 	//AudioManager::getInstance()->update();
-	//SceneManager::getInstance()->deleteEntities();
 	GraphicsManager::getInstance()->render();
 	//UIManager::getInstance()->update();
+	//SceneManager::getInstance()->deleteEntities();
 	//SceneManager::getInstance()->endFrame();
 }
 
 void ElHornoBase::update()
 {
 	exit_ = false;
-	Timer* mainTimer = new Timer();
+	globalTimer_ = new Timer();
 	float deltaTime = 0;
 
 	GraphicsManager::getInstance()->init();
 
 	while (!exit_) {
-		mainTimer->resetTimer();
+		globalTimer_->resetTimer();
 		processFrame(deltaTime);
 
-		deltaTime = mainTimer->getTime();
+		deltaTime = globalTimer_->getTime();
 	}
 }
 
@@ -280,4 +280,12 @@ volume de audio manager)
 void ElHornoBase::changeBasicOptions()
 {
 
+}
+
+/*
+* Devuelve el Timer global del proyecto
+*/
+Timer* ElHornoBase::getGlobalTime()
+{
+	return globalTimer_;
 }

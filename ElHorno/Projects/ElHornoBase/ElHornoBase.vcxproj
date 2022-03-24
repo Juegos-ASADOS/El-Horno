@@ -19,6 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\Src\ElHornoBase\AnimatorController.cpp" />
     <ClCompile Include="..\..\Src\ElHornoBase\AudioComponent.cpp" />
     <ClCompile Include="..\..\Src\ElHornoBase\AudioListenerComponent.cpp" />
     <ClCompile Include="..\..\Src\ElHornoBase\CameraComponent.cpp" />
@@ -39,6 +40,7 @@
     <ClCompile Include="..\..\Src\ElHornoBase\Transform.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\Src\ElHornoBase\AnimatorController.h" />
     <ClInclude Include="..\..\Src\ElHornoBase\AudioComponent.h" />
     <ClInclude Include="..\..\Src\ElHornoBase\AudioListenerComponent.h" />
     <ClInclude Include="..\..\Src\ElHornoBase\CameraComponent.h" />

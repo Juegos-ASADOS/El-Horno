@@ -5,6 +5,7 @@
 #include "Component.h"
 #include <string>
 
+class Timer;
 namespace Ogre {
 	class ParticleSystem;
 }
@@ -27,7 +28,8 @@ private:
 	std::string particleSystemName_, particleSystemOrderedName_, particleSystemTemplate_;
 
 	bool destroyOnTimeLimit_ = false;
-	float timeLimit_ = 0, timer_ = 0;
+	float timeToLive_;
+	Timer* timer_;
 };
 
 #endif _PARTICLE_SYSTEM_H
