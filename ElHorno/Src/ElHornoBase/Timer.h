@@ -14,7 +14,6 @@ public:
 
 private:
 	double firstTime_;
-	double originalTime_;
 };
 
 #endif _TIMER_H

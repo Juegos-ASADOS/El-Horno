@@ -20,8 +20,9 @@ public:
 	//No se como hacer estas vainas
 	Entity* createEntity(nlohmann::json& j){};
 	Entity* addEntity(const std::string& name, const std::string& layer);
-	bool deleteEntity(const std::string& name) {};
-	void deleteInstances() {};
+
+	bool deleteEntity(const std::string& name);
+	void deleteInstances();
 
 	void start();
 	void update();
@@ -30,6 +31,7 @@ public:
 
 private:
 	std::map<std::string, std::vector<Entity*>> entities_;
+	std::map<std::string, Entity*> entitiesToDestroy_;
 
 	std::string name_;
 	bool sceneLoaded_ = false;

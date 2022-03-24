@@ -80,6 +80,39 @@ Entity* Scene::addEntity(const std::string& name, const std::string& layer)
 	return e;
 }
 
+bool Scene::deleteEntity(const std::string& name)
+{
+	//auto it = entities_.find(name);
+	//if (it != entities_.end()) {
+	//	entitiesToDestroy_.insert(*it);
+	//	return true;
+	//}
+
+	return false;
+}
+
+void Scene::deleteInstances()
+{
+	//for (auto it = entitiesToDestroy_.begin(); it != entitiesToDestroy_.end();)
+	//{
+	//	auto aux = it;
+	//	auto originalEntity = entitiesToDestroy_.find(it->first);
+	//	aux++;
+
+	//	if (it->second->dontDestroyOnLoad) {
+	//		it = aux;
+	//		continue;
+	//	}
+	//	delete it->second;
+	//	it->second = nullptr;
+	//	entitiesToDestroy_.erase(it);
+
+	//	// recorrer layers
+	//	entities_.erase(originalEntity);
+	//	it = aux;
+	//}
+}
+
 void Scene::start()
 {
 	auto iter = entities_.begin();

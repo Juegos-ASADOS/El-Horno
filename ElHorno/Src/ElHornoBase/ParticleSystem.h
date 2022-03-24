@@ -5,6 +5,7 @@
 #include "Component.h"
 #include <string>
 
+class Timer;
 namespace Ogre {
 	class ParticleSystem;
 }
@@ -13,7 +14,7 @@ class ParticleSystem : public Component
 {
 public:
 
-	ParticleSystem(std::string& name, std::string& temp, float timelim, bool destroyTL);
+	ParticleSystem(std::string& name, std::string& temp, float ttl, bool destroyTL);
 	~ParticleSystem();
 
 	void start() override;
@@ -27,7 +28,8 @@ private:
 	std::string particleSystemName_, particleSystemOrderedName_, particleSystemTemplate_;
 
 	bool destroyOnTimeLimit_ = false;
-	float timeLimit_ = 0, timer_ = 0;
+	float timeToLive_;
+	Timer* timer_;
 };
 
 #endif _PARTICLE_SYSTEM_H
