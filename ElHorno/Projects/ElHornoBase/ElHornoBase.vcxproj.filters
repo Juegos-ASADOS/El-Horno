@@ -108,6 +108,9 @@
     <ClCompile Include="..\..\Src\ElHornoBase\HornoConversions.cpp">
       <Filter>Archivos de origen\Other</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\Src\ElHornoBase\OgreSGTechniqueResolverListener.cpp">
+      <Filter>Archivos de origen\ElHornoBase</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\Src\ElHornoBase\ElHornoBase.h">
@@ -163,6 +166,9 @@
     </ClInclude>
     <ClInclude Include="..\..\Src\ElHornoBase\HornoConversions.h">
       <Filter>Archivos de encabezado\Other</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Src\ElHornoBase\OgreSGTechniqueResolverListener.h">
+      <Filter>Archivos de encabezado\ElHornoBase</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

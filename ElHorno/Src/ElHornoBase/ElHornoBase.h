@@ -6,6 +6,7 @@
 #include <string>
 #include "json.hpp"
 
+class SGTechniqueResolverListener;
 namespace Ogre {
 	class Root;
 	class SceneManager;
@@ -118,9 +119,8 @@ private:
 	Ogre::Root* root_;
 	Ogre::SceneManager* ogreSceneManager_;
 	Ogre::RenderWindow* ogreWindow_;
-	Ogre::String mRTShaderLibPath;
 	Ogre::RTShader::ShaderGenerator* mShaderGenerator_;
-	SGTechniqueResolverListener* mMaterialMgrListener; // Shader generator material manager listener.
+	SGTechniqueResolverListener* mMaterialMgrListener_; // Shader generator material manager listener.
 	// SDL
 	SDL_Window* sdlWindow_;
 

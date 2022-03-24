@@ -34,8 +34,8 @@ void Mesh::start()
 		ogreEntity_ = ElHornoBase::getInstance()->getSceneManager()->createEntity(meshName_);
 		castShadow_ = false;
 	}
-	materialName_ = "BombaTeselada";
-	//ogreEntity_->setMaterialName(materialName_);
+	materialName_ = "";
+	ogreEntity_->setMaterialName(materialName_);
 	entity_->getComponent<Transform>("transform")->getNode()->attachObject(ogreEntity_); 
 }
 

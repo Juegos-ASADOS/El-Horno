@@ -10,6 +10,7 @@
 #include <OgreRTShaderSystem.h>
 #include <OgreGpuProgramManager.h>
 #include <OgreResourceGroupManager.h>
+#include <OgreMaterialManager.h>
 
 #include <iostream>
 #include <fstream>
@@ -26,6 +27,7 @@
 #include "SceneManager.h"
 #include "Scene.h"
 #include "Factory.h"
+#include "OgreSGTechniqueResolverListener.h"
 
 using json = nlohmann::json;
 
@@ -330,9 +332,9 @@ void ElHornoBase::initRTShaderSystem()
 	mShaderGenerator_->addSceneManager(ogreSceneManager_);
 
 	// Create and register the material manager listener if it doesn't exist yet.
-	if (!mMaterialMgrListener) {
-		mMaterialMgrListener = new SGTechniqueResolverListener(mShaderGenerator);
-		Ogre::MaterialManager::getSingleton().addListener(mMaterialMgrListener);
+	if (!mMaterialMgrListener_) {
+		mMaterialMgrListener_ = new SGTechniqueResolverListener(mShaderGenerator_);
+		Ogre::MaterialManager::getSingleton().addListener(mMaterialMgrListener_);
 	}
 }
 /*
