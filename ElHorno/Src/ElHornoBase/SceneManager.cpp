@@ -67,7 +67,6 @@ void SceneManager::update()
 	currentScene_->update();
 }
 
-//TODO REVISAR
 void SceneManager::deleteEntities()
 {
 	currentScene_->deleteInstances();

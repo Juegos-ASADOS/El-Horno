@@ -8,14 +8,16 @@
 #include "Transform.h"
 #include "Entity.h"
 #include "Scene.h"
+#include "Timer.h"
 
-ParticleSystem::ParticleSystem(std::string& name, std::string& temp, float timelim, bool destroyTL)
+ParticleSystem::ParticleSystem(std::string& name, std::string& temp, float ttl, bool destroyTL)
 {
 	particleSystemName_ = name;
 	particleSystemTemplate_ = temp;
-	timeLimit_ = timelim;
+	timeToLive_ = ttl;
 	destroyOnTimeLimit_ = destroyTL;
 	particleSystemOrderedName_ = particleSystemName_;
+	timer_ = new Timer();
 }
 
 ParticleSystem::~ParticleSystem()
@@ -24,6 +26,7 @@ ParticleSystem::~ParticleSystem()
 	particleSystem_->detachFromParent();
 	ElHornoBase::getInstance()->getGraphicsManager()->getSceneManager()->destroyParticleSystem(particleSystemOrderedName_);
 	particleSystem_ = nullptr;
+	delete timer_; timer_ = nullptr;
 }
 
 void ParticleSystem::start()
@@ -46,30 +49,32 @@ void ParticleSystem::start()
 void ParticleSystem::onEnable()
 {
 	particleSystem_->setEmitting(true);
+	timer_->resetTimer();
 }
 
 void ParticleSystem::onDisable()
 {
 	particleSystem_->setEmitting(false);
+	// ttl ahora es el tiempo que queda cuando se desactiva el componente
+	timeToLive_ -= timer_->getTime();
 }
 
+// Si el timer acaba, deja de emitir o destruye la entidad
 void ParticleSystem::update()
 {
-	//if (timeLimit_ <= 0)
-	//	return;
+	if (timeToLive_ <= 0)
+		return;
 
-	//if (timer_ < timeLimit_) 
-	//	timer_ += ElHornoBase::getInstance()->DeltaTime();
-	//else {
-	//	if (destroyOnTimeLimit_) 
-	//		entity_->getMngr()->deleteEntity(entity_->getName());
-	//	else 
-	//		particleSystem_->setEmitting(false);
-	//}
+	if (timer_->getTime() >= timeToLive_) {
+		if (destroyOnTimeLimit_)
+			entity_->getMngr()->deleteEntity(entity_->getName());
+		else
+			setActive(false);
+	}
 }
 
+// Activa el componente
 void ParticleSystem::emit()
 {
-	timer_ = 0;
-	//setEnabled(true);
+	setActive(true);
 }
