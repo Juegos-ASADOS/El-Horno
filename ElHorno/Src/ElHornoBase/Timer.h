@@ -11,6 +11,7 @@ public:
 	double getExeTime();
 	double getTime();
 	void resetTimer();
+
 private:
 	double firstTime_;
 };

@@ -13,6 +13,7 @@
 #include "Scene.h"
 #include "Factory.h"
 #include "Timer.h"
+#include "ElHornoLua.h"
 
 using json = nlohmann::json;
 
@@ -69,6 +70,11 @@ void ElHornoBase::init() {
 	//SceneManager::setupInstance();
 	GraphicsManager::setInstance();
 	InputManager::setupInstance();
+
+	//HornoLua
+	//ElHornoLua::setupInstance();
+
+
 }
 
 /*
@@ -77,6 +83,7 @@ Ejecuta el start del SceenManager y comienza el renderizado de Ogre
 void ElHornoBase::start()
 {
 	//SceneManager::getInstance()->getCurrentScene()->start();
+	//ElHornoLua::getInstance()->init();
 }
 
 /*
@@ -159,16 +166,16 @@ void ElHornoBase::processFrame(float deltaTime) {
 void ElHornoBase::update()
 {
 	exit_ = false;
-	Timer* mainTimer = new Timer();
+	globalTimer_ = new Timer();
 	float deltaTime = 0;
 
 	GraphicsManager::getInstance()->init();
 
 	while (!exit_) {
-		mainTimer->resetTimer();
+		globalTimer_->resetTimer();
 		processFrame(deltaTime);
 
-		deltaTime = mainTimer->getTime();
+		deltaTime = globalTimer_->getTime();
 	}
 }
 
@@ -271,4 +278,12 @@ volume de audio manager)
 void ElHornoBase::changeBasicOptions()
 {
 
+}
+
+/*
+* Devuelve el Timer global del proyecto
+*/
+Timer* ElHornoBase::getGlobalTime()
+{
+	return globalTimer_;
 }
