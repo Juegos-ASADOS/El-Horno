@@ -14,7 +14,19 @@
 
 AnimatorController::AnimatorController() 
 {
-	
+	// Aqui le deberia entrar un archivo de configuracion de animaciones para setear los parametros que sean necesarios
+	// Formato:
+	/*
+	* name: danceState
+	* loop: true
+	* speed: 1 ...
+	*/
+
+	// Despues hay que coger cada animacion del mapa de ogre y setear los parametros de los propios estados que ha generado la malla
+	/*
+	* animStatesMap_.at(name).setLoop(loop);
+	* animStatesMap_.at(name).setSpeed(speed);
+	*/
 }
 
 AnimatorController::~AnimatorController() 
@@ -53,38 +65,38 @@ void AnimatorController::update()
 */
 void AnimatorController::manageTransitions()
 {
-
-	// AnyState (transiciones desde cualquier estado)
-	int i = 0;
-	while (!transitionsMap_.at("anyState")[i].cond && i < transitionsMap_.at("anyState").size())
-		i++;
-	// Si no hemos llegado al final es que hemos encontrado un estado al que hay que moverse
-	if (i < transitionsMap_.at("anyState").size())
+	// ANYSTATE
+	for (auto t : transitionsMap_.at("anyState"))
 	{
-		currentState_.state = animStatesMap_->getAnimationState(transitionsMap_.at("anyState")[i].nextState);
-		return; //acabamos el metodo
+		// Si alguna de las transiciones desde el anyState estan a true cambiamos el estado
+		if (t.second->cond)
+		{
+			currentState_.state = animStatesMap_->getAnimationState(t.second->nextState);
+			return; // cortamos el metodo
+		}
 	}
 
-
-	//Desde el currentState
-	i = 0;
-	while (!transitionsMap_.at(currentState_.name)[i].cond && i < transitionsMap_.at(currentState_.name).size())
-		i++;
-	// Si no hemos llegado al final es que hemos encontrado un estado al que hay que moverse
-	if (i < transitionsMap_.at(currentState_.name).size())
-		currentState_.state = animStatesMap_->getAnimationState(transitionsMap_.at(currentState_.name)[i].nextState);
-
-
+	// CURRENTSTATE
+	for (auto t : transitionsMap_.at(currentState_.name))
+	{
+		// Si alguna de las transiciones desde el currentState estan a true cambiamos el estado
+		if (t.second->cond)
+		{
+			currentState_.state = animStatesMap_->getAnimationState(t.second->nextState);
+			return; // cortamos el metodo
+		}
+	}
 }
 
-void AnimatorController::setAnimBool(std::string state, bool cond_, int numCond)
+// Usar para cambios de animaciones 
+void AnimatorController::setAnimBool(std::string state, std::string conditionName, bool value)
 {
-	transitionsMap_.at(state)[numCond].cond = cond_;
+	transitionsMap_.at(state).at(conditionName)->cond = value;
 }
 
-bool AnimatorController::getAnimBool(std::string state, int numCond)
+bool AnimatorController::getAnimBool(std::string state, std::string conditionName)
 {
-	return transitionsMap_.at(state)[numCond].cond;
+	return transitionsMap_.at(state).at(conditionName)->cond;
 }
 
 

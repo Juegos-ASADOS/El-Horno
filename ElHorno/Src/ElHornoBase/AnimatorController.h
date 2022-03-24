@@ -42,10 +42,10 @@ public:
 	void onDisable()override {};
 
 	// Setters
-	void setAnimBool(std::string, bool cond_, int numCond);
+	void setAnimBool(std::string state, std::string conditionName, bool value);
 	
 	// Getters
-	bool getAnimBool(std::string state, int numCond);
+	bool getAnimBool(std::string state, std::string conditionName);
 
 
 private:
@@ -72,11 +72,9 @@ private:
 	// Estado actual
 	AnimationStateInfo currentState_;
 
-	// es un mapa con el estado y sus transicion si es que tiene
-	// el orden en el que metes las transciones en el vector influye para decidir si un estado es mas importante que otro
-	std::map<std::string, std::vector<Transition>> transitionsMap_;
+	// es un mapa con el estado y sus transiciones si es que tiene
 	//nombre del estado   //nombre de la transicion
-	std::map<std::string, std::map<std::string, Transition>> transitionsMap2_;
+	std::map<std::string, std::map<std::string, Transition*>> transitionsMap_;
 
 };
 
