@@ -1,8 +1,8 @@
 #include "Scene.h"
 #include "Entity.h"
-#include "json.hpp"
 #include <iostream>
 #include <fstream>
+#include <OgreVector3.h>
 
 using json = nlohmann::json;
 
@@ -21,8 +21,9 @@ Scene::Scene()
 	std::vector<json> comp = j["components"];
 
 	Entity* a = addEntity("camera", "prueba");
-	a->addComponent(comp[0]);
-	a->addComponent(comp[1]);
+	Ogre::Vector3 p = { 1,1,1 };
+	a->addComponent("transform", p,p,p);
+	a->addComponent("CameraComponent");
 
 	Entity* b = addEntity("object", "prueba");
 	b->addComponent(comp[0]);

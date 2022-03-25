@@ -67,7 +67,7 @@ void ElHornoBase::init() {
 	//Creacion del factoryCreator y declaracion de los componentes del motor
 	setupFactories();
 
-	//SceneManager::setupInstance();
+	SceneManager::setupInstance();
 	GraphicsManager::setInstance();
 	InputManager::setupInstance();
 
@@ -82,7 +82,7 @@ Ejecuta el start del SceenManager y comienza el renderizado de Ogre
 */
 void ElHornoBase::start()
 {
-	//SceneManager::getInstance()->getCurrentScene()->start();
+	SceneManager::getInstance()->getCurrentScene()->start();
 	LuaManager::getInstance()->init();
 
 	LuaManager::getInstance()->reedLuaScript("Assets/Scripts/sample.lua");
@@ -137,9 +137,9 @@ void ElHornoBase::setupFactories()
 {
 	FactoryCreator* facCreat = FactoryCreator::getInstance();
 	// Factorías de componentes principales (transform, rigidbody, etc.)
-	/*facCreat->addFactory("transform", new TransformFactory());
+	facCreat->addFactory("transform", new TransformFactory());
 	facCreat->addFactory("camera", new CameraFactory());
-	facCreat->addFactory("mesh", new MeshFactory());*/
+	facCreat->addFactory("mesh", new MeshFactory());
 }
 
 /*OgreRoot llama a frameListener_ que llama a processFrame que actualiza

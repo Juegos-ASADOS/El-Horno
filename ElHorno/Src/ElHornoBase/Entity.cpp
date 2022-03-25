@@ -26,29 +26,28 @@ Entity::~Entity() {
 	}
 }
 
-void Entity::addComponent(nlohmann::json& args)
-{
-	std::string tag = args["type"];
-
-	// Si la entidad no tiene el componente
-	if (!hasComponent(tag))
-	{
-		// Miramos si esta en el json
-		Component* c(FactoryCreator::getInstance()->getComponentFromJson(tag, args));
-		if (c == nullptr)
-			return;
-
-		// Si esta lo metemos lo a�adimos a la entidad
-		comp_.insert({ tag, c });
-		compRef_.push_back(c);
-		c->setEntity(this);
-	}
-	// Si ya existe 
-	else
-	{
-		throw "Componente " + tag + " duplicado para la entidad " + name_;
-	}
-}
+//template<class ...Ts>
+//void Entity::addComponent(const std::string& type, Ts &&...args)
+//{
+//	// Si la entidad no tiene el componente
+//	if (!hasComponent(type))
+//	{
+//		// Miramos si esta en el json
+//		Component* c(FactoryCreator::getInstance()->getComponent(type, args));
+//		if (c == nullptr)
+//			return;
+//
+//		// Si esta lo metemos lo a�adimos a la entidad
+//		comp_.insert({ type, c });
+//		compRef_.push_back(c);
+//		c->setEntity(this);
+//	}
+//	// Si ya existe 
+//	else
+//	{
+//		throw "Componente " + type + " duplicado para la entidad " + name_;
+//	}
+//}
 
 bool Entity::hasComponent(std::string name) {
 	return comp_.find(name) != comp_.end();

@@ -30,22 +30,22 @@ void FactoryCreator::clean()
 
 
 // Para crear componentes desde el Json
-Component* FactoryCreator::getComponentFromJson(const std::string type, json& args)
-{
-	// Comprobamos si el componente esta en el mapa
-	std::map<std::string, Factory*>::iterator it = map.find(type);
-
-	// Si esta en el mapa
-	if (it != map.end())
-	{
-		// Cogemos la factoria del componente y lo creamos
-		//return (it)->second->createComponent(args);
-	}
-
-	//Si no esta en el mapa
-	return nullptr;
-	
-}
+//template<typename ...Ts>
+//Component* FactoryCreator::getComponent(const std::string type, Ts &&...args)
+//{
+//	std::map<std::string, Factory*>::iterator it = map.find(type);
+//
+//	// Si esta en el mapa
+//	if (it != map.end())
+//	{
+//		// Cogemos la factoria del componente y lo creamos
+//		return (it)->second->createComponent(args);
+//	}
+//
+//	//Si no esta en el mapa
+//	return nullptr;
+//	
+//}
 
 // Para añadir factorias(crean componentes) al mapa
 void FactoryCreator::addFactory(const std::string& type, Factory* f)

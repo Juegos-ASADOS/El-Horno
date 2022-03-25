@@ -5,6 +5,7 @@
 #include <string>
 #include <map>
 #include "json.hpp"
+#include "Factory.h"
 
 class Component;
 class Factory;
@@ -27,7 +28,22 @@ public:
 	static bool setupInstance();
 	static void clean();
 
-	Component* getComponentFromJson(const std::string type, nlohmann::json& args);
+	template<typename ...Ts>
+	Component* getComponent(const std::string type, Ts &&...args)
+	{
+		std::map<std::string, Factory*>::iterator it = map.find(type);
+
+		// Si esta en el mapa
+		if (it != map.end())
+		{
+			// Cogemos la factoria del componente y lo creamos
+			return (it)->second->createComponent(args...);
+		}
+
+		//Si no esta en el mapa
+		return nullptr;
+
+	}
 	void addFactory(const std::string& type, Factory* factory);
 };
 
