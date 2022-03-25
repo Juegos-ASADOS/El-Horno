@@ -10,7 +10,7 @@
 #include "Scene.h"
 #include "Timer.h"
 
-ParticleSystem::ParticleSystem(const std::string& name, const std::string& temp, float timelim, bool destroyTL)
+ParticleSystem::ParticleSystem(const std::string& name, const std::string& temp, float ttl, bool destroyTL)
 {
 	particleSystemName_ = name;
 	particleSystemTemplate_ = temp;
