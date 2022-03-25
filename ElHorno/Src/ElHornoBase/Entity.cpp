@@ -3,6 +3,7 @@
 #include "FactoryCreator.h"
 #include "Scene.h"
 #include <string>
+#include "CheckMl.h"
 
 Entity::Entity(std::string n, Scene* m, Entity* p) : name_(n), mngr_(m), active_(true), comp_(), compRef_() {
 	parent_ = p;

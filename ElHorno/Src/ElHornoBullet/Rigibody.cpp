@@ -5,6 +5,7 @@
 #include "Transform.h"
 #include "btBulletCollisionCommon.h"
 #include "btBulletDynamicsCommon.h"
+#include "CheckMl.h"
 
 RigidBody::RigidBody(float mass, bool isTrigger, int colShape) : Component()
 {

@@ -6,6 +6,7 @@
 #include <CEGUI/RendererModules/Ogre/Renderer.h>
 
 #include <OgreRenderWindow.h>
+#include "CheckMl.h"
 
 UIManager* UIManager::instance = 0;
 

@@ -13,6 +13,7 @@
 #include <OgreEntity.h>
 #include <OgreLight.h>
 #include "Timer.h"
+#include "CheckMl.h"
 
 LightComponent::LightComponent(int type)
 {

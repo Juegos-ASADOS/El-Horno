@@ -3,6 +3,7 @@
 #include <iostream>
 #include <fstream>
 #include <OgreVector3.h>
+#include "CheckMl.h"
 
 using json = nlohmann::json;
 
@@ -30,7 +31,7 @@ Scene::Scene()
 	b->addComponent(comp[2]);
 }
 
-//TODO Destruir VierwPorts y cámaras lo primero de todo
+//TODO Destruir VierwPorts y cï¿½maras lo primero de todo
 Scene::~Scene()
 {
 	std::map<std::string, Entity*> dontDelete;
@@ -64,89 +65,89 @@ Entity* Scene::getEntity(const std::string& name, const std::string& layer)
 			if (e->getName() == name) return e;
 		return nullptr;
 	}
-}
-
-Entity* Scene::addEntity(const std::string& name, const std::string& layer)
-{
-	Entity* e = new Entity(name, this);
-	auto it = entities_.find(layer);
-	if (it != entities_.end())
-		it->second.push_back(e);
-	else {
-		std::vector<Entity*> a = std::vector<Entity*>();
-		a.push_back(e);
-		entities_.insert(std::pair<std::string, std::vector<Entity*>>(layer, a));
-	}
-
-	return e;
-}
-
-/*
-Recorre las layers y sus entidades hasta encontrar la entidad
-de nombre "name", entonces la añade al vector de entidades a
-destruir.
-
-Devuelve false si no la encuentra
-*/
-bool Scene::deleteEntity(const std::string& name)
-{
-	// Recorre layers
-	auto it = entities_.begin();
-	while (it != entities_.end()) {
-		// Recorre vector de entidades
-		for (int i = 0; i < it->second.size(); i++) {
-			Entity* ent = it->second[i];
-
-			if (ent->getName() == name) {
-				// Mete la entidad al vector de entidades a destruir
-				entitiesToDestroy_.push_back({ it->first, ent });
-				return true;
-			}
-		}
-	}
-
-	return false;
-}
-
-/*
-Elimina las entidades del vector a de entidades a destruir y
-las borra de los vectores pertinentes
-*/
-void Scene::deleteInstances()
-{
-	// Elementos a borrar
-	for (int i = 0; i < entitiesToDestroy_.size(); i++)
-	{
-		if (entitiesToDestroy_[i].second->dontDestroyOnLoad) {
-			entitiesToDestroy_.erase(entitiesToDestroy_.begin() + i);
-			i--;
-			continue;
-		}
-
-		// Obtiene la layer
-		auto it = entities_.find(entitiesToDestroy_[i].first);
-
-		if (it != entities_.end()) {
-			int e = 0;
-			bool found = false;
-
-			// Busca la entidad a borrar
-			while (e < it->second.size() && !found) {
-
-				// Si la encuentra, se elimina en ambos vectores
-				if (it->second[e] == entitiesToDestroy_[i].second) {
-					delete it->second[e];
-
-					entitiesToDestroy_.erase(entitiesToDestroy_.begin() + i);
-					it->second.erase(it->second.begin() + e);
-
-					i--;
-					found = true;
-				}
-				e++;
-			}
-		}
-	}
+}
+
+Entity* Scene::addEntity(const std::string& name, const std::string& layer)
+{
+	Entity* e = new Entity(name, this);
+	auto it = entities_.find(layer);
+	if (it != entities_.end())
+		it->second.push_back(e);
+	else {
+		std::vector<Entity*> a = std::vector<Entity*>();
+		a.push_back(e);
+		entities_.insert(std::pair<std::string, std::vector<Entity*>>(layer, a));
+	}
+
+	return e;
+}
+
+/*
+Recorre las layers y sus entidades hasta encontrar la entidad
+de nombre "name", entonces la aï¿½ade al vector de entidades a
+destruir.
+
+Devuelve false si no la encuentra
+*/
+bool Scene::deleteEntity(const std::string& name)
+{
+	// Recorre layers
+	auto it = entities_.begin();
+	while (it != entities_.end()) {
+		// Recorre vector de entidades
+		for (int i = 0; i < it->second.size(); i++) {
+			Entity* ent = it->second[i];
+
+			if (ent->getName() == name) {
+				// Mete la entidad al vector de entidades a destruir
+				entitiesToDestroy_.push_back({ it->first, ent });
+				return true;
+			}
+		}
+	}
+
+	return false;
+}
+
+/*
+Elimina las entidades del vector a de entidades a destruir y
+las borra de los vectores pertinentes
+*/
+void Scene::deleteInstances()
+{
+	// Elementos a borrar
+	for (int i = 0; i < entitiesToDestroy_.size(); i++)
+	{
+		if (entitiesToDestroy_[i].second->dontDestroyOnLoad) {
+			entitiesToDestroy_.erase(entitiesToDestroy_.begin() + i);
+			i--;
+			continue;
+		}
+
+		// Obtiene la layer
+		auto it = entities_.find(entitiesToDestroy_[i].first);
+
+		if (it != entities_.end()) {
+			int e = 0;
+			bool found = false;
+
+			// Busca la entidad a borrar
+			while (e < it->second.size() && !found) {
+
+				// Si la encuentra, se elimina en ambos vectores
+				if (it->second[e] == entitiesToDestroy_[i].second) {
+					delete it->second[e];
+
+					entitiesToDestroy_.erase(entitiesToDestroy_.begin() + i);
+					it->second.erase(it->second.begin() + e);
+
+					i--;
+					found = true;
+				}
+				e++;
+			}
+		}
+	}
 }
 
 void Scene::start()

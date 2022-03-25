@@ -3,9 +3,12 @@
 
 #include <iostream>
 #include "ElHornoBase.h"
+#include "CheckML.h"
 
 int main()
 {   
+    _CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF); // Check Memory Leaks
+
     ElHornoBase::setInstance();
     ElHornoBase::getInstance()->init();
 
