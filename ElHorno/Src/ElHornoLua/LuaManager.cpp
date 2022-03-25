@@ -19,6 +19,7 @@ extern "C"
 #include "CameraComponent.h"
 #include "AudioComponent.h"
 #include "AudioListenerComponent.h"
+#include "CheckML.h"
 
 LuaManager* LuaManager::instance;
 
@@ -86,8 +87,7 @@ void LuaManager::reedLuaScript(const std::string& path)
 
 LuaManager::~LuaManager()
 {
-    delete luaState;
-    luaState = nullptr ;
+    lua_close(luaState);
 }
 
 void LuaManager::exposeEntity()

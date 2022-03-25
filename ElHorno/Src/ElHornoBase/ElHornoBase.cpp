@@ -14,6 +14,7 @@
 #include "Factory.h"
 #include "Timer.h"
 #include "LuaManager.h"
+#include "CheckMl.h"
 
 using json = nlohmann::json;
 
@@ -37,8 +38,11 @@ Limpia managers y dependencias de bibliotecas externas
 */
 ElHornoBase::~ElHornoBase()
 {
-	/*delete frameListener_;
-	frameListener_ = nullptr;*/
+	delete globalTimer_; globalTimer_ = nullptr;
+	GraphicsManager::erase();
+	InputManager::erase();
+	LuaManager::erase();
+	FactoryCreator::clean();
 }
 
 ElHornoBase* ElHornoBase::getInstance() {
@@ -73,8 +77,6 @@ void ElHornoBase::init() {
 
 	//HornoLua
 	LuaManager::setupInstance();
-
-
 }
 
 /*
@@ -179,6 +181,8 @@ void ElHornoBase::update()
 
 		deltaTime = globalTimer_->getTime();
 	}
+
+	erase();
 }
 
 SceneManager* ElHornoBase::getSceneManager()

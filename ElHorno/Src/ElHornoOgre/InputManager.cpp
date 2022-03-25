@@ -45,7 +45,7 @@ bool InputManager::setupInstance()
 	return false;
 }
 
-void InputManager::clean()
+void InputManager::erase()
 {
 	delete instance;
 }
