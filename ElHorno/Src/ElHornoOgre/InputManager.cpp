@@ -60,6 +60,8 @@ void InputManager::setup()
 //recoge los principales eventos de SDL y los gestiona de ser necesario
 bool InputManager::GeneralInputManagement(SDL_Event event)
 {
+	//http://cegui.org.uk/wiki/Using_CEGUI_with_SDL_and_OpenGL_(0.7) //la referencia que voya a usar
+
 
 	switch (event.type)
 	{
