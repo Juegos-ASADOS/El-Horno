@@ -14,6 +14,7 @@
 #include "Factory.h"
 #include "Timer.h"
 #include "LuaManager.h"
+#include "CheckMl.h"
 
 using json = nlohmann::json;
 
@@ -37,8 +38,11 @@ Limpia managers y dependencias de bibliotecas externas
 */
 ElHornoBase::~ElHornoBase()
 {
-	/*delete frameListener_;
-	frameListener_ = nullptr;*/
+	delete globalTimer_; globalTimer_ = nullptr;
+	GraphicsManager::erase();
+	InputManager::erase();
+	LuaManager::erase();
+	FactoryCreator::clean();
 }
 
 ElHornoBase* ElHornoBase::getInstance() {
@@ -67,14 +71,12 @@ void ElHornoBase::init() {
 	//Creacion del factoryCreator y declaracion de los componentes del motor
 	setupFactories();
 
-	//SceneManager::setupInstance();
+	SceneManager::setupInstance();
 	GraphicsManager::setInstance();
 	InputManager::setupInstance();
 
 	//HornoLua
 	LuaManager::setupInstance();
-
-
 }
 
 /*
@@ -82,7 +84,7 @@ Ejecuta el start del SceenManager y comienza el renderizado de Ogre
 */
 void ElHornoBase::start()
 {
-	//SceneManager::getInstance()->getCurrentScene()->start();
+	SceneManager::getInstance()->getCurrentScene()->start();
 	LuaManager::getInstance()->init();
 
 	LuaManager::getInstance()->reedLuaScript("Assets/Scripts/sample.lua");
@@ -137,9 +139,9 @@ void ElHornoBase::setupFactories()
 {
 	FactoryCreator* facCreat = FactoryCreator::getInstance();
 	// Factorías de componentes principales (transform, rigidbody, etc.)
-	/*facCreat->addFactory("transform", new TransformFactory());
+	facCreat->addFactory("transform", new TransformFactory());
 	facCreat->addFactory("camera", new CameraFactory());
-	facCreat->addFactory("mesh", new MeshFactory());*/
+	facCreat->addFactory("mesh", new MeshFactory());
 }
 
 /*OgreRoot llama a frameListener_ que llama a processFrame que actualiza
@@ -179,6 +181,8 @@ void ElHornoBase::update()
 
 		deltaTime = globalTimer_->getTime();
 	}
+
+	erase();
 }
 
 SceneManager* ElHornoBase::getSceneManager()

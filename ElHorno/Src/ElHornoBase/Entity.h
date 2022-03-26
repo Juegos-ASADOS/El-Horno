@@ -1,4 +1,4 @@
-#pragma once
+ï»¿#pragma once
 #ifndef _ENTITY_H
 #define _ENTITY_H
 
@@ -8,6 +8,7 @@
 #include <string>
 #include <bitset>
 
+#include "FactoryCreator.h"
 #include "json.hpp"
 
 class Component;
@@ -36,8 +37,29 @@ public:
 	void update();
 	void render();
 
-	//Métodos para añadir/quitar/comprobar sobre los compoenentes de la entidad
-	void addComponent(nlohmann::json& args);
+	//MÃ©todos para aÃ±adir/quitar/comprobar sobre los compoenentes de la entidad
+	template<typename ...Ts>
+	void addComponent(const std::string& type, Ts &&...args)
+	{
+		// Si la entidad no tiene el componente
+		if (!hasComponent(type))
+		{
+			// Miramos si esta en el json
+			Component* c(FactoryCreator::getInstance()->getComponent(type, args...));
+			if (c == nullptr)
+				return;
+
+			// Si esta lo metemos lo aï¿½adimos a la entidad
+			comp_.insert({ type, c });
+			compRef_.push_back(c);
+			c->setEntity(this);
+		}
+		// Si ya existe 
+		else
+		{
+			throw "Componente " + type + " duplicado para la entidad " + name_;
+		}
+	}
 
 	bool hasComponent(std::string name);
 	template <typename T>

@@ -11,6 +11,7 @@
 #include <OgreAnimationState.h>
 #include <OgreEntity.h>
 #include "Timer.h"
+#include "CheckMl.h"
 
 AnimatorController::AnimatorController() 
 {

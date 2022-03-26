@@ -24,7 +24,7 @@ public:
 
 	static InputManager* getInstance();
 	static bool setupInstance();
-	static void clean();
+	static void erase();
 
 	void setup();
 

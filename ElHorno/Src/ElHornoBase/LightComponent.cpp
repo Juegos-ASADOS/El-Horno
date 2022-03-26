@@ -12,6 +12,7 @@
 #include <OgreEntity.h>
 #include <OgreSceneNode.h>
 #include <OgreLight.h>
+#include "CheckMl.h"
 #include <OgreSceneNode.h>
 #include <OgreSceneManager.h>
 
@@ -61,7 +62,7 @@ void LightComponent::start()
 	break;
 	}
 
-	// Añadimos sus parametros basicos
+	// Aï¿½adimos sus parametros basicos
 	light_->setDiffuseColour(colourLight_);
 	node_ = ElHornoBase::getInstance()->getGraphicsManager()->getSceneManager()->getRootSceneNode()->createChildSceneNode();
 	node_->attachObject(light_);
