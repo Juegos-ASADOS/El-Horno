@@ -19,7 +19,7 @@ class LightComponent : public Component
 {
 public:
 
-	LightComponent(int type);
+	LightComponent(int type, Ogre::Vector3 dirLight, Ogre::ColourValue colourLight);
 	~LightComponent();
 
 	void start() override;
@@ -33,12 +33,15 @@ public:
 private:
 
 	// Acceso al nodo, Entidad de Ogre y Transform
-	Ogre::SceneNode* node_;
+	Ogre::SceneNode* node_ = nullptr;
 	Ogre::Entity* ogreEntity_;
 	Transform* tr_ = nullptr;
 
 	// Luz de ogre
 	Ogre::Light* light_;
+	int type_;
+	Ogre::Vector3 dirLight_;
+	Ogre::ColourValue colourLight_;
 
 };
 

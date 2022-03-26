@@ -1,44 +1,25 @@
-#include "ElHornoBase.h"; 
-#include "AnimatorController.h"
-
-//#include "OgreEntity.h"
-#include "CameraComponent.h"
-#include <OgreCamera.h>
-#include "Transform.h"
 #include "LightComponent.h"
+#include "ElHornoBase.h"; 
+
+
+#include "Transform.h"
+#include "ElHornoBase.h"
+#include "GraphicsManager.h"
 #include "Mesh.h"
 #include "Entity.h"
 #include "HornoConversions.h"
-#include <OgreAnimationState.h>
+
 #include <OgreEntity.h>
+#include <OgreSceneNode.h>
 #include <OgreLight.h>
-#include "Timer.h"
+#include <OgreSceneNode.h>
+#include <OgreSceneManager.h>
 
-LightComponent::LightComponent(int type)
+LightComponent::LightComponent(int type, Ogre::Vector3 dirLight, Ogre::ColourValue colourLight)
 {
-	switch (type)
-	{
-		// POINT
-		case 0:
-		{
-			light_->setType(Ogre::Light::LT_POINT);
-		}
-		break;
-
-		// DIRECTIONAL
-		case 1:
-		{
-			light_->setType(Ogre::Light::LT_DIRECTIONAL);
-		}
-		break;
-
-		// FOCO
-		case 2:
-		{
-			light_->setType(Ogre::Light::LT_SPOTLIGHT);
-		}
-		break;
-	}
+	type_ = type;
+	dirLight_ = dirLight;
+	colourLight_ = colourLight;
 }
 
 LightComponent::~LightComponent()
@@ -46,17 +27,49 @@ LightComponent::~LightComponent()
 
 }
 
-void AnimatorController::start()
+void LightComponent::start()
 {
-	// Obtenemos los componentes y entidades necesarios
-	tr_ = entity_->getComponent<Transform>("Transform");
-	mesh_ = entity_->getComponent<Mesh>("Mesh");
-	node_ = tr_->getNode();
-	ogreEntity_ = mesh_->getOgreEntity();
+	// Creamos la luz
+	light_ = ElHornoBase::getInstance()->getGraphicsManager()->getSceneManager()->createLight();
+
+	// Seteamos su tipo
+	switch (type_)
+	{
+		// POINT
+	case 0:
+	{
+		light_->setType(Ogre::Light::LT_POINT);
+	}
+	break;
+
+	// DIRECTIONAL
+	case 1:
+	{
+		light_->setType(Ogre::Light::LT_DIRECTIONAL);
+	}
+	break;
+
+	// FOCO
+	case 2:
+	{
+		light_->setType(Ogre::Light::LT_SPOTLIGHT);
+		light_->setSpotlightNearClipDistance(1);
+		light_->setSpotlightInnerAngle(Ogre::Degree(15));
+		light_->setSpotlightOuterAngle(Ogre::Degree(90.0f));
+
+	}
+	break;
+	}
+
+	// Añadimos sus parametros basicos
+	light_->setDiffuseColour(colourLight_);
+	node_ = ElHornoBase::getInstance()->getGraphicsManager()->getSceneManager()->getRootSceneNode()->createChildSceneNode();
+	node_->attachObject(light_);
+	node_->setDirection(dirLight_);
 
 }
 
-void AnimatorController::update()
+void LightComponent::update()
 {
 
 }
