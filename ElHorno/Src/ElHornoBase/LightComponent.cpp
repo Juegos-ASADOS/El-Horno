@@ -15,12 +15,13 @@
 #include "CheckMl.h"
 #include <OgreSceneNode.h>
 #include <OgreSceneManager.h>
+#include <OgreColourValue.h>
 
-LightComponent::LightComponent(int type, Ogre::Vector3 dirLight, Ogre::ColourValue colourLight)
+LightComponent::LightComponent(int type, Ogre::Vector3 dirLight/*, Ogre::ColourValue colourLight*/)
 {
 	type_ = type;
 	dirLight_ = dirLight;
-	colourLight_ = colourLight;
+	//colourLight_ = colourLight;
 }
 
 LightComponent::~LightComponent()
@@ -63,7 +64,7 @@ void LightComponent::start()
 	}
 
 	// A�adimos sus parametros basicos
-	light_->setDiffuseColour(colourLight_);
+	//light_->setDiffuseColour(colourLight_);
 	node_ = ElHornoBase::getInstance()->getGraphicsManager()->getSceneManager()->getRootSceneNode()->createChildSceneNode();
 	node_->attachObject(light_);
 	node_->setDirection(dirLight_);

@@ -8,7 +8,7 @@
 #include <map>
 
 namespace Ogre {
-	
+	class ColourValue;
 }
 class Mesh;
 class Transform;
@@ -19,7 +19,7 @@ class LightComponent : public Component
 {
 public:
 
-	LightComponent(int type, Ogre::Vector3 dirLight, Ogre::ColourValue colourLight);
+	LightComponent(int type, Ogre::Vector3 dirLight/*, Ogre::ColourValue colourLight*/);
 	~LightComponent();
 
 	void start() override;
@@ -41,7 +41,7 @@ private:
 	Ogre::Light* light_;
 	int type_;
 	Ogre::Vector3 dirLight_;
-	Ogre::ColourValue colourLight_;
+	//Ogre::ColourValue colourLight_;
 
 };
 
