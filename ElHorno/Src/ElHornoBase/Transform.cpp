@@ -13,9 +13,9 @@ using namespace Ogre;
 
 Transform::Transform(Vector3 pos, Vector3 rot, Vector3 scal)
 { 
-	setPosition(pos);
-	setRotation(Quaternion::Quaternion(&rot));
-	setScale(scal);
+	pPos = pos;
+	pRot = rot;
+	pScal = scal;
 }
 
 Transform::~Transform()
@@ -27,6 +27,9 @@ Transform::~Transform()
 void Transform::start()
 {
 	node_ = ElHornoBase::getGraphicsManager()->getSceneManager()->getRootSceneNode()->createChildSceneNode();
+	setPosition(pPos);
+	setRotation(Quaternion::Quaternion(&pRot));
+	setScale(pScal);
 }
 
 // Getters

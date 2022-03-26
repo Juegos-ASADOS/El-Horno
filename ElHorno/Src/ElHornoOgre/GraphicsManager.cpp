@@ -55,6 +55,9 @@ void GraphicsManager::init()
 	// Si hay configuraciones cargadas o inicia desde el cuadro de config de Ogre
 	if (root_->restoreConfig() || root_->showConfigDialog(nullptr))
 		setup();
+
+	setupResources();
+
 }
 
 void GraphicsManager::start()
@@ -115,6 +118,41 @@ void GraphicsManager::setupWindow()
 	//Ocultar raton
 	//SDL_SetWindowGrab(sdlWindow_, SDL_bool(false));
 	//SDL_ShowCursor(false);
+}
+
+void GraphicsManager::setupResources()
+{
+	Ogre::String resourcesPath;
+
+	resourcesPath = "resources.cfg";
+
+	if (!Ogre::FileSystemLayer::fileExists(resourcesPath)) {
+		OGRE_EXCEPT(Ogre::Exception::ERR_FILE_NOT_FOUND, resourcesPath, "No existe resouces.cfg");
+	}
+
+	Ogre::ConfigFile cf;
+	cf.load(resourcesPath);
+
+	// go through all specified resource groups 
+	std::string sec, type, arch;
+	Ogre::ConfigFile::SettingsBySection_::const_iterator seci;
+	for (seci = cf.getSettingsBySection().begin(); seci != cf.getSettingsBySection().end(); ++seci) {
+		sec = seci->first;
+		const Ogre::ConfigFile::SettingsMultiMap& settings = seci->second;
+		Ogre::ConfigFile::SettingsMultiMap::const_iterator i;
+
+		// go through all resource paths 
+		for (i = settings.begin(); i != settings.end(); i++) {
+			type = i->first;
+			arch = Ogre::FileSystemLayer::resolveBundlePath(i->second);
+			Ogre::ResourceGroupManager::getSingleton().addResourceLocation(arch, type, sec);
+		}
+	}
+
+	sec = Ogre::ResourceGroupManager::DEFAULT_RESOURCE_GROUP_NAME;
+	const Ogre::ResourceGroupManager::LocationList genLocs = Ogre::ResourceGroupManager::getSingleton().getResourceLocationList(sec);
+
+	Ogre::ResourceGroupManager::getSingleton().initialiseAllResourceGroups();
 }
 
 /*
@@ -233,7 +271,7 @@ Ogre::SceneManager* GraphicsManager::getSceneManager()
 	//HE TOCAO ESTO CUIDAO
 	return ogreSceneManager_;
 	//HE TOCAO ESTO
-	return nullptr;
+	//return nullptr;
 }
 
 // actualiza el tamaño de la ventana de SDL y de CEGUI

@@ -76,6 +76,7 @@ private:
 
 	void setupWindow();
 	void setupRoot();
+	void setupResources();
 
 	void shutdown();
 

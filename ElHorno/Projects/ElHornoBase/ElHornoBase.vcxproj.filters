@@ -84,9 +84,6 @@
     <ClCompile Include="..\..\Src\ElHornoBase\EventManager.cpp">
       <Filter>Archivos de origen\EventManager</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Src\ElHornoBase\Scene.cpp">
-      <Filter>Archivos de origen\SceneManager</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\Src\ElHornoBase\SceneManager.cpp">
       <Filter>Archivos de origen\SceneManager</Filter>
     </ClCompile>
@@ -110,6 +107,9 @@
     </ClCompile>
     <ClCompile Include="..\..\Src\ElHornoBase\LightComponent.cpp">
       <Filter>Archivos de origen\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Src\ElHornoBase\Scene.cpp">
+      <Filter>Archivos de origen\SceneManager</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

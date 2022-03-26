@@ -6,15 +6,14 @@
 #include "CheckML.h"
 
 int main()
-{   
-    _CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF); // Check Memory Leaks
+{
+	_CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF); // Check Memory Leaks
 
-    ElHornoBase::setInstance();
-    ElHornoBase::getInstance()->init();
+		ElHornoBase::setInstance();
+		ElHornoBase::getInstance()->init();
 
-    ElHornoBase::getInstance()->start();
-    ElHornoBase::getInstance()->update();
-
+		ElHornoBase::getInstance()->start();
+		ElHornoBase::getInstance()->update();
 }
 
 // Ejecutar programa: Ctrl + F5 o menú Depurar > Iniciar sin depurar

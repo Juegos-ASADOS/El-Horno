@@ -38,14 +38,14 @@ public:
 	void render();
 
 	//Métodos para añadir/quitar/comprobar sobre los compoenentes de la entidad
-	template<typename ...Ts>
+	template<typename T, typename ...Ts>
 	void addComponent(const std::string& type, Ts &&...args)
 	{
 		// Si la entidad no tiene el componente
 		if (!hasComponent(type))
 		{
 			// Miramos si esta en el json
-			Component* c(FactoryCreator::getInstance()->getComponent(type, args...));
+			T* c(FactoryCreator::getInstance()->getComponent<T>(type, args...));
 			if (c == nullptr)
 				return;
 

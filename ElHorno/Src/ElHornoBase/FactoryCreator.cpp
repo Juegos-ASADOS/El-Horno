@@ -2,8 +2,6 @@
 #include "Factory.h"
 #include "CheckMl.h"
 
-using json = nlohmann::json;
-
 FactoryCreator* FactoryCreator::instance_;
 
 // DEFINIR EL SINGLETONE
@@ -49,7 +47,7 @@ void FactoryCreator::clean()
 //}
 
 // Para añadir factorias(crean componentes) al mapa
-void FactoryCreator::addFactory(const std::string& type, Factory* f)
+void FactoryCreator::addFactory(const std::string& type)
 {
-	map[type] = f;
+	compList_.push_back(type);
 }

@@ -32,6 +32,10 @@ public:
 private:
 	// Nodo de ogre base
 	Ogre::SceneNode* node_ = nullptr;
+
+	Ogre::Vector3 pPos;
+	Ogre::Vector3 pRot;
+	Ogre::Vector3 pScal;
 };
 
 #endif _TRANSFORM_H

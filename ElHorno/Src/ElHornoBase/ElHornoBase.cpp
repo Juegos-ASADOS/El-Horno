@@ -84,6 +84,7 @@ Ejecuta el start del SceenManager y comienza el renderizado de Ogre
 */
 void ElHornoBase::start()
 {
+	GraphicsManager::getInstance()->init();
 	SceneManager::getInstance()->getCurrentScene()->start();
 	LuaManager::getInstance()->init();
 
@@ -139,9 +140,9 @@ void ElHornoBase::setupFactories()
 {
 	FactoryCreator* facCreat = FactoryCreator::getInstance();
 	// Factorías de componentes principales (transform, rigidbody, etc.)
-	facCreat->addFactory("transform", new TransformFactory());
-	facCreat->addFactory("camera", new CameraFactory());
-	facCreat->addFactory("mesh", new MeshFactory());
+	facCreat->addFactory("transform");
+	facCreat->addFactory("camera");
+	facCreat->addFactory("mesh");
 }
 
 /*OgreRoot llama a frameListener_ que llama a processFrame que actualiza
@@ -154,7 +155,7 @@ void ElHornoBase::processFrame(float deltaTime) {
 	if (!paused_) {
 		//SceneManager::getInstance()->preUpdate();
 		//PhysicsManager::getInstance()->update(deltaTime);
-		//SceneManager::getInstance()->update();
+		SceneManager::getInstance()->update();
 	}
 	else {
 		//SceneManager::getInstance()->pausedUpdate();
@@ -172,8 +173,6 @@ void ElHornoBase::update()
 	exit_ = false;
 	globalTimer_ = new Timer();
 	float deltaTime = 0;
-
-	GraphicsManager::getInstance()->init();
 
 	while (!exit_) {
 		globalTimer_->resetTimer();

@@ -8,6 +8,7 @@
 #include "Transform.h"
 #include <OgreFileSystemLayer.h>
 #include "CheckMl.h"
+#include <OgreLogManager.h>
 
 Mesh::Mesh(std::string name, bool castShadow, bool isAnimated)
 {
@@ -38,9 +39,16 @@ Se le adjunta al nodo del transform
 */
 void Mesh::start()
 {
-	ogreEntity_ = ElHornoBase::getInstance()->getGraphicsManager()->createEntity(meshName_);
+	try {
+
+		ogreEntity_ = ElHornoBase::getInstance()->getGraphicsManager()->createEntity(meshName_);
+	}
+	catch (Ogre::Exception& e) { 
+		Ogre::LogManager::getSingleton().logMessage("An exception has occured: " + e.getFullDescription() + "\n"); 
+		return;
+	}
 	//ogreEntity_->setMaterialName(materialName_);
-	ogreEntity_->setMaterialName("Sandokan");
+	//ogreEntity_->setMaterialName("Sandokan");
 	ogreEntity_->setCastShadows(castShadow_);
 	entity_->getComponent<Transform>("transform")->getNode()->attachObject(ogreEntity_); 
 }
