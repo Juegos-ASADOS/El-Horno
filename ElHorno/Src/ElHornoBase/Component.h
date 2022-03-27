@@ -7,7 +7,7 @@
 
 class Entity;
 
-class Component : EventListener
+class Component : public EventListener
 {
 protected:
 	bool active_;

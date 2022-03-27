@@ -17,20 +17,29 @@ public:
 	static void erase();
 
 	void sendEvent(Event* e);
+	void sendTargetEvent(EventListener* target, Event* e);
+
 	void processEvents();
+	
 	void clearQueue();
 	void clearListeneres();
+
 	void addListener(EventListener* eL);
 	bool removeListener(EventListener* eL);
 
 private:
 
-	static EventManager* instance;
+	static EventManager* instance_;
 
 	EventManager() {};
 	~EventManager();
 
+	//Queue hacia todos los EventListener
 	std::queue<Event*> eventsQueue;
+	
+	//Queue de eventos de los que se conoce el EventListener destinatario
+	std::queue<std::pair<EventListener*, Event*>> targetEventsQueue;
+	
 	std::vector<EventListener*> eventListeners;
 };
 

@@ -39,8 +39,8 @@ public:
 	void update(const float& dt);
 	void updateDebug(const int& debugFlags);
 	
-	btRigidBody* createRigidBody(btTransform* tr, btCollisionShape* shape, int& userIdx, const float& mass = 1.0f);
-	btGhostObject* createTrigger(btTransform* tr, btCollisionShape* shape, int& userIdx);
+	btRigidBody* createRigidBody(btTransform* tr, btCollisionShape* shape, int& userIdx_, const float& mass = 1.0f);
+	btGhostObject* createTrigger(btTransform* tr, btCollisionShape* shape, int& userIdx_);
 	btCollisionShape* createShape(Transform* tra, ColliderShape sha);
 	
 	//Para añadir al mundo de Bullet rigidbodies
@@ -65,20 +65,23 @@ private:
 	PhysicsManager();
 	~PhysicsManager();
 
-	float fixedTimeStep = 0.0f;
+	float fixedTimeStep_ = 0.0f;
 
-	int userIdxCount = 0;
+	int userIdxCount_ = 0;
 
-	btVector3* gravity = nullptr;
+	btVector3* gravity_ = nullptr;
 
-	btDiscreteDynamicsWorld* world;
-	btDispatcher* dispatcher;
-	btBroadphaseInterface* broadphaseInterface;
-	btConstraintSolver* constraintSolver;
-	btCollisionConfiguration* collisionConfiguration;
+	//Mundo de las físicas de bullet
+	btDiscreteDynamicsWorld* dynamicsWorld_;
 
-	//Para borrarlas al terminar
-	btAlignedObjectArray<btCollisionShape*>* collisionShapes;
+	//Configuración necesaria del mundo
+	btDispatcher* dispatcher_;
+	btBroadphaseInterface* broadphaseInterface_;
+	btConstraintSolver* constraintSolver_;
+	btCollisionConfiguration* collisionConfiguration_;
+
+	//Array de las formas de colisión (necesario para borrarlas)
+	btAlignedObjectArray<btCollisionShape*>* collisionShapes_;
 };
 
 #endif _PHYSHICS_MANAGER_H

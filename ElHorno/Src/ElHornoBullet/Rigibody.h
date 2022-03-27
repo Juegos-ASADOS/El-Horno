@@ -14,8 +14,8 @@ class Transform;
 
 union rb_union
 {
-	btRigidBody* rigid;
-	btGhostObject* ghost;
+	btRigidBody* rigid_;
+	btGhostObject* ghost_;
 };
 
 class RigidBody : public Component
@@ -27,43 +27,44 @@ public:
 	virtual void start() override;
 	virtual void update() override;
 
-	inline float getFriction() const { return friction; };
-	inline float getRestitution() const { return restitution; };
-	inline float getMass() const { return mass; };
+	inline float getFriction() const { return friction_; };
+	inline float getRestitution() const { return restitution_; };
+	inline float getMass() const { return mass_; };
 
 
 	void setFriction(const float& f);
 	void setRestitution(const float& r);
 	void setMass(const float& m);
+
 private:
 	//Masa por defecto 
 	//[DINÁMICO > 0 | ESTÁTICO == 0]
-	float mass = 1.0f;
+	float mass_ = 1.0f;
 
-	float friction;
+	float friction_;
 
-	float restitution;
+	float restitution_;
 
-	bool isTrigger = false;
+	bool isTrigger_ = false;
 	
 	//Union de Rigidbody de bullet : Solo puede ser ghost (trigger) o rigid (normal)
-	rb_union rb;
+	rb_union rb_;
 
 	//Forma básica del collider + Enum del PhysicsManager
-	btCollisionShape* shape = nullptr;
-	int colShape;
+	btCollisionShape* shape_ = nullptr;
+	int colShape_;
 
 	//Transform de bullet para generar el rigidbody de bullet
-	btTransform* bttrasform = nullptr;
+	btTransform* bttrasform_ = nullptr;
 
 	//Transform de la entidad 
-	Transform* transform = nullptr;
+	Transform* transform_ = nullptr;
 
 	//Referencia al manager de física
-	PhysicsManager* phManager = nullptr;
+	PhysicsManager* phManager_ = nullptr;
 
 	//Indice en Bullet
-	int userIdx;
+	int userIdx_;
 };
 
 

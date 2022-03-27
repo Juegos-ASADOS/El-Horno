@@ -3,20 +3,20 @@
 #include "EventListener.h"
 #include "CheckMl.h"
 
-EventManager* EventManager::instance = 0;
+EventManager* EventManager::instance_ = 0;
 
 EventManager* EventManager::getInstance()
 {
-	if (instance == 0)
+	if (instance_ == 0)
 		return nullptr;
 
-	return instance;
+	return instance_;
 }
 
 bool EventManager::setupInstance()
 {
-	if (instance == 0) {
-		instance = new EventManager();
+	if (instance_ == 0) {
+		instance_ = new EventManager();
 		return true;
 	}
 	return false;
@@ -24,24 +24,40 @@ bool EventManager::setupInstance()
 
 void EventManager::erase()
 {
-	delete instance;
+	delete instance_;
 }
 
 //Coloca el evento en una lista de eventos a procesar
 void EventManager::sendEvent(Event* e)
 {
-	
 	eventsQueue.push(e);
+}
+
+void EventManager::sendTargetEvent(EventListener* target, Event* e)
+{
+	targetEventsQueue.push({target, e});
 }
 
 //Procesa todos los eventos y los envia a todas las entidades
 void EventManager::processEvents()
 {
+	//Eventos generales
 	while (!eventsQueue.empty()) {
 		Event* e = eventsQueue.front(); eventsQueue.pop();
 		for (EventListener* eL : eventListeners) {
 			eL->recieveEvent(e);
 		}
+		delete e;
+	}
+
+	//Eventos específicos
+	while (!targetEventsQueue.empty()) {
+		EventListener* target = targetEventsQueue.front().first;
+		Event* e = targetEventsQueue.front().second; 
+		targetEventsQueue.pop();
+		
+		target->recieveEvent(e);
+		
 		delete e;
 	}
 }
@@ -51,6 +67,10 @@ void EventManager::clearQueue()
 {
 	while (!eventsQueue.empty()) {
 		eventsQueue.pop();
+	}
+
+	while (!targetEventsQueue.empty()) {
+		targetEventsQueue.pop();
 	}
 }
 
