@@ -29,10 +29,11 @@ void Transform::start()
 	node_ = ElHornoBase::getGraphicsManager()->getSceneManager()->getRootSceneNode()->createChildSceneNode();
 	setPosition(pPos);
 
-	//LA OTRA FORMA ESTABA ROTA
-	setRotationAxis(pRot.x, Vector3(1,0,0));
-	setRotationAxis(pRot.y, Vector3(0,1,0));
-	setRotationAxis(pRot.z, Vector3(0,0,1));
+	//LA OTRA FORMA ESTABA ROTA (Y ESTA TAMBIÉN)
+	rotateX(pRot.x);
+	rotateY(pRot.y);
+	rotateZ(pRot.z);
+	
 	
 	setScale(pScal);
 }
@@ -72,6 +73,21 @@ void Transform::setRotation(Quaternion rot)
 void Transform::setRotationAxis(Ogre::Real angle, Ogre::Vector3 axis)
 {
 	node_->setOrientation(Quaternion::Quaternion(Ogre::Angle(angle), axis));
+}
+
+void Transform::rotateX(Ogre::Real angle)
+{
+	node_->pitch(Ogre::Angle(angle));
+}
+
+void Transform::rotateY(Ogre::Real angle)
+{
+	node_->yaw(Ogre::Angle(angle));
+}
+
+void Transform::rotateZ(Ogre::Real angle)
+{
+	node_->roll(Ogre::Angle(angle));
 }
 
 // Funciones

@@ -5,6 +5,7 @@
 #include "Component.h"
 
 class btRigidBody;
+class btGhostObject;
 class btTransform;
 class btCollisionShape;
 class btCollisionObject;

@@ -4,23 +4,44 @@
 #include "btBulletCollisionCommon.h"
 #include "Transform.h"
 #include "Rigibody.h"
+#include <iostream>
+#include "Entity.h"
 //#include "EventManager.h"
 //#include "Event.h"
 //
-////Funcion externa que analiza colisiones en Bullet
-//bool collisionCallbackBullet(btManifoldPoint& cp, const btCollisionObjectWrapper* colObj0, int partId0, int index0, const btCollisionObjectWrapper* colObj1, int partId1, int index1) {
-//	
-//	//Aviso básico a sendos rigidbodies de que X entidad a colisionado con ellos
-//	RigidBody* e1 = static_cast<RigidBody*>(colObj0->getCollisionObject()->getUserPointer());
-//	RigidBody* e2 = static_cast<RigidBody*>(colObj1->getCollisionObject()->getUserPointer());
-//	
-//	RigidBodyCollision* evnt1 = new RigidBodyCollision(e1->getEntity());
-//	RigidBodyCollision* evnt2 = new RigidBodyCollision(e2->getEntity());
-//	
-//	EventManager::getInstance()->sendTargetEvent(e2, evnt1);
-//	EventManager::getInstance()->sendTargetEvent(e1, evnt2);
-//}
+//Funcion externa que analiza colisiones en Bullet
+bool collisionCallbackBullet(btManifoldPoint& cp, const btCollisionObjectWrapper* colObj0, int partId0, int index0, const btCollisionObjectWrapper* colObj1, int partId1, int index1) {
+	
+	//Aviso básico a sendos rigidbodies de que X entidad a colisionado con ellos
+	RigidBody* e1 = static_cast<RigidBody*>(colObj0->getCollisionObject()->getUserPointer());
+	RigidBody* e2 = static_cast<RigidBody*>(colObj1->getCollisionObject()->getUserPointer());
+	
 
+	std::cout << e1->getEntity()->getName() << "\n";
+	std::cout << e2->getEntity()->getName() << "\n";
+	std::cout << "---------------------------" << "\n";
+	/*RigidBodyCollision* evnt1 = new RigidBodyCollision(e1->getEntity());
+	RigidBodyCollision* evnt2 = new RigidBodyCollision(e2->getEntity());
+	
+	EventManager::getInstance()->sendTargetEvent(e2, evnt1);
+	EventManager::getInstance()->sendTargetEvent(e1, evnt2);*/
+	return true; //no importa su valor
+}
+
+bool contactProcessedBullet(btManifoldPoint& cp, void* body0, void* body1) {
+	btCollisionObject* colObj0 = static_cast<btCollisionObject*>(body0);
+	btCollisionObject* colObj1 = static_cast<btCollisionObject*>(body1);
+	
+	RigidBody* e1 = static_cast<RigidBody*>(colObj0->getUserPointer());
+	RigidBody* e2 = static_cast<RigidBody*>(colObj1->getUserPointer());
+
+
+	/*std::cout << e1->getEntity()->getName() << "\n";
+	std::cout << e2->getEntity()->getName() << "\n";
+	std::cout << "---------------------------" << "\n";*/
+
+	return true; //no importa su valor
+}
 
 PhysicsManager* PhysicsManager::instance;
 
@@ -49,26 +70,7 @@ void PhysicsManager::erase()
 
 PhysicsManager::PhysicsManager()
 {
-	//Funcion de callback en colision
-	//gContactAddedCallback = collisionCallbackBullet;
-	
-	collisionShapes_ = new btAlignedObjectArray<btCollisionShape*>();
 
-	collisionConfiguration_ = new btDefaultCollisionConfiguration();
-
-	dispatcher_ = new btCollisionDispatcher(collisionConfiguration_);
-
-	broadphaseInterface_ = new btDbvtBroadphase();
-
-	//Tipo por defecto de solver
-	btSequentialImpulseConstraintSolver* sol = new btSequentialImpulseConstraintSolver;
-	constraintSolver_ = sol;
-
-	dynamicsWorld_ = new btDiscreteDynamicsWorld(dispatcher_, broadphaseInterface_, constraintSolver_, collisionConfiguration_);
-
-
-	//Gravedad placeholder
-	dynamicsWorld_->setGravity(btVector3(0, -9.8, 0));
 }
 
 PhysicsManager::~PhysicsManager()
@@ -117,7 +119,27 @@ PhysicsManager::~PhysicsManager()
 
 void PhysicsManager::start(const std::string& initialScene)
 {
+	//Funcion de callback en colision
+	gContactAddedCallback = collisionCallbackBullet;
+	gContactProcessedCallback = contactProcessedBullet;
 
+	collisionShapes_ = new btAlignedObjectArray<btCollisionShape*>();
+
+	collisionConfiguration_ = new btDefaultCollisionConfiguration();
+
+	dispatcher_ = new btCollisionDispatcher(collisionConfiguration_);
+
+	broadphaseInterface_ = new btDbvtBroadphase();
+
+	//Tipo por defecto de solver
+	btSequentialImpulseConstraintSolver* sol = new btSequentialImpulseConstraintSolver;
+	constraintSolver_ = sol;
+
+	dynamicsWorld_ = new btDiscreteDynamicsWorld(dispatcher_, broadphaseInterface_, constraintSolver_, collisionConfiguration_);
+
+
+	//Gravedad placeholder
+	dynamicsWorld_->setGravity(btVector3(0, -9.8, 0));
 }
 
 /*

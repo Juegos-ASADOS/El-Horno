@@ -28,6 +28,9 @@ public:
 	void setScale(Ogre::Vector3 sca);
 	void setRotation(Ogre::Quaternion rot);
 	void setRotationAxis(Ogre::Real angle, Ogre::Vector3 axis);
+	void rotateX(Ogre::Real angle);
+	void rotateY(Ogre::Real angle);
+	void rotateZ(Ogre::Real angle);
 	void lookAt(Ogre::Vector3 targetPos);
 
 private:

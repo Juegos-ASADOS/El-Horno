@@ -7,6 +7,11 @@
 #include "btBulletDynamicsCommon.h"
 #include "CheckMl.h"
 
+//colShape: 
+//Box      == 0
+//Sphere   == 1
+//Cylinder == 2
+//Capsule  == 3
 RigidBody::RigidBody(float mass, bool isTrigger, int colShape) : Component()
 {
 	this->mass_ = mass;
@@ -25,7 +30,7 @@ void RigidBody::start()
 {
 	phManager_ = PhysicsManager::getInstance();
 	
-	transform_ = entity_->getComponent<Transform>("Transform");
+	transform_ = entity_->getComponent<Transform>("transform");
 
 	shape_ = phManager_->createShape(transform_, (ColliderShape) colShape_);
 
