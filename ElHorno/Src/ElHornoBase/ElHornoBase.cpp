@@ -31,6 +31,7 @@ cada manager
 ElHornoBase::ElHornoBase()
 {
 	//frameListener_ = new OurFrameListener();
+	paused_ = false;
 }
 
 /*
@@ -143,6 +144,7 @@ void ElHornoBase::setupFactories()
 	facCreat->addFactory("transform");
 	facCreat->addFactory("camera");
 	facCreat->addFactory("mesh");
+	facCreat->addFactory("light");
 }
 
 /*OgreRoot llama a frameListener_ que llama a processFrame que actualiza

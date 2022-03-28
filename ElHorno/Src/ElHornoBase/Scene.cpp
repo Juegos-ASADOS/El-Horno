@@ -6,20 +6,25 @@
 #include "CheckMl.h"
 #include "Transform.h"
 #include "CameraComponent.h"
+#include "LightComponent.h"
 #include "Mesh.h"
 
 using json = nlohmann::json;
 
 Scene::Scene()
 {
-	//Entity* a = addEntity("camera", "prueba");
-	Ogre::Vector3 p = { 2,2,2 };
-	//a->addComponent<Transform>("transform", Ogre::Vector3(0,0,0), p, p);
-	//a->addComponent<CameraComponent>("camera", Ogre::Vector3(-10, -10, -10), p, Ogre::ColourValue(0,0,0), 1, 1000);
+	Entity* light = addEntity("light", "prueba");
+	light->addComponent<Transform>("transform", Ogre::Vector3(0, 200, 0), Ogre::Vector3(0, 0, 0), Ogre::Vector3(0, 0, 0));
+	light->addComponent<LightComponent>("light", 0, Ogre::Vector3(0, 0, 0));
+	
+	Entity* a = addEntity("camera", "prueba");
+	Ogre::Vector3 p = { 1,1,1};
+	a->addComponent<Transform>("transform", Ogre::Vector3(0,0,0), Ogre::Vector3(0, 0, 0), Ogre::Vector3(0, 0, 0));
+	a->addComponent<CameraComponent>("camera", Ogre::Vector3(0,0,150), Ogre::Vector3(0, 0, 0), Ogre::ColourValue(0,0.3,0.5), 5, 10000);
 	
 	Entity* b = addEntity("object", "prueba");
-	b->addComponent<Transform>("transform", p, p, p);
-	b->addComponent<Mesh>("mesh");
+	b->addComponent<Transform>("transform", Ogre::Vector3(0, 0, 0), Ogre::Vector3(0, 0, 0), p);
+	b->addComponent<Mesh>("mesh", "ogrehead");
 }
 
 //TODO Destruir VierwPorts y c�maras lo primero de todo

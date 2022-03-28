@@ -15,7 +15,7 @@ class Mesh : public Component
 {
 public:
 
-	Mesh(std::string name = "cube", bool castShadow = false, bool isAnimated = false);
+	Mesh(std::string name = "cube", bool castShadow = true, bool isAnimated = false);
 	~Mesh();
 
 	virtual void start() override;

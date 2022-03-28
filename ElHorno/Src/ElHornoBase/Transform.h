@@ -14,7 +14,7 @@ public:
 	~Transform();
 
 	virtual void start() override;
-	virtual void update() override {};
+	virtual void update() override;
 	virtual void render() override {};
 
 	// Getters
@@ -27,6 +27,7 @@ public:
 	void setPosition(Ogre::Vector3 pos);
 	void setScale(Ogre::Vector3 sca);
 	void setRotation(Ogre::Quaternion rot);
+	void setRotationAxis(Ogre::Real angle, Ogre::Vector3 axis);
 	void lookAt(Ogre::Vector3 targetPos);
 
 private:

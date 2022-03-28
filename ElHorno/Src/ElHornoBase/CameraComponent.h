@@ -35,8 +35,8 @@ private:
 	Ogre::Vector3 lookAtVec;
 	Ogre::ColourValue bgColor;
 
-	int camNearClipDistance;
-	int setFarClipDistance;
+	int nearClipDistance;
+	int farClipDistance;
 };
 
 #endif _CAMERA_COMPONENT_H

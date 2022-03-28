@@ -39,36 +39,36 @@ void LightComponent::start()
 	{
 		// POINT
 	case 0:
-	{
 		light_->setType(Ogre::Light::LT_POINT);
-	}
-	break;
+		break;
 
 	// DIRECTIONAL
 	case 1:
-	{
 		light_->setType(Ogre::Light::LT_DIRECTIONAL);
-	}
-	break;
+		break;
 
 	// FOCO
 	case 2:
-	{
 		light_->setType(Ogre::Light::LT_SPOTLIGHT);
 		light_->setSpotlightNearClipDistance(1);
 		light_->setSpotlightInnerAngle(Ogre::Degree(15));
 		light_->setSpotlightOuterAngle(Ogre::Degree(90.0f));
+		break;
 
-	}
-	break;
+	default:
+		light_->setType(Ogre::Light::LT_POINT);
+		break;
 	}
 
 	// A�adimos sus parametros basicos
-	//light_->setDiffuseColour(colourLight_);
-	node_ = ElHornoBase::getInstance()->getGraphicsManager()->getSceneManager()->getRootSceneNode()->createChildSceneNode();
-	node_->attachObject(light_);
-	node_->setDirection(dirLight_);
+	light_->setDiffuseColour(1.0, 1.0, 1.0);
 
+	//NO SE HACE ASí
+	/*node_ = ElHornoBase::getInstance()->getGraphicsManager()->getSceneManager()->getRootSceneNode()->createChildSceneNode();
+	node_->attachObject(light_);*/
+
+	entity_->getComponent<Transform>("transform")->getNode()->attachObject(light_);
+	node_->setDirection(dirLight_);
 }
 
 void LightComponent::update()
