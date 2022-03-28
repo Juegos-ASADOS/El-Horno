@@ -20,7 +20,7 @@ Transform::Transform(Vector3 pos, Vector3 rot, Vector3 scal)
 
 Transform::~Transform()
 {
-	delete node_;
+	ElHornoBase::getInstance()->getGraphicsManager()->getSceneManager()->destroySceneNode(node_);
 	node_ = nullptr;
 }
 

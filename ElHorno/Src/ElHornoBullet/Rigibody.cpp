@@ -21,6 +21,7 @@ RigidBody::RigidBody(float mass, bool isTrigger, int colShape) : Component()
 
 RigidBody::~RigidBody()
 {
+	delete bttrasform_; bttrasform_ = nullptr;
 }
 
 //Crea el rigidbody de Bullet y guarda los valores importantes como:

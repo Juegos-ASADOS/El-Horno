@@ -25,7 +25,7 @@ CameraComponent::~CameraComponent()
 	Component::~Component();
 	ElHornoBase::getGraphicsManager()->getRenderWindow()->removeViewport(vp->getZOrder());
 	cam->getSceneManager()->destroyCamera("cam");
-	delete vp;
+	//delete vp;
 	vp = nullptr;
 	cam = nullptr;
 }

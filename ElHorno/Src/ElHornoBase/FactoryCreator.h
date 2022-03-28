@@ -25,7 +25,7 @@ private:
 public:
 	static FactoryCreator* getInstance();
 	static bool setupInstance();
-	static void clean();
+	static void erase();
 
 	template<typename T, typename ...Ts>
 	T* getComponent(const std::string type, Ts &&...args)

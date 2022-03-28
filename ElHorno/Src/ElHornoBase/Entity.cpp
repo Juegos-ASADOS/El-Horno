@@ -14,8 +14,11 @@ Entity::Entity(std::string n, Scene* m, Entity* p) : name_(n), mngr_(m), active_
 }
 
 Entity::~Entity() {
-	for (Component* c : compRef_)
+
+	for (Component* c : compRef_) {
+		delete c;
 		c = nullptr;
+	}
 	comp_.clear();
 	for (Entity* e : children_)
 		delete e;

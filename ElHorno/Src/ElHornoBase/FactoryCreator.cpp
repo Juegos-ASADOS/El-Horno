@@ -21,7 +21,7 @@ bool FactoryCreator::setupInstance()
 
 	return false;
 }
-void FactoryCreator::clean()
+void FactoryCreator::erase()
 {
 	delete instance_;
 }

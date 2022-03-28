@@ -10,6 +10,7 @@
 #include "OurFrameListener.h"
 #include "FactoryCreator.h"
 #include "SceneManager.h"
+#include "EventManager.h"
 #include "Scene.h"
 #include "Factory.h"
 #include "Timer.h"
@@ -40,10 +41,13 @@ Limpia managers y dependencias de bibliotecas externas
 ElHornoBase::~ElHornoBase()
 {
 	delete globalTimer_; globalTimer_ = nullptr;
-	GraphicsManager::erase();
 	InputManager::erase();
+	FactoryCreator::erase();
 	LuaManager::erase();
-	FactoryCreator::clean();
+	SceneManager::erase();
+	EventManager::erase();
+	GraphicsManager::erase();
+	PhysicsManager::erase();
 }
 
 ElHornoBase* ElHornoBase::getInstance() {
@@ -73,6 +77,7 @@ void ElHornoBase::init() {
 	setupFactories();
 
 	SceneManager::setupInstance();
+	EventManager::setupInstance();
 	GraphicsManager::setInstance();
 	PhysicsManager::setupInstance();
 	InputManager::setupInstance();
@@ -169,7 +174,7 @@ void ElHornoBase::processFrame(float deltaTime) {
 	//AudioManager::getInstance()->update();
 	GraphicsManager::getInstance()->render();
 	//UIManager::getInstance()->update();
-	//SceneManager::getInstance()->deleteEntities();
+	SceneManager::getInstance()->deleteEntities();
 	//SceneManager::getInstance()->endFrame();
 }
 
