@@ -9,7 +9,9 @@
 class SceneManager;
 class InputManager;
 class GraphicsManager;
-class AudioManager;
+namespace El_Horno {
+	class AudioManager;
+}
 class Timer;
 
 class ElHornoBase {
@@ -35,7 +37,7 @@ public:
 	static SceneManager* getSceneManager();
 	static InputManager* getInputManager();
 	static GraphicsManager* getGraphicsManager();
-	static AudioManager* getAudioManager();
+	static El_Horno::AudioManager* getAudioManager();
 
 	// Esto ahora lo lleva Timer (excepto deltaTime que lo lleva el bucle)
 	/*float getTime();
@@ -61,7 +63,7 @@ private:
 	static ElHornoBase* instance_;
 
 	void cleanScene();
-	
+
 	void extraConfig(nlohmann::json& j);
 	void setupFactories();
 

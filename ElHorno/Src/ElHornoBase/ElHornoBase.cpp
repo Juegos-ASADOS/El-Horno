@@ -43,7 +43,7 @@ Limpia managers y dependencias de bibliotecas externas
 ElHornoBase::~ElHornoBase()
 {
 	delete globalTimer_; globalTimer_ = nullptr;
-	AudioManager::erase();
+	El_Horno::AudioManager::erase();
 	InputManager::erase();
 	FactoryCreator::erase();
 	LuaManager::erase();
@@ -84,7 +84,7 @@ void ElHornoBase::init() {
 	GraphicsManager::setInstance();
 	El_Horno::PhysicsManager::setupInstance();
 	InputManager::setupInstance();
-	AudioManager::setupInstance();
+	El_Horno::AudioManager::setupInstance();
 
 	//HornoLua
 	LuaManager::setupInstance();
@@ -98,7 +98,7 @@ void ElHornoBase::start()
 	El_Horno::PhysicsManager::getInstance()->start("");
 	GraphicsManager::getInstance()->init();
 	SceneManager::getInstance()->getCurrentScene()->start();
-	AudioManager::getInstance()->init();
+	El_Horno::AudioManager::getInstance()->init();
 	LuaManager::getInstance()->init();
 
 	LuaManager::getInstance()->reedLuaScript("Assets/Scripts/sample.lua");
@@ -219,9 +219,9 @@ GraphicsManager* ElHornoBase::getGraphicsManager()
 	return GraphicsManager::getInstance();
 }
 
-AudioManager* ElHornoBase::getAudioManager()
+El_Horno::AudioManager* ElHornoBase::getAudioManager()
 {
-	return AudioManager::getInstance();
+	return El_Horno::AudioManager::getInstance();
 }
 
 /*
