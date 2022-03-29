@@ -5,11 +5,8 @@
 
 #include <string>
 
-#include "json.hpp"
 #include <iostream>
 #include "CheckMl.h"
-
-using json = nlohmann::json;
 
 SceneManager* SceneManager::instance = 0;
 
@@ -50,10 +47,11 @@ Scene* SceneManager::getCurrentScene()
 
 Scene* SceneManager::loadScene(const std::string& sceneName)
 {
-	json j /*= ResourceManager::getInstance()->loadSceneFile(sceneName)*/;
+	//COMENTADO POR EL USO DE JSON
+	//json j /*= ResourceManager::getInstance()->loadSceneFile(sceneName)*/;
 
 	currentScene_ = new Scene();
-	currentScene_->setupScene(j);
+	//currentScene_->setupScene(j);
 
 	//Creamos el evento de cambiar la escena?
 	Event* changeSceneEvent = new Event(EventType::ChangeScene);
