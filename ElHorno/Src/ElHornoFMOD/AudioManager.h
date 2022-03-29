@@ -4,9 +4,9 @@
 
 #include <string>
 #include <map>
-
-struct FMOD_VECTOR;
-enum FMOD_RESULT;
+#include "fmod_common.h"
+//struct FMOD_VECTOR;
+//enum FMOD_RESULT;
 
 namespace FMOD {
 	class ChannelGroup;
@@ -31,7 +31,7 @@ public:
 	FMOD::Studio::System* mpStudioSystem;
 	FMOD::System* mpSystem;
 
-	int mnNextChannelId;
+	int mnNextChannelId = 0;
 
 	typedef std::map<std::string, FMOD::Sound*> SoundMap;
 	typedef std::map<int, FMOD::Channel*> ChannelMap;
@@ -47,11 +47,11 @@ public:
 class AudioManager
 {
 public:
-	static void init();
-	static void Update();
-	static void Shutdown();
+	void init();
+	void Update();
+	static void erase();
 	static int ErrorCheck(FMOD_RESULT result);
-	bool setInstance();
+	static bool setupInstance();
 	static AudioManager* getInstance();
 
 	//void LoadBank(const std::string& strBankName, FMOD::FMOD_STUDIO_LOAD_BANK_FLAGS flags);
@@ -59,7 +59,7 @@ public:
 	void Loadsound(const std::string& strSoundName, bool b3d = true, bool bLooping = false, bool bStream = false);
 	void UnLoadSound(const std::string& strSoundName);
 	//void Set3dListenerAndOrientation(const FMOD_VECTOR& vPos = { 0, 0, 0 }, float fVolumedB = 0.0f);
-	int PlaySound(const std::string& strSoundName, const FMOD_VECTOR& vPos, float fVolumedB);
+	int PlaySound(const std::string& strSoundName, const FMOD_VECTOR& vPos, float fVolumedB = 0.0f);
 	//void PlayEvent(const string& strEventName);
 	void StopChannel(int nChannelId);
 	//void StopEvent(const string& strEventName, bool bImmediate = false);
@@ -81,6 +81,7 @@ public:
 private:
 	static Implementation* sgpImplementation;
 	static AudioManager* instance_;
+	std::string soundsPath = "./Assets/Sounds/";
 };
 
 #endif _AUDIO_MANAGER_AUDIO_MANAGER_H

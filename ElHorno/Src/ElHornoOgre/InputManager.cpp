@@ -4,6 +4,7 @@
 #include <Vector>
 #include <SDL_events.h>
 #include <iostream>
+#include "CheckML.h"
 
 //#include <CEGUI/CEGUI.h>
 //#include "checkML.h"

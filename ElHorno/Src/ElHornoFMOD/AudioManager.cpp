@@ -3,12 +3,12 @@
 #include "fmod_studio.hpp"
 #include "fmod.hpp"
 #include "fmod.h"
+#include <filesystem>
 
-#include "fmod_common.h"
 
 #include <iostream>
 #include <vector>
-#include "CheckMl.h"
+#include "CheckML.h"
 
 
 using namespace FMOD;
@@ -79,9 +79,10 @@ void AudioManager::Update()
 	sgpImplementation->Update();
 }
 
-void AudioManager::Shutdown()
+void AudioManager::erase()
 {
 	delete sgpImplementation;
+	delete instance_;
 }
 
 int AudioManager::ErrorCheck(FMOD_RESULT result)
@@ -94,7 +95,7 @@ int AudioManager::ErrorCheck(FMOD_RESULT result)
 	return 0;
 }
 
-bool AudioManager::setInstance()
+bool AudioManager::setupInstance()
 {
 	if (instance_ == nullptr) {
 		instance_ = new AudioManager();
@@ -131,8 +132,10 @@ void AudioManager::Loadsound(const std::string& strSoundName, bool b3d, bool bLo
 	eMode |= bLooping ? FMOD_LOOP_NORMAL : FMOD_LOOP_OFF;
 	eMode |= bStream ? FMOD_CREATESTREAM : FMOD_CREATECOMPRESSEDSAMPLE;
 
+	//std::string tmp = ;
 	FMOD::Sound* pSound = nullptr;
-	ErrorCheck(sgpImplementation->mpSystem->createSound(strSoundName.c_str(), eMode, nullptr, &pSound));
+	std::string path = soundsPath + strSoundName;
+	ErrorCheck(sgpImplementation->mpSystem->createSound(path.c_str(), eMode, nullptr, &pSound));
 	if (pSound) {
 		sgpImplementation->mSounds[strSoundName] = pSound;
 	}
@@ -148,7 +151,7 @@ void AudioManager::UnLoadSound(const std::string& strSoundName)
 	sgpImplementation->mSounds.erase(tFoundIt);
 }
 
-int AudioManager::PlaySound(const std::string& strSoundName, const FMOD_VECTOR& vPosition = { 0, 0, 0 }, float fVolumedB = 0.0f)
+int AudioManager::PlaySound(const std::string& strSoundName, const FMOD_VECTOR& vPosition, float fVolumedB)
 {
 	int nChannelId = sgpImplementation->mnNextChannelId++;
 	auto tFoundIt = sgpImplementation->mSounds.find(strSoundName);

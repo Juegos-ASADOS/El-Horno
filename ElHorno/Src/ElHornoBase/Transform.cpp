@@ -7,7 +7,7 @@
 #include <OgreVector3.h>
 #include <OgreQuaternion.h>
 #include <iostream>
-#include "CheckMl.h"
+#include "CheckML.h"
 
 using namespace Ogre;
 

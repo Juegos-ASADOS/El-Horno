@@ -9,7 +9,7 @@
 #include "AudioManager.h"
 #include "HornoConversions.h"
 #include "fmod.h"
-#include "CheckMl.h"
+#include "CheckML.h"
 
 AudioComponent::AudioComponent() {}
 
@@ -17,9 +17,9 @@ AudioComponent::~AudioComponent() {}
 
 void AudioComponent::update()
 {
-	pos_.x = entity_->getComponent<Transform>("Transform")->getPosition().x;
-	pos_.y = entity_->getComponent<Transform>("Transform")->getPosition().y;
-	pos_.z = entity_->getComponent<Transform>("Transform")->getPosition().z;
+	pos_.x = entity_->getComponent<Transform>("transform")->getPosition().x;
+	pos_.y = entity_->getComponent<Transform>("transform")->getPosition().y;
+	pos_.z = entity_->getComponent<Transform>("transform")->getPosition().z;
 
 	vel_.x = 0;
 	vel_.y = 0;
@@ -29,7 +29,7 @@ void AudioComponent::update()
 
 void AudioComponent::playSound(std::string path)
 {
-	nChannel = ElHornoBase::getInstance()->getAudioManager()->PlaySound(audioRoute, VectorToFmod(pos_), 5);
+	nChannel = ElHornoBase::getInstance()->getAudioManager()->PlaySound(path, VectorToFmod(pos_), 50.0f);
 }
 
 

@@ -1,5 +1,5 @@
 #include "Component.h"
-#include "CheckMl.h"
+#include "CheckML.h"
 
 Component::~Component(){
 	entity_ = nullptr;

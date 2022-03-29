@@ -8,7 +8,7 @@
 #include <OgreSceneNode.h>
 #include <OgreRenderWindow.h>
 #include <OgreViewport.h>
-#include "CheckMl.h"
+#include "CheckML.h"
 
 CameraComponent::CameraComponent(Ogre::Vector3 pos, Ogre::Vector3 lookAt, Ogre::ColourValue color, int nearClDis, int farClDis)
 {

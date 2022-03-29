@@ -16,6 +16,9 @@ XCOPY /y /s .\bin\release\OgreMain.dll %EXES%
 XCOPY /y /s .\bin\debug\Codec_STBI_d.dll %EXES%
 XCOPY /y /s .\bin\release\Codec_STBI.dll %EXES%
 
+XCOPY /y /s .\bin\debug\Plugin_ParticleFX_d.dll %EXES%
+XCOPY /y /s .\bin\release\Plugin_ParticleFX.dll %EXES%
+
 XCOPY /y /s .\bin\debug\SDL2.dll %EXES%
 
 XCOPY /y /s .\bin\release\zlib.dll %EXES%

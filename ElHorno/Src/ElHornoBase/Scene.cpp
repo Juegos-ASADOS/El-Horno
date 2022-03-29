@@ -3,35 +3,42 @@
 #include <iostream>
 #include <fstream>
 #include <OgreVector3.h>
-#include "CheckMl.h"
+#include "CheckML.h"
 #include "Transform.h"
 #include "CameraComponent.h"
 #include "LightComponent.h"
 #include "Mesh.h"
+#include "ParticleSystem.h"
 #include "Rigibody.h"
-
-using json = nlohmann::json;
+#include "AudioComponent.h"
+#include "AudioListenerComponent.h"
 
 Scene::Scene()
 {
 	Entity* light = addEntity("light", "prueba");
 	light->addComponent<Transform>("transform", Ogre::Vector3(0, 200, 0), Ogre::Vector3(0, 0, 0), Ogre::Vector3(0, 0, 0));
 	light->addComponent<LightComponent>("light", 0, Ogre::Vector3(0, 0, 0));
-	
+
 	Entity* a = addEntity("camera", "prueba");
 	Ogre::Vector3 p = { 1,1,1};
 	a->addComponent<Transform>("transform", Ogre::Vector3(0,0,0), Ogre::Vector3(0, 0, 0), Ogre::Vector3(0, 0, 0));
 	a->addComponent<CameraComponent>("camera", Ogre::Vector3(0,220,550), Ogre::Vector3(0, 0, 0), Ogre::ColourValue(0,0.3,0.5), 5, 10000);
+	a->addComponent<AudioListenerComponent>("audioListener");
 	
 	Entity* b = addEntity("object", "prueba");
 	b->addComponent<Transform>("transform", Ogre::Vector3(0, 50, 0), Ogre::Vector3(180, 0, 0), p);
 	b->addComponent<Mesh>("mesh", "ogrehead");
 	b->addComponent<RigidBody>("rigidbody", 2.0f, false, 0);
+	b->addComponent<AudioComponent>("audioComponent");
 
 	b = addEntity("object2", "prueba");
 	b->addComponent<Transform>("transform", Ogre::Vector3(0, -15, 0), Ogre::Vector3(0, 0, 0), Ogre::Vector3(5, 0.1, 5));
 	b->addComponent<Mesh>("mesh", "cube");
 	b->addComponent<RigidBody>("rigidbody", 0.0f, false, 0);
+
+	b = addEntity("esmoque", "prueba");
+	b->addComponent<Transform>("transform", Ogre::Vector3(0, 50, 0), Ogre::Vector3(0, 0, 0), p);
+	b->addComponent<ParticleSystem>("particleSystem", "smoke", "Smoke", 50000, false);
 }
 
 //TODO Destruir VierwPorts y c�maras lo primero de todo
@@ -58,20 +65,31 @@ Scene::~Scene()
 	dontDelete.clear();
 }
 
-Entity* Scene::getEntity(const std::string& name, const std::string& layer)
+Entity* Scene::getEntity(const std::string& name, const std::string& layer = "")
 {
 	std::map<std::string, std::vector<Entity*>>::iterator entity = entities_.find(layer);
-	if (entity == entities_.end())
+	if (layer != "" && entity == entities_.end())
 		return nullptr;
 	else {
-		for (Entity* e : entity->second)
-			if (e->getName() == name) return e;
+		if (layer == "") {
+			for (auto a : entities_) {
+				for (Entity* e : a.second)
+					if (e->getName() == name) return e;
+			}
+		}
+		else {
+			for (Entity* e : entity->second)
+				if (e->getName() == name) return e;
+		}
 		return nullptr;
 	}
 }
-Entity* Scene::addEntity(const std::string& name, const std::string& layer)
+Entity* Scene::addEntity(const std::string& name, const std::string& layer, const std::string& group = "default")
 {
 	Entity* e = new Entity(name, this);
+	e->setGroup(group);
+
+	//Seleccion de layer de renderizado
 	auto it = entities_.find(layer);
 	if (it != entities_.end())
 		it->second.push_back(e);
@@ -79,7 +97,9 @@ Entity* Scene::addEntity(const std::string& name, const std::string& layer)
 		std::vector<Entity*> a = std::vector<Entity*>();
 		a.push_back(e);
 		entities_.insert(std::pair<std::string, std::vector<Entity*>>(layer, a));
-	}
+	}	//Seleccion de grupo de entidades(default por defecto)	auto i = entitiesGroups_.find(group);	if (i != entitiesGroups_.end())		i->second.push_back(e);	else {		std::vector<Entity*> a = std::vector<Entity*>();
+		a.push_back(e);
+		entitiesGroups_.insert(std::pair<std::string, std::vector<Entity*>>(group, a));	}
 	return e;
 }
 /*

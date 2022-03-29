@@ -9,7 +9,6 @@
 #include <bitset>
 
 #include "FactoryCreator.h"
-#include "json.hpp"
 
 class Component;
 class Scene;
@@ -24,7 +23,7 @@ private:
 
 	std::map<std::string, Component*> comp_;
 	std::vector<Component*> compRef_;
-	//bitset<ecs::maxGroup> groups_;
+	std::string group_;
 	
 	Entity* parent_;
 	std::vector<Entity*> children_;
@@ -96,6 +95,8 @@ public:
 	inline std::string getName() { return name_; };
 	inline Scene* getMngr() { return mngr_; };
 
+	inline void setGroup(const std::string& g) { group_ = g; };
+	inline std::string getGroup() { return group_; };
 
 	bool dontDestroyOnLoad = false;
 
