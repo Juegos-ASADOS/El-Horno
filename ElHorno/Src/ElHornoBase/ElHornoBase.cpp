@@ -48,7 +48,7 @@ ElHornoBase::~ElHornoBase()
 	FactoryCreator::erase();
 	El_Horno::LuaManager::erase();
 	SceneManager::erase();
-	EventManager::erase();
+	El_Horno::EventManager::erase();
 	El_Horno::GraphicsManager::erase();
 	El_Horno::PhysicsManager::erase();
 }
@@ -80,7 +80,7 @@ void ElHornoBase::init() {
 	setupFactories();
 
 	SceneManager::setupInstance();
-	EventManager::setupInstance();
+	El_Horno::EventManager::setupInstance();
 	El_Horno::GraphicsManager::setInstance();
 	El_Horno::PhysicsManager::setupInstance();
 	El_Horno::InputManager::setupInstance();
@@ -189,7 +189,7 @@ void ElHornoBase::processFrame(float deltaTime) {
 void ElHornoBase::update()
 {
 	exit_ = false;
-	globalTimer_ = new Timer();
+	globalTimer_ = new El_Horno::Timer();
 	float deltaTime = 0;
 	
 	// ESTO ES DE PRUEBA
@@ -308,7 +308,7 @@ void ElHornoBase::changeBasicOptions()
 /*
 * Devuelve el Timer global del proyecto
 */
-Timer* ElHornoBase::getGlobalTime()
+El_Horno::Timer* ElHornoBase::getGlobalTime()
 {
 	return globalTimer_;
 }

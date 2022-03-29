@@ -6,32 +6,33 @@
 #include <Windows.h> 
 
 //#include <SDL_events.h>
+namespace El_Horno {
 
-OurFrameListener::OurFrameListener()
-{
-	//timer_ = new Ogre::Timer();
-	//prevTime = std::chrono::high_resolution_clock::now();
+	OurFrameListener::OurFrameListener()
+	{
+		//timer_ = new Ogre::Timer();
+		//prevTime = std::chrono::high_resolution_clock::now();
+	}
+
+	OurFrameListener::~OurFrameListener()
+	{
+		//delete timer_;
+		//timer_ = nullptr;
+	}
+
+	bool OurFrameListener::frameStarted(const Ogre::FrameEvent& evt)
+	{
+		//std::chrono::duration<double> elapsed = std::chrono::high_resolution_clock::now() - prevTime;
+
+		//deltaTime_ = elapsed.count();
+
+		//prevTime = std::chrono::high_resolution_clock::now(); //Necesita Windows.h
+
+		//ElHornoBase::getInstance()->processFrame();
+
+		return true;
+	}
 }
-
-OurFrameListener::~OurFrameListener()
-{
-	//delete timer_;
-	//timer_ = nullptr;
-}
-
-bool OurFrameListener::frameStarted(const Ogre::FrameEvent& evt)
-{
-	//std::chrono::duration<double> elapsed = std::chrono::high_resolution_clock::now() - prevTime;
-
-	//deltaTime_ = elapsed.count();
-
-	//prevTime = std::chrono::high_resolution_clock::now(); //Necesita Windows.h
-
-	//ElHornoBase::getInstance()->processFrame();
-
-	return true;
-}
-
 //// Tiempo que lleva el programa en ejecución en segundos
 //double OurFrameListener::getTime()
 //{

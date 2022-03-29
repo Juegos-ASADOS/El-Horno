@@ -57,7 +57,7 @@ Scene* SceneManager::loadScene(const std::string& sceneName)
 	//Creamos el evento de cambiar la escena?
 	Event* changeSceneEvent = new Event(EventType::ChangeScene);
 
-	EventManager::getInstance()->sendEvent(changeSceneEvent);
+	El_Horno::EventManager::getInstance()->sendEvent(changeSceneEvent);
 
 	return currentScene_;
 }

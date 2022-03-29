@@ -17,7 +17,7 @@ Scene::Scene()
 {
 	Entity* light = addEntity("light", "prueba");
 	light->addComponent<Transform>("transform", Ogre::Vector3(0, 200, 0), Ogre::Vector3(0, 0, 0), Ogre::Vector3(0, 0, 0));
-	light->addComponent<LightComponent>("light", 0, Ogre::Vector3(0, 0, 0));
+	light->addComponent<El_Horno::LightComponent>("light", 0, Ogre::Vector3(0, 0, 0));
 
 	Entity* a = addEntity("camera", "prueba");
 	Ogre::Vector3 p = { 1,1,1 };
@@ -38,7 +38,7 @@ Scene::Scene()
 
 	b = addEntity("esmoque", "prueba");
 	b->addComponent<Transform>("transform", Ogre::Vector3(0, 50, 0), Ogre::Vector3(0, 0, 0), p);
-	b->addComponent<ParticleSystem>("particleSystem", "smoke", "Smoke", 50000, false);
+	b->addComponent<El_Horno::ParticleSystem>("particleSystem", "smoke", "Smoke", 50000, false);
 }
 
 //TODO Destruir VierwPorts y c�maras lo primero de todo

@@ -17,62 +17,63 @@
 #include <OgreSceneManager.h>
 #include <OgreColourValue.h>
 
-LightComponent::LightComponent(int type, Ogre::Vector3 dirLight/*, Ogre::ColourValue colourLight*/)
-{
-	type_ = type;
-	dirLight_ = dirLight;
-	//colourLight_ = colourLight;
-}
-
-LightComponent::~LightComponent()
-{
-
-}
-
-void LightComponent::start()
-{
-	// Creamos la luz
-	light_ = ElHornoBase::getInstance()->getGraphicsManager()->getSceneManager()->createLight();
-
-	// Seteamos su tipo
-	switch (type_)
+namespace El_Horno {
+	LightComponent::LightComponent(int type, Ogre::Vector3 dirLight/*, Ogre::ColourValue colourLight*/)
 	{
-		// POINT
-	case 0:
-		light_->setType(Ogre::Light::LT_POINT);
-		break;
-
-	// DIRECTIONAL
-	case 1:
-		light_->setType(Ogre::Light::LT_DIRECTIONAL);
-		break;
-
-	// FOCO
-	case 2:
-		light_->setType(Ogre::Light::LT_SPOTLIGHT);
-		light_->setSpotlightNearClipDistance(1);
-		light_->setSpotlightInnerAngle(Ogre::Degree(15));
-		light_->setSpotlightOuterAngle(Ogre::Degree(90.0f));
-		break;
-
-	default:
-		light_->setType(Ogre::Light::LT_POINT);
-		break;
+		type_ = type;
+		dirLight_ = dirLight;
+		//colourLight_ = colourLight;
 	}
 
-	// A�adimos sus parametros basicos
-	light_->setDiffuseColour(1.0, 1.0, 1.0);
+	LightComponent::~LightComponent()
+	{
 
-	//NO SE HACE ASí
-	/*node_ = ElHornoBase::getInstance()->getGraphicsManager()->getSceneManager()->getRootSceneNode()->createChildSceneNode();
-	node_->attachObject(light_);*/
+	}
 
-	entity_->getComponent<Transform>("transform")->getNode()->attachObject(light_);
-	node_->setDirection(dirLight_);
+	void LightComponent::start()
+	{
+		// Creamos la luz
+		light_ = ElHornoBase::getInstance()->getGraphicsManager()->getSceneManager()->createLight();
+
+		// Seteamos su tipo
+		switch (type_)
+		{
+			// POINT
+		case 0:
+			light_->setType(Ogre::Light::LT_POINT);
+			break;
+
+			// DIRECTIONAL
+		case 1:
+			light_->setType(Ogre::Light::LT_DIRECTIONAL);
+			break;
+
+			// FOCO
+		case 2:
+			light_->setType(Ogre::Light::LT_SPOTLIGHT);
+			light_->setSpotlightNearClipDistance(1);
+			light_->setSpotlightInnerAngle(Ogre::Degree(15));
+			light_->setSpotlightOuterAngle(Ogre::Degree(90.0f));
+			break;
+
+		default:
+			light_->setType(Ogre::Light::LT_POINT);
+			break;
+		}
+
+		// A�adimos sus parametros basicos
+		light_->setDiffuseColour(1.0, 1.0, 1.0);
+
+		//NO SE HACE ASí
+		/*node_ = ElHornoBase::getInstance()->getGraphicsManager()->getSceneManager()->getRootSceneNode()->createChildSceneNode();
+		node_->attachObject(light_);*/
+
+		entity_->getComponent<Transform>("transform")->getNode()->attachObject(light_);
+		node_->setDirection(dirLight_);
+	}
+
+	void LightComponent::update()
+	{
+
+	}
 }
-
-void LightComponent::update()
-{
-
-}
-

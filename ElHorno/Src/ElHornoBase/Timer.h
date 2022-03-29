@@ -2,18 +2,19 @@
 #ifndef _TIMER_H
 #define _TIMER_H
 
-class Timer{
-public:
+namespace El_Horno {
+	class Timer {
+	public:
 
-	Timer();
-	~Timer();
+		Timer();
+		~Timer();
 
-	double getExeTime();
-	double getTime();
-	void resetTimer();
+		double getExeTime();
+		double getTime();
+		void resetTimer();
 
-private:
-	double firstTime_;
-};
-
+	private:
+		double firstTime_;
+	};
+}
 #endif _TIMER_H

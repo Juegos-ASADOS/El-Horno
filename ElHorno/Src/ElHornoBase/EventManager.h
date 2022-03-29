@@ -8,39 +8,40 @@
 class EventListener;
 struct Event;
 
-class EventManager
-{
-public:
+namespace El_Horno {
+	class EventManager
+	{
+	public:
 
-	static EventManager* getInstance();
-	static bool setupInstance();
-	static void erase();
+		static EventManager* getInstance();
+		static bool setupInstance();
+		static void erase();
 
-	void sendEvent(Event* e);
-	void sendTargetEvent(EventListener* target, Event* e);
+		void sendEvent(Event* e);
+		void sendTargetEvent(EventListener* target, Event* e);
 
-	void processEvents();
-	
-	void clearQueue();
-	void clearListeneres();
+		void processEvents();
 
-	void addListener(EventListener* eL);
-	bool removeListener(EventListener* eL);
+		void clearQueue();
+		void clearListeneres();
 
-private:
+		void addListener(EventListener* eL);
+		bool removeListener(EventListener* eL);
 
-	static EventManager* instance_;
+	private:
 
-	EventManager() {};
-	~EventManager();
+		static EventManager* instance_;
 
-	//Queue hacia todos los EventListener
-	std::queue<Event*> eventsQueue;
-	
-	//Queue de eventos de los que se conoce el EventListener destinatario
-	std::queue<std::pair<EventListener*, Event*>> targetEventsQueue;
-	
-	std::vector<EventListener*> eventListeners;
-};
+		EventManager() {};
+		~EventManager();
 
+		//Queue hacia todos los EventListener
+		std::queue<Event*> eventsQueue;
+
+		//Queue de eventos de los que se conoce el EventListener destinatario
+		std::queue<std::pair<EventListener*, Event*>> targetEventsQueue;
+
+		std::vector<EventListener*> eventListeners;
+	};
+}
 #endif _EVENT_MANAGER_H

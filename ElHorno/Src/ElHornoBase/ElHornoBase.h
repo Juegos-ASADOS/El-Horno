@@ -15,9 +15,9 @@ namespace El_Horno {
 	class AudioManager;
 	class GraphicsManager;
 	class InputManager;
+	class Timer;
 }
 
-class Timer;
 
 class ElHornoBase {
 public:
@@ -48,7 +48,7 @@ public:
 	/*float getTime();
 	float deltaTime();
 	void resetTimer();*/
-	Timer* getGlobalTime();
+	El_Horno::Timer* getGlobalTime();
 
 	void pause();
 	bool isPaused();
@@ -77,7 +77,7 @@ private:
 		invertedAxisY_,
 		exit_;
 
-	Timer* globalTimer_;
+	El_Horno::Timer* globalTimer_;
 
 	nlohmann::json ExtraConfig;
 };

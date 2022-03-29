@@ -14,35 +14,35 @@ class Mesh;
 class Transform;
 
 
+namespace El_Horno {
+	class LightComponent : public Component
+	{
+	public:
 
-class LightComponent : public Component
-{
-public:
+		LightComponent(int type, Ogre::Vector3 dirLight/*, Ogre::ColourValue colourLight*/);
+		~LightComponent();
 
-	LightComponent(int type, Ogre::Vector3 dirLight/*, Ogre::ColourValue colourLight*/);
-	~LightComponent();
+		void start() override;
+		void update()override;
 
-	void start() override;
-	void update()override;
-
-	void onEnable() override {};
-	void onDisable()override {};
+		void onEnable() override {};
+		void onDisable()override {};
 
 
 
-private:
+	private:
 
-	// Acceso al nodo, Entidad de Ogre y Transform
-	Ogre::SceneNode* node_ = nullptr;
-	Ogre::Entity* ogreEntity_;
-	Transform* tr_ = nullptr;
+		// Acceso al nodo, Entidad de Ogre y Transform
+		Ogre::SceneNode* node_ = nullptr;
+		Ogre::Entity* ogreEntity_;
+		Transform* tr_ = nullptr;
 
-	// Luz de ogre
-	Ogre::Light* light_;
-	int type_;
-	Ogre::Vector3 dirLight_;
-	//Ogre::ColourValue colourLight_;
+		// Luz de ogre
+		Ogre::Light* light_;
+		int type_;
+		Ogre::Vector3 dirLight_;
+		//Ogre::ColourValue colourLight_;
 
-};
-
+	};
+}
 #endif _LightComponent_H

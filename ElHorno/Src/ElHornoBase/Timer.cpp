@@ -2,28 +2,30 @@
 #include <Windows.h> 
 #include "CheckML.h"
 
-Timer::Timer()
-{
-	resetTimer();
-}
+namespace El_Horno {
+	Timer::Timer()
+	{
+		resetTimer();
+	}
 
-Timer::~Timer()
-{
-}
+	Timer::~Timer()
+	{
+	}
 
-// Tiempo que lleva el programa en ejecución en segundos
-double Timer::getExeTime()
-{
-	return (double)GetTickCount64() / 1000.0;
-}
+	// Tiempo que lleva el programa en ejecución en segundos
+	double Timer::getExeTime()
+	{
+		return (double)GetTickCount64() / 1000.0;
+	}
 
-// Tiempo desde firstTime_ (desde que se resetea el timer)
-double Timer::getTime()
-{
-	return getExeTime() - firstTime_;
-}
+	// Tiempo desde firstTime_ (desde que se resetea el timer)
+	double Timer::getTime()
+	{
+		return getExeTime() - firstTime_;
+	}
 
-void Timer::resetTimer()
-{
-	firstTime_ = (double)GetTickCount64() / 1000.0;
+	void Timer::resetTimer()
+	{
+		firstTime_ = (double)GetTickCount64() / 1000.0;
+	}
 }
