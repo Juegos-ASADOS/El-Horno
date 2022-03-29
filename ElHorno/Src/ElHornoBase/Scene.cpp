@@ -65,7 +65,7 @@ Scene::~Scene()
 	dontDelete.clear();
 }
 
-Entity* Scene::getEntity(const std::string& name, const std::string& layer = "")
+Entity* Scene::getEntity(const std::string& name, const std::string& layer)
 {
 	std::map<std::string, std::vector<Entity*>>::iterator entity = entities_.find(layer);
 	if (layer != "" && entity == entities_.end())
@@ -84,7 +84,7 @@ Entity* Scene::getEntity(const std::string& name, const std::string& layer = "")
 		return nullptr;
 	}
 }
-Entity* Scene::addEntity(const std::string& name, const std::string& layer, const std::string& group = "default")
+Entity* Scene::addEntity(const std::string& name, const std::string& layer, const std::string& group)
 {
 	Entity* e = new Entity(name, this);
 	e->setGroup(group);
@@ -96,10 +96,10 @@ Entity* Scene::addEntity(const std::string& name, const std::string& layer, cons
 	else {
 		std::vector<Entity*> a = std::vector<Entity*>();
 		a.push_back(e);
-		entities_.insert(std::pair<std::string, std::vector<Entity*>>(layer, a));
-	}	//Seleccion de grupo de entidades(default por defecto)	auto i = entitiesGroups_.find(group);	if (i != entitiesGroups_.end())		i->second.push_back(e);	else {		std::vector<Entity*> a = std::vector<Entity*>();
-		a.push_back(e);
-		entitiesGroups_.insert(std::pair<std::string, std::vector<Entity*>>(group, a));	}
+		entitiesGroups_.insert(std::pair<std::string, std::vector<Entity*>>(layer, a));
+	}	//Seleccion de grupo de entidades(default por defecto)	auto i = entitiesGroups_.find(group);	if (i != entitiesGroups_.end())		i->second.push_back(e);	else {		std::vector<Entity*> b = std::vector<Entity*>();
+		//b.push_back(e);
+		//entitiesGroups_.insert(std::pair<std::string, std::vector<Entity*>>(group, b));	}
 	return e;
 }
 /*
