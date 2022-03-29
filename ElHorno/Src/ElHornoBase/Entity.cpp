@@ -3,7 +3,7 @@
 #include "FactoryCreator.h"
 #include "Scene.h"
 #include <string>
-#include "CheckMl.h"
+#include "CheckML.h"
 
 Entity::Entity(std::string n, Scene* m, Entity* p) : name_(n), mngr_(m), active_(true), comp_(), compRef_() {
 	parent_ = p;
@@ -29,29 +29,6 @@ Entity::~Entity() {
 		parent_ = nullptr;
 	}
 }
-
-//template<class ...Ts>
-//void Entity::addComponent(const std::string& type, Ts &&...args)
-//{
-//	// Si la entidad no tiene el componente
-//	if (!hasComponent(type))
-//	{
-//		// Miramos si esta en el json
-//		Component* c(FactoryCreator::getInstance()->getComponent(type, args));
-//		if (c == nullptr)
-//			return;
-//
-//		// Si esta lo metemos lo a�adimos a la entidad
-//		comp_.insert({ type, c });
-//		compRef_.push_back(c);
-//		c->setEntity(this);
-//	}
-//	// Si ya existe 
-//	else
-//	{
-//		throw "Componente " + type + " duplicado para la entidad " + name_;
-//	}
-//}
 
 bool Entity::hasComponent(std::string name) {
 	return comp_.find(name) != comp_.end();

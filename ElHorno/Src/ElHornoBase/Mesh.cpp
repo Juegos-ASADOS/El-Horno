@@ -7,7 +7,7 @@
 #include "Mesh.h"
 #include "Transform.h"
 #include <OgreFileSystemLayer.h>
-#include "CheckMl.h"
+#include "CheckML.h"
 #include <OgreLogManager.h>
 
 Mesh::Mesh(std::string name, bool castShadow, bool isAnimated)

@@ -158,6 +158,7 @@ void ElHornoBase::setupFactories()
 	facCreat->addFactory("mesh");
 	facCreat->addFactory("light");
 	facCreat->addFactory("rigidbody");
+	facCreat->addFactory("particleSystem");
 }
 
 /*OgreRoot llama a frameListener_ que llama a processFrame que actualiza
