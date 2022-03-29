@@ -9,7 +9,7 @@
 #include "Entity.h"
 #include "Scene.h"
 #include "Timer.h"
-#include "CheckMl.h"
+#include "CheckML.h"
 
 ParticleSystem::ParticleSystem(const std::string& name, const std::string& temp, float ttl, bool destroyTL)
 {
@@ -41,7 +41,10 @@ void ParticleSystem::start()
 
 	// Inicializa en el SceneManager de Ogre
 	particleSystem_ = ElHornoBase::getInstance()->getGraphicsManager()->getSceneManager()->createParticleSystem(particleSystemOrderedName_, particleSystemTemplate_);
-	particleSystem_->setEmitting(false);
+	particleSystem_->setEmitting(true);
+	
+	//Esto debería ser asi pero empieza a true para hacer pruebas
+	//particleSystem_->setEmitting(false);
 	particleSystem_->setKeepParticlesInLocalSpace(true);
 
 	entity_->getComponent<Transform>("transform")->getNode()->attachObject(particleSystem_);

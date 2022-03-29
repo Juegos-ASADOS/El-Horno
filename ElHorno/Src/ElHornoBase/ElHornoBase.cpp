@@ -15,7 +15,7 @@
 #include "Factory.h"
 #include "Timer.h"
 #include "LuaManager.h"
-#include "CheckMl.h"
+#include "CheckML.h"
 
 using json = nlohmann::json;
 
@@ -153,6 +153,7 @@ void ElHornoBase::setupFactories()
 	facCreat->addFactory("mesh");
 	facCreat->addFactory("light");
 	facCreat->addFactory("rigidbody");
+	facCreat->addFactory("particleSystem");
 }
 
 /*OgreRoot llama a frameListener_ que llama a processFrame que actualiza

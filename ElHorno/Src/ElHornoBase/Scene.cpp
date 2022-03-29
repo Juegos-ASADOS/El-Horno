@@ -3,11 +3,12 @@
 #include <iostream>
 #include <fstream>
 #include <OgreVector3.h>
-#include "CheckMl.h"
+#include "CheckML.h"
 #include "Transform.h"
 #include "CameraComponent.h"
 #include "LightComponent.h"
 #include "Mesh.h"
+#include "ParticleSystem.h"
 #include "Rigibody.h"
 
 using json = nlohmann::json;
@@ -32,6 +33,10 @@ Scene::Scene()
 	b->addComponent<Transform>("transform", Ogre::Vector3(0, -15, 0), Ogre::Vector3(0, 0, 0), Ogre::Vector3(5, 0.1, 5));
 	b->addComponent<Mesh>("mesh", "cube");
 	b->addComponent<RigidBody>("rigidbody", 0.0f, false, 0);
+
+	b = addEntity("esmoque", "prueba");
+	b->addComponent<Transform>("transform", Ogre::Vector3(0, 50, 0), Ogre::Vector3(0, 0, 0), p);
+	b->addComponent<ParticleSystem>("particleSystem", "smoke", "Smoke", 50000, false);
 }
 
 //TODO Destruir VierwPorts y c�maras lo primero de todo

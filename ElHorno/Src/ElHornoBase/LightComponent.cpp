@@ -12,7 +12,7 @@
 #include <OgreEntity.h>
 #include <OgreSceneNode.h>
 #include <OgreLight.h>
-#include "CheckMl.h"
+#include "CheckML.h"
 #include <OgreSceneNode.h>
 #include <OgreSceneManager.h>
 #include <OgreColourValue.h>
