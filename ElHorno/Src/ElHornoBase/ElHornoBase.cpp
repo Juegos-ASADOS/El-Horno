@@ -50,7 +50,7 @@ ElHornoBase::~ElHornoBase()
 	SceneManager::erase();
 	EventManager::erase();
 	GraphicsManager::erase();
-	PhysicsManager::erase();
+	El_Horno::PhysicsManager::erase();
 }
 
 ElHornoBase* ElHornoBase::getInstance() {
@@ -82,7 +82,7 @@ void ElHornoBase::init() {
 	SceneManager::setupInstance();
 	EventManager::setupInstance();
 	GraphicsManager::setInstance();
-	PhysicsManager::setupInstance();
+	El_Horno::PhysicsManager::setupInstance();
 	InputManager::setupInstance();
 	AudioManager::setupInstance();
 
@@ -95,7 +95,7 @@ Ejecuta el start del SceenManager y comienza el renderizado de Ogre
 */
 void ElHornoBase::start()
 {
-	PhysicsManager::getInstance()->start("");
+	El_Horno::PhysicsManager::getInstance()->start("");
 	GraphicsManager::getInstance()->init();
 	SceneManager::getInstance()->getCurrentScene()->start();
 	AudioManager::getInstance()->init();
@@ -172,7 +172,7 @@ void ElHornoBase::processFrame(float deltaTime) {
 	// Updates de managers
 	if (!paused_) {
 		//SceneManager::getInstance()->preUpdate();
-		PhysicsManager::getInstance()->update(deltaTime);
+		El_Horno::PhysicsManager::getInstance()->update(deltaTime);
 		SceneManager::getInstance()->update();
 	}
 	else {
