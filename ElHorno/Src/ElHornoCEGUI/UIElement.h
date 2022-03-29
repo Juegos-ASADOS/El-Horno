@@ -8,51 +8,53 @@ namespace CEGUI {
 	class Window;
 }
 
-//AHORA LA UIElement hereda de Component
-class UIElement: Component
-{
-protected:
-	UIElement();
 
-	//Entidad de la interfaz
-	CEGUI::Window* elementInterface;
+namespace El_Horno {
+	//AHORA LA UIElement hereda de Component
+	class UIElement : Component
+	{
+	protected:
+		UIElement();
 
-	CEGUI::Window* getElement();
-	virtual ~UIElement();
+		//Entidad de la interfaz
+		CEGUI::Window* elementInterface;
 
-	//Metodos iguales que una entidad/transform
+		CEGUI::Window* getElement();
+		virtual ~UIElement();
 
-	//ELIMINAR ESTAS VAINAS
+		//Metodos iguales que una entidad/transform
 
-
-	void setPos(int x, int y);
-	void setSize(int x,int y);
-	void setText(const std::string & text);
-
-	//Transparencia del objeto
-	void setAlpha(float valor);
-
-	//GETTERS
-	float getPosXscale();
-	float getPosYscale();
-	float getPosXoffset();
-	float getPosYoffset();
-	//------------------
+		//ELIMINAR ESTAS VAINAS
 
 
-	float getPivotCenterX();
-	float getPivotCenterY();
+		void setPos(int x, int y);
+		void setSize(int x, int y);
+		void setText(const std::string& text);
 
-	float getAlpha();
+		//Transparencia del objeto
+		void setAlpha(float valor);
 
-	CEGUI::Window* getWindowElement();
+		//GETTERS
+		float getPosXscale();
+		float getPosYscale();
+		float getPosXoffset();
+		float getPosYoffset();
+		//------------------
 
-	void addChild(CEGUI::Window* windowChild);
-	CEGUI::Window* getChild(const std::string & childNamePath);
-	CEGUI::Window* getChildByIndex(int index);
 
-	bool isActive();
-	void setActive(bool valor);
-};
+		float getPivotCenterX();
+		float getPivotCenterY();
 
+		float getAlpha();
+
+		CEGUI::Window* getWindowElement();
+
+		void addChild(CEGUI::Window* windowChild);
+		CEGUI::Window* getChild(const std::string& childNamePath);
+		CEGUI::Window* getChildByIndex(int index);
+
+		bool isActive();
+		void setActive(bool valor);
+	};
+}
 #endif _UI_ELEMENT_H

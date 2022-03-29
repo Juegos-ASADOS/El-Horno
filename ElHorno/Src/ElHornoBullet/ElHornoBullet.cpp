@@ -2,8 +2,10 @@
 #include <iostream>
 #include "ElHornoBullet.h"
 
-void ElHornoBullet::init()
-{
-    btBox2dShape b(btVector3(1, 1, 1));
-    std::cout << "Bullet iniciado.\n";
+namespace El_Horno {
+    void ElHornoBullet::init()
+    {
+        btBox2dShape b(btVector3(1, 1, 1));
+        std::cout << "Bullet iniciado.\n";
+    }
 }

@@ -28,60 +28,62 @@ enum ColliderShape {
 	Capsule
 };
 
-class PhysicsManager
-{
-public:
-	static PhysicsManager* getInstance();
-	static bool setupInstance();
-	static void erase();
+namespace El_Horno {
+	class PhysicsManager
+	{
+	public:
+		static PhysicsManager* getInstance();
+		static bool setupInstance();
+		static void erase();
 
-	void start(const std::string& initialScene);
-	void update(const float& dt);
-	void updateDebug(const int& debugFlags);
-	
-	btRigidBody* createRigidBody(btTransform* tr, btCollisionShape* shape, int& userIdx_, const float& mass = 1.0f);
-	btGhostObject* createTrigger(btTransform* tr, btCollisionShape* shape, int& userIdx_);
-	btCollisionShape* createShape(Transform* tra, ColliderShape sha);
-	
-	//Para añadir al mundo de Bullet rigidbodies
-	void addBody(btRigidBody* body);
-	void addBody(btRigidBody* body, const short& group, const short& layerMask);
-	
-	//Para objetos que no son rigidbodies
-	void addCollisionObject(btCollisionObject* col);
-	void addCollisionObject(btCollisionObject* col, const short& group, const short& layerMask);
+		void start(const std::string& initialScene);
+		void update(const float& dt);
+		void updateDebug(const int& debugFlags);
 
-	void removeBody(btRigidBody* body);
-	void deleteBody(btRigidBody* body);
+		btRigidBody* createRigidBody(btTransform* tr, btCollisionShape* shape, int& userIdx_, const float& mass = 1.0f);
+		btGhostObject* createTrigger(btTransform* tr, btCollisionShape* shape, int& userIdx_);
+		btCollisionShape* createShape(Transform* tra, ColliderShape sha);
 
-	void removeCollisionObject(btCollisionObject* body);
+		//Para añadir al mundo de Bullet rigidbodies
+		void addBody(btRigidBody* body);
+		void addBody(btRigidBody* body, const short& group, const short& layerMask);
 
-	void deleteCollisionObject(btCollisionObject* body);
+		//Para objetos que no son rigidbodies
+		void addCollisionObject(btCollisionObject* col);
+		void addCollisionObject(btCollisionObject* col, const short& group, const short& layerMask);
 
-	void setGravity(const btVector3& g);
-private:
-	static PhysicsManager* instance;
+		void removeBody(btRigidBody* body);
+		void deleteBody(btRigidBody* body);
 
-	PhysicsManager();
-	~PhysicsManager();
+		void removeCollisionObject(btCollisionObject* body);
 
-	float fixedTimeStep_ = 0.0f;
+		void deleteCollisionObject(btCollisionObject* body);
 
-	int userIdxCount_ = 0;
+		void setGravity(const btVector3& g);
+	private:
+		static PhysicsManager* instance;
 
-	btVector3* gravity_ = nullptr;
+		PhysicsManager();
+		~PhysicsManager();
 
-	//Mundo de las físicas de bullet
-	btDiscreteDynamicsWorld* dynamicsWorld_;
+		float fixedTimeStep_ = 0.0f;
 
-	//Configuración necesaria del mundo
-	btDispatcher* dispatcher_;
-	btBroadphaseInterface* broadphaseInterface_;
-	btConstraintSolver* constraintSolver_;
-	btCollisionConfiguration* collisionConfiguration_;
+		int userIdxCount_ = 0;
 
-	//Array de las formas de colisión (necesario para borrarlas)
-	btAlignedObjectArray<btCollisionShape*>* collisionShapes_;
-};
+		btVector3* gravity_ = nullptr;
+
+		//Mundo de las físicas de bullet
+		btDiscreteDynamicsWorld* dynamicsWorld_;
+
+		//Configuración necesaria del mundo
+		btDispatcher* dispatcher_;
+		btBroadphaseInterface* broadphaseInterface_;
+		btConstraintSolver* constraintSolver_;
+		btCollisionConfiguration* collisionConfiguration_;
+
+		//Array de las formas de colisión (necesario para borrarlas)
+		btAlignedObjectArray<btCollisionShape*>* collisionShapes_;
+	};
+}
 
 #endif _PHYSHICS_MANAGER_H

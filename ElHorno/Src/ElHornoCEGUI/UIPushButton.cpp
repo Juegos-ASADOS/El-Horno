@@ -6,22 +6,23 @@
 //El UIPushButton se crea un boton
 //Se lo guarda
 //Y le dice al root del UIManager que ahora es hijo de la ventana principal
+namespace El_Horno {
+	UIPushButton::UIPushButton() :UIElement()
+	{
 
-UIPushButton::UIPushButton():UIElement()
-{
+		elementInterface = new CEGUI::PushButton("", "");
 
-	elementInterface = new CEGUI::PushButton("", "");
+		elementInterface->addEvent("");
 
-	elementInterface->addEvent("");
-	
-	//Problemon
-	static_cast<CEGUI::PushButton*>(elementInterface)->setPushedState(false);
+		//Problemon
+		static_cast<CEGUI::PushButton*>(elementInterface)->setPushedState(false);
 
 
-	UIManager::getInstance()->getRoot();
-}
+		UIManager::getInstance()->getRoot();
+	}
 
-UIPushButton::~UIPushButton()
-{
+	UIPushButton::~UIPushButton()
+	{
 
+	}
 }

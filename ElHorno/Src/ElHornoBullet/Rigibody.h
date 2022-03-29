@@ -19,55 +19,56 @@ union rb_union
 	btGhostObject* ghost_;
 };
 
-class RigidBody : public Component
-{
-public:
-	RigidBody(float mass, bool isTrigger, int colShape);
-	~RigidBody();
+namespace El_Horno {
+	class RigidBody : public Component
+	{
+	public:
+		RigidBody(float mass, bool isTrigger, int colShape);
+		~RigidBody();
 
-	virtual void start() override;
-	virtual void update() override;
+		virtual void start() override;
+		virtual void update() override;
 
-	inline float getFriction() const { return friction_; };
-	inline float getRestitution() const { return restitution_; };
-	inline float getMass() const { return mass_; };
+		inline float getFriction() const { return friction_; };
+		inline float getRestitution() const { return restitution_; };
+		inline float getMass() const { return mass_; };
 
 
-	void setFriction(const float& f);
-	void setRestitution(const float& r);
-	void setMass(const float& m);
+		void setFriction(const float& f);
+		void setRestitution(const float& r);
+		void setMass(const float& m);
 
-private:
-	//Masa por defecto 
-	//[DINÁMICO > 0 | ESTÁTICO == 0]
-	float mass_ = 1.0f;
+	private:
+		//Masa por defecto 
+		//[DINÁMICO > 0 | ESTÁTICO == 0]
+		float mass_ = 1.0f;
 
-	float friction_;
+		float friction_;
 
-	float restitution_;
+		float restitution_;
 
-	bool isTrigger_ = false;
-	
-	//Union de Rigidbody de bullet : Solo puede ser ghost (trigger) o rigid (normal)
-	rb_union rb_;
+		bool isTrigger_ = false;
 
-	//Forma básica del collider + Enum del PhysicsManager
-	btCollisionShape* shape_ = nullptr;
-	int colShape_;
+		//Union de Rigidbody de bullet : Solo puede ser ghost (trigger) o rigid (normal)
+		rb_union rb_;
 
-	//Transform de bullet para generar el rigidbody de bullet
-	btTransform* bttrasform_ = nullptr;
+		//Forma básica del collider + Enum del PhysicsManager
+		btCollisionShape* shape_ = nullptr;
+		int colShape_;
 
-	//Transform de la entidad 
-	Transform* transform_ = nullptr;
+		//Transform de bullet para generar el rigidbody de bullet
+		btTransform* bttrasform_ = nullptr;
 
-	//Referencia al manager de física
-	PhysicsManager* phManager_ = nullptr;
+		//Transform de la entidad 
+		Transform* transform_ = nullptr;
 
-	//Indice en Bullet
-	int userIdx_;
-};
+		//Referencia al manager de física
+		PhysicsManager* phManager_ = nullptr;
 
+		//Indice en Bullet
+		int userIdx_;
+	};
+}
 
 
 #endif _RIGIDBODY_H

@@ -1,6 +1,8 @@
 #include "ElHornoCEGUI.h"
 
-void ElHornoCEGUI::init()
-{
+namespace El_Horno {
+	void ElHornoCEGUI::init()
+	{
 
+	}
 }

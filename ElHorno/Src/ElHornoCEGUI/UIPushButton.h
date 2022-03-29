@@ -8,12 +8,13 @@ namespace CEGUI {
 	class Window;
 }
 
-class UIPushButton : public UIElement
-{
-protected:
-	UIPushButton();
+namespace El_Horno {
+	class UIPushButton : public UIElement
+	{
+	protected:
+		UIPushButton();
 
-	virtual ~UIPushButton();
-};
-
+		virtual ~UIPushButton();
+	};
+}
 #endif _UI_PUSH_BUTTON_H
