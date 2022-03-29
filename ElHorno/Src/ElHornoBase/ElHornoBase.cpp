@@ -46,7 +46,7 @@ ElHornoBase::~ElHornoBase()
 	El_Horno::AudioManager::erase();
 	InputManager::erase();
 	FactoryCreator::erase();
-	LuaManager::erase();
+	El_Horno::LuaManager::erase();
 	SceneManager::erase();
 	EventManager::erase();
 	GraphicsManager::erase();
@@ -87,7 +87,7 @@ void ElHornoBase::init() {
 	El_Horno::AudioManager::setupInstance();
 
 	//HornoLua
-	LuaManager::setupInstance();
+	El_Horno::LuaManager::setupInstance();
 }
 
 /*
@@ -99,9 +99,9 @@ void ElHornoBase::start()
 	GraphicsManager::getInstance()->init();
 	SceneManager::getInstance()->getCurrentScene()->start();
 	El_Horno::AudioManager::getInstance()->init();
-	LuaManager::getInstance()->init();
+	El_Horno::LuaManager::getInstance()->init();
 
-	LuaManager::getInstance()->reedLuaScript("Assets/Scripts/sample.lua");
+	El_Horno::LuaManager::getInstance()->reedLuaScript("Assets/Scripts/sample.lua");
 }
 
 /*

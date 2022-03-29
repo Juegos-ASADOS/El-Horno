@@ -21,6 +21,8 @@ extern "C"
 #include "AudioListenerComponent.h"
 #include "CheckML.h"
 
+namespace El_Horno {
+
 LuaManager* LuaManager::instance;
 
 LuaManager* LuaManager::getInstance()
@@ -121,7 +123,7 @@ void Example::printName()
 {
 	std::cout << "[C++ CODE] Hello, my name is " << m_name << "!" << "\n";
 }
-
+}
 // create a global variable (an instance of a Greeter class) in Lua scope
 //auto globalGreeter = std::make_unique<Example>("noname");
 //std::error_code e = std::error_code();
