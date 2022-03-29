@@ -15,7 +15,9 @@
 #include "Factory.h"
 #include "Timer.h"
 #include "LuaManager.h"
-#include "CheckML.h"
+#include "CheckMl.h"
+#include "Entity.h"
+#include "AudioComponent.h"
 
 using json = nlohmann::json;
 
@@ -41,6 +43,7 @@ Limpia managers y dependencias de bibliotecas externas
 ElHornoBase::~ElHornoBase()
 {
 	delete globalTimer_; globalTimer_ = nullptr;
+	AudioManager::erase();
 	InputManager::erase();
 	FactoryCreator::erase();
 	LuaManager::erase();
@@ -81,6 +84,7 @@ void ElHornoBase::init() {
 	GraphicsManager::setInstance();
 	PhysicsManager::setupInstance();
 	InputManager::setupInstance();
+	AudioManager::setupInstance();
 
 	//HornoLua
 	LuaManager::setupInstance();
@@ -94,6 +98,7 @@ void ElHornoBase::start()
 	PhysicsManager::getInstance()->start("");
 	GraphicsManager::getInstance()->init();
 	SceneManager::getInstance()->getCurrentScene()->start();
+	AudioManager::getInstance()->init();
 	LuaManager::getInstance()->init();
 
 	LuaManager::getInstance()->reedLuaScript("Assets/Scripts/sample.lua");
@@ -154,6 +159,8 @@ void ElHornoBase::setupFactories()
 	facCreat->addFactory("light");
 	facCreat->addFactory("rigidbody");
 	facCreat->addFactory("particleSystem");
+	facCreat->addFactory("audioComponent");
+	facCreat->addFactory("audioListener");
 }
 
 /*OgreRoot llama a frameListener_ que llama a processFrame que actualiza
@@ -184,7 +191,9 @@ void ElHornoBase::update()
 	exit_ = false;
 	globalTimer_ = new Timer();
 	float deltaTime = 0;
-
+	
+	// ESTO ES DE PRUEBA
+	SceneManager::getInstance()->getCurrentScene()->getEntity("object", "prueba")->getComponent<AudioComponent>("audioComponent")->playSound("NeonRider.mp3");
 	while (!exit_) {
 		globalTimer_->resetTimer();
 		processFrame(deltaTime);

@@ -17,15 +17,15 @@ AudioListenerComponent::~AudioListenerComponent() {}
 
 void AudioListenerComponent::update()
 {
-	pos_.x = entity_->getComponent<Transform>("Transform")->getPosition().x;
-	pos_.y = entity_->getComponent<Transform>("Transform")->getPosition().y;
-	pos_.z = entity_->getComponent<Transform>("Transform")->getPosition().z;
+	pos_.x = entity_->getComponent<Transform>("transform")->getPosition().x;
+	pos_.y = entity_->getComponent<Transform>("transform")->getPosition().y;
+	pos_.z = entity_->getComponent<Transform>("transform")->getPosition().z;
 
-	forward_ = -1 * entity_->getComponent<CameraComponent>("CameraComponent")->getCamera()->getRealDirection();
+	forward_ = -1 * entity_->getComponent<CameraComponent>("camera")->getCamera()->getRealDirection();
 
-	up_.x = entity_->getComponent<CameraComponent>("CameraComponent")->getCamera()->getRealUp().x;
-	up_.y = entity_->getComponent<CameraComponent>("CameraComponent")->getCamera()->getRealUp().y;
-	up_.z = entity_->getComponent<CameraComponent>("CameraComponent")->getCamera()->getRealUp().z;
+	up_.x = entity_->getComponent<CameraComponent>("camera")->getCamera()->getRealUp().x;
+	up_.y = entity_->getComponent<CameraComponent>("camera")->getCamera()->getRealUp().y;
+	up_.z = entity_->getComponent<CameraComponent>("camera")->getCamera()->getRealUp().z;
 
 	vel_.x = 0;
 	vel_.y = 0;

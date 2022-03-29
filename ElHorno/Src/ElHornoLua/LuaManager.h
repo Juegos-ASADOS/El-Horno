@@ -5,6 +5,9 @@
 #include <string>
 
 class lua_State;
+namespace luabridge {
+    class LuaRef;
+}
 
 class Example {
 public:
@@ -27,13 +30,16 @@ public:
 	void init();
     void report_errors(int status);
     void reedLuaScript(const std::string& path);
+
+    template<typename T>
+    void pushToLua(T var, std::string name);
+    luabridge::LuaRef getFromLua(std::string name);
 private:
 
     LuaManager() {};
     ~LuaManager();
 
     void exposeEntity();
-    void exposeComponents();
 
     static LuaManager* instance;
 

@@ -29,7 +29,7 @@ public:
 
 private:
 	std::map<std::string, std::vector<Entity*>> entities_;
-	std::unordered_map<std::string, std::vector<Entity*>> entitiesGroups_;
+	std::map<std::string, std::vector<Entity*>> entitiesGroups_;
 	std::vector<std::pair<std::string, Entity*>> entitiesToDestroy_;
 
 	std::string name_;

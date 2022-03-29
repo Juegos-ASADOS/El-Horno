@@ -60,8 +60,6 @@ void LuaManager::init()
         .endClass();
 
     exposeEntity();
-
-    exposeComponents();
 }
 
 void LuaManager::report_errors(int status)
@@ -85,6 +83,17 @@ void LuaManager::reedLuaScript(const std::string& path)
     report_errors(scriptLoadStatus);
 }
 
+luabridge::LuaRef LuaManager::getFromLua(std::string name)
+{
+    return luabridge::getGlobal(luaState, name.c_str());
+}
+
+template<typename T>
+void LuaManager::pushToLua(T var, std::string name) {
+    luabridge::push(luaState, var);
+    lua_setglobal(luaState, name.c_str());
+}
+
 LuaManager::~LuaManager()
 {
     lua_close(luaState);
@@ -96,47 +105,10 @@ void LuaManager::exposeEntity()
         .beginClass<Entity>("Entity")
         .addConstructor<void(*) (std::string n, Scene* m, Entity* p)>()
         .addConstructor<void(*) (Scene* m)>()
-        //.addFunction("addComponent", &())
+        //.addFunction("addComponent", &(Entity::addComponent<>))
         .addFunction("setParent", &(Entity::setParent))
         .addFunction("addChild", &(Entity::addChild))
         .addFunction("setActive", &(Entity::setActive))
-        .endClass();
-}
-
-void LuaManager::exposeComponents()
-{
-    luabridge::getGlobalNamespace(luaState)
-        .beginClass<Transform>("Transform")
-        .addConstructor<void(*) (Ogre::Vector3 pos, Ogre::Vector3 rot, Ogre::Vector3 scal)>()
-        .addFunction("setPosition", &(Transform::setPosition))
-        .addFunction("setScale", &(Transform::setScale))
-        .addFunction("setRotation", &(Transform::setRotation))
-        .addFunction("lookAt", &(Transform::lookAt))
-        .endClass();
-
-    luabridge::getGlobalNamespace(luaState)
-        .beginClass<ParticleSystem>("ParticleSystem")
-        .addConstructor<void(*) (const std::string& name,const std::string& temp, float timelim, bool destroyTL)>()
-        .endClass();
-
-    luabridge::getGlobalNamespace(luaState)
-        .beginClass<Mesh>("Mesh")
-        .addConstructor<void(*) (std::string name, bool castShadow, bool isAnimated)>()
-        .endClass();
-
-    luabridge::getGlobalNamespace(luaState)
-        .beginClass<CameraComponent>("CameraComponent")
-        .addConstructor<void(*) (Ogre::Vector3 pos, Ogre::Vector3 lookAt, Ogre::ColourValue color, int nearClDis, int farClDis)>()
-        .endClass();
-
-    luabridge::getGlobalNamespace(luaState)
-        .beginClass<AudioComponent>("AudioComponent")
-        .addConstructor<void(*) ()>()
-        .endClass();
-
-    luabridge::getGlobalNamespace(luaState)
-        .beginClass<AudioListenerComponent>("AudioListenerComponent")
-        .addConstructor<void(*) ()>()
         .endClass();
 }
 
