@@ -43,8 +43,8 @@ public:
 	{
 		// Si la entidad no tiene el componente
 		if (!hasComponent(type))
-		{
-			// Miramos si esta en el json
+		{	
+			// Miramos si existe el componente
 			T* c(FactoryCreator::getInstance()->getComponent<T>(type, args...));
 			if (c == nullptr)
 				return;
