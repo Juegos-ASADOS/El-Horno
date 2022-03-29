@@ -106,8 +106,8 @@ Entity* Scene::addEntity(const std::string& name, const std::string& layer, cons
 		i->second.push_back(e);
 	else {
 		std::vector<Entity*> b = std::vector<Entity*>();
-		//b.push_back(e);
-		//entitiesGroups_.insert(std::pair<std::string, std::vector<Entity*>>(group, b));
+		b.push_back(e);
+		entitiesGroups_.insert(std::pair<std::string, std::vector<Entity*>>(group, b));
 	}
 	return e;
 }
