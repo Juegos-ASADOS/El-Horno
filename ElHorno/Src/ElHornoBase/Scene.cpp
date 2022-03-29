@@ -96,7 +96,7 @@ Entity* Scene::addEntity(const std::string& name, const std::string& layer, cons
 	else {
 		std::vector<Entity*> a = std::vector<Entity*>();
 		a.push_back(e);
-		entitiesGroups_.insert(std::pair<std::string, std::vector<Entity*>>(layer, a));
+		entities_.insert(std::pair<std::string, std::vector<Entity*>>(layer, a));
 	}	//Seleccion de grupo de entidades(default por defecto)	auto i = entitiesGroups_.find(group);	if (i != entitiesGroups_.end())		i->second.push_back(e);	else {		std::vector<Entity*> b = std::vector<Entity*>();
 		//b.push_back(e);
 		//entitiesGroups_.insert(std::pair<std::string, std::vector<Entity*>>(group, b));	}

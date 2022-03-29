@@ -159,6 +159,8 @@ void ElHornoBase::setupFactories()
 	facCreat->addFactory("light");
 	facCreat->addFactory("rigidbody");
 	facCreat->addFactory("particleSystem");
+	facCreat->addFactory("audioComponent");
+	facCreat->addFactory("audioListener");
 }
 
 /*OgreRoot llama a frameListener_ que llama a processFrame que actualiza
