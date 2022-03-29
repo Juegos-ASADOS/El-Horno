@@ -7,31 +7,32 @@
 union SDL_Event;
 //enum SDL_Scancode;
 
-class InputManager
-{
+namespace El_Horno {
+	class InputManager
+	{
 
-private:
-	InputManager();
+	private:
+		InputManager();
 
-	static InputManager* instance;
+		static InputManager* instance;
 
-	//pendiente de agregar mandos
+		//pendiente de agregar mandos
 
-public:
+	public:
 
-	//lo uncio necesario para recoger input del teclado a traves de SDL
-	~InputManager();
+		//lo uncio necesario para recoger input del teclado a traves de SDL
+		~InputManager();
 
-	static InputManager* getInstance();
-	static bool setupInstance();
-	static void erase();
+		static InputManager* getInstance();
+		static bool setupInstance();
+		static void erase();
 
-	void setup();
+		void setup();
 
-	bool GeneralInputManagement(SDL_Event event);
+		bool GeneralInputManagement(SDL_Event event);
 
-	//el resto sera para arreglar lo que SDL no hace, (raton, mando xbox, etc)
-	bool IsKeyDown(SDL_Scancode key);
-};
-
+		//el resto sera para arreglar lo que SDL no hace, (raton, mando xbox, etc)
+		bool IsKeyDown(SDL_Scancode key);
+	};
+}
 #endif _INPUT_MANAGER_H

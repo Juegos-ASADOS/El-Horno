@@ -8,13 +8,14 @@
 #include <iostream>
 #include "CheckML.h"
 
+
 SceneManager* SceneManager::instance = 0;
 
-SceneManager::SceneManager() 
-{ 
+SceneManager::SceneManager()
+{
 	try {
 
-		currentScene_ = new Scene(); 
+		currentScene_ = new Scene();
 	}
 	catch (std::string a) {
 		std::cout << a;

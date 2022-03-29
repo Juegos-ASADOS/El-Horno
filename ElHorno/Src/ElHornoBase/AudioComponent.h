@@ -9,27 +9,28 @@
 namespace Ogre {
 }
 
-class AudioComponent : public Component
-{
-public:
+namespace El_Horno {
+	class AudioComponent : public Component
+	{
+	public:
 
-	AudioComponent();
-	~AudioComponent();
+		AudioComponent();
+		~AudioComponent();
 
-	//void start() override;
-	void update()override;
+		//void start() override;
+		void update()override;
 
-	void onEnable() override {};
-	void onDisable()override {};
+		void onEnable() override {};
+		void onDisable()override {};
 
-	virtual void playSound(std::string path);
+		virtual void playSound(std::string path);
 
-private:
-	Ogre::Vector3 pos_;
-	Ogre::Vector3 vel_;
+	private:
+		Ogre::Vector3 pos_;
+		Ogre::Vector3 vel_;
 
-	int nChannel;
-	std::string audioRoute;
-};
-
+		int nChannel;
+		std::string audioRoute;
+	};
+}
 #endif _AudioComponent_H

@@ -9,26 +9,27 @@
 namespace Ogre {
 }
 
-class AudioListenerComponent : public Component
-{
-public:
+namespace El_Horno {
+	class AudioListenerComponent : public Component
+	{
+	public:
 
-	AudioListenerComponent();
-	~AudioListenerComponent();
+		AudioListenerComponent();
+		~AudioListenerComponent();
 
-	//void start() override;
-	void update()override;
+		//void start() override;
+		void update()override;
 
-	void onEnable() override {};
-	void onDisable()override {};
+		void onEnable() override {};
+		void onDisable()override {};
 
-private:
-	Ogre::Vector3 forward_;
-	Ogre::Vector3 up_;
-	Ogre::Vector3 pos_;
-	Ogre::Vector3 vel_;
+	private:
+		Ogre::Vector3 forward_;
+		Ogre::Vector3 up_;
+		Ogre::Vector3 pos_;
+		Ogre::Vector3 vel_;
 
-	int listenerNumber_;
-};
-
+		int listenerNumber_;
+	};
+}
 #endif _AudioListenerComponent_H

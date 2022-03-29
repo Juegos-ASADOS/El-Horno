@@ -9,9 +9,14 @@
 class SceneManager;
 class InputManager;
 class GraphicsManager;
+
+//BORRAR EEN EL FUTURO AAAAAAAAAAA
 namespace El_Horno {
 	class AudioManager;
+	class GraphicsManager;
+	class InputManager;
 }
+
 class Timer;
 
 class ElHornoBase {
@@ -35,8 +40,8 @@ public:
 	//GUI_Manager* getGUIManager();
 	//ResourceManager* getResourceManager();
 	static SceneManager* getSceneManager();
-	static InputManager* getInputManager();
-	static GraphicsManager* getGraphicsManager();
+	static El_Horno::InputManager* getInputManager();
+	static El_Horno::GraphicsManager* getGraphicsManager();
 	static El_Horno::AudioManager* getAudioManager();
 
 	// Esto ahora lo lleva Timer (excepto deltaTime que lo lleva el bucle)

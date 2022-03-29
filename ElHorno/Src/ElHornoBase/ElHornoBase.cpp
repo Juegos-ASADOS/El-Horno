@@ -44,12 +44,12 @@ ElHornoBase::~ElHornoBase()
 {
 	delete globalTimer_; globalTimer_ = nullptr;
 	El_Horno::AudioManager::erase();
-	InputManager::erase();
+	El_Horno::InputManager::erase();
 	FactoryCreator::erase();
 	El_Horno::LuaManager::erase();
 	SceneManager::erase();
 	EventManager::erase();
-	GraphicsManager::erase();
+	El_Horno::GraphicsManager::erase();
 	El_Horno::PhysicsManager::erase();
 }
 
@@ -81,9 +81,9 @@ void ElHornoBase::init() {
 
 	SceneManager::setupInstance();
 	EventManager::setupInstance();
-	GraphicsManager::setInstance();
+	El_Horno::GraphicsManager::setInstance();
 	El_Horno::PhysicsManager::setupInstance();
-	InputManager::setupInstance();
+	El_Horno::InputManager::setupInstance();
 	El_Horno::AudioManager::setupInstance();
 
 	//HornoLua
@@ -96,7 +96,7 @@ Ejecuta el start del SceenManager y comienza el renderizado de Ogre
 void ElHornoBase::start()
 {
 	El_Horno::PhysicsManager::getInstance()->start("");
-	GraphicsManager::getInstance()->init();
+	El_Horno::GraphicsManager::getInstance()->init();
 	SceneManager::getInstance()->getCurrentScene()->start();
 	El_Horno::AudioManager::getInstance()->init();
 	El_Horno::LuaManager::getInstance()->init();
@@ -166,7 +166,7 @@ void ElHornoBase::setupFactories()
 /*OgreRoot llama a frameListener_ que llama a processFrame que actualiza
 la instancia de cada manager dependiendo del estado del juego*/
 void ElHornoBase::processFrame(float deltaTime) {
-	exit_ = GraphicsManager::getInstance()->pollEvents();
+	exit_ = El_Horno::GraphicsManager::getInstance()->pollEvents();
 
 	
 	// Updates de managers
@@ -180,7 +180,7 @@ void ElHornoBase::processFrame(float deltaTime) {
 	}
 
 	//AudioManager::getInstance()->update();
-	GraphicsManager::getInstance()->render();
+	El_Horno::GraphicsManager::getInstance()->render();
 	//UIManager::getInstance()->update();
 	SceneManager::getInstance()->deleteEntities();
 	//SceneManager::getInstance()->endFrame();
@@ -193,7 +193,7 @@ void ElHornoBase::update()
 	float deltaTime = 0;
 	
 	// ESTO ES DE PRUEBA
-	SceneManager::getInstance()->getCurrentScene()->getEntity("object", "prueba")->getComponent<AudioComponent>("audioComponent")->playSound("NeonRider.mp3");
+	SceneManager::getInstance()->getCurrentScene()->getEntity("object", "prueba")->getComponent<El_Horno::AudioComponent>("audioComponent")->playSound("NeonRider.mp3");
 	while (!exit_) {
 		globalTimer_->resetTimer();
 		processFrame(deltaTime);
@@ -209,14 +209,14 @@ SceneManager* ElHornoBase::getSceneManager()
 	return SceneManager::getInstance();
 }
 
-InputManager* ElHornoBase::getInputManager()
+El_Horno::InputManager* ElHornoBase::getInputManager()
 {
-	return InputManager::getInstance();
+	return El_Horno::InputManager::getInstance();
 }
 
-GraphicsManager* ElHornoBase::getGraphicsManager()
+El_Horno::GraphicsManager* ElHornoBase::getGraphicsManager()
 {
-	return GraphicsManager::getInstance();
+	return El_Horno::GraphicsManager::getInstance();
 }
 
 El_Horno::AudioManager* ElHornoBase::getAudioManager()

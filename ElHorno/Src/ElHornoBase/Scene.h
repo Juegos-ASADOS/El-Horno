@@ -6,6 +6,7 @@
 #include "json.hpp"
 
 class Entity;
+
 class Scene
 {
 public:
@@ -16,7 +17,7 @@ public:
 	void setupProcess(nlohmann::json& j) {};
 
 	Entity* getEntity(const std::string& name, const std::string& layer = "");
-	
+
 	Entity* addEntity(const std::string& name, const std::string& layer, const std::string& group = "default");
 
 	bool deleteEntity(const std::string& name);

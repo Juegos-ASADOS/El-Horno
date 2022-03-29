@@ -10,33 +10,34 @@
 
 class Transform;
 
-class CameraComponent : public Component
-{
-public:
+namespace El_Horno {
+	class CameraComponent : public Component
+	{
+	public:
 
-	//lo uncio necesario para recoger input del teclado a traves de SDL
-	CameraComponent(Ogre::Vector3 pos, Ogre::Vector3 lookAt, Ogre::ColourValue color, int nearClDis, int farClDis);
-	~CameraComponent();
+		//lo uncio necesario para recoger input del teclado a traves de SDL
+		CameraComponent(Ogre::Vector3 pos, Ogre::Vector3 lookAt, Ogre::ColourValue color, int nearClDis, int farClDis);
+		~CameraComponent();
 
-	virtual void start() override;
-	Ogre::Vector3 a;
+		virtual void start() override;
+		Ogre::Vector3 a;
 
-	Ogre::Camera* getCamera();
-private:
-	bool lookingAt = false;
-	bool following = false;
-	
-	Ogre::Camera* cam;
-	Ogre::Viewport* vp;
-	Ogre::SceneNode* node = nullptr;
-	Transform* tr_ = nullptr;
+		Ogre::Camera* getCamera();
+	private:
+		bool lookingAt = false;
+		bool following = false;
 
-	Ogre::Vector3 camPos;
-	Ogre::Vector3 lookAtVec;
-	Ogre::ColourValue bgColor;
+		Ogre::Camera* cam;
+		Ogre::Viewport* vp;
+		Ogre::SceneNode* node = nullptr;
+		Transform* tr_ = nullptr;
 
-	int nearClipDistance;
-	int farClipDistance;
-};
+		Ogre::Vector3 camPos;
+		Ogre::Vector3 lookAtVec;
+		Ogre::ColourValue bgColor;
 
+		int nearClipDistance;
+		int farClipDistance;
+	};
+}
 #endif _CAMERA_COMPONENT_H

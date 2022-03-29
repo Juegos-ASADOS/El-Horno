@@ -20,16 +20,16 @@ Scene::Scene()
 	light->addComponent<LightComponent>("light", 0, Ogre::Vector3(0, 0, 0));
 
 	Entity* a = addEntity("camera", "prueba");
-	Ogre::Vector3 p = { 1,1,1};
-	a->addComponent<Transform>("transform", Ogre::Vector3(0,0,0), Ogre::Vector3(0, 0, 0), Ogre::Vector3(0, 0, 0));
-	a->addComponent<CameraComponent>("camera", Ogre::Vector3(0,220,550), Ogre::Vector3(0, 0, 0), Ogre::ColourValue(0,0.3,0.5), 5, 10000);
-	a->addComponent<AudioListenerComponent>("audioListener");
-	
+	Ogre::Vector3 p = { 1,1,1 };
+	a->addComponent<Transform>("transform", Ogre::Vector3(0, 0, 0), Ogre::Vector3(0, 0, 0), Ogre::Vector3(0, 0, 0));
+	a->addComponent<El_Horno::CameraComponent>("camera", Ogre::Vector3(0, 220, 550), Ogre::Vector3(0, 0, 0), Ogre::ColourValue(0, 0.3, 0.5), 5, 10000);
+	a->addComponent<El_Horno::AudioListenerComponent>("audioListener");
+
 	Entity* b = addEntity("object", "prueba");
 	b->addComponent<Transform>("transform", Ogre::Vector3(0, 50, 0), Ogre::Vector3(180, 0, 0), p);
 	b->addComponent<Mesh>("mesh", "ogrehead");
 	b->addComponent<El_Horno::RigidBody>("rigidbody", 2.0f, false, 0);
-	b->addComponent<AudioComponent>("audioComponent");
+	b->addComponent<El_Horno::AudioComponent>("audioComponent");
 
 	b = addEntity("object2", "prueba");
 	b->addComponent<Transform>("transform", Ogre::Vector3(0, -15, 0), Ogre::Vector3(0, 0, 0), Ogre::Vector3(5, 0.1, 5));

@@ -11,25 +11,26 @@
 #include "fmod.h"
 #include "CheckML.h"
 
-AudioComponent::AudioComponent() {}
+namespace El_Horno {
 
-AudioComponent::~AudioComponent() {}
+	AudioComponent::AudioComponent() {}
 
-void AudioComponent::update()
-{
-	pos_.x = entity_->getComponent<Transform>("transform")->getPosition().x;
-	pos_.y = entity_->getComponent<Transform>("transform")->getPosition().y;
-	pos_.z = entity_->getComponent<Transform>("transform")->getPosition().z;
+	AudioComponent::~AudioComponent() {}
 
-	vel_.x = 0;
-	vel_.y = 0;
-	vel_.z = 0;
-	ElHornoBase::getInstance()->getAudioManager()->updateSound(VectorToFmod(pos_), VectorToFmod(vel_), nChannel);
+	void AudioComponent::update()
+	{
+		pos_.x = entity_->getComponent<Transform>("transform")->getPosition().x;
+		pos_.y = entity_->getComponent<Transform>("transform")->getPosition().y;
+		pos_.z = entity_->getComponent<Transform>("transform")->getPosition().z;
+
+		vel_.x = 0;
+		vel_.y = 0;
+		vel_.z = 0;
+		ElHornoBase::getInstance()->getAudioManager()->updateSound(VectorToFmod(pos_), VectorToFmod(vel_), nChannel);
+	}
+
+	void AudioComponent::playSound(std::string path)
+	{
+		nChannel = ElHornoBase::getInstance()->getAudioManager()->PlaySound(path, VectorToFmod(pos_), 50.0f);
+	}
 }
-
-void AudioComponent::playSound(std::string path)
-{
-	nChannel = ElHornoBase::getInstance()->getAudioManager()->PlaySound(path, VectorToFmod(pos_), 50.0f);
-}
-
-

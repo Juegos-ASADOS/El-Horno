@@ -4,6 +4,7 @@
 
 #include <string>
 
+
 class Scene;
 
 class SceneManager
@@ -33,5 +34,4 @@ private:
 
 	std::string nextScene_ = "";
 };
-
 #endif _SCENE_MANAGER_H
