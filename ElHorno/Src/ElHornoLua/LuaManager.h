@@ -2,6 +2,9 @@
 #ifndef _EL_HORNO_BULLET_LUA_MANAGER_H
 #define _EL_HORNO_BULLET_LUA_MANAGER_H
 
+#define SCRIPTS_PATH "\Assets\Scripts"
+#define FILE_EXTENSION ".lua"
+
 #include <string>
 
 class lua_State;
