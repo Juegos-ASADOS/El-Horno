@@ -18,28 +18,28 @@ namespace El_Horno {
 	{
 		Entity* light = addEntity("light", "prueba");
 		light->addComponent<Transform>("transform", Ogre::Vector3(0, 200, 0), Ogre::Vector3(0, 0, 0), Ogre::Vector3(0, 0, 0));
-		light->addComponent<El_Horno::LightComponent>("light", 0, Ogre::Vector3(0, 0, 0));
+		light->addComponent<LightComponent>("light", 0, Ogre::Vector3(0, 0, 0));
 
 		Entity* a = addEntity("camera", "prueba");
 		Ogre::Vector3 p = { 1,1,1 };
 		a->addComponent<Transform>("transform", Ogre::Vector3(0, 0, 0), Ogre::Vector3(0, 0, 0), Ogre::Vector3(0, 0, 0));
-		a->addComponent<El_Horno::CameraComponent>("camera", Ogre::Vector3(0, 220, 550), Ogre::Vector3(0, 0, 0), Ogre::ColourValue(0, 0.3, 0.5), 5, 10000);
-		a->addComponent<El_Horno::AudioListenerComponent>("audioListener");
+		a->addComponent<CameraComponent>("camera", Ogre::Vector3(0, 220, 550), Ogre::Vector3(0, 0, 0), Ogre::ColourValue(0, 0.3, 0.5), 5, 10000);
+		a->addComponent<AudioListenerComponent>("audioListener");
 
 		Entity* b = addEntity("object", "prueba");
 		b->addComponent<Transform>("transform", Ogre::Vector3(0, 50, 0), Ogre::Vector3(180, 0, 0), p);
 		b->addComponent<Mesh>("mesh", "ogrehead");
-		b->addComponent<El_Horno::RigidBody>("rigidbody", 2.0f, false, 0);
-		//b->addComponent<El_Horno::AudioComponent>("audioComponent");
+		b->addComponent<RigidBody>("rigidbody", 2.0f, false, 0);
+		//b->addComponent<AudioComponent>("audioComponent");
 
 		b = addEntity("object2", "prueba");
 		b->addComponent<Transform>("transform", Ogre::Vector3(0, -15, 0), Ogre::Vector3(0, 0, 0), Ogre::Vector3(5, 0.1, 5));
 		b->addComponent<Mesh>("mesh", "cube");
-		b->addComponent<El_Horno::RigidBody>("rigidbody", 0.0f, false, 0);
+		b->addComponent<RigidBody>("rigidbody", 0.0f, false, 0);
 
 		b = addEntity("esmoque", "prueba");
 		b->addComponent<Transform>("transform", Ogre::Vector3(0, 50, 0), Ogre::Vector3(0, 0, 0), p);
-		b->addComponent<El_Horno::ParticleSystem>("particleSystem", "smoke", "Smoke", 50000, false);
+		b->addComponent<ParticleSystem>("particleSystem", "smoke", "Smoke", 50000, false);
 	}
 
 	//TODO Destruir VierwPorts y c�maras lo primero de todo

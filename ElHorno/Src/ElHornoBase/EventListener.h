@@ -3,6 +3,7 @@
 #define _EVENT_LISTENER_H
 
 struct Event;
+
 namespace El_Horno {
 
 	class EventListener

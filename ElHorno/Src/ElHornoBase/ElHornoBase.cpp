@@ -41,14 +41,14 @@ namespace El_Horno {
 	ElHornoBase::~ElHornoBase()
 	{
 		delete globalTimer_; globalTimer_ = nullptr;
-		El_Horno::AudioManager::erase();
-		El_Horno::InputManager::erase();
+		AudioManager::erase();
+		InputManager::erase();
 		FactoryCreator::erase();
-		El_Horno::LuaManager::erase();
+		LuaManager::erase();
 		SceneManager::erase();
-		El_Horno::EventManager::erase();
-		El_Horno::GraphicsManager::erase();
-		El_Horno::PhysicsManager::erase();
+		EventManager::erase();
+		GraphicsManager::erase();
+		PhysicsManager::erase();
 	}
 
 	ElHornoBase* ElHornoBase::getInstance() {
@@ -78,14 +78,14 @@ namespace El_Horno {
 		setupFactories();
 
 		SceneManager::setupInstance();
-		El_Horno::EventManager::setupInstance();
-		El_Horno::GraphicsManager::setInstance();
-		El_Horno::PhysicsManager::setupInstance();
-		El_Horno::InputManager::setupInstance();
-		El_Horno::AudioManager::setupInstance();
+		EventManager::setupInstance();
+		GraphicsManager::setInstance();
+		PhysicsManager::setupInstance();
+		InputManager::setupInstance();
+		AudioManager::setupInstance();
 
 		//HornoLua
-		El_Horno::LuaManager::setupInstance();
+		LuaManager::setupInstance();
 	}
 
 	/*
@@ -93,13 +93,13 @@ namespace El_Horno {
 	*/
 	void ElHornoBase::start()
 	{
-		El_Horno::PhysicsManager::getInstance()->start("");
-		El_Horno::GraphicsManager::getInstance()->init();
+		PhysicsManager::getInstance()->start("");
+		GraphicsManager::getInstance()->init();
 		SceneManager::getInstance()->getCurrentScene()->start();
-		El_Horno::AudioManager::getInstance()->init();
-		El_Horno::LuaManager::getInstance()->init();
+		AudioManager::getInstance()->init();
+		LuaManager::getInstance()->init();
 
-		El_Horno::LuaManager::getInstance()->reedLuaScript("Assets/Scripts/sample.lua");
+		LuaManager::getInstance()->reedLuaScript("Assets/Scripts/sample.lua");
 	}
 
 	/*
@@ -164,14 +164,14 @@ namespace El_Horno {
 	/*OgreRoot llama a frameListener_ que llama a processFrame que actualiza
 	la instancia de cada manager dependiendo del estado del juego*/
 	void ElHornoBase::processFrame(float deltaTime) {
-		exit_ = El_Horno::GraphicsManager::getInstance()->pollEvents();
+		exit_ = GraphicsManager::getInstance()->pollEvents();
 
 
 		// Updates de managers
 		if (!paused_) {
 			//SceneManager::getInstance()->preUpdate();
-			El_Horno::PhysicsManager::getInstance()->update(deltaTime);
-			El_Horno::PhysicsManager::getInstance()->updateDebug(3);
+			PhysicsManager::getInstance()->update(deltaTime);
+			PhysicsManager::getInstance()->updateDebug(3);
 			SceneManager::getInstance()->update();
 		}
 		else {
@@ -179,7 +179,7 @@ namespace El_Horno {
 		}
 
 		//AudioManager::getInstance()->update();
-		El_Horno::GraphicsManager::getInstance()->render();
+		GraphicsManager::getInstance()->render();
 		//UIManager::getInstance()->update();
 		SceneManager::getInstance()->deleteEntities();
 		//SceneManager::getInstance()->endFrame();
@@ -188,11 +188,11 @@ namespace El_Horno {
 	void ElHornoBase::update()
 	{
 		exit_ = false;
-		globalTimer_ = new El_Horno::Timer();
+		globalTimer_ = new Timer();
 		float deltaTime = 0;
 
 		// ESTO ES DE PRUEBA
-		//SceneManager::getInstance()->getCurrentScene()->getEntity("object", "prueba")->getComponent<El_Horno::AudioComponent>("audioComponent")->playSound("NeonRider.mp3");
+		//SceneManager::getInstance()->getCurrentScene()->getEntity("object", "prueba")->getComponent<AudioComponent>("audioComponent")->playSound("NeonRider.mp3");
 		while (!exit_) {
 			globalTimer_->resetTimer();
 			processFrame(deltaTime);
@@ -208,19 +208,19 @@ namespace El_Horno {
 		return SceneManager::getInstance();
 	}
 
-	El_Horno::InputManager* ElHornoBase::getInputManager()
+	InputManager* ElHornoBase::getInputManager()
 	{
-		return El_Horno::InputManager::getInstance();
+		return InputManager::getInstance();
 	}
 
-	El_Horno::GraphicsManager* ElHornoBase::getGraphicsManager()
+	GraphicsManager* ElHornoBase::getGraphicsManager()
 	{
-		return El_Horno::GraphicsManager::getInstance();
+		return GraphicsManager::getInstance();
 	}
 
-	El_Horno::AudioManager* ElHornoBase::getAudioManager()
+	AudioManager* ElHornoBase::getAudioManager()
 	{
-		return El_Horno::AudioManager::getInstance();
+		return AudioManager::getInstance();
 	}
 
 	/*
@@ -307,7 +307,7 @@ namespace El_Horno {
 	/*
 	* Devuelve el Timer global del proyecto
 	*/
-	El_Horno::Timer* ElHornoBase::getGlobalTime()
+	Timer* ElHornoBase::getGlobalTime()
 	{
 		return globalTimer_;
 	}

@@ -5,7 +5,7 @@
 namespace El_Horno {
 	EventListener::~EventListener()
 	{
-		El_Horno::EventManager::getInstance()->removeListener(this);
+		EventManager::getInstance()->removeListener(this);
 	}
 
 	bool EventListener::recieveEvent(Event* e)

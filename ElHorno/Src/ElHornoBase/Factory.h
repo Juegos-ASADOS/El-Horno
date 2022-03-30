@@ -3,15 +3,14 @@
 #define _FACTORY_H
 
 class Component;
+	class Factory
+	{
+	public:
+		Factory() {};
 
-class Factory
-{
-public:
-	Factory() {};
-
-	template<typename T, typename ...Ts>
-	static T* createComponent(Ts &&...args) { return new T(args...); };
-};
+		template<typename T, typename ...Ts>
+		static T* createComponent(Ts &&...args) { return new T(args...); };
+	};
 
 //class TransformFactory : public Factory {
 //public:

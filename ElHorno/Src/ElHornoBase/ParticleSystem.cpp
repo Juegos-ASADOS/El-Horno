@@ -19,7 +19,7 @@ namespace El_Horno {
 		timeToLive_ = ttl;
 		destroyOnTimeLimit_ = destroyTL;
 		particleSystemOrderedName_ = particleSystemName_;
-		timer_ = new El_Horno::Timer();
+		timer_ = new Timer();
 	}
 
 	ParticleSystem::~ParticleSystem()

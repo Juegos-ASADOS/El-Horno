@@ -6,20 +6,14 @@
 #include <string>
 #include "json.hpp"
 
-
-class InputManager;
-class GraphicsManager;
-
-//BORRAR EEN EL FUTURO AAAAAAAAAAA
 namespace El_Horno {
+
 	class AudioManager;
 	class GraphicsManager;
 	class InputManager;
 	class Timer;
-}
-
-namespace El_Horno {
 	class SceneManager;
+
 	class ElHornoBase {
 	public:
 		ElHornoBase();
@@ -41,15 +35,15 @@ namespace El_Horno {
 		//GUI_Manager* getGUIManager();
 		//ResourceManager* getResourceManager();
 		static SceneManager* getSceneManager();
-		static El_Horno::InputManager* getInputManager();
-		static El_Horno::GraphicsManager* getGraphicsManager();
-		static El_Horno::AudioManager* getAudioManager();
+		static InputManager* getInputManager();
+		static GraphicsManager* getGraphicsManager();
+		static AudioManager* getAudioManager();
 
 		// Esto ahora lo lleva Timer (excepto deltaTime que lo lleva el bucle)
 		/*float getTime();
 		float deltaTime();
 		void resetTimer();*/
-		El_Horno::Timer* getGlobalTime();
+		Timer* getGlobalTime();
 
 		void pause();
 		bool isPaused();
@@ -78,7 +72,7 @@ namespace El_Horno {
 			invertedAxisY_,
 			exit_;
 
-		El_Horno::Timer* globalTimer_;
+		Timer* globalTimer_;
 
 		nlohmann::json ExtraConfig;
 	};
