@@ -1,5 +1,6 @@
 #include "GraphicsManager.h"
 #include "InputManager.h"
+#include "PhysicsManager.h"
 #include <iostream>
 #include <fstream>
 #include <Ogre.h>
@@ -20,6 +21,8 @@ namespace El_Horno {
 
 	GraphicsManager::~GraphicsManager()
 	{
+		//if(debug)
+		PhysicsManager::getInstance()->removeDebug();
 		delete root_;
 		SDL_Quit();
 	}
@@ -60,6 +63,9 @@ namespace El_Horno {
 
 		setupResources();
 
+		//Inicializa el debug en PhysicsManager
+		//if(debug) // linea imaginaria para cuando exista variable debug
+		PhysicsManager::getInstance()->debugStart();
 	}
 
 	void GraphicsManager::start()

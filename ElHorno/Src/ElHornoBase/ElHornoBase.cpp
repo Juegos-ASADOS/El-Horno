@@ -93,10 +93,6 @@ void ElHornoBase::start()
 {
 	El_Horno::PhysicsManager::getInstance()->start("");
 	El_Horno::GraphicsManager::getInstance()->init();
-	
-	//DEBUG PHYSICS --- DEJA BASURA INEVITABLE
-	El_Horno::PhysicsManager::getInstance()->debugStart();
-
 	SceneManager::getInstance()->getCurrentScene()->start();
 	El_Horno::AudioManager::getInstance()->init();
 	El_Horno::LuaManager::getInstance()->init();

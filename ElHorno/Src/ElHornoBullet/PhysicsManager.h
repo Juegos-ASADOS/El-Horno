@@ -41,6 +41,7 @@ namespace El_Horno {
 		void debugStart();
 		void update(const float& dt);
 		void updateDebug(const int& debugFlags);
+		void removeDebug();
 
 		btRigidBody* createRigidBody(btTransform* tr, btCollisionShape* shape, int& userIdx_, const float& mass = 1.0f);
 		btGhostObject* createTrigger(btTransform* tr, btCollisionShape* shape, int& userIdx_);
@@ -62,6 +63,7 @@ namespace El_Horno {
 		void deleteCollisionObject(btCollisionObject* body);
 
 		void setGravity(const btVector3& g);
+
 	private:
 		static PhysicsManager* instance;
 
