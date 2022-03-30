@@ -11,6 +11,8 @@ class btCollisionShape;
 class btCollisionObject;
 
 class PhysicsManager;
+
+namespace El_Horno {
 class Transform;
 
 union rb_union
@@ -19,7 +21,6 @@ union rb_union
 	btGhostObject* ghost_;
 };
 
-namespace El_Horno {
 	class RigidBody : public Component
 	{
 	public:

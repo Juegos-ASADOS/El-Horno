@@ -19,6 +19,7 @@ class btVector3;
 template<typename T>
 class btAlignedObjectArray;
 
+namespace El_Horno {
 class Transform;
 
 enum ColliderShape {
@@ -28,7 +29,6 @@ enum ColliderShape {
 	Capsule
 };
 
-namespace El_Horno {
 	class OgreDebugDrawer;
 	class PhysicsManager
 	{

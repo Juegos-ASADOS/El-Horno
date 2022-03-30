@@ -5,33 +5,35 @@
 #include <string>
 
 
+namespace El_Horno {
 class Scene;
 
-class SceneManager
-{
-public:
-	static SceneManager* getInstance();
-	static bool setupInstance();
-	static void erase();
+	class SceneManager
+	{
+	public:
+		static SceneManager* getInstance();
+		static bool setupInstance();
+		static void erase();
 
-	Scene* getCurrentScene();
+		Scene* getCurrentScene();
 
-	Scene* loadScene(const std::string& sceneName);
-	void changeScene(const std::string& name);
+		Scene* loadScene(const std::string& sceneName);
+		void changeScene(const std::string& name);
 
 
-	void start(std::string initialScene);
-	void update();
-	void deleteEntities();
+		void start(std::string initialScene);
+		void update();
+		void deleteEntities();
 
-private:
-	static SceneManager* instance;
+	private:
+		static SceneManager* instance;
 
-	Scene* currentScene_ = nullptr;
+		Scene* currentScene_ = nullptr;
 
-	SceneManager();
-	~SceneManager();
+		SceneManager();
+		~SceneManager();
 
-	std::string nextScene_ = "";
-};
+		std::string nextScene_ = "";
+	};
+}
 #endif _SCENE_MANAGER_H

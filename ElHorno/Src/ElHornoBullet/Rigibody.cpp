@@ -33,7 +33,7 @@ namespace El_Horno {
 	void RigidBody::start()
 	{
 		phManager_ = PhysicsManager::getInstance();
-
+		
 		transform_ = entity_->getComponent<Transform>("transform");
 
 		shape_ = phManager_->createShape(transform_, (ColliderShape)colShape_);
