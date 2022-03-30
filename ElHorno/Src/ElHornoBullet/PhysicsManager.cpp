@@ -9,6 +9,8 @@
 
 #include "DebugDrawer.h"
 #include "GraphicsManager.h"
+#include "OgreSceneNode.h"
+#include "OgreEntity.h"
 //#include "EventManager.h"
 //#include "Event.h"
 //
@@ -178,7 +180,7 @@ namespace El_Horno {
 
 	void PhysicsManager::removeDebug()
 	{
-		if (debugDrawer_ != nullptr) {
+		if (debugDrawer_) {
 			delete debugDrawer_; debugDrawer_ = nullptr;
 		}
 	}
@@ -259,18 +261,32 @@ namespace El_Horno {
 	btCollisionShape* PhysicsManager::createShape(Transform* tr, ColliderShape sha = ColliderShape::Box)
 	{
 		btCollisionShape* shape = nullptr;
+		Ogre::Vector3 size(1,1,1);
+		
+		//Si tiene mesh, la utilizamos para tomar el tamaño por defecto
+		if (tr->getNode()->getAttachedObjects().size() > 0) {
+			Ogre::Entity* obj = static_cast<Ogre::Entity*>(tr->getNode()->getAttachedObject(0));
+			size = obj->getBoundingBox().getSize();
+			size *= tr->getScale();
+			size /= 2.0f;
+		}
+		else{
+			size = tr->getScale();
+		}
+
+
 		switch (sha) {
 		case ColliderShape::Box: //HALF-EXTENTS = Transform.Escala
-			shape = new btBoxShape(VectorToBullet(tr->getScale()));
+			shape = new btBoxShape(VectorToBullet(size));
 			break;
 		case ColliderShape::Sphere: //RADIO = Transform.Scale.Length
-			shape = new btSphereShape(VectorToBullet(tr->getScale()).length());
+			shape = new btSphereShape(VectorToBullet(size).length());
 			break;
 		case ColliderShape::Cylinder: //HALF-EXTENTS = Transform.Escala
-			shape = new btCylinderShape(VectorToBullet(tr->getScale()));
+			shape = new btCylinderShape(VectorToBullet(size));
 			break;
 		case ColliderShape::Capsule: //RADIO = Transform.Scale.X --- ALTURA = Transform.Scale.Y
-			shape = new btCapsuleShape(VectorToBullet(tr->getScale()).x(), VectorToBullet(tr->getScale()).y());
+			shape = new btCapsuleShape(VectorToBullet(size).x(), VectorToBullet(size).y());
 			break;
 		}
 		return shape;

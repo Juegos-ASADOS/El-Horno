@@ -70,8 +70,6 @@ namespace El_Horno {
 		PhysicsManager();
 		~PhysicsManager();
 
-		float fixedTimeStep_ = 0.0f;
-
 		int userIdxCount_ = 0;
 
 		btVector3* gravity_ = nullptr;
@@ -89,7 +87,7 @@ namespace El_Horno {
 		btAlignedObjectArray<btCollisionShape*>* collisionShapes_;
 
 		//Necesaria para renderizar el debug
-		OgreDebugDrawer* debugDrawer_;
+		OgreDebugDrawer* debugDrawer_ = nullptr;
 	};
 }
 
