@@ -29,7 +29,7 @@ Scene::Scene()
 	b->addComponent<Transform>("transform", Ogre::Vector3(0, 50, 0), Ogre::Vector3(180, 0, 0), p);
 	b->addComponent<Mesh>("mesh", "ogrehead");
 	b->addComponent<El_Horno::RigidBody>("rigidbody", 2.0f, false, 0);
-	b->addComponent<El_Horno::AudioComponent>("audioComponent");
+	//b->addComponent<El_Horno::AudioComponent>("audioComponent");
 
 	b = addEntity("object2", "prueba");
 	b->addComponent<Transform>("transform", Ogre::Vector3(0, -15, 0), Ogre::Vector3(0, 0, 0), Ogre::Vector3(5, 0.1, 5));

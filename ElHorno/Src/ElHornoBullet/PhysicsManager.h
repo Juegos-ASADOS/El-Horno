@@ -29,6 +29,7 @@ enum ColliderShape {
 };
 
 namespace El_Horno {
+	class OgreDebugDrawer;
 	class PhysicsManager
 	{
 	public:
@@ -37,6 +38,7 @@ namespace El_Horno {
 		static void erase();
 
 		void start(const std::string& initialScene);
+		void debugStart();
 		void update(const float& dt);
 		void updateDebug(const int& debugFlags);
 
@@ -83,6 +85,9 @@ namespace El_Horno {
 
 		//Array de las formas de colisión (necesario para borrarlas)
 		btAlignedObjectArray<btCollisionShape*>* collisionShapes_;
+
+		//Necesaria para renderizar el debug
+		OgreDebugDrawer* debugDrawer_;
 	};
 }
 

@@ -36,6 +36,9 @@
     <ClInclude Include="..\..\Src\ElHornoBullet\Rigibody.h">
       <Filter>Archivos de encabezado\Components</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\Src\ElHornoBullet\DebugDrawer.h">
+      <Filter>Archivos de encabezado\PhysicsManager</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\Src\ElHornoBullet\ElHornoBullet.cpp">
@@ -46,6 +49,9 @@
     </ClCompile>
     <ClCompile Include="..\..\Src\ElHornoBullet\Rigibody.cpp">
       <Filter>Archivos de origen\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Src\ElHornoBullet\DebugDrawer.cpp">
+      <Filter>Archivos de origen\PhysicsManager</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

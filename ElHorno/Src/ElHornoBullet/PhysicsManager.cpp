@@ -6,6 +6,9 @@
 #include "Rigibody.h"
 #include <iostream>
 #include "Entity.h"
+
+#include "DebugDrawer.h"
+#include "GraphicsManager.h"
 //#include "EventManager.h"
 //#include "Event.h"
 //
@@ -80,6 +83,12 @@ namespace El_Horno {
 		//Borrado en reverso, de último creado a primero
 		//No tenemos constraints, pero las borramos de todos modos
 
+
+		//NO SE PUEDE HACER --- ROOT DEBE BORRARSE ANTES
+		/*if (debugDrawer_ != nullptr) {
+			delete debugDrawer_; debugDrawer_ = nullptr;
+		}*/
+
 		int i;
 		for (i = dynamicsWorld_->getNumConstraints() - 1; i >= 0; i--) {
 			dynamicsWorld_->removeConstraint(dynamicsWorld_->getConstraint(i));
@@ -144,6 +153,13 @@ namespace El_Horno {
 		dynamicsWorld_->setGravity(btVector3(0, -9.8, 0));
 	}
 
+	void PhysicsManager::debugStart()
+	{
+		debugDrawer_ = new OgreDebugDrawer(GraphicsManager::getInstance()->getSceneManager());
+		debugDrawer_->setDebugMode(btIDebugDraw::DBG_DrawWireframe | btIDebugDraw::DBG_DrawAabb);
+		dynamicsWorld_->setDebugDrawer(debugDrawer_);
+	}
+
 	/*
 	* Se tiene que llamar varias veces por frame
 	* Hacer timers en bucle principal
@@ -161,7 +177,7 @@ namespace El_Horno {
 	void PhysicsManager::updateDebug(const int& debugFlags)
 	{
 		if (dynamicsWorld_ && dynamicsWorld_->getDebugDrawer()) {
-			dynamicsWorld_->getDebugDrawer()->setDebugMode(debugFlags);
+			//dynamicsWorld_->getDebugDrawer()->setDebugMode();
 			dynamicsWorld_->debugDrawWorld();
 		}
 	}

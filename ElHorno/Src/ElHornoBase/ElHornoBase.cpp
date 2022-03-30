@@ -25,10 +25,6 @@ ElHornoBase* ElHornoBase::instance_;
 
 /*
 CADENA DE LLAMADAS QUE EJECUTAN EL BUCLE PRINCIPAL
-Llamamos a Ogre::root->addFrameListener() y le metemos nuestro listener
-"frameListener_" como parametro. OgreRoot llama a frameListener_ que,
-a su vez, llama a processFrame, encargado de actualizar cada instancia de
-cada manager
 */
 
 ElHornoBase::ElHornoBase()
@@ -97,6 +93,10 @@ void ElHornoBase::start()
 {
 	El_Horno::PhysicsManager::getInstance()->start("");
 	El_Horno::GraphicsManager::getInstance()->init();
+	
+	//DEBUG PHYSICS --- DEJA BASURA INEVITABLE
+	El_Horno::PhysicsManager::getInstance()->debugStart();
+
 	SceneManager::getInstance()->getCurrentScene()->start();
 	El_Horno::AudioManager::getInstance()->init();
 	El_Horno::LuaManager::getInstance()->init();
@@ -173,6 +173,7 @@ void ElHornoBase::processFrame(float deltaTime) {
 	if (!paused_) {
 		//SceneManager::getInstance()->preUpdate();
 		El_Horno::PhysicsManager::getInstance()->update(deltaTime);
+		El_Horno::PhysicsManager::getInstance()->updateDebug(3);
 		SceneManager::getInstance()->update();
 	}
 	else {
@@ -193,7 +194,7 @@ void ElHornoBase::update()
 	float deltaTime = 0;
 	
 	// ESTO ES DE PRUEBA
-	SceneManager::getInstance()->getCurrentScene()->getEntity("object", "prueba")->getComponent<El_Horno::AudioComponent>("audioComponent")->playSound("NeonRider.mp3");
+	//SceneManager::getInstance()->getCurrentScene()->getEntity("object", "prueba")->getComponent<El_Horno::AudioComponent>("audioComponent")->playSound("NeonRider.mp3");
 	while (!exit_) {
 		globalTimer_->resetTimer();
 		processFrame(deltaTime);
