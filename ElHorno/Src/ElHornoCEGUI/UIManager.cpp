@@ -11,14 +11,14 @@
 namespace El_Horno {
 	UIManager* UIManager::instance = 0;
 
-	UIManager::UIManager(Ogre::RenderWindow* renderWindow)
+	UIManager::UIManager()
 	{
-		CEGUI::OgreRenderer& auxiliar = CEGUI::OgreRenderer::bootstrapSystem(*renderWindow);
-		renderer = &auxiliar;
+		//CEGUI::OgreRenderer& auxiliar = CEGUI::OgreRenderer::bootstrapSystem(*renderWindow);
+		//renderer = &auxiliar;
 
-		setUpResources();
+		//setUpResources();
 
-		createRoot();
+		//createRoot();
 	}
 
 	UIManager::~UIManager()
@@ -31,11 +31,11 @@ namespace El_Horno {
 	}
 
 
-	bool UIManager::setupInstance(Ogre::RenderWindow* window)
+	bool UIManager::setupInstance()
 	{
 		if (instance == 0)
 		{
-			instance = new UIManager(window);
+			instance = new UIManager();
 			return true;
 		}
 
@@ -69,6 +69,13 @@ namespace El_Horno {
 
 		//Creo que se crea así
 		guiContext = &CEGUI::System::getSingleton().createGUIContext(renderer->getDefaultRenderTarget());
+
+		//esto para que no se haga en la constructora
+		setUpResources();
+
+		createRoot();
+
+
 	}
 
 	void UIManager::deleteContext()
@@ -86,6 +93,9 @@ namespace El_Horno {
 
 	void UIManager::update()
 	{
+		//tendra que recorrer todos sus layouts
+
+
 	}
 
 	void UIManager::changeText(CEGUI::Window* window, std::string text)

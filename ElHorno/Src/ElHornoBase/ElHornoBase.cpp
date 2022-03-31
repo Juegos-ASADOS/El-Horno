@@ -7,17 +7,18 @@
 #include "InputManager.h"
 #include "AudioManager.h"
 #include "GraphicsManager.h"
+#include "SceneManager.h"
+#include "LuaManager.h"
+#include "EventManager.h"
+#include "UIManager.h"
 #include "OurFrameListener.h"
 #include "FactoryCreator.h"
-#include "SceneManager.h"
-#include "EventManager.h"
 #include "Scene.h"
 #include "Factory.h"
 #include "Timer.h"
-#include "LuaManager.h"
-#include "CheckMl.h"
 #include "Entity.h"
 #include "AudioComponent.h"
+#include "CheckMl.h"
 
 namespace El_Horno {
 
@@ -49,6 +50,8 @@ namespace El_Horno {
 		EventManager::erase();
 		GraphicsManager::erase();
 		PhysicsManager::erase();
+		UIManager::clean();
+
 	}
 
 	ElHornoBase* ElHornoBase::getInstance() {
@@ -84,6 +87,10 @@ namespace El_Horno {
 		InputManager::setupInstance();
 		AudioManager::setupInstance();
 
+		//UIManager
+		UIManager::setupInstance();
+
+		//no se puede instanciar aqui ya que requiere de un render window (dame que lo corrijo en un min vamos esque xd)
 		//HornoLua
 		LuaManager::setupInstance();
 	}
@@ -98,6 +105,10 @@ namespace El_Horno {
 		SceneManager::getInstance()->getCurrentScene()->start();
 		AudioManager::getInstance()->init();
 		LuaManager::getInstance()->init();
+
+		//UIManager::setupInstance(GraphicsManager::getInstance()->getRenderWindow());
+		UIManager::getInstance()->createContext();
+		UIManager::getInstance()->showMouseCursor();
 
 		LuaManager::getInstance()->reedLuaScript("Assets/Scripts/sample.lua");
 	}
@@ -159,6 +170,8 @@ namespace El_Horno {
 		facCreat->addFactory("particleSystem");
 		facCreat->addFactory("audioComponent");
 		facCreat->addFactory("audioListener");
+		facCreat->addFactory("UIElement");
+		facCreat->addFactory("UIPushButton");
 	}
 
 	/*OgreRoot llama a frameListener_ que llama a processFrame que actualiza
@@ -180,7 +193,7 @@ namespace El_Horno {
 
 		//AudioManager::getInstance()->update();
 		GraphicsManager::getInstance()->render();
-		//UIManager::getInstance()->update();
+		UIManager::getInstance()->update();
 		SceneManager::getInstance()->deleteEntities();
 		//SceneManager::getInstance()->endFrame();
 	}
@@ -221,6 +234,11 @@ namespace El_Horno {
 	AudioManager* ElHornoBase::getAudioManager()
 	{
 		return AudioManager::getInstance();
+	}
+
+	UIManager* ElHornoBase::getUIManager()
+	{
+		return UIManager::getInstance();
 	}
 
 	/*

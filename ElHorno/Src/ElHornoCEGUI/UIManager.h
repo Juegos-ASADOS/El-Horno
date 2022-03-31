@@ -24,7 +24,7 @@ namespace El_Horno {
 	{
 
 	private:
-		UIManager(Ogre::RenderWindow* renderWindow);
+		UIManager();
 
 		static UIManager* instance;
 
@@ -42,7 +42,7 @@ namespace El_Horno {
 		~UIManager();
 
 		static UIManager* getInstance();
-		static bool setupInstance(Ogre::RenderWindow* window);
+		static bool setupInstance();
 		void setUpResources();
 		static void clean();
 

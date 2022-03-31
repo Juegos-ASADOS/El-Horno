@@ -11,6 +11,7 @@ namespace El_Horno {
 	class AudioManager;
 	class GraphicsManager;
 	class InputManager;
+	class UIManager;
 	class Timer;
 	class SceneManager;
 
@@ -38,6 +39,7 @@ namespace El_Horno {
 		static InputManager* getInputManager();
 		static GraphicsManager* getGraphicsManager();
 		static AudioManager* getAudioManager();
+		static UIManager* getUIManager();
 
 		// Esto ahora lo lleva Timer (excepto deltaTime que lo lleva el bucle)
 		/*float getTime();
