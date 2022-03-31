@@ -14,7 +14,6 @@ namespace El_Horno {
 
 	InputManager::InputManager()
 	{
-
 	}
 
 	InputManager::~InputManager()

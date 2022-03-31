@@ -87,7 +87,8 @@ void LuaManager::reedLuaScript(const std::string& path)
 
 luabridge::LuaRef LuaManager::getFromLua(std::string name)
 {
-    return luabridge::getGlobal(luaState, name.c_str());
+    std::string s = SCRIPTS_PATH + name + FILE_EXTENSION;
+    return luabridge::getGlobal(luaState, s.c_str());
 }
 
 template<typename T>

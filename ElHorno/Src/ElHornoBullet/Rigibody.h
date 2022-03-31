@@ -11,6 +11,7 @@ class btCollisionShape;
 class btCollisionObject;
 
 class PhysicsManager;
+
 class Transform;
 
 namespace El_Horno {
@@ -34,7 +35,7 @@ namespace El_Horno {
 
 	private:
 		//Masa por defecto 
-		//[DINÁMICO > 0 | ESTÁTICO == 0]
+		//[DINï¿½MICO > 0 | ESTï¿½TICO == 0]
 		float mass_ = 1.0f;
 
 		float friction_;
@@ -46,7 +47,7 @@ namespace El_Horno {
 		//Rigidbody de bullet
 		btRigidBody* rigid_;
 
-		//Forma básica del collider + Enum del PhysicsManager
+		//Forma bï¿½sica del collider + Enum del PhysicsManager
 		btCollisionShape* shape_ = nullptr;
 		int colShape_;
 
@@ -56,7 +57,7 @@ namespace El_Horno {
 		//Transform de la entidad 
 		Transform* transform_ = nullptr;
 
-		//Referencia al manager de física
+		//Referencia al manager de fï¿½sica
 		PhysicsManager* phManager_ = nullptr;
 
 		//Indice en Bullet

@@ -8,9 +8,9 @@
 #include <vector>
 #include <string>
 
+namespace El_Horno {
 class Transform;
 
-namespace El_Horno {
 	class CameraComponent : public Component
 	{
 	public:

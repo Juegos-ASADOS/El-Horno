@@ -10,91 +10,93 @@
 #include "CheckML.h"
 #include <OgreLogManager.h>
 
-Mesh::Mesh(std::string name, bool castShadow, bool isAnimated)
-{
-	meshName_ = name + ".mesh";
-	//materialName_ = name + ".mesh";
-	materialName_ = name + ".mesh";
-	castShadow_ = castShadow;
-	isAnimated_ = isAnimated;
-}
-
-/*
-Desconecta el nodo del padre y destruye la entidad
-*/
-Mesh::~Mesh()
-{
-	Ogre::SceneNode* node = ogreEntity_->getParentSceneNode();
-	if (node != nullptr)
-		node->detachAllObjects();
-	ElHornoBase::getGraphicsManager()->getSceneManager()->destroyEntity(ogreEntity_->getName());
-}
-
-/*
-Crea una entidad. Establece:
-	- Material
-	- Casteo de sombras
-	- Animación
-Se le adjunta al nodo del transform
-*/
-void Mesh::start()
-{
-	try {
-
-		ogreEntity_ = ElHornoBase::getInstance()->getGraphicsManager()->createEntity(meshName_);
+namespace El_Horno {
+	Mesh::Mesh(std::string name, bool castShadow, bool isAnimated)
+	{
+		meshName_ = name + ".mesh";
+		//materialName_ = name + ".mesh";
+		materialName_ = name + ".mesh";
+		castShadow_ = castShadow;
+		isAnimated_ = isAnimated;
 	}
-	catch (Ogre::Exception& e) { 
-		Ogre::LogManager::getSingleton().logMessage("An exception has occured: " + e.getFullDescription() + "\n"); 
-		return;
+
+	/*
+	Desconecta el nodo del padre y destruye la entidad
+	*/
+	Mesh::~Mesh()
+	{
+		Ogre::SceneNode* node = ogreEntity_->getParentSceneNode();
+		if (node != nullptr)
+			node->detachAllObjects();
+		ElHornoBase::getGraphicsManager()->getSceneManager()->destroyEntity(ogreEntity_->getName());
 	}
-	//ogreEntity_->setMaterialName(materialName_);
-	//ogreEntity_->setMaterialName("Sandokan");
-	ogreEntity_->setCastShadows(castShadow_);
-	entity_->getComponent<Transform>("transform")->getNode()->attachObject(ogreEntity_); 
-}
 
-/*
-Reestablece varibles de init para recomponer la malla
-*/
-void Mesh::redefine()
-{
-	
-}
+	/*
+	Crea una entidad. Establece:
+		- Material
+		- Casteo de sombras
+		- Animación
+	Se le adjunta al nodo del transform
+	*/
+	void Mesh::start()
+	{
+		try {
 
-void Mesh::onEnable()
-{
-	ogreEntity_->setVisible(true);
-}
+			ogreEntity_ = ElHornoBase::getInstance()->getGraphicsManager()->createEntity(meshName_);
+		}
+		catch (Ogre::Exception& e) {
+			Ogre::LogManager::getSingleton().logMessage("An exception has occured: " + e.getFullDescription() + "\n");
+			return;
+		}
+		//ogreEntity_->setMaterialName(materialName_);
+		//ogreEntity_->setMaterialName("Sandokan");
+		ogreEntity_->setCastShadows(castShadow_);
+		entity_->getComponent<Transform>("transform")->getNode()->attachObject(ogreEntity_);
+	}
 
-void Mesh::onDisable()
-{
-	ogreEntity_->setVisible(false);
-}
+	/*
+	Reestablece varibles de init para recomponer la malla
+	*/
+	void Mesh::redefine()
+	{
 
-Ogre::AxisAlignedBox Mesh::getAABB() const
-{
-	return ogreEntity_->getBoundingBox();
-}
+	}
 
-Ogre::Real Mesh::getAABBRadius() const
-{
-	return ogreEntity_->getBoundingRadius();
-}
+	void Mesh::onEnable()
+	{
+		ogreEntity_->setVisible(true);
+	}
 
-Ogre::Entity* Mesh::getOgreEntity() const
-{
-	return ogreEntity_;
-}
+	void Mesh::onDisable()
+	{
+		ogreEntity_->setVisible(false);
+	}
 
-/*
-Devuelve ptr de SharedPtr<Mesh>
-*/
-Ogre::Mesh* Mesh::getMesh() const
-{
-	return ogreEntity_->getMesh().get();
-}
+	Ogre::AxisAlignedBox Mesh::getAABB() const
+	{
+		return ogreEntity_->getBoundingBox();
+	}
 
-bool Mesh::isMeshAnimated() const
-{
-	return isAnimated_;
+	Ogre::Real Mesh::getAABBRadius() const
+	{
+		return ogreEntity_->getBoundingRadius();
+	}
+
+	Ogre::Entity* Mesh::getOgreEntity() const
+	{
+		return ogreEntity_;
+	}
+
+	/*
+	Devuelve ptr de SharedPtr<Mesh>
+	*/
+	Ogre::Mesh* Mesh::getMesh() const
+	{
+		return ogreEntity_->getMesh().get();
+	}
+
+	bool Mesh::isMeshAnimated() const
+	{
+		return isAnimated_;
+	}
 }

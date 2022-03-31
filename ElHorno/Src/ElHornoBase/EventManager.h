@@ -5,10 +5,11 @@
 #include <vector>
 #include <queue>
 
-class EventListener;
 struct Event;
 
 namespace El_Horno {
+class EventListener;
+
 	class EventManager
 	{
 	public:

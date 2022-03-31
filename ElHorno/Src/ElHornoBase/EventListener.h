@@ -4,11 +4,13 @@
 
 struct Event;
 
-class EventListener
-{
-public:
-	virtual ~EventListener();
-	virtual bool recieveEvent(Event* e);
-};
+namespace El_Horno {
 
+	class EventListener
+	{
+	public:
+		virtual ~EventListener();
+		virtual bool recieveEvent(Event* e);
+	};
+}
 #endif _EVENT_LISTENER_H

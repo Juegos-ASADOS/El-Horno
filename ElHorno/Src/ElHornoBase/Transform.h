@@ -5,41 +5,42 @@
 #include "Component.h"
 #include <OgreVector3.h>
 
-namespace Ogre {}
+namespace El_Horno {
 
-class Transform : public Component
-{
-public:
-	Transform(Ogre::Vector3 pos, Ogre::Vector3 rot, Ogre::Vector3 scal);
-	~Transform();
 
-	virtual void start() override;
-	virtual void update() override;
-	virtual void render() override {};
+	class Transform : public Component
+	{
+	public:
+		Transform(Ogre::Vector3 pos, Ogre::Vector3 rot, Ogre::Vector3 scal);
+		~Transform();
 
-	// Getters
-	Ogre::Vector3 getPosition();
-	Ogre::Vector3 getScale();
-	Ogre::Quaternion getRotation();
-	Ogre::SceneNode* getNode() { return node_; }
+		virtual void start() override;
+		virtual void update() override;
+		virtual void render() override {};
 
-	// Setters
-	void setPosition(Ogre::Vector3 pos);
-	void setScale(Ogre::Vector3 sca);
-	void setRotation(Ogre::Quaternion rot);
-	void setRotationAxis(Ogre::Real angle, Ogre::Vector3 axis);
-	void rotateX(Ogre::Real angle);
-	void rotateY(Ogre::Real angle);
-	void rotateZ(Ogre::Real angle);
-	void lookAt(Ogre::Vector3 targetPos);
+		// Getters
+		Ogre::Vector3 getPosition();
+		Ogre::Vector3 getScale();
+		Ogre::Quaternion getRotation();
+		Ogre::SceneNode* getNode() { return node_; }
 
-private:
-	// Nodo de ogre base
-	Ogre::SceneNode* node_ = nullptr;
+		// Setters
+		void setPosition(Ogre::Vector3 pos);
+		void setScale(Ogre::Vector3 sca);
+		void setRotation(Ogre::Quaternion rot);
+		void setRotationAxis(Ogre::Real angle, Ogre::Vector3 axis);
+		void rotateX(Ogre::Real angle);
+		void rotateY(Ogre::Real angle);
+		void rotateZ(Ogre::Real angle);
+		void lookAt(Ogre::Vector3 targetPos);
 
-	Ogre::Vector3 pPos;
-	Ogre::Vector3 pRot;
-	Ogre::Vector3 pScal;
-};
+	private:
+		// Nodo de ogre base
+		Ogre::SceneNode* node_ = nullptr;
 
+		Ogre::Vector3 pPos;
+		Ogre::Vector3 pRot;
+		Ogre::Vector3 pScal;
+	};
+}
 #endif _TRANSFORM_H

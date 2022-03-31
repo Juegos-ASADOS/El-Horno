@@ -11,34 +11,35 @@ namespace Ogre {
 	class Mesh;
 }
 
-class Mesh : public Component
-{
-public:
+namespace El_Horno {
+	class Mesh : public Component
+	{
+	public:
 
-	Mesh(std::string name = "cube", bool castShadow = true, bool isAnimated = false);
-	~Mesh();
+		Mesh(std::string name = "cube", bool castShadow = true, bool isAnimated = false);
+		~Mesh();
 
-	virtual void start() override;
-	void redefine();
+		virtual void start() override;
+		void redefine();
 
-	void onEnable() override;
-	void onDisable() override;
+		void onEnable() override;
+		void onDisable() override;
 
-	float getAABBRadius() const;
+		float getAABBRadius() const;
 
-	//Metodos de Ogre
-	Ogre::AxisAlignedBox getAABB() const;
-	Ogre::Entity* getOgreEntity() const;
-	Ogre::Mesh* getMesh() const;
+		//Metodos de Ogre
+		Ogre::AxisAlignedBox getAABB() const;
+		Ogre::Entity* getOgreEntity() const;
+		Ogre::Mesh* getMesh() const;
 
-	bool isMeshAnimated() const;
-private:
-	Ogre::Entity* ogreEntity_;
-	bool isAnimated_;
-	bool castShadow_;
+		bool isMeshAnimated() const;
+	private:
+		Ogre::Entity* ogreEntity_;
+		bool isAnimated_;
+		bool castShadow_;
 
-	std::string meshName_;
-	std::string materialName_;
-};
-
+		std::string meshName_;
+		std::string materialName_;
+	};
+}
 #endif _MESH_H

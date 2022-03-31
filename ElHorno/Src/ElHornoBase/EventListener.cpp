@@ -2,12 +2,14 @@
 #include "EventManager.h"
 #include "CheckML.h"
 
-EventListener::~EventListener()
-{
-	El_Horno::EventManager::getInstance()->removeListener(this);
-}
+namespace El_Horno {
+	EventListener::~EventListener()
+	{
+		EventManager::getInstance()->removeListener(this);
+	}
 
-bool EventListener::recieveEvent(Event* e)
-{
-	return false;
+	bool EventListener::recieveEvent(Event* e)
+	{
+		return false;
+	}
 }
