@@ -108,7 +108,6 @@ namespace El_Horno {
 
 		//UIManager::setupInstance(GraphicsManager::getInstance()->getRenderWindow());
 		UIManager::getInstance()->createContext();
-		UIManager::getInstance()->showMouseCursor();
 
 		LuaManager::getInstance()->reedLuaScript("Assets/Scripts/sample.lua");
 	}

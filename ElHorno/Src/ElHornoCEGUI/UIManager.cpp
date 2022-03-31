@@ -44,6 +44,11 @@ namespace El_Horno {
 
 	void UIManager::setUpResources()
 	{
+		/*CEGUI::DefaultResourceProvider* rp = static_cast<CEGUI::DefaultResourceProvider*>(
+			CEGUI::System::getSingleton().getResourceProvider());
+		rp->setResourceGroupDirectory("imagesets", "./mygame/datafiles/gui/imagesets/");*/
+
+
 		//ImageManager,Font,Scheme,WidgetLookManager...
 		CEGUI::WindowManager::setDefaultResourceGroup("Layouts");
 	}
@@ -75,6 +80,14 @@ namespace El_Horno {
 
 		createRoot();
 
+		//CEGUI::SchemeManager::createFromFile();
+		//CEGUI::FrameWindow* frame = static_cast<CEGUI::FrameWindow*>(winMngr->createWindow());
+		//CEGUI::Window* statictext = static_cast<CEGUI::DefaultWindow*>(winMngr->createWindow(winMngr->GeneratedWindowNameBase));
+
+		/*layouts.push_back(new CEGUI::Window("text", "prueba"));
+		layouts[0]->setText("probandole");
+		layouts[0]->setPosition(CEGUI::UVector2(CEGUI::UDim(3.0f,0.0f), (CEGUI::UDim(3.0f, 0.0f))));
+		layouts[0]->activate();*/
 
 	}
 
@@ -93,8 +106,17 @@ namespace El_Horno {
 
 	void UIManager::update()
 	{
+		// draw GUI
+		CEGUI::System::getSingleton().renderAllGUIContexts();
 		//tendra que recorrer todos sus layouts
 
+		/*auto iter = layouts.begin();
+		while (iter != layouts.end()) {
+			if ((*iter)->isActive()) {
+				(*iter)->render();
+			}
+			iter++;
+		}*/
 
 	}
 
