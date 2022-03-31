@@ -5,7 +5,11 @@
 #include "Transform.h"
 #include "btBulletCollisionCommon.h"
 #include "btBulletDynamicsCommon.h"
-#include "CheckML.h"
+
+#include "OgreSceneNode.h"
+#include "OgreEntity.h"
+#include <iostream>
+//#include "CheckML.h"
 
 
 namespace El_Horno {
@@ -24,6 +28,7 @@ namespace El_Horno {
 
 	RigidBody::~RigidBody()
 	{
+		delete size_; size_ = nullptr;
 		delete bttrasform_; bttrasform_ = nullptr;
 	}
 
@@ -36,8 +41,22 @@ namespace El_Horno {
 		
 		transform_ = entity_->getComponent<Transform>("transform");
 
-		shape_ = phManager_->createShape(transform_, (ColliderShape)colShape_);
+		size_ = new btVector3(0,0,0);
+		//Si tiene mesh, la utilizamos para tomar el tamaño por defecto
+		if (transform_->getNode()->getAttachedObjects().size() > 0) {
+			Ogre::Entity* obj = static_cast<Ogre::Entity*>(transform_->getNode()->getAttachedObject(0));
+			//Usamos la BoundingBox de la malla
+			*size_ += VectorToBullet(obj->getBoundingBox().getSize());
+			//Dividimos para hallar el tamaño real
+			*size_ /= 2.0f;
+		}//De lo contrario tomamos el tamaño del transform (no debería entrar aquí de normal)
+		else{
+			*size_ += VectorToBullet(transform_->getScale());
+		}
 
+		shape_ = phManager_->createShape(transform_, size_, (ColliderShape)colShape_);
+
+		//Transform de bullet
 		bttrasform_ = new btTransform(QuaternionToBullet(transform_->getRotation()), VectorToBullet(transform_->getPosition()));
 
 		//Por defecto
@@ -64,6 +83,21 @@ namespace El_Horno {
 			rigid_->setCollisionFlags(btCollisionObject::CF_NO_CONTACT_RESPONSE);
 	}
 
+	////Cogemos el valor del Transform y se lo damos a Bullet en preupdate
+	//void RigidBody::preUpdate()
+	//{
+	//	Ogre::Vector3 pos = transform_->getPosition();
+	//	Ogre::Quaternion rot = transform_->getRotation();
+	//	Ogre::Vector3 scale = transform_->getScale();
+
+	//	rigid_->getWorldTransform().setOrigin(VectorToBullet(pos));
+	//	rigid_->getWorldTransform().setRotation(QuaternionToBullet(rot));
+	//	rigid_->getCollisionShape()->setLocalScaling(VectorToBullet(scale));
+	//	
+	//	PhysicsManager::getInstance()->preUpdateBody(rigid_);
+	//}
+
+	//Tras los cálculos, Bullet devuelve la nueva posición y rotación del body
 	void RigidBody::update()
 	{
 		btVector3 pos;
@@ -74,6 +108,17 @@ namespace El_Horno {
 
 		transform_->setPosition(VectorToOgre(pos));
 		transform_->setRotation(QuaternionToOgre(rot));
+	}
+
+	void RigidBody::setTrigger(bool isTrigger)
+	{
+		if (isTrigger_ != isTrigger) {
+			if(isTrigger)
+				rigid_->setCollisionFlags(rigid_->getCollisionFlags() || btCollisionObject::CF_NO_CONTACT_RESPONSE);
+			else
+				rigid_->setCollisionFlags(rigid_->getCollisionFlags() - btCollisionObject::CF_NO_CONTACT_RESPONSE);
+		}
+		isTrigger_ = isTrigger;
 	}
 
 	void RigidBody::setFriction(const float& f)

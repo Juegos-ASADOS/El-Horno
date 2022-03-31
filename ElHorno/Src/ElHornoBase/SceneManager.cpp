@@ -63,6 +63,11 @@ namespace El_Horno {
 		return currentScene_;
 	}
 
+	void SceneManager::preUpdate()
+	{
+		currentScene_->preUpdate();
+	}
+
 	void SceneManager::update()
 	{
 		currentScene_->update();

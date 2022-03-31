@@ -181,7 +181,7 @@ namespace El_Horno {
 
 		// Updates de managers
 		if (!paused_) {
-			//SceneManager::getInstance()->preUpdate();
+			SceneManager::getInstance()->preUpdate();
 			PhysicsManager::getInstance()->update(deltaTime);
 			PhysicsManager::getInstance()->updateDebug(3);
 			SceneManager::getInstance()->update();

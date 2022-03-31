@@ -22,6 +22,7 @@ class Scene;
 
 
 		void start(std::string initialScene);
+		void preUpdate();
 		void update();
 		void deleteEntities();
 

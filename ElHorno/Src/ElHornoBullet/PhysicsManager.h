@@ -45,11 +45,13 @@ enum ColliderShape {
 
 		btRigidBody* createRigidBody(btTransform* tr, btCollisionShape* shape, int& userIdx_, const float& mass = 1.0f);
 		btGhostObject* createTrigger(btTransform* tr, btCollisionShape* shape, int& userIdx_);
-		btCollisionShape* createShape(Transform* tra, ColliderShape sha);
+		btCollisionShape* createShape(Transform* tra, btVector3* size, ColliderShape sha);
 
 		//Para añadir al mundo de Bullet rigidbodies
 		void addBody(btRigidBody* body);
 		void addBody(btRigidBody* body, const short& group, const short& layerMask);
+
+		void preUpdateBody(btRigidBody* body);
 
 		//Para objetos que no son rigidbodies
 		void addCollisionObject(btCollisionObject* col);
