@@ -34,6 +34,7 @@ class Component;
 		~Entity();
 
 		void start();
+		void preUpdate();
 		void update();
 		void render();
 

@@ -25,6 +25,7 @@ class Entity;
 		inline bool isActive() { return active_; };
 
 		virtual void start() {};	//Esto es el init de nuestros componentes
+		virtual void preUpdate() {};
 		virtual void update() {};
 		virtual void render() {};
 

@@ -9,6 +9,7 @@ class btGhostObject;
 class btTransform;
 class btCollisionShape;
 class btCollisionObject;
+class btVector3;
 
 class PhysicsManager;
 
@@ -23,12 +24,13 @@ namespace El_Horno {
 
 		virtual void start() override;
 		virtual void update() override;
+		//virtual void preUpdate() override;
 
 		inline float getFriction() const { return friction_; };
 		inline float getRestitution() const { return restitution_; };
 		inline float getMass() const { return mass_; };
 
-
+		void setTrigger(bool isTrigger);
 		void setFriction(const float& f);
 		void setRestitution(const float& r);
 		void setMass(const float& m);
@@ -49,7 +51,9 @@ namespace El_Horno {
 
 		//Forma b�sica del collider + Enum del PhysicsManager
 		btCollisionShape* shape_ = nullptr;
-		int colShape_;
+		btVector3* size_ = nullptr;
+		int colShape_ = 0;
+
 
 		//Transform de bullet para generar el rigidbody de bullet
 		btTransform* bttrasform_ = nullptr;

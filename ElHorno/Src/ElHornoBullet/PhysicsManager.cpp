@@ -9,8 +9,7 @@
 
 #include "DebugDrawer.h"
 #include "GraphicsManager.h"
-#include "OgreSceneNode.h"
-#include "OgreEntity.h"
+
 //#include "EventManager.h"
 //#include "Event.h"
 //
@@ -128,7 +127,7 @@ namespace El_Horno {
 	{
 		//Funcion de callback en colision
 		gContactAddedCallback = collisionCallbackBullet;
-		gContactProcessedCallback = contactProcessedBullet;
+		gContactProcessedCallback = contactProcessedBullet; 
 
 		collisionShapes_ = new btAlignedObjectArray<btCollisionShape*>();
 
@@ -213,6 +212,11 @@ namespace El_Horno {
 		dynamicsWorld_->addRigidBody(body, group, layerMask);
 	}
 
+	void PhysicsManager::preUpdateBody(btRigidBody* body)
+	{
+		dynamicsWorld_->updateSingleAabb(body);
+	}
+
 	void PhysicsManager::addCollisionObject(btCollisionObject* col)
 	{
 		dynamicsWorld_->addCollisionObject(col);
@@ -257,36 +261,28 @@ namespace El_Horno {
 		if (dynamicsWorld_) dynamicsWorld_->setGravity(*gravity_);
 	}
 
-
-	btCollisionShape* PhysicsManager::createShape(Transform* tr, ColliderShape sha = ColliderShape::Box)
+	//Transform de la entidad (del motor)
+	//Size de la BOUNDING BOX DE OGRE (multiplicada luego por la escala del transform)
+	//Forma deseada
+	btCollisionShape* PhysicsManager::createShape(Transform* tr, btVector3* size, ColliderShape sha = ColliderShape::Box)
 	{
 		btCollisionShape* shape = nullptr;
-		Ogre::Vector3 size(1,1,1);
+
+		//Multiplicamos por la escala del transform para dar con su tamaño real
+		*size *= VectorToBullet(tr->getScale());
 		
-		//Si tiene mesh, la utilizamos para tomar el tamaño por defecto
-		if (tr->getNode()->getAttachedObjects().size() > 0) {
-			Ogre::Entity* obj = static_cast<Ogre::Entity*>(tr->getNode()->getAttachedObject(0));
-			size = obj->getBoundingBox().getSize();
-			size *= tr->getScale();
-			size /= 2.0f;
-		}
-		else{
-			size = tr->getScale();
-		}
-
-
 		switch (sha) {
 		case ColliderShape::Box: //HALF-EXTENTS = Transform.Escala
-			shape = new btBoxShape(VectorToBullet(size));
+			shape = new btBoxShape(*size);
 			break;
 		case ColliderShape::Sphere: //RADIO = Transform.Scale.Length
-			shape = new btSphereShape(VectorToBullet(size).length());
+			shape = new btSphereShape(size->length());
 			break;
 		case ColliderShape::Cylinder: //HALF-EXTENTS = Transform.Escala
-			shape = new btCylinderShape(VectorToBullet(size));
+			shape = new btCylinderShape(*size);
 			break;
 		case ColliderShape::Capsule: //RADIO = Transform.Scale.X --- ALTURA = Transform.Scale.Y
-			shape = new btCapsuleShape(VectorToBullet(size).x(), VectorToBullet(size).y());
+			shape = new btCapsuleShape(size->x(), size->y());
 			break;
 		}
 		return shape;

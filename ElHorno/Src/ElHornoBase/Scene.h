@@ -25,6 +25,7 @@ class Entity;
 		void deleteInstances();
 
 		void start();
+		void preUpdate();
 		void update();
 
 		inline std::string getName() const { return name_; };
