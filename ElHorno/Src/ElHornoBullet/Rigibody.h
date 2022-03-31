@@ -13,12 +13,6 @@ class btCollisionObject;
 class PhysicsManager;
 class Transform;
 
-union rb_union
-{
-	btRigidBody* rigid_;
-	btGhostObject* ghost_;
-};
-
 namespace El_Horno {
 	class RigidBody : public Component
 	{
@@ -49,8 +43,8 @@ namespace El_Horno {
 
 		bool isTrigger_ = false;
 
-		//Union de Rigidbody de bullet : Solo puede ser ghost (trigger) o rigid (normal)
-		rb_union rb_;
+		//Rigidbody de bullet
+		btRigidBody* rigid_;
 
 		//Forma básica del collider + Enum del PhysicsManager
 		btCollisionShape* shape_ = nullptr;
