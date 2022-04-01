@@ -2,7 +2,7 @@
 #include "GraphicsManager.h"; 
 #include "SceneManager.h"; 
 #include "OgreSceneManager.h"
-#include "OgreEntity.h"
+#include <OgreEntity.h>
 #include "Entity.h"
 #include "Mesh.h"
 #include "Transform.h"

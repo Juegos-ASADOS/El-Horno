@@ -7,78 +7,84 @@
 #include <OgreVector3.h>
 #include <map>
 
-//namespace Ogre {
-//	class AnimationState;
-//	class AnimationStateSet;
-//}
+namespace Ogre {
+	class AnimationState;
+	class AnimationStateSet;
+	class Entity;
+	class SceneNode;
+}
+
+namespace El_Horno
+{
+	class Mesh;
+	class Transform;
+}
+
+using TransitionMap = std::map<std::string, bool>;
+using AnimationStateMachine = std::map<std::string, TransitionMap>;
+
+struct AnimationStateInfo
+{
+	Ogre::AnimationState* state;
+	std::string name;
+};
+
+
+
 namespace El_Horno {
-class Mesh;
-class Transform;
+class AnimatorController : public Component
+{
+public:
+
+	AnimatorController();
+	~AnimatorController();
+
+	virtual void start() override;
+	void update()override;
+
+	// Setters
+	void setAnimBool(std::string state, std::string conditionName, bool value);
+	
+	// Getters
+	bool getAnimBool(std::string state, std::string conditionName);
+	bool getHasEnded();
+
+	void onEnable() override {};
+	void onDisable()override {};
 
 
+private:
 
-	// info del siguiente estado y de la condicion para que pase
-	struct Transition
+	// es un mapa con el estado y sus transiciones si es que tiene
+	// nombre del estado   //nombre de la transicion
+	AnimationStateMachine animationStateMachine_;
+
+	// Acceso al nodo, Entidad de Ogre y Transform
+	Ogre::SceneNode* node_;
+	Ogre::Entity* ogreEntity_;
+	Transform* tr_ = nullptr;
+	Mesh* mesh_ = nullptr;
+
+	// Mapa de Ogre con todas las animaciones de la malla 
+	Ogre::AnimationStateSet* animStatesMap_;
+	/* PARA RECORRER EL MAPA EN CASO NECESARIO
+	auto it = animStatesMap_->getAnimationStateIterator().begin();
+	while (it != animStatesMap_->getAnimationStateIterator().end())
 	{
-		std::string nextState;
-		bool cond;
-	};
+		auto s = it->first; ++it;
+	}
+	*/
 
-	struct AnimationStateInfo
-	{
-		Ogre::AnimationState* state;
-		std::string name;
-	};
+	// Estado actual
+	AnimationStateInfo currentState_;
 
-
-	class AnimatorController : public Component
-	{
-	public:
-
-		AnimatorController();
-		~AnimatorController();
-
-		void start() override;
-		void update()override;
-
-		void onEnable() override {};
-		void onDisable()override {};
-
-		// Setters
-		void setAnimBool(std::string state, std::string conditionName, bool value);
-
-		// Getters
-		bool getAnimBool(std::string state, std::string conditionName);
+	//// es un mapa con el estado y sus transiciones si es que tiene
+	////nombre del estado   //nombre de la transicion
+	//std::map<std::string, std::map<std::string, Transition*>> transitionsMap_;
 
 
-	private:
+	void manageTransitions();
 
-		// Maneja el cambio de estados
-		void manageTransitions();
-
-		// Acceso al nodo, Entidad de Ogre y Transform
-		Ogre::SceneNode* node_;
-		Ogre::Entity* ogreEntity_;
-		Transform* tr_ = nullptr;
-		Mesh* mesh_ = nullptr;
-
-		// Mapa de Ogre con todas las animaciones de la malla 
-		Ogre::AnimationStateSet* animStatesMap_;
-		/* PARA RECORRER EL MAPA EN CASO NECESARIO
-		auto it = animStatesMap_->getAnimationStateIterator().begin();
-		while (it != animStatesMap_->getAnimationStateIterator().end())
-		{
-			auto s = it->first; ++it;
-		}
-		*/
-
-		// Estado actual
-		AnimationStateInfo currentState_;
-
-		// es un mapa con el estado y sus transiciones si es que tiene
-		//nombre del estado   //nombre de la transicion
-		std::map<std::string, std::map<std::string, Transition*>> transitionsMap_;
-
-	};
+};
 }
 #endif _AnimatorController_H

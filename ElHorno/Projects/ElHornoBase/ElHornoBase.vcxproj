@@ -37,6 +37,7 @@
     <ClCompile Include="..\..\Src\ElHornoBase\ParticleSystem.cpp" />
     <ClCompile Include="..\..\Src\ElHornoBase\Scene.cpp" />
     <ClCompile Include="..\..\Src\ElHornoBase\SceneManager.cpp" />
+    <ClCompile Include="..\..\Src\ElHornoBase\SinbadAnimTest.cpp" />
     <ClCompile Include="..\..\Src\ElHornoBase\Timer.cpp" />
     <ClCompile Include="..\..\Src\ElHornoBase\Transform.cpp" />
   </ItemGroup>
@@ -60,6 +61,7 @@
     <ClInclude Include="..\..\Src\ElHornoBase\ParticleSystem.h" />
     <ClInclude Include="..\..\Src\ElHornoBase\Scene.h" />
     <ClInclude Include="..\..\Src\ElHornoBase\SceneManager.h" />
+    <ClInclude Include="..\..\Src\ElHornoBase\SinbadAnimTest.h" />
     <ClInclude Include="..\..\Src\ElHornoBase\Timer.h" />
     <ClInclude Include="..\..\Src\ElHornoBase\Transform.h" />
   </ItemGroup>

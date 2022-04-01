@@ -201,15 +201,15 @@ namespace El_Horno {
 	{
 		exit_ = false;
 		globalTimer_ = new Timer();
-		float deltaTime = 0;
+		deltaTime_ = 0;
 
 		// ESTO ES DE PRUEBA
 		//SceneManager::getInstance()->getCurrentScene()->getEntity("object", "prueba")->getComponent<AudioComponent>("audioComponent")->playSound("NeonRider.mp3");
 		while (!exit_) {
 			globalTimer_->resetTimer();
-			processFrame(deltaTime);
+			processFrame(deltaTime_);
 
-			deltaTime = globalTimer_->getTime();
+			deltaTime_ = globalTimer_->getTime();
 		}
 
 		erase();
@@ -327,5 +327,9 @@ namespace El_Horno {
 	Timer* ElHornoBase::getGlobalTime()
 	{
 		return globalTimer_;
+	}
+	double ElHornoBase::getDeltaTime()
+	{
+		return deltaTime_;
 	}
 }

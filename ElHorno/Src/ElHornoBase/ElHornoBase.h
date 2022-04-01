@@ -46,6 +46,7 @@ namespace El_Horno {
 		float deltaTime();
 		void resetTimer();*/
 		Timer* getGlobalTime();
+		double getDeltaTime();
 
 		void pause();
 		bool isPaused();
@@ -75,6 +76,7 @@ namespace El_Horno {
 			exit_;
 
 		Timer* globalTimer_;
+		double deltaTime_;
 
 		nlohmann::json ExtraConfig;
 	};
