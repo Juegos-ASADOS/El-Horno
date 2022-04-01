@@ -1,0 +1,168 @@
+
+
+
+
+material M_sheath
+{
+	technique
+	{
+		pass
+		{
+			lighting on
+
+			ambient 1 1 1 1
+			diffuse vertexcolour
+			specular 0 0 0 128
+			emissive 0 0 0
+
+			texture_unit
+			{
+				texture sinbad_sword.tga
+				tex_coord_set 0
+				colour_op modulate
+			}
+		}
+	}
+}
+
+
+
+
+
+
+material M_sinbadEyes
+{
+	technique
+	{
+		pass
+		{
+			lighting on
+
+			ambient 1 1 1 1
+			diffuse vertexcolour
+			specular 0.699000001 0.4314082265 0.4228949845 128
+			emissive 0 0 0
+
+			texture_unit
+			{
+				texture sinbad_body.tga
+				tex_coord_set 0
+				colour_op modulate
+			}
+		}
+	}
+}
+
+
+
+
+
+
+material M_sinbadGold
+{
+	technique
+	{
+		pass
+		{
+			lighting on
+
+			ambient 1 1 1 1
+			diffuse vertexcolour
+			specular 0.6269999743 0.5465349555 0 128
+			emissive 0 0 0
+
+			texture_unit
+			{
+				texture sinbad_clothes.tga
+				tex_coord_set 0
+				colour_op modulate
+			}
+		}
+	}
+}
+
+
+
+
+
+
+material M_sinbadPants
+{
+	technique
+	{
+		pass
+		{
+			lighting on
+
+			ambient 1 1 1 1
+			diffuse vertexcolour
+			specular 0 0 0 128
+			emissive 0 0 0
+
+			texture_unit
+			{
+				texture sinbad_clothes.tga
+				tex_coord_set 0
+				colour_op modulate
+			}
+		}
+	}
+}
+
+
+
+
+
+
+material M_sinbadSkin
+{
+	technique
+	{
+		pass
+		{
+			lighting on
+
+			ambient 1 1 1 1
+			diffuse vertexcolour
+			specular 0 0 0.1710000038 128
+			emissive 0 0 0
+
+			texture_unit
+			{
+				texture sinbad_body.tga
+				tex_coord_set 0
+				colour_op modulate
+			}
+		}
+	}
+}
+
+
+
+
+
+
+material M_swordShiny
+{
+	technique
+	{
+		pass
+		{
+			lighting on
+
+			ambient 1 1 1 1
+			diffuse vertexcolour
+			specular 1 0.4770000279 0 128
+			emissive 0 0 0
+
+			texture_unit
+			{
+				texture sinbad_sword.tga
+				tex_coord_set 0
+				colour_op modulate
+			}
+		}
+	}
+}
+
+

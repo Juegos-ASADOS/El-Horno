@@ -12,6 +12,8 @@
 #include "Rigibody.h"
 #include "AudioComponent.h"
 #include "AudioListenerComponent.h"
+#include "AnimatorController.h"
+#include "SinbadAnimTest.h"
 
 namespace El_Horno {
 	Scene::Scene()
@@ -40,6 +42,20 @@ namespace El_Horno {
 		b = addEntity("esmoque", "prueba");
 		b->addComponent<Transform>("transform", Ogre::Vector3(0, 50, 0), Ogre::Vector3(0, 0, 0), p);
 		b->addComponent<ParticleSystem>("particleSystem", "smoke", "Smoke", 50000, false);
+
+		// Sinbad cuidao ogro
+		Entity* c = addEntity("ogro", "prueba");
+		c->addComponent<Transform>("transform", Ogre::Vector3(100, 50, 0), Ogre::Vector3(0, 0, 0), Ogre::Vector3(10, 10, 10));
+		c->addComponent<Mesh>("mesh", "Sinbad");
+		c->addComponent<AnimatorController>("animatorController");
+		c->addComponent<SinbadAnimTest>("sinbadAnimTest");
+		// doble sinbad de combate
+		Entity* d = addEntity("ogro", "prueba");
+		d->addComponent<Transform>("transform", Ogre::Vector3(-100, 50, 0), Ogre::Vector3(0, 0, 0), Ogre::Vector3(10, 10, 10));
+		d->addComponent<Mesh>("mesh", "Sinbad");
+		d->addComponent<AnimatorController>("animatorController");
+		d->addComponent<SinbadAnimTest>("sinbadAnimTest");
+		
 	}
 
 	//TODO Destruir VierwPorts y c�maras lo primero de todo
