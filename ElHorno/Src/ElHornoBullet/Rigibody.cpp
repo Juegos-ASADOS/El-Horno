@@ -19,9 +19,10 @@ namespace El_Horno {
 	//Sphere   == 1
 	//Cylinder == 2
 	//Capsule  == 3
-	RigidBody::RigidBody(float mass, bool isTrigger, int colShape) : Component()
+	RigidBody::RigidBody(float mass, bool isTrigger, bool isKinematic, int colShape) : Component()
 	{
 		this->mass_ = mass;
+		this->isKinematic_ = isKinematic;
 		this->isTrigger_ = isTrigger;
 		this->colShape_ = colShape;
 	}
@@ -67,8 +68,8 @@ namespace El_Horno {
 		//Creación del objeto en Bullet
 		rigid_ = phManager_->createRigidBody(bttrasform_, shape_, userIdx_, mass_);
 
-		//Guardamos referencia en el rb a nuestro rigidbody, para usarlo en el callback
-		//de colisiones
+		//Guardamos referencia en el rb a nuestro rigidbody
+		//para usarlo en el callback de colisiones
 		rigid_->setUserPointer(this);
 
 		//Valores varios del rb
@@ -78,24 +79,25 @@ namespace El_Horno {
 		//Necesario indicarle al manager que lo agregue al mundo de Bullet
 		phManager_->addBody(rigid_);
 
+		if(isKinematic_)
+			rigid_->setCollisionFlags(btCollisionObject::CF_KINEMATIC_OBJECT);
+
 		//En función de si es trigger o no, se activan las flags
 		if (isTrigger_) 
 			rigid_->setCollisionFlags(btCollisionObject::CF_NO_CONTACT_RESPONSE);
 	}
 
 	////Cogemos el valor del Transform y se lo damos a Bullet en preupdate
-	//void RigidBody::preUpdate()
-	//{
-	//	Ogre::Vector3 pos = transform_->getPosition();
-	//	Ogre::Quaternion rot = transform_->getRotation();
-	//	Ogre::Vector3 scale = transform_->getScale();
+	/*void RigidBody::preUpdate()
+	{
+		if (isKinematic_) {
+			Ogre::Vector3 pos = transform_->getPosition();
+			Ogre::Quaternion rot = transform_->getRotation();
 
-	//	rigid_->getWorldTransform().setOrigin(VectorToBullet(pos));
-	//	rigid_->getWorldTransform().setRotation(QuaternionToBullet(rot));
-	//	rigid_->getCollisionShape()->setLocalScaling(VectorToBullet(scale));
-	//	
-	//	PhysicsManager::getInstance()->preUpdateBody(rigid_);
-	//}
+			rigid_->getWorldTransform().setOrigin(VectorToBullet(pos));
+			rigid_->getWorldTransform().setRotation(QuaternionToBullet(rot));
+		}
+	}*/
 
 	//Tras los cálculos, Bullet devuelve la nueva posición y rotación del body
 	void RigidBody::update()
@@ -108,6 +110,21 @@ namespace El_Horno {
 
 		transform_->setPosition(VectorToOgre(pos));
 		transform_->setRotation(QuaternionToOgre(rot));
+	}
+
+	void RigidBody::applyForce(btVector3* force)
+	{
+		rigid_->applyCentralForce(*force);
+	}
+
+	void RigidBody::applyImpulse(btVector3* force)
+	{
+		rigid_->applyCentralImpulse(*force);
+	}
+
+	void RigidBody::applyPush(btVector3* force)
+	{
+		rigid_->applyCentralPushImpulse(*force);
 	}
 
 	void RigidBody::setTrigger(bool isTrigger)
@@ -143,5 +160,36 @@ namespace El_Horno {
 		rigid_->getCollisionShape()->calculateLocalInertia(mass_, inertia);
 		rigid_->setMassProps(mass_, inertia);
 		phManager_->addBody(rigid_);
+	}
+
+	void RigidBody::setAngularFactor(const float& f)
+	{
+		rigid_->setAngularFactor(f);
+	}
+
+	void RigidBody::setSleepingThresholds(const float& linear, const float& scalar)
+	{
+		rigid_->setSleepingThresholds(linear, scalar);
+	}
+
+	//x=0 y=1 z=2
+	void RigidBody::setRotConstraints(int i, bool value) {
+		if (i >= 0 && i <= 2) {
+			rotationConstraints[i] = value;
+
+		}
+	}
+
+	//x=0 y=1 z=2
+	void RigidBody::setPosConstraints(int i, bool value) {
+		if (i >= 0 && i <= 2) {
+			positionConstraints[i] = value;
+		}
+	}
+
+	void RigidBody::syncScale()
+	{
+		Ogre::Vector3 scale = transform_->getScale();
+		rigid_->getCollisionShape()->setLocalScaling(*size_ * VectorToBullet(scale));
 	}
 }

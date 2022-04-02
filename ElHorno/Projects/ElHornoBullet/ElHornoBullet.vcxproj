@@ -21,6 +21,7 @@
   <ItemGroup>
     <ClInclude Include="..\..\Src\ElHornoBullet\DebugDrawer.h" />
     <ClInclude Include="..\..\Src\ElHornoBullet\ElHornoBullet.h" />
+    <ClInclude Include="..\..\Src\ElHornoBullet\PhysicsCallbacks.h" />
     <ClInclude Include="..\..\Src\ElHornoBullet\PhysicsManager.h" />
     <ClInclude Include="..\..\Src\ElHornoBullet\Rigibody.h" />
   </ItemGroup>

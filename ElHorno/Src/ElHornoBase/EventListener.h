@@ -2,10 +2,9 @@
 #ifndef _EVENT_LISTENER_H
 #define _EVENT_LISTENER_H
 
-struct Event;
 
 namespace El_Horno {
-
+	struct Event;
 	class EventListener
 	{
 	public:

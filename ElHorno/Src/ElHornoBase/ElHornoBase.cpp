@@ -47,9 +47,9 @@ namespace El_Horno {
 		FactoryCreator::erase();
 		LuaManager::erase();
 		SceneManager::erase();
-		EventManager::erase();
 		GraphicsManager::erase();
 		PhysicsManager::erase();
+		EventManager::erase();
 		UIManager::clean();
 
 	}
@@ -81,14 +81,14 @@ namespace El_Horno {
 		setupFactories();
 
 		SceneManager::setupInstance();
-		EventManager::setupInstance();
 		GraphicsManager::setInstance();
 		PhysicsManager::setupInstance();
 		InputManager::setupInstance();
 		AudioManager::setupInstance();
+		EventManager::setupInstance();
 
 		//UIManager
-		UIManager::setupInstance();
+		//UIManager::setupInstance();
 
 		//no se puede instanciar aqui ya que requiere de un render window (dame que lo corrijo en un min vamos esque xd)
 		//HornoLua
@@ -107,7 +107,7 @@ namespace El_Horno {
 		LuaManager::getInstance()->init();
 
 		//UIManager::setupInstance(GraphicsManager::getInstance()->getRenderWindow());
-		UIManager::getInstance()->createContext();
+		//UIManager::getInstance()->createContext();
 
 		LuaManager::getInstance()->reedLuaScript("Assets/Scripts/sample.lua");
 	}
@@ -178,12 +178,15 @@ namespace El_Horno {
 	void ElHornoBase::processFrame(float deltaTime) {
 		exit_ = GraphicsManager::getInstance()->pollEvents();
 
-
 		// Updates de managers
 		if (!paused_) {
 			SceneManager::getInstance()->preUpdate();
+			
 			PhysicsManager::getInstance()->update(deltaTime);
 			PhysicsManager::getInstance()->updateDebug(3);
+			
+			EventManager::getInstance()->processEvents();
+
 			SceneManager::getInstance()->update();
 		}
 		else {
@@ -192,7 +195,7 @@ namespace El_Horno {
 
 		//AudioManager::getInstance()->update();
 		GraphicsManager::getInstance()->render();
-		UIManager::getInstance()->update();
+		//UIManager::getInstance()->update();
 		SceneManager::getInstance()->deleteEntities();
 		//SceneManager::getInstance()->endFrame();
 	}

@@ -2,7 +2,8 @@
 #ifndef _FACTORY_H
 #define _FACTORY_H
 
-class Component;
+namespace El_Horno {
+	class Component;
 	class Factory
 	{
 	public:
@@ -11,7 +12,7 @@ class Component;
 		template<typename T, typename ...Ts>
 		static T* createComponent(Ts &&...args) { return new T(args...); };
 	};
-
+}
 //class TransformFactory : public Factory {
 //public:
 //	template<typename ...Ts>

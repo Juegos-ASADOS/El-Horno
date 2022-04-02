@@ -31,30 +31,30 @@ namespace El_Horno {
 		Entity* b = addEntity("object", "prueba");
 		b->addComponent<Transform>("transform", Ogre::Vector3(0, 50, 0), Ogre::Vector3(180, 0, 0), p);
 		b->addComponent<Mesh>("mesh", "ogrehead");
-		b->addComponent<RigidBody>("rigidbody", 2.0f, false, 0);
+		b->addComponent<RigidBody>("rigidbody", 2.0f, false, false, 0);
 		b->addComponent<AudioComponent>("audioComponent");
 
 		b = addEntity("object2", "prueba");
 		b->addComponent<Transform>("transform", Ogre::Vector3(0, -15, 0), Ogre::Vector3(0, 0, 0), Ogre::Vector3(5, 0.1, 5));
 		b->addComponent<Mesh>("mesh", "cube");
-		b->addComponent<RigidBody>("rigidbody", 0.0f, false, 0);
+		b->addComponent<RigidBody>("rigidbody", 0.0f, false, false, 0);
 
-		b = addEntity("esmoque", "prueba");
+		/*b = addEntity("esmoque", "prueba");
 		b->addComponent<Transform>("transform", Ogre::Vector3(0, 50, 0), Ogre::Vector3(0, 0, 0), p);
-		b->addComponent<ParticleSystem>("particleSystem", "smoke", "Smoke", 50000, false);
+		b->addComponent<ParticleSystem>("particleSystem", "smoke", "Smoke", 50000, false);*/
 
-		// Sinbad cuidao ogro
-		Entity* c = addEntity("ogro", "prueba");
-		c->addComponent<Transform>("transform", Ogre::Vector3(100, 50, 0), Ogre::Vector3(0, 0, 0), Ogre::Vector3(10, 10, 10));
-		c->addComponent<Mesh>("mesh", "Sinbad");
-		c->addComponent<AnimatorController>("animatorController");
-		c->addComponent<SinbadAnimTest>("sinbadAnimTest");
-		// doble sinbad de combate
-		Entity* d = addEntity("ogro", "prueba");
-		d->addComponent<Transform>("transform", Ogre::Vector3(-100, 50, 0), Ogre::Vector3(0, 0, 0), Ogre::Vector3(10, 10, 10));
-		d->addComponent<Mesh>("mesh", "Sinbad");
-		d->addComponent<AnimatorController>("animatorController");
-		d->addComponent<SinbadAnimTest>("sinbadAnimTest");
+		//// Sinbad cuidao ogro
+		//Entity* c = addEntity("ogro", "prueba");
+		//c->addComponent<Transform>("transform", Ogre::Vector3(100, 50, 0), Ogre::Vector3(0, 0, 0), Ogre::Vector3(10, 10, 10));
+		//c->addComponent<Mesh>("mesh", "Sinbad");
+		//c->addComponent<AnimatorController>("animatorController");
+		//c->addComponent<SinbadAnimTest>("sinbadAnimTest");
+		//// doble sinbad de combate
+		//Entity* d = addEntity("ogro", "prueba");
+		//d->addComponent<Transform>("transform", Ogre::Vector3(-100, 50, 0), Ogre::Vector3(0, 0, 0), Ogre::Vector3(10, 10, 10));
+		//d->addComponent<Mesh>("mesh", "Sinbad");
+		//d->addComponent<AnimatorController>("animatorController");
+		//d->addComponent<SinbadAnimTest>("sinbadAnimTest");
 		
 	}
 

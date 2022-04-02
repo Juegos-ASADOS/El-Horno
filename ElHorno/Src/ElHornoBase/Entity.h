@@ -70,6 +70,9 @@ class Component;
 				return nullptr;
 			return static_cast<T*>(it->second);
 		}
+
+		std::vector<Component*> getComponents() { return compRef_; };
+
 		void removeComponent(std::string name);
 		void removeComponent();
 

@@ -40,8 +40,11 @@ enum ColliderShape {
 		void start(const std::string& initialScene);
 		void debugStart();
 		void update(const float& dt);
+		
 		void updateDebug(const int& debugFlags);
 		void removeDebug();
+
+		btDiscreteDynamicsWorld* world() { return dynamicsWorld_; };
 
 		btRigidBody* createRigidBody(btTransform* tr, btCollisionShape* shape, int& userIdx_, const float& mass = 1.0f);
 		btGhostObject* createTrigger(btTransform* tr, btCollisionShape* shape, int& userIdx_);
@@ -50,8 +53,6 @@ enum ColliderShape {
 		//Para añadir al mundo de Bullet rigidbodies
 		void addBody(btRigidBody* body);
 		void addBody(btRigidBody* body, const short& group, const short& layerMask);
-
-		void preUpdateBody(btRigidBody* body);
 
 		//Para objetos que no son rigidbodies
 		void addCollisionObject(btCollisionObject* col);

@@ -1,53 +1,17 @@
 #include "PhysicsManager.h"
-#include "HornoConversions.h"
-#include "btBulletDynamicsCommon.h"
-#include "btBulletCollisionCommon.h"
-#include "Transform.h"
-#include "Rigibody.h"
+
 #include <iostream>
+
+#include "Transform.h"
 #include "Entity.h"
+
+#include "HornoConversions.h"
+#include "PhysicsCallbacks.h"
 
 #include "DebugDrawer.h"
 #include "GraphicsManager.h"
 
-//#include "EventManager.h"
-//#include "Event.h"
-//
-
 namespace El_Horno {
-	//Funcion externa que analiza colisiones en Bullet
-	bool collisionCallbackBullet(btManifoldPoint& cp, const btCollisionObjectWrapper* colObj0, int partId0, int index0, const btCollisionObjectWrapper* colObj1, int partId1, int index1) {
-
-		//Aviso básico a sendos rigidbodies de que X entidad a colisionado con ellos
-		RigidBody* e1 = static_cast<RigidBody*>(colObj0->getCollisionObject()->getUserPointer());
-		RigidBody* e2 = static_cast<RigidBody*>(colObj1->getCollisionObject()->getUserPointer());
-
-
-		std::cout << e1->getEntity()->getName() << "\n";
-		std::cout << e2->getEntity()->getName() << "\n";
-		std::cout << "---------------------------" << "\n";
-		/*RigidBodyCollision* evnt1 = new RigidBodyCollision(e1->getEntity());
-		RigidBodyCollision* evnt2 = new RigidBodyCollision(e2->getEntity());
-
-		EventManager::getInstance()->sendTargetEvent(e2, evnt1);
-		EventManager::getInstance()->sendTargetEvent(e1, evnt2);*/
-		return true; //no importa su valor
-	}
-
-	bool contactProcessedBullet(btManifoldPoint& cp, void* body0, void* body1) {
-		btCollisionObject* colObj0 = static_cast<btCollisionObject*>(body0);
-		btCollisionObject* colObj1 = static_cast<btCollisionObject*>(body1);
-
-		RigidBody* e1 = static_cast<RigidBody*>(colObj0->getUserPointer());
-		RigidBody* e2 = static_cast<RigidBody*>(colObj1->getUserPointer());
-
-
-		/*std::cout << e1->getEntity()->getName() << "\n";
-		std::cout << e2->getEntity()->getName() << "\n";
-		std::cout << "---------------------------" << "\n";*/
-
-		return true; //no importa su valor
-	}
 
 	PhysicsManager* PhysicsManager::instance;
 
@@ -82,8 +46,12 @@ namespace El_Horno {
 	PhysicsManager::~PhysicsManager()
 	{
 		//Borrado en reverso, de último creado a primero
-		//No tenemos constraints, pero las borramos de todos modos
 
+		//------
+		//Borrado del DebugDrawer en GraphicsManager
+		//------
+
+		//No tenemos constraints, pero las borramos de todos modos
 		int i;
 		for (i = dynamicsWorld_->getNumConstraints() - 1; i >= 0; i--) {
 			dynamicsWorld_->removeConstraint(dynamicsWorld_->getConstraint(i));
@@ -126,8 +94,11 @@ namespace El_Horno {
 	void PhysicsManager::start(const std::string& initialScene)
 	{
 		//Funcion de callback en colision
-		gContactAddedCallback = collisionCallbackBullet;
+		//gContactAddedCallback = collisionCallbackBullet;
+		gContactStartedCallback = contactStartBullet;
 		gContactProcessedCallback = contactProcessedBullet; 
+		gContactEndedCallback = contactExitBullet;
+		//gContactDestroyedCallback = ;
 
 		collisionShapes_ = new btAlignedObjectArray<btCollisionShape*>();
 
@@ -210,11 +181,6 @@ namespace El_Horno {
 	void PhysicsManager::addBody(btRigidBody* body, const short& group, const short& layerMask)
 	{
 		dynamicsWorld_->addRigidBody(body, group, layerMask);
-	}
-
-	void PhysicsManager::preUpdateBody(btRigidBody* body)
-	{
-		dynamicsWorld_->updateSingleAabb(body);
 	}
 
 	void PhysicsManager::addCollisionObject(btCollisionObject* col)

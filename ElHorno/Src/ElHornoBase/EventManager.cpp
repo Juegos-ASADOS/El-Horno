@@ -1,6 +1,7 @@
 #include "EventManager.h"
 #include "Event.h"
-#include "EventListener.h"
+#include "Entity.h"
+#include "Component.h"
 #include "CheckML.h"
 
 namespace El_Horno {
@@ -34,9 +35,14 @@ namespace El_Horno {
 		eventsQueue.push(e);
 	}
 
-	void EventManager::sendTargetEvent(EventListener* target, Event* e)
+	void EventManager::sendComponentEvent(EventListener* target, Event* e)
 	{
-		targetEventsQueue.push({ target, e });
+		componentQueue.push({ target, e });
+	}
+
+	void EventManager::sendEntityEvent(Entity* target, Event* e)
+	{
+		entityQueue.push({ target, e });
 	}
 
 	//Procesa todos los eventos y los envia a todas las entidades
@@ -51,11 +57,20 @@ namespace El_Horno {
 			delete e;
 		}
 
+		//Eventos de entidades
+		while (!entityQueue.empty()) {
+			Entity* target = entityQueue.front().first;
+			Event* e = entityQueue.front().second; entityQueue.pop();
+			for (Component* cp : target->getComponents()) {
+				cp->recieveEvent(e);
+			}
+			delete e;
+		}
+
 		//Eventos específicos
-		while (!targetEventsQueue.empty()) {
-			EventListener* target = targetEventsQueue.front().first;
-			Event* e = targetEventsQueue.front().second;
-			targetEventsQueue.pop();
+		while (!componentQueue.empty()) {
+			EventListener* target = componentQueue.front().first;
+			Event* e = componentQueue.front().second; componentQueue.pop();
 
 			target->recieveEvent(e);
 
@@ -67,11 +82,20 @@ namespace El_Horno {
 	void EventManager::clearQueue()
 	{
 		while (!eventsQueue.empty()) {
-			eventsQueue.pop();
+			auto* elem = eventsQueue.front(); eventsQueue.pop();
+			delete elem;
 		}
 
-		while (!targetEventsQueue.empty()) {
-			targetEventsQueue.pop();
+		//Borra solo el evento
+		while (!entityQueue.empty()) {
+			auto* elem = entityQueue.front().second; entityQueue.pop();
+			delete elem;
+		}
+		
+		//Idem al de arriba
+		while (!componentQueue.empty()) {
+			auto* elem = componentQueue.front().second; componentQueue.pop();
+			delete elem;
 		}
 	}
 
@@ -103,5 +127,6 @@ namespace El_Horno {
 
 	EventManager::~EventManager()
 	{
+		clearQueue();
 	}
 }

@@ -5,10 +5,11 @@
 #include <vector>
 #include <queue>
 
-struct Event;
 
 namespace El_Horno {
-class EventListener;
+	struct Event;
+	class EventListener;
+	class Entity;
 
 	class EventManager
 	{
@@ -19,7 +20,8 @@ class EventListener;
 		static void erase();
 
 		void sendEvent(Event* e);
-		void sendTargetEvent(EventListener* target, Event* e);
+		void sendComponentEvent(EventListener* target, Event* e);
+		void sendEntityEvent(Entity* target, Event* e);
 
 		void processEvents();
 
@@ -40,7 +42,10 @@ class EventListener;
 		std::queue<Event*> eventsQueue;
 
 		//Queue de eventos de los que se conoce el EventListener destinatario
-		std::queue<std::pair<EventListener*, Event*>> targetEventsQueue;
+		std::queue<std::pair<EventListener*, Event*>> componentQueue;
+		
+		//Queue de eventos a todos los componentes de la Entidad destinataria
+		std::queue<std::pair<Entity*, Event*>> entityQueue;
 
 		std::vector<EventListener*> eventListeners;
 	};

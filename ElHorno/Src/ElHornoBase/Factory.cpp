@@ -3,6 +3,7 @@
 #include "Mesh.h"
 #include "CameraComponent.h"
 
+//namespace El_Horno {
 //template<class ...Ts>
 //Component* TransformFactory::createComponent(Ts &&...args)
 //{
@@ -19,4 +20,5 @@
 //Component* CameraFactory::createComponent(Ts &&...args)
 //{
 //	return new CameraComponent(args);
+//}
 //}
