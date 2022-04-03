@@ -2,7 +2,7 @@
 #include "Entity.h"
 #include <iostream>
 #include <fstream>
-#include <OgreVector3.h>
+#include <OgreVector.h>
 //#include "CheckML.h"
 #include "Transform.h"
 #include "CameraComponent.h"
@@ -22,7 +22,7 @@
 namespace El_Horno {
 	Scene::Scene()
 	{
-		Entity* light = addEntity("light", "prueba");
+		/*Entity* light = addEntity("light", "prueba");
 		light->addComponent<Transform>("transform", Ogre::Vector3(0, 200, 0), Ogre::Vector3(0, 0, 0), Ogre::Vector3(0, 0, 0));
 		light->addComponent<LightComponent>("light", 0, Ogre::Vector3(0, 0, 0));
 
@@ -47,7 +47,7 @@ namespace El_Horno {
 
 		b = addEntity("esmoque", "prueba");
 		b->addComponent<Transform>("transform", Ogre::Vector3(250, 10, 0), Ogre::Vector3(0, 0, 0), p/10);
-		b->addComponent<ParticleSystem>("particleSystem", "smoke", "Smoke", 10, true);
+		b->addComponent<ParticleSystem>("particleSystem", "smoke", "Smoke", 10, true);*/
 
 		//// Sinbad cuidao ogro
 		//Entity* c = addEntity("ogro", "prueba");
