@@ -9,6 +9,7 @@
 #include <OgreFileSystemLayer.h>
 #include "CheckML.h"
 #include <OgreLogManager.h>
+#include <iostream>
 
 namespace El_Horno {
 	Mesh::Mesh(std::string name, bool castShadow, bool isAnimated)
@@ -51,6 +52,10 @@ namespace El_Horno {
 		//ogreEntity_->setMaterialName(materialName_);
 		//ogreEntity_->setMaterialName("Sandokan");
 		ogreEntity_->setCastShadows(castShadow_);
+		/* Enseña las animaciones posibles del skeleton	
+		for (auto s : ogreEntity_->getAnimableValueNames()) {
+			std::cout << s;
+		};*/
 		entity_->getComponent<Transform>("transform")->getNode()->attachObject(ogreEntity_);
 	}
 

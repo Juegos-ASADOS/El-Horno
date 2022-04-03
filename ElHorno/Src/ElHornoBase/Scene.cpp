@@ -3,7 +3,7 @@
 #include <iostream>
 #include <fstream>
 #include <OgreVector3.h>
-#include "CheckML.h"
+//#include "CheckML.h"
 #include "Transform.h"
 #include "CameraComponent.h"
 #include "LightComponent.h"
@@ -15,6 +15,10 @@
 #include "AnimatorController.h"
 #include "SinbadAnimTest.h"
 
+
+#include "InputManager.h"
+#include "btBulletCollisionCommon.h"
+
 namespace El_Horno {
 	Scene::Scene()
 	{
@@ -23,16 +27,18 @@ namespace El_Horno {
 		light->addComponent<LightComponent>("light", 0, Ogre::Vector3(0, 0, 0));
 
 		Entity* a = addEntity("camera", "prueba");
-		Ogre::Vector3 p = { 1,1,1 };
+		Ogre::Vector3 p = { 10,10,10 };
 		a->addComponent<Transform>("transform", Ogre::Vector3(0, 0, 0), Ogre::Vector3(0, 0, 0), Ogre::Vector3(0, 0, 0));
-		a->addComponent<CameraComponent>("camera", Ogre::Vector3(0, 260, 590), Ogre::Vector3(0, 0, 0), Ogre::ColourValue(0, 0.3, 0.5), 5, 10000);
+		a->addComponent<CameraComponent>("camera", Ogre::Vector3(0, 100, 450), Ogre::Vector3(0, 0, 0), Ogre::ColourValue(0, 0.3, 0.5), 5, 10000);
 		a->addComponent<AudioListenerComponent>("audioListener");
 
 		Entity* b = addEntity("object", "prueba");
-		b->addComponent<Transform>("transform", Ogre::Vector3(0, 50, 0), Ogre::Vector3(180, 0, 0), p);
-		b->addComponent<Mesh>("mesh", "ogrehead");
+		b->addComponent<Transform>("transform", Ogre::Vector3(0, 150, 0), Ogre::Vector3(0, 0, 0), p);
+		b->addComponent<Mesh>("mesh", "Sinbad");
 		b->addComponent<RigidBody>("rigidbody", 2.0f, false, false, 0);
-		b->addComponent<AudioComponent>("audioComponent");
+		b->addComponent<AnimatorController>("animatorController");
+		b->addComponent<SinbadAnimTest>("sinbadAnimTest");
+		//b->addComponent<AudioComponent>("audioComponent");
 
 		b = addEntity("object2", "prueba");
 		b->addComponent<Transform>("transform", Ogre::Vector3(0, -15, 0), Ogre::Vector3(0, 0, 0), Ogre::Vector3(5, 0.1, 5));
@@ -225,5 +231,35 @@ namespace El_Horno {
 				if (e->isActive()) e->update();
 			iter++;
 		}
+
+		Transform* tr = entities_.at("prueba")[2]->getComponent<Transform>("transform");
+		RigidBody* rb = entities_.at("prueba")[2]->getComponent<RigidBody>("rigidbody");
+		float speed = 100;
+
+		rb->setAngularFactor(0);
+		rb->setSleepingThresholds(0, 0);
+		rb->setFriction(0.7);
+
+		btVector3 force(0, 0, 0);
+		if (InputManager::getInstance()->IsKeyDown(SDL_Scancode::SDL_SCANCODE_A)) {
+			force += btVector3(-speed, 0, 0);
+			tr->setDirection({ 1,0,0 });
+		}
+		if (InputManager::getInstance()->IsKeyDown(SDL_Scancode::SDL_SCANCODE_D)) {
+			force += btVector3(speed, 0, 0);
+			tr->setDirection({ -1,0,0 });
+		}
+		if (InputManager::getInstance()->IsKeyDown(SDL_Scancode::SDL_SCANCODE_W)) {
+			force += btVector3(0, 0, -speed);
+			tr->setDirection({ 0,0,1 });
+		}
+		if (InputManager::getInstance()->IsKeyDown(SDL_Scancode::SDL_SCANCODE_S)) {
+			force += btVector3(0, 0, speed);
+			tr->setDirection({ 0,0,-1 });
+		}
+
+		force.setY(force.y() + rb->getLinearVelocity().y());
+		rb->setLinearVelocity(force);
+
 	}
 }

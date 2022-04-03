@@ -3,6 +3,7 @@
 #define _RIGIDBODY_H
 
 #include "Component.h"
+#include "Bullet3Common/b3Vector3.h"
 
 class btRigidBody;
 class btGhostObject;
@@ -24,11 +25,15 @@ namespace El_Horno {
 
 		virtual void start() override;
 		virtual void update() override;
-		//virtual void preUpdate() override;
+		virtual void preUpdate() override;
 
-		void applyForce(btVector3* force);
-		void applyImpulse(btVector3* force);
-		void applyPush(btVector3* force);
+		void applyForce(const btVector3& force);
+		void applyImpulse(const btVector3& force);
+		void applyPush(const btVector3& force);
+		
+		void applyTorque(const btVector3& torque);
+		void applyTorqueImpulse(const btVector3& torque);
+		void applyTorqueTurn(const btVector3& torque);
 
 		inline float getFriction() const { return friction_; };
 		inline float getRestitution() const { return restitution_; };
@@ -42,6 +47,12 @@ namespace El_Horno {
 		void setMass(const float& m);
 		void setAngularFactor(const float& f);
 		void setSleepingThresholds(const float& linear, const float& scalar);
+
+		void setLinearVelocity(const btVector3& l);
+		void setAngularVelocity(const btVector3& a);
+		
+		btVector3 getLinearVelocity() const;
+		btVector3 getAngularVelocity() const;
 
 		void setRotConstraints(int i, bool value);
 		void setPosConstraints(int i, bool value);

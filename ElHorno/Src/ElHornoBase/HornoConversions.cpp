@@ -32,5 +32,5 @@ btQuaternion QuaternionToBullet(const Ogre::Quaternion& q)
 
 Ogre::Quaternion QuaternionToOgre(const btQuaternion& q)
 {
-	return Ogre::Quaternion(q.x(), q.y(), q.z(), q.w());
+	return Ogre::Quaternion(q.w(), q.x(), q.y(), q.z());
 }

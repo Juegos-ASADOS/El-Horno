@@ -27,6 +27,7 @@ namespace El_Horno {
 		// Setters
 		void setPosition(Ogre::Vector3 pos);
 		void setScale(Ogre::Vector3 sca);
+		void setDirection(Ogre::Vector3 dir);
 		void setRotation(Ogre::Quaternion rot);
 		void setRotationAxis(Ogre::Real angle, Ogre::Vector3 axis);
 		void rotateX(Ogre::Real angle);

@@ -30,13 +30,13 @@ namespace El_Horno {
 		node_ = ElHornoBase::getGraphicsManager()->getSceneManager()->getRootSceneNode()->createChildSceneNode();
 		setPosition(pPos);
 
-		//LA OTRA FORMA ESTABA ROTA (Y ESTA TAMBIÉN)
 		rotateX(pRot.x);
 		rotateY(pRot.y);
 		rotateZ(pRot.z);
 
-
 		setScale(pScal);
+
+		node_->showBoundingBox(true);
 	}
 
 	void Transform::update()
@@ -62,10 +62,17 @@ namespace El_Horno {
 	{
 		node_->setPosition(pos);
 	}
+
 	void Transform::setScale(Vector3 sca)
 	{
 		node_->setScale(sca);
 	}
+
+	void Transform::setDirection(Ogre::Vector3 dir)
+	{
+		node_->setDirection(dir);
+	}
+
 	void Transform::setRotation(Quaternion rot)
 	{
 		node_->setOrientation(rot);

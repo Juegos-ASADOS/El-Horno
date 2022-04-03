@@ -3,6 +3,7 @@
 #include "Entity.h"
 #include "HornoConversions.h"
 #include "Transform.h"
+#include "Mesh.h"
 #include "btBulletCollisionCommon.h"
 #include "btBulletDynamicsCommon.h"
 
@@ -44,12 +45,10 @@ namespace El_Horno {
 
 		size_ = new btVector3(0,0,0);
 		//Si tiene mesh, la utilizamos para tomar el tamaño por defecto
-		if (transform_->getNode()->getAttachedObjects().size() > 0) {
-			Ogre::Entity* obj = static_cast<Ogre::Entity*>(transform_->getNode()->getAttachedObject(0));
+		if (entity_->getComponent<Mesh>("mesh")) {
+			Ogre::Entity* obj = entity_->getComponent<Mesh>("mesh")->getOgreEntity();
 			//Usamos la BoundingBox de la malla
-			*size_ += VectorToBullet(obj->getBoundingBox().getSize());
-			//Dividimos para hallar el tamaño real
-			*size_ /= 2.0f;
+			*size_ += VectorToBullet(obj->getBoundingBox().getHalfSize());
 		}//De lo contrario tomamos el tamaño del transform (no debería entrar aquí de normal)
 		else{
 			*size_ += VectorToBullet(transform_->getScale());
@@ -88,16 +87,16 @@ namespace El_Horno {
 	}
 
 	////Cogemos el valor del Transform y se lo damos a Bullet en preupdate
-	/*void RigidBody::preUpdate()
+	void RigidBody::preUpdate()
 	{
-		if (isKinematic_) {
+		if (mass_ > 0) {
 			Ogre::Vector3 pos = transform_->getPosition();
 			Ogre::Quaternion rot = transform_->getRotation();
 
 			rigid_->getWorldTransform().setOrigin(VectorToBullet(pos));
 			rigid_->getWorldTransform().setRotation(QuaternionToBullet(rot));
 		}
-	}*/
+	}
 
 	//Tras los cálculos, Bullet devuelve la nueva posición y rotación del body
 	void RigidBody::update()
@@ -112,19 +111,34 @@ namespace El_Horno {
 		transform_->setRotation(QuaternionToOgre(rot));
 	}
 
-	void RigidBody::applyForce(btVector3* force)
+	void RigidBody::applyForce(const btVector3& force)
 	{
-		rigid_->applyCentralForce(*force);
+		rigid_->applyCentralForce(force);
 	}
 
-	void RigidBody::applyImpulse(btVector3* force)
+	void RigidBody::applyImpulse(const btVector3& force)
 	{
-		rigid_->applyCentralImpulse(*force);
+		rigid_->applyCentralImpulse(force);
 	}
 
-	void RigidBody::applyPush(btVector3* force)
+	void RigidBody::applyPush(const btVector3& force)
 	{
-		rigid_->applyCentralPushImpulse(*force);
+		rigid_->applyCentralPushImpulse(force);
+	}
+
+	void RigidBody::applyTorque(const btVector3& torque)
+	{
+		rigid_->applyTorque(torque);
+	}
+
+	void RigidBody::applyTorqueImpulse(const btVector3& torque)
+	{
+		rigid_->applyTorqueImpulse(torque);
+	}
+
+	void RigidBody::applyTorqueTurn(const btVector3& torque)
+	{
+		rigid_->applyTorqueTurnImpulse(torque);
 	}
 
 	void RigidBody::setTrigger(bool isTrigger)
@@ -172,11 +186,30 @@ namespace El_Horno {
 		rigid_->setSleepingThresholds(linear, scalar);
 	}
 
+	void RigidBody::setLinearVelocity(const btVector3& l)
+	{
+		rigid_->setLinearVelocity(l);
+	}
+
+	void RigidBody::setAngularVelocity(const btVector3& a)
+	{
+		rigid_->setAngularVelocity(a);
+	}
+
+	btVector3 RigidBody::getLinearVelocity() const
+	{
+		return rigid_->getLinearVelocity();
+	}
+
+	btVector3 RigidBody::getAngularVelocity() const
+	{
+		return rigid_->getAngularVelocity();
+	}
+
 	//x=0 y=1 z=2
 	void RigidBody::setRotConstraints(int i, bool value) {
 		if (i >= 0 && i <= 2) {
 			rotationConstraints[i] = value;
-
 		}
 	}
 
