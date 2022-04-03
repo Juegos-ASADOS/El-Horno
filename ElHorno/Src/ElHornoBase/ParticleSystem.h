@@ -6,7 +6,7 @@
 #include <string>
 
 namespace El_Horno {
-class Timer;
+	class Timer;
 }
 
 namespace Ogre {
@@ -29,7 +29,9 @@ namespace El_Horno {
 		void emit();
 	private:
 		Ogre::ParticleSystem* particleSystem_ = nullptr;
-		std::string particleSystemName_, particleSystemOrderedName_, particleSystemTemplate_;
+		std::string particleSystemName_, 
+					particleSystemOrderedName_, 
+					particleSystemTemplate_;
 
 		bool destroyOnTimeLimit_ = false;
 		float timeToLive_;

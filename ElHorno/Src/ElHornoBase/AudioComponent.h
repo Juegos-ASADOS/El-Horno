@@ -29,8 +29,8 @@ namespace El_Horno {
 		Ogre::Vector3 pos_;
 		Ogre::Vector3 vel_;
 
-		int nChannel;
-		std::string audioRoute;
+		int nChannel_;
+		std::string audioRoute_;
 	};
 }
 #endif _AudioComponent_H

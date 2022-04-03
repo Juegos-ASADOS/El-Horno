@@ -20,7 +20,6 @@ namespace El_Horno {
 		~Mesh();
 
 		virtual void start() override;
-		void redefine();
 
 		void onEnable() override;
 		void onDisable() override;

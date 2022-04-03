@@ -16,6 +16,8 @@
 namespace El_Horno
 {
 
+	// Componente de prueba de animaciones
+
 	SinbadAnimTest::SinbadAnimTest()
 	{
 	

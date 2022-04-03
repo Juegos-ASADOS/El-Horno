@@ -1,6 +1,4 @@
-﻿// ElHornoMain.cpp
-
-#include <iostream>
+﻿#include <iostream>
 #include <fstream>
 #include "ElHornoBase.h"
 #include "PhysicsManager.h"
@@ -11,7 +9,6 @@
 #include "LuaManager.h"
 #include "EventManager.h"
 #include "UIManager.h"
-#include "OurFrameListener.h"
 #include "FactoryCreator.h"
 #include "Scene.h"
 #include "Factory.h"
@@ -22,8 +19,6 @@
 
 namespace El_Horno {
 
-	using json = nlohmann::json;
-
 	ElHornoBase* ElHornoBase::instance_;
 
 	/*
@@ -32,7 +27,6 @@ namespace El_Horno {
 
 	ElHornoBase::ElHornoBase()
 	{
-		//frameListener_ = new OurFrameListener();
 		paused_ = false;
 	}
 
@@ -50,7 +44,7 @@ namespace El_Horno {
 		GraphicsManager::erase();
 		PhysicsManager::erase();
 		EventManager::erase();
-		UIManager::clean();
+		UIManager::erase();
 
 	}
 
@@ -72,10 +66,9 @@ namespace El_Horno {
 		delete instance_;
 	}
 
-	/* Inicializa managers */
+	/* Inicializa instancias de managers */
 	void ElHornoBase::init() {
 
-		// Aqui se inicializan las instancias de todos los managers
 		FactoryCreator::setupInstance();
 		//Creacion del factoryCreator y declaracion de los componentes del motor
 		setupFactories();
@@ -90,13 +83,12 @@ namespace El_Horno {
 		//UIManager
 		//UIManager::setupInstance();
 
-		//no se puede instanciar aqui ya que requiere de un render window (dame que lo corrijo en un min vamos esque xd)
 		//HornoLua
 		LuaManager::setupInstance();
 	}
 
 	/*
-	Ejecuta el start del SceenManager y comienza el renderizado de Ogre
+	Ejecuta el start de managersy comienza el renderizado de Ogre
 	*/
 	void ElHornoBase::start()
 	{
@@ -121,46 +113,17 @@ namespace El_Horno {
 	}
 
 	/*
-	* Inicializa SDL y todos los demás managers (importante capturar posibles excepciones)
-	*/
-	void ElHornoBase::setup() {
-
-
-		json extCfg;
-
-		std::ifstream i("config.cfg");
-
-		if (i.is_open())
-		{
-			i >> extCfg;
-			i.close();
-		}
-		else
-			std::cout << "File not found: config.cfg\n";
-
-
-		ExtraConfig = extCfg;
-
-		extraConfig(extCfg);
-
-		// ElhornoOgre->setup
-	}
-
-	/*
 	Limpia la escena desde el SceneManager
 	*/
-	void ElHornoBase::cleanScene()
-	{
-	}
+	//void ElHornoBase::cleanScene()
+	//{
+	//}
 
-	void ElHornoBase::extraConfig(nlohmann::json& j)
-	{
-	}
-
+	// Factorías de componentes principales (transform, rigidbody, etc.)
 	void ElHornoBase::setupFactories()
 	{
 		FactoryCreator* facCreat = FactoryCreator::getInstance();
-		// Factorías de componentes principales (transform, rigidbody, etc.)
+
 		facCreat->addFactory("transform");
 		facCreat->addFactory("camera");
 		facCreat->addFactory("mesh");
@@ -173,18 +136,18 @@ namespace El_Horno {
 		facCreat->addFactory("UIPushButton");
 	}
 
-	/*OgreRoot llama a frameListener_ que llama a processFrame que actualiza
-	la instancia de cada manager dependiendo del estado del juego*/
+	/*
+	Gestiona eventos y actualiza los managers
+	*/
 	void ElHornoBase::processFrame(float deltaTime) {
 		exit_ = GraphicsManager::getInstance()->pollEvents();
 
-		// Updates de managers
 		if (!paused_) {
 			SceneManager::getInstance()->preUpdate();
-			
+
 			PhysicsManager::getInstance()->update(deltaTime);
 			PhysicsManager::getInstance()->updateDebug(3);
-			
+
 			EventManager::getInstance()->processEvents();
 
 			SceneManager::getInstance()->update();
@@ -193,7 +156,7 @@ namespace El_Horno {
 			//SceneManager::getInstance()->pausedUpdate();
 		}
 
-		//AudioManager::getInstance()->update();
+		AudioManager::getInstance()->update();
 		GraphicsManager::getInstance()->render();
 		//UIManager::getInstance()->update();
 		SceneManager::getInstance()->deleteEntities();
@@ -206,8 +169,9 @@ namespace El_Horno {
 		globalTimer_ = new Timer();
 		deltaTime_ = 0;
 
-		// ESTO ES DE PRUEBA
-		//SceneManager::getInstance()->getCurrentScene()->getEntity("object", "prueba")->getComponent<AudioComponent>("audioComponent")->playSound("NeonRider.mp3");
+		// Audio de prueba
+		SceneManager::getInstance()->getCurrentScene()->getEntity("object", "prueba")->getComponent<AudioComponent>("audioComponent")->playSound("NeonRider.mp3");
+
 		while (!exit_) {
 			globalTimer_->resetTimer();
 			processFrame(deltaTime_);
@@ -243,32 +207,6 @@ namespace El_Horno {
 		return UIManager::getInstance();
 	}
 
-	/*
-	Devuelve el timer que lleva el frameRenderer para ejecutar el ciclo de juego
-	*/
-	//float ElHornoBase::getTime()
-	//{
-
-	//	/*return frameListener_->getTime();*/
-	//}
-
-	/*
-	//Devuelve el tiempo entre un frame y el anterior
-	//*/
-
-	//float ElHornoBase::deltaTime()
-	//{
-	//	return 	frameListener_->DeltaTime();
-	//}
-
-	/*
-	Resetea el timer
-	*/
-	//void ElHornoBase::resetTimer()
-	//{
-	//	frameListener_->resetTimer();
-	//}
-
 	void ElHornoBase::pause()
 	{
 		paused_ = !paused_;
@@ -279,50 +217,50 @@ namespace El_Horno {
 		return paused_;
 	}
 
-	void ElHornoBase::setInvertedAxisX(bool value)
-	{
-		invertedAxisX_ = value;
-	}
+	//void ElHornoBase::setInvertedAxisX(bool value)
+	//{
+	//	invertedAxisX_ = value;
+	//}
 
-	void ElHornoBase::setInvertedAxisY(bool value)
-	{
-		invertedAxisY_ = value;
-	}
+	//void ElHornoBase::setInvertedAxisY(bool value)
+	//{
+	//	invertedAxisY_ = value;
+	//}
 
-	/*
-	* Preguntan el invertedAxisX al input manager
-	*/
-	bool ElHornoBase::getInvertedAxisXInput()
-	{
-		return false;
-	}
+	///*
+	//* Preguntan el invertedAxisX al input manager
+	//*/
+	//bool ElHornoBase::getInvertedAxisXInput()
+	//{
+	//	return false;
+	//}
 
-	/*
-	*  Preguntan el invertedAxisY al input manager
-	*/
-	bool ElHornoBase::getInvertedAxisYInput()
-	{
-		return false;
-	}
+	///*
+	//*  Preguntan el invertedAxisY al input manager
+	//*/
+	//bool ElHornoBase::getInvertedAxisYInput()
+	//{
+	//	return false;
+	//}
 
-	bool ElHornoBase::getInvertedAxisXTemp()
-	{
-		return invertedAxisX_;
-	}
+	//bool ElHornoBase::getInvertedAxisXTemp()
+	//{
+	//	return invertedAxisX_;
+	//}
 
-	bool ElHornoBase::getInvertedAxisYTemp()
-	{
-		return invertedAxisY_;
-	}
+	//bool ElHornoBase::getInvertedAxisYTemp()
+	//{
+	//	return invertedAxisY_;
+	//}
 
-	/*
-	cambia opciones básicas en otros managers (Axis de input manager y
-	volume de audio manager)
-	*/
-	void ElHornoBase::changeBasicOptions()
-	{
+	///*
+	//cambia opciones básicas en otros managers (Axis de input manager y
+	//volume de audio manager)
+	//*/
+	//void ElHornoBase::changeBasicOptions()
+	//{
 
-	}
+	//}
 
 	/*
 	* Devuelve el Timer global del proyecto

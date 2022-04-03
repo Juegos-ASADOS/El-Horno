@@ -27,17 +27,16 @@ class Transform;
 		bool lookingAt = false;
 		bool following = false;
 
-		Ogre::Camera* cam;
-		Ogre::Viewport* vp;
-		Ogre::SceneNode* node = nullptr;
+		Ogre::Camera* camera_;
+		Ogre::Viewport* viewport_;
 		Transform* tr_ = nullptr;
 
-		Ogre::Vector3 camPos;
-		Ogre::Vector3 lookAtVec;
-		Ogre::ColourValue bgColor;
+		Ogre::Vector3 camPos_;
+		Ogre::Vector3 lookAtVec_;
+		Ogre::ColourValue bgColor_;
 
-		int nearClipDistance;
-		int farClipDistance;
+		int nearClipDistance_;
+		int farClipDistance_;
 	};
 }
 #endif _CAMERA_COMPONENT_H

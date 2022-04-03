@@ -41,33 +41,25 @@ namespace El_Horno {
 		static AudioManager* getAudioManager();
 		static UIManager* getUIManager();
 
-		// Esto ahora lo lleva Timer (excepto deltaTime que lo lleva el bucle)
-		/*float getTime();
-		float deltaTime();
-		void resetTimer();*/
 		Timer* getGlobalTime();
 		double getDeltaTime();
 
 		void pause();
 		bool isPaused();
 
-		void setInvertedAxisX(bool value);
+	/*	void setInvertedAxisX(bool value);
 		void setInvertedAxisY(bool value);
 		bool getInvertedAxisXInput();
 		bool getInvertedAxisYInput();
 		bool getInvertedAxisXTemp();
 		bool getInvertedAxisYTemp();
 
-		void changeBasicOptions();
+		void changeBasicOptions();*/
 
 	private:
-		void setup();
-
 		static ElHornoBase* instance_;
 
-		void cleanScene();
-
-		void extraConfig(nlohmann::json& j);
+		//void cleanScene();
 		void setupFactories();
 
 		bool paused_,
@@ -77,8 +69,6 @@ namespace El_Horno {
 
 		Timer* globalTimer_;
 		double deltaTime_;
-
-		nlohmann::json ExtraConfig;
 	};
 }
 #endif _EL_HORNO_BASE_EL_HORNO_BASE_H

@@ -16,7 +16,7 @@ Ogre::Vector3 VectorToOgre(const btVector3& v)
 	return Ogre::Vector3(v.x(), v.y(), v.z());
 }
 
-FMOD_VECTOR VectorToFmod(const Ogre::Vector3& vPosition)
+FMOD_VECTOR vectorToFmod(const Ogre::Vector3& vPosition)
 {
 	FMOD_VECTOR fVec;
 	fVec.x = vPosition.x;

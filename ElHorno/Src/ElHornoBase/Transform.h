@@ -7,7 +7,6 @@
 
 namespace El_Horno {
 
-
 	class Transform : public Component
 	{
 	public:
@@ -15,7 +14,6 @@ namespace El_Horno {
 		~Transform();
 
 		virtual void start() override;
-		virtual void update() override;
 		virtual void render() override {};
 
 		// Getters
@@ -39,9 +37,9 @@ namespace El_Horno {
 		// Nodo de ogre base
 		Ogre::SceneNode* node_ = nullptr;
 
-		Ogre::Vector3 pPos;
-		Ogre::Vector3 pRot;
-		Ogre::Vector3 pScal;
+		Ogre::Vector3 pPos_;
+		Ogre::Vector3 pRot_;
+		Ogre::Vector3 pScal_;
 	};
 }
 #endif _TRANSFORM_H

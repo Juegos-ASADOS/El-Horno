@@ -6,7 +6,8 @@
 #include "CheckML.h"
 
 namespace El_Horno {
-	Entity::Entity(std::string n, Scene* m, Entity* p) : name_(n), mngr_(m), active_(true), comp_(), compRef_() {
+
+	Entity::Entity(std::string n, Scene* m, Entity* p) : name_(n), scene_(m), active_(true), comp_(), compRef_() {
 		parent_ = p;
 
 		if (parent_ != nullptr) {
@@ -14,6 +15,7 @@ namespace El_Horno {
 		}
 	}
 
+	// Elimina componentes, entidades hijas y se elimina del padre
 	Entity::~Entity() {
 
 		for (Component* c : compRef_) {
@@ -24,14 +26,52 @@ namespace El_Horno {
 		for (Entity* e : children_)
 			delete e;
 
-		mngr_ = nullptr;
+		scene_ = nullptr;
 		if (parent_ != nullptr) {
 			parent_->removeChild(this);
 			parent_ = nullptr;
 		}
 	}
 
-	bool Entity::hasComponent(std::string name) {
+	// Inicializa componentes
+	void Entity::start()
+	{
+		std::size_t n = compRef_.size();
+		for (auto i = 0u; i < n; i++) {
+			if (compRef_[i]->isActive())
+				compRef_[i]->start();
+		}
+	}
+
+	// Preuodate de componentes
+	void Entity::preUpdate()
+	{
+		std::size_t n = compRef_.size();
+		for (auto i = 0u; i < n; i++) {
+			if (compRef_[i]->isActive())
+				compRef_[i]->preUpdate();
+		}
+	}
+
+	// Update de componentes
+	void Entity::update() {
+		std::size_t n = compRef_.size();
+		for (auto i = 0u; i < n; i++) {
+			if (compRef_[i]->isActive())
+				compRef_[i]->update();
+		}
+	}
+
+	// Renderiza
+	void Entity::render() {
+		std::size_t n = compRef_.size();
+		for (auto i = 0u; i < n; i++) {
+			if (compRef_[i]->isActive())
+				compRef_[i]->render();
+		}
+	}
+
+	bool Entity::hasComponent(std::string name) const{
 		return comp_.find(name) != comp_.end();
 	}
 
@@ -43,7 +83,7 @@ namespace El_Horno {
 		}
 	}
 
-	void Entity::removeComponent() {
+	void Entity::removeComponents() {
 		for (Component* c : compRef_)
 			delete c;
 		comp_.clear();
@@ -68,40 +108,6 @@ namespace El_Horno {
 				return;
 			}
 			i++;
-		}
-	}
-
-	void Entity::start()
-	{
-		std::size_t n = compRef_.size();
-		for (auto i = 0u; i < n; i++) {
-			if (compRef_[i]->isActive())
-				compRef_[i]->start();
-		}
-	}
-
-	void Entity::preUpdate()
-	{
-		std::size_t n = compRef_.size();
-		for (auto i = 0u; i < n; i++) {
-			if (compRef_[i]->isActive())
-				compRef_[i]->preUpdate();
-		}
-	}
-
-	void Entity::update() {
-		std::size_t n = compRef_.size();
-		for (auto i = 0u; i < n; i++) {
-			if (compRef_[i]->isActive())
-				compRef_[i]->update();
-		}
-	}
-
-	void Entity::render() {
-		std::size_t n = compRef_.size();
-		for (auto i = 0u; i < n; i++) {
-			if (compRef_[i]->isActive())
-				compRef_[i]->render();
 		}
 	}
 }

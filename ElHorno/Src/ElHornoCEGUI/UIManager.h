@@ -44,7 +44,7 @@ namespace El_Horno {
 		static UIManager* getInstance();
 		static bool setupInstance();
 		void setUpResources();
-		static void clean();
+		static void erase();
 
 		void createRoot();
 		void createContext();

@@ -12,6 +12,8 @@
 #include "CheckML.h"
 
 namespace El_Horno {
+
+	// Nombre, template en .particle, tiempo de vida y si es destruido al acabar ese tiempo
 	ParticleSystem::ParticleSystem(const std::string& name, const std::string& temp, float ttl, bool destroyTL)
 	{
 		particleSystemName_ = name;
@@ -42,8 +44,8 @@ namespace El_Horno {
 
 		// Inicializa en el SceneManager de Ogre
 		particleSystem_ = ElHornoBase::getInstance()->getGraphicsManager()->getSceneManager()->createParticleSystem(particleSystemOrderedName_, particleSystemTemplate_);
-		particleSystem_->setEmitting(true);
 
+		particleSystem_->setEmitting(true);
 		//Esto debería ser asi pero empieza a true para hacer pruebas
 		//particleSystem_->setEmitting(false);
 		particleSystem_->setKeepParticlesInLocalSpace(true);

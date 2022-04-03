@@ -61,12 +61,8 @@ namespace El_Horno {
 			break;
 		}
 
-		// A�adimos sus parametros basicos
+		// Establecemos sus parametros basicos
 		light_->setDiffuseColour(1.0, 1.0, 1.0);
-
-		//NO SE HACE ASí
-		/*node_ = ElHornoBase::getInstance()->getGraphicsManager()->getSceneManager()->getRootSceneNode()->createChildSceneNode();
-		node_->attachObject(light_);*/
 
 		entity_->getComponent<Transform>("transform")->getNode()->attachObject(light_);
 		node_->setDirection(dirLight_);

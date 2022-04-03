@@ -6,7 +6,7 @@
 #include "EventListener.h"
 
 namespace El_Horno {
-class Entity;
+	class Entity;
 
 	class Component : public EventListener
 	{

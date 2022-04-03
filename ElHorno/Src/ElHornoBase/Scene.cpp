@@ -38,16 +38,16 @@ namespace El_Horno {
 		b->addComponent<RigidBody>("rigidbody", 2.0f, false, false, 0);
 		b->addComponent<AnimatorController>("animatorController");
 		b->addComponent<SinbadAnimTest>("sinbadAnimTest");
-		//b->addComponent<AudioComponent>("audioComponent");
+		b->addComponent<AudioComponent>("audioComponent");
 
 		b = addEntity("object2", "prueba");
 		b->addComponent<Transform>("transform", Ogre::Vector3(0, -15, 0), Ogre::Vector3(0, 0, 0), Ogre::Vector3(5, 0.1, 5));
 		b->addComponent<Mesh>("mesh", "cube");
 		b->addComponent<RigidBody>("rigidbody", 0.0f, false, false, 0);
 
-		/*b = addEntity("esmoque", "prueba");
-		b->addComponent<Transform>("transform", Ogre::Vector3(0, 50, 0), Ogre::Vector3(0, 0, 0), p);
-		b->addComponent<ParticleSystem>("particleSystem", "smoke", "Smoke", 50000, false);*/
+		b = addEntity("esmoque", "prueba");
+		b->addComponent<Transform>("transform", Ogre::Vector3(250, 10, 0), Ogre::Vector3(0, 0, 0), p/10);
+		b->addComponent<ParticleSystem>("particleSystem", "smoke", "Smoke", 10, true);
 
 		//// Sinbad cuidao ogro
 		//Entity* c = addEntity("ogro", "prueba");

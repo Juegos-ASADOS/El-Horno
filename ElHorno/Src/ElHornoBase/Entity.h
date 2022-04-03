@@ -11,8 +11,8 @@
 #include "FactoryCreator.h"
 
 namespace El_Horno {
-class Scene;
-class Component;
+	class Scene;
+	class Component;
 
 	class Entity
 	{
@@ -20,7 +20,7 @@ class Component;
 		std::string name_;
 		bool active_;
 
-		Scene* mngr_;
+		Scene* scene_;
 
 		std::map<std::string, Component*> comp_;
 		std::vector<Component*> compRef_;
@@ -30,7 +30,7 @@ class Component;
 		std::vector<Entity*> children_;
 	public:
 		Entity(std::string n, Scene* m, Entity* p = nullptr);
-		Entity(Scene* m) : name_(""), mngr_(m), parent_(nullptr), compRef_(), comp_(), active_(true) {};
+		Entity(Scene* m) : name_(""), scene_(m), parent_(nullptr), compRef_(), comp_(), active_(true) {};
 		~Entity();
 
 		void start();
@@ -38,7 +38,7 @@ class Component;
 		void update();
 		void render();
 
-		//Métodos para añadir/quitar/comprobar sobre los compoenentes de la entidad
+		//Métodos para añadir/quitar/comprobar sobre los componentes de la entidad
 		template<typename T, typename ...Ts>
 		void addComponent(const std::string& type, Ts &&...args)
 		{
@@ -50,7 +50,7 @@ class Component;
 				if (c == nullptr)
 					return;
 
-				// Si esta lo metemos lo a�adimos a la entidad
+				// Si esta lo metemos lo asociamos a la entidad
 				comp_.insert({ type, c });
 				compRef_.push_back(c);
 				c->setEntity(this);
@@ -62,7 +62,8 @@ class Component;
 			}
 		}
 
-		bool hasComponent(std::string name);
+		bool hasComponent(std::string name) const;
+
 		template <typename T>
 		inline T* getComponent(std::string name) {
 			auto it = comp_.find(name);
@@ -74,7 +75,7 @@ class Component;
 		std::vector<Component*> getComponents() { return compRef_; };
 
 		void removeComponent(std::string name);
-		void removeComponent();
+		void removeComponents();
 
 		//Get/Set entidad padres
 		inline Entity* getParent() { return parent_; };
@@ -84,11 +85,12 @@ class Component;
 		Entity* getChild(std::string name);
 		void addChild(Entity* c);
 		inline int getChildCount() { return children_.size(); };
+
 		void removeChild(Entity* e);
-		//Este no sabemos aun
+
 		inline std::vector<Entity*> getChildren() { return children_; };
-		//Decidiremos
-		//DEVOLVER LISTA DE HIJOS CON T COMPONENTE
+
+		//DEVOLVER LISTA DE HIJOS CON T COMPONENTE - Decidiremos si es necesario
 		template<typename T>
 		std::vector<Entity*> getChildrenWithComponent();
 
@@ -98,14 +100,12 @@ class Component;
 
 		//Get/Set del nombre de la entidad
 		inline std::string getName() { return name_; };
-		inline Scene* getMngr() { return mngr_; };
+		inline Scene* getMngr() { return scene_; };
 
 		inline void setGroup(const std::string& g) { group_ = g; };
 		inline std::string getGroup() { return group_; };
 
 		bool dontDestroyOnLoad = false;
-
-		//GROUPS, layers, transform
 	};
 }
 #endif _ENTITY_H

@@ -53,7 +53,7 @@ namespace El_Horno {
 		CEGUI::WindowManager::setDefaultResourceGroup("Layouts");
 	}
 
-	void UIManager::clean()
+	void UIManager::erase()
 	{
 		delete instance;
 	}

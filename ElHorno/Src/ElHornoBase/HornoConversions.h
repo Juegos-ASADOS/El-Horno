@@ -18,7 +18,7 @@ namespace Ogre {
 
 btVector3 VectorToBullet(const Ogre::Vector3& v);
 Ogre::Vector3 VectorToOgre(const btVector3& v);
-FMOD_VECTOR VectorToFmod(const Ogre::Vector3& vPosition);
+FMOD_VECTOR vectorToFmod(const Ogre::Vector3& vPosition);
 
 btQuaternion QuaternionToBullet(const Ogre::Quaternion& q);
 Ogre::Quaternion QuaternionToOgre(const btQuaternion& q);

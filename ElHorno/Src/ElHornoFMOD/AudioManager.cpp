@@ -75,7 +75,7 @@ namespace El_Horno {
 		sgpImplementation = new Implementation();
 	}
 
-	void AudioManager::Update()
+	void AudioManager::update()
 	{
 		sgpImplementation->Update();
 	}
@@ -152,7 +152,7 @@ namespace El_Horno {
 		sgpImplementation->mSounds.erase(tFoundIt);
 	}
 
-	int AudioManager::PlaySound(const std::string& strSoundName, const FMOD_VECTOR& vPosition, float fVolumedB)
+	int AudioManager::playSound(const std::string& strSoundName, const FMOD_VECTOR& vPosition, float fVolumedB)
 	{
 		int nChannelId = sgpImplementation->mnNextChannelId++;
 		auto tFoundIt = sgpImplementation->mSounds.find(strSoundName);

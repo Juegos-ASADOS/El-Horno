@@ -19,18 +19,17 @@ namespace El_Horno {
 
 	void AudioComponent::update()
 	{
-		pos_.x = entity_->getComponent<Transform>("transform")->getPosition().x;
-		pos_.y = entity_->getComponent<Transform>("transform")->getPosition().y;
-		pos_.z = entity_->getComponent<Transform>("transform")->getPosition().z;
+		pos_ = entity_->getComponent<Transform>("transform")->getPosition();
 
 		vel_.x = 0;
 		vel_.y = 0;
 		vel_.z = 0;
-		ElHornoBase::getInstance()->getAudioManager()->updateSound(VectorToFmod(pos_), VectorToFmod(vel_), nChannel);
+
+		ElHornoBase::getInstance()->getAudioManager()->updateSound(vectorToFmod(pos_), vectorToFmod(vel_), nChannel_);
 	}
 
 	void AudioComponent::playSound(std::string path)
 	{
-		nChannel = ElHornoBase::getInstance()->getAudioManager()->PlaySound(path, VectorToFmod(pos_), 50.0f);
+		nChannel_ = ElHornoBase::getInstance()->getAudioManager()->playSound(path, vectorToFmod(pos_), 25.0f);
 	}
 }

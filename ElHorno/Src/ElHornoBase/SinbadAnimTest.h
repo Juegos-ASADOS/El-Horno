@@ -38,7 +38,6 @@ namespace El_Horno
 
 		bool dancing = false;
 		bool walking = false;
-
 	};
 }
 

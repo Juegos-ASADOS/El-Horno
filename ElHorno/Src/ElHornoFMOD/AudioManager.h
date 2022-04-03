@@ -19,7 +19,6 @@ namespace FMOD {
 	}
 }
 
-
 namespace El_Horno {
 	class Implementation {
 	public:
@@ -48,7 +47,7 @@ namespace El_Horno {
 	{
 	public:
 		void init();
-		void Update();
+		void update();
 		static void erase();
 		static int ErrorCheck(FMOD_RESULT result);
 		static bool setupInstance();
@@ -59,7 +58,7 @@ namespace El_Horno {
 		void Loadsound(const std::string& strSoundName, bool b3d = true, bool bLooping = false, bool bStream = false);
 		void UnLoadSound(const std::string& strSoundName);
 		//void Set3dListenerAndOrientation(const FMOD_VECTOR& vPos = { 0, 0, 0 }, float fVolumedB = 0.0f);
-		int PlaySound(const std::string& strSoundName, const FMOD_VECTOR& vPos, float fVolumedB = 0.0f);
+		int playSound(const std::string& strSoundName, const FMOD_VECTOR& vPos, float fVolumedB = 0.0f);
 		//void PlayEvent(const string& strEventName);
 		void StopChannel(int nChannelId);
 		//void StopEvent(const string& strEventName, bool bImmediate = false);

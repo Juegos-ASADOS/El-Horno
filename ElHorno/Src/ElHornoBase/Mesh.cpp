@@ -15,7 +15,6 @@ namespace El_Horno {
 	Mesh::Mesh(std::string name, bool castShadow, bool isAnimated)
 	{
 		meshName_ = name + ".mesh";
-		//materialName_ = name + ".mesh";
 		materialName_ = name + ".mesh";
 		castShadow_ = castShadow;
 		isAnimated_ = isAnimated;
@@ -50,21 +49,14 @@ namespace El_Horno {
 			return;
 		}
 		//ogreEntity_->setMaterialName(materialName_);
-		//ogreEntity_->setMaterialName("Sandokan");
 		ogreEntity_->setCastShadows(castShadow_);
+
 		/* Enseña las animaciones posibles del skeleton	
 		for (auto s : ogreEntity_->getAnimableValueNames()) {
 			std::cout << s;
 		};*/
+
 		entity_->getComponent<Transform>("transform")->getNode()->attachObject(ogreEntity_);
-	}
-
-	/*
-	Reestablece varibles de init para recomponer la malla
-	*/
-	void Mesh::redefine()
-	{
-
 	}
 
 	void Mesh::onEnable()

@@ -17,7 +17,6 @@ namespace El_Horno {
 		AudioListenerComponent();
 		~AudioListenerComponent();
 
-		//void start() override;
 		void update()override;
 
 		void onEnable() override {};

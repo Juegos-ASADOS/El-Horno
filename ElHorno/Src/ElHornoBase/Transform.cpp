@@ -14,9 +14,9 @@ namespace El_Horno {
 
 	Transform::Transform(Vector3 pos, Vector3 rot, Vector3 scal)
 	{
-		pPos = pos;
-		pRot = rot;
-		pScal = scal;
+		pPos_ = pos;
+		pRot_ = rot;
+		pScal_ = scal;
 	}
 
 	Transform::~Transform()
@@ -25,22 +25,21 @@ namespace El_Horno {
 		node_ = nullptr;
 	}
 
+	/*
+	Se establece la rotacion, la posicion, la escala y se muestra la bounding box (debug)
+	*/
 	void Transform::start()
 	{
 		node_ = ElHornoBase::getGraphicsManager()->getSceneManager()->getRootSceneNode()->createChildSceneNode();
-		setPosition(pPos);
+		setPosition(pPos_);
 
-		rotateX(pRot.x);
-		rotateY(pRot.y);
-		rotateZ(pRot.z);
+		rotateX(pRot_.x);
+		rotateY(pRot_.y);
+		rotateZ(pRot_.z);
 
-		setScale(pScal);
+		setScale(pScal_);
 
 		node_->showBoundingBox(true);
-	}
-
-	void Transform::update()
-	{
 	}
 
 	// Getters
