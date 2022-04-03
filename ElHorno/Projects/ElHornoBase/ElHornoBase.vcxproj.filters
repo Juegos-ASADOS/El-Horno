@@ -108,9 +108,6 @@
     <ClCompile Include="..\..\Src\ElHornoBase\SinbadAnimTest.cpp">
       <Filter>Archivos de origen\Components</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Src\ElHornoBase\ElHornoMain.cpp">
-      <Filter>Archivos de origen</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\Src\ElHornoBase\ElHornoBase.h">

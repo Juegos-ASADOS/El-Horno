@@ -31,7 +31,7 @@ class Entity;
 
 		inline std::string getName() const { return name_; };
 
-	private:
+	protected:
 		std::map<std::string, std::vector<Entity*>> entities_;
 		std::map<std::string, std::vector<Entity*>> entitiesGroups_;
 		std::vector<std::pair<std::string, Entity*>> entitiesToDestroy_;

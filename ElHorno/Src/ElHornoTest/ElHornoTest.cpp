@@ -1,4 +1,4 @@
-// ElHornoTest.cpp : Este archivo contiene la función "main". La ejecución del programa comienza y termina ahí.
+// ElHornoTest.cpp : Este archivo contiene la función "main" para hacer pruebas únicamente con el motor, sin necesidad de cargar un juego
 
 #include <iostream>
 #include "ElHornoBase.h"

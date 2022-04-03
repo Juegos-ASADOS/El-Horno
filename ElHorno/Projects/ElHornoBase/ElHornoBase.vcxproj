@@ -25,7 +25,6 @@
     <ClCompile Include="..\..\Src\ElHornoBase\CameraComponent.cpp" />
     <ClCompile Include="..\..\Src\ElHornoBase\Component.cpp" />
     <ClCompile Include="..\..\Src\ElHornoBase\ElHornoBase.cpp" />
-    <ClCompile Include="..\..\Src\ElHornoBase\ElHornoMain.cpp" />
     <ClCompile Include="..\..\Src\ElHornoBase\Entity.cpp" />
     <ClCompile Include="..\..\Src\ElHornoBase\EventListener.cpp" />
     <ClCompile Include="..\..\Src\ElHornoBase\EventManager.cpp" />
