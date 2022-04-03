@@ -78,4 +78,9 @@ namespace El_Horno {
 		delete currentScene_;
 		currentScene_ = nullptr;
 	}
+
+	void SceneManager::setScene(Scene* newScene) {
+		currentScene_ = newScene;
+		currentScene_->init();
+	}
 }

@@ -111,6 +111,9 @@
     <ClCompile Include="..\..\Src\ElHornoBase\Scene.cpp">
       <Filter>Archivos de origen\SceneManager</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\Src\ElHornoBase\ElHornoMain.cpp">
+      <Filter>Archivos de origen</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\Src\ElHornoBase\ElHornoBase.h">

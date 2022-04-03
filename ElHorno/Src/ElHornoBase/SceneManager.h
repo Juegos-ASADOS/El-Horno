@@ -24,7 +24,7 @@ class Scene;
 		void start(std::string initialScene);
 		void update();
 		void deleteEntities();
-
+		void setScene(Scene* newScene);
 	private:
 		static SceneManager* instance;
 
