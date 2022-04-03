@@ -11,4 +11,6 @@ int main()
 	El_Horno::ElHornoBase::setInstance();
 	El_Horno::ElHornoBase::getInstance()->init();
 
-	}
+	El_Horno::ElHornoBase::getInstance()->start();
+	El_Horno::ElHornoBase::getInstance()->update();
+}

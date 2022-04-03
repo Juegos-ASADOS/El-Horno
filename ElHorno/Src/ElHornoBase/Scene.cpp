@@ -3,7 +3,7 @@
 #include <iostream>
 #include <fstream>
 #include <OgreVector.h>
-#include "CheckML.h"
+//#include "CheckML.h"
 #include "Transform.h"
 #include "CameraComponent.h"
 #include "LightComponent.h"
