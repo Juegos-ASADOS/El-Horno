@@ -27,7 +27,7 @@ class Scene;
 		void preUpdate();
 		void update();
 		void deleteEntities();
-
+		void setScene(Scene* newScene);
 	private:
 		static SceneManager* instance_;
 

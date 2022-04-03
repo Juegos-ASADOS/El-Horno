@@ -2,8 +2,8 @@
 #include "Entity.h"
 #include <iostream>
 #include <fstream>
-#include <OgreVector3.h>
-//#include "CheckML.h"
+#include <OgreVector.h>
+#include "CheckML.h"
 #include "Transform.h"
 #include "CameraComponent.h"
 #include "LightComponent.h"

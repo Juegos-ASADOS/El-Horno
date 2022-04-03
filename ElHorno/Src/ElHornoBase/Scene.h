@@ -27,6 +27,7 @@ class Entity;
 		void start();
 		void preUpdate();
 		void update();
+		virtual void init() {};
 
 		inline std::string getName() const { return name_; };
 
