@@ -52,7 +52,7 @@ namespace El_Horno {
 		currentScene_ = new Scene();
 
 		//TODO
-		//Creamos el evento de cambiar la escena?
+		//Creamos el evento de cambiar la escena??
 		Event* changeSceneEvent = new Event(EventType::ChangeScene);
 
 		EventManager::getInstance()->sendEvent(changeSceneEvent);
