@@ -207,6 +207,11 @@ namespace El_Horno {
 		return UIManager::getInstance();
 	}
 
+	FactoryCreator* ElHornoBase::getFactoryCreator()
+	{
+		return FactoryCreator::getInstance();
+	}
+
 	void ElHornoBase::pause()
 	{
 		paused_ = !paused_;

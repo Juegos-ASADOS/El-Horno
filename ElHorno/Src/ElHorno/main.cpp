@@ -23,12 +23,12 @@ int main()
 		El_Horno::ElHornoBase::setInstance();
 		El_Horno::ElHornoBase::getInstance()->init();
 
-		El_Horno::Scene* startScene = (El_Horno::Scene*)GetProcAddress(game, "loadStartScene");
-		std::cout << GetLastError();
+		El_Horno::SceneLoad startScene = (El_Horno::SceneLoad)GetProcAddress(game, "loadStartScene");
 		if (startScene) {
-			El_Horno::ElHornoBase::getSceneManager()->setScene(startScene);
+			El_Horno::ElHornoBase::getSceneManager()->setScene(startScene());
 			El_Horno::ElHornoBase::getInstance()->start();
 			El_Horno::ElHornoBase::getInstance()->update();
 		}
+		FreeLibrary(game);
 	}
 }

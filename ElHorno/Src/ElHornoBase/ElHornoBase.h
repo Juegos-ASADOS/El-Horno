@@ -14,6 +14,7 @@ namespace El_Horno {
 	class UIManager;
 	class Timer;
 	class SceneManager;
+	class FactoryCreator;
 
 	class ElHornoBase {
 	public:
@@ -40,6 +41,7 @@ namespace El_Horno {
 		static GraphicsManager* getGraphicsManager();
 		static AudioManager* getAudioManager();
 		static UIManager* getUIManager();
+		static FactoryCreator* getFactoryCreator();
 
 		Timer* getGlobalTime();
 		double getDeltaTime();

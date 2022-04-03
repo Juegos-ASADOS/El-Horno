@@ -8,6 +8,8 @@
 namespace El_Horno {
 class Scene;
 
+typedef Scene* (*SceneLoad)();
+
 	class SceneManager
 	{
 	public:
