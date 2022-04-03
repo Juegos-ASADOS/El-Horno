@@ -13,20 +13,20 @@
 
 namespace El_Horno {
 
-	PhysicsManager* PhysicsManager::instance;
+	PhysicsManager* PhysicsManager::instance_;
 
 	PhysicsManager* PhysicsManager::getInstance()
 	{
-		if (instance == 0)
+		if (instance_ == 0)
 			return nullptr;
 
-		return instance;
+		return instance_;
 	}
 
 	bool PhysicsManager::setupInstance()
 	{
-		if (instance == 0) {
-			instance = new PhysicsManager();
+		if (instance_ == 0) {
+			instance_ = new PhysicsManager();
 			return true;
 		}
 		return false;
@@ -34,13 +34,12 @@ namespace El_Horno {
 
 	void PhysicsManager::erase()
 	{
-		delete instance;
+		delete instance_;
 	}
 
 
 	PhysicsManager::PhysicsManager()
 	{
-
 	}
 
 	PhysicsManager::~PhysicsManager()
@@ -94,11 +93,9 @@ namespace El_Horno {
 	void PhysicsManager::start(const std::string& initialScene)
 	{
 		//Funcion de callback en colision
-		//gContactAddedCallback = collisionCallbackBullet;
 		gContactStartedCallback = contactStartBullet;
 		gContactProcessedCallback = contactProcessedBullet; 
 		gContactEndedCallback = contactExitBullet;
-		//gContactDestroyedCallback = ;
 
 		collisionShapes_ = new btAlignedObjectArray<btCollisionShape*>();
 
@@ -115,7 +112,7 @@ namespace El_Horno {
 		dynamicsWorld_ = new btDiscreteDynamicsWorld(dispatcher_, broadphaseInterface_, constraintSolver_, collisionConfiguration_);
 
 
-		//Gravedad placeholder
+		//Gravedad por defecto
 		dynamicsWorld_->setGravity(btVector3(0, -9.8, 0));
 	}
 

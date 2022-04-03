@@ -15,20 +15,21 @@ using namespace Ogre;
 
 namespace El_Horno {
 
+    //Comunica Bullet con Ogre para debugear la grafica de los rg
     OgreDebugDrawer::OgreDebugDrawer(SceneManager* scm)
     {
-        mContactPoints = &mContactPoints1;
-        mLines = new ManualObject("physics lines");
-        assert(mLines);
-        mTriangles = new ManualObject("physics triangles");
-        assert(mTriangles);
-        mLines->setDynamic(true);
-        mTriangles->setDynamic(true);
-        //mLines->estimateVertexCount( 100000 );
-        //mLines->estimateIndexCount( 0 );
+        mContactPoints_ = &mContactPoints1_;
+        mLines_ = new ManualObject("physics lines");
+        assert(mLines_);
+        mTriangles_ = new ManualObject("physics triangles");
+        assert(mTriangles_);
+        mLines_->setDynamic(true);
+        mTriangles_->setDynamic(true);
+        //mLines_->estimateVertexCount( 100000 );
+        //mLines_->estimateIndexCount( 0 );
 
-        scm->getRootSceneNode()->attachObject(mLines);
-        scm->getRootSceneNode()->attachObject(mTriangles);
+        scm->getRootSceneNode()->attachObject(mLines_);
+        scm->getRootSceneNode()->attachObject(mTriangles_);
 
         static const char* matName = "OgreBulletCollisionsDebugDefault";
         MaterialPtr mtl = MaterialManager::getSingleton().getDefaultSettings()->clone(matName);
@@ -41,90 +42,90 @@ namespace El_Horno {
         mtl->getTechnique(0)->setLightingEnabled(false);
         //mtl->getTechnique(0)->setSelfIllumination( ColourValue::White ); 
 
-        mLines->begin(matName, RenderOperation::OT_LINE_LIST);
-        mLines->position(Vector3::ZERO);
-        mLines->colour(ColourValue::Blue);
-        mLines->position(Vector3::ZERO);
-        mLines->colour(ColourValue::Blue);
+        mLines_->begin(matName, RenderOperation::OT_LINE_LIST);
+        mLines_->position(Vector3::ZERO);
+        mLines_->colour(ColourValue::Blue);
+        mLines_->position(Vector3::ZERO);
+        mLines_->colour(ColourValue::Blue);
 
-        mTriangles->begin(matName, RenderOperation::OT_TRIANGLE_LIST);
-        mTriangles->position(Vector3::ZERO);
-        mTriangles->colour(ColourValue::Blue);
-        mTriangles->position(Vector3::ZERO);
-        mTriangles->colour(ColourValue::Blue);
-        mTriangles->position(Vector3::ZERO);
-        mTriangles->colour(ColourValue::Blue);
+        mTriangles_->begin(matName, RenderOperation::OT_TRIANGLE_LIST);
+        mTriangles_->position(Vector3::ZERO);
+        mTriangles_->colour(ColourValue::Blue);
+        mTriangles_->position(Vector3::ZERO);
+        mTriangles_->colour(ColourValue::Blue);
+        mTriangles_->position(Vector3::ZERO);
+        mTriangles_->colour(ColourValue::Blue);
 
-        mDebugModes = (DebugDrawModes)DBG_DrawWireframe;
+        mDebugModes_ = (DebugDrawModes)DBG_DrawWireframe;
         GraphicsManager::getInstance()->getRoot()->getSingleton().addFrameListener(this);
     }
 
     OgreDebugDrawer::~OgreDebugDrawer()
     {
         GraphicsManager::getInstance()->getRoot()->getSingleton().removeFrameListener(this);
-        delete mLines;
-        delete mTriangles;
+        delete mLines_;
+        delete mTriangles_;
     }
 
-    void OgreDebugDrawer::drawLine(const btVector3& from, const btVector3& to, const btVector3& color)
+    void OgreDebugDrawer::drawLine(const btVector3& from_, const btVector3& to_, const btVector3& color_)
     {
-        ColourValue c(color.getX(), color.getY(), color.getZ());
+        ColourValue c(color_.getX(), color_.getY(), color_.getZ());
         c.saturate();
-        mLines->position(VectorToOgre(from));
-        mLines->colour(c);
-        mLines->position(VectorToOgre(to));
-        mLines->colour(c);
+        mLines_->position(VectorToOgre(from_));
+        mLines_->colour(c);
+        mLines_->position(VectorToOgre(to_));
+        mLines_->colour(c);
     }
 
-    void OgreDebugDrawer::drawTriangle(const btVector3& v0, const btVector3& v1, const btVector3& v2, const btVector3& color, btScalar alpha)
+    void OgreDebugDrawer::drawTriangle(const btVector3& v0, const btVector3& v1, const btVector3& v2, const btVector3& color_, btScalar alpha)
     {
-        ColourValue c(color.getX(), color.getY(), color.getZ(), alpha);
+        ColourValue c(color_.getX(), color_.getY(), color_.getZ(), alpha);
         c.saturate();
-        mTriangles->position(VectorToOgre(v0));
-        mTriangles->colour(c);
-        mTriangles->position(VectorToOgre(v1));
-        mTriangles->colour(c);
-        mTriangles->position(VectorToOgre(v2));
-        mTriangles->colour(c);
+        mTriangles_->position(VectorToOgre(v0));
+        mTriangles_->colour(c);
+        mTriangles_->position(VectorToOgre(v1));
+        mTriangles_->colour(c);
+        mTriangles_->position(VectorToOgre(v2));
+        mTriangles_->colour(c);
     }
 
-    void OgreDebugDrawer::drawContactPoint(const btVector3& PointOnB, const btVector3& normalOnB, btScalar distance, int lifeTime, const btVector3& color)
+    void OgreDebugDrawer::drawContactPoint(const btVector3& PointOnB, const btVector3& normalOnB, btScalar distance, int lifeTime, const btVector3& color_)
     {
-        mContactPoints->resize(mContactPoints->size() + 1);
-        ContactPoint p = mContactPoints->back();
-        p.from = VectorToOgre(PointOnB);
-        p.to = p.from + VectorToOgre(normalOnB) * distance;
-        p.dieTime = GraphicsManager::getInstance()->getRoot()->getSingleton().getTimer()->getMilliseconds() + lifeTime;
-        p.color.r = color.x();
-        p.color.g = color.y();
-        p.color.b = color.z();
+        mContactPoints_->resize(mContactPoints_->size() + 1);
+        ContactPoint p = mContactPoints_->back();
+        p.from_ = VectorToOgre(PointOnB);
+        p.to_ = p.from_ + VectorToOgre(normalOnB) * distance;
+        p.dieTime_ = GraphicsManager::getInstance()->getRoot()->getSingleton().getTimer()->getMilliseconds() + lifeTime;
+        p.color_.r = color_.x();
+        p.color_.g = color_.y();
+        p.color_.b = color_.z();
     }
 
     bool OgreDebugDrawer::frameStarted(const Ogre::FrameEvent& evt)
     {
         size_t now = GraphicsManager::getInstance()->getRoot()->getSingleton().getTimer()->getMilliseconds();
-        std::vector< ContactPoint >* newCP = mContactPoints == &mContactPoints1 ? &mContactPoints2 : &mContactPoints1;
-        for (std::vector< ContactPoint >::iterator i = mContactPoints->begin(); i < mContactPoints->end(); i++) {
+        std::vector< ContactPoint >* newCP = mContactPoints_ == &mContactPoints1_ ? &mContactPoints2_ : &mContactPoints1_;
+        for (std::vector< ContactPoint >::iterator i = mContactPoints_->begin(); i < mContactPoints_->end(); i++) {
             ContactPoint& cp = *i;
-            mLines->position(cp.from);
-            mLines->colour(cp.color);
-            mLines->position(cp.to);
-            if (now <= cp.dieTime)
+            mLines_->position(cp.from_);
+            mLines_->colour(cp.color_);
+            mLines_->position(cp.to_);
+            if (now <= cp.dieTime_)
                 newCP->push_back(cp);
         }
-        mContactPoints->clear();
-        mContactPoints = newCP;
+        mContactPoints_->clear();
+        mContactPoints_ = newCP;
 
-        mLines->end();
-        mTriangles->end();
+        mLines_->end();
+        mTriangles_->end();
 
         return true;
     }
 
     bool OgreDebugDrawer::frameEnded(const Ogre::FrameEvent& evt)
     {
-        mLines->beginUpdate(0);
-        mTriangles->beginUpdate(0);
+        mLines_->beginUpdate(0);
+        mTriangles_->beginUpdate(0);
         return true;
     }
 
@@ -133,18 +134,13 @@ namespace El_Horno {
         LogManager::getSingleton().getDefaultLog()->logMessage(warningString);
     }
 
-    void OgreDebugDrawer::draw3dText(const btVector3& location, const char* textString)
-    {
-
-    }
-
     void OgreDebugDrawer::setDebugMode(int debugMode)
     {
-        mDebugModes = (DebugDrawModes)debugMode;
+        mDebugModes_ = (DebugDrawModes)debugMode;
     }
 
     int OgreDebugDrawer::getDebugMode() const
     {
-        return mDebugModes;
+        return mDebugModes_;
     }
 }
