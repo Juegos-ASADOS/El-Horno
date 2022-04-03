@@ -48,7 +48,7 @@ namespace El_Horno {
 
 	void GraphicsManager::init()
 	{
-		//ESTO ES UNA PRUEBA
+		//Tamaño de la ventana
 		screenWidth_ = 1280;
 		screenHeight_ = 720;
 
@@ -64,14 +64,14 @@ namespace El_Horno {
 		setupResources();
 
 		//Inicializa el debug en PhysicsManager
-		//if(debug) // linea imaginaria para cuando exista variable debug
+		//if(debug)
 		PhysicsManager::getInstance()->debugStart();
 	}
 
 	void GraphicsManager::start()
 	{
 		// Si usamos renderOneFrame manualmente esto no es necesario
-		root_->startRendering();
+		//root_->startRendering();
 	}
 
 	void GraphicsManager::exit()
@@ -84,9 +84,7 @@ namespace El_Horno {
 		root_->initialise(false);
 		setupWindow();
 
-		// Setup de managers
-
-
+		// Setup de manager de escena de ogre
 		ogreSceneManager_ = root_->createSceneManager();
 	}
 
@@ -141,7 +139,6 @@ namespace El_Horno {
 		Ogre::ConfigFile cf;
 		cf.load(resourcesPath);
 
-		// go through all specified resource groups 
 		std::string sec, type, arch;
 		Ogre::ConfigFile::SettingsBySection_::const_iterator seci;
 		for (seci = cf.getSettingsBySection().begin(); seci != cf.getSettingsBySection().end(); ++seci) {
@@ -149,7 +146,6 @@ namespace El_Horno {
 			const Ogre::ConfigFile::SettingsMultiMap& settings = seci->second;
 			Ogre::ConfigFile::SettingsMultiMap::const_iterator i;
 
-			// go through all resource paths 
 			for (i = settings.begin(); i != settings.end(); i++) {
 				type = i->first;
 				arch = Ogre::FileSystemLayer::resolveBundlePath(i->second);
@@ -213,11 +209,10 @@ namespace El_Horno {
 
 				break;
 			default:
-				//llamar a InputManager
-				InputManager::getInstance()->GeneralInputManagement(event);
+				InputManager::getInstance()->generalInputManagement(event);
 
-				//TODO es provisional con la tecla escape se cierra el juego
-				return InputManager::getInstance()->IsKeyDown(SDL_SCANCODE_ESCAPE);
+				//Con la tecla escape se cierra el juego
+				return InputManager::getInstance()->isKeyDown(SDL_SCANCODE_ESCAPE);
 				break;
 			}
 
@@ -235,7 +230,7 @@ namespace El_Horno {
 	{
 		graphicOptions_ = root_->getRenderSystem()->getConfigOptions();
 
-		fsaa = graphicOptions_["FSAA"].currentValue;
+		fsaa_ = graphicOptions_["FSAA"].currentValue;
 
 		if (graphicOptions_["VSync"].currentValue == "Yes")
 			vSync_ = true;
@@ -248,7 +243,7 @@ namespace El_Horno {
 			gamma_ = false;
 
 		std::istringstream mode(graphicOptions_["Video Mode"].currentValue);
-		resolution = graphicOptions_["Video Mode"].currentValue;
+		resolution_ = graphicOptions_["Video Mode"].currentValue;
 
 		//TEMPORAL HASTA QUE SE PUEDA LEER EL CONFIG
 		/*Ogre::String token;
@@ -275,19 +270,14 @@ namespace El_Horno {
 
 	Ogre::SceneManager* GraphicsManager::getSceneManager()
 	{
-		//return SceneManager;
-		//HE TOCAO ESTO CUIDAO
 		return ogreSceneManager_;
-		//HE TOCAO ESTO
-		//return nullptr;
 	}
 
-	// actualiza el tamaño de la ventana de SDL y de CEGUI
+	// Actualiza el tamaño de la ventana de SDL y de CEGUI
 	void GraphicsManager::resizeScreen(int width, int height)
 	{
 		//SDL_SetWindowSize(sdlWindow_, width, height);
 		//sdlWindow_->windowMovedOrResized();
-
 	}
 
 	/*
@@ -339,7 +329,7 @@ namespace El_Horno {
 
 	std::string GraphicsManager::getResolution()
 	{
-		return resolution;
+		return resolution_;
 	}
 
 	/*
@@ -347,7 +337,7 @@ namespace El_Horno {
 	*/
 	void GraphicsManager::setResolution(std::string value)
 	{
-		resolution = value;
+		resolution_ = value;
 
 		std::stringstream mode(value);
 
@@ -369,14 +359,14 @@ namespace El_Horno {
 
 	std::string GraphicsManager::getFSAA()
 	{
-		return fsaa;
+		return fsaa_;
 	}
 
 	void GraphicsManager::setFSAA(int value)
 	{
-		fsaa = std::to_string(value);
+		fsaa_ = std::to_string(value);
 
-		graphicOptions_["FSAA"].currentValue = fsaa;
+		graphicOptions_["FSAA"].currentValue = fsaa_;
 	}
 
 	bool GraphicsManager::getGamma()
@@ -424,7 +414,7 @@ namespace El_Horno {
 	{
 		setFullScreen();
 
-		graphicOptions_["Video Mode"].currentValue = resolution;
+		graphicOptions_["Video Mode"].currentValue = resolution_;
 
 		if (graphicOptions_["VSync"].currentValue != (vSync_ ? "Yes" : "No")) {
 			setVSync(vSync_);
@@ -443,16 +433,16 @@ namespace El_Horno {
 
 	void GraphicsManager::changeAdvancedGraphicComponents()
 	{
-		graphicOptions_["FSAA"].currentValue = fsaa;
+		graphicOptions_["FSAA"].currentValue = fsaa_;
 
 		graphicOptions_["sRGB Gamma Conversion"].currentValue = gamma_ ? "Yes" : "No";
 	}
 
 	void GraphicsManager::revertGraphicChanges()
 	{
-		resolution = graphicOptions_["Video Mode"].currentValue;
+		resolution_ = graphicOptions_["Video Mode"].currentValue;
 
-		setResolution(resolution);
+		setResolution(resolution_);
 
 		setFullScreen();
 
@@ -465,7 +455,7 @@ namespace El_Horno {
 
 	void GraphicsManager::revertAdvancedGraphicChanges()
 	{
-		fsaa = graphicOptions_["FSAA"].currentValue;
+		fsaa_ = graphicOptions_["FSAA"].currentValue;
 
 		if (graphicOptions_["sRGB Gamma Conversion"].currentValue == "Yes")
 			gamma_ = true;

@@ -54,22 +54,14 @@ namespace El_Horno {
 	//esto seria para poner el setup principalmente de los mandos, lo omito ya que solo queiro pillar el input de teclado momento
 	void InputManager::setup()
 	{
-
 		//TODO configuracion de mandos
 	}
 
 	//recoge los principales eventos de SDL y los gestiona de ser necesario
-	bool InputManager::GeneralInputManagement(SDL_Event event)
+	bool InputManager::generalInputManagement(SDL_Event event)
 	{
-		//http://cegui.org.uk/wiki/Using_CEGUI_with_SDL_and_OpenGL_(0.7) //la referencia que voya a usar
-
-
 		switch (event.type)
 		{
-			//En principio, como se puede preguntar si X tecla o boton del mando está pulsada/o, no hace falta gestionar esos eventos
-			//Teclado y mando
-
-			//Estos si hay que guardarlos
 			//Raton
 		case SDL_MOUSEMOTION:
 
@@ -120,10 +112,12 @@ namespace El_Horno {
 	}
 
 
-	bool InputManager::IsKeyDown(SDL_Scancode key)
+	bool InputManager::isKeyDown(SDL_Scancode key)
 	{
 		const Uint8* state = SDL_GetKeyboardState(NULL);
 
 		return state[key];
 	}
 }
+
+//http://cegui.org.uk/wiki/Using_CEGUI_with_SDL_and_OpenGL_(0.7) //la referencia que voya a usar

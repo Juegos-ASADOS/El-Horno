@@ -245,19 +245,19 @@ namespace El_Horno {
 		rb->setFriction(0.7);
 
 		btVector3 force(0, 0, 0);
-		if (InputManager::getInstance()->IsKeyDown(SDL_Scancode::SDL_SCANCODE_A)) {
+		if (InputManager::getInstance()->isKeyDown(SDL_Scancode::SDL_SCANCODE_A)) {
 			force += btVector3(-speed, 0, 0);
 			tr->setDirection({ 1,0,0 });
 		}
-		if (InputManager::getInstance()->IsKeyDown(SDL_Scancode::SDL_SCANCODE_D)) {
+		if (InputManager::getInstance()->isKeyDown(SDL_Scancode::SDL_SCANCODE_D)) {
 			force += btVector3(speed, 0, 0);
 			tr->setDirection({ -1,0,0 });
 		}
-		if (InputManager::getInstance()->IsKeyDown(SDL_Scancode::SDL_SCANCODE_W)) {
+		if (InputManager::getInstance()->isKeyDown(SDL_Scancode::SDL_SCANCODE_W)) {
 			force += btVector3(0, 0, -speed);
 			tr->setDirection({ 0,0,1 });
 		}
-		if (InputManager::getInstance()->IsKeyDown(SDL_Scancode::SDL_SCANCODE_S)) {
+		if (InputManager::getInstance()->isKeyDown(SDL_Scancode::SDL_SCANCODE_S)) {
 			force += btVector3(0, 0, speed);
 			tr->setDirection({ 0,0,-1 });
 		}

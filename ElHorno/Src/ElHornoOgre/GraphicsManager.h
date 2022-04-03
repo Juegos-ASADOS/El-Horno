@@ -13,8 +13,6 @@ namespace Ogre {
 	struct ConfigOption;
 };
 
-// Ogre includes
-
 class SDL_Window;
 class OurFrameListener;
 
@@ -67,8 +65,6 @@ namespace El_Horno {
 
 		void setFarShadowDistance(float dist);
 		float getFarShadowDistance();
-		//void setShadowTechnique(Ogre::ShadowTechnique type);
-		//Ogre::ShadowTechnique getShadowTechnique();
 		Ogre::Entity* createEntity(std::string meshName);
 
 	private:
@@ -94,8 +90,8 @@ namespace El_Horno {
 		// Config de pantalla
 		std::map<std::string, Ogre::ConfigOption> graphicOptions_;
 
-		std::string resolution,
-			fsaa;
+		std::string resolution_,
+			fsaa_;
 		int screenWidth_,
 			screenHeight_;
 

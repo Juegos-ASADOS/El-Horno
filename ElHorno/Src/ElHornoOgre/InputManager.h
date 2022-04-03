@@ -29,10 +29,9 @@ namespace El_Horno {
 
 		void setup();
 
-		bool GeneralInputManagement(SDL_Event event);
+		bool generalInputManagement(SDL_Event event);
 
-		//el resto sera para arreglar lo que SDL no hace, (raton, mando xbox, etc)
-		bool IsKeyDown(SDL_Scancode key);
+		bool isKeyDown(SDL_Scancode key);
 	};
 }
 #endif _INPUT_MANAGER_H

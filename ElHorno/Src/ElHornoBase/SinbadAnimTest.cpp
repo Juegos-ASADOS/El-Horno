@@ -41,7 +41,7 @@ namespace El_Horno
 
 	void SinbadAnimTest::update()
 	{
-		if (ElHornoBase::getInstance()->getInputManager()->IsKeyDown(SDL_Scancode::SDL_SCANCODE_SPACE))
+		if (ElHornoBase::getInstance()->getInputManager()->isKeyDown(SDL_Scancode::SDL_SCANCODE_SPACE))
 		{
 			if (!dancing)
 			{
@@ -50,10 +50,10 @@ namespace El_Horno
 			}
 		}
 
-		if (ElHornoBase::getInstance()->getInputManager()->IsKeyDown(SDL_Scancode::SDL_SCANCODE_W) ||
-			ElHornoBase::getInstance()->getInputManager()->IsKeyDown(SDL_Scancode::SDL_SCANCODE_A) ||
-			ElHornoBase::getInstance()->getInputManager()->IsKeyDown(SDL_Scancode::SDL_SCANCODE_S) ||
-			ElHornoBase::getInstance()->getInputManager()->IsKeyDown(SDL_Scancode::SDL_SCANCODE_D))
+		if (ElHornoBase::getInstance()->getInputManager()->isKeyDown(SDL_Scancode::SDL_SCANCODE_W) ||
+			ElHornoBase::getInstance()->getInputManager()->isKeyDown(SDL_Scancode::SDL_SCANCODE_A) ||
+			ElHornoBase::getInstance()->getInputManager()->isKeyDown(SDL_Scancode::SDL_SCANCODE_S) ||
+			ElHornoBase::getInstance()->getInputManager()->isKeyDown(SDL_Scancode::SDL_SCANCODE_D))
 		{
 			if (!walking)
 			{
