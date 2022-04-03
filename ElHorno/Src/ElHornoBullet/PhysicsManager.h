@@ -4,6 +4,7 @@
 
 #include <string>
 
+
 class btDiscreteDynamicsWorld;
 class btDispatcher;
 class btBroadphaseInterface;
@@ -16,20 +17,22 @@ class btGhostObject;
 class btTransform;
 class btVector3;
 
+
 template<typename T>
 class btAlignedObjectArray;
 
 namespace El_Horno {
-class Transform;
-
-enum ColliderShape {
-	Box,
-	Sphere,
-	Cylinder,
-	Capsule
-};
-
+	class Transform;
+	class CollisionLayers;
 	class OgreDebugDrawer;
+
+	enum ColliderShape {
+		Box,
+		Sphere,
+		Cylinder,
+		Capsule
+	};
+
 	class PhysicsManager
 	{
 	public:
@@ -67,15 +70,22 @@ enum ColliderShape {
 
 		void setGravity(const btVector3& g);
 
+		int getLayer(const std::string& name) const;
+		void addLayer(const std::string& name);
+
 	private:
 		static PhysicsManager* instance_;
 
 		PhysicsManager();
 		~PhysicsManager();
 
+		//Contador de rigidbodies (nº de identificacion)
 		int userIdxCount_ = 0;
 
 		btVector3* gravity_ = nullptr;
+
+		//Manejo de layers de colision
+		CollisionLayers* layers_;
 
 		//Mundo de las físicas de bullet
 		btDiscreteDynamicsWorld* dynamicsWorld_;

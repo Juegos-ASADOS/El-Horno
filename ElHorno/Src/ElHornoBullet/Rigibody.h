@@ -21,6 +21,7 @@ namespace El_Horno {
 	{
 	public:
 		RigidBody(float mass, bool isTrigger, bool isKinematic,int colShape);
+		RigidBody(float mass, int group, int mask, bool isTrigger, bool isKinematic,int colShape);
 		~RigidBody();
 
 		virtual void start() override;
@@ -61,7 +62,7 @@ namespace El_Horno {
 
 	private:
 		//Masa por defecto 
-		//[DIN�MICO > 0 | EST�TICO == 0]
+		//[DINAMICO > 0 | ESTATICO == 0]
 		float mass_ = 1.0f;
 
 		float friction_;
@@ -72,19 +73,17 @@ namespace El_Horno {
 
 		bool isKinematic_ = false;
 
+		//Colision Masks
+		int group_ = -1;
+
+		int mask_ = -1;
+
 		//Rigidbody de bullet
 		btRigidBody* rigid_;
 
 		//Forma b�sica del collider + Enum del PhysicsManager
 		btCollisionShape* shape_ = nullptr;
-		btVector3* size_ = nullptr;
 		int colShape_ = 0;
-
-		//Array de constraints de rotacion en x y z
-		bool rotationConstraints[3]{ false, false, false };
-
-		//Array de constraints de traslacion en x y z
-		bool positionConstraints[3]{ false, false, false };
 
 		//Transform de bullet para generar el rigidbody de bullet
 		btTransform* bttrasform_ = nullptr;
