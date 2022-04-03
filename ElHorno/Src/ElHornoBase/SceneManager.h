@@ -18,16 +18,18 @@ class Scene;
 		Scene* getCurrentScene();
 
 		Scene* loadScene(const std::string& sceneName);
+
+		//TODO
 		void changeScene(const std::string& name);
 
-
+		//TODO
 		void start(std::string initialScene);
 		void preUpdate();
 		void update();
 		void deleteEntities();
 
 	private:
-		static SceneManager* instance;
+		static SceneManager* instance_;
 
 		Scene* currentScene_ = nullptr;
 

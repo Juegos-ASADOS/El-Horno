@@ -29,24 +29,6 @@ namespace El_Horno {
 	// FIN DEFINIR SINGLETON
 
 
-	// Para crear componentes desde el Json
-	//template<typename ...Ts>
-	//Component* FactoryCreator::getComponent(const std::string type, Ts &&...args)
-	//{
-	//	std::map<std::string, Factory*>::iterator it = map.find(type);
-	//
-	//	// Si esta en el mapa
-	//	if (it != map.end())
-	//	{
-	//		// Cogemos la factoria del componente y lo creamos
-	//		return (it)->second->createComponent(args);
-	//	}
-	//
-	//	//Si no esta en el mapa
-	//	return nullptr;
-	//	
-	//}
-
 	// Para añadir factorias(crean componentes) al mapa
 	void FactoryCreator::addFactory(const std::string& type)
 	{

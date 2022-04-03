@@ -24,6 +24,7 @@ namespace El_Horno {
 		return getExeTime() - firstTime_;
 	}
 
+	//resetea el tiempo del timer a 0 (comienza a contar otra vez)
 	void Timer::resetTimer()
 	{
 		firstTime_ = (double)GetTickCount64() / 1000.0;

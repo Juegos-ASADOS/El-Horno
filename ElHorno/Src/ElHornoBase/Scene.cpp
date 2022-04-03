@@ -64,7 +64,7 @@ namespace El_Horno {
 		
 	}
 
-	//TODO Destruir VierwPorts y c�maras lo primero de todo
+	//TODO Destruir VierwPorts y camaras lo primero de todo
 	Scene::~Scene()
 	{
 		std::map<std::string, Entity*> dontDelete;
@@ -88,6 +88,7 @@ namespace El_Horno {
 		dontDelete.clear();
 	}
 
+	//devuelve la entidad por el nombre y su layer
 	Entity* Scene::getEntity(const std::string& name, const std::string& layer)
 	{
 		std::map<std::string, std::vector<Entity*>>::iterator entity = entities_.find(layer);
@@ -108,6 +109,7 @@ namespace El_Horno {
 		}
 	}
 
+	//agrega una entidad a una layer de renderizado y grupo
 	Entity* Scene::addEntity(const std::string& name, const std::string& layer, const std::string& group)
 	{
 		Entity* e = new Entity(name, this);
@@ -231,6 +233,8 @@ namespace El_Horno {
 				if (e->isActive()) e->update();
 			iter++;
 		}
+
+		//A partir de aqui quitar todo
 
 		Transform* tr = entities_.at("prueba")[2]->getComponent<Transform>("transform");
 		RigidBody* rb = entities_.at("prueba")[2]->getComponent<RigidBody>("rigidbody");

@@ -28,7 +28,6 @@
     <ClCompile Include="..\..\Src\ElHornoBase\Entity.cpp" />
     <ClCompile Include="..\..\Src\ElHornoBase\EventListener.cpp" />
     <ClCompile Include="..\..\Src\ElHornoBase\EventManager.cpp" />
-    <ClCompile Include="..\..\Src\ElHornoBase\Factory.cpp" />
     <ClCompile Include="..\..\Src\ElHornoBase\FactoryCreator.cpp" />
     <ClCompile Include="..\..\Src\ElHornoBase\HornoConversions.cpp" />
     <ClCompile Include="..\..\Src\ElHornoBase\LightComponent.cpp" />

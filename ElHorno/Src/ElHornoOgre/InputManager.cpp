@@ -1,4 +1,4 @@
-#include "InputManager.h" //ajusten a ruta cuano organicemos carpetas
+#include "InputManager.h" 
 #include "SDL_keyboard.h"
 #include "SDL_keycode.h"
 #include <Vector>

@@ -32,35 +32,35 @@ namespace El_Horno {
 	//Coloca el evento en una lista de eventos a procesar
 	void EventManager::sendEvent(Event* e)
 	{
-		eventsQueue.push(e);
+		eventsQueue_.push(e);
 	}
 
 	void EventManager::sendComponentEvent(EventListener* target, Event* e)
 	{
-		componentQueue.push({ target, e });
+		componentQueue_.push({ target, e });
 	}
 
 	void EventManager::sendEntityEvent(Entity* target, Event* e)
 	{
-		entityQueue.push({ target, e });
+		entityQueue_.push({ target, e });
 	}
 
 	//Procesa todos los eventos y los envia a todas las entidades
 	void EventManager::processEvents()
 	{
 		//Eventos generales
-		while (!eventsQueue.empty()) {
-			Event* e = eventsQueue.front(); eventsQueue.pop();
-			for (EventListener* eL : eventListeners) {
+		while (!eventsQueue_.empty()) {
+			Event* e = eventsQueue_.front(); eventsQueue_.pop();
+			for (EventListener* eL : eventListeners_) {
 				eL->recieveEvent(e);
 			}
 			delete e;
 		}
 
 		//Eventos de entidades
-		while (!entityQueue.empty()) {
-			Entity* target = entityQueue.front().first;
-			Event* e = entityQueue.front().second; entityQueue.pop();
+		while (!entityQueue_.empty()) {
+			Entity* target = entityQueue_.front().first;
+			Event* e = entityQueue_.front().second; entityQueue_.pop();
 			for (Component* cp : target->getComponents()) {
 				cp->recieveEvent(e);
 			}
@@ -68,9 +68,9 @@ namespace El_Horno {
 		}
 
 		//Eventos específicos
-		while (!componentQueue.empty()) {
-			EventListener* target = componentQueue.front().first;
-			Event* e = componentQueue.front().second; componentQueue.pop();
+		while (!componentQueue_.empty()) {
+			EventListener* target = componentQueue_.front().first;
+			Event* e = componentQueue_.front().second; componentQueue_.pop();
 
 			target->recieveEvent(e);
 
@@ -81,20 +81,20 @@ namespace El_Horno {
 	//Vacia la cola de eventos
 	void EventManager::clearQueue()
 	{
-		while (!eventsQueue.empty()) {
-			auto* elem = eventsQueue.front(); eventsQueue.pop();
+		while (!eventsQueue_.empty()) {
+			auto* elem = eventsQueue_.front(); eventsQueue_.pop();
 			delete elem;
 		}
 
 		//Borra solo el evento
-		while (!entityQueue.empty()) {
-			auto* elem = entityQueue.front().second; entityQueue.pop();
+		while (!entityQueue_.empty()) {
+			auto* elem = entityQueue_.front().second; entityQueue_.pop();
 			delete elem;
 		}
-		
+
 		//Idem al de arriba
-		while (!componentQueue.empty()) {
-			auto* elem = componentQueue.front().second; componentQueue.pop();
+		while (!componentQueue_.empty()) {
+			auto* elem = componentQueue_.front().second; componentQueue_.pop();
 			delete elem;
 		}
 	}
@@ -102,22 +102,22 @@ namespace El_Horno {
 	//Vacia el vector de listeners de eventos
 	void EventManager::clearListeneres()
 	{
-		eventListeners.clear();
+		eventListeners_.clear();
 	}
 
 	//Añade un listener al vector
 	void EventManager::addListener(EventListener* eL)
 	{
-		eventListeners.push_back(eL);
+		eventListeners_.push_back(eL);
 	}
 
 	//Elimina un listener del vector
 	bool EventManager::removeListener(EventListener* e)
 	{
-		auto it = eventListeners.begin();
-		while (it != eventListeners.end()) {
+		auto it = eventListeners_.begin();
+		while (it != eventListeners_.end()) {
 			if (*it == e) {
-				eventListeners.erase(it);
+				eventListeners_.erase(it);
 				return true;
 			}
 			++it;

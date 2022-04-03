@@ -27,6 +27,8 @@ namespace El_Horno {
 		static bool setupInstance();
 		static void erase();
 
+
+		//crea un componente del tipo y lo devuelve
 		template<typename T, typename ...Ts>
 		T* getComponent(const std::string type, Ts &&...args)
 		{
@@ -46,6 +48,8 @@ namespace El_Horno {
 			return nullptr;
 
 		}
+
+		//crear una factoria del tipo X
 		void addFactory(const std::string& type);
 	};
 }

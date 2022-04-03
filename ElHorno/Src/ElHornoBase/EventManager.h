@@ -39,15 +39,15 @@ namespace El_Horno {
 		~EventManager();
 
 		//Queue hacia todos los EventListener
-		std::queue<Event*> eventsQueue;
+		std::queue<Event*> eventsQueue_;
 
 		//Queue de eventos de los que se conoce el EventListener destinatario
-		std::queue<std::pair<EventListener*, Event*>> componentQueue;
-		
-		//Queue de eventos a todos los componentes de la Entidad destinataria
-		std::queue<std::pair<Entity*, Event*>> entityQueue;
+		std::queue<std::pair<EventListener*, Event*>> componentQueue_;
 
-		std::vector<EventListener*> eventListeners;
+		//Queue de eventos a todos los componentes de la Entidad destinataria
+		std::queue<std::pair<Entity*, Event*>> entityQueue_;
+
+		std::vector<EventListener*> eventListeners_;
 	};
 }
 #endif _EVENT_MANAGER_H

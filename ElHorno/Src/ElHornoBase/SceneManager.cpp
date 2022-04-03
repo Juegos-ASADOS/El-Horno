@@ -10,7 +10,7 @@
 
 namespace El_Horno {
 
-	SceneManager* SceneManager::instance = 0;
+	SceneManager* SceneManager::instance_ = 0;
 
 	SceneManager::SceneManager()
 	{
@@ -25,13 +25,13 @@ namespace El_Horno {
 
 	SceneManager* SceneManager::getInstance()
 	{
-		return instance;
+		return instance_;
 	}
 
 	bool SceneManager::setupInstance()
 	{
-		if (instance == 0) {
-			instance = new SceneManager();
+		if (instance_ == 0) {
+			instance_ = new SceneManager();
 			return true;
 		}
 		return false;
@@ -39,7 +39,7 @@ namespace El_Horno {
 
 	void SceneManager::erase()
 	{
-		delete instance;
+		delete instance_;
 	}
 
 	Scene* SceneManager::getCurrentScene()
@@ -49,12 +49,9 @@ namespace El_Horno {
 
 	Scene* SceneManager::loadScene(const std::string& sceneName)
 	{
-		//COMENTADO POR EL USO DE JSON
-		//json j /*= ResourceManager::getInstance()->loadSceneFile(sceneName)*/;
-
 		currentScene_ = new Scene();
-		//currentScene_->setupScene(j);
 
+		//TODO
 		//Creamos el evento de cambiar la escena?
 		Event* changeSceneEvent = new Event(EventType::ChangeScene);
 

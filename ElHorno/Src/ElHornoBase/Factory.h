@@ -13,31 +13,4 @@ namespace El_Horno {
 		static T* createComponent(Ts &&...args) { return new T(args...); };
 	};
 }
-//class TransformFactory : public Factory {
-//public:
-//	template<typename ...Ts>
-//	Component* createComponent(Ts &&...args)
-//	{
-//		return new Transform(args);
-//	}
-//};
-//
-//class MeshFactory : public Factory {
-//public:
-//	template<typename ...Ts>
-//	Component* createComponent(Ts &&...args) 
-//	{
-//		return new Mesh(args);
-//	}
-//};
-//
-//class CameraFactory : public Factory {
-//public:
-//	template<typename ...Ts>
-//	Component* createComponent(Ts &&...args)
-//	{
-//		return new CameraComponent(args);
-//	}
-//};
-
 #endif _FACTORY_H
