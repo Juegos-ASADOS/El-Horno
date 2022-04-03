@@ -28,9 +28,18 @@ namespace El_Horno {
 		this->colShape_ = colShape;
 	}
 
+	RigidBody::RigidBody(float mass, int group, int mask, bool isTrigger, bool isKinematic, int colShape)
+	{
+		this->mass_ = mass;
+		this->group_ = group;
+		this->mask_ = mask;
+		this->isKinematic_ = isKinematic;
+		this->isTrigger_ = isTrigger;
+		this->colShape_ = colShape;
+	}
+
 	RigidBody::~RigidBody()
 	{
-		delete size_; size_ = nullptr;
 		delete bttrasform_; bttrasform_ = nullptr;
 	}
 
@@ -43,18 +52,21 @@ namespace El_Horno {
 		
 		transform_ = entity_->getComponent<Transform>("transform");
 
-		size_ = new btVector3(0,0,0);
+		btVector3 size(1,1,1);
 		//Si tiene mesh, la utilizamos para tomar el tamaño por defecto
 		if (entity_->getComponent<Mesh>("mesh")) {
 			Ogre::Entity* obj = entity_->getComponent<Mesh>("mesh")->getOgreEntity();
 			//Usamos la BoundingBox de la malla
-			*size_ += VectorToBullet(obj->getBoundingBox().getHalfSize());
+			size += VectorToBullet(obj->getBoundingBox().getHalfSize());
+			
+			//Ajuste de tamaño
+			size *= 0.975;
 		}//De lo contrario tomamos el tamaño del transform (no debería entrar aquí de normal)
 		else{
-			*size_ += VectorToBullet(transform_->getScale());
+			size += VectorToBullet(transform_->getScale());
 		}
 
-		shape_ = phManager_->createShape(transform_, size_, (ColliderShape)colShape_);
+		shape_ = phManager_->createShape(transform_, &size, (ColliderShape)colShape_);
 
 		//Transform de bullet
 		bttrasform_ = new btTransform(QuaternionToBullet(transform_->getRotation()), VectorToBullet(transform_->getPosition()));
@@ -75,15 +87,19 @@ namespace El_Horno {
 		rigid_->setRestitution(restitution_);
 		rigid_->setFriction(friction_);
 
-		//Necesario indicarle al manager que lo agregue al mundo de Bullet
-		phManager_->addBody(rigid_);
-
+		//Necesario indicarle al manager que lo agregue al mundo de Bullet (y añada sus flags)
+		if(group_ != -1 && mask_ != -1)
+			phManager_->addBody(rigid_, group_, mask_);
+		else
+			phManager_->addBody(rigid_);
+		
 		if(isKinematic_)
-			rigid_->setCollisionFlags(btCollisionObject::CF_KINEMATIC_OBJECT);
+			rigid_->setCollisionFlags(rigid_->getCollisionFlags() || btCollisionObject::CF_KINEMATIC_OBJECT);
 
 		//En función de si es trigger o no, se activan las flags
 		if (isTrigger_) 
-			rigid_->setCollisionFlags(btCollisionObject::CF_NO_CONTACT_RESPONSE);
+			rigid_->setCollisionFlags(rigid_->getCollisionFlags() || btCollisionObject::CF_NO_CONTACT_RESPONSE);
+
 	}
 
 	////Cogemos el valor del Transform y se lo damos a Bullet en preupdate
@@ -206,23 +222,13 @@ namespace El_Horno {
 		return rigid_->getAngularVelocity();
 	}
 
-	//x=0 y=1 z=2
-	void RigidBody::setRotConstraints(int i, bool value) {
-		if (i >= 0 && i <= 2) {
-			rotationConstraints[i] = value;
-		}
-	}
-
-	//x=0 y=1 z=2
-	void RigidBody::setPosConstraints(int i, bool value) {
-		if (i >= 0 && i <= 2) {
-			positionConstraints[i] = value;
-		}
-	}
-
 	void RigidBody::syncScale()
 	{
+		Ogre::Entity* obj = entity_->getComponent<Mesh>("mesh")->getOgreEntity();
 		Ogre::Vector3 scale = transform_->getScale();
-		rigid_->getCollisionShape()->setLocalScaling(*size_ * VectorToBullet(scale));
+		btVector3 size(1, 1, 1);
+		//Usamos la BoundingBox de la malla
+		size += VectorToBullet(obj->getBoundingBox().getHalfSize());
+		rigid_->getCollisionShape()->setLocalScaling(size * VectorToBullet(scale));
 	}
 }

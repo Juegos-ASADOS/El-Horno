@@ -8,7 +8,9 @@
 #include "HornoConversions.h"
 #include "PhysicsCallbacks.h"
 
+#include "CollisionLayers.h"
 #include "DebugDrawer.h"
+
 #include "GraphicsManager.h"
 
 namespace El_Horno {
@@ -44,11 +46,14 @@ namespace El_Horno {
 
 	PhysicsManager::~PhysicsManager()
 	{
-		//Borrado en reverso, de último creado a primero
+		//Borrado en reverso, de último creado a primero//
 
 		//------
 		//Borrado del DebugDrawer en GraphicsManager
 		//------
+
+		//Borramos el manejo de las capas de colision
+		delete layers_; layers_ = nullptr;
 
 		//No tenemos constraints, pero las borramos de todos modos
 		int i;
@@ -111,9 +116,10 @@ namespace El_Horno {
 
 		dynamicsWorld_ = new btDiscreteDynamicsWorld(dispatcher_, broadphaseInterface_, constraintSolver_, collisionConfiguration_);
 
-
 		//Gravedad por defecto
 		dynamicsWorld_->setGravity(btVector3(0, -9.8, 0));
+
+		layers_ = new CollisionLayers();
 	}
 
 	void PhysicsManager::debugStart()
@@ -224,6 +230,16 @@ namespace El_Horno {
 		if (dynamicsWorld_) dynamicsWorld_->setGravity(*gravity_);
 	}
 
+	int PhysicsManager::getLayer(const std::string& name) const
+	{
+		return layers_->getLayer(name);
+	}
+
+	void PhysicsManager::addLayer(const std::string& name)
+	{
+		layers_->addLayer(name);
+	}
+
 	//Transform de la entidad (del motor)
 	//Size de la BOUNDING BOX DE OGRE (multiplicada luego por la escala del transform)
 	//Forma deseada
@@ -265,7 +281,6 @@ namespace El_Horno {
 		body->setCollisionShape(shape);
 
 		return body;
-
 	}
 
 	btRigidBody* PhysicsManager::createRigidBody(btTransform* tr, btCollisionShape* shape, int& userIdx_, const float& mass)
@@ -305,5 +320,4 @@ namespace El_Horno {
 //btRigidBody::setAngularFactor evita rotaciones 
 
 //CollideMasks:
-//dynamicsWorld_.setGroupCollisionFlag(0, 0, False)
 //bodyNP.setCollideMask(BitMask32.bit(0))

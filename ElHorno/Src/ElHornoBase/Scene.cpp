@@ -29,7 +29,7 @@ namespace El_Horno {
 		Entity* a = addEntity("camera", "prueba");
 		Ogre::Vector3 p = { 10,10,10 };
 		a->addComponent<Transform>("transform", Ogre::Vector3(0, 0, 0), Ogre::Vector3(0, 0, 0), Ogre::Vector3(0, 0, 0));
-		a->addComponent<CameraComponent>("camera", Ogre::Vector3(0, 100, 450), Ogre::Vector3(0, 0, 0), Ogre::ColourValue(0, 0.3, 0.5), 5, 10000);
+		a->addComponent<CameraComponent>("camera", Ogre::Vector3(0, 600, 100), Ogre::Vector3(0, 0, 0), Ogre::ColourValue(0, 0.3, 0.5), 5, 10000);
 		a->addComponent<AudioListenerComponent>("audioListener");
 
 		Entity* b = addEntity("object", "prueba");

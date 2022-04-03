@@ -42,6 +42,9 @@
     <ClInclude Include="..\..\Src\ElHornoBullet\PhysicsCallbacks.h">
       <Filter>Archivos de encabezado\PhysicsManager</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\Src\ElHornoBullet\CollisionLayers.h">
+      <Filter>Archivos de encabezado\PhysicsManager</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\Src\ElHornoBullet\ElHornoBullet.cpp">
@@ -54,6 +57,9 @@
       <Filter>Archivos de origen\Components</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Src\ElHornoBullet\DebugDrawer.cpp">
+      <Filter>Archivos de origen\PhysicsManager</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Src\ElHornoBullet\CollisionLayers.cpp">
       <Filter>Archivos de origen\PhysicsManager</Filter>
     </ClCompile>
   </ItemGroup>

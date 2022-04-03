@@ -39,7 +39,7 @@ namespace El_Horno {
 
 		setScale(pScal_);
 
-		node_->showBoundingBox(true);
+		//node_->showBoundingBox(true);
 	}
 
 	// Getters
