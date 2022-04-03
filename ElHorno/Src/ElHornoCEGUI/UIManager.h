@@ -26,7 +26,7 @@ namespace El_Horno {
 	private:
 		UIManager();
 
-		static UIManager* instance;
+		static UIManager* instance_;
 
 		CEGUI::WindowManager* winMngr;
 		CEGUI::OgreRenderer* renderer;

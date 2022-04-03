@@ -10,7 +10,7 @@
 //#include "checkML.h"
 
 namespace El_Horno {
-	InputManager* InputManager::instance = 0;
+	InputManager* InputManager::instance_ = 0;
 
 	InputManager::InputManager()
 	{
@@ -26,20 +26,20 @@ namespace El_Horno {
 
 	InputManager* InputManager::getInstance()
 	{
-		if (instance == 0 || instance == nullptr)
+		if (instance_ == 0 || instance_ == nullptr)
 		{
 			return nullptr;
 		}
 
-		return instance;
+		return instance_;
 	}
 
 
 	bool InputManager::setupInstance()
 	{
-		if (instance == 0)
+		if (instance_ == 0)
 		{
-			instance = new InputManager();
+			instance_ = new InputManager();
 			return true;
 		}
 
@@ -48,7 +48,7 @@ namespace El_Horno {
 
 	void InputManager::erase()
 	{
-		delete instance;
+		delete instance_;
 	}
 
 	//esto seria para poner el setup principalmente de los mandos, lo omito ya que solo queiro pillar el input de teclado momento

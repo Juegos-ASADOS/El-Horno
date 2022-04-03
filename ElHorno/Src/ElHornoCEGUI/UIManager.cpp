@@ -9,7 +9,7 @@
 #include "CheckML.h"
 
 namespace El_Horno {
-	UIManager* UIManager::instance = 0;
+	UIManager* UIManager::instance_ = 0;
 
 	UIManager::UIManager()
 	{
@@ -27,15 +27,15 @@ namespace El_Horno {
 
 	UIManager* UIManager::getInstance()
 	{
-		return instance;
+		return instance_;
 	}
 
 
 	bool UIManager::setupInstance()
 	{
-		if (instance == 0)
+		if (instance_ == 0)
 		{
-			instance = new UIManager();
+			instance_ = new UIManager();
 			return true;
 		}
 
@@ -55,7 +55,7 @@ namespace El_Horno {
 
 	void UIManager::erase()
 	{
-		delete instance;
+		delete instance_;
 	}
 
 	void UIManager::createRoot()

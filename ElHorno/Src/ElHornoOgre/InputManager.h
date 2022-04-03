@@ -14,7 +14,7 @@ namespace El_Horno {
 	private:
 		InputManager();
 
-		static InputManager* instance;
+		static InputManager* instance_;
 
 		//pendiente de agregar mandos
 

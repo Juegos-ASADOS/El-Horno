@@ -23,20 +23,20 @@ extern "C"
 
 namespace El_Horno {
 
-LuaManager* LuaManager::instance;
+LuaManager* LuaManager::instance_;
 
 LuaManager* LuaManager::getInstance()
 {
-    if (instance == 0)
+    if (instance_ == 0)
         return nullptr;
 
-    return instance;
+    return instance_;
 }
 
 bool LuaManager::setupInstance()
 {
-    if (instance == 0) {
-        instance = new LuaManager();
+    if (instance_ == 0) {
+        instance_ = new LuaManager();
         return true;
     }
     return false;
@@ -44,7 +44,7 @@ bool LuaManager::setupInstance()
 
 void LuaManager::erase()
 {  
-    delete instance;
+    delete instance_;
 }
 
 void LuaManager::init()
@@ -125,7 +125,7 @@ void Example::printName()
 	std::cout << "[C++ CODE] Hello, my name is " << m_name << "!" << "\n";
 }
 }
-// create a global variable (an instance of a Greeter class) in Lua scope
+// create a global variable (an instance_ of a Greeter class) in Lua scope
 //auto globalGreeter = std::make_unique<Example>("noname");
 //std::error_code e = std::error_code();
 //luabridge::push(luaState, globalGreeter.get(), e);

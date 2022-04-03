@@ -45,7 +45,7 @@ namespace El_Horno {
 
         void exposeEntity();
 
-        static LuaManager* instance;
+        static LuaManager* instance_;
 
         lua_State* luaState;
     };

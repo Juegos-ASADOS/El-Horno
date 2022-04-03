@@ -68,7 +68,7 @@ enum ColliderShape {
 		void setGravity(const btVector3& g);
 
 	private:
-		static PhysicsManager* instance;
+		static PhysicsManager* instance_;
 
 		PhysicsManager();
 		~PhysicsManager();

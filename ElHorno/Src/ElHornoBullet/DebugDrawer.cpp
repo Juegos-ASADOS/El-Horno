@@ -134,6 +134,11 @@ namespace El_Horno {
         LogManager::getSingleton().getDefaultLog()->logMessage(warningString);
     }
 
+    void OgreDebugDrawer::draw3dText(const btVector3& location, const char* textString)
+    {
+
+    }
+
     void OgreDebugDrawer::setDebugMode(int debugMode)
     {
         mDebugModes_ = (DebugDrawModes)debugMode;
