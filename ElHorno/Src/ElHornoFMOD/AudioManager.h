@@ -20,7 +20,7 @@ namespace FMOD {
 }
 
 namespace El_Horno {
-	class Implementation {
+	class _declspec(dllexport) Implementation {
 	public:
 		Implementation();
 		~Implementation();
@@ -43,7 +43,7 @@ namespace El_Horno {
 		ChannelMap mChannels;
 	};
 
-	class AudioManager
+	class _declspec(dllexport) AudioManager
 	{
 	public:
 		void init();

@@ -9,7 +9,7 @@ namespace CEGUI {
 }
 
 namespace El_Horno {
-	class UIPushButton : public UIElement
+	class _declspec(dllexport) UIPushButton : public UIElement
 	{
 	protected:
 		UIPushButton();

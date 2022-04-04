@@ -14,7 +14,7 @@ namespace Ogre {
 }
 
 namespace El_Horno {
-	class ParticleSystem : public Component
+	class _declspec(dllexport) ParticleSystem : public Component
 	{
 	public:
 

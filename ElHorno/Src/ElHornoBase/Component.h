@@ -8,7 +8,7 @@
 namespace El_Horno {
 	class Entity;
 
-	class Component : public EventListener
+	class _declspec(dllexport) Component : public EventListener
 	{
 	protected:
 		bool active_;

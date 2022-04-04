@@ -17,7 +17,7 @@ class PhysicsManager;
 class Transform;
 
 namespace El_Horno {
-	class RigidBody : public Component
+	class _declspec(dllexport) RigidBody : public Component
 	{
 	public:
 		RigidBody(float mass, bool isTrigger, bool isKinematic,int colShape);

@@ -8,7 +8,7 @@
 namespace El_Horno {
 class Entity;
 
-	class Scene
+	class _declspec(dllexport) Scene
 	{
 	public:
 		Scene();

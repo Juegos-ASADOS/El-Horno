@@ -11,7 +11,7 @@ namespace CEGUI {
 
 namespace El_Horno {
 	//AHORA LA UIElement hereda de Component
-	class UIElement : Component
+	class _declspec(dllexport) UIElement : Component
 	{
 	protected:
 		UIElement();

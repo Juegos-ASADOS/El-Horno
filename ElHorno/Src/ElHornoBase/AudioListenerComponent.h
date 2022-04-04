@@ -10,7 +10,7 @@ namespace Ogre {
 }
 
 namespace El_Horno {
-	class AudioListenerComponent : public Component
+	class _declspec(dllexport) AudioListenerComponent : public Component
 	{
 	public:
 

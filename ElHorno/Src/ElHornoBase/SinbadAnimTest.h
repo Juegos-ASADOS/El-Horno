@@ -13,7 +13,7 @@ namespace El_Horno {
 namespace El_Horno
 {
 
-	class SinbadAnimTest : public Component
+	class _declspec(dllexport) SinbadAnimTest : public Component
 	{
 	public:
 

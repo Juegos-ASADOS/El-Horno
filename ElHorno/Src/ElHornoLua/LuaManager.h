@@ -13,7 +13,7 @@ namespace luabridge {
 }
 
 namespace El_Horno {
-    class Example {
+    class _declspec(dllexport) Example {
     public:
         Example(const std::string& name) : m_name(name) {}
 
@@ -25,7 +25,7 @@ namespace El_Horno {
         std::string m_name;
     };
 
-    class LuaManager {
+    class _declspec(dllexport) LuaManager {
     public:
         static LuaManager* getInstance();
         static bool setupInstance();
