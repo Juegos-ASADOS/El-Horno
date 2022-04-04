@@ -57,19 +57,19 @@ namespace El_Horno {
 		if (entity_->getComponent<Mesh>("mesh")) {
 			Ogre::Entity* obj = entity_->getComponent<Mesh>("mesh")->getOgreEntity();
 			//Usamos la BoundingBox de la malla
-			size += VectorToBullet(obj->getBoundingBox().getHalfSize());
+			size += OgreVectorToBullet(obj->getBoundingBox().getHalfSize());
 			
 			//Ajuste de tamaño
 			size *= 0.975;
 		}//De lo contrario tomamos el tamaño del transform (no debería entrar aquí de normal)
 		else{
-			size += VectorToBullet(transform_->getScale());
+			size += OgreVectorToBullet(transform_->getScale());
 		}
 
 		shape_ = phManager_->createShape(transform_, &size, (ColliderShape)colShape_);
 
 		//Transform de bullet
-		bttrasform_ = new btTransform(QuaternionToBullet(transform_->getRotation()), VectorToBullet(transform_->getPosition()));
+		bttrasform_ = new btTransform(QuaternionToBullet(transform_->getRotation()), OgreVectorToBullet(transform_->getPosition()));
 
 		//Por defecto
 		friction_ = 0.3f;
@@ -109,7 +109,7 @@ namespace El_Horno {
 			Ogre::Vector3 pos = transform_->getPosition();
 			Ogre::Quaternion rot = transform_->getRotation();
 
-			rigid_->getWorldTransform().setOrigin(VectorToBullet(pos));
+			rigid_->getWorldTransform().setOrigin(OgreVectorToBullet(pos));
 			rigid_->getWorldTransform().setRotation(QuaternionToBullet(rot));
 		}
 	}
@@ -123,7 +123,7 @@ namespace El_Horno {
 		pos = rigid_->getWorldTransform().getOrigin();
 		rot = rigid_->getWorldTransform().getRotation();
 
-		transform_->setPosition(VectorToOgre(pos));
+		transform_->setPosition(BulletVectorToOgre(pos));
 		transform_->setRotation(QuaternionToOgre(rot));
 	}
 
@@ -228,7 +228,7 @@ namespace El_Horno {
 		Ogre::Vector3 scale = transform_->getScale();
 		btVector3 size(1, 1, 1);
 		//Usamos la BoundingBox de la malla
-		size += VectorToBullet(obj->getBoundingBox().getHalfSize());
-		rigid_->getCollisionShape()->setLocalScaling(size * VectorToBullet(scale));
+		size += OgreVectorToBullet(obj->getBoundingBox().getHalfSize());
+		rigid_->getCollisionShape()->setLocalScaling(size * OgreVectorToBullet(scale));
 	}
 }

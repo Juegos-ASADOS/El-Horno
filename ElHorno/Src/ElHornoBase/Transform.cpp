@@ -12,11 +12,11 @@
 using namespace Ogre;
 namespace El_Horno {
 
-	Transform::Transform(Vector3 pos, Vector3 rot, Vector3 scal)
+	Transform::Transform(HornoVector3 pos, HornoVector3 rot, HornoVector3 scal)
 	{
-		pPos_ = pos;
-		pRot_ = rot;
-		pScal_ = scal;
+		pPos_ = HornoVectorToOgre(pos);
+		pRot_ = HornoVectorToOgre(rot);
+		pScal_ = HornoVectorToOgre(scal);
 	}
 
 	Transform::~Transform()

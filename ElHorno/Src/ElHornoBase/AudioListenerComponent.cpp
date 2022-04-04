@@ -28,6 +28,6 @@ namespace El_Horno {
 		vel_.y = 0;
 		vel_.z = 0;
 
-		ElHornoBase::getInstance()->getAudioManager()->updateListener(listenerNumber_, vectorToFmod(pos_), vectorToFmod(vel_), vectorToFmod(forward_), vectorToFmod(up_));
+		ElHornoBase::getInstance()->getAudioManager()->updateListener(listenerNumber_, OgreVectorToFmod(pos_), OgreVectorToFmod(vel_), OgreVectorToFmod(forward_), OgreVectorToFmod(up_));
 	}
 }

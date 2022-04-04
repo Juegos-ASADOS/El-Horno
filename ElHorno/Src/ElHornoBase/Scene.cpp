@@ -22,7 +22,7 @@
 namespace El_Horno {
 	Scene::Scene()
 	{
-		Entity* light = addEntity("light", "prueba");
+		/*Entity* light = addEntity("light", "prueba");
 		light->addComponent<Transform>("transform", Ogre::Vector3(0, 200, 0), Ogre::Vector3(0, 0, 0), Ogre::Vector3(0, 0, 0));
 		light->addComponent<LightComponent>("light", 0, Ogre::Vector3(0, 0, 0));
 
@@ -47,7 +47,7 @@ namespace El_Horno {
 
 		b = addEntity("esmoque", "prueba");
 		b->addComponent<Transform>("transform", Ogre::Vector3(250, 10, 0), Ogre::Vector3(0, 0, 0), p/10);
-		b->addComponent<ParticleSystem>("particleSystem", "smoke", "Smoke", 10, true);
+		b->addComponent<ParticleSystem>("particleSystem", "smoke", "Smoke", 10, true);*/
 
 		//// Sinbad cuidao ogro
 		//Entity* c = addEntity("ogro", "prueba");
@@ -247,19 +247,19 @@ namespace El_Horno {
 		btVector3 force(0, 0, 0);
 		if (InputManager::getInstance()->isKeyDown(SDL_Scancode::SDL_SCANCODE_A)) {
 			force += btVector3(-speed, 0, 0);
-			tr->setDirection({ 1,0,0 });
+			tr->setDirection(Ogre::Vector3{ 1,0,0 });
 		}
 		if (InputManager::getInstance()->isKeyDown(SDL_Scancode::SDL_SCANCODE_D)) {
 			force += btVector3(speed, 0, 0);
-			tr->setDirection({ -1,0,0 });
+			tr->setDirection(Ogre::Vector3{ -1,0,0 });
 		}
 		if (InputManager::getInstance()->isKeyDown(SDL_Scancode::SDL_SCANCODE_W)) {
 			force += btVector3(0, 0, -speed);
-			tr->setDirection({ 0,0,1 });
+			tr->setDirection(Ogre::Vector3{ 0,0,1 });
 		}
 		if (InputManager::getInstance()->isKeyDown(SDL_Scancode::SDL_SCANCODE_S)) {
 			force += btVector3(0, 0, speed);
-			tr->setDirection({ 0,0,-1 });
+			tr->setDirection(Ogre::Vector3{ 0,0,-1 });
 		}
 
 		force.setY(force.y() + rb->getLinearVelocity().y());
