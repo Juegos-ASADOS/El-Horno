@@ -3,6 +3,7 @@
 
 #include <GraphicsManager.h>
 #include <CEGUI/CEGUI.h>
+#include <CEGUI/Window.h>
 #include <CEGUI/RendererModules/Ogre/Renderer.h>
 
 #include <OgreRenderWindow.h>
@@ -50,7 +51,17 @@ namespace El_Horno {
 
 
 		//ImageManager,Font,Scheme,WidgetLookManager...
+		CEGUI::ImageManager::setImagesetDefaultResourceGroup("Imagesets");
+		CEGUI::Font::setDefaultResourceGroup("Fonts");
+		CEGUI::Scheme::setDefaultResourceGroup("Schemes");
+		CEGUI::WidgetLookManager::setDefaultResourceGroup("LookNFeel");
 		CEGUI::WindowManager::setDefaultResourceGroup("Layouts");
+
+
+		//esto es la carga de recursos sobre como s eva a utilizar cegui (fuente de letra, letreros, puntero del raton etc etc)
+		CEGUI::SchemeManager::getSingleton().createFromFile("TaharezLook.scheme");
+		CEGUI::System::getSingleton().getDefaultGUIContext().getMouseCursor().setDefaultImage("TaharezLook/MouseArrow");
+
 	}
 
 	void UIManager::erase()
@@ -65,6 +76,10 @@ namespace El_Horno {
 		//Ventana por defecto a modo de GameObject
 		//Todos los botones texto etc se crean dentro de esta misma ventana
 		root = (CEGUI::DefaultWindow*)winMngr->createWindow("DefaultWindow", "Root");
+		//root->setUsingAutoRenderingSurface(true);
+		guiContext->setRootWindow(root);
+
+		root->activate();
 	}
 
 	void UIManager::createContext()
@@ -75,19 +90,23 @@ namespace El_Horno {
 		//Creo que se crea así
 		guiContext = &CEGUI::System::getSingleton().createGUIContext(renderer->getDefaultRenderTarget());
 
+		//CEGUI::SchemeManager::getSingleton().createFromFile("Layouts");
 		//esto para que no se haga en la constructora
 		setUpResources();
 
 		createRoot();
 
-		//CEGUI::SchemeManager::createFromFile();
-		//CEGUI::FrameWindow* frame = static_cast<CEGUI::FrameWindow*>(winMngr->createWindow());
-		//CEGUI::Window* statictext = static_cast<CEGUI::DefaultWindow*>(winMngr->createWindow(winMngr->GeneratedWindowNameBase));
+		//TODO
+		//aimai esto e sun ejemplo para que salga algo en la pantalla 
+		CEGUI::FrameWindow* wnd = (CEGUI::FrameWindow*)winMngr->createWindow("TaharezLook/FrameWindow", "Sample Window");
+		root->addChild(wnd);
+		wnd->setPosition(CEGUI::UVector2(cegui_reldim(0.05f), cegui_reldim(0.05f)));
+		wnd->setSize(CEGUI::USize(cegui_reldim(0.2f), cegui_reldim(0.1f)));
+		wnd->setMaxSize(CEGUI::USize(cegui_reldim(1.0f), cegui_reldim(1.0f)));
+		wnd->setMinSize(CEGUI::USize(cegui_reldim(0.01f), cegui_reldim(0.01f)));
+		wnd->setText("HORNO works!");
+		wnd->activate();
 
-		/*layouts.push_back(new CEGUI::Window("text", "prueba"));
-		layouts[0]->setText("probandole");
-		layouts[0]->setPosition(CEGUI::UVector2(CEGUI::UDim(3.0f,0.0f), (CEGUI::UDim(3.0f, 0.0f))));
-		layouts[0]->activate();*/
 
 	}
 
@@ -107,7 +126,11 @@ namespace El_Horno {
 	void UIManager::update()
 	{
 		// draw GUI
-		CEGUI::System::getSingleton().renderAllGUIContexts();
+		//CEGUI::System::getSingleton().renderAllGUIContexts();
+
+
+		//root->render();
+		//root->setRenderingSurface();
 		//tendra que recorrer todos sus layouts
 
 		/*auto iter = layouts.begin();
