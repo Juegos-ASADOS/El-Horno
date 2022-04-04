@@ -6,26 +6,36 @@
 #include <Component.h>
 namespace CEGUI {
 	class Window;
+	class WindowManager;
+	class DefaultWindow;
 }
-
 
 namespace El_Horno {
 	//AHORA LA UIElement hereda de Component
-	class UIElement : Component
+	class _declspec(dllexport) UIElement : Component
 	{
-	protected:
-		UIElement();
+	private:
 
 		//Entidad de la interfaz
 		CEGUI::Window* elementInterface;
 
-		CEGUI::Window* getElement();
+		int posX;
+		int posY;
+		int sizeX;
+		int sizeY;
+	protected:
+		UIElement(int posX, int posY, int sizeX, int sizeY, std::string name_);
+		void init();
+
+		std::string name;
+
+
+
+		void setElementInterface(CEGUI::Window* elem);
+		CEGUI::Window* const getElement()&;
 		virtual ~UIElement();
 
 		//Metodos iguales que una entidad/transform
-
-		//ELIMINAR ESTAS VAINAS
-
 
 		void setPos(int x, int y);
 		void setSize(int x, int y);

@@ -14,7 +14,7 @@ namespace El_Horno {
 	class Scene;
 	class Component;
 
-	class Entity
+	class _declspec(dllexport) Entity
 	{
 	private:
 		std::string name_;

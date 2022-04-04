@@ -11,7 +11,7 @@ namespace El_Horno {
 	class EventListener;
 	class Entity;
 
-	class EventManager
+	class _declspec(dllexport) EventManager
 	{
 	public:
 

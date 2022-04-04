@@ -21,7 +21,6 @@
   <ItemGroup>
     <ClInclude Include="..\..\Src\ElHornoBullet\CollisionLayers.h" />
     <ClInclude Include="..\..\Src\ElHornoBullet\DebugDrawer.h" />
-    <ClInclude Include="..\..\Src\ElHornoBullet\ElHornoBullet.h" />
     <ClInclude Include="..\..\Src\ElHornoBullet\PhysicsCallbacks.h" />
     <ClInclude Include="..\..\Src\ElHornoBullet\PhysicsManager.h" />
     <ClInclude Include="..\..\Src\ElHornoBullet\Rigibody.h" />
@@ -29,7 +28,6 @@
   <ItemGroup>
     <ClCompile Include="..\..\Src\ElHornoBullet\CollisionLayers.cpp" />
     <ClCompile Include="..\..\Src\ElHornoBullet\DebugDrawer.cpp" />
-    <ClCompile Include="..\..\Src\ElHornoBullet\ElHornoBullet.cpp" />
     <ClCompile Include="..\..\Src\ElHornoBullet\PhysicsManager.cpp" />
     <ClCompile Include="..\..\Src\ElHornoBullet\Rigibody.cpp" />
   </ItemGroup>

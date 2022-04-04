@@ -11,7 +11,7 @@
 namespace El_Horno {
 class Transform;
 
-	class CameraComponent : public Component
+	class _declspec(dllexport) CameraComponent : public Component
 	{
 	public:
 

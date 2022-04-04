@@ -5,14 +5,20 @@
 #include "UIElement.h"
 
 namespace CEGUI {
-	class Window;
+	class PushButton;
+	class WindowManager;
+	class DefaultWindow;
 }
 
 namespace El_Horno {
-	class UIPushButton : public UIElement
+	class _declspec(dllexport) UIPushButton : public UIElement
 	{
+	private:
+		CEGUI::PushButton* boton;
 	protected:
-		UIPushButton();
+		UIPushButton(std::string& schemeName,int posX,int posY, int sizeX,int sizeY, std::string name_);
+
+		void isPushed();
 
 		virtual ~UIPushButton();
 	};

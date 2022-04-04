@@ -15,7 +15,7 @@ class Transform;
 
 
 namespace El_Horno {
-	class LightComponent : public Component
+	class _declspec(dllexport) LightComponent : public Component
 	{
 	public:
 

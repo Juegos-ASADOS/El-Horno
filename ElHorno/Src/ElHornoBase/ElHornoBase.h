@@ -16,7 +16,7 @@ namespace El_Horno {
 	class SceneManager;
 	class FactoryCreator;
 
-	class ElHornoBase {
+	class _declspec(dllexport) ElHornoBase {
 	public:
 		ElHornoBase();
 		~ElHornoBase();

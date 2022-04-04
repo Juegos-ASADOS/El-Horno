@@ -7,7 +7,7 @@
 
 namespace El_Horno {
 	//Almacena las capas de colisión definidas por el usuario
-	class CollisionLayers
+	class _declspec(dllexport) CollisionLayers
 	{
 	public:
 		CollisionLayers();

@@ -19,6 +19,12 @@
     <Filter Include="Archivos de origen\UIManager">
       <UniqueIdentifier>{8f7e17a3-3a51-4235-a2b0-327dbdf92dbf}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Archivos de encabezado\Components">
+      <UniqueIdentifier>{e4e4c17f-0ac8-4969-8102-cf15e9b57c09}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de origen\Components">
+      <UniqueIdentifier>{561ad618-dfba-468c-b2f8-bcdb1e63ca87}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\Src\ElHornoCEGUI\UIElement.h">
@@ -27,11 +33,8 @@
     <ClInclude Include="..\..\Src\ElHornoCEGUI\UIManager.h">
       <Filter>Archivos de encabezado\UIManager</Filter>
     </ClInclude>
-    <ClInclude Include="ElHornoCEGUI.h">
-      <Filter>Archivos de encabezado</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\Src\ElHornoCEGUI\UIPushButton.h">
-      <Filter>Archivos de encabezado\UIManager</Filter>
+      <Filter>Archivos de encabezado\Components</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -41,11 +44,8 @@
     <ClCompile Include="..\..\Src\ElHornoCEGUI\UIManager.cpp">
       <Filter>Archivos de origen\UIManager</Filter>
     </ClCompile>
-    <ClCompile Include="ElHornoCEGUI.cpp">
-      <Filter>Archivos de origen</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\Src\ElHornoCEGUI\UIPushButton.cpp">
-      <Filter>Archivos de origen\UIManager</Filter>
+      <Filter>Archivos de origen\Components</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

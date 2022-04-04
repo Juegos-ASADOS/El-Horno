@@ -170,13 +170,11 @@
     <ClInclude Include="..\..\Src\ElHornoCEGUI\UIPushButton.h" />
     <ClInclude Include="..\..\Src\ElHornoCEGUI\UIElement.h" />
     <ClInclude Include="..\..\Src\ElHornoCEGUI\UIManager.h" />
-    <ClInclude Include="ElHornoCEGUI.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\Src\ElHornoCEGUI\UIPushButton.cpp" />
     <ClCompile Include="..\..\Src\ElHornoCEGUI\UIElement.cpp" />
     <ClCompile Include="..\..\Src\ElHornoCEGUI\UIManager.cpp" />
-    <ClCompile Include="ElHornoCEGUI.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
