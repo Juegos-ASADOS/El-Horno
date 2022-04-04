@@ -34,7 +34,6 @@ namespace El_Horno {
 		//HABRÁ QUE QUITAR ESTO E INFORMARSE DE LOS CEGUI::LAYOUTS
 		std::vector<CEGUI::Window*> layouts;
 
-
 		CEGUI::DefaultWindow* root;
 		CEGUI::GUIContext* guiContext;
 	public:

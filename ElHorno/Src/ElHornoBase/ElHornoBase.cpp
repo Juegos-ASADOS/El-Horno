@@ -81,7 +81,7 @@ namespace El_Horno {
 		EventManager::setupInstance();
 
 		//UIManager
-		//UIManager::setupInstance();
+		UIManager::setupInstance();
 
 		//HornoLua
 		LuaManager::setupInstance();
@@ -98,8 +98,7 @@ namespace El_Horno {
 		AudioManager::getInstance()->init();
 		LuaManager::getInstance()->init();
 
-		//UIManager::setupInstance(GraphicsManager::getInstance()->getRenderWindow());
-		//UIManager::getInstance()->createContext();
+		UIManager::getInstance()->createContext();
 
 		LuaManager::getInstance()->reedLuaScript("Assets/Scripts/sample.lua");
 	}
@@ -158,7 +157,7 @@ namespace El_Horno {
 
 		AudioManager::getInstance()->update();
 		GraphicsManager::getInstance()->render();
-		//UIManager::getInstance()->update();
+		UIManager::getInstance()->update();
 		SceneManager::getInstance()->deleteEntities();
 		//SceneManager::getInstance()->endFrame();
 	}
