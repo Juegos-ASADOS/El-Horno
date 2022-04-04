@@ -5,19 +5,33 @@
 
 namespace El_Horno {
 
-	UIElement::UIElement()
+	UIElement::UIElement(int posX_, int posY_, int sizeX_, int sizeY_, std::string name_) : name(name_), posX(posX_), posY(posY_), sizeX(sizeX_), sizeY(sizeY_)
 	{
 
 	}
 
-	CEGUI::Window* UIElement::getElement()
+	void UIElement::init()
+	{
+		//Establecemos su tamaño y posicion
+		setPos(posX, posY);
+		setSize(sizeX, sizeY);
+	}
+
+	//Le asociamos el elemento creado para la interfaz para poder usar este cpp a modo de transform
+	void UIElement::setElementInterface(CEGUI::Window* elem)
+	{
+		elementInterface = elem;
+	}
+
+	//ELIMINAR ESTE METODO??? AAAAAAAAAAAA
+	CEGUI::Window* const UIElement::getElement()&
 	{
 		return elementInterface;
 	}
 
 	UIElement::~UIElement()
 	{
-
+		elementInterface->destroy();
 	}
 
 	void UIElement::setPos(int x, int y)
@@ -127,6 +141,9 @@ namespace El_Horno {
 
 	void UIElement::setActive(bool value)
 	{
-		elementInterface->setVisible(value);
+		if (value)
+			elementInterface->activate();
+		else
+			elementInterface->deactivate();
 	}
 }
