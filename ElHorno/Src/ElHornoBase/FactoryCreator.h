@@ -9,7 +9,7 @@ namespace El_Horno {
 	class Component;
 	class Factory;
 
-	class FactoryCreator
+	class _declspec(dllexport) FactoryCreator
 	{
 
 	private:

@@ -11,8 +11,7 @@ namespace CEGUI {
 }
 
 namespace El_Horno {
-
-	class UIPushButton : public UIElement
+	class _declspec(dllexport) UIPushButton : public UIElement
 	{
 	private:
 		CEGUI::PushButton* boton;

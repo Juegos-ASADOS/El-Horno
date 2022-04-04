@@ -12,7 +12,7 @@ namespace Ogre {
 }
 
 namespace El_Horno {
-	class Mesh : public Component
+	class _declspec(dllexport) Mesh : public Component
 	{
 	public:
 

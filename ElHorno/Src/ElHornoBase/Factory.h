@@ -4,7 +4,7 @@
 
 namespace El_Horno {
 	class Component;
-	class Factory
+	class _declspec(dllexport) Factory
 	{
 	public:
 		Factory() {};

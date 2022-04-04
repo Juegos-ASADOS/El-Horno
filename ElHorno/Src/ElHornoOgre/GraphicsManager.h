@@ -4,6 +4,7 @@
 
 #include <string>
 #include <map>
+#include <OgreConfigOptionMap.h>
 
 namespace Ogre {
 	class Root;
@@ -17,7 +18,7 @@ class SDL_Window;
 class OurFrameListener;
 
 namespace El_Horno {
-	class GraphicsManager
+	class _declspec(dllexport) GraphicsManager
 	{
 	public:
 		GraphicsManager();

@@ -20,7 +20,7 @@ namespace Ogre {
 }
 
 namespace El_Horno {
-	class UIManager
+	class _declspec(dllexport) UIManager
 	{
 
 	private:

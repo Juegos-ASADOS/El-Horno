@@ -5,7 +5,7 @@
 
 namespace El_Horno {
 	struct Event;
-	class EventListener
+	class _declspec(dllexport) EventListener
 	{
 	public:
 		virtual ~EventListener();

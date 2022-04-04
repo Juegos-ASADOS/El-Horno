@@ -7,7 +7,7 @@
 
 namespace El_Horno {
 
-	class Transform : public Component
+	class _declspec(dllexport) Transform : public Component
 	{
 	public:
 		Transform(Ogre::Vector3 pos, Ogre::Vector3 rot, Ogre::Vector3 scal);

@@ -10,7 +10,7 @@ class Scene;
 
 typedef Scene* (*SceneLoad)();
 
-	class SceneManager
+	class _declspec(dllexport) SceneManager
 	{
 	public:
 		static SceneManager* getInstance();

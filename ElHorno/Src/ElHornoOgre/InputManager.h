@@ -8,7 +8,7 @@ union SDL_Event;
 //enum SDL_Scancode;
 
 namespace El_Horno {
-	class InputManager
+	class _declspec(dllexport) InputManager
 	{
 
 	private:

@@ -33,7 +33,7 @@ namespace El_Horno {
 		Capsule
 	};
 
-	class PhysicsManager
+	class _declspec(dllexport) PhysicsManager
 	{
 	public:
 		static PhysicsManager* getInstance();

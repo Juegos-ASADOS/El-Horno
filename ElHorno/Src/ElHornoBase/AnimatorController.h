@@ -30,7 +30,7 @@ struct AnimationStateInfo
 };
 
 namespace El_Horno {
-	class AnimatorController : public Component
+	class _declspec(dllexport) AnimatorController : public Component
 	{
 	public:
 

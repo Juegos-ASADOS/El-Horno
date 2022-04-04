@@ -3,7 +3,7 @@
 #define _TIMER_H
 
 namespace El_Horno {
-	class Timer {
+	class _declspec(dllexport) Timer {
 	public:
 
 		Timer();
