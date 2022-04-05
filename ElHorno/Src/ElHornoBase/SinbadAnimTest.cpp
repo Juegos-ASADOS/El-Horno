@@ -45,7 +45,10 @@ namespace El_Horno
 		{
 			if (!dancing)
 			{
-				anim_->setAnimBool("AnyState", "Dance", true);
+				//SINBAD
+				//anim_->setAnimBool("AnyState", "Dance", true);
+				//PIPO
+				anim_->setAnimBool("AnyState", "Baile", true);
 				dancing = true;
 			}
 		}
@@ -57,7 +60,9 @@ namespace El_Horno
 		{
 			if (!walking)
 			{
-				anim_->setAnimBool("IdleBase", "RunBase", true);
+				//SINBAD
+				//anim_->setAnimBool("IdleBase", "RunBase", true);
+				anim_->setAnimBool("PipoIdleBien", "PipoWalkBien", true);
 				walking = true;
 			}
 		}
@@ -66,7 +71,10 @@ namespace El_Horno
 		{
 			if (walking)
 			{
-				anim_->setAnimBool("RunBase", "IdleBase", true);
+				//SINBAD
+				//anim_->setAnimBool("RunBase", "IdleBase", true);
+				//PIPO
+				anim_->setAnimBool("PipoWalkBien", "PipoIdleBien", true);
 				walking = false;
 			}
 		}

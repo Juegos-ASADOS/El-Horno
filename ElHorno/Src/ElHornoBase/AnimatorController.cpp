@@ -35,34 +35,69 @@ namespace El_Horno {
 			auto s = it->first; ++it;
 		}*/
 
+		// PARA EL SINBAD
+		//// RunBase -> IdleBase
+		//std::string state = "RunBase";
+		//std::string nextState = "IdleBase";
+		//TransitionMap t1;
+		//t1.insert(std::pair<std::string, bool>(nextState, false));
+		//animationStateMachine_.insert(std::pair<std::string, TransitionMap>(state, t1));
+
+		//// IdleBase -> RunBase
+		//state = "IdleBase";
+		//nextState = "RunBase";
+		//TransitionMap t2;
+		//t2.insert(std::pair<std::string, bool>(nextState, false));
+		//// IdleBase -> Dance
+		//state = "IdleBase";
+		//nextState = "Dance";
+		//t2.insert(std::pair<std::string, bool>(nextState, false));
+		//animationStateMachine_.insert(std::pair<std::string, TransitionMap>(state, t2));
+
+		//// Dance -> IdleBase
+		//state = "Dance";
+		//nextState = "IdleBase";
+		//TransitionMap t3;
+		//t3.insert(std::pair<std::string, bool>(nextState, false));
+		//animationStateMachine_.insert(std::pair<std::string, TransitionMap>(state, t3));
+
+		//// AnyState -> Dance
+		//state = "AnyState";
+		//nextState = "Dance";
+		//TransitionMap t4;
+		//t4.insert(std::pair<std::string, bool>(nextState, false));
+		//animationStateMachine_.insert(std::pair<std::string, TransitionMap>(state, t4));
+
+
+		// PARA PIPO
 		// RunBase -> IdleBase
-		std::string state = "RunBase";
-		std::string nextState = "IdleBase";
+		std::string state = "PipoWalkBien";
+		std::string nextState = "PipoIdleBien";
 		TransitionMap t1;
 		t1.insert(std::pair<std::string, bool>(nextState, false));
 		animationStateMachine_.insert(std::pair<std::string, TransitionMap>(state, t1));
 
 		// IdleBase -> RunBase
-		state = "IdleBase";
-		nextState = "RunBase";
+		state = "PipoIdleBien";
+		nextState = "PipoWalkBien";
 		TransitionMap t2;
 		t2.insert(std::pair<std::string, bool>(nextState, false));
 		// IdleBase -> Dance
-		state = "IdleBase";
-		nextState = "Dance";
+		state = "PipoIdleBien";
+		nextState = "Baile";
 		t2.insert(std::pair<std::string, bool>(nextState, false));
 		animationStateMachine_.insert(std::pair<std::string, TransitionMap>(state, t2));
 
 		// Dance -> IdleBase
-		state = "Dance";
-		nextState = "IdleBase";
+		state = "Baile";
+		nextState = "PipoIdleBien";
 		TransitionMap t3;
 		t3.insert(std::pair<std::string, bool>(nextState, false));
 		animationStateMachine_.insert(std::pair<std::string, TransitionMap>(state, t3));
 
 		// AnyState -> Dance
 		state = "AnyState";
-		nextState = "Dance";
+		nextState = "Baile";
 		TransitionMap t4;
 		t4.insert(std::pair<std::string, bool>(nextState, false));
 		animationStateMachine_.insert(std::pair<std::string, TransitionMap>(state, t4));
@@ -85,8 +120,9 @@ namespace El_Horno {
 		// Recogemos todos los estados que traiga la malla
 		animStatesMap_ = ogreEntity_->getAllAnimationStates();
 
+		//LO DEL SINBAD
 		// CurrentState (Dance)
-		currentState_.name = "IdleBase";
+		/*currentState_.name = "IdleBase";
 		currentState_.state = animStatesMap_->getAnimationState("IdleBase");
 
 		animStatesMap_->getAnimationState("RunBase")->setEnabled(true);
@@ -94,7 +130,19 @@ namespace El_Horno {
 		animStatesMap_->getAnimationState("IdleBase")->setEnabled(true);
 		animStatesMap_->getAnimationState("IdleBase")->setLoop(true);
 		animStatesMap_->getAnimationState("Dance")->setEnabled(true);
-		animStatesMap_->getAnimationState("Dance")->setLoop(true);
+		animStatesMap_->getAnimationState("Dance")->setLoop(true);*/
+
+		//LO DEL PIPO
+		currentState_.name = "PipoIdleBien";
+		currentState_.state = animStatesMap_->getAnimationState("PipoIdleBien");
+
+		animStatesMap_->getAnimationState("PipoWalkBien")->setEnabled(true);
+		animStatesMap_->getAnimationState("PipoWalkBien")->setLoop(true);
+		animStatesMap_->getAnimationState("PipoIdleBien")->setEnabled(true);
+		animStatesMap_->getAnimationState("PipoIdleBien")->setLoop(true);
+		animStatesMap_->getAnimationState("Baile")->setEnabled(true);
+		animStatesMap_->getAnimationState("Baile")->setLoop(true);
+
 
 	}
 
@@ -119,10 +167,14 @@ namespace El_Horno {
 			if (nextPossiblesStates.second == true)
 			{
 				// Restauramos la transicion a false
+				currentState_.state->setEnabled(false);
+				currentState_.state->setLoop(false);
 				animationStateMachine_.at("AnyState").at(nextPossiblesStates.first) = false;
 				// Seteamos el nuevo estado
 				currentState_.state = animStatesMap_->getAnimationState(nextPossiblesStates.first);
 				currentState_.name = nextPossiblesStates.first;
+				currentState_.state->setEnabled(true);
+				currentState_.state->setLoop(true);
 
 				return; // cortamos el metodo
 			}
@@ -134,10 +186,14 @@ namespace El_Horno {
 				if (nextPossiblesStates.second == true)
 				{
 					// Restauramos la transicion a false
+					currentState_.state->setEnabled(false);
+					currentState_.state->setLoop(false);
 					animationStateMachine_.at(currentState_.name).at(nextPossiblesStates.first) = false;
 					// Seteamos el nuevo estado
 					currentState_.state = animStatesMap_->getAnimationState(nextPossiblesStates.first);
 					currentState_.name = nextPossiblesStates.first;
+					currentState_.state->setEnabled(true);
+					currentState_.state->setLoop(true);
 
 					return; // cortamos el metodo
 				}
