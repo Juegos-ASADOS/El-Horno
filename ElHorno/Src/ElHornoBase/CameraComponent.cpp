@@ -11,11 +11,11 @@
 #include "CheckML.h"
 namespace El_Horno {
 
-	CameraComponent::CameraComponent(Ogre::Vector3 pos, Ogre::Vector3 lookAt, Ogre::ColourValue color, int nearClDis, int farClDis)
-	{
-		camPos_ = pos;
-		lookAtVec_ = lookAt;
-		bgColor_ = color;
+	CameraComponent::CameraComponent(HornoVector3 pos, HornoVector3 lookAt, HornoVector3 color, float alpha, int nearClDis, int farClDis)
+	{		
+		camPos_ = HornoVectorToOgre(pos);
+		lookAtVec_ = HornoVectorToOgre(lookAt);
+		bgColor_ = Ogre::ColourValue(color.x_, color.y_, color.z_, alpha);
 
 		nearClipDistance_ = nearClDis;
 		farClipDistance_ = farClDis;

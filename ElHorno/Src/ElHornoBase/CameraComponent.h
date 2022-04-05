@@ -10,17 +10,17 @@
 
 namespace El_Horno {
 class Transform;
+class HornoVector3;
 
 	class _declspec(dllexport) CameraComponent : public Component
 	{
 	public:
 
 		//lo uncio necesario para recoger input del teclado a traves de SDL
-		CameraComponent(Ogre::Vector3 pos, Ogre::Vector3 lookAt, Ogre::ColourValue color, int nearClDis, int farClDis);
+		CameraComponent(HornoVector3 pos, HornoVector3 lookAt, HornoVector3 color, float alpha, int nearClDis, int farClDis);
 		~CameraComponent();
 
 		virtual void start() override;
-		Ogre::Vector3 a;
 
 		Ogre::Camera* getCamera();
 	private:

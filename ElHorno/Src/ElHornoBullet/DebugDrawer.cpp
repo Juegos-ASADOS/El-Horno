@@ -71,9 +71,9 @@ namespace El_Horno {
     {
         ColourValue c(color_.getX(), color_.getY(), color_.getZ());
         c.saturate();
-        mLines_->position(VectorToOgre(from_));
+        mLines_->position(BulletVectorToOgre(from_));
         mLines_->colour(c);
-        mLines_->position(VectorToOgre(to_));
+        mLines_->position(BulletVectorToOgre(to_));
         mLines_->colour(c);
     }
 
@@ -81,11 +81,11 @@ namespace El_Horno {
     {
         ColourValue c(color_.getX(), color_.getY(), color_.getZ(), alpha);
         c.saturate();
-        mTriangles_->position(VectorToOgre(v0));
+        mTriangles_->position(BulletVectorToOgre(v0));
         mTriangles_->colour(c);
-        mTriangles_->position(VectorToOgre(v1));
+        mTriangles_->position(BulletVectorToOgre(v1));
         mTriangles_->colour(c);
-        mTriangles_->position(VectorToOgre(v2));
+        mTriangles_->position(BulletVectorToOgre(v2));
         mTriangles_->colour(c);
     }
 
@@ -93,8 +93,8 @@ namespace El_Horno {
     {
         mContactPoints_->resize(mContactPoints_->size() + 1);
         ContactPoint p = mContactPoints_->back();
-        p.from_ = VectorToOgre(PointOnB);
-        p.to_ = p.from_ + VectorToOgre(normalOnB) * distance;
+        p.from_ = BulletVectorToOgre(PointOnB);
+        p.to_ = p.from_ + BulletVectorToOgre(normalOnB) * distance;
         p.dieTime_ = GraphicsManager::getInstance()->getRoot()->getSingleton().getTimer()->getMilliseconds() + lifeTime;
         p.color_.r = color_.x();
         p.color_.g = color_.y();

@@ -15,11 +15,13 @@ class Transform;
 
 
 namespace El_Horno {
+	class HornoVector3;
+
 	class _declspec(dllexport) LightComponent : public Component
 	{
 	public:
 
-		LightComponent(int type, Ogre::Vector3 dirLight/*, Ogre::ColourValue colourLight*/);
+		LightComponent(int type, HornoVector3 dirLight/*, Ogre::ColourValue colourLight*/);
 		~LightComponent();
 
 		void start() override;

@@ -25,11 +25,11 @@ namespace El_Horno {
 		vel_.y = 0;
 		vel_.z = 0;
 
-		ElHornoBase::getInstance()->getAudioManager()->updateSound(vectorToFmod(pos_), vectorToFmod(vel_), nChannel_);
+		ElHornoBase::getInstance()->getAudioManager()->updateSound(OgreVectorToFmod(pos_), OgreVectorToFmod(vel_), nChannel_);
 	}
 
 	void AudioComponent::playSound(std::string path)
 	{
-		nChannel_ = ElHornoBase::getInstance()->getAudioManager()->playSound(path, vectorToFmod(pos_), 25.0f);
+		nChannel_ = ElHornoBase::getInstance()->getAudioManager()->playSound(path, OgreVectorToFmod(pos_), 25.0f);
 	}
 }

@@ -248,7 +248,7 @@ namespace El_Horno {
 		btCollisionShape* shape = nullptr;
 
 		//Multiplicamos por la escala del transform para dar con su tamaño real
-		*size *= VectorToBullet(tr->getScale());
+		*size *= OgreVectorToBullet(tr->getScale());
 		
 		switch (sha) {
 		case ColliderShape::Box: //HALF-EXTENTS = Transform.Escala

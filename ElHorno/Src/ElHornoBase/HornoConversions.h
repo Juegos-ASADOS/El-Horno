@@ -16,9 +16,17 @@ namespace Ogre {
 	class Quaternion;
 };
 
-btVector3 VectorToBullet(const Ogre::Vector3& v);
-Ogre::Vector3 VectorToOgre(const btVector3& v);
-FMOD_VECTOR vectorToFmod(const Ogre::Vector3& vPosition);
+namespace El_Horno {
+	class HornoVector3;
 
-btQuaternion QuaternionToBullet(const Ogre::Quaternion& q);
-Ogre::Quaternion QuaternionToOgre(const btQuaternion& q);
+	_declspec(dllexport) btVector3 OgreVectorToBullet(const Ogre::Vector3& v);
+	_declspec(dllexport) Ogre::Vector3 BulletVectorToOgre(const btVector3& v);
+	_declspec(dllexport) FMOD_VECTOR OgreVectorToFmod(const Ogre::Vector3& vPosition);
+
+	_declspec(dllexport) btVector3 HornoVectorToBullet(const El_Horno::HornoVector3& v);
+	_declspec(dllexport) Ogre::Vector3 HornoVectorToOgre(const El_Horno::HornoVector3& v);
+	_declspec(dllexport) FMOD_VECTOR HornoVectorToFmod(const El_Horno::HornoVector3& v);
+
+	_declspec(dllexport) btQuaternion QuaternionToBullet(const Ogre::Quaternion& q);
+	_declspec(dllexport) Ogre::Quaternion QuaternionToOgre(const btQuaternion& q);
+}

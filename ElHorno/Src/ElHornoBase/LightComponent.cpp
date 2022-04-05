@@ -18,10 +18,10 @@
 #include <OgreColourValue.h>
 
 namespace El_Horno {
-	LightComponent::LightComponent(int type, Ogre::Vector3 dirLight/*, Ogre::ColourValue colourLight*/)
+	LightComponent::LightComponent(int type, HornoVector3 dirLight/*, Ogre::ColourValue colourLight*/)
 	{
 		type_ = type;
-		dirLight_ = dirLight;
+		dirLight_ = HornoVectorToOgre(dirLight);
 		//colourLight_ = colourLight;
 	}
 
