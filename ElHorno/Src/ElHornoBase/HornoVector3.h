@@ -6,8 +6,8 @@ namespace El_Horno {
 	class _declspec(dllexport) HornoVector3
 	{
 	public:
-		HornoVector3(float x, float y, float z);
-		HornoVector3();
+		HornoVector3(float x, float y, float z) : x_(x), y_(y), z_(z) {};
+		HornoVector3() : x_(0), y_(0), z_(0) {};
 
 		float x_, y_, z_;
 
