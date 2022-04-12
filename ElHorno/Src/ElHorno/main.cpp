@@ -23,8 +23,10 @@ int main()
 		El_Horno::ElHornoBase::setInstance();
 		El_Horno::ElHornoBase::getInstance()->init();
 
+		El_Horno::GameVoid gameFactories = (El_Horno::GameVoid)GetProcAddress(game, "addGameFactories");
 		El_Horno::SceneLoad startScene = (El_Horno::SceneLoad)GetProcAddress(game, "loadStartScene");
-		if (startScene) {
+		if (gameFactories && startScene) {
+			gameFactories();
 			El_Horno::ElHornoBase::getSceneManager()->setScene(startScene());
 			El_Horno::ElHornoBase::getInstance()->start();
 			El_Horno::ElHornoBase::getInstance()->update();

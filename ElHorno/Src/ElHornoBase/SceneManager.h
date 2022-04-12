@@ -9,6 +9,7 @@ namespace El_Horno {
 class Scene;
 
 typedef Scene* (*SceneLoad)();
+typedef void (*GameVoid)();
 
 	class _declspec(dllexport) SceneManager
 	{
