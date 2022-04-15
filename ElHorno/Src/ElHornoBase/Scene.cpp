@@ -22,7 +22,7 @@
 namespace El_Horno {
 	Scene::Scene()
 	{
-		/*Entity* light = addEntity("light", "prueba");
+		Entity* light = addEntity("light", "prueba");
 		light->addComponent<Transform>("transform", HornoVector3(0, 200, 200), HornoVector3(0, 0, 0), HornoVector3(0, 0, 0));
 		light->addComponent<LightComponent>("light", 0, HornoVector3(0, 0, 0));
 
@@ -30,7 +30,7 @@ namespace El_Horno {
 		El_Horno::HornoVector3 p = { 10,10,10 };
 		a->addComponent<Transform>("transform", El_Horno::HornoVector3(0, 0, 0), El_Horno::HornoVector3(0, 0, 0), El_Horno::HornoVector3(0, 0, 0));
 		a->addComponent<CameraComponent>("camera", El_Horno::HornoVector3(0, 100, 450), El_Horno::HornoVector3(0, 0, 0), El_Horno::HornoVector3(0, 0.3, 0.5), 1, 5, 10000);
-		a->addComponent<AudioListenerComponent>("audioListener");
+		//a->addComponent<AudioListenerComponent>("audioListener");
 
 		Entity* b = addEntity("object", "prueba");
 		b->addComponent<Transform>("transform", El_Horno::HornoVector3(0, 10, 0), El_Horno::HornoVector3(0, 0, 0), p);
@@ -38,7 +38,7 @@ namespace El_Horno {
 		b->addComponent<RigidBody>("rigidbody", 2.0f, false, false, 0);
 		b->addComponent<AnimatorController>("animatorController");
 		b->addComponent<SinbadAnimTest>("sinbadAnimTest");
-		b->addComponent<AudioComponent>("audioComponent");
+		//b->addComponent<AudioComponent>("audioComponent");
 
 		b = addEntity("object2", "prueba");
 		b->addComponent<Transform>("transform", El_Horno::HornoVector3(0, -15, 0), El_Horno::HornoVector3(0, 0, 0), El_Horno::HornoVector3(5, 0.1, 5));
@@ -47,7 +47,7 @@ namespace El_Horno {
 
 		b = addEntity("esmoque", "prueba");
 		b->addComponent<Transform>("transform", El_Horno::HornoVector3(250, 10, 0), El_Horno::HornoVector3(0, 0, 0), p);
-		b->addComponent<ParticleSystem>("particleSystem", "smoke", "Smoke", 10, true);*/
+		b->addComponent<ParticleSystem>("particleSystem", "smoke", "Smoke", 10, true);
 		
 	}
 
@@ -247,6 +247,12 @@ namespace El_Horno {
 		if (InputManager::getInstance()->isKeyDown(SDL_Scancode::SDL_SCANCODE_S)) {
 			force += btVector3(0, 0, speed);
 			tr->setDirection(Ogre::Vector3{ 0,0,-1 });
+		}	
+		if (InputManager::getInstance()->isKeyDown(SDL_Scancode::SDL_SCANCODE_Q)) {
+			rb->setTrigger(true);
+		}
+		if (InputManager::getInstance()->isKeyDown(SDL_Scancode::SDL_SCANCODE_E)) {
+			rb->setTrigger(false);
 		}
 
 		force.setY(force.y() + rb->getLinearVelocity().y());

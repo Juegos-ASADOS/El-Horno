@@ -55,9 +55,10 @@ namespace El_Horno {
 		btVector3 getLinearVelocity() const;
 		btVector3 getAngularVelocity() const;
 
-		void setRotConstraints(int i, bool value);
-		void setPosConstraints(int i, bool value);
+		/*void setRotConstraints(int i, bool value);
+		void setPosConstraints(int i, bool value);*/
 
+		void setScale(const btVector3& s);
 		void syncScale();
 
 	private:

@@ -94,15 +94,15 @@ namespace El_Horno {
 			phManager_->addBody(rigid_);
 		
 		if(isKinematic_)
-			rigid_->setCollisionFlags(rigid_->getCollisionFlags() || btCollisionObject::CF_KINEMATIC_OBJECT);
+			rigid_->setCollisionFlags(rigid_->getCollisionFlags() + btCollisionObject::CF_KINEMATIC_OBJECT);
 
 		//En función de si es trigger o no, se activan las flags
 		if (isTrigger_) 
-			rigid_->setCollisionFlags(rigid_->getCollisionFlags() || btCollisionObject::CF_NO_CONTACT_RESPONSE);
+			rigid_->setCollisionFlags(rigid_->getCollisionFlags() + btCollisionObject::CF_NO_CONTACT_RESPONSE);
 
 	}
 
-	////Cogemos el valor del Transform y se lo damos a Bullet en preupdate
+	//Cogemos el valor del Transform y se lo damos a Bullet en preupdate (permite movimiento kinemático)
 	void RigidBody::preUpdate()
 	{
 		if (mass_ > 0) {
@@ -161,9 +161,9 @@ namespace El_Horno {
 	{
 		if (isTrigger_ != isTrigger) {
 			if(isTrigger)
-				rigid_->setCollisionFlags(rigid_->getCollisionFlags() || btCollisionObject::CF_NO_CONTACT_RESPONSE);
+				rigid_->setCollisionFlags(rigid_->getCollisionFlags() + btCollisionObject::CF_NO_CONTACT_RESPONSE);
 			else
-				rigid_->setCollisionFlags(rigid_->getCollisionFlags() - btCollisionObject::CF_NO_CONTACT_RESPONSE);
+				rigid_->setCollisionFlags(rigid_->getCollisionFlags() ^ btCollisionObject::CF_NO_CONTACT_RESPONSE);
 		}
 		isTrigger_ = isTrigger;
 	}
@@ -222,6 +222,12 @@ namespace El_Horno {
 		return rigid_->getAngularVelocity();
 	}
 
+	void RigidBody::setScale(const btVector3& s)
+	{
+		rigid_->getCollisionShape()->setLocalScaling(s);
+	}
+
+	//Sincroniza el tamaño del collider con el de la malla (poco preciso)
 	void RigidBody::syncScale()
 	{
 		Ogre::Entity* obj = entity_->getComponent<Mesh>("mesh")->getOgreEntity();
