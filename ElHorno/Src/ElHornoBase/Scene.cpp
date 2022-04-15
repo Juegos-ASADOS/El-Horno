@@ -18,6 +18,7 @@
 
 #include "InputManager.h"
 #include "btBulletCollisionCommon.h"
+#include "ElHornoBase.h"
 
 namespace El_Horno {
 	Scene::Scene()
@@ -249,14 +250,21 @@ namespace El_Horno {
 			tr->setDirection(Ogre::Vector3{ 0,0,-1 });
 		}	
 		if (InputManager::getInstance()->isKeyDown(SDL_Scancode::SDL_SCANCODE_Q)) {
-			rb->setTrigger(true);
+			//rb->setTrigger(true);
+			if (time <= 0) {
+				rb->setScale(rb->getScale() - btVector3(0.1, 0.1, 0.1));
+				time = 1.0;
+			}
 		}
 		if (InputManager::getInstance()->isKeyDown(SDL_Scancode::SDL_SCANCODE_E)) {
-			rb->setTrigger(false);
+			//rb->setTrigger(false);
+			std::cout << rb->getScale().x() << " - " << rb->getScale().y() << " - "  << rb->getScale().z() << "\n";
 		}
 
 		force.setY(force.y() + rb->getLinearVelocity().y());
 		rb->setLinearVelocity(force);
 
+		if (time > 0)
+			time -= ElHornoBase::getInstance()->getDeltaTime();
 	}
 }

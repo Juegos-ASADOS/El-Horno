@@ -39,7 +39,8 @@ class Entity;
 		std::string name_;
 		bool sceneLoaded_ = false;
 		int addedEntitiesCounter_ = 0;
-
+		
+		double time = 0; //ELIMINAR AL TERMINAR LAS PRUEBAS ---------------------------------------
 		//Buscar entidades por tag? , Eliminar/crear entidades e instancias, Crear en la entidad physicsUpdate,pausedUpdates etc...
 	};
 }

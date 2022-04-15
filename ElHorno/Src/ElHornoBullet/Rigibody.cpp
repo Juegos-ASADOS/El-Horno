@@ -222,9 +222,16 @@ namespace El_Horno {
 		return rigid_->getAngularVelocity();
 	}
 
+	btVector3 RigidBody::getScale() const
+	{
+		return rigid_->getCollisionShape()->getLocalScaling();
+	}
+
 	void RigidBody::setScale(const btVector3& s)
 	{
+		phManager_->removeBody(rigid_);
 		rigid_->getCollisionShape()->setLocalScaling(s);
+		phManager_->addBody(rigid_);
 	}
 
 	//Sincroniza el tamaño del collider con el de la malla (poco preciso)
