@@ -19,7 +19,7 @@ class Entity;
 
 		Entity* getEntity(const std::string& name, const std::string& layer = "");
 
-		Entity* addEntity(const std::string& name, const std::string& layer, const std::string& group = "default");
+		Entity* addEntity(const std::string& name, const std::string& layer, Entity* parent = nullptr, const std::string& group = "default");
 
 		bool deleteEntity(const std::string& name);
 		void deleteInstances();

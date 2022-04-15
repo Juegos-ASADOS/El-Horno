@@ -23,8 +23,9 @@ namespace El_Horno {
 			c = nullptr;
 		}
 		comp_.clear();
-		for (Entity* e : children_)
-			delete e;
+	/*	for (Entity* e : children_)
+			delete e;*/
+		children_.clear();
 
 		scene_ = nullptr;
 		if (parent_ != nullptr) {

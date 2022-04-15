@@ -97,9 +97,9 @@ namespace El_Horno {
 	}
 
 	//agrega una entidad a una layer de renderizado y grupo
-	Entity* Scene::addEntity(const std::string& name, const std::string& layer, const std::string& group)
+	Entity* Scene::addEntity(const std::string& name, const std::string& layer, Entity* parent, const std::string& group)
 	{
-		Entity* e = new Entity(name, this);
+		Entity* e = new Entity(name, this, parent);
 		e->setGroup(group);
 
 		//Seleccion de layer de renderizado
