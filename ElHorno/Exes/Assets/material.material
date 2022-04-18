@@ -89,3 +89,31 @@ material Smoke{
 		}
 	}
 }
+
+material Agua {
+    receive_shadows on
+    technique {
+        pass {
+            diffuse 0.8 0.8 0.8 1.0
+            specular 0.8 0.8 0.8 1.0 102.4
+            alpha_to_coverage off
+            colour_write on
+            depth_check on
+            depth_func less_equal
+            illumination_stage per_light
+            light_clip_planes off
+            light_scissor off
+            normalise_normals off
+            polygon_mode solid
+            scene_blend_op add
+            shading gouraud
+            transparent_sorting on
+
+            texture_unit {
+                texture Water_Color.PNG
+                tex_address_mode wrap
+                colour_op modulate
+            }
+        }
+    }
+}

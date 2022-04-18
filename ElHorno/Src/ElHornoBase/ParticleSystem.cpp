@@ -74,7 +74,7 @@ namespace El_Horno {
 
 		if (timer_->getTime() >= timeToLive_) {
 			if (destroyOnTimeLimit_)
-				entity_->getMngr()->deleteEntity(entity_->getName());
+				entity_->getScene()->deleteEntity(entity_->getName());
 			else
 				setActive(false);
 		}

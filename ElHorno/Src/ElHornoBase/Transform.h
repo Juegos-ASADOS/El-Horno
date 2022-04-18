@@ -20,7 +20,9 @@ namespace El_Horno {
 
 		// Getters
 		Ogre::Vector3 getPosition();
+		inline HornoVector3 getHornoPosition() { return OgreVectorToHorno(pPos_); };
 		Ogre::Vector3 getScale();
+		inline HornoVector3 getHornoScale() { return OgreVectorToHorno(pScal_); };
 		Ogre::Quaternion getRotation();
 		Ogre::SceneNode* getNode() { return node_; }
 

@@ -31,6 +31,7 @@ namespace El_Horno {
 
 		virtual void onEnable() {};
 		virtual void onDisable() {};
+		virtual bool recieveEvent(Event* e) { return false; };
 
 		inline std::string getName() { return name_; };
 		inline void setName(std::string n) { name_ = n; };

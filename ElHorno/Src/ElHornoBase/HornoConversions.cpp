@@ -37,6 +37,11 @@ namespace El_Horno {
 		return Ogre::Vector3(v.x_, v.y_, v.z_);
 	}
 
+	El_Horno::HornoVector3 OgreVectorToHorno(const Ogre::Vector3& v)
+	{
+		return El_Horno::HornoVector3(v.x,v.y,v.z);
+	}
+
 	FMOD_VECTOR HornoVectorToFmod(const El_Horno::HornoVector3& v)
 	{
 		FMOD_VECTOR fVec;
