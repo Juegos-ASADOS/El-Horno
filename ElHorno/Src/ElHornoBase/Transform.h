@@ -25,6 +25,7 @@ namespace El_Horno {
 		inline HornoVector3 getHornoScale() { return OgreVectorToHorno(pScal_); };
 		Ogre::Quaternion getRotation();
 		Ogre::SceneNode* getNode() { return node_; }
+		void setNode(Ogre::SceneNode* n) { node_ = n; }
 
 		// Setters
 		void setPosition(Ogre::Vector3 pos);

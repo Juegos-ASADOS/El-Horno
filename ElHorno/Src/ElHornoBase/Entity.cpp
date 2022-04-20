@@ -4,12 +4,14 @@
 #include "Scene.h"
 #include <string>
 #include "CheckML.h"
+#include "Transform.h"
+#include "ElHornoBase.h"
+#include "GraphicsManager.h"
+#include <OgreSceneManager.h>
 
 namespace El_Horno {
 
 	Entity::Entity(std::string n, Scene* m, Entity* p) : name_(n), scene_(m), active_(true), comp_(), compRef_() {
-		parent_ = p;
-
 		if (parent_ != nullptr) {
 			parent_->addChild(this);
 		}
@@ -23,8 +25,8 @@ namespace El_Horno {
 			c = nullptr;
 		}
 		comp_.clear();
-	/*	for (Entity* e : children_)
-			delete e;*/
+		/*	for (Entity* e : children_)
+				delete e;*/
 		children_.clear();
 
 		scene_ = nullptr;
@@ -72,7 +74,7 @@ namespace El_Horno {
 		}
 	}
 
-	bool Entity::hasComponent(std::string name) const{
+	bool Entity::hasComponent(std::string name) const {
 		return comp_.find(name) != comp_.end();
 	}
 
@@ -90,6 +92,19 @@ namespace El_Horno {
 		comp_.clear();
 	}
 
+	inline void Entity::setParent(Entity* p)
+	{
+		parent_ = p;
+		Transform* t = getComponent<Transform>("transform");
+
+		if (p == nullptr) {
+			Ogre::SceneNode* sc = ElHornoBase::getInstance()->getGraphicsManager()->getSceneManager()->getRootSceneNode()->createChildSceneNode();
+			t->setNode(sc);
+		}
+		else
+			t->setNode(p->getComponent<Transform>("transform")->getNode()->createChildSceneNode());
+	};
+
 	Entity* Entity::getChild(std::string name) {
 		for (Entity* e : children_)
 			if (e->getName() == name) return e;
@@ -99,6 +114,7 @@ namespace El_Horno {
 
 	void Entity::addChild(Entity* c) {
 		children_.push_back(c);
+		c->setParent(this);
 	}
 
 	void Entity::removeChild(Entity* e) {

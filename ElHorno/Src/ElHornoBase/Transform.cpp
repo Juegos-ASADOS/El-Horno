@@ -36,7 +36,6 @@ namespace El_Horno {
 		if (entity_->getParent() != nullptr) {
 			Transform* pTr = entity_->getParent()->getComponent<Transform>("transform");
 			parent = pTr->getNode();
-			//parPos = pTr->getPosition();
 		}
 		
 		node_ = parent->createChildSceneNode();
