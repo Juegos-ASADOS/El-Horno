@@ -7,6 +7,7 @@
 #include <OgreVector3.h>
 #include <OgreQuaternion.h>
 #include <iostream>
+#include "Entity.h"
 #include "CheckML.h"
 
 using namespace Ogre;
@@ -30,8 +31,15 @@ namespace El_Horno {
 	*/
 	void Transform::start()
 	{
-		node_ = ElHornoBase::getGraphicsManager()->getSceneManager()->getRootSceneNode()->createChildSceneNode();
-		setPosition(pPos_);
+		Ogre::SceneNode* parent = ElHornoBase::getGraphicsManager()->getSceneManager()->getRootSceneNode();
+		Ogre::Vector3 parPos = { 0,0,0 };
+		if (entity_->getParent() != nullptr) {
+			Transform* pTr = entity_->getParent()->getComponent<Transform>("transform");
+			parent = pTr->getNode();
+		}
+		
+		node_ = parent->createChildSceneNode();
+		setPosition(parPos + pPos_);
 
 		rotateX(pRot_.x);
 		rotateY(pRot_.y);

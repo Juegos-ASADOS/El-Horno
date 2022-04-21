@@ -11,20 +11,9 @@ class lua_State;
 namespace luabridge {
     class LuaRef;
 }
+typedef int (*lua_CFunction) (lua_State* L);
 
 namespace El_Horno {
-    class _declspec(dllexport) Example {
-    public:
-        Example(const std::string& name) : m_name(name) {}
-
-        std::string getName() const;
-
-        void printName();
-
-    private:
-        std::string m_name;
-    };
-
     class _declspec(dllexport) LuaManager {
     public:
         static LuaManager* getInstance();
@@ -38,6 +27,9 @@ namespace El_Horno {
         template<typename T>
         void pushToLua(T var, std::string name);
         luabridge::LuaRef getFromLua(std::string name);
+        lua_State* getLuaState();
+        void exposeFunct(std::string name, lua_CFunction(*func)(lua_State* L));
+        int luaGetTop(lua_State* L);
     private:
 
         LuaManager() {};

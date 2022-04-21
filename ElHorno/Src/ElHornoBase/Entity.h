@@ -79,7 +79,7 @@ namespace El_Horno {
 
 		//Get/Set entidad padres
 		inline Entity* getParent() { return parent_; };
-		inline void setParent(Entity* p) { parent_ = p; };
+		inline void setParent(Entity* p); 
 
 		//Get/Set de los hijos
 		Entity* getChild(std::string name);
