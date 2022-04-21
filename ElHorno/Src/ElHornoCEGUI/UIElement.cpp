@@ -5,7 +5,7 @@
 
 namespace El_Horno {
 
-	UIElement::UIElement(int posX_, int posY_, int sizeX_, int sizeY_, std::string name_) : name(name_), posX(posX_), posY(posY_), sizeX(sizeX_), sizeY(sizeY_)
+	UIElement::UIElement(float posX_, float posY_, float sizeX_, float sizeY_, std::string name_) : name(name_), posX(posX_), posY(posY_), sizeX(sizeX_), sizeY(sizeY_)
 	{
 
 	}
@@ -15,6 +15,8 @@ namespace El_Horno {
 		//Establecemos su tamaño y posicion
 		setPos(posX, posY);
 		setSize(sizeX, sizeY);
+		//Y lo activamos
+		elementInterface->activate();
 	}
 
 	//Le asociamos el elemento creado para la interfaz para poder usar este cpp a modo de transform

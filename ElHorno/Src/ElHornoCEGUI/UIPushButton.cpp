@@ -7,7 +7,7 @@
 //Se lo guarda
 //Y le dice al root del UIManager que ahora es hijo de la ventana principal
 namespace El_Horno {
-	UIPushButton::UIPushButton(std::string& schemeName, int posX, int posY, int sizeX, int sizeY, std::string name_) : UIElement(posX, posY, sizeX, sizeY, name_)
+	UIPushButton::UIPushButton(std::string& schemeName, float posX, float posY, float sizeX, float sizeY, std::string name_) : UIElement(posX, posY, sizeX, sizeY, name_)
 	{
 		//Le decimos a la ventana principal que cree una más
 		boton = (CEGUI::PushButton*)UIManager::getInstance()->getWinMngr()->createWindow(schemeName + "/PushButton","PushButtonName");

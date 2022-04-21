@@ -98,14 +98,14 @@ namespace El_Horno {
 
 		//TODO
 		//aimai esto e sun ejemplo para que salga algo en la pantalla 
-		CEGUI::FrameWindow* wnd = (CEGUI::FrameWindow*)winMngr->createWindow("TaharezLook/FrameWindow", "Sample Window");
-		root->addChild(wnd);
-		wnd->setPosition(CEGUI::UVector2(cegui_reldim(0.05f), cegui_reldim(0.05f)));
-		wnd->setSize(CEGUI::USize(cegui_reldim(0.2f), cegui_reldim(0.1f)));
-		wnd->setMaxSize(CEGUI::USize(cegui_reldim(1.0f), cegui_reldim(1.0f)));
-		wnd->setMinSize(CEGUI::USize(cegui_reldim(0.01f), cegui_reldim(0.01f)));
-		wnd->setText("HORNO works!");
-		wnd->activate();
+		//CEGUI::FrameWindow* wnd = (CEGUI::FrameWindow*)winMngr->createWindow("TaharezLook/FrameWindow", "Sample Window");
+		//root->addChild(wnd);
+		//wnd->setPosition(CEGUI::UVector2(cegui_reldim(0.05f), cegui_reldim(0.05f)));
+		//wnd->setSize(CEGUI::USize(cegui_reldim(0.2f), cegui_reldim(0.1f)));
+		//wnd->setMaxSize(CEGUI::USize(cegui_reldim(1.0f), cegui_reldim(1.0f)));
+		//wnd->setMinSize(CEGUI::USize(cegui_reldim(0.01f), cegui_reldim(0.01f)));
+		//wnd->setText("HORNO works!");
+		//wnd->activate();
 
 
 	}

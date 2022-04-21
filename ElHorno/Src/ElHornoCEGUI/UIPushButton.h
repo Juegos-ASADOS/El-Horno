@@ -16,7 +16,7 @@ namespace El_Horno {
 	private:
 		CEGUI::PushButton* boton;
 	protected:
-		UIPushButton(std::string& schemeName,int posX,int posY, int sizeX,int sizeY, std::string name_);
+		UIPushButton(std::string& schemeName, float posX, float posY, float sizeX, float sizeY, std::string name_);
 
 		void isPushed();
 

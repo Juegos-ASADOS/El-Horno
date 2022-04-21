@@ -19,12 +19,12 @@ namespace El_Horno {
 		//Entidad de la interfaz
 		CEGUI::Window* elementInterface;
 
-		int posX;
-		int posY;
-		int sizeX;
-		int sizeY;
+		float posX;
+		float posY;
+		float sizeX;
+		float sizeY;
 	protected:
-		UIElement(int posX, int posY, int sizeX, int sizeY, std::string name_);
+		UIElement(float posX, float posY, float sizeX, float sizeY, std::string name_);
 		void init();
 
 		std::string name;
