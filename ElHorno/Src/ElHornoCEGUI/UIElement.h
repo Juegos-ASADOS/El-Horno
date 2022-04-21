@@ -12,7 +12,7 @@ namespace CEGUI {
 
 namespace El_Horno {
 	//AHORA LA UIElement hereda de Component
-	class _declspec(dllexport) UIElement : Component
+	class _declspec(dllexport) UIElement : public Component
 	{
 	private:
 
