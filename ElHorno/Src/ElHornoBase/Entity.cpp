@@ -12,8 +12,8 @@
 namespace El_Horno {
 
 	Entity::Entity(std::string n, Scene* m, Entity* p) : name_(n), scene_(m), active_(true), comp_(), compRef_() {
-		if (parent_ != nullptr) {
-			parent_->addChild(this);
+		if (p != nullptr) {
+			p->addChild(this);
 		}
 	}
 
@@ -97,12 +97,14 @@ namespace El_Horno {
 		parent_ = p;
 		Transform* t = getComponent<Transform>("transform");
 
-		if (p == nullptr) {
-			Ogre::SceneNode* sc = ElHornoBase::getInstance()->getGraphicsManager()->getSceneManager()->getRootSceneNode()->createChildSceneNode();
-			t->setNode(sc);
+		if (p->getComponent<Transform>("transform")->getNode() != NULL) {
+			if (p == nullptr) {
+				Ogre::SceneNode* sc = ElHornoBase::getInstance()->getGraphicsManager()->getSceneManager()->getRootSceneNode()->createChildSceneNode();
+				t->setNode(sc);
+			}
+			else
+				t->setNode(p->getComponent<Transform>("transform")->getNode()->createChildSceneNode());
 		}
-		else
-			t->setNode(p->getComponent<Transform>("transform")->getNode()->createChildSceneNode());
 	};
 
 	Entity* Entity::getChild(std::string name) {

@@ -20,7 +20,9 @@ namespace El_Horno {
 
 		// Getters
 		Ogre::Vector3 getPosition();
+		Ogre::Vector3 getGlobalPosition();
 		inline HornoVector3 getHornoPosition() { return OgreVectorToHorno(pPos_); };
+		HornoVector3 getHornoGlobalPosition();
 		Ogre::Vector3 getScale();
 		inline HornoVector3 getHornoScale() { return OgreVectorToHorno(pScal_); };
 		Ogre::Quaternion getRotation();
@@ -30,6 +32,7 @@ namespace El_Horno {
 		// Setters
 		void setPosition(Ogre::Vector3 pos);
 		inline void setPosition(const HornoVector3 & pos) { setPosition(HornoVectorToOgre(pos)); };
+		void addPosition(Ogre::Vector3 pos);
 
 		void setScale(Ogre::Vector3 sca);
 		inline void setScale(const HornoVector3 & sca) { setScale(HornoVectorToOgre(sca)); };

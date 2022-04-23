@@ -11,6 +11,7 @@ class btTransform;
 class btCollisionShape;
 class btCollisionObject;
 class btVector3;
+class btQuaternion;
 
 class PhysicsManager;
 
