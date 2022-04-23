@@ -168,6 +168,26 @@ namespace El_Horno {
 		isTrigger_ = isTrigger;
 	}
 
+	void RigidBody::setGravity(const btVector3& g)
+	{
+		rigid_->setGravity(g);
+	}
+
+	btVector3 RigidBody::getGravity() const
+	{
+		return rigid_->getGravity();
+	}
+
+	btQuaternion RigidBody::getOrientation()
+	{
+		return rigid_->getOrientation();
+	}
+
+	void RigidBody::setDamping(const float& linear, const float& angular)
+	{
+		rigid_->setDamping(linear, angular);
+	}
+
 	void RigidBody::setFriction(const float& f)
 	{
 		friction_ = f;
@@ -197,9 +217,9 @@ namespace El_Horno {
 		rigid_->setAngularFactor(f);
 	}
 
-	void RigidBody::setSleepingThresholds(const float& linear, const float& scalar)
+	void RigidBody::setSleepingThresholds(const float& linear, const float& angular)
 	{
-		rigid_->setSleepingThresholds(linear, scalar);
+		rigid_->setSleepingThresholds(linear, angular);
 	}
 
 	void RigidBody::setLinearVelocity(const btVector3& l)
