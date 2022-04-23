@@ -57,11 +57,11 @@ namespace El_Horno {
 	}
 	Vector3 Transform::getGlobalPosition() //Global
 	{
-		return ElHornoBase::getInstance()->getGraphicsManager()->getSceneManager()->getRootSceneNode()->convertLocalToWorldPosition(node_->getPosition());
+		return node_->getParent()->convertLocalToWorldPosition(node_->getPosition());
 	}
 	HornoVector3 Transform::getHornoGlobalPosition()
 	{
-		return OgreVectorToHorno(ElHornoBase::getInstance()->getGraphicsManager()->getSceneManager()->getRootSceneNode()->convertLocalToWorldPosition(node_->getPosition()));
+		return OgreVectorToHorno(node_->getParent()->convertLocalToWorldPosition((node_->getPosition())));
 	}
 	Vector3 Transform::getScale()
 	{
@@ -76,6 +76,11 @@ namespace El_Horno {
 	void Transform::setPosition(Vector3 pos)
 	{
 		node_->setPosition(pos);
+	}
+
+	void Transform::setGlobalPosition(Ogre::Vector3 pos)
+	{
+		node_->setPosition(node_->getParent()->convertWorldToLocalPosition(pos));
 	}
 
 	void Transform::addPosition(Ogre::Vector3 pos)

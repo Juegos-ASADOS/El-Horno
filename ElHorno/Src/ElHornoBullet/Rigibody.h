@@ -21,7 +21,7 @@ namespace El_Horno {
 	class _declspec(dllexport) RigidBody : public Component
 	{
 	public:
-		RigidBody(float mass, bool isTrigger, bool isKinematic,int colShape);
+		RigidBody(float mass, bool isTrigger, bool isKinematic, int colShape);
 		RigidBody(float mass, int group, int mask, bool isTrigger, bool isKinematic,int colShape);
 		~RigidBody();
 

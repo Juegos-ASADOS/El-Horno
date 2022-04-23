@@ -31,6 +31,7 @@ namespace El_Horno {
 
 		// Setters
 		void setPosition(Ogre::Vector3 pos);
+		void setGlobalPosition(Ogre::Vector3 pos);
 		inline void setPosition(const HornoVector3 & pos) { setPosition(HornoVectorToOgre(pos)); };
 		void addPosition(Ogre::Vector3 pos);
 
