@@ -16,10 +16,11 @@
 #include "Timer.h"
 #include "CheckMl.h"
 #include <iostream>
+#include <vector>
 
 namespace El_Horno {
 
-	AnimatorController::AnimatorController()
+	AnimatorController::AnimatorController(std::vector<std::pair<std::string, std::string>> animVector)
 	{
 		// Despues hay que coger cada animacion del mapa de ogre y setear los parametros de los propios estados que ha generado la malla
 		/*
@@ -27,13 +28,18 @@ namespace El_Horno {
 		* animStatesMap_.at(name).setSpeed(speed);
 		*/
 
-		// Activar todas 
-		/*
-		auto it = animStatesMap_->getAnimationStateIterator().begin();
-		while (it != animStatesMap_->getAnimationStateIterator().end())
+		// Generar la maquina de estados
+		for (int i = 0; i < animVector.size(); i++)
 		{
-			auto s = it->first; ++it;
-		}*/
+			std::string state = animVector[i].first;
+			std::string nextState = animVector[i].second;
+			TransitionMap t;
+			t.insert(std::pair<std::string, bool>(nextState, false));
+			animationStateMachine_.insert(std::pair<std::string, TransitionMap>(state, t));
+		}
+
+		// Seteamos el estado incial al primero de la maquina de estados
+		currentState_.name = animVector[0].first;
 
 		// PARA EL SINBAD
 		//// RunBase -> IdleBase
@@ -71,36 +77,36 @@ namespace El_Horno {
 
 		// PARA PIPO
 		// RunBase -> IdleBase
-		std::string state = "PipoWalkBien";
+		/*std::string state = "PipoWalkBien";
 		std::string nextState = "PipoIdleBien";
 		TransitionMap t1;
 		t1.insert(std::pair<std::string, bool>(nextState, false));
-		animationStateMachine_.insert(std::pair<std::string, TransitionMap>(state, t1));
+		animationStateMachine_.insert(std::pair<std::string, TransitionMap>(state, t1));*/
 
 		// IdleBase -> RunBase
-		state = "PipoIdleBien";
-		nextState = "PipoWalkBien";
-		TransitionMap t2;
-		t2.insert(std::pair<std::string, bool>(nextState, false));
-		// IdleBase -> Dance
-		state = "PipoIdleBien";
-		nextState = "Baile";
-		t2.insert(std::pair<std::string, bool>(nextState, false));
-		animationStateMachine_.insert(std::pair<std::string, TransitionMap>(state, t2));
+		//state = "PipoIdleBien";
+		//nextState = "PipoWalkBien";
+		//TransitionMap t2;
+		//t2.insert(std::pair<std::string, bool>(nextState, false));
+		//// IdleBase -> Dance
+		//state = "PipoIdleBien";
+		//nextState = "Baile";
+		//t2.insert(std::pair<std::string, bool>(nextState, false));
+		//animationStateMachine_.insert(std::pair<std::string, TransitionMap>(state, t2));
 
-		// Dance -> IdleBase
-		state = "Baile";
-		nextState = "PipoIdleBien";
-		TransitionMap t3;
-		t3.insert(std::pair<std::string, bool>(nextState, false));
-		animationStateMachine_.insert(std::pair<std::string, TransitionMap>(state, t3));
+		//// Dance -> IdleBase
+		//state = "Baile";
+		//nextState = "PipoIdleBien";
+		//TransitionMap t3;
+		//t3.insert(std::pair<std::string, bool>(nextState, false));
+		//animationStateMachine_.insert(std::pair<std::string, TransitionMap>(state, t3));
 
-		// AnyState -> Dance
-		state = "AnyState";
-		nextState = "Baile";
-		TransitionMap t4;
-		t4.insert(std::pair<std::string, bool>(nextState, false));
-		animationStateMachine_.insert(std::pair<std::string, TransitionMap>(state, t4));
+		//// AnyState -> Dance
+		//state = "AnyState";
+		//nextState = "Baile";
+		//TransitionMap t4;
+		//t4.insert(std::pair<std::string, bool>(nextState, false));
+		//animationStateMachine_.insert(std::pair<std::string, TransitionMap>(state, t4));
 	}
 
 
@@ -120,6 +126,12 @@ namespace El_Horno {
 		// Recogemos todos los estados que traiga la malla
 		animStatesMap_ = ogreEntity_->getAllAnimationStates();
 
+		// Seteamos el estado incial al primero de la maquina de estados
+		currentState_.state = animStatesMap_->getAnimationState(currentState_.name);
+		currentState_.state->setEnabled(true);
+		currentState_.state->setLoop(true);
+
+
 		//LO DEL SINBAD
 		// CurrentState (Dance)
 		/*currentState_.name = "IdleBase";
@@ -133,23 +145,33 @@ namespace El_Horno {
 		animStatesMap_->getAnimationState("Dance")->setLoop(true);*/
 
 		//LO DEL PIPO
-		currentState_.name = "PipoIdleBien";
-		currentState_.state = animStatesMap_->getAnimationState("PipoIdleBien");
+		/*currentState_.name = "PipoIdleBien";
+		currentState_.state = animStatesMap_->getAnimationState("PipoIdleBien");*/
 
-		animStatesMap_->getAnimationState("PipoWalkBien")->setEnabled(true);
+		/*animStatesMap_->getAnimationState("PipoWalkBien")->setEnabled(true);
 		animStatesMap_->getAnimationState("PipoWalkBien")->setLoop(true);
 		animStatesMap_->getAnimationState("PipoIdleBien")->setEnabled(true);
 		animStatesMap_->getAnimationState("PipoIdleBien")->setLoop(true);
 		animStatesMap_->getAnimationState("Baile")->setEnabled(true);
-		animStatesMap_->getAnimationState("Baile")->setLoop(true);
+		animStatesMap_->getAnimationState("Baile")->setLoop(true);*/
 
+
+
+		// Activar todas 
+		auto it = animStatesMap_->getAnimationStateIterator().begin();
+		while (it != animStatesMap_->getAnimationStateIterator().end())
+		{
+			//it->second->setEnabled(true);
+			//it->second->setLoop(true);
+			++it;
+		}
 
 	}
 
 	void AnimatorController::update()
 	{
 		// Actualizamos la animacion actual
-		currentState_.state->addTime(ElHornoBase::getInstance()->getDeltaTime());
+		currentState_.state->addTime(ElHornoBase::getInstance()->getDeltaTime() / 2);
 
 		manageTransitions();
 	}
@@ -162,7 +184,6 @@ namespace El_Horno {
 		// ANYSTATE
 		for (auto nextPossiblesStates : animationStateMachine_.at("AnyState"))
 		{
-			int a = 0;
 			// Si alguna de las transiciones desde el anyState estan a true cambiamos el estado
 			if (nextPossiblesStates.second == true)
 			{
