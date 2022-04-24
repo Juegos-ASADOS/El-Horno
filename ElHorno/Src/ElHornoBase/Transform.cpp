@@ -2,7 +2,6 @@
 #include "ElHornoBase.h"
 #include "GraphicsManager.h"
 #include "OgreEntity.h"
-#include "HornoConversions.h"
 #include <OgreSceneNode.h>
 #include <OgreSceneManager.h>
 #include <OgreVector3.h>
@@ -10,6 +9,8 @@
 #include <iostream>
 #include "Entity.h"
 #include "CheckML.h"
+#include <string>
+#include <vector>
 
 using namespace Ogre;
 namespace El_Horno {
@@ -19,6 +20,10 @@ namespace El_Horno {
 		pPos_ = HornoVectorToOgre(pos);
 		pRot_ = HornoVectorToOgre(rot);
 		pScal_ = HornoVectorToOgre(scal);
+	}
+
+	Transform::Transform()
+	{
 	}
 
 	Transform::~Transform()

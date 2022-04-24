@@ -35,6 +35,11 @@ typedef void (*GameVoid)();
 		void deleteEntities();
 		void setScene(Scene* newScene);
 		std::map<std::string, Component* (*)()> getComponents();
+
+		template<typename T>
+		static Component* createComponent() {
+			return new T();
+		}
 	private:
 		static SceneManager* instance_;
 

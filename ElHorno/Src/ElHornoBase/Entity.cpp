@@ -80,7 +80,7 @@ namespace El_Horno {
 		auto components = SceneManager::getInstance()->getComponents();
 		auto it = components.find(name);
 		Component* c = (it->second)();
-		c->setParameters(parameters);
+		//c->setParameters(parameters);
 	}
 
 	bool Entity::hasComponent(std::string name) const {

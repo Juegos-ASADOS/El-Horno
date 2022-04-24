@@ -86,8 +86,8 @@ namespace El_Horno {
 	void SceneManager::setScene(Scene* newScene) {
 		delete currentScene_;
 		currentScene_ = newScene;
-		//possibleComponents.emplace("Transform", new Transform());
-		//possibleComponents.emplace("Mesh", new Mesh());
+		//possibleComponents.emplace("Transform", &createComponent<Transform>);
+		possibleComponents.emplace("Mesh", &createComponent<Mesh>);
 	}
 	std::map<std::string, Component* (*)()> SceneManager::getComponents()
 	{
