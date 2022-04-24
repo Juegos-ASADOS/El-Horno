@@ -31,6 +31,8 @@ namespace El_Horno {
 
 		int nChannel_;
 		std::string audioRoute_;
+
+		int vol_;
 	};
 }
 #endif _AudioComponent_H

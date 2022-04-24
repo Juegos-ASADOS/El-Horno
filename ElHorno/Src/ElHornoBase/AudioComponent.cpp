@@ -13,7 +13,7 @@
 
 namespace El_Horno {
 
-	AudioComponent::AudioComponent() {}
+	AudioComponent::AudioComponent() { vol_ = 50.0f; }
 
 	AudioComponent::~AudioComponent() {}
 
@@ -30,6 +30,6 @@ namespace El_Horno {
 
 	void AudioComponent::playSound(std::string path)
 	{
-		nChannel_ = ElHornoBase::getInstance()->getAudioManager()->playSound(path, OgreVectorToFmod(pos_), 25.0f);
+		nChannel_ = ElHornoBase::getInstance()->getAudioManager()->playSound(path, OgreVectorToFmod(pos_), vol_);
 	}
 }

@@ -169,7 +169,7 @@ namespace El_Horno {
 		deltaTime_ = 0;
 
 		// Audio de prueba
-		//SceneManager::getInstance()->getCurrentScene()->getEntity("object", "prueba")->getComponent<AudioComponent>("audioComponent")->playSound("NeonRider.mp3");
+		SceneManager::getInstance()->getCurrentScene()->getEntity("player", "prueba")->getComponent<AudioComponent>("audioComponent")->playSound("Menu.mp3");
 
 		while (!exit_) {
 			globalTimer_->resetTimer();

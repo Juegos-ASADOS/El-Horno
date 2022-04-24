@@ -8,6 +8,8 @@
 //struct FMOD_VECTOR;
 //enum FMOD_RESULT;
 
+#define ROUTENAME "Assets/Sounds/"
+
 namespace FMOD {
 	class ChannelGroup;
 	class Channel;
@@ -58,7 +60,7 @@ namespace El_Horno {
 		void Loadsound(const std::string& strSoundName, bool b3d = true, bool bLooping = false, bool bStream = false);
 		void UnLoadSound(const std::string& strSoundName);
 		//void Set3dListenerAndOrientation(const FMOD_VECTOR& vPos = { 0, 0, 0 }, float fVolumedB = 0.0f);
-		int playSound(const std::string& strSoundName, const FMOD_VECTOR& vPos, float fVolumedB = 0.0f);
+		int playSound(const std::string& strSoundName, const FMOD_VECTOR& vPos, float fVolumedB = 1.0f);
 		//void PlayEvent(const string& strEventName);
 		void StopChannel(int nChannelId);
 		//void StopEvent(const string& strEventName, bool bImmediate = false);
@@ -80,7 +82,6 @@ namespace El_Horno {
 	private:
 		static Implementation* sgpImplementation;
 		static AudioManager* instance_;
-		std::string soundsPath = "./Assets/Sounds/";
 	};
 }
 #endif _AUDIO_MANAGER_AUDIO_MANAGER_H
