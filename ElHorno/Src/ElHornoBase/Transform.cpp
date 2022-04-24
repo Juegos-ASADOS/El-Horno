@@ -2,6 +2,7 @@
 #include "ElHornoBase.h"
 #include "GraphicsManager.h"
 #include "OgreEntity.h"
+#include "HornoConversions.h"
 #include <OgreSceneNode.h>
 #include <OgreSceneManager.h>
 #include <OgreVector3.h>
@@ -18,6 +19,21 @@ namespace El_Horno {
 		pPos_ = HornoVectorToOgre(pos);
 		pRot_ = HornoVectorToOgre(rot);
 		pScal_ = HornoVectorToOgre(scal);
+	}
+
+	Transform::Transform(std::vector<std::pair<std::string, std::string>> parameters)
+	{
+		for (int i = 0; i < parameters.size(); i++) {
+			if (parameters[i].first == "position") {
+				pPos_ = StringToVector(parameters[i].second);
+			}
+			else if (parameters[i].first == "rotation") {
+				pRot_ = StringToVector(parameters[i].second);
+			}
+			else if (parameters[i].first == "scale") {
+				pScal_ = StringToVector(parameters[i].second);
+			}
+		}
 	}
 
 	Transform::~Transform()

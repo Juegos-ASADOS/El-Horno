@@ -17,6 +17,7 @@ namespace El_Horno {
 	public:
 
 		Mesh(std::string name = "cube", bool castShadow = true, bool isAnimated = false);
+		Mesh(std::vector<std::pair<std::string, std::string>> parameters);
 		~Mesh();
 
 		virtual void start() override;

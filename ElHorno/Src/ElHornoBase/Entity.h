@@ -62,6 +62,8 @@ namespace El_Horno {
 			}
 		}
 
+		void addComponent(std::string name, std::vector<pair<string, string>> parameters);
+
 		bool hasComponent(std::string name) const;
 
 		template <typename T>

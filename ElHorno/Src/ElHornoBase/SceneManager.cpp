@@ -85,4 +85,8 @@ namespace El_Horno {
 		delete currentScene_;
 		currentScene_ = newScene;
 	}
+	std::map<std::string, Component* (*)(std::vector<std::pair<std::string, std::string>> parameters)> SceneManager::getComponents()
+	{
+		return possibleComponents;
+	}
 }

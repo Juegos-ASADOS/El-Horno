@@ -19,6 +19,8 @@ extern "C"
 #include "CameraComponent.h"
 #include "AudioComponent.h"
 #include "AudioListenerComponent.h"
+#include "SceneManager.h"
+#include "Scene.h"
 #include "CheckML.h"
 
 namespace El_Horno {
@@ -68,7 +70,7 @@ namespace El_Horno {
         lua_pop(luaState, 1);
     }
 
-    void LuaManager::reedLuaScript(const std::string& path)
+    void LuaManager::readLuaScript(const std::string& path)
     {
         // load some code from Lua file
         int scriptLoadStatus = luaL_dofile(luaState, path.c_str());
@@ -96,6 +98,44 @@ namespace El_Horno {
     int LuaManager::luaGetTop(lua_State* L)
     {
         return lua_gettop(L);
+    }
+
+    void LuaManager::loadScene()
+    {
+        Scene* s = SceneManager::getInstance()->getCurrentScene();
+        readLuaScript(s->getName());
+
+        luabridge::LuaRef allEnts = getFromLua("entities");
+        int numEnts = allEnts.length();
+        
+        for (int i = 0; i < numEnts; i++) {
+            luabridge::LuaRef entity = getFromLua(allEnts[i]);
+            Entity* ent = s->addEntity(allEnts[i], "prueba");
+
+            lua_pushnil(entity);
+            while (lua_next(entity, 0) != 0) {
+                std::string compName = lua_tostring(entity, -2);
+                std::string value = lua_tostring(entity, -1);
+
+                std::string key;
+
+                luabridge::LuaRef component = getFromLua(compName);
+                lua_pushnil(component);
+
+                std::vector<std::pair<std::string, std::string>> parameters;
+
+                while (lua_next(component, 0) != 0) {
+                    std::string key = lua_tostring(entity, -2);
+                    std::string val = lua_tostring(entity, -1);
+
+                    parameters.push_back({ compName, val });
+                    lua_pop(component, 1);
+                }
+
+                ent->addComponent(compName, parameters);
+                lua_pop(entity, 1);
+            }
+        }
     }
 
     template<typename T>

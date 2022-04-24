@@ -13,6 +13,7 @@ namespace El_Horno {
 	{
 	public:
 		Transform(HornoVector3 pos, HornoVector3 rot, HornoVector3 scal);
+		Transform(std::vector<std::pair<std::string, std::string>> parameters);
 		~Transform();
 
 		virtual void start() override;

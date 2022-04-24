@@ -2,6 +2,7 @@
 #include "Component.h"
 #include "FactoryCreator.h"
 #include "Scene.h"
+#include "SceneManager.h"
 #include <string>
 #include "CheckML.h"
 #include "Transform.h"
@@ -72,6 +73,13 @@ namespace El_Horno {
 			if (compRef_[i]->isActive())
 				compRef_[i]->render();
 		}
+	}
+
+	void Entity::addComponent(std::string name, std::vector<pair<string, string>> parameters)
+	{
+		auto components = SceneManager::getInstance()->getComponents();
+		auto it = components.find(name);
+		Component* c = (it->second)(parameters);
 	}
 
 	bool Entity::hasComponent(std::string name) const {
