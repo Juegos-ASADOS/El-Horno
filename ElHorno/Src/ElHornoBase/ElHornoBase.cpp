@@ -128,7 +128,6 @@ namespace El_Horno {
 		facCreat->addFactory("particleSystem");
 		facCreat->addFactory("audioComponent");
 		facCreat->addFactory("audioListener");
-		facCreat->addFactory("UIElement");
 		facCreat->addFactory("UIPushButton");
 	}
 
