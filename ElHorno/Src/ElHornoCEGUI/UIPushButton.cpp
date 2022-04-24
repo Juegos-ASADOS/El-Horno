@@ -16,8 +16,6 @@ namespace El_Horno {
 		//Cada vez que queramos llamar a cualquier metodo propio de CEGUI::PushButton
 		setElementInterface(boton);
 
-		//Establecemos el nombre del evento y no se que mas
-		boton->addEvent("nombrePropioDelEvento");
 
 		//La clase padre UIElement se encarga de posicionarlo correctamente...
 		init();
@@ -32,6 +30,12 @@ namespace El_Horno {
 		//Todos los metodos propios de ButtonBase
 		boton->isPushed();	//True si está siendo pulsado
 		boton->isHovering();//True si tienes el raton por encima o has mantenido pulsado pero no has soltado CREO
+	}
+
+	void UIPushButton::addEvent(std::string evento)
+	{
+		//Establecemos el nombre del evento 
+		boton->addEvent(evento);
 	}
 
 	UIPushButton::~UIPushButton()

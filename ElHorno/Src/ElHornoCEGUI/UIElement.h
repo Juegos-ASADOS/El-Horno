@@ -3,7 +3,6 @@
 #define _UI_ELEMENT_H
 
 #include <string>
-#include <Component.h>
 namespace CEGUI {
 	class Window;
 	class WindowManager;
@@ -12,7 +11,7 @@ namespace CEGUI {
 
 namespace El_Horno {
 	//AHORA LA UIElement hereda de Component
-	class _declspec(dllexport) UIElement : public Component
+	class _declspec(dllexport) UIElement
 	{
 	private:
 
