@@ -77,6 +77,12 @@ namespace El_Horno {
 		btVector3 getScale() const;
 		HornoVector3 getHornoScale() const;
 
+		void setGroup(int g);
+		void setMask(int m);
+
+		int getGroup();
+		int getMask();
+
 		/*void setRotConstraints(int i, bool value);
 		void setPosConstraints(int i, bool value);*/
 

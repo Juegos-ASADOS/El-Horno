@@ -315,6 +315,30 @@ namespace El_Horno {
 		return BulletVectorToHorno(getScale());
 	}
 
+	void RigidBody::setGroup(int g)
+	{
+		btBroadphaseProxy* proxy = rigid_->getBroadphaseProxy();
+		proxy->m_collisionFilterGroup = g;
+	}
+
+	void RigidBody::setMask(int m)
+	{
+		btBroadphaseProxy* proxy = rigid_->getBroadphaseProxy();
+		proxy->m_collisionFilterMask = m;
+	}
+
+	int RigidBody::getGroup()
+	{
+		btBroadphaseProxy* proxy = rigid_->getBroadphaseProxy();
+		return proxy->m_collisionFilterGroup;
+	}
+
+	int RigidBody::getMask()
+	{
+		btBroadphaseProxy* proxy = rigid_->getBroadphaseProxy();
+		return proxy->m_collisionFilterMask;
+	}
+
 	void RigidBody::setScale(const btVector3& s)
 	{
 		phManager_->removeBody(rigid_);
