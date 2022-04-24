@@ -34,7 +34,7 @@ typedef void (*GameVoid)();
 		void update();
 		void deleteEntities();
 		void setScene(Scene* newScene);
-		std::map<std::string, Component* (*)(std::vector<std::pair<std::string, std::string>> parameters)> getComponents();
+		std::map<std::string, Component* (*)()> getComponents();
 	private:
 		static SceneManager* instance_;
 
@@ -45,7 +45,7 @@ typedef void (*GameVoid)();
 
 		std::string nextScene_ = "";
 
-		std::map<std::string, Component* (*)(std::vector<std::pair<std::string, std::string>> parameters)> possibleComponents;
+		std::map<std::string, Component* (*)()> possibleComponents;
 	};
 }
 #endif _SCENE_MANAGER_H

@@ -72,8 +72,9 @@ namespace El_Horno {
 
     void LuaManager::readLuaScript(const std::string& path)
     {
+        std::string s = SCRIPTS_PATH + path + FILE_EXTENSION;
         // load some code from Lua file
-        int scriptLoadStatus = luaL_dofile(luaState, path.c_str());
+        int scriptLoadStatus = luaL_dofile(luaState, s.c_str());
 
         // define error reporter for any Lua error
         report_errors(scriptLoadStatus);
@@ -81,8 +82,7 @@ namespace El_Horno {
 
     luabridge::LuaRef LuaManager::getFromLua(std::string name)
     {
-        std::string s = SCRIPTS_PATH + name + FILE_EXTENSION;
-        return luabridge::getGlobal(luaState, s.c_str());
+        return luabridge::getGlobal(luaState, name.c_str());
     }
 
     lua_State* LuaManager::getLuaState()
@@ -106,20 +106,21 @@ namespace El_Horno {
         readLuaScript(s->getName());
 
         luabridge::LuaRef allEnts = getFromLua("entities");
+        luabridge::LuaRef prueba = getFromLua("prueba");
         int numEnts = allEnts.length();
-        
-        for (int i = 0; i < numEnts; i++) {
+
+        for (int i = 1; i <= numEnts; i++) {
+            std::cout << "aaa: " << allEnts[i];
             luabridge::LuaRef entity = getFromLua(allEnts[i]);
             Entity* ent = s->addEntity(allEnts[i], "prueba");
 
             lua_pushnil(entity);
             while (lua_next(entity, 0) != 0) {
                 std::string compName = lua_tostring(entity, -2);
-                std::string value = lua_tostring(entity, -1);
 
                 std::string key;
 
-                luabridge::LuaRef component = getFromLua(compName);
+                luabridge::LuaRef component = entity[compName];
                 lua_pushnil(component);
 
                 std::vector<std::pair<std::string, std::string>> parameters;

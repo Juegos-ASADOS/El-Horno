@@ -20,18 +20,6 @@ namespace El_Horno {
 		isAnimated_ = isAnimated;
 	}
 
-	Mesh::Mesh(std::vector<std::pair<std::string, std::string>> parameters)
-	{
-		for (int i = 0; i < parameters.size(); i++) {
-			if (parameters[i].first == "name") {
-				meshName_ = parameters[i].second + ".mesh";
-				materialName_ = parameters[i].second + ".mesh";
-			}
-		}
-		castShadow_ = true;
-		isAnimated_ = false;
-	}
-
 	/*
 	Desconecta el nodo del padre y destruye la entidad
 	*/
@@ -42,6 +30,18 @@ namespace El_Horno {
 			node->detachAllObjects();
 		ElHornoBase::getGraphicsManager()->getSceneManager()->destroyEntity(ogreEntity_->getName());
 	}
+
+	/*void Mesh::setParameters(std::vector<std::pair<std::string, std::string>> parameters)
+	{
+		for (int i = 0; i < parameters.size(); i++) {
+			if (parameters[i].first == "name") {
+				meshName_ = parameters[i].second + ".mesh";
+				materialName_ = parameters[i].second + ".mesh";
+			}
+		}
+		castShadow_ = true;
+		isAnimated_ = false;
+	}*/
 
 	/*
 	Crea una entidad. Establece:

@@ -3,6 +3,7 @@
 #define _COMPONENT_H
 
 #include <string>
+#include <vector>
 #include "EventListener.h"
 
 namespace El_Horno {
@@ -24,6 +25,7 @@ namespace El_Horno {
 		void setActive(bool a);
 		inline bool isActive() { return active_; };
 
+		virtual void setParameters(std::vector<std::pair<std::string, std::string>> parameters) {};
 		virtual void start() {};	//Esto es el init de nuestros componentes
 		virtual void preUpdate() {};
 		virtual void update() {};

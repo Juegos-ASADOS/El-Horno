@@ -21,26 +21,26 @@ namespace El_Horno {
 		pScal_ = HornoVectorToOgre(scal);
 	}
 
-	Transform::Transform(std::vector<std::pair<std::string, std::string>> parameters)
-	{
-		for (int i = 0; i < parameters.size(); i++) {
-			if (parameters[i].first == "position") {
-				pPos_ = StringToVector(parameters[i].second);
-			}
-			else if (parameters[i].first == "rotation") {
-				pRot_ = StringToVector(parameters[i].second);
-			}
-			else if (parameters[i].first == "scale") {
-				pScal_ = StringToVector(parameters[i].second);
-			}
-		}
-	}
-
 	Transform::~Transform()
 	{
 		ElHornoBase::getInstance()->getGraphicsManager()->getSceneManager()->destroySceneNode(node_);
 		node_ = nullptr;
 	}
+
+	//void Transform::setParameters(std::vector<std::pair<std::string, std::string>> parameters)
+	//{
+	//	for (int i = 0; i < parameters.size(); i++) {
+	//		if (parameters[i].first == "position") {
+	//			pPos_ = StringToVector(parameters[i].second);
+	//		}
+	//		else if (parameters[i].first == "rotation") {
+	//			pRot_ = StringToVector(parameters[i].second);
+	//		}
+	//		else if (parameters[i].first == "scale") {
+	//			pScal_ = StringToVector(parameters[i].second);
+	//		}
+	//	}
+	//}
 
 	/*
 	Se establece la rotacion, la posicion, la escala y se muestra la bounding box (debug)

@@ -7,7 +7,7 @@ prueba = {
 
     Mesh = {
          name = "Sinbad",
-    },
+    }
 }
 
-entities = {prueba,}
+entities = {"prueba"}

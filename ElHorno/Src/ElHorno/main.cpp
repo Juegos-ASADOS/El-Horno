@@ -27,7 +27,6 @@ int main()
 		El_Horno::SceneLoad startScene = (El_Horno::SceneLoad)GetProcAddress(game, "loadStartScene");
 		if (gameFactories && startScene) {
 			gameFactories();
-			El_Horno::ElHornoBase::getSceneManager()->setScene(startScene());
 			El_Horno::ElHornoBase::getInstance()->start();
 			El_Horno::ElHornoBase::getInstance()->update();
 		}

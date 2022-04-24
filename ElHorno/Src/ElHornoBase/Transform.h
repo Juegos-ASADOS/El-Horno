@@ -6,6 +6,8 @@
 #include <OgreVector3.h>
 #include "HornoVector3.h"
 #include "HornoConversions.h"
+#include <string>
+#include <vector>
 
 namespace El_Horno {
 
@@ -13,9 +15,10 @@ namespace El_Horno {
 	{
 	public:
 		Transform(HornoVector3 pos, HornoVector3 rot, HornoVector3 scal);
-		Transform(std::vector<std::pair<std::string, std::string>> parameters);
+		Transform() {};
 		~Transform();
 
+		//void setParameters(std::vector<std::pair<std::string, std::string>> parameters) override;
 		virtual void start() override;
 		virtual void render() override {};
 
