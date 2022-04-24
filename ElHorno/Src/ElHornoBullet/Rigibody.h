@@ -4,6 +4,7 @@
 
 #include "Component.h"
 #include "Bullet3Common/b3Vector3.h"
+#include "HornoVector3.h"
 
 class btRigidBody;
 class btGhostObject;
@@ -16,7 +17,6 @@ class PhysicsManager;
 class Transform;
 
 namespace El_Horno {
-	class HornoVector3;
 
 	class _declspec(dllexport) RigidBody : public Component
 	{
@@ -30,12 +30,18 @@ namespace El_Horno {
 		virtual void preUpdate() override;
 
 		void applyForce(const btVector3& force);
+		void applyForce(const HornoVector3& force);
 		void applyImpulse(const btVector3& force);
+		void applyImpulse(const HornoVector3& force);
 		void applyPush(const btVector3& force);
+		void applyPush(const HornoVector3& force);
 		
 		void applyTorque(const btVector3& torque);
+		void applyTorque(const HornoVector3& torque);
 		void applyTorqueImpulse(const btVector3& torque);
+		void applyTorqueImpulse(const HornoVector3& torque);
 		void applyTorqueTurn(const btVector3& torque);
+		void applyTorqueTurn(const HornoVector3& torque);
 
 		inline float getFriction() const { return friction_; };
 		inline float getRestitution() const { return restitution_; };
@@ -59,17 +65,23 @@ namespace El_Horno {
 		void setSleepingThresholds(const float& linear, const float& angular);
 
 		void setLinearVelocity(const btVector3& l);
+		void setLinearVelocity(const HornoVector3& l);
 		void setAngularVelocity(const btVector3& a);
+		void setAngularVelocity(const HornoVector3& a);
 		
 		btVector3 getLinearVelocity() const;
+		HornoVector3 getHornoLinearVelocity() const;
 		btVector3 getAngularVelocity() const;
+		HornoVector3 getHornoAngularVelocity() const;
 
 		btVector3 getScale() const;
+		HornoVector3 getHornoScale() const;
 
 		/*void setRotConstraints(int i, bool value);
 		void setPosConstraints(int i, bool value);*/
 
 		void setScale(const btVector3& s);
+		void setScale(const HornoVector3& s);
 		void syncScale();
 
 	private:

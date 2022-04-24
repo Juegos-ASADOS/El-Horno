@@ -134,9 +134,19 @@ namespace El_Horno {
 		rigid_->applyCentralForce(force);
 	}
 
+	void RigidBody::applyForce(const HornoVector3& force)
+	{
+		applyForce(HornoVectorToBullet(force));
+	}
+
 	void RigidBody::applyImpulse(const btVector3& force)
 	{
 		rigid_->applyCentralImpulse(force);
+	}
+
+	void RigidBody::applyImpulse(const HornoVector3& force)
+	{
+		applyImpulse(HornoVectorToBullet(force));
 	}
 
 	void RigidBody::applyPush(const btVector3& force)
@@ -144,9 +154,19 @@ namespace El_Horno {
 		rigid_->applyCentralPushImpulse(force);
 	}
 
+	void RigidBody::applyPush(const HornoVector3& force)
+	{
+		applyPush(HornoVectorToBullet(force));
+	}
+
 	void RigidBody::applyTorque(const btVector3& torque)
 	{
 		rigid_->applyTorque(torque);
+	}
+
+	void RigidBody::applyTorque(const HornoVector3& torque)
+	{
+		applyTorque(HornoVectorToBullet(torque));
 	}
 
 	void RigidBody::applyTorqueImpulse(const btVector3& torque)
@@ -154,9 +174,19 @@ namespace El_Horno {
 		rigid_->applyTorqueImpulse(torque);
 	}
 
+	void RigidBody::applyTorqueImpulse(const HornoVector3& torque)
+	{
+		applyTorqueImpulse(HornoVectorToBullet(torque));
+	}
+
 	void RigidBody::applyTorqueTurn(const btVector3& torque)
 	{
 		rigid_->applyTorqueTurnImpulse(torque);
+	}
+
+	void RigidBody::applyTorqueTurn(const HornoVector3& torque)
+	{
+		applyTorqueTurn(HornoVectorToBullet(torque));
 	}
 
 	void RigidBody::setTrigger(bool isTrigger)
@@ -239,9 +269,19 @@ namespace El_Horno {
 		rigid_->setLinearVelocity(l);
 	}
 
+	void RigidBody::setLinearVelocity(const HornoVector3& l)
+	{
+		setLinearVelocity(HornoVectorToBullet(l));
+	}
+
 	void RigidBody::setAngularVelocity(const btVector3& a)
 	{
 		rigid_->setAngularVelocity(a);
+	}
+
+	void RigidBody::setAngularVelocity(const HornoVector3& a)
+	{
+		setAngularVelocity(HornoVectorToBullet(a));
 	}
 
 	btVector3 RigidBody::getLinearVelocity() const
@@ -249,9 +289,20 @@ namespace El_Horno {
 		return rigid_->getLinearVelocity();
 	}
 
+	HornoVector3 RigidBody::getHornoLinearVelocity() const
+	{
+		return BulletVectorToHorno(getLinearVelocity());
+	}
+
+
 	btVector3 RigidBody::getAngularVelocity() const
 	{
 		return rigid_->getAngularVelocity();
+	}
+
+	HornoVector3 RigidBody::getHornoAngularVelocity() const
+	{
+		return BulletVectorToHorno(getAngularVelocity());
 	}
 
 	btVector3 RigidBody::getScale() const
@@ -259,11 +310,21 @@ namespace El_Horno {
 		return rigid_->getCollisionShape()->getLocalScaling();
 	}
 
+	HornoVector3 RigidBody::getHornoScale() const
+	{
+		return BulletVectorToHorno(getScale());
+	}
+
 	void RigidBody::setScale(const btVector3& s)
 	{
 		phManager_->removeBody(rigid_);
 		rigid_->getCollisionShape()->setLocalScaling(s);
 		phManager_->addBody(rigid_);
+	}
+
+	void RigidBody::setScale(const HornoVector3& s)
+	{
+		setScale(HornoVectorToBullet(s));
 	}
 
 	//Sincroniza el tama�o del collider con el de la malla (poco preciso)
