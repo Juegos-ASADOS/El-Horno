@@ -135,7 +135,7 @@ namespace El_Horno {
 
 		//std::string tmp = ;
 		FMOD::Sound* pSound = nullptr;
-		std::string path = soundsPath + strSoundName;
+		std::string path = ROUTENAME + strSoundName;
 		ErrorCheck(sgpImplementation->mpSystem->createSound(path.c_str(), eMode, nullptr, &pSound));
 		if (pSound) {
 			sgpImplementation->mSounds[strSoundName] = pSound;
