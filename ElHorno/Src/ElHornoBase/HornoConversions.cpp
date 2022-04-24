@@ -42,6 +42,11 @@ namespace El_Horno {
 		return El_Horno::HornoVector3(v.x,v.y,v.z);
 	}
 
+	El_Horno::HornoVector3 BulletVectorToHorno(const btVector3& v)
+	{
+		return El_Horno::HornoVector3(v.x(), v.y(), v.z());
+	}
+
 	FMOD_VECTOR HornoVectorToFmod(const El_Horno::HornoVector3& v)
 	{
 		FMOD_VECTOR fVec;

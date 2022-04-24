@@ -15,9 +15,8 @@ class btQuaternion;
 class PhysicsManager;
 class Transform;
 
-
-
 namespace El_Horno {
+	class HornoVector3;
 
 	class _declspec(dllexport) RigidBody : public Component
 	{
@@ -46,7 +45,9 @@ namespace El_Horno {
 		inline bool isTrigger() const { return isTrigger_; };
 
 		void setGravity(const btVector3& g);
+		void setGravity(const HornoVector3& g);
 		btVector3 getGravity() const;
+		HornoVector3 getHornoGravity() const;
 
 		btQuaternion getOrientation();
 

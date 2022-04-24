@@ -175,9 +175,19 @@ namespace El_Horno {
 		rigid_->setGravity(g);
 	}
 
+	void RigidBody::setGravity(const El_Horno::HornoVector3& g)
+	{
+		rigid_->setGravity(HornoVectorToBullet(g));
+	}
+
 	btVector3 RigidBody::getGravity() const
 	{
 		return rigid_->getGravity();
+	}
+
+	HornoVector3 RigidBody::getHornoGravity() const
+	{
+		return BulletVectorToHorno(rigid_->getGravity());
 	}
 
 	btQuaternion RigidBody::getOrientation()
