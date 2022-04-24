@@ -110,7 +110,6 @@ namespace El_Horno {
         int numEnts = allEnts.length();
 
         for (int i = 1; i <= numEnts; i++) {
-            std::cout << "aaa: " << allEnts[i];
             luabridge::LuaRef entity = getFromLua(allEnts[i]);
             Entity* ent = s->addEntity(allEnts[i], "prueba");
 
@@ -129,7 +128,7 @@ namespace El_Horno {
                     std::string key = lua_tostring(entity, -2);
                     std::string val = lua_tostring(entity, -1);
 
-                    parameters.push_back({ compName, val });
+                    parameters.push_back({ key, val });
                     lua_pop(component, 1);
                 }
 

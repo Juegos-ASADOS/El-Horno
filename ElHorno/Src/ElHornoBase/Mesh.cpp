@@ -31,7 +31,7 @@ namespace El_Horno {
 		ElHornoBase::getGraphicsManager()->getSceneManager()->destroyEntity(ogreEntity_->getName());
 	}
 
-	/*void Mesh::setParameters(std::vector<std::pair<std::string, std::string>> parameters)
+	void Mesh::setParameters(std::vector<std::pair<std::string, std::string>> parameters)
 	{
 		for (int i = 0; i < parameters.size(); i++) {
 			if (parameters[i].first == "name") {
@@ -41,7 +41,7 @@ namespace El_Horno {
 		}
 		castShadow_ = true;
 		isAnimated_ = false;
-	}*/
+	}
 
 	/*
 	Crea una entidad. Establece:

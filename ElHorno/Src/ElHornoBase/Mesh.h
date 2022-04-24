@@ -21,7 +21,7 @@ namespace El_Horno {
 		Mesh() {};
 		~Mesh();
 
-		//virtual void setParameters(std::vector<std::pair<std::string, std::string>> parameters) override;
+		virtual void setParameters(std::vector<std::pair<std::string, std::string>> parameters) override;
 		virtual void start() override;
 
 		void onEnable() override;

@@ -32,20 +32,20 @@ namespace El_Horno {
 		node_ = nullptr;
 	}
 
-	//void Transform::setParameters(std::vector<std::pair<std::string, std::string>> parameters)
-	//{
-	//	for (int i = 0; i < parameters.size(); i++) {
-	//		if (parameters[i].first == "position") {
-	//			pPos_ = StringToVector(parameters[i].second);
-	//		}
-	//		else if (parameters[i].first == "rotation") {
-	//			pRot_ = StringToVector(parameters[i].second);
-	//		}
-	//		else if (parameters[i].first == "scale") {
-	//			pScal_ = StringToVector(parameters[i].second);
-	//		}
-	//	}
-	//}
+	void Transform::setParameters(std::vector<std::pair<std::string, std::string>> parameters)
+	{
+		for (int i = 0; i < parameters.size(); i++) {
+			if (parameters[i].first == "position") {
+				pPos_ = StringToVector(parameters[i].second);
+			}
+			else if (parameters[i].first == "rotation") {
+				pRot_ = StringToVector(parameters[i].second);
+			}
+			else if (parameters[i].first == "scale") {
+				pScal_ = StringToVector(parameters[i].second);
+			}
+		}
+	}
 
 	/*
 	Se establece la rotacion, la posicion, la escala y se muestra la bounding box (debug)
