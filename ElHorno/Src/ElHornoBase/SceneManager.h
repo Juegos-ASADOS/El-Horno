@@ -3,10 +3,13 @@
 #define _SCENE_MANAGER_H
 
 #include <string>
+#include <map>
+#include <vector>
 
 
 namespace El_Horno {
 class Scene;
+class Component;
 
 typedef Scene* (*SceneLoad)();
 typedef void (*GameVoid)();
@@ -31,6 +34,12 @@ typedef void (*GameVoid)();
 		void update();
 		void deleteEntities();
 		void setScene(Scene* newScene);
+		std::map<std::string, Component* (*)()> getComponents();
+
+		template<typename T>
+		static Component* createComponent() {
+			return new T();
+		}
 	private:
 		static SceneManager* instance_;
 
@@ -40,6 +49,8 @@ typedef void (*GameVoid)();
 		~SceneManager();
 
 		std::string nextScene_ = "";
+
+		std::map<std::string, Component* (*)()> possibleComponents;
 	};
 }
 #endif _SCENE_MANAGER_H

@@ -31,6 +31,18 @@ namespace El_Horno {
 		ElHornoBase::getGraphicsManager()->getSceneManager()->destroyEntity(ogreEntity_->getName());
 	}
 
+	void Mesh::setParameters(std::vector<std::pair<std::string, std::string>> parameters)
+	{
+		for (int i = 0; i < parameters.size(); i++) {
+			if (parameters[i].first == "name") {
+				meshName_ = parameters[i].second + ".mesh";
+				materialName_ = parameters[i].second + ".mesh";
+			}
+		}
+		castShadow_ = true;
+		isAnimated_ = false;
+	}
+
 	/*
 	Crea una entidad. Establece:
 		- Material

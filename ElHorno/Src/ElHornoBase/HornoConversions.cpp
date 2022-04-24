@@ -3,7 +3,7 @@
 #include "OgreVector3.h"
 #include "btBulletCollisionCommon.h"
 #include "HornoVector3.h"
-
+#include <sstream>
 #include "fmod_common.h"
 #include "CheckML.h"
 
@@ -42,6 +42,11 @@ namespace El_Horno {
 		return El_Horno::HornoVector3(v.x,v.y,v.z);
 	}
 
+	El_Horno::HornoVector3 BulletVectorToHorno(const btVector3& v)
+	{
+		return El_Horno::HornoVector3(v.x(), v.y(), v.z());
+	}
+
 	FMOD_VECTOR HornoVectorToFmod(const El_Horno::HornoVector3& v)
 	{
 		FMOD_VECTOR fVec;
@@ -59,5 +64,22 @@ namespace El_Horno {
 	Ogre::Quaternion QuaternionToOgre(const btQuaternion& q)
 	{
 		return Ogre::Quaternion(q.w(), q.x(), q.y(), q.z());
+	}
+
+	Ogre::Vector3 StringToVector(std::string vec)
+	{
+
+		std::istringstream in(vec);
+		std::string val;
+		std::vector<float> values;
+
+		while (getline(in, val, ',')) {
+			values.push_back(std::stod(val));
+		}
+
+		while (std::getline(in, val, ',')) {
+			values.push_back(std::stod(val));
+		}
+		return Ogre::Vector3(values[0], values[1], values[2]);
 	}
 }

@@ -85,6 +85,7 @@ namespace El_Horno {
 
 		//HornoLua
 		LuaManager::setupInstance();
+		LuaManager::getInstance()->init();
 	}
 
 	/*
@@ -96,11 +97,7 @@ namespace El_Horno {
 		GraphicsManager::getInstance()->init();
 		SceneManager::getInstance()->getCurrentScene()->start();
 		AudioManager::getInstance()->init();
-		LuaManager::getInstance()->init();
-
 		UIManager::getInstance()->createContext();
-
-		LuaManager::getInstance()->reedLuaScript("Assets/Scripts/sample.lua");
 	}
 
 	/*
@@ -131,7 +128,6 @@ namespace El_Horno {
 		facCreat->addFactory("particleSystem");
 		facCreat->addFactory("audioComponent");
 		facCreat->addFactory("audioListener");
-		facCreat->addFactory("UIElement");
 		facCreat->addFactory("UIPushButton");
 	}
 

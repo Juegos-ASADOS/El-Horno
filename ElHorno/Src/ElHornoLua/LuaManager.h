@@ -2,7 +2,7 @@
 #ifndef _EL_HORNO_BULLET_LUA_MANAGER_H
 #define _EL_HORNO_BULLET_LUA_MANAGER_H
 
-#define SCRIPTS_PATH "\Assets\Scripts"
+#define SCRIPTS_PATH "Assets/Scripts/"
 #define FILE_EXTENSION ".lua"
 
 #include <string>
@@ -22,7 +22,7 @@ namespace El_Horno {
 
         void init();
         void report_errors(int status);
-        void reedLuaScript(const std::string& path);
+        void readLuaScript(const std::string& path);
 
         template<typename T>
         void pushToLua(T var, std::string name);
@@ -30,6 +30,7 @@ namespace El_Horno {
         lua_State* getLuaState();
         void exposeFunct(std::string name, lua_CFunction(*func)(lua_State* L));
         int luaGetTop(lua_State* L);
+        void loadScene();
     private:
 
         LuaManager() {};

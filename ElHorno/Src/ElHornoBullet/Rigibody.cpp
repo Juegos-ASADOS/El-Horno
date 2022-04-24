@@ -49,34 +49,34 @@ namespace El_Horno {
 	void RigidBody::start()
 	{
 		phManager_ = PhysicsManager::getInstance();
-		
+
 		transform_ = entity_->getComponent<Transform>("transform");
 
-		btVector3 size(1,1,1);
-		//Si tiene mesh, la utilizamos para tomar el tamaño por defecto
+		btVector3 size(1, 1, 1);
+		//Si tiene mesh, la utilizamos para tomar el tamaï¿½o por defecto
 		if (entity_->getComponent<Mesh>("mesh")) {
 			Ogre::Entity* obj = entity_->getComponent<Mesh>("mesh")->getOgreEntity();
 			//Usamos la BoundingBox de la malla
 			size += OgreVectorToBullet(obj->getBoundingBox().getHalfSize());
-			
-			//Ajuste de tamaño
+
+			//Ajuste de tamaï¿½o
 			size *= 0.975;
-		}//De lo contrario tomamos el tamaño del transform (no debería entrar aquí de normal)
-		else{
+		}//De lo contrario tomamos el tamaï¿½o del transform (no deberï¿½a entrar aquï¿½ de normal)
+		else {
 			size += OgreVectorToBullet(transform_->getScale());
 		}
 
 		shape_ = phManager_->createShape(transform_, &size, (ColliderShape)colShape_);
 
 		//Transform de bullet
-		bttrasform_ = new btTransform(QuaternionToBullet(transform_->getRotation()), OgreVectorToBullet(transform_->getPosition()));
+		bttrasform_ = new btTransform(QuaternionToBullet(transform_->getRotation()), OgreVectorToBullet(transform_->getGlobalPosition()));
 
 		//Por defecto
 		friction_ = 0.3f;
 
 		restitution_ = 0.1f;
 
-		//Creación del objeto en Bullet
+		//Creaciï¿½n del objeto en Bullet
 		rigid_ = phManager_->createRigidBody(bttrasform_, shape_, userIdx_, mass_);
 
 		//Guardamos referencia en el rb a nuestro rigidbody
@@ -87,44 +87,46 @@ namespace El_Horno {
 		rigid_->setRestitution(restitution_);
 		rigid_->setFriction(friction_);
 
-		//Necesario indicarle al manager que lo agregue al mundo de Bullet (y añada sus flags)
-		if(group_ != -1 && mask_ != -1)
+		//Necesario indicarle al manager que lo agregue al mundo de Bullet (y aï¿½ada sus flags)
+		if (group_ != -1 && mask_ != -1)
 			phManager_->addBody(rigid_, group_, mask_);
 		else
 			phManager_->addBody(rigid_);
-		
-		if(isKinematic_)
-			rigid_->setCollisionFlags(rigid_->getCollisionFlags() + btCollisionObject::CF_KINEMATIC_OBJECT);
 
-		//En función de si es trigger o no, se activan las flags
-		if (isTrigger_) 
-			rigid_->setCollisionFlags(rigid_->getCollisionFlags() + btCollisionObject::CF_NO_CONTACT_RESPONSE);
+		if (isKinematic_)
+			rigid_->setCollisionFlags(rigid_->getCollisionFlags() | btCollisionObject::CF_KINEMATIC_OBJECT);
 
+		//En funciï¿½n de si es trigger o no, se activan las flags
+		if (isTrigger_)
+			rigid_->setCollisionFlags(rigid_->getCollisionFlags() | btCollisionObject::CF_NO_CONTACT_RESPONSE);
 	}
 
-	//Cogemos el valor del Transform y se lo damos a Bullet en preupdate (permite movimiento kinemático)
+	//Cogemos el valor del Transform y se lo damos a Bullet en preupdate (permite movimiento kinemï¿½tico)
 	void RigidBody::preUpdate()
 	{
 		if (mass_ > 0) {
-			Ogre::Vector3 pos = transform_->getPosition();
+			phManager_->removeBody(rigid_);
+			Ogre::Vector3 pos = transform_->getGlobalPosition();
 			Ogre::Quaternion rot = transform_->getRotation();
 
 			rigid_->getWorldTransform().setOrigin(OgreVectorToBullet(pos));
 			rigid_->getWorldTransform().setRotation(QuaternionToBullet(rot));
+			phManager_->addBody(rigid_);
 		}
 	}
 
-	//Tras los cálculos, Bullet devuelve la nueva posición y rotación del body
+	//Tras los cï¿½lculos, Bullet devuelve la nueva posiciï¿½n y rotaciï¿½n del body
 	void RigidBody::update()
 	{
-		btVector3 pos;
-		btQuaternion rot;
+		if (!isKinematic_) {
+			btVector3 pos;
+			btQuaternion rot;
 
-		pos = rigid_->getWorldTransform().getOrigin();
-		rot = rigid_->getWorldTransform().getRotation();
-
-		transform_->setPosition(BulletVectorToOgre(pos));
-		transform_->setRotation(QuaternionToOgre(rot));
+			pos = rigid_->getWorldTransform().getOrigin();
+			rot = rigid_->getWorldTransform().getRotation();
+			transform_->setGlobalPosition(BulletVectorToOgre(pos));
+			transform_->setRotation(QuaternionToOgre(rot));
+		}
 	}
 
 	void RigidBody::applyForce(const btVector3& force)
@@ -160,12 +162,42 @@ namespace El_Horno {
 	void RigidBody::setTrigger(bool isTrigger)
 	{
 		if (isTrigger_ != isTrigger) {
-			if(isTrigger)
+			if (isTrigger)
 				rigid_->setCollisionFlags(rigid_->getCollisionFlags() + btCollisionObject::CF_NO_CONTACT_RESPONSE);
 			else
 				rigid_->setCollisionFlags(rigid_->getCollisionFlags() ^ btCollisionObject::CF_NO_CONTACT_RESPONSE);
 		}
 		isTrigger_ = isTrigger;
+	}
+
+	void RigidBody::setGravity(const btVector3& g)
+	{
+		rigid_->setGravity(g);
+	}
+
+	void RigidBody::setGravity(const El_Horno::HornoVector3& g)
+	{
+		rigid_->setGravity(HornoVectorToBullet(g));
+	}
+
+	btVector3 RigidBody::getGravity() const
+	{
+		return rigid_->getGravity();
+	}
+
+	HornoVector3 RigidBody::getHornoGravity() const
+	{
+		return BulletVectorToHorno(rigid_->getGravity());
+	}
+
+	btQuaternion RigidBody::getOrientation()
+	{
+		return rigid_->getOrientation();
+	}
+
+	void RigidBody::setDamping(const float& linear, const float& angular)
+	{
+		rigid_->setDamping(linear, angular);
 	}
 
 	void RigidBody::setFriction(const float& f)
@@ -185,7 +217,7 @@ namespace El_Horno {
 		mass_ = m;
 
 		btVector3 inertia;
-		
+
 		phManager_->removeBody(rigid_);
 		rigid_->getCollisionShape()->calculateLocalInertia(mass_, inertia);
 		rigid_->setMassProps(mass_, inertia);
@@ -197,9 +229,9 @@ namespace El_Horno {
 		rigid_->setAngularFactor(f);
 	}
 
-	void RigidBody::setSleepingThresholds(const float& linear, const float& scalar)
+	void RigidBody::setSleepingThresholds(const float& linear, const float& angular)
 	{
-		rigid_->setSleepingThresholds(linear, scalar);
+		rigid_->setSleepingThresholds(linear, angular);
 	}
 
 	void RigidBody::setLinearVelocity(const btVector3& l)
@@ -234,7 +266,7 @@ namespace El_Horno {
 		phManager_->addBody(rigid_);
 	}
 
-	//Sincroniza el tamaño del collider con el de la malla (poco preciso)
+	//Sincroniza el tamaï¿½o del collider con el de la malla (poco preciso)
 	void RigidBody::syncScale()
 	{
 		Ogre::Entity* obj = entity_->getComponent<Mesh>("mesh")->getOgreEntity();

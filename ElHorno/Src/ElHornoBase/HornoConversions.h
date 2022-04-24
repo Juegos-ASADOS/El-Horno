@@ -3,7 +3,7 @@
 //Bullet
 class btVector3;
 class btQuaternion;
-
+#include <string>
 //FMOD
 class FMOD_VECTOR;
 
@@ -26,8 +26,10 @@ namespace El_Horno {
 	_declspec(dllexport) btVector3 HornoVectorToBullet(const El_Horno::HornoVector3& v);
 	_declspec(dllexport) Ogre::Vector3 HornoVectorToOgre(const El_Horno::HornoVector3& v);
 	_declspec(dllexport) El_Horno::HornoVector3 OgreVectorToHorno(const Ogre::Vector3& v);
+	_declspec(dllexport) El_Horno::HornoVector3 BulletVectorToHorno(const btVector3& v);
 	_declspec(dllexport) FMOD_VECTOR HornoVectorToFmod(const El_Horno::HornoVector3& v);
 
 	_declspec(dllexport) btQuaternion QuaternionToBullet(const Ogre::Quaternion& q);
 	_declspec(dllexport) Ogre::Quaternion QuaternionToOgre(const btQuaternion& q);
+	_declspec(dllexport) Ogre::Vector3 StringToVector(std::string vec);
 }

@@ -19,6 +19,8 @@ extern "C"
 #include "CameraComponent.h"
 #include "AudioComponent.h"
 #include "AudioListenerComponent.h"
+#include "SceneManager.h"
+#include "Scene.h"
 #include "CheckML.h"
 
 namespace El_Horno {
@@ -68,10 +70,11 @@ namespace El_Horno {
         lua_pop(luaState, 1);
     }
 
-    void LuaManager::reedLuaScript(const std::string& path)
+    void LuaManager::readLuaScript(const std::string& path)
     {
+        std::string s = SCRIPTS_PATH + path + FILE_EXTENSION;
         // load some code from Lua file
-        int scriptLoadStatus = luaL_dofile(luaState, path.c_str());
+        int scriptLoadStatus = luaL_dofile(luaState, s.c_str());
 
         // define error reporter for any Lua error
         report_errors(scriptLoadStatus);
@@ -79,8 +82,7 @@ namespace El_Horno {
 
     luabridge::LuaRef LuaManager::getFromLua(std::string name)
     {
-        std::string s = SCRIPTS_PATH + name + FILE_EXTENSION;
-        return luabridge::getGlobal(luaState, s.c_str());
+        return luabridge::getGlobal(luaState, name.c_str());
     }
 
     lua_State* LuaManager::getLuaState()
@@ -96,6 +98,44 @@ namespace El_Horno {
     int LuaManager::luaGetTop(lua_State* L)
     {
         return lua_gettop(L);
+    }
+
+    void LuaManager::loadScene()
+    {
+        Scene* s = SceneManager::getInstance()->getCurrentScene();
+        readLuaScript(s->getName());
+
+        luabridge::LuaRef allEnts = getFromLua("entities");
+        luabridge::LuaRef prueba = getFromLua("prueba");
+        int numEnts = allEnts.length();
+
+        for (int i = 1; i <= numEnts; i++) {
+            luabridge::LuaRef entity = getFromLua(allEnts[i]);
+            Entity* ent = s->addEntity(allEnts[i], "prueba");
+
+            lua_pushnil(entity);
+            while (lua_next(entity, 0) != 0) {
+                std::string compName = lua_tostring(entity, -2);
+
+                std::string key;
+
+                luabridge::LuaRef component = entity[compName];
+                lua_pushnil(component);
+
+                std::vector<std::pair<std::string, std::string>> parameters;
+
+                while (lua_next(component, 0) != 0) {
+                    std::string key = lua_tostring(entity, -2);
+                    std::string val = lua_tostring(entity, -1);
+
+                    parameters.push_back({ key, val });
+                    lua_pop(component, 1);
+                }
+
+                ent->addComponent(compName, parameters);
+                lua_pop(entity, 1);
+            }
+        }
     }
 
     template<typename T>

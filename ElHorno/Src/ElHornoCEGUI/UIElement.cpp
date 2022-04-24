@@ -5,7 +5,7 @@
 
 namespace El_Horno {
 
-	UIElement::UIElement(float posX_, float posY_, float sizeX_, float sizeY_, char* name_) : name(name_), posX(posX_), posY(posY_), sizeX(sizeX_), sizeY(sizeY_)
+	UIElement::UIElement(float posX_, float posY_, float sizeX_, float sizeY_, std::string name_) : name(name_), posX(posX_), posY(posY_), sizeX(sizeX_), sizeY(sizeY_)
 	{
 	}
 

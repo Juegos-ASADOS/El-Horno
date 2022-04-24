@@ -9,6 +9,8 @@
 #include <iostream>
 #include "Entity.h"
 #include "CheckML.h"
+#include <string>
+#include <vector>
 
 using namespace Ogre;
 namespace El_Horno {
@@ -20,10 +22,29 @@ namespace El_Horno {
 		pScal_ = HornoVectorToOgre(scal);
 	}
 
+	Transform::Transform()
+	{
+	}
+
 	Transform::~Transform()
 	{
 		ElHornoBase::getInstance()->getGraphicsManager()->getSceneManager()->destroySceneNode(node_);
 		node_ = nullptr;
+	}
+
+	void Transform::setParameters(std::vector<std::pair<std::string, std::string>> parameters)
+	{
+		for (int i = 0; i < parameters.size(); i++) {
+			if (parameters[i].first == "position") {
+				pPos_ = StringToVector(parameters[i].second);
+			}
+			else if (parameters[i].first == "rotation") {
+				pRot_ = StringToVector(parameters[i].second);
+			}
+			else if (parameters[i].first == "scale") {
+				pScal_ = StringToVector(parameters[i].second);
+			}
+		}
 	}
 
 	/*
@@ -51,9 +72,17 @@ namespace El_Horno {
 	}
 
 	// Getters
-	Vector3 Transform::getPosition()
+	Vector3 Transform::getPosition() //Local
 	{
 		return node_->getPosition();
+	}
+	Vector3 Transform::getGlobalPosition() //Global
+	{
+		return node_->getParent()->convertLocalToWorldPosition(node_->getPosition());
+	}
+	HornoVector3 Transform::getHornoGlobalPosition()
+	{
+		return OgreVectorToHorno(node_->getParent()->convertLocalToWorldPosition((node_->getPosition())));
 	}
 	Vector3 Transform::getScale()
 	{
@@ -68,6 +97,16 @@ namespace El_Horno {
 	void Transform::setPosition(Vector3 pos)
 	{
 		node_->setPosition(pos);
+	}
+
+	void Transform::setGlobalPosition(Ogre::Vector3 pos)
+	{
+		node_->setPosition(node_->getParent()->convertWorldToLocalPosition(pos));
+	}
+
+	void Transform::addPosition(Ogre::Vector3 pos)
+	{
+		pPos_ += pos;
 	}
 
 	void Transform::setScale(Vector3 sca)

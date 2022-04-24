@@ -2,6 +2,8 @@
 #include "Scene.h"
 #include "EventManager.h"
 #include "Event.h"
+#include "Transform.h"
+#include "Mesh.h"
 
 #include <string>
 
@@ -84,5 +86,11 @@ namespace El_Horno {
 	void SceneManager::setScene(Scene* newScene) {
 		delete currentScene_;
 		currentScene_ = newScene;
+		possibleComponents.emplace("transform", &createComponent<Transform>);
+		possibleComponents.emplace("mesh", &createComponent<Mesh>);
+	}
+	std::map<std::string, Component* (*)()> SceneManager::getComponents()
+	{
+		return possibleComponents;
 	}
 }

@@ -11,16 +11,17 @@ class btTransform;
 class btCollisionShape;
 class btCollisionObject;
 class btVector3;
-
+class btQuaternion;
 class PhysicsManager;
-
 class Transform;
 
 namespace El_Horno {
+	class HornoVector3;
+
 	class _declspec(dllexport) RigidBody : public Component
 	{
 	public:
-		RigidBody(float mass, bool isTrigger, bool isKinematic,int colShape);
+		RigidBody(float mass, bool isTrigger, bool isKinematic, int colShape);
 		RigidBody(float mass, int group, int mask, bool isTrigger, bool isKinematic,int colShape);
 		~RigidBody();
 
@@ -43,11 +44,19 @@ namespace El_Horno {
 		void setTrigger(bool isTrigger);
 		inline bool isTrigger() const { return isTrigger_; };
 
+		void setGravity(const btVector3& g);
+		void setGravity(const HornoVector3& g);
+		btVector3 getGravity() const;
+		HornoVector3 getHornoGravity() const;
+
+		btQuaternion getOrientation();
+
+		void setDamping(const float& linear, const float& angular);
 		void setFriction(const float& f);
 		void setRestitution(const float& r);
 		void setMass(const float& m);
 		void setAngularFactor(const float& f);
-		void setSleepingThresholds(const float& linear, const float& scalar);
+		void setSleepingThresholds(const float& linear, const float& angular);
 
 		void setLinearVelocity(const btVector3& l);
 		void setAngularVelocity(const btVector3& a);

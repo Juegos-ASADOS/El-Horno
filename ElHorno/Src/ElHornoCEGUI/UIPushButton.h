@@ -3,6 +3,7 @@
 #define _UI_PUSH_BUTTON_H
 
 #include "UIElement.h"
+#include "Component.h"
 
 namespace CEGUI {
 	class PushButton;
@@ -11,14 +12,15 @@ namespace CEGUI {
 }
 
 namespace El_Horno {
-	class _declspec(dllexport) UIPushButton : public UIElement
+	class _declspec(dllexport) UIPushButton : public UIElement, public Component
 	{
 	private:
 		CEGUI::PushButton* boton;
 	public:
-		UIPushButton(char* schemeName, float posX, float posY, float sizeX, float sizeY, char* name_);
+		UIPushButton(std::string schemeName, float posX, float posY, float sizeX, float sizeY, std::string name_);
 
 		void isPushed();
+		void addEvent(std::string evento);
 
 		virtual ~UIPushButton();
 	};

@@ -3,6 +3,7 @@
 #define _MESH_H
 
 #include <string>
+#include <vector>
 #include "Component.h"
 
 namespace Ogre {
@@ -16,9 +17,11 @@ namespace El_Horno {
 	{
 	public:
 
-		Mesh(std::string name = "cube", bool castShadow = true, bool isAnimated = false);
+		Mesh(std::string name, bool castShadow = true, bool isAnimated = false);
+		Mesh() {};
 		~Mesh();
 
+		virtual void setParameters(std::vector<std::pair<std::string, std::string>> parameters) override;
 		virtual void start() override;
 
 		void onEnable() override;

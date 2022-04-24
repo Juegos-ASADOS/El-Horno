@@ -2,6 +2,10 @@
 #ifndef _FACTORY_H
 #define _FACTORY_H
 
+#include <string>
+
+using namespace std;
+
 namespace El_Horno {
 	class Component;
 	class _declspec(dllexport) Factory
