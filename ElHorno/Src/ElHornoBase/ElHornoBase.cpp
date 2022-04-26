@@ -95,9 +95,9 @@ namespace El_Horno {
 	{
 		PhysicsManager::getInstance()->start("");
 		GraphicsManager::getInstance()->init();
+		UIManager::getInstance()->createContext();
 		SceneManager::getInstance()->getCurrentScene()->start();
 		AudioManager::getInstance()->init();
-		UIManager::getInstance()->createContext();
 	}
 
 	/*
