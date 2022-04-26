@@ -10,8 +10,10 @@
 namespace Ogre {
 	class ColourValue;
 }
-class Mesh;
+namespace El_Horno
+{
 class Transform;
+}
 
 
 namespace El_Horno {

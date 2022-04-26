@@ -64,8 +64,10 @@ namespace El_Horno {
 		// Establecemos sus parametros basicos
 		light_->setDiffuseColour(1.0, 1.0, 1.0);
 
-		entity_->getComponent<Transform>("transform")->getNode()->attachObject(light_);
-		node_->setDirection(dirLight_);
+		tr_ = entity_->getComponent<Transform>("transform");
+		tr_->getNode()->attachObject(light_);
+		//entity_->getComponent<Transform>("transform")->getNode()->attachObject(light_);
+		tr_->setDirection(dirLight_);
 	}
 
 	void LightComponent::update()
