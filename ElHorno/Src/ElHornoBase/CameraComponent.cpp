@@ -21,6 +21,10 @@ namespace El_Horno {
 		farClipDistance_ = farClDis;
 	}
 
+	CameraComponent::CameraComponent()
+	{
+	}
+
 	CameraComponent::~CameraComponent()
 	{
 		Component::~Component();
@@ -38,6 +42,22 @@ namespace El_Horno {
 	* Lo añade como viewport y seleccionames un color de fondo
 	* Todas las variable están cableadas hasta la existencia de un json que setee los parametros
 	*/
+	void CameraComponent::setParameters(std::vector<std::pair<std::string, std::string>> parameters)
+	{
+		for (int i = 0; i < parameters.size(); i++) {
+			if (parameters[i].first == "position") {
+				camPos_ = StringToVector(parameters[i].second);
+			}
+			else if (parameters[i].first == "lookAt") {
+				lookAtVec_ = StringToVector(parameters[i].second);
+			}
+			else if (parameters[i].first == "color") {
+				Ogre::Vector4 oG = StringToColor(parameters[i].second);
+				bgColor_ = Ogre::ColourValue(oG.x, oG.y, oG.z, oG.w);
+			}
+		}
+	}
+
 	void CameraComponent::start()
 	{
 		camera_ = ElHornoBase::getGraphicsManager()->getSceneManager()->createCamera("cam");

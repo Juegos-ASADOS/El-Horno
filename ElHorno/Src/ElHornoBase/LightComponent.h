@@ -24,8 +24,10 @@ namespace El_Horno {
 	public:
 
 		LightComponent(int type, HornoVector3 dirLight/*, Ogre::ColourValue colourLight*/);
+		LightComponent();
 		~LightComponent();
 
+		void setParameters(std::vector<std::pair<std::string, std::string>> parameters) override;
 		void start() override;
 		void update()override;
 

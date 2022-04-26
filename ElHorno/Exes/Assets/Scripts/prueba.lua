@@ -6,7 +6,7 @@ prueba = {
     },
 
     mesh = {
-         name = "Sinbad",
+         name = "pipo",
     }
 }
 

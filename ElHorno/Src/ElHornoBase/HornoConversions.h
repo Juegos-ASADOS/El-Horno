@@ -13,6 +13,7 @@ namespace Ogre {
 	template <int dims, typename T> class Vector;
 	typedef Vector<2, Real> Vector2;
 	typedef Vector<3, Real> Vector3;
+	typedef Vector<4, Real> Vector4;
 	class Quaternion;
 };
 
@@ -32,4 +33,5 @@ namespace El_Horno {
 	_declspec(dllexport) btQuaternion QuaternionToBullet(const Ogre::Quaternion& q);
 	_declspec(dllexport) Ogre::Quaternion QuaternionToOgre(const btQuaternion& q);
 	_declspec(dllexport) Ogre::Vector3 StringToVector(std::string vec);
+	_declspec(dllexport) Ogre::Vector4 StringToColor(std::string vec);
 }

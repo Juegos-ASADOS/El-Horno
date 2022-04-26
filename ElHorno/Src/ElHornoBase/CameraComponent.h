@@ -18,8 +18,10 @@ class HornoVector3;
 
 		//lo uncio necesario para recoger input del teclado a traves de SDL
 		CameraComponent(HornoVector3 pos, HornoVector3 lookAt, HornoVector3 color, float alpha, int nearClDis, int farClDis);
+		CameraComponent();
 		~CameraComponent();
 
+		void setParameters(std::vector<std::pair<std::string, std::string>> parameters) override;
 		virtual void start() override;
 
 		Ogre::Camera* getCamera();

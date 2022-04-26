@@ -25,9 +25,25 @@ namespace El_Horno {
 		//colourLight_ = colourLight;
 	}
 
+	LightComponent::LightComponent()
+	{
+	}
+
 	LightComponent::~LightComponent()
 	{
 
+	}
+
+	void LightComponent::setParameters(std::vector<std::pair<std::string, std::string>> parameters)
+	{
+		for (int i = 0; i < parameters.size(); i++) {
+			if (parameters[i].first == "type") {
+				type_ = stoi(parameters[i].second);
+			}
+			else if (parameters[i].first == "dirLight") {
+				dirLight_ = StringToVector(parameters[i].second);
+			}
+		}
 	}
 
 	void LightComponent::start()

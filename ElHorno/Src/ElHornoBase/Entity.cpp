@@ -82,11 +82,13 @@ namespace El_Horno {
 		if (!hasComponent((it->first)))
 		{
 			Component* c = (it->second)();
-			c->setParameters(parameters);
 			comp_.insert({ (it->first), c });
 			compRef_.push_back(c);
+			c->setParameters(parameters);
 			c->setEntity(this);
 		}
+		if(it->first == "transform")
+			getComponent<Transform>("transform")->setParameters(parameters);
 	}
 
 	bool Entity::hasComponent(std::string name) const {

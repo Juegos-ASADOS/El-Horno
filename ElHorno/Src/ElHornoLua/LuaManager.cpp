@@ -106,14 +106,12 @@ namespace El_Horno {
         readLuaScript(s->getName());
 
         luabridge::LuaRef allEnts = getFromLua("entities");
-        luabridge::LuaRef prueba = getFromLua("prueba");
         int numEnts = allEnts.length();
 
         for (int i = 1; i <= numEnts; i++) {
             luabridge::LuaRef entity = getFromLua(allEnts[i]);
             Entity* ent = s->addEntity(allEnts[i], "prueba");
-
-            lua_pushnil(entity);
+            ent->addComponent<Transform>("transform", HornoVector3(0, 0, 0), HornoVector3(0, 0, 0), HornoVector3(0, 0, 0));
             while (lua_next(entity, 0) != 0) {
                 std::string compName = lua_tostring(entity, -2);
 
