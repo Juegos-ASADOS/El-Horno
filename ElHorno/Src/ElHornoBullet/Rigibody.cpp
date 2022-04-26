@@ -105,13 +105,13 @@ namespace El_Horno {
 	void RigidBody::preUpdate()
 	{
 		if (mass_ > 0) {
-			phManager_->removeBody(rigid_);
+			//phManager_->removeBody(rigid_);
 			Ogre::Vector3 pos = transform_->getGlobalPosition();
 			Ogre::Quaternion rot = transform_->getRotation();
 
 			rigid_->getWorldTransform().setOrigin(OgreVectorToBullet(pos));
 			rigid_->getWorldTransform().setRotation(QuaternionToBullet(rot));
-			phManager_->addBody(rigid_);
+			//phManager_->addBody(rigid_);
 		}
 	}
 
