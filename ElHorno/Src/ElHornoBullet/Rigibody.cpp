@@ -284,6 +284,11 @@ namespace El_Horno {
 		setAngularVelocity(HornoVectorToBullet(a));
 	}
 
+	float RigidBody::getDamping() const
+	{
+		return (float)rigid_->getLinearDamping();
+	}
+
 	btVector3 RigidBody::getLinearVelocity() const
 	{
 		return rigid_->getLinearVelocity();

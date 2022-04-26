@@ -114,12 +114,12 @@ namespace El_Horno {
 		parent_ = p;
 		Transform* t = getComponent<Transform>("transform");
 
-		if (p->getComponent<Transform>("transform")->getNode() != NULL) {
+		if (t != NULL) {
 			if (p == nullptr) {
 				Ogre::SceneNode* sc = ElHornoBase::getInstance()->getGraphicsManager()->getSceneManager()->getRootSceneNode()->createChildSceneNode();
 				t->setNode(sc);
 			}
-			else
+			else if(p->getComponent<Transform>("transform")->getNode() != NULL)
 				t->setNode(p->getComponent<Transform>("transform")->getNode()->createChildSceneNode());
 		}
 	};

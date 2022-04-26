@@ -69,6 +69,7 @@ namespace El_Horno {
 		void setAngularVelocity(const btVector3& a);
 		void setAngularVelocity(const HornoVector3& a);
 		
+		float getDamping() const;
 		btVector3 getLinearVelocity() const;
 		HornoVector3 getHornoLinearVelocity() const;
 		btVector3 getAngularVelocity() const;
