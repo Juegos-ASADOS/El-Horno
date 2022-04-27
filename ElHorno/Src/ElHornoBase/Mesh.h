@@ -34,6 +34,8 @@ namespace El_Horno {
 		Ogre::Entity* getOgreEntity() const;
 		Ogre::Mesh* getMesh() const;
 
+		void attachObject(std::string bone, Entity* obj);
+
 		bool isMeshAnimated() const;
 	private:
 		Ogre::Entity* ogreEntity_;

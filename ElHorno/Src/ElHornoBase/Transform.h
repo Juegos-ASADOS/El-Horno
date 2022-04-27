@@ -12,7 +12,7 @@ namespace El_Horno {
 	class _declspec(dllexport) Transform : public Component
 	{
 	public:
-		Transform(HornoVector3 pos, HornoVector3 rot, HornoVector3 scal);
+		Transform(HornoVector3 pos, HornoVector3 rot, HornoVector3 scal, bool bAttach = false);
 		Transform();
 		~Transform();
 
@@ -60,6 +60,8 @@ namespace El_Horno {
 		Ogre::Vector3 pPos_;
 		Ogre::Vector3 pRot_;
 		Ogre::Vector3 pScal_;
+
+		bool boneAttached_;
 	};
 }
 #endif _TRANSFORM_H

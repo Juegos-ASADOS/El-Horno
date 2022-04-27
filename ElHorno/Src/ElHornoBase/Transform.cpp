@@ -15,11 +15,12 @@
 using namespace Ogre;
 namespace El_Horno {
 
-	Transform::Transform(HornoVector3 pos, HornoVector3 rot, HornoVector3 scal)
+	Transform::Transform(HornoVector3 pos, HornoVector3 rot, HornoVector3 scal, bool bAttach)
 	{
 		pPos_ = HornoVectorToOgre(pos);
 		pRot_ = HornoVectorToOgre(rot);
 		pScal_ = HornoVectorToOgre(scal);
+		boneAttached_ = bAttach;
 	}
 
 	Transform::Transform()
@@ -28,8 +29,10 @@ namespace El_Horno {
 
 	Transform::~Transform()
 	{
-		ElHornoBase::getInstance()->getGraphicsManager()->getSceneManager()->destroySceneNode(node_);
-		node_ = nullptr;
+		if (!boneAttached_) {
+			ElHornoBase::getInstance()->getGraphicsManager()->getSceneManager()->destroySceneNode(node_);
+			node_ = nullptr;
+		}
 	}
 
 	void Transform::setParameters(std::vector<std::pair<std::string, std::string>> parameters)
@@ -52,22 +55,24 @@ namespace El_Horno {
 	*/
 	void Transform::start()
 	{
-		Ogre::SceneNode* parent = ElHornoBase::getGraphicsManager()->getSceneManager()->getRootSceneNode();
-		Ogre::Vector3 parPos = { 0,0,0 };
-		if (entity_->getParent() != nullptr) {
-			Transform* pTr = entity_->getParent()->getComponent<Transform>("transform");
-			parent = pTr->getNode();
+		if (!boneAttached_) {
+			Ogre::SceneNode* parent = ElHornoBase::getGraphicsManager()->getSceneManager()->getRootSceneNode();
+			Ogre::Vector3 parPos = { 0,0,0 };
+			if (entity_->getParent() != nullptr) {
+				Transform* pTr = entity_->getParent()->getComponent<Transform>("transform");
+				parent = pTr->getNode();
+			}
+
+			node_ = parent->createChildSceneNode();
+
+			setPosition(parPos + pPos_);
+
+			rotateX(pRot_.x);
+			rotateY(pRot_.y);
+			rotateZ(pRot_.z);
+
+			setScale(pScal_);
 		}
-		
-		node_ = parent->createChildSceneNode();
-		setPosition(parPos + pPos_);
-
-		rotateX(pRot_.x);
-		rotateY(pRot_.y);
-		rotateZ(pRot_.z);
-
-		setScale(pScal_);
-
 		//node_->showBoundingBox(true);
 	}
 

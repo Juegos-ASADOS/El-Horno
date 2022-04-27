@@ -63,12 +63,12 @@ namespace El_Horno {
 		//ogreEntity_->setMaterialName(materialName_);
 		ogreEntity_->setCastShadows(castShadow_);
 
-		/* Enseña las animaciones posibles del skeleton	
+		/* Enseña las animaciones posibles del skeleton
 		for (auto s : ogreEntity_->getAnimableValueNames()) {
 			std::cout << s;
 		};*/
-
-		entity_->getComponent<Transform>("transform")->getNode()->attachObject(ogreEntity_);
+		if (entity_->getComponent<Transform>("transform")->getNode() != NULL)
+			entity_->getComponent<Transform>("transform")->getNode()->attachObject(ogreEntity_);
 	}
 
 	void Mesh::onEnable()
@@ -102,6 +102,11 @@ namespace El_Horno {
 	Ogre::Mesh* Mesh::getMesh() const
 	{
 		return ogreEntity_->getMesh().get();
+	}
+
+	void Mesh::attachObject(std::string bone, Entity* obj)
+	{
+		ogreEntity_->attachObjectToBone(bone, obj->getComponent<Mesh>("mesh")->ogreEntity_);
 	}
 
 	bool Mesh::isMeshAnimated() const
