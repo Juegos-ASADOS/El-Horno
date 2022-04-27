@@ -12,12 +12,6 @@ namespace El_Horno {
 		schemeName_ = schemeName;
 
 	}
-	void UIPushButton::start()
-	{
-		//Le decimos a la ventana principal que cree una m�s										taharez solo renderiza fremewindow, habra que ponerle nombres distintos a los botones para que no pete cegui
-		boton = (CEGUI::PushButton*)UIManager::getInstance()->getWinMngr()->createWindow(schemeName_ + "/FrameWindow"/*, "PushButtonName"*/);
-		boton->setText("boton");
-
 
 	void UIPushButton::setParameters(std::vector<std::pair<std::string, std::string>> parameters)
 	{
