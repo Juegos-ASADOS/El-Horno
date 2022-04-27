@@ -16,6 +16,7 @@
 #include "Entity.h"
 #include "AudioComponent.h"
 #include "CheckMl.h"
+#
 
 namespace El_Horno {
 
@@ -95,9 +96,9 @@ namespace El_Horno {
 	{
 		PhysicsManager::getInstance()->start("");
 		GraphicsManager::getInstance()->init();
+		UIManager::getInstance()->createContext();
 		SceneManager::getInstance()->getCurrentScene()->start();
 		AudioManager::getInstance()->init();
-		UIManager::getInstance()->createContext();
 	}
 
 	/*
