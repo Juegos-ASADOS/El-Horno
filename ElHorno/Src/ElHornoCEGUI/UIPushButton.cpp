@@ -38,8 +38,10 @@ namespace El_Horno {
 	}
 
 	void UIPushButton::start() {
+		UIManager::getInstance()->defineScheme(schemeName_ + ".scheme");
+
 		//Le decimos a la ventana principal que cree una m�s							//es estupido, taharez solo saca el framewindow
-		boton = (CEGUI::PushButton*)UIManager::getInstance()->getWinMngr()->createWindow(schemeName_ + "/FrameWindow", "PushButtonName");
+		boton = (CEGUI::RadioButton*)UIManager::getInstance()->getWinMngr()->createWindow(schemeName_ + "/Slider", "PushButtonName");
 
 		//Le asignamos el CEGUI::Window del padre para no tener que hacer casteos
 		//Cada vez que queramos llamar a cualquier metodo propio de CEGUI::PushButton
@@ -55,9 +57,9 @@ namespace El_Horno {
 	//No se como hacer qu� hace cuando est� pulsado
 	void UIPushButton::isPushed()
 	{
-		//Todos los metodos propios de ButtonBase
-		boton->isPushed();	//True si est� siendo pulsado
-		boton->isHovering();//True si tienes el raton por encima o has mantenido pulsado pero no has soltado CREO
+		////Todos los metodos propios de ButtonBase
+		//boton->isPushed();	//True si est� siendo pulsado
+		//boton->isHovering();//True si tienes el raton por encima o has mantenido pulsado pero no has soltado CREO
 	}
 
 	void UIPushButton::addEvent(std::string evento)

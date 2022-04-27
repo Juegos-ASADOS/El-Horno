@@ -48,6 +48,8 @@ namespace El_Horno {
 		void createRoot();
 		void createContext();
 		void deleteContext();
+
+		void defineScheme(std::string schemeName);
 		//void shutdown?¿ cerrar el context y resetear la instancia?
 
 		//INVESTIGAR FRAMEWINDOW

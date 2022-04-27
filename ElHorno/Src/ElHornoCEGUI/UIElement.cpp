@@ -35,13 +35,13 @@ namespace El_Horno {
 		elementInterface->destroy();
 	}
 
-	void UIElement::setPos(int x, int y)
+	void UIElement::setPos(float x, float y)
 	{
 		elementInterface->setPosition(CEGUI::UVector2(CEGUI::UDim(0, x), CEGUI::UDim(0, y)));
 	}
 
 	//No tocar estos 3 metodos
-	void UIElement::setSize(int x, int y)
+	void UIElement::setSize(float x, float y)
 	{
 		elementInterface->setSize(CEGUI::USize(CEGUI::UDim(x, 0), CEGUI::UDim(y, 0)));
 	}
