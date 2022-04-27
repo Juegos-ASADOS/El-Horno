@@ -21,6 +21,7 @@ namespace El_Horno {
 		UIPushButton(std::string schemeName, float posX, float posY, float sizeX, float sizeY, std::string name_);
 		UIPushButton() {}
 
+		void setParameters(std::vector<std::pair<std::string, std::string>> parameters) override;
 		void start();
 
 

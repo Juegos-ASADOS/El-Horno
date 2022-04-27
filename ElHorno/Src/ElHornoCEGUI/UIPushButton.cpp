@@ -15,6 +15,30 @@ namespace El_Horno {
 	
 
 
+	void UIPushButton::setParameters(std::vector<std::pair<std::string, std::string>> parameters)
+	{
+		for (int i = 0; i < parameters.size(); i++) {
+			if (parameters[i].first == "schemeName") {
+				schemeName_ =parameters[i].second;
+			}
+			else if (parameters[i].first == "posX") {
+				posX = stof(parameters[i].second);
+			}
+			else if (parameters[i].first == "posY") {
+				posY = stof(parameters[i].second);
+			}
+			else if (parameters[i].first == "sizeX") {
+				sizeX = stof(parameters[i].second);
+			}
+			else if (parameters[i].first == "sizeY") {
+				sizeY = stof(parameters[i].second);
+			}
+			else if (parameters[i].first == "name") {
+				name = parameters[i].second;
+			}
+		}
+	}
+
 	void UIPushButton::start() {
 		//Le decimos a la ventana principal que cree una más							//es estupido, taharez solo saca el framewindow
 		boton = (CEGUI::PushButton*)UIManager::getInstance()->getWinMngr()->createWindow(schemeName_ + "/FrameWindow", "PushButtonName");

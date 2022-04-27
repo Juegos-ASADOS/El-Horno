@@ -13,7 +13,7 @@ namespace El_Horno {
 	//AHORA LA UIElement hereda de Component
 	class _declspec(dllexport) UIElement
 	{
-	private:
+	protected:
 
 		//Entidad de la interfaz
 		CEGUI::Window* elementInterface;
