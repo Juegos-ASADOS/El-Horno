@@ -24,7 +24,6 @@ namespace El_Horno {
 		float sizeY;
 	public:
 		UIElement(float posX, float posY, float sizeX, float sizeY, std::string name_);
-		UIElement(){}
 		void init();
 
 		std::string name;

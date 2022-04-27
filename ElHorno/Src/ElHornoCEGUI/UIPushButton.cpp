@@ -9,15 +9,8 @@
 namespace El_Horno {
 	UIPushButton::UIPushButton(std::string schemeName, float posX, float posY, float sizeX, float sizeY, std::string name_) : UIElement(posX, posY, sizeX, sizeY, name_)
 	{
-		schemeName_ = schemeName;
-	}
-	
-	
-
-
-	void UIPushButton::start() {
-		//Le decimos a la ventana principal que cree una más							//es estupido, taharez solo saca el framewindow
-		boton = (CEGUI::PushButton*)UIManager::getInstance()->getWinMngr()->createWindow(schemeName_ + "/FrameWindow", "PushButtonName");
+		//Le decimos a la ventana principal que cree una más
+		boton = (CEGUI::PushButton*)UIManager::getInstance()->getWinMngr()->createWindow(schemeName + "/PushButton","PushButtonName");
 
 		//Le asignamos el CEGUI::Window del padre para no tener que hacer casteos
 		//Cada vez que queramos llamar a cualquier metodo propio de CEGUI::PushButton
@@ -29,11 +22,8 @@ namespace El_Horno {
 
 		//Y lo añadimos al boton a la escena
 		UIManager::getInstance()->getRoot()->addChild(boton);
-		boton->activate();
+
 	}
-
-
-	
 	//No se como hacer qué hace cuando está pulsado
 	void UIPushButton::isPushed()
 	{
