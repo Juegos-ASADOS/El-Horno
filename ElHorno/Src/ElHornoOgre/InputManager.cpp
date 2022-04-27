@@ -5,6 +5,7 @@
 #include <SDL_events.h>
 #include <iostream>
 #include "CheckML.h"
+#include <CEGUI/CEGUI.h>
 
 //#include <CEGUI/CEGUI.h>
 //#include "checkML.h"
@@ -34,7 +35,6 @@ namespace El_Horno {
 		return instance_;
 	}
 
-
 	bool InputManager::setupInstance()
 	{
 		if (instance_ == 0)
@@ -51,6 +51,67 @@ namespace El_Horno {
 		delete instance_;
 	}
 
+
+	 //auxilaires para injectar a cegui
+	CEGUI::Key::Scan KeyCode_TO_CEGUI(SDL_KeyCode key)
+	{
+		using namespace CEGUI;
+		switch (key)
+		{
+		case SDLK_UP:
+			return Key::ArrowUp;
+		case SDLK_DOWN:
+			return Key::ArrowDown;
+		case SDLK_LEFT:
+			return Key::ArrowLeft;
+		case SDLK_RIGHT:
+			return Key::ArrowRight;
+		case SDLK_ESCAPE:
+			return Key::Escape;
+		case SDLK_INSERT:
+			return Key::Insert;
+		case SDLK_SPACE:
+			return Key::Space;
+		default:
+			return Key::Unknown;
+		}
+	}
+
+	CEGUI::MouseButton MouseButton_TO_CEGUI(Uint8 MouseButtons)
+	{
+		switch (MouseButtons) {
+		case SDL_BUTTON_LEFT: return CEGUI::MouseButton::LeftButton;
+		case SDL_BUTTON_MIDDLE: return CEGUI::MouseButton::MiddleButton;
+		case SDL_BUTTON_RIGHT: return CEGUI::MouseButton::RightButton;
+		case SDL_BUTTON_X1: return CEGUI::MouseButton::X1Button;
+		case SDL_BUTTON_X2: return CEGUI::MouseButton::X2Button;
+		}
+		return CEGUI::MouseButton::NoButton;
+	}
+
+	void InputManager::injectCegui(SDL_Event event)
+	{
+		if (event.type == SDL_KEYDOWN) {
+			CEGUI::System::getSingleton().getDefaultGUIContext().injectKeyDown(KeyCode_TO_CEGUI((SDL_KeyCode)event.key.keysym.sym));
+		}
+		else if (event.type == SDL_KEYUP) {
+			CEGUI::System::getSingleton().getDefaultGUIContext().injectKeyUp(KeyCode_TO_CEGUI((SDL_KeyCode)event.key.keysym.sym));
+		}
+		else if (event.type == SDL_MOUSEBUTTONDOWN)
+		{
+			CEGUI::System::getSingleton().getDefaultGUIContext().injectMouseButtonDown(MouseButton_TO_CEGUI(event.button.button));
+		}
+		else if (event.type == SDL_MOUSEBUTTONUP)
+		{
+			CEGUI::System::getSingleton().getDefaultGUIContext().injectMouseButtonUp(MouseButton_TO_CEGUI(event.button.button));
+		}
+		else if (event.type == SDL_MOUSEMOTION)
+		{
+			CEGUI::System::getSingleton().getDefaultGUIContext().injectMousePosition(event.motion.x, event.motion.y);
+		}
+
+	}
+
 	//esto seria para poner el setup principalmente de los mandos, lo omito ya que solo queiro pillar el input de teclado momento
 	void InputManager::setup()
 	{
@@ -64,6 +125,7 @@ namespace El_Horno {
 		{
 			//Raton
 		case SDL_MOUSEMOTION:
+
 
 			break;
 		case SDL_MOUSEWHEEL:
@@ -107,6 +169,9 @@ namespace El_Horno {
 		default:
 			break;
 		}
+
+		injectCegui(event);
+
 		return false;
 
 	}

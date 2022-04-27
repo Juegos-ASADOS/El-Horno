@@ -10,9 +10,13 @@ namespace El_Horno {
 	UIPushButton::UIPushButton(std::string schemeName, float posX, float posY, float sizeX, float sizeY, std::string name_) : UIElement(posX, posY, sizeX, sizeY, name_)
 	{
 		schemeName_ = schemeName;
+
 	}
-	
-	
+	void UIPushButton::start()
+	{
+		//Le decimos a la ventana principal que cree una mï¿½s										taharez solo renderiza fremewindow, habra que ponerle nombres distintos a los botones para que no pete cegui
+		boton = (CEGUI::PushButton*)UIManager::getInstance()->getWinMngr()->createWindow(schemeName_ + "/FrameWindow"/*, "PushButtonName"*/);
+		boton->setText("boton");
 
 
 	void UIPushButton::setParameters(std::vector<std::pair<std::string, std::string>> parameters)
@@ -40,7 +44,7 @@ namespace El_Horno {
 	}
 
 	void UIPushButton::start() {
-		//Le decimos a la ventana principal que cree una más							//es estupido, taharez solo saca el framewindow
+		//Le decimos a la ventana principal que cree una mï¿½s							//es estupido, taharez solo saca el framewindow
 		boton = (CEGUI::PushButton*)UIManager::getInstance()->getWinMngr()->createWindow(schemeName_ + "/FrameWindow", "PushButtonName");
 
 		//Le asignamos el CEGUI::Window del padre para no tener que hacer casteos
@@ -51,18 +55,14 @@ namespace El_Horno {
 		//La clase padre UIElement se encarga de posicionarlo correctamente...
 		init();
 
-		//Y lo añadimos al boton a la escena
+		//Y lo aï¿½adimos al boton a la escena
 		UIManager::getInstance()->getRoot()->addChild(boton);
-		boton->activate();
 	}
-
-
-	
-	//No se como hacer qué hace cuando está pulsado
+	//No se como hacer quï¿½ hace cuando estï¿½ pulsado
 	void UIPushButton::isPushed()
 	{
 		//Todos los metodos propios de ButtonBase
-		boton->isPushed();	//True si está siendo pulsado
+		boton->isPushed();	//True si estï¿½ siendo pulsado
 		boton->isHovering();//True si tienes el raton por encima o has mantenido pulsado pero no has soltado CREO
 	}
 
