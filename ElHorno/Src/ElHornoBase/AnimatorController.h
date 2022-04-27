@@ -35,8 +35,10 @@ namespace El_Horno {
 	public:
 
 		AnimatorController(std::vector<std::pair<std::string, std::string>> animVector);
+		AnimatorController();
 		~AnimatorController();
 
+		virtual void setParameters(std::vector<std::pair<std::string, std::string>> animVector) override;
 		virtual void start() override;
 		void update()override;
 

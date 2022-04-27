@@ -24,6 +24,10 @@ namespace El_Horno {
 		timer_ = new Timer();
 	}
 
+	ParticleSystem::ParticleSystem()
+	{
+	}
+
 	ParticleSystem::~ParticleSystem()
 	{
 		particleSystem_->clear();
@@ -31,6 +35,26 @@ namespace El_Horno {
 		ElHornoBase::getInstance()->getGraphicsManager()->getSceneManager()->destroyParticleSystem(particleSystemOrderedName_);
 		particleSystem_ = nullptr;
 		delete timer_; timer_ = nullptr;
+	}
+
+	void ParticleSystem::setParameters(std::vector<std::pair<std::string, std::string>> parameters)
+	{
+		for (int i = 0; i < parameters.size(); i++) {
+			if (parameters[i].first == "name") {
+				particleSystemName_ = parameters[i].second;
+				particleSystemOrderedName_ = particleSystemName_;
+			}
+			else if (parameters[i].first == "template") {
+				particleSystemTemplate_ = parameters[i].second;
+			}
+			else if (parameters[i].first == "ttl") {
+				timeToLive_ = stof(parameters[i].second);
+			}
+			else if (parameters[i].first == "destroyTL") {
+				destroyOnTimeLimit_ = stoi(parameters[i].second);
+			}
+		}
+		timer_ = new Timer();
 	}
 
 	void ParticleSystem::start()

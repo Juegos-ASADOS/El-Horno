@@ -109,10 +109,30 @@ namespace El_Horno {
 		//animationStateMachine_.insert(std::pair<std::string, TransitionMap>(state, t4));
 	}
 
+	AnimatorController::AnimatorController()
+	{
+	}
+
 
 	AnimatorController::~AnimatorController()
 	{
 
+	}
+
+	void AnimatorController::setParameters(std::vector<std::pair<std::string, std::string>> animVector)
+	{
+		// Generar la maquina de estados
+		for (int i = 0; i < animVector.size(); i++)
+		{
+			std::string state = animVector[i].first;
+			std::string nextState = animVector[i].second;
+			TransitionMap t;
+			t.insert(std::pair<std::string, bool>(nextState, false));
+			animationStateMachine_.insert(std::pair<std::string, TransitionMap>(state, t));
+		}
+
+		// Seteamos el estado incial al primero de la maquina de estados
+		currentState_.name = animVector[0].first;
 	}
 
 	void AnimatorController::start()

@@ -38,6 +38,10 @@ namespace El_Horno {
 		this->colShape_ = colShape;
 	}
 
+	RigidBody::RigidBody()
+	{
+	}
+
 	RigidBody::~RigidBody()
 	{
 		delete bttrasform_; bttrasform_ = nullptr;
@@ -45,6 +49,30 @@ namespace El_Horno {
 
 	//Crea el rigidbody de Bullet y guarda los valores importantes como:
 	//- Manager, transform, forma de collider, transform (bullet), friccion y restitucion, si es trigger, ID 
+
+	void RigidBody::setParameters(std::vector<std::pair<std::string, std::string>> parameters)
+	{
+		for (int i = 0; i < parameters.size(); i++) {
+			if (parameters[i].first == "mass") {
+				mass_ = stof(parameters[i].second);
+			}
+			else if (parameters[i].first == "group") {
+				group_ = stoi(parameters[i].second);
+			}
+			else if (parameters[i].first == "mask") {
+				mask_ = stoi(parameters[i].second);
+			}
+			else if (parameters[i].first == "isTrigger") {
+				isKinematic_ = stoi(parameters[i].second);
+			}
+			else if (parameters[i].first == "isKinematic") {
+				isTrigger_ = stoi(parameters[i].second);
+			}
+			else if (parameters[i].first == "colShape") {
+				colShape_ = stoi(parameters[i].second);
+			}
+		}
+	}
 
 	void RigidBody::start()
 	{

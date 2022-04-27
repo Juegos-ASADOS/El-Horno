@@ -23,8 +23,10 @@ namespace El_Horno {
 	public:
 		RigidBody(float mass, bool isTrigger, bool isKinematic, int colShape);
 		RigidBody(float mass, int group, int mask, bool isTrigger, bool isKinematic,int colShape);
+		RigidBody();
 		~RigidBody();
 
+		virtual void setParameters(std::vector<std::pair<std::string, std::string>> parameters) override;
 		virtual void start() override;
 		virtual void update() override;
 		virtual void preUpdate() override;

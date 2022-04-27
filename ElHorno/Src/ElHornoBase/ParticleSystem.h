@@ -19,8 +19,10 @@ namespace El_Horno {
 	public:
 
 		ParticleSystem(const std::string& name, const std::string& temp, float ttl, bool destroyTL);
+		ParticleSystem();
 		~ParticleSystem();
 
+		void setParameters(std::vector<std::pair<std::string, std::string>> parameters) override;
 		void start() override;
 		void onEnable() override;
 		void onDisable() override;
