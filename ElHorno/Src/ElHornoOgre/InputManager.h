@@ -27,6 +27,8 @@ namespace El_Horno {
 		static bool setupInstance();
 		static void erase();
 
+		void injectCegui(SDL_Event event);
+
 		void setup();
 
 		bool generalInputManagement(SDL_Event event);
