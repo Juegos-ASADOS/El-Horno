@@ -35,6 +35,7 @@ namespace El_Horno {
 		Ogre::Mesh* getMesh() const;
 
 		void attachObject(std::string bone, Entity* obj);
+		void detachObject(Entity* obj);
 
 		bool isMeshAnimated() const;
 	private:

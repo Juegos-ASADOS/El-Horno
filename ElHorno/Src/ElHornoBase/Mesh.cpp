@@ -109,6 +109,11 @@ namespace El_Horno {
 		ogreEntity_->attachObjectToBone(bone, obj->getComponent<Mesh>("mesh")->ogreEntity_);
 	}
 
+	void Mesh::detachObject(Entity* obj)
+	{
+		ogreEntity_->detachObjectFromBone(obj->getComponent<Mesh>("mesh")->ogreEntity_);
+	}
+
 	bool Mesh::isMeshAnimated() const
 	{
 		return isAnimated_;
