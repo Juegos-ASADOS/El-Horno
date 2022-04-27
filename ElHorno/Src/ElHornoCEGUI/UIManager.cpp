@@ -57,10 +57,9 @@ namespace El_Horno {
 		CEGUI::WidgetLookManager::setDefaultResourceGroup("LookNFeel");
 		CEGUI::WindowManager::setDefaultResourceGroup("Layouts");
 
-
-		//esto es la carga de recursos sobre como s eva a utilizar cegui (fuente de letra, letreros, puntero del raton etc etc)
-		CEGUI::SchemeManager::getSingleton().createFromFile("TaharezLook.scheme");
-		CEGUI::System::getSingleton().getDefaultGUIContext().getMouseCursor().setDefaultImage("TaharezLook/MouseArrow");
+		//CEGUI::SchemeManager::getSingleton().createFromFile("TaharezLook.scheme");
+		////esto es la carga de recursos sobre como s eva a utilizar cegui (fuente de letra, letreros, puntero del raton etc etc)
+		//CEGUI::System::getSingleton().getDefaultGUIContext().getMouseCursor().setDefaultImage("TaharezLook/MouseArrow");
 
 	}
 
@@ -116,6 +115,12 @@ namespace El_Horno {
 		winMngr->destroyAllWindows();
 		CEGUI::System::getSingleton().destroyGUIContext(*guiContext);
 		renderer->destroySystem();
+	}
+
+	void UIManager::defineScheme(std::string schemeName)
+	{
+		if(!CEGUI::SchemeManager::getSingleton().isDefined(schemeName));
+			CEGUI::SchemeManager::getSingleton().createFromFile(schemeName);
 	}
 
 	void UIManager::changeScreenSize(int width, int height)

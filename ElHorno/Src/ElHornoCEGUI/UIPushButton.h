@@ -5,16 +5,14 @@
 #include "UIElement.h"
 
 namespace CEGUI {
-	class PushButton;
-	class WindowManager;
-	class DefaultWindow;
+	class RadioButton;
 }
 
 namespace El_Horno {
 	class _declspec(dllexport) UIPushButton : public UIElement
 	{
 	private:
-		CEGUI::PushButton* boton;
+		CEGUI::RadioButton* boton;
 		std::string schemeName_;
 	public:
 		UIPushButton(std::string schemeName, float posX, float posY, float sizeX, float sizeY, std::string name_);

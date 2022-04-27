@@ -39,8 +39,8 @@ namespace El_Horno {
 
 		//Metodos iguales que una entidad/transform
 
-		void setPos(int x, int y);
-		void setSize(int x, int y);
+		void setPos(float x, float y);
+		void setSize(float x, float y);
 		void setText(const std::string& text);
 
 		//Transparencia del objeto
