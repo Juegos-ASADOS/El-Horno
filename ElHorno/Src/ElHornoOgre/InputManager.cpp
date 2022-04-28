@@ -17,6 +17,38 @@ namespace El_Horno {
 	{
 	}
 
+	void InputManager::manageKeys(SDL_Event event)
+	{
+		if (event.type == SDL_KEYDOWN) {
+			SDL_Scancode code = event.key.keysym.scancode;
+			if (!keys_[code].pressed_) {
+				keys_[code].down_ = true;
+				keys_[code].up_ = false;
+				keysDownToFlush.push_back(code);
+			}
+		}
+		else if (event.type == SDL_KEYUP)
+		{
+			SDL_Scancode code = event.key.keysym.scancode;
+			keys_[code].down_ = false;
+			keys_[code].pressed_ = false;
+			keys_[code].up_ = true;
+			keysUpsToFlush.push_back(code);
+		}
+
+	}
+
+	void InputManager::flushInput()
+	{
+		for (int c : keysUpsToFlush)
+			keys_[c].up_ = false;
+		keysUpsToFlush.clear();
+		for (int c : keysDownToFlush)
+			keys_[c].down_ = false;
+		keysDownToFlush.clear();
+	}
+
+
 	InputManager::~InputManager()
 	{
 		/*for (int i = 0; i < NumControls && controllers.size() > i; i++) {
@@ -165,8 +197,8 @@ namespace El_Horno {
 				break;
 			}
 			break;
-
 		default:
+			manageKeys(event);
 			break;
 		}
 
@@ -182,6 +214,16 @@ namespace El_Horno {
 		const Uint8* state = SDL_GetKeyboardState(NULL);
 
 		return state[key];
+	}
+
+	bool InputManager::getKeyDown(SDL_Scancode code)
+	{
+		return keys_[code].down_;
+	}
+
+	bool InputManager::getKeyUp(SDL_Scancode code)
+	{
+		return keys_[code].up_;
 	}
 }
 
