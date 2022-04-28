@@ -9,6 +9,8 @@
 #include <OgreRenderWindow.h>
 #include <OgreViewport.h>
 #include "CheckML.h"
+#include <math.h>
+
 namespace El_Horno {
 
 	CameraComponent::CameraComponent(HornoVector3 pos, HornoVector3 lookAt, HornoVector3 color, float alpha, int nearClDis, int farClDis)
@@ -73,6 +75,26 @@ namespace El_Horno {
 
 		viewport_ = ElHornoBase::getGraphicsManager()->getRenderWindow()->addViewport(camera_);
 		viewport_->setBackgroundColour(bgColor_);
+	}
+
+	void CameraComponent::update()
+	{
+		if (following) {
+			HornoVector3 targetPos = target_->getHornoGlobalPosition() + followDistance_;
+			HornoVector3 actualPos = tr_->getHornoGlobalPosition();
+			actualPos.x_ += (targetPos.x_ - actualPos.x_) * lerpAmount_;
+			actualPos.z_ += (targetPos.z_ - actualPos.z_) * lerpAmount_;
+			camPos_ = HornoVectorToOgre(actualPos);
+			tr_->setGlobalPosition(camPos_);
+		}
+	}
+
+	void CameraComponent::setFollow(Transform* tg, float lAmount, HornoVector3 fDistance)
+	{
+		following = true;
+		target_ = tg;
+		lerpAmount_ = lAmount;
+		followDistance_ = fDistance;
 	}
 
 	Ogre::Camera* CameraComponent::getCamera()

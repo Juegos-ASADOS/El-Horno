@@ -7,10 +7,11 @@
 #include <OgreColourValue.h>
 #include <vector>
 #include <string>
+#include "HornoVector3.h"
 
 namespace El_Horno {
 class Transform;
-class HornoVector3;
+//class HornoVector3;
 
 	class _declspec(dllexport) CameraComponent : public Component
 	{
@@ -23,6 +24,9 @@ class HornoVector3;
 
 		void setParameters(std::vector<std::pair<std::string, std::string>> parameters) override;
 		virtual void start() override;
+		virtual void update() override;
+
+		void setFollow(Transform* tg, float lAmount, HornoVector3 fDistance);
 
 		Ogre::Camera* getCamera();
 	private:
@@ -39,6 +43,10 @@ class HornoVector3;
 
 		int nearClipDistance_;
 		int farClipDistance_;
+
+		Transform* target_ = nullptr;
+		float lerpAmount_;
+		HornoVector3 followDistance_;
 	};
 }
 #endif _CAMERA_COMPONENT_H
