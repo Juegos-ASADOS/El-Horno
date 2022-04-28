@@ -24,6 +24,7 @@
     <ClCompile Include="..\..\Src\ElHornoBase\AudioListenerComponent.cpp" />
     <ClCompile Include="..\..\Src\ElHornoBase\CameraComponent.cpp" />
     <ClCompile Include="..\..\Src\ElHornoBase\Component.cpp" />
+    <ClCompile Include="..\..\Src\ElHornoBase\ComponentPusher.cpp" />
     <ClCompile Include="..\..\Src\ElHornoBase\ElHornoBase.cpp" />
     <ClCompile Include="..\..\Src\ElHornoBase\Entity.cpp" />
     <ClCompile Include="..\..\Src\ElHornoBase\EventListener.cpp" />
@@ -46,6 +47,7 @@
     <ClInclude Include="..\..\Src\ElHornoBase\AudioListenerComponent.h" />
     <ClInclude Include="..\..\Src\ElHornoBase\CameraComponent.h" />
     <ClInclude Include="..\..\Src\ElHornoBase\Component.h" />
+    <ClInclude Include="..\..\Src\ElHornoBase\ComponentPusher.h" />
     <ClInclude Include="..\..\Src\ElHornoBase\ElHornoBase.h" />
     <ClInclude Include="..\..\Src\ElHornoBase\Entity.h" />
     <ClInclude Include="..\..\Src\ElHornoBase\Event.h" />

@@ -111,6 +111,9 @@
     <ClCompile Include="..\..\Src\ElHornoBase\HornoVector3.cpp">
       <Filter>Archivos de origen\Other</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\Src\ElHornoBase\ComponentPusher.cpp">
+      <Filter>Archivos de origen\SceneManager</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\Src\ElHornoBase\ElHornoBase.h">
@@ -178,6 +181,9 @@
     </ClInclude>
     <ClInclude Include="..\..\Src\ElHornoBase\HornoVector3.h">
       <Filter>Archivos de encabezado\Other</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Src\ElHornoBase\ComponentPusher.h">
+      <Filter>Archivos de encabezado\SceneManager</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
