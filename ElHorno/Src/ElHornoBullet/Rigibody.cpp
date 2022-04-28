@@ -312,6 +312,15 @@ namespace El_Horno {
 		setAngularVelocity(HornoVectorToBullet(a));
 	}
 
+	void RigidBody::setKinematic(bool kin)
+	{
+		isKinematic_ = kin;
+		if (isKinematic_)
+			rigid_->setCollisionFlags(rigid_->getCollisionFlags() | btCollisionObject::CF_KINEMATIC_OBJECT);
+		else
+			rigid_->setCollisionFlags(rigid_->getCollisionFlags() | btCollisionObject::CF_DYNAMIC_OBJECT);
+	}
+
 	float RigidBody::getDamping() const
 	{
 		return (float)rigid_->getLinearDamping();
