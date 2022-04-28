@@ -57,9 +57,9 @@ namespace El_Horno {
 		CEGUI::WidgetLookManager::setDefaultResourceGroup("LookNFeel");
 		CEGUI::WindowManager::setDefaultResourceGroup("Layouts");
 
-		//CEGUI::SchemeManager::getSingleton().createFromFile("TaharezLook.scheme");
+		CEGUI::SchemeManager::getSingleton().createFromFile("TaharezLook.scheme");
 		////esto es la carga de recursos sobre como s eva a utilizar cegui (fuente de letra, letreros, puntero del raton etc etc)
-		//CEGUI::System::getSingleton().getDefaultGUIContext().getMouseCursor().setDefaultImage("TaharezLook/MouseArrow");
+		CEGUI::System::getSingleton().getDefaultGUIContext().getMouseCursor().setDefaultImage("TaharezLook/MouseArrow");
 
 	}
 
@@ -85,6 +85,8 @@ namespace El_Horno {
 	{
 		//Seleccionamos el RenderTarget que usamos de ogre que usamos de Root de Renderizado
 		renderer = &CEGUI::OgreRenderer::bootstrapSystem(*GraphicsManager::getInstance()->getRenderWindow());
+
+		//renderer
 
 		//Creo que se crea así
 		guiContext = &CEGUI::System::getSingleton().createGUIContext(renderer->getDefaultRenderTarget());

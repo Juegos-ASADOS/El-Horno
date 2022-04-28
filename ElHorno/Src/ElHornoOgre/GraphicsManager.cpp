@@ -224,6 +224,9 @@ namespace El_Horno {
 	{
 		//Actualiza render targets
 		root_->renderOneFrame();
+
+		//SDL_ShowCursor(SDL_DISABLE);
+
 	}
 
 	void GraphicsManager::setConfigOptions()
