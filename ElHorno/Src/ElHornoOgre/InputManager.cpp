@@ -153,6 +153,7 @@ namespace El_Horno {
 	//recoge los principales eventos de SDL y los gestiona de ser necesario
 	bool InputManager::generalInputManagement(SDL_Event event)
 	{
+		flushInput();
 		switch (event.type)
 		{
 			//Raton
