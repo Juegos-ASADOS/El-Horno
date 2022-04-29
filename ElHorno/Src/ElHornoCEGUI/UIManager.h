@@ -50,6 +50,8 @@ namespace El_Horno {
 		void deleteContext();
 
 		void defineScheme(std::string schemeName);
+		CEGUI::Window* loadLayout(std::string layoutName);
+		CEGUI::Window* loadLayout(std::string layoutName, std::string name);
 		//void shutdown?¿ cerrar el context y resetear la instancia?
 
 		//INVESTIGAR FRAMEWINDOW
