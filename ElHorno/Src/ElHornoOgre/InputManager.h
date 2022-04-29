@@ -19,9 +19,9 @@ namespace El_Horno {
 		//pendiente de agregar mandos
 
 		struct KeyState {
-			bool down_;
-			bool pressed_;
-			bool up_;
+			bool down_ = false;
+			bool pressed_ = false;
+			bool up_ = false;
 		};
 
 		KeyState keys_[SDL_NUM_SCANCODES];
