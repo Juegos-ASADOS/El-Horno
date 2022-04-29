@@ -60,7 +60,7 @@ namespace El_Horno {
 		//CEGUI::SchemeManager::getSingleton().createFromFile("TaharezLook.scheme");
 		//CEGUI::SchemeManager::getSingleton().createFromFile("Generic.scheme");
 		////esto es la carga de recursos sobre como s eva a utilizar cegui (fuente de letra, letreros, puntero del raton etc etc)
-		//CEGUI::System::getSingleton().getDefaultGUIContext().getMouseCursor().setDefaultImage("TaharezLook/MouseArrow");
+		CEGUI::System::getSingleton().getDefaultGUIContext().getMouseCursor().setDefaultImage("TaharezLook/MouseArrow");
 
 	}
 
@@ -89,7 +89,9 @@ namespace El_Horno {
 		//Seleccionamos el RenderTarget que usamos de ogre que usamos de Root de Renderizado
 		renderer = &CEGUI::OgreRenderer::bootstrapSystem(*GraphicsManager::getInstance()->getRenderWindow());
 
-		//Creo que se crea así
+		//renderer
+
+		//Creo que se crea asï¿½
 		guiContext = &CEGUI::System::getSingleton().createGUIContext(renderer->getDefaultRenderTarget());
 
 		//CEGUI::SchemeManager::getSingleton().createFromFile("Layouts");
@@ -181,7 +183,7 @@ namespace El_Horno {
 		window->setText(text);
 	}
 
-	//Para cambiar la imagen del ratón
+	//Para cambiar la imagen del ratï¿½n
 	void UIManager::setMouseCursor(const std::string& imageFile)
 	{
 		CEGUI::System::getSingleton().getDefaultGUIContext().getMouseCursor().setDefaultImage(imageFile);

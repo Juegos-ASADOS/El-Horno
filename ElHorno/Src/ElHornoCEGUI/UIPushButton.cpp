@@ -42,7 +42,7 @@ namespace El_Horno {
 
 		//Le decimos a la ventana principal que cree una m�s							//es estupido, taharez solo saca el framewindow
 		boton = (CEGUI::RadioButton*)UIManager::getInstance()->getWinMngr()->createWindow(schemeName_ + "/RadioButton", "PushButtonName");
-
+		boton->setUsingAutoRenderingSurface(true);
 		//Le asignamos el CEGUI::Window del padre para no tener que hacer casteos
 		//Cada vez que queramos llamar a cualquier metodo propio de CEGUI::PushButton
 		setElementInterface(boton);
@@ -53,6 +53,13 @@ namespace El_Horno {
 
 		//Y lo a�adimos al boton a la escena
 		UIManager::getInstance()->getRoot()->addChild(boton);
+
+
+		//asi es como se suscriben eventos a la pulsacion de un boton o lo que diso quiera que hagais
+
+		//d_rootIngame->getChild("BotBar/WeaponBGImage/LeftArrowArea")->subscribeEvent(CEGUI::Window::EventMouseClick, Event::Subscriber(&HUDDemo::handleWeaponLeftArrowClicked, this));
+		//d_rootIngame->getChild("BotBar/WeaponBGImage/RightArrowArea")->subscribeEvent(CEGUI::Window::EventMouseClick, Event::Subscriber(&HUDDemo::handleWeaponRightArrowClicked, this));
+
 	}
 	//No se como hacer qu� hace cuando est� pulsado
 	void UIPushButton::isPushed()

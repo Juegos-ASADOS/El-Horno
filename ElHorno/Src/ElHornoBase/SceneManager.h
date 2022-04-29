@@ -40,6 +40,8 @@ typedef void (*GameVoid)();
 		static Component* createComponent() {
 			return new T();
 		}
+
+		std::map<std::string, Component* (*)()> possibleComponents;
 	private:
 		static SceneManager* instance_;
 
@@ -50,7 +52,6 @@ typedef void (*GameVoid)();
 
 		std::string nextScene_ = "";
 
-		std::map<std::string, Component* (*)()> possibleComponents;
 	};
 }
 #endif _SCENE_MANAGER_H
