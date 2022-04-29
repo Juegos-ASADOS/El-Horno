@@ -41,7 +41,7 @@ namespace El_Horno {
 		UIManager::getInstance()->defineScheme(schemeName_ + ".scheme");
 
 		//Le decimos a la ventana principal que cree una m�s							//es estupido, taharez solo saca el framewindow
-		boton = (CEGUI::RadioButton*)UIManager::getInstance()->getWinMngr()->createWindow(schemeName_ + "/Slider", "PushButtonName");
+		boton = (CEGUI::RadioButton*)UIManager::getInstance()->getWinMngr()->createWindow(schemeName_ + "/RadioButton", "PushButtonName");
 
 		//Le asignamos el CEGUI::Window del padre para no tener que hacer casteos
 		//Cada vez que queramos llamar a cualquier metodo propio de CEGUI::PushButton

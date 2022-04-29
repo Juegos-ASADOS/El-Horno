@@ -2,24 +2,8 @@
 #include "Entity.h"
 #include <iostream>
 #include <fstream>
-#include <OgreVector.h>
-//#include "CheckML.h"
-#include "Transform.h"
-#include "CameraComponent.h"
-#include "LightComponent.h"
-#include "Mesh.h"
-#include "ParticleSystem.h"
-#include "Rigibody.h"
-#include "AudioComponent.h"
-#include "AudioListenerComponent.h"
-#include "AnimatorController.h"
-#include "SinbadAnimTest.h"
 
 
-#include "InputManager.h"
-#include "btBulletCollisionCommon.h"
-#include "ElHornoBase.h"
-#include "UIPushButton.h"
 
 namespace El_Horno {
 	Scene::Scene()
@@ -196,50 +180,5 @@ namespace El_Horno {
 				if (e->isActive()) e->update();
 			iter++;
 		}
-
-		//A partir de aqui quitar todo
-
-		//Transform* tr = entities_.at("prueba")[2]->getComponent<Transform>("transform");
-		//RigidBody* rb = entities_.at("prueba")[2]->getComponent<RigidBody>("rigidbody");
-		//float speed = 100;
-
-		//rb->setAngularFactor(0);
-		//rb->setSleepingThresholds(0, 0);
-		//rb->setFriction(0.7);
-
-		//btVector3 force(0, 0, 0);
-		//if (InputManager::getInstance()->isKeyDown(SDL_Scancode::SDL_SCANCODE_A)) {
-		//	force += btVector3(-speed, 0, 0);
-		//	tr->setDirection(Ogre::Vector3{ 1,0,0 });
-		//}
-		//if (InputManager::getInstance()->isKeyDown(SDL_Scancode::SDL_SCANCODE_D)) {
-		//	force += btVector3(speed, 0, 0);
-		//	tr->setDirection(Ogre::Vector3{ -1,0,0 });
-		//}
-		//if (InputManager::getInstance()->isKeyDown(SDL_Scancode::SDL_SCANCODE_W)) {
-		//	force += btVector3(0, 0, -speed);
-		//	tr->setDirection(Ogre::Vector3{ 0,0,1 });
-		//}
-		//if (InputManager::getInstance()->isKeyDown(SDL_Scancode::SDL_SCANCODE_S)) {
-		//	force += btVector3(0, 0, speed);
-		//	tr->setDirection(Ogre::Vector3{ 0,0,-1 });
-		//}	
-		//if (InputManager::getInstance()->isKeyDown(SDL_Scancode::SDL_SCANCODE_Q)) {
-		//	//rb->setTrigger(true);
-		//	if (time <= 0) {
-		//		rb->setScale(rb->getScale() - btVector3(0.1, 0.1, 0.1));
-		//		time = 1.0;
-		//	}
-		//}
-		//if (InputManager::getInstance()->isKeyDown(SDL_Scancode::SDL_SCANCODE_E)) {
-		//	//rb->setTrigger(false);
-		//	std::cout << rb->getScale().x() << " - " << rb->getScale().y() << " - "  << rb->getScale().z() << "\n";
-		//}
-
-		//force.setY(force.y() + rb->getLinearVelocity().y());
-		//rb->setLinearVelocity(force);
-
-		//if (time > 0)
-		//	time -= ElHornoBase::getInstance()->getDeltaTime();
 	}
 }

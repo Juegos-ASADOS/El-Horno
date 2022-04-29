@@ -167,12 +167,10 @@
     </Lib>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\Src\ElHornoCEGUI\UIPushButton.h" />
     <ClInclude Include="..\..\Src\ElHornoCEGUI\UIElement.h" />
     <ClInclude Include="..\..\Src\ElHornoCEGUI\UIManager.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\Src\ElHornoCEGUI\UIPushButton.cpp" />
     <ClCompile Include="..\..\Src\ElHornoCEGUI\UIElement.cpp" />
     <ClCompile Include="..\..\Src\ElHornoCEGUI\UIManager.cpp" />
   </ItemGroup>

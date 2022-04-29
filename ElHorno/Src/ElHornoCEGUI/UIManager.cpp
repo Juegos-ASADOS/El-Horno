@@ -58,6 +58,7 @@ namespace El_Horno {
 		CEGUI::WindowManager::setDefaultResourceGroup("Layouts");
 
 		//CEGUI::SchemeManager::getSingleton().createFromFile("TaharezLook.scheme");
+		//CEGUI::SchemeManager::getSingleton().createFromFile("Generic.scheme");
 		////esto es la carga de recursos sobre como s eva a utilizar cegui (fuente de letra, letreros, puntero del raton etc etc)
 		//CEGUI::System::getSingleton().getDefaultGUIContext().getMouseCursor().setDefaultImage("TaharezLook/MouseArrow");
 
@@ -75,7 +76,9 @@ namespace El_Horno {
 		//Ventana por defecto a modo de GameObject
 		//Todos los botones texto etc se crean dentro de esta misma ventana
 		root = (CEGUI::DefaultWindow*)winMngr->createWindow("DefaultWindow", "Root");
-		//root->setUsingAutoRenderingSurface(true);
+		
+		root->setUsingAutoRenderingSurface(true);
+		
 		guiContext->setRootWindow(root);
 
 		root->activate();
@@ -95,10 +98,13 @@ namespace El_Horno {
 
 		createRoot();
 
+		//CEGUI::Window* window = winMngr->loadLayoutFromFile("TaharezLookOverview.layout");
+
+		//root->addChild(window);
+
 		//TODO
 		//aimai esto e sun ejemplo para que salga algo en la pantalla 
 		//CEGUI::FrameWindow* wnd = (CEGUI::FrameWindow*)winMngr->createWindow("TaharezLook/FrameWindow", "Sample Window");
-		//root->addChild(wnd);
 		//wnd->setPosition(CEGUI::UVector2(cegui_reldim(0.05f), cegui_reldim(0.05f)));
 		//wnd->setSize(CEGUI::USize(cegui_reldim(0.2f), cegui_reldim(0.1f)));
 		//wnd->setMaxSize(CEGUI::USize(cegui_reldim(1.0f), cegui_reldim(1.0f)));
@@ -121,6 +127,28 @@ namespace El_Horno {
 	{
 		if(!CEGUI::SchemeManager::getSingleton().isDefined(schemeName));
 			CEGUI::SchemeManager::getSingleton().createFromFile(schemeName);
+	}
+
+	CEGUI::Window* UIManager::loadLayout(std::string layoutName)
+	{
+		CEGUI::WindowManager::getSingleton().destroyAllWindows();
+
+		CEGUI::Window* window = CEGUI::WindowManager::getSingleton().loadLayoutFromFile(layoutName + ".layout");
+
+		CEGUI::System::getSingleton().getDefaultGUIContext().setRootWindow(window);
+
+		return window;
+	}
+
+	CEGUI::Window* UIManager::loadLayout(std::string layoutName, std::string name)
+	{
+		winMngr->destroyAllWindows();
+
+		CEGUI::Window* window = winMngr->loadLayoutFromFile(layoutName + ".layout", name);
+
+		CEGUI::System::getSingleton().getDefaultGUIContext().setRootWindow(window);
+
+		return window;
 	}
 
 	void UIManager::changeScreenSize(int width, int height)

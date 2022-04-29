@@ -33,9 +33,6 @@
     <ClInclude Include="..\..\Src\ElHornoCEGUI\UIManager.h">
       <Filter>Archivos de encabezado\UIManager</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Src\ElHornoCEGUI\UIPushButton.h">
-      <Filter>Archivos de encabezado\Components</Filter>
-    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\Src\ElHornoCEGUI\UIElement.cpp">
@@ -43,9 +40,6 @@
     </ClCompile>
     <ClCompile Include="..\..\Src\ElHornoCEGUI\UIManager.cpp">
       <Filter>Archivos de origen\UIManager</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Src\ElHornoCEGUI\UIPushButton.cpp">
-      <Filter>Archivos de origen\Components</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
