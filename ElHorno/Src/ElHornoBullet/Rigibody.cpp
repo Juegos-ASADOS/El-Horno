@@ -44,6 +44,8 @@ namespace El_Horno {
 
 	RigidBody::~RigidBody()
 	{
+		phManager_->removeBody(rigid_);
+		delete rigid_; rigid_ = nullptr;
 		delete bttrasform_; bttrasform_ = nullptr;
 	}
 
@@ -402,5 +404,15 @@ namespace El_Horno {
 		//Usamos la BoundingBox de la malla
 		size += OgreVectorToBullet(obj->getBoundingBox().getHalfSize());
 		rigid_->getCollisionShape()->setLocalScaling(size * OgreVectorToBullet(scale));
+	}
+	void RigidBody::onEnable()
+	{
+		if(rigid_ == nullptr)
+			phManager_->addBody(rigid_);
+	}
+	void RigidBody::onDisable()
+	{
+		if(rigid_ != nullptr)
+			phManager_->removeBody(rigid_);
 	}
 }
