@@ -5,8 +5,6 @@
 #include <string>
 #include <vector>
 
-class UIElement;
-
 namespace CEGUI {
 	class Window;
 	class OgreRenderer;
@@ -50,6 +48,9 @@ namespace El_Horno {
 		void deleteContext();
 
 		void defineScheme(std::string schemeName);
+
+		void removeLayout();
+
 		CEGUI::Window* loadLayout(std::string layoutName);
 		CEGUI::Window* loadLayout(std::string layoutName, std::string name);
 		//void shutdown?¿ cerrar el context y resetear la instancia?

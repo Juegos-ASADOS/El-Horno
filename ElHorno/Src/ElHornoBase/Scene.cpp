@@ -2,6 +2,7 @@
 #include "Entity.h"
 #include <iostream>
 #include <fstream>
+#include <OgreVector.h>
 
 //ESTO DEBERIA QUITARSE DE AQUI
 #include <OgreVector.h> 
@@ -19,6 +20,8 @@
 #include "InputManager.h" 
 #include "btBulletCollisionCommon.h" 
 #include "ElHornoBase.h" 
+#include "UILayout.h"
+
 
 namespace El_Horno {
 	Scene::Scene()

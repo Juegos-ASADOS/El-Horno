@@ -167,11 +167,11 @@
     </Lib>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\Src\ElHornoCEGUI\UIElement.h" />
+    <ClInclude Include="..\..\Src\ElHornoCEGUI\UILayout.h" />
     <ClInclude Include="..\..\Src\ElHornoCEGUI\UIManager.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\Src\ElHornoCEGUI\UIElement.cpp" />
+    <ClCompile Include="..\..\Src\ElHornoCEGUI\UILayout.cpp" />
     <ClCompile Include="..\..\Src\ElHornoCEGUI\UIManager.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

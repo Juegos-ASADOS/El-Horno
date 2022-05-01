@@ -1,5 +1,4 @@
 #include "UIManager.h"
-#include "UIElement.h"
 
 #include <GraphicsManager.h>
 #include <CEGUI/CEGUI.h>
@@ -120,35 +119,45 @@ namespace El_Horno {
 	void UIManager::deleteContext()
 	{
 		//Eliminamos todas las ventanas, destruimos el GUIContext y el render de ogre
-		winMngr->destroyAllWindows();
+		removeLayout();
 		CEGUI::System::getSingleton().destroyGUIContext(*guiContext);
 		renderer->destroySystem();
 	}
 
 	void UIManager::defineScheme(std::string schemeName)
 	{
-		if(!CEGUI::SchemeManager::getSingleton().isDefined(schemeName));
-			CEGUI::SchemeManager::getSingleton().createFromFile(schemeName);
+		if(!CEGUI::SchemeManager::getSingleton().isDefined(schemeName + ".scheme"));
+			CEGUI::SchemeManager::getSingleton().createFromFile(schemeName + ".scheme");
+	}
+
+	void UIManager::removeLayout()
+	{
+		if (root != nullptr)
+			root->destroy();
+
+		createRoot();
 	}
 
 	CEGUI::Window* UIManager::loadLayout(std::string layoutName)
 	{
-		CEGUI::WindowManager::getSingleton().destroyAllWindows();
+		removeLayout();
 
 		CEGUI::Window* window = CEGUI::WindowManager::getSingleton().loadLayoutFromFile(layoutName + ".layout");
 
-		CEGUI::System::getSingleton().getDefaultGUIContext().setRootWindow(window);
+		//CEGUI::System::getSingleton().getDefaultGUIContext().setRootWindow(window);
+		root->addChild(window);
 
 		return window;
 	}
 
 	CEGUI::Window* UIManager::loadLayout(std::string layoutName, std::string name)
 	{
-		winMngr->destroyAllWindows();
+		removeLayout();
 
 		CEGUI::Window* window = winMngr->loadLayoutFromFile(layoutName + ".layout", name);
 
-		CEGUI::System::getSingleton().getDefaultGUIContext().setRootWindow(window);
+		//CEGUI::System::getSingleton().getDefaultGUIContext().setRootWindow(window);
+		root->addChild(window);
 
 		return window;
 	}
