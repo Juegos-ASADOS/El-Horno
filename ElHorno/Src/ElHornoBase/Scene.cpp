@@ -22,10 +22,6 @@
 #include "ElHornoBase.h" 
 #include "UILayout.h"
 
-#include "InputManager.h"
-#include "btBulletCollisionCommon.h"
-#include "ElHornoBase.h"
-
 namespace El_Horno {
 	Scene::Scene()
 	{	
