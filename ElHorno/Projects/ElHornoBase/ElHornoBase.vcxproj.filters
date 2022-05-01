@@ -105,9 +105,6 @@
     <ClCompile Include="..\..\Src\ElHornoBase\Scene.cpp">
       <Filter>Archivos de origen\SceneManager</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Src\ElHornoBase\SinbadAnimTest.cpp">
-      <Filter>Archivos de origen\Components</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\Src\ElHornoBase\HornoVector3.cpp">
       <Filter>Archivos de origen\Other</Filter>
     </ClCompile>
@@ -174,9 +171,6 @@
       <Filter>Archivos de encabezado\Components</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Src\ElHornoBase\AnimatorController.h">
-      <Filter>Archivos de encabezado\Components</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Src\ElHornoBase\SinbadAnimTest.h">
       <Filter>Archivos de encabezado\Components</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Src\ElHornoBase\HornoVector3.h">
