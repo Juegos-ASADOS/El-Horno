@@ -37,6 +37,14 @@ namespace El_Horno {
 		}
 	}
 
+	void Entity::awake()
+	{
+		std::size_t n = compRef_.size();
+		for (auto i = 0u; i < n; i++) {
+			compRef_[i]->awake(); //Se hace incluso si está desactivada
+		}
+	}
+
 	// Inicializa componentes
 	void Entity::start()
 	{

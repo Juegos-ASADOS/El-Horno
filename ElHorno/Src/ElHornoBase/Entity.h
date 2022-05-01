@@ -33,6 +33,7 @@ namespace El_Horno {
 		Entity(Scene* m) : name_(""), scene_(m), parent_(nullptr), compRef_(), comp_(), active_(true) {};
 		~Entity();
 
+		void awake();
 		void start();
 		void preUpdate();
 		void update();

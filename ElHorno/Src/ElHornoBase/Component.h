@@ -26,7 +26,8 @@ namespace El_Horno {
 		inline bool isActive() { return active_; };
 
 		virtual void setParameters(std::vector<std::pair<std::string, std::string>> parameters) {};
-		virtual void start() {};	//Esto es el init de nuestros componentes
+		virtual void awake() {};	//Esto es el init de nuestros componentes
+		virtual void start() {};	//Esto es para codependencias de nuestros componentes
 		virtual void preUpdate() {};
 		virtual void update() {};
 		virtual void render() {};

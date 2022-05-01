@@ -151,9 +151,18 @@ namespace El_Horno {
 		}
 	}
 
+	void Scene::awake()
+	{
+		auto iter = entities_.begin();
+		while (iter != entities_.end()) {
+			for (Entity* e : iter->second)
+				e->awake(); //Se llama aunque esté desactivada
+			iter++;
+		}
+	}
+
 	void Scene::start()
 	{
-
 		auto iter = entities_.begin();
 		while (iter != entities_.end()) {
 			for (Entity* e : iter->second)

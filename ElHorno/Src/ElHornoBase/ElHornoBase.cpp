@@ -97,7 +97,8 @@ namespace El_Horno {
 		PhysicsManager::getInstance()->start("");
 		GraphicsManager::getInstance()->init();
 		UIManager::getInstance()->createContext();
-		SceneManager::getInstance()->getCurrentScene()->start();
+		SceneManager::getInstance()->getCurrentScene()->awake(); //Inicializacion
+		SceneManager::getInstance()->getCurrentScene()->start(); //Toma de codependencias
 		AudioManager::getInstance()->init();
 	}
 
@@ -129,6 +130,7 @@ namespace El_Horno {
 		facCreat->addFactory("particleSystem");
 		facCreat->addFactory("audioComponent");
 		facCreat->addFactory("audioListener");
+		facCreat->addFactory("uilayout");
 		//facCreat->addFactory("UIPushButton");
 		facCreat->addFactory("animatorController");
 
