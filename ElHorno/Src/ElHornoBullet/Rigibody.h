@@ -94,6 +94,9 @@ namespace El_Horno {
 		void setScale(const HornoVector3& s);
 		void syncScale();
 
+		virtual void onEnable() override;
+		virtual void onDisable() override;
+
 	private:
 		//Masa por defecto 
 		//[DINAMICO > 0 | ESTATICO == 0]

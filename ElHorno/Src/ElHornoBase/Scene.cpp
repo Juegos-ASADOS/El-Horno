@@ -2,6 +2,7 @@
 #include "Entity.h"
 #include <iostream>
 #include <fstream>
+#include <OgreVector.h>
 
 //ESTO DEBERIA QUITARSE DE AQUI
 #include "LightComponent.h" 
@@ -105,6 +106,8 @@ namespace El_Horno {
 				if (ent->getName() == name) {
 					// Mete la entidad al vector de entidades a destruir
 					entitiesToDestroy_.push_back({ it->first, ent });
+					for (Entity* e : ent->getChildren())
+						deleteEntity(e->getName());
 					return true;
 				}
 			}
@@ -154,13 +157,22 @@ namespace El_Horno {
 		}
 	}
 
-	void Scene::start()
+	void Scene::awake()
 	{
-
 		auto iter = entities_.begin();
 		while (iter != entities_.end()) {
 			for (Entity* e : iter->second)
-				if (e->isActive()) e->start();
+				e->awake(); //Se llama aunque esté desactivada
+			iter++;
+		}
+	}
+
+	void Scene::start()
+	{
+		auto iter = entities_.begin();
+		while (iter != entities_.end()) {
+			for (Entity* e : iter->second)
+				e->start();
 			iter++;
 		}
 	}

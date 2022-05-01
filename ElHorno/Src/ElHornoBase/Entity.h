@@ -33,6 +33,7 @@ namespace El_Horno {
 		Entity(Scene* m) : name_(""), scene_(m), parent_(nullptr), compRef_(), comp_(), active_(true) {};
 		~Entity();
 
+		void awake();
 		void start();
 		void preUpdate();
 		void update();
@@ -98,7 +99,8 @@ namespace El_Horno {
 
 		//Get/Set del bool active
 		inline bool isActive() { return active_; };
-		inline void setActive(bool act) { active_ = act; };
+		void setActive(bool act);
+		void changeVisibility(bool vis);
 
 		//Get/Set del nombre de la entidad
 		inline std::string getName() { return name_; };
