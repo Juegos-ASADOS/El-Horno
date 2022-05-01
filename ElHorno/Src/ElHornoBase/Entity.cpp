@@ -9,6 +9,7 @@
 #include "ElHornoBase.h"
 #include "GraphicsManager.h"
 #include <OgreSceneManager.h>
+#include <iostream>
 
 namespace El_Horno {
 
@@ -26,8 +27,7 @@ namespace El_Horno {
 			c = nullptr;
 		}
 		comp_.clear();
-		/*	for (Entity* e : children_)
-				delete e;*/
+
 		children_.clear();
 
 		scene_ = nullptr;
@@ -50,9 +50,10 @@ namespace El_Horno {
 	{
 		std::size_t n = compRef_.size();
 		for (auto i = 0u; i < n; i++) {
-			if (compRef_[i]->isActive())
-				compRef_[i]->start();
+			compRef_[i]->start();
 		}
+		//getComponent<Transform>("transform")->getNode()->setVisible(active_);
+		setActive(active_);
 	}
 
 	// Preuodate de componentes
@@ -95,7 +96,7 @@ namespace El_Horno {
 			c->setParameters(parameters);
 			c->setEntity(this);
 		}
-		if(it->first == "transform")
+		if (it->first == "transform")
 			getComponent<Transform>("transform")->setParameters(parameters);
 	}
 
@@ -127,7 +128,7 @@ namespace El_Horno {
 				Ogre::SceneNode* sc = ElHornoBase::getInstance()->getGraphicsManager()->getSceneManager()->getRootSceneNode()->createChildSceneNode();
 				t->setNode(sc);
 			}
-			else if(p->getComponent<Transform>("transform")->getNode() != NULL)
+			else if (p->getComponent<Transform>("transform")->getNode() != NULL)
 				t->setNode(p->getComponent<Transform>("transform")->getNode()->createChildSceneNode());
 		}
 	};
@@ -153,5 +154,17 @@ namespace El_Horno {
 			}
 			i++;
 		}
+	}
+	void Entity::setActive(bool act)
+	{
+		for (Component* c : compRef_)
+			c->setActive(act);
+		for (Entity* e : children_)
+			e->changeVisibility(act);
+		changeVisibility(act);
+	}
+	void Entity::changeVisibility(bool vis)
+	{
+		active_ = vis;
 	}
 }

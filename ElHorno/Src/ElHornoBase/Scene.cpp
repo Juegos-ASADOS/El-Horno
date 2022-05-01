@@ -3,7 +3,22 @@
 #include <iostream>
 #include <fstream>
 
-
+//ESTO DEBERIA QUITARSE DE AQUI
+#include <OgreVector.h> 
+//#include "CheckML.h" 
+#include "Transform.h" 
+#include "CameraComponent.h"
+#include "LightComponent.h"
+#include "Mesh.h" 
+#include "ParticleSystem.h" 
+#include "Rigibody.h" 
+#include "AudioComponent.h" 
+#include "AudioListenerComponent.h" 
+#include "AnimatorController.h" 
+#include "SinbadAnimTest.h" 
+#include "InputManager.h" 
+#include "btBulletCollisionCommon.h" 
+#include "ElHornoBase.h" 
 
 namespace El_Horno {
 	Scene::Scene()
@@ -102,6 +117,8 @@ namespace El_Horno {
 				if (ent->getName() == name) {
 					// Mete la entidad al vector de entidades a destruir
 					entitiesToDestroy_.push_back({ it->first, ent });
+					for (Entity* e : ent->getChildren())
+						deleteEntity(e->getName());
 					return true;
 				}
 			}
@@ -166,7 +183,7 @@ namespace El_Horno {
 		auto iter = entities_.begin();
 		while (iter != entities_.end()) {
 			for (Entity* e : iter->second)
-				if (e->isActive()) e->start();
+				e->start();
 			iter++;
 		}
 	}

@@ -1,0 +1,59 @@
+<?xml version='1.0'?>
+<GUIScheme name="GWEN" version="5">
+    <Imageset filename="GWEN.imageset"/>
+    <Imageset filename="Sandokan.imageset"/>
+    <Font filename="shump-normal.font"/>
+    <Font filename="shump-48.font"/>
+    <Font filename="shump-32.font"/>
+    <Font filename="shump-20.font"/>
+    <Font filename="LemonJuice.font"/>
+    <Font filename="LemonJuice_Grande.font"/>
+    <Font filename="LemonJuice_Medio.font"/>
+    <Font filename="LemonJuice_Normal.font"/>
+    <LookNFeel filename="GWEN.looknfeel"/>
+    <WindowRendererSet filename="CEGUICoreWindowRendererSet"/>
+    <FalagardMapping targetType="CEGUI/PushButton" lookNFeel="GWEN/Button" renderer="Core/Button" windowType="GWEN/Button"/>
+    <FalagardMapping targetType="CEGUI/RadioButton" lookNFeel="GWEN/RadioButton" renderer="Core/ToggleButton" windowType="GWEN/RadioButton"/>
+    <FalagardMapping targetType="CEGUI/ToggleButton" lookNFeel="GWEN/Checkbox" renderer="Core/ToggleButton" windowType="GWEN/Checkbox"/>
+    <FalagardMapping targetType="CEGUI/Editbox" lookNFeel="GWEN/Editbox" renderer="Core/Editbox" windowType="GWEN/Editbox"/>
+    <FalagardMapping targetType="CEGUI/Titlebar" lookNFeel="GWEN/Titlebar" renderer="Core/Titlebar" windowType="GWEN/Titlebar"/>
+    <FalagardMapping targetType="CEGUI/PushButton" lookNFeel="GWEN/ImageButton" renderer="Core/Button" windowType="GWEN/ImageButton"/>
+    <FalagardMapping targetType="CEGUI/FrameWindow" lookNFeel="GWEN/FrameWindow" renderer="Core/FrameWindow" windowType="GWEN/FrameWindow"/>
+    <FalagardMapping targetType="CEGUI/GroupBox" lookNFeel="GWEN/GroupBox" renderer="Core/Default" windowType="GWEN/GroupBox"/>
+    <FalagardMapping targetType="CEGUI/ProgressBar" lookNFeel="GWEN/ProgressBar" renderer="Core/ProgressBar" windowType="GWEN/ProgressBar"/>
+    <FalagardMapping targetType="CEGUI/ProgressBar" lookNFeel="GWEN/VUMeter" renderer="Core/ProgressBar" windowType="GWEN/VUMeter"/>
+    <FalagardMapping targetType="CEGUI/Thumb" lookNFeel="GWEN/SliderThumb" renderer="Core/Button" windowType="GWEN/SliderThumb"/>
+    <FalagardMapping targetType="CEGUI/Thumb" lookNFeel="GWEN/HorizontalSliderThumb" renderer="Core/Button" windowType="GWEN/HorizontalSliderThumb"/>
+    <FalagardMapping targetType="CEGUI/Slider" lookNFeel="GWEN/Slider" renderer="Core/Slider" windowType="GWEN/Slider"/>
+    <FalagardMapping targetType="CEGUI/Slider" lookNFeel="GWEN/HorizontalSlider" renderer="Core/Slider" windowType="GWEN/HorizontalSlider"/>
+    <FalagardMapping targetType="CEGUI/Thumb" lookNFeel="GWEN/HorizontalScrollbarThumb" renderer="Core/Button" windowType="GWEN/HorizontalScrollbarThumb"/>
+    <FalagardMapping targetType="CEGUI/Scrollbar" lookNFeel="GWEN/HorizontalScrollbar" renderer="Core/Scrollbar" windowType="GWEN/HorizontalScrollbar"/>
+    <FalagardMapping targetType="CEGUI/Thumb" lookNFeel="GWEN/VerticalScrollbarThumb" renderer="Core/Button" windowType="GWEN/VerticalScrollbarThumb"/>
+    <FalagardMapping targetType="CEGUI/Scrollbar" lookNFeel="GWEN/VerticalScrollbar" renderer="Core/Scrollbar" windowType="GWEN/VerticalScrollbar"/>
+    <FalagardMapping targetType="CEGUI/Listbox" lookNFeel="GWEN/Listbox" renderer="Core/Listbox" windowType="GWEN/Listbox"/>
+    <FalagardMapping targetType="CEGUI/ItemEntry" lookNFeel="GWEN/ListboxItem" renderer="Core/ItemEntry" windowType="GWEN/ListboxItem"/>
+    <FalagardMapping targetType="CEGUI/ComboDropList" lookNFeel="GWEN/ComboDropList" renderer="Core/Listbox" windowType="GWEN/ComboDropList"/>
+    <FalagardMapping targetType="CEGUI/Editbox" lookNFeel="GWEN/ComboEditbox" renderer="Core/Editbox" windowType="GWEN/ComboEditbox"/>
+    <FalagardMapping targetType="CEGUI/Combobox" lookNFeel="GWEN/Combobox" renderer="Core/Default" windowType="GWEN/Combobox"/>
+    <FalagardMapping targetType="CEGUI/Spinner" lookNFeel="GWEN/Spinner" renderer="Core/Default" windowType="GWEN/Spinner"/>
+    <FalagardMapping targetType="DefaultWindow" lookNFeel="GWEN/StaticImage" renderer="Core/StaticImage" windowType="GWEN/StaticImage"/>
+    <FalagardMapping targetType="DefaultWindow" lookNFeel="GWEN/StaticText" renderer="Core/StaticText" windowType="GWEN/StaticText"/>
+    <FalagardMapping targetType="CEGUI/ListHeaderSegment" lookNFeel="GWEN/ListHeaderSegment" renderer="Core/ListHeaderSegment" windowType="GWEN/ListHeaderSegment"/>
+    <FalagardMapping targetType="CEGUI/ListHeader" lookNFeel="GWEN/ListHeader" renderer="Core/ListHeader" windowType="GWEN/ListHeader"/>
+    <FalagardMapping targetType="CEGUI/MultiColumnList" lookNFeel="GWEN/MultiColumnList" renderer="Core/MultiColumnList" windowType="GWEN/MultiColumnList"/>
+    <FalagardMapping targetType="CEGUI/MultiLineEditbox" lookNFeel="GWEN/MultiLineEditbox" renderer="Core/MultiLineEditbox" windowType="GWEN/MultiLineEditbox"/>
+    <FalagardMapping targetType="CEGUI/PushButton" lookNFeel="GWEN/Button" renderer="Core/Button" windowType="GWEN/SystemButton"/>
+    <FalagardMapping targetType="CEGUI/Tooltip" lookNFeel="GWEN/Tooltip" renderer="Core/Tooltip" windowType="GWEN/Tooltip"/>
+    <FalagardMapping targetType="CEGUI/ScrollablePane" lookNFeel="GWEN/ScrollablePane" renderer="Core/ScrollablePane" windowType="GWEN/ScrollablePane"/>
+    <FalagardMapping targetType="CEGUI/TabButton" lookNFeel="GWEN/TabButton" renderer="Core/TabButton" windowType="GWEN/TabButton"/>
+    <FalagardMapping targetType="DefaultWindow" lookNFeel="GWEN/TabContentPane" renderer="Core/Default" windowType="GWEN/TabContentPane"/>
+    <FalagardMapping targetType="DefaultWindow" lookNFeel="GWEN/TabButtonPane" renderer="Core/Default" windowType="GWEN/TabButtonPane"/>
+    <FalagardMapping targetType="CEGUI/TabControl" lookNFeel="GWEN/TabControl" renderer="Core/TabControl" windowType="GWEN/TabControl"/>
+    <FalagardMapping targetType="CEGUI/MenuItem" lookNFeel="GWEN/MenuItem" renderer="Core/MenuItem" windowType="GWEN/MenuItem"/>
+    <FalagardMapping targetType="CEGUI/Menubar" lookNFeel="GWEN/Menubar" renderer="Core/Menubar" windowType="GWEN/Menubar"/>
+    <FalagardMapping targetType="CEGUI/PopupMenu" lookNFeel="GWEN/PopupMenu" renderer="Core/PopupMenu" windowType="GWEN/PopupMenu"/>
+    <FalagardMapping targetType="CEGUI/ItemListbox" lookNFeel="GWEN/ItemListbox" renderer="Core/ItemListbox" windowType="GWEN/ItemListbox"/>
+    <FalagardMapping targetType="CEGUI/Tree" lookNFeel="GWEN/Tree" renderer="Core/Tree" windowType="GWEN/Tree"/>
+    <FalagardMapping targetType="DefaultWindow" lookNFeel="GWEN/Label" renderer="Core/Default" windowType="GWEN/Label"/>
+    <Font filename="Default.font"/>
+</GUIScheme>

@@ -57,6 +57,12 @@ namespace El_Horno {
 				Ogre::Vector4 oG = StringToColor(parameters[i].second);
 				bgColor_ = Ogre::ColourValue(oG.x, oG.y, oG.z, oG.w);
 			}
+			else if (parameters[i].first == "nearClDis") {
+				nearClipDistance_ = stoi(parameters[i].second);
+			}
+			else if (parameters[i].first == "farClDis") {
+				farClipDistance_  = stoi(parameters[i].second);
+			}
 		}
 	}
 

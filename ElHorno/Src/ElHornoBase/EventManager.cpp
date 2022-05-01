@@ -50,7 +50,7 @@ namespace El_Horno {
 	{
 		//Eventos generales
 		while (!eventsQueue_.empty()) {
-			Event* e = eventsQueue_.front(); eventsQueue_.pop();
+			Event* e = eventsQueue_.front(); eventsQueue_.pop();			
 			for (EventListener* eL : eventListeners_) {
 				eL->recieveEvent(e);
 			}
