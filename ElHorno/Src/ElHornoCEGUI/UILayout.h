@@ -6,6 +6,7 @@
 
 namespace CEGUI {
 	class Window;
+	class EventArgs;
 }
 
 namespace El_Horno {
@@ -34,7 +35,7 @@ namespace El_Horno {
 
 		void removeLayout();
 
-		void subscribeChildEvent(std::string childName, bool (*func)());
+		void subscribeChildEvent(std::string childName, bool (*func)(const CEGUI::EventArgs&));
 
 		void changeLayout(std::string layoutName, std::string name);
 	};

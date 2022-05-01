@@ -50,7 +50,7 @@ namespace El_Horno {
 	// the name path "Panel/Okay".
 	// To access "Panel", you would simply pass the name "Panel".
 
-	void UILayout::subscribeChildEvent(std::string childName, bool (*func)())
+	void UILayout::subscribeChildEvent(std::string childName, bool (*func)(const CEGUI::EventArgs&))
 	{
 		if (layoutRoot == nullptr) return;
 
