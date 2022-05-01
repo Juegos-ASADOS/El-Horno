@@ -10,8 +10,8 @@
 #include "HornoVector3.h"
 
 namespace El_Horno {
-class Transform;
-//class HornoVector3;
+	class Transform;
+	//class HornoVector3;
 
 	class _declspec(dllexport) CameraComponent : public Component
 	{

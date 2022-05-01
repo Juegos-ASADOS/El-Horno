@@ -14,12 +14,6 @@ namespace Ogre {
 	class SceneNode;
 }
 
-namespace El_Horno
-{
-	class Mesh;
-	class Transform;
-}
-
 using TransitionMap = std::map<std::string, bool>;
 using AnimationStateMachine = std::map<std::string, TransitionMap>;
 
@@ -30,6 +24,9 @@ struct AnimationStateInfo
 };
 
 namespace El_Horno {
+	class Mesh;
+	class Transform;
+
 	class _declspec(dllexport) AnimatorController : public Component
 	{
 	public:

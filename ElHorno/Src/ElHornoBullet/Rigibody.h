@@ -13,11 +13,11 @@ class btCollisionShape;
 class btCollisionObject;
 class btVector3;
 class btQuaternion;
-class PhysicsManager;
-class Transform;
 
 namespace El_Horno {
 
+	class PhysicsManager;
+	class Transform;
 	class _declspec(dllexport) RigidBody : public Component
 	{
 	public:

@@ -1,7 +1,9 @@
 #include "UILayout.h"
 #include "UIManager.h"
 #include <CEGUI/CEGUI.h>
+#include <CEGUI/EventArgs.h>
 #include "CheckML.h"
+#include <iostream>
 
 //El UIPushButton se crea un boton
 //Se lo guarda
@@ -50,11 +52,14 @@ namespace El_Horno {
 	// the name path "Panel/Okay".
 	// To access "Panel", you would simply pass the name "Panel".
 
-	void UILayout::subscribeChildEvent(std::string childName, bool (*func)())
+	void UILayout::subscribeChildEvent(std::string childName, bool (*func)(const CEGUI::EventArgs&))
 	{
 		if (layoutRoot == nullptr) return;
 
-		layoutRoot->getChild(childName)->subscribeEvent(CEGUI::Window::EventMouseClick, CEGUI::Event::Subscriber(func));
+		if (!layoutRoot->getChild(childName)->isEventPresent(CEGUI::Window::EventMouseClick)){
+			std::cout << "Carga del evento\n";
+			layoutRoot->getChild(childName)->subscribeEvent(CEGUI::Window::EventMouseClick, CEGUI::Event::Subscriber(func));
+		}
 	}
 
 	void UILayout::changeLayout(std::string layoutName, std::string name)
