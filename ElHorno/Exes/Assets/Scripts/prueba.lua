@@ -105,4 +105,29 @@ object = {
     },
 }
 
+cart = {
+    transfom = {
+        position = " 0, 0, 2.5 ",
+        rotation = " 0 ,0 ,0 ",
+        scale = " 0.02, 0.02, 0.02 ",
+    },
+
+    mesh = {
+        name = "cube",
+    },
+
+    rigidbody = {
+        mass = "2",
+        isTrigger = "1",
+        isKinematic = "1",
+        colShape = "0",
+    },
+
+    parent = "player",
+}
+
+cartTrigger = {
+
+}
+
 entities = {"gamemanager", "light", "camera", "player", "object"}

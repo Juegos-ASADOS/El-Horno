@@ -50,10 +50,7 @@ namespace El_Horno {
 		}
 	}
 
-	/*
-	Se establece la rotacion, la posicion, la escala y se muestra la bounding box (debug)
-	*/
-	void Transform::start()
+	void Transform::awake()
 	{
 		if (!boneAttached_) {
 			Ogre::SceneNode* parent = ElHornoBase::getGraphicsManager()->getSceneManager()->getRootSceneNode();
@@ -74,6 +71,13 @@ namespace El_Horno {
 			setScale(pScal_);
 		}
 		//node_->showBoundingBox(true);
+	}
+
+	/*
+	Se establece la rotacion, la posicion, la escala y se muestra la bounding box (debug)
+	*/
+	void Transform::start()
+	{
 	}
 
 	// Getters

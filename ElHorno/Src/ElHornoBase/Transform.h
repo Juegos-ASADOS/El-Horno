@@ -17,6 +17,7 @@ namespace El_Horno {
 		~Transform();
 
 		void setParameters(std::vector<std::pair<std::string, std::string>> parameters) override;
+		virtual void awake() override;
 		virtual void start() override;
 		virtual void render() override {};
 
