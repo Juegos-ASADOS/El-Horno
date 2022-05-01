@@ -7,7 +7,7 @@
 //ESTO DEBERIA QUITARSE DE AQUI
 #include "LightComponent.h" 
 #include "AnimatorController.h"
-
+#include "UILayout.h"
 
 namespace El_Horno {
 	Scene::Scene()
