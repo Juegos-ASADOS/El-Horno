@@ -118,11 +118,15 @@ namespace El_Horno {
 
                 std::string key;
 
+
                 luabridge::LuaRef component = entity[compName];
                 lua_pushnil(component);
 
                 if (compName == "parent") {
-                    ent->setParent(s->getEntity(component));
+                    s->getEntity(component, "prueba")->addChild(ent);
+                    lua_pop(component, 1);
+                    lua_pop(entity, 1);
+                    continue;
                 }
 
                 std::vector<std::pair<std::string, std::string>> parameters;

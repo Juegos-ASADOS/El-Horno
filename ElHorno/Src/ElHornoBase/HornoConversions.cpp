@@ -77,9 +77,6 @@ namespace El_Horno {
 			values.push_back(std::stod(val));
 		}
 
-		while (std::getline(in, val, ',')) {
-			values.push_back(std::stod(val));
-		}
 		return Ogre::Vector3(values[0], values[1], values[2]);
 	}
 	Ogre::Vector4 StringToColor(std::string vec)
@@ -92,9 +89,6 @@ namespace El_Horno {
 			values.push_back(std::stod(val));
 		}
 
-		while (std::getline(in, val, ',')) {
-			values.push_back(std::stod(val));
-		}
 		return Ogre::Vector4(values[0], values[1], values[2], values[3]);
 	}
 }

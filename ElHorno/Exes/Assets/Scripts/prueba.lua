@@ -106,7 +106,7 @@ object = {
 }
 
 cart = {
-    transfom = {
+    transform = {
         position = " 0, 0, 2.5 ",
         rotation = " 0 ,0 ,0 ",
         scale = " 0.02, 0.02, 0.02 ",
@@ -127,7 +127,48 @@ cart = {
 }
 
 cartTrigger = {
+    transform = {
+        position = " 3.5, 3, 3.5 ",
+        rotation = " 0 ,0 ,0 ",
+        scale = " 0.02, 0.02, 0.02 ",
+    },
 
+    rigidbody = {
+        mass = "1",
+        isTrigger = "1",
+        isKinematic = "1",
+        colShape = "0",
+    },
+
+    entityId = {
+        type = "2";
+        productType = "0";
+        id = "";
+    }
 }
 
-entities = {"gamemanager", "light", "camera", "player", "object"}
+moneco = {
+    transform = {
+        position = " -150, 10, 0 ",
+        rotation = " 0 ,0 ,0 ",
+        scale = " 0.5, 0.5, 0.5 ",
+    },
+
+    mesh = {
+        name = "penguin",
+    },
+
+    rigidbody = {
+        mass = "3",
+        isTrigger = "0",
+        isKinematic = "0",
+        colShape = "0",
+    },
+
+    patrol = {
+        speed = "50",
+        positions = "-150, 10, 0, 1, -250, 10, 0, 1, -250, 10, -100, 1, -150, 10, -100, 1",
+    }
+}
+
+entities = {"gamemanager", "light", "camera", "player", "object", "cart", "cartTrigger", "moneco"}
