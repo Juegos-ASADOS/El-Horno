@@ -18,7 +18,7 @@ light = {
 
     light = {
         type = "0",
-        dirLight = = " 0 ,0 ,0 ",
+        dirLight = " 0 ,0 ,0 ",
     },
 }
 
@@ -105,44 +105,4 @@ object = {
     },
 }
 
-estantery = {
-    transform = {
-        position = " 50, 10, 0 ",
-        rotation = " 0 ,0 ,0 ",
-        scale = " 0.5, 1, 0.25 ",
-    },
-
-    mesh = {
-        name = "cube",
-    },
-
-    rigidbody = {
-        mass = "0",
-        isTrigger = "0",
-        isKinematic = "0",
-        colShape = "0",
-    },
-}
-
-estanteryTrigger = {
-    transform = {
-        position = " 0, 0, 0 ",
-        rotation = " 0, 0, 0 ",
-        scale = " 5, 5, 5 ",
-    },
-
-    rigidbody = {
-        mass = "0",
-        isTrigger = "1",
-        isKinematic = "0",
-        colShape = "0",
-    },
-
-    entityId = {
-
-    }
-}
-
-
-
-entities = {"gamemanager"}
+entities = {"gamemanager", "light", "camera", "player", "object"}
