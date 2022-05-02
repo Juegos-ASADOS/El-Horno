@@ -97,8 +97,10 @@ namespace El_Horno {
 			c->setEntity(this);
 			c->setName(name);
 		}
-		if (it->first == "transform")
-			getComponent<Transform>("transform")->setParameters(parameters);
+		else {
+			getComponent<Component>(it->first)->setParameters(parameters);
+		}
+			
 	}
 
 	bool Entity::hasComponent(std::string name) const {
@@ -174,5 +176,9 @@ namespace El_Horno {
 	void Entity::changeVisibility(bool vis)
 	{
 		active_ = vis;
+	}
+	void Entity::setDontDestryOnLoad(bool dontDestroy)
+	{
+		dontDestroyOnLoad = dontDestroy;
 	}
 }

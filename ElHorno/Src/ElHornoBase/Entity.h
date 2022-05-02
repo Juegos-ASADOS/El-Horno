@@ -110,6 +110,7 @@ namespace El_Horno {
 		inline void setGroup(const std::string& g) { group_ = g; };
 		inline std::string getGroup() { return group_; };
 
+		void setDontDestryOnLoad(bool dontDestroy);
 		bool dontDestroyOnLoad = false;
 	};
 }

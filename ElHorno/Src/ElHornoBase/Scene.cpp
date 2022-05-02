@@ -17,25 +17,14 @@ namespace El_Horno {
 	//TODO Destruir VierwPorts y camaras lo primero de todo
 	Scene::~Scene()
 	{
-		std::map<std::string, Entity*> dontDelete;
 		auto it = entities_.begin();
 		while (it != entities_.end()) {
 			for (auto e : it->second) {
-				if (!e->dontDestroyOnLoad)
-					delete e;
-				else
-					dontDelete.insert({ it->first, e });
+				delete e;
 			}
 			it++;
 		}
 		entities_.clear();
-
-		//Metemos las entidades que decidimos NO borrar
-		for (std::pair<std::string, Entity*> i : dontDelete)
-		{
-			addEntity(i.second->getName(), i.first);
-		}
-		dontDelete.clear();
 	}
 
 	//devuelve la entidad por el nombre y su layer
@@ -155,6 +144,29 @@ namespace El_Horno {
 				}
 			}
 		}
+	}
+
+	void Scene::deleteAllExcepDontDestroyOnLoad()
+	{
+		std::map<std::string, Entity*> dontDelete;
+		auto it = entities_.begin();
+		while (it != entities_.end()) {
+			for (auto e : it->second) {
+				if (!e->dontDestroyOnLoad)
+					delete e;
+				else
+					dontDelete.insert({ it->first, e });
+			}
+			it++;
+		}
+		entities_.clear();
+
+		//Metemos las entidades que decidimos NO borrar
+		for (std::pair<std::string, Entity*> i : dontDelete)
+		{
+			addEntity(i.second->getName(), i.first);
+		}
+		dontDelete.clear();
 	}
 
 	void Scene::awake()

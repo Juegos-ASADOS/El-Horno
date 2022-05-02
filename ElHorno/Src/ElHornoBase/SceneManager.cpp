@@ -62,6 +62,16 @@ namespace El_Horno {
 		return currentScene_;
 	}
 
+	void SceneManager::changeScene(Scene* scene, std::string s)
+	{
+		currentScene_->deleteAllExcepDontDestroyOnLoad();
+		scene->setEntitiesMap(currentScene_->getEntitesMap());
+		delete currentScene_;
+		currentScene_ = scene;
+		El_Horno::SceneManager::getInstance()->setScene(scene);
+		scene->init(s);
+	}
+
 	void SceneManager::preUpdate()
 	{
 		currentScene_->preUpdate();
@@ -86,8 +96,6 @@ namespace El_Horno {
 	void SceneManager::setScene(Scene* newScene) {
 		delete currentScene_;
 		currentScene_ = newScene;
-		possibleComponents.emplace("transform", &createComponent<Transform>);
-		possibleComponents.emplace("mesh", &createComponent<Mesh>);
 	}
 	std::map<std::string, Component* (*)()> SceneManager::getComponents()
 	{
