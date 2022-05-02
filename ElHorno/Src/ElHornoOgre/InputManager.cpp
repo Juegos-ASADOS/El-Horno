@@ -38,6 +38,70 @@ namespace El_Horno {
 
 	}
 
+	void InputManager::manageAxes(SDL_Event event)
+	{
+		Uint8 axis = 0;
+		for (Uint8 i = 0; i < SDL_GameControllerAxis::SDL_CONTROLLER_AXIS_MAX; ++i) {
+			SDL_GameControllerButtonBind b = SDL_GameControllerGetBindForAxis(controller_, (SDL_GameControllerAxis)i);
+			if (b.value.axis == event.caxis.axis) {
+				axis = i;
+				break;
+			}
+		}
+
+		// Joysticks
+		if (axis < 4)
+			controllerAxes_[axis] = (event.caxis.value > AXESDEADZONE || event.caxis.value < -AXESDEADZONE) ? event.caxis.value : 0;
+		// Triggers
+		else
+			controllerAxes_[axis] = (event.caxis.value > AXESDEADZONE) ? abs(event.caxis.value) : 0;
+	}
+
+	void InputManager::manageButtons(SDL_Event event)
+	{
+		Uint8 button = 0;
+		bool found = false;
+		for (Uint8 i = 0; i < SDL_GameControllerButton::SDL_CONTROLLER_BUTTON_MAX; ++i) {
+			SDL_GameControllerButtonBind b = SDL_GameControllerGetBindForButton(controller_, (SDL_GameControllerButton)i);
+			if (b.value.button == event.cbutton.button) {
+				button = i;
+				break;
+			}
+		}
+
+		if (found)
+			controllerButtons_[button] = event.cbutton.state;
+	}
+
+	void InputManager::manageControllerAdded(SDL_Event event)
+	{
+		if (controller_ == nullptr) {
+			controller_ = SDL_GameControllerOpen(event.cdevice.which);
+			for (int i = 0; i < SDL_CONTROLLER_AXIS_MAX; ++i) 
+				controllerAxes_[i] = 0.0f;
+			for (int i = 0; i < SDL_CONTROLLER_BUTTON_MAX; ++i)
+				controllerButtons_[i] = false;
+
+			//std::cout << SDL_GameControllerName(controller_) << std::endl;
+			SDL_GameControllerEventState(SDL_ENABLE);
+		}
+	}
+
+	void InputManager::manageControllerRemoved(SDL_Event event)
+	{
+		if (controller_ == SDL_GameControllerFromInstanceID(event.cdevice.which)) {
+			SDL_GameControllerClose(controller_);
+			controller_ = nullptr;
+
+			for (float f : controllerAxes_)
+				f = 0.0f;
+			for (bool b : controllerButtons_)
+				b = false;
+		}
+	}
+
+
+
 	void InputManager::flushInput()
 	{
 		for (int c : keysUpsToFlush)
@@ -147,7 +211,7 @@ namespace El_Horno {
 	//esto seria para poner el setup principalmente de los mandos, lo omito ya que solo queiro pillar el input de teclado momento
 	void InputManager::setup()
 	{
-		//TODO configuracion de mandos
+		SDL_GameControllerAddMappingsFromFile("gamecontrollerdb.txt");
 	}
 
 	//recoge los principales eventos de SDL y los gestiona de ser necesario
@@ -198,6 +262,19 @@ namespace El_Horno {
 				break;
 			}
 			break;
+		case SDL_CONTROLLERAXISMOTION:
+			manageAxes(event);
+			break;
+		case SDL_CONTROLLERBUTTONDOWN:
+		case SDL_CONTROLLERBUTTONUP:
+			manageButtons(event);
+			break;
+		case SDL_CONTROLLERDEVICEADDED:
+			manageControllerAdded(event);
+			break;
+		case SDL_CONTROLLERDEVICEREMOVED:
+			manageControllerRemoved(event);
+			break;
 		default:
 			manageKeys(event);
 			break;
@@ -225,6 +302,21 @@ namespace El_Horno {
 	bool InputManager::getKeyUp(SDL_Scancode code)
 	{
 		return keys_[code].up_;
+	}
+
+	Sint16 InputManager::getAxis(SDL_GameControllerAxis axis)
+	{
+		if (controller_ != nullptr)
+			return controllerAxes_[axis];
+
+		return 0;
+	}
+	bool InputManager::isButtonDown(SDL_GameControllerButton button)
+	{
+		if(controller_ != nullptr)
+			return controllerButtons_[button];
+
+		return false;
 	}
 }
 
