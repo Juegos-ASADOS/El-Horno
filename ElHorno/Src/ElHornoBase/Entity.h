@@ -7,6 +7,7 @@
 #include <map>
 #include <string>
 #include <bitset>
+#include <iostream>
 
 #include "FactoryCreator.h"
 
@@ -50,11 +51,11 @@ namespace El_Horno {
 				T* c(FactoryCreator::getInstance()->getComponent<T>(type, args...));
 				if (c == nullptr)
 					return;
-
 				// Si esta lo metemos lo asociamos a la entidad
 				comp_.insert({ type, c });
 				compRef_.push_back(c);
 				c->setEntity(this);
+				c->setName(type);
 			}
 			// Si ya existe 
 			else

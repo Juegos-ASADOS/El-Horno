@@ -95,6 +95,7 @@ namespace El_Horno {
 			compRef_.push_back(c);
 			c->setParameters(parameters);
 			c->setEntity(this);
+			c->setName(name);
 		}
 		if (it->first == "transform")
 			getComponent<Transform>("transform")->setParameters(parameters);
@@ -106,8 +107,13 @@ namespace El_Horno {
 
 	void Entity::removeComponent(std::string name) {
 		if (hasComponent(name)) {
-			for (Component* c : compRef_)
-				if (c->getName() == name) delete c;
+			for (int i = 0; i < compRef_.size(); i++) {
+				if (compRef_[i]->getName() == name) {
+					delete compRef_[i];
+					compRef_.erase(compRef_.begin() + i);
+					break;
+				}
+			}
 			comp_.erase(name);
 		}
 	}
