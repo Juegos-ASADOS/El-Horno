@@ -34,6 +34,8 @@ namespace El_Horno {
 		void loadScheme(std::string shcemeName);
 		void loadLayout();
 
+		void setScale(float x, float y);
+
 		void removeLayout();
 
 		void subscribeChildEvent(std::string childName, bool (*func)());

@@ -76,11 +76,16 @@ namespace El_Horno {
 
 	void UIManager::createRoot()
 	{
+		if (root != nullptr)
+			root->destroy();
+
+		root = nullptr;
+
 		winMngr = CEGUI::WindowManager::getSingletonPtr();
 
 		//Ventana por defecto a modo de GameObject
 		//Todos los botones texto etc se crean dentro de esta misma ventana
-		root = (CEGUI::DefaultWindow*)winMngr->createWindow("DefaultWindow", "Root");
+		root = winMngr->createWindow("DefaultWindow", "Root");
 		
 		root->setUsingAutoRenderingSurface(true);
 
@@ -145,6 +150,8 @@ namespace El_Horno {
 		if (root != nullptr)
 			root->destroy();
 
+		root = nullptr;
+		
 		createRoot();
 	}
 
@@ -152,10 +159,11 @@ namespace El_Horno {
 	{
 		removeLayout();
 
-		CEGUI::Window* window = CEGUI::WindowManager::getSingleton().loadLayoutFromFile(layoutName + ".layout");
+		CEGUI::Window* window = winMngr->loadLayoutFromFile(layoutName + ".layout");
 
-		//CEGUI::System::getSingleton().getDefaultGUIContext().setRootWindow(window);
-		root->addChild(window);
+		guiContext->setRootWindow(window);
+		
+		root = window;
 
 		return window;
 	}
@@ -166,8 +174,9 @@ namespace El_Horno {
 
 		CEGUI::Window* window = winMngr->loadLayoutFromFile(layoutName + ".layout", name);
 
-		//CEGUI::System::getSingleton().getDefaultGUIContext().setRootWindow(window);
-		root->addChild(window);
+		guiContext->setRootWindow(window);
+
+		root = window;
 
 		return window;
 	}
@@ -240,7 +249,7 @@ namespace El_Horno {
 	}
 
 
-	CEGUI::DefaultWindow* UIManager::getRoot()
+	CEGUI::Window* UIManager::getRoot()
 	{
 		return root;
 	}

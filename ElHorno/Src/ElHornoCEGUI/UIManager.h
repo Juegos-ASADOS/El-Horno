@@ -33,7 +33,7 @@ namespace El_Horno {
 		//HABRÁ QUE QUITAR ESTO E INFORMARSE DE LOS CEGUI::LAYOUTS
 		std::vector<CEGUI::Window*> layouts;
 
-		CEGUI::DefaultWindow* root;
+		CEGUI::Window* root = nullptr;
 		CEGUI::GUIContext* guiContext;
 	public:
 
@@ -77,7 +77,7 @@ namespace El_Horno {
 		CEGUI::Window* createWidget(const std::string& type, const std::string& name = "");
 		void setWidgetDestRect(CEGUI::Window* wnd, const CEGUI::UDim& pos, const CEGUI::UDim& relativePos, const CEGUI::UDim& size, const CEGUI::UDim& relativeSize);
 
-		CEGUI::DefaultWindow* getRoot();
+		CEGUI::Window* getRoot();
 
 		//Para coger la entidad que quieras
 		CEGUI::Window* getWindow(const std::string& name);

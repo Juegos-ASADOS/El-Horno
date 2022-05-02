@@ -38,6 +38,11 @@ namespace El_Horno {
 		layoutRoot = uiManager->loadLayout(layoutName_);
 	}
 
+	void UILayout::setScale(float x, float y)
+	{
+		layoutRoot->setSize(CEGUI::USize(CEGUI::UDim(x, 0), CEGUI::UDim(y, 0)));
+	}
+
 	void UILayout::removeLayout()
 	{
 		if (layoutRoot == nullptr) return;
