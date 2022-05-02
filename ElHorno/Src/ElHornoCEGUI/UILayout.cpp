@@ -52,15 +52,31 @@ namespace El_Horno {
 	// the name path "Panel/Okay".
 	// To access "Panel", you would simply pass the name "Panel".
 
-	void UILayout::subscribeChildEvent(std::string childName, bool (*func)(const CEGUI::EventArgs&))
+	void UILayout::subscribeChildEvent(std::string childName, bool (*func)())
 	{
-		if (layoutRoot == nullptr) return;
+		if (layoutRoot == nullptr) {
+			std::cout << "NoLayout\n";
+			return;
+		}
 
-		if (!layoutRoot->getChild(childName)->isEventPresent(CEGUI::Window::EventMouseClick)){
-			std::cout << "Carga del evento\n";
-			layoutRoot->getChild(childName)->subscribeEvent(CEGUI::Window::EventMouseClick, CEGUI::Event::Subscriber(func));
+		if (!layoutRoot->getChild(childName)->isEventPresent(CEGUI::PushButton::EventClicked)) {
+			layoutRoot->getChild(childName)->subscribeEvent(CEGUI::PushButton::EventClicked, CEGUI::Event::Subscriber(func));
 		}
 	}
+
+	//void UILayout::createButton(const std::string& scheme, const std::string& type, const std::string& name)
+	//{
+	//	CEGUI::PushButton* button = static_cast<CEGUI::PushButton*>(uiManager->createWidget(scheme + "/" + type, name));
+	//	button->setText("PATATA");
+	//	button->setUsingAutoRenderingSurface(true);
+	//	button->subscribeEvent(CEGUI::PushButton::EventClicked, CEGUI::Event::Subscriber(&UILayout::onClick, this));
+	//}
+
+	/*bool UILayout::onClick(const CEGUI::EventArgs& e)
+	{
+		std::cout << "POR FAVOR\n";
+		return false;
+	}*/
 
 	void UILayout::changeLayout(std::string layoutName, std::string name)
 	{

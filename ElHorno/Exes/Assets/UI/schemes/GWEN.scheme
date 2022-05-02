@@ -1,7 +1,6 @@
 <?xml version='1.0'?>
 <GUIScheme name="GWEN" version="5">
     <Imageset filename="GWEN.imageset"/>
-    <Imageset filename="Sandokan.imageset"/>
     <Font filename="shump-normal.font"/>
     <Font filename="shump-48.font"/>
     <Font filename="shump-32.font"/>
@@ -10,6 +9,7 @@
     <Font filename="LemonJuice_Grande.font"/>
     <Font filename="LemonJuice_Medio.font"/>
     <Font filename="LemonJuice_Normal.font"/>
+    <Font filename="Default.font"/>
     <LookNFeel filename="GWEN.looknfeel"/>
     <WindowRendererSet filename="CEGUICoreWindowRendererSet"/>
     <FalagardMapping targetType="CEGUI/PushButton" lookNFeel="GWEN/Button" renderer="Core/Button" windowType="GWEN/Button"/>
@@ -55,5 +55,4 @@
     <FalagardMapping targetType="CEGUI/ItemListbox" lookNFeel="GWEN/ItemListbox" renderer="Core/ItemListbox" windowType="GWEN/ItemListbox"/>
     <FalagardMapping targetType="CEGUI/Tree" lookNFeel="GWEN/Tree" renderer="Core/Tree" windowType="GWEN/Tree"/>
     <FalagardMapping targetType="DefaultWindow" lookNFeel="GWEN/Label" renderer="Core/Default" windowType="GWEN/Label"/>
-    <Font filename="Default.font"/>
 </GUIScheme>

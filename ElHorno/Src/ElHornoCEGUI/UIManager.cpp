@@ -7,6 +7,7 @@
 
 #include <OgreRenderWindow.h>
 #include "CheckML.h"
+#include <iostream>
 
 namespace El_Horno {
 	UIManager* UIManager::instance_ = 0;
@@ -23,6 +24,11 @@ namespace El_Horno {
 
 	UIManager::~UIManager()
 	{
+		if (root != nullptr)
+			root->destroy();
+		CEGUI::System::getSingleton().destroyGUIContext(*guiContext);
+		CEGUI::System::destroy();
+		CEGUI::OgreRenderer::destroy(*renderer);
 	}
 
 	UIManager* UIManager::getInstance()
@@ -77,7 +83,7 @@ namespace El_Horno {
 		root = (CEGUI::DefaultWindow*)winMngr->createWindow("DefaultWindow", "Root");
 		
 		root->setUsingAutoRenderingSurface(true);
-		
+
 		guiContext->setRootWindow(root);
 
 		root->activate();
@@ -126,8 +132,12 @@ namespace El_Horno {
 
 	void UIManager::defineScheme(std::string schemeName)
 	{
-		if(!CEGUI::SchemeManager::getSingleton().isDefined(schemeName + ".scheme"));
-			CEGUI::SchemeManager::getSingleton().createFromFile(schemeName + ".scheme");
+		if (!CEGUI::SchemeManager::getSingleton().isDefined(schemeName + ".scheme")) {
+			CEGUI::SchemeManager::getSingleton().createFromFile(schemeName + ".scheme"); 
+		}
+		else {
+			std::cout << "Already defined scheme!\n";
+		}
 	}
 
 	void UIManager::removeLayout()
@@ -208,6 +218,27 @@ namespace El_Horno {
 	{
 		CEGUI::System::getSingleton().getDefaultGUIContext().getMouseCursor().hide();
 	}
+
+	void UIManager::setFont(const std::string& font)
+	{
+		CEGUI::FontManager::getSingleton().createFromFile(font + ".font");
+		guiContext->setDefaultFont(font);
+	}
+
+	CEGUI::Window* UIManager::createWidget(const std::string& type, const std::string& name)
+	{
+		CEGUI::Window* wnd = winMngr->createWindow(type, name);
+		root->addChild(wnd);
+		wnd->activate();
+		return wnd;
+	}
+
+	void UIManager::setWidgetDestRect(CEGUI::Window* wnd, const CEGUI::UDim& pos, const CEGUI::UDim& relativePos, const CEGUI::UDim& size, const CEGUI::UDim& relativeSize)
+	{
+		wnd->setPosition(CEGUI::UVector2(pos, relativePos));
+		wnd->setSize(CEGUI::USize(size, relativeSize));
+	}
+
 
 	CEGUI::DefaultWindow* UIManager::getRoot()
 	{

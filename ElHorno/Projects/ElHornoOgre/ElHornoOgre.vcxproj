@@ -104,7 +104,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)Src\$(ProjectName);$(SolutionDir)dependencies\Ogre\Build\SDL2-2.0.20\include;$(SolutionDir)dependencies\Ogre\Src\OgreMain\include;$(SolutionDir)dependencies\cegui\Build\cegui\include;$(SolutionDir)dependencies\cegui\Src\cegui\include;$(SolutionDir)dependencies\Ogre\Build\include;%(AdditionalIncludeDirectories);$(SolutionDir)Src\ElHornoBullet</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)Src\$(ProjectName);$(SolutionDir)dependencies\Ogre\Build\SDL2-2.0.20\include;$(SolutionDir)dependencies\Ogre\Src\OgreMain\include;$(SolutionDir)dependencies\cegui\Build\cegui\include;$(SolutionDir)dependencies\cegui\Src\cegui\include;$(SolutionDir)dependencies\Ogre\Build\include;%(AdditionalIncludeDirectories);$(SolutionDir)Src\ElHornoBullet;$(SolutionDir)Src\ElHornoCEGUI</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -123,7 +123,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)Src\$(ProjectName);$(SolutionDir)dependencies\Ogre\Build\SDL2-2.0.20\include;$(SolutionDir)dependencies\Ogre\Src\OgreMain\include;$(SolutionDir)dependencies\cegui\Build\cegui\include;$(SolutionDir)dependencies\cegui\Src\cegui\include;$(SolutionDir)dependencies\Ogre\Build\include;%(AdditionalIncludeDirectories);$(SolutionDir)Src\ElHornoBullet</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)Src\$(ProjectName);$(SolutionDir)dependencies\Ogre\Build\SDL2-2.0.20\include;$(SolutionDir)dependencies\Ogre\Src\OgreMain\include;$(SolutionDir)dependencies\cegui\Build\cegui\include;$(SolutionDir)dependencies\cegui\Src\cegui\include;$(SolutionDir)dependencies\Ogre\Build\include;%(AdditionalIncludeDirectories);$(SolutionDir)Src\ElHornoBullet;$(SolutionDir)Src\ElHornoCEGUI</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -142,7 +142,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)Src\$(ProjectName);$(SolutionDir)dependencies\Ogre\Build\SDL2-2.0.20\include;$(SolutionDir)dependencies\Ogre\Src\OgreMain\include;$(SolutionDir)dependencies\cegui\Build\cegui\include;$(SolutionDir)dependencies\cegui\Src\cegui\include;$(SolutionDir)dependencies\Ogre\Build\include;$(SolutionDir)Src\ElHornoTest;%(AdditionalIncludeDirectories);$(SolutionDir)Src\ElHornoBullet</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)Src\$(ProjectName);$(SolutionDir)dependencies\Ogre\Build\SDL2-2.0.20\include;$(SolutionDir)dependencies\Ogre\Src\OgreMain\include;$(SolutionDir)dependencies\cegui\Build\cegui\include;$(SolutionDir)dependencies\cegui\Src\cegui\include;$(SolutionDir)dependencies\Ogre\Build\include;$(SolutionDir)Src\ElHornoTest;%(AdditionalIncludeDirectories);$(SolutionDir)Src\ElHornoBullet;$(SolutionDir)Src\ElHornoCEGUI</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -161,7 +161,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)Src\$(ProjectName);$(SolutionDir)dependencies\Ogre\Build\SDL2-2.0.20\include;$(SolutionDir)dependencies\Ogre\Src\OgreMain\include;$(SolutionDir)dependencies\cegui\Build\cegui\include;$(SolutionDir)dependencies\cegui\Src\cegui\include;$(SolutionDir)dependencies\Ogre\Build\include;$(SolutionDir)Src\ElHornoTest;%(AdditionalIncludeDirectories);$(SolutionDir)Src\ElHornoBullet</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)Src\$(ProjectName);$(SolutionDir)dependencies\Ogre\Build\SDL2-2.0.20\include;$(SolutionDir)dependencies\Ogre\Src\OgreMain\include;$(SolutionDir)dependencies\cegui\Build\cegui\include;$(SolutionDir)dependencies\cegui\Src\cegui\include;$(SolutionDir)dependencies\Ogre\Build\include;$(SolutionDir)Src\ElHornoTest;%(AdditionalIncludeDirectories);$(SolutionDir)Src\ElHornoBullet;$(SolutionDir)Src\ElHornoCEGUI</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>

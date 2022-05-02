@@ -6,7 +6,7 @@
 #include <iostream>
 #include "CheckML.h"
 #include <CEGUI/CEGUI.h>
-
+#include <UIManager.h>
 //#include <CEGUI/CEGUI.h>
 //#include "checkML.h"
 
@@ -124,22 +124,22 @@ namespace El_Horno {
 	void InputManager::injectCegui(SDL_Event event)
 	{
 		if (event.type == SDL_KEYDOWN) {
-			CEGUI::System::getSingleton().getDefaultGUIContext().injectKeyDown(KeyCode_TO_CEGUI((SDL_KeyCode)event.key.keysym.sym));
+			UIManager::getInstance()->getContext()->injectKeyDown(KeyCode_TO_CEGUI((SDL_KeyCode)event.key.keysym.sym));
 		}
 		else if (event.type == SDL_KEYUP) {
-			CEGUI::System::getSingleton().getDefaultGUIContext().injectKeyUp(KeyCode_TO_CEGUI((SDL_KeyCode)event.key.keysym.sym));
+			UIManager::getInstance()->getContext()->injectKeyUp(KeyCode_TO_CEGUI((SDL_KeyCode)event.key.keysym.sym));
 		}
 		else if (event.type == SDL_MOUSEBUTTONDOWN)
 		{
-			CEGUI::System::getSingleton().getDefaultGUIContext().injectMouseButtonDown(MouseButton_TO_CEGUI(event.button.button));
+			UIManager::getInstance()->getContext()->injectMouseButtonDown(MouseButton_TO_CEGUI(event.button.button));
 		}
 		else if (event.type == SDL_MOUSEBUTTONUP)
 		{
-			CEGUI::System::getSingleton().getDefaultGUIContext().injectMouseButtonUp(MouseButton_TO_CEGUI(event.button.button));
+			UIManager::getInstance()->getContext()->injectMouseButtonUp(MouseButton_TO_CEGUI(event.button.button));
 		}
 		else if (event.type == SDL_MOUSEMOTION)
 		{
-			CEGUI::System::getSingleton().getDefaultGUIContext().injectMousePosition(event.motion.x, event.motion.y);
+			UIManager::getInstance()->getContext()->injectMousePosition(event.motion.x, event.motion.y);
 		}
 
 	}

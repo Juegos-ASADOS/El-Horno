@@ -4,7 +4,7 @@
     <Image yPos="1080" width="549" name="Lista" height="1080" xPos="1005"/>
     <Image yPos="0" width="718" name="MenuInicio" height="1080" xPos="2109"/>
     <Image yPos="1" width="150" name="FlechaDer" height="150" xPos="2922"/>
-    <Image yPos="152" width="150" name="FelchaDer_Over" height="150" xPos="2922"/>
+    <Image yPos="152" width="150" name="FlechaDer_Over" height="150" xPos="2922"/>
     <Image yPos="303" width="150" name="FlechaDer_Press" height="150" xPos="2922"/>
     <Image yPos="1" width="150" name="FlechaIz" height="150" xPos="3073"/>
     <Image yPos="152" width="150" name="FlechaIz_Over" height="150" xPos="3073"/>

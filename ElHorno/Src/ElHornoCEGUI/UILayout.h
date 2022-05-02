@@ -7,6 +7,7 @@
 namespace CEGUI {
 	class Window;
 	class EventArgs;
+	class PushButton;
 }
 
 namespace El_Horno {
@@ -35,7 +36,12 @@ namespace El_Horno {
 
 		void removeLayout();
 
-		void subscribeChildEvent(std::string childName, bool (*func)(const CEGUI::EventArgs&));
+		void subscribeChildEvent(std::string childName, bool (*func)());
+
+
+		//void createButton(const std::string& scheme, const std::string& type, const std::string& name);
+
+		//bool onClick(const CEGUI::EventArgs& e);
 
 		void changeLayout(std::string layoutName, std::string name);
 	};

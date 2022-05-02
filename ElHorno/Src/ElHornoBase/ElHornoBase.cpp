@@ -42,10 +42,10 @@ namespace El_Horno {
 		FactoryCreator::erase();
 		LuaManager::erase();
 		SceneManager::erase();
+		UIManager::erase();
 		GraphicsManager::erase();
 		PhysicsManager::erase();
 		EventManager::erase();
-		UIManager::erase();
 
 	}
 

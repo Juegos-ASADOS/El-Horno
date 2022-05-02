@@ -11,6 +11,7 @@ namespace CEGUI {
 	class WindowManager;
 	class DefaultWindow;
 	class GUIContext;
+	class UDim;
 }
 
 namespace Ogre {
@@ -71,25 +72,26 @@ namespace El_Horno {
 		void showMouseCursor();
 		void hideMouseCursor();
 
+		void setFont(const std::string& font);
+
+		CEGUI::Window* createWidget(const std::string& type, const std::string& name = "");
+		void setWidgetDestRect(CEGUI::Window* wnd, const CEGUI::UDim& pos, const CEGUI::UDim& relativePos, const CEGUI::UDim& size, const CEGUI::UDim& relativeSize);
 
 		CEGUI::DefaultWindow* getRoot();
 
 		//Para coger la entidad que quieras
 		CEGUI::Window* getWindow(const std::string& name);
-
 		CEGUI::WindowManager* getWinMngr();
+
+		CEGUI::GUIContext* getContext() { return guiContext; };
 
 		//Habrá que modificarlo por el vector de windows provisional
 		void setVisibleLayout(bool visible, int layout);
 		std::vector<CEGUI::Window*> getLayouts();
 
-
-
 		//Cambiar la transparencia de una entidad
 		void changeAlpha(const std::string& image, float alpha);
 		float getAlpha(const std::string& namePath);
-
-
 	};
 }
 
