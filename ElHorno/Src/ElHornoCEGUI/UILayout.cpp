@@ -9,19 +9,81 @@
 //Se lo guarda
 //Y le dice al root del UIManager que ahora es hijo de la ventana principal
 namespace El_Horno {
-	UILayout::UILayout(std::string layoutName, std::string name)
+	UILayout::UILayout()
 	{
-		changeLayout(layoutName, name);
 	}
-	
+
+	UILayout::~UILayout()
+	{
+		removeLayouts();
+	}
+
 	void UILayout::start()
 	{
 		uiManager = UIManager::getInstance();
 	}
-	
-	UILayout::~UILayout()
+
+	void UILayout::setLayoutVisibility(std::string layoutName, bool visible)
 	{
-		removeLayout();
+		CEGUI::Window* wnd = getLayout(layoutName);
+		if (wnd != nullptr) {
+			wnd->setVisible(visible);
+			if (visible) wnd->activate();
+		}
+		else {
+			std::cout << "Layout not found!\n";
+		}
+	}
+
+	void UILayout::setLayoutVisibility(int layout, bool visible)
+	{
+		CEGUI::Window* wnd = getLayout(layout);
+		if (wnd != nullptr) {
+			wnd->setVisible(visible);
+			if (visible) wnd->activate();
+		}
+		else {
+			std::cout << "Layout not found!\n";
+		}
+	}
+
+	//Añade un layout al vector y al root, y lo deja invisible
+	//Nombre del layout, y nombre interno cualquiera(que no se repita)
+	void UILayout::addLayout(std::string layoutName, std::string name)
+	{
+		CEGUI::Window* wnd = uiManager->createLayout(layoutName, name);
+		wnd->setVisible(false);
+		uiManager->getRoot()->addChild(wnd);
+		layouts.push_back(wnd);
+	}
+
+	//Borra un layout del vector y del root
+	void UILayout::removeLayout(std::string layoutName)
+	{
+		CEGUI::Window* wnd = getLayout(layoutName);
+		if (wnd != nullptr) {
+			auto it = layouts.begin();
+			while(it != layouts.end() && *it != wnd) {
+				it++;
+			}
+			uiManager->getRoot()->removeChild(wnd);
+			layouts.erase(it);
+		}
+		else {
+			std::cout << "Couldnt remove layout. Layout not found!\n";
+		}
+	}
+
+	void UILayout::removeLayout(int layout)
+	{
+		CEGUI::Window* wnd = getLayout(layout);
+		if (wnd != nullptr) {
+			uiManager->getRoot()->removeChild(wnd);
+			layouts.erase(layouts.begin() + layout);
+		}
+		else {
+			std::cout << "Couldnt remove layout. Layout not found!\n";
+		}
 	}
 	
 	void UILayout::setParameters(std::vector<std::pair<std::string, std::string>> parameters)
@@ -33,40 +95,82 @@ namespace El_Horno {
 		uiManager->defineScheme(schemeName);
 	}
 
-	void UILayout::loadLayout()
+	void UILayout::setScale(std::string layoutName, float x, float y)
 	{
-		layoutRoot = uiManager->loadLayout(layoutName_);
+		CEGUI::Window* wnd = getLayout(layoutName);
+		if (wnd != nullptr) {
+			wnd->setSize(CEGUI::USize(CEGUI::UDim(x, 0), CEGUI::UDim(y, 0)));
+		}
+		else {
+			std::cout << "Layout not found!\n";
+		}
+	}
+	
+	void UILayout::setScale(int layout, float x, float y)
+	{
+		CEGUI::Window* wnd = getLayout(layout);
+		if (wnd != nullptr) {
+			wnd->setSize(CEGUI::USize(CEGUI::UDim(x, 0), CEGUI::UDim(y, 0)));
+		}
+		else {
+			std::cout << "Couldnt subscribe event. Layout not found!\n";
+		}
 	}
 
-	void UILayout::setScale(float x, float y)
-	{
-		layoutRoot->setSize(CEGUI::USize(CEGUI::UDim(x, 0), CEGUI::UDim(y, 0)));
-	}
-
-	void UILayout::removeLayout()
-	{
-		if (layoutRoot == nullptr) return;
-
-		layoutRoot->destroy();
-
-		layoutRoot = nullptr;
-	}
 	// For example, if this window has a child attached to it named "Panel" 
 	// which has its own children attached named "Okay" and "Cancel", 
 	// you can access the window "Okay" from this window by using 
 	// the name path "Panel/Okay".
 	// To access "Panel", you would simply pass the name "Panel".
-
-	void UILayout::subscribeChildEvent(std::string childName, bool (*func)())
+	// ---------
+	// --------- 
+	// Subscribe una funcion a un widget de CEGUI. 
+	// De momento SÓLO FUNCIONA CON PUSHBUTTON
+	void UILayout::subscribeChildEvent(std::string layoutName, std::string childName, bool(*func)())
 	{
-		if (layoutRoot == nullptr) {
-			std::cout << "NoLayout\n";
-			return;
+		CEGUI::Window* wnd = getLayout(layoutName);
+		if (wnd != nullptr) {
+			wnd->getChild(childName)->subscribeEvent(CEGUI::PushButton::EventClicked, CEGUI::Event::Subscriber(func));
 		}
+		else {
+			std::cout << "Couldnt subscribe event. Layout not found!\n";
+		}
+	}
 
-		if (!layoutRoot->getChild(childName)->isEventPresent(CEGUI::PushButton::EventClicked)) {
-			layoutRoot->getChild(childName)->subscribeEvent(CEGUI::PushButton::EventClicked, CEGUI::Event::Subscriber(func));
+	void UILayout::subscribeChildEvent(int layout, std::string childName, bool(*func)())
+	{
+		CEGUI::Window* wnd = getLayout(layout);
+		if (wnd != nullptr) {
+			wnd->getChild(childName)->subscribeEvent(CEGUI::PushButton::EventClicked, CEGUI::Event::Subscriber(func));
 		}
+		else {
+			std::cout << "Couldnt subscribe event. Layout not found!\n";
+		}
+	}
+
+	void UILayout::removeLayouts()
+	{
+		for (auto* wnd : layouts) {
+			wnd->destroy();
+		}
+	}
+	
+	CEGUI::Window* UILayout::getLayout(std::string layoutName)
+	{
+		for (auto* wnd : layouts) {
+			if (wnd->getName() == layoutName) {
+				return wnd;
+			}
+		}
+		return nullptr;
+	}
+
+	CEGUI::Window* UILayout::getLayout(int layout)
+	{
+		if (layout >= 0 && layout < layouts.size()) {
+			return layouts[layout];
+		}
+		return nullptr;
 	}
 
 	//void UILayout::createButton(const std::string& scheme, const std::string& type, const std::string& name)
@@ -82,12 +186,6 @@ namespace El_Horno {
 		std::cout << "POR FAVOR\n";
 		return false;
 	}*/
-
-	void UILayout::changeLayout(std::string layoutName, std::string name)
-	{
-		layoutName_ = layoutName;
-		name_ = name;
-	}
 
 
 }

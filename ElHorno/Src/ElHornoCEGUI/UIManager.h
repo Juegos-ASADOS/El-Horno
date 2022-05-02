@@ -30,9 +30,6 @@ namespace El_Horno {
 		CEGUI::WindowManager* winMngr;
 		CEGUI::OgreRenderer* renderer;
 
-		//HABRÁ QUE QUITAR ESTO E INFORMARSE DE LOS CEGUI::LAYOUTS
-		std::vector<CEGUI::Window*> layouts;
-
 		CEGUI::Window* root = nullptr;
 		CEGUI::GUIContext* guiContext;
 	public:
@@ -52,8 +49,10 @@ namespace El_Horno {
 
 		void removeLayout();
 
-		CEGUI::Window* loadLayout(std::string layoutName);
-		CEGUI::Window* loadLayout(std::string layoutName, std::string name);
+		CEGUI::Window* loadLayout(std::string layoutName, std::string name = "");
+		CEGUI::Window* createLayout(std::string layoutName, std::string name = "");
+
+		void setRootLayout(CEGUI::Window* nRoot);
 		//void shutdown?¿ cerrar el context y resetear la instancia?
 
 		//INVESTIGAR FRAMEWINDOW
@@ -84,10 +83,6 @@ namespace El_Horno {
 		CEGUI::WindowManager* getWinMngr();
 
 		CEGUI::GUIContext* getContext() { return guiContext; };
-
-		//Habrá que modificarlo por el vector de windows provisional
-		void setVisibleLayout(bool visible, int layout);
-		std::vector<CEGUI::Window*> getLayouts();
 
 		//Cambiar la transparencia de una entidad
 		void changeAlpha(const std::string& image, float alpha);
