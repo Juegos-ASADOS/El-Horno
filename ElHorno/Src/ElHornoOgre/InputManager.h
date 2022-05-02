@@ -4,6 +4,8 @@
 
 #include "SDL_keyboard.h"
 #include <vector>
+#include <array>
+#include <SDL_gamecontroller.h>
 union SDL_Event;
 //enum SDL_Scancode;
 
@@ -32,8 +34,18 @@ namespace El_Horno {
 
 		void manageKeys(SDL_Event event);
 
+		void manageAxes(SDL_Event event);
+		void manageButtons(SDL_Event event);
+		void manageControllerAdded(SDL_Event event);
+		void manageControllerRemoved(SDL_Event event);
+
 		void flushInput();
 
+		SDL_GameController* controller_ = nullptr;
+		std::array<Sint16, SDL_GameControllerAxis::SDL_CONTROLLER_AXIS_MAX> controllerAxes_;
+		std::array<bool, SDL_GameControllerButton::SDL_CONTROLLER_BUTTON_MAX> controllerButtons_;
+
+		const float AXESDEADZONE = 10000.0f;
 	public:
 
 		//lo uncio necesario para recoger input del teclado a traves de SDL
@@ -52,6 +64,9 @@ namespace El_Horno {
 		bool isKeyDown(SDL_Scancode key);
 		bool getKeyDown(SDL_Scancode code);
 		bool getKeyUp(SDL_Scancode code);
+
+		Sint16 getAxis(SDL_GameControllerAxis axis);
+		bool isButtonDown(SDL_GameControllerButton button);
 	};
 }
 #endif _INPUT_MANAGER_H
