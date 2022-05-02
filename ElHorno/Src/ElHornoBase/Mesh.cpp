@@ -43,14 +43,7 @@ namespace El_Horno {
 		isAnimated_ = false;
 	}
 
-	/*
-	Crea una entidad. Establece:
-		- Material
-		- Casteo de sombras
-		- Animación
-	Se le adjunta al nodo del transform
-	*/
-	void Mesh::start()
+	void Mesh::awake()
 	{
 		try {
 
@@ -62,13 +55,25 @@ namespace El_Horno {
 		}
 		//ogreEntity_->setMaterialName(materialName_);
 		ogreEntity_->setCastShadows(castShadow_);
-
 		/* Enseña las animaciones posibles del skeleton
 		for (auto s : ogreEntity_->getAnimableValueNames()) {
 			std::cout << s;
 		};*/
 		if (entity_->getComponent<Transform>("transform")->getNode() != NULL)
 			entity_->getComponent<Transform>("transform")->getNode()->attachObject(ogreEntity_);
+
+	}
+
+	/*
+	Crea una entidad. Establece:
+		- Material
+		- Casteo de sombras
+		- Animación
+	Se le adjunta al nodo del transform
+	*/
+	void Mesh::start()
+	{
+
 	}
 
 	void Mesh::onEnable()

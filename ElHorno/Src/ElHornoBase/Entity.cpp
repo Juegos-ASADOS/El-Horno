@@ -37,6 +37,14 @@ namespace El_Horno {
 		}
 	}
 
+	void Entity::awake()
+	{
+		std::size_t n = compRef_.size();
+		for (auto i = 0u; i < n; i++) {
+			compRef_[i]->awake(); //Se hace incluso si está desactivada
+		}
+	}
+
 	// Inicializa componentes
 	void Entity::start()
 	{
@@ -45,7 +53,7 @@ namespace El_Horno {
 			compRef_[i]->start();
 		}
 		//getComponent<Transform>("transform")->getNode()->setVisible(active_);
-		setActive(active_);
+		setActive(active_, false);
 	}
 
 	// Preuodate de componentes
@@ -147,12 +155,14 @@ namespace El_Horno {
 			i++;
 		}
 	}
-	void Entity::setActive(bool act)
+	void Entity::setActive(bool act, bool actChild)
 	{
 		for (Component* c : compRef_)
 			c->setActive(act);
-		for (Entity* e : children_)
-			e->changeVisibility(act);
+		if (actChild) {
+			for (Entity* e : children_)
+				e->setActive(act);
+		}
 		changeVisibility(act);
 	}
 	void Entity::changeVisibility(bool vis)

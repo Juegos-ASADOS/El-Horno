@@ -71,7 +71,7 @@ namespace El_Horno {
 		}
 
 		// Seteamos el estado incial al primero de la maquina de estados
-		currentState_.name = animVector[0].first;
+		currentState_.name = "Idle";
 	}
 
 	void AnimatorController::start()

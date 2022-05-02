@@ -85,9 +85,4 @@ namespace El_Horno {
 		//entity_->getComponent<Transform>("transform")->getNode()->attachObject(light_);
 		tr_->setDirection(dirLight_);
 	}
-
-	void LightComponent::update()
-	{
-
-	}
 }

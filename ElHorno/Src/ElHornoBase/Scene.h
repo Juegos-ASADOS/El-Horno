@@ -24,6 +24,7 @@ class Entity;
 		bool deleteEntity(const std::string& name);
 		void deleteInstances();
 
+		void awake();
 		void start();
 		void preUpdate();
 		void update();

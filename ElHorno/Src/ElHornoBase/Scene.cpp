@@ -2,23 +2,12 @@
 #include "Entity.h"
 #include <iostream>
 #include <fstream>
+#include <OgreVector.h>
 
 //ESTO DEBERIA QUITARSE DE AQUI
-#include <OgreVector.h> 
-//#include "CheckML.h" 
-#include "Transform.h" 
-#include "CameraComponent.h"
-#include "LightComponent.h"
-#include "Mesh.h" 
-#include "ParticleSystem.h" 
-#include "Rigibody.h" 
-#include "AudioComponent.h" 
-#include "AudioListenerComponent.h" 
-#include "AnimatorController.h" 
-#include "SinbadAnimTest.h" 
-#include "InputManager.h" 
-#include "btBulletCollisionCommon.h" 
-#include "ElHornoBase.h" 
+#include "LightComponent.h" 
+#include "AnimatorController.h"
+#include "UILayout.h"
 
 namespace El_Horno {
 	Scene::Scene()
@@ -168,9 +157,18 @@ namespace El_Horno {
 		}
 	}
 
+	void Scene::awake()
+	{
+		auto iter = entities_.begin();
+		while (iter != entities_.end()) {
+			for (Entity* e : iter->second)
+				e->awake(); //Se llama aunque esté desactivada
+			iter++;
+		}
+	}
+
 	void Scene::start()
 	{
-
 		auto iter = entities_.begin();
 		while (iter != entities_.end()) {
 			for (Entity* e : iter->second)

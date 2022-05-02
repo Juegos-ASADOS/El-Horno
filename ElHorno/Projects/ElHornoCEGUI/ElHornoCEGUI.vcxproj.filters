@@ -27,19 +27,19 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\Src\ElHornoCEGUI\UIElement.h">
-      <Filter>Archivos de encabezado\UIManager</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\Src\ElHornoCEGUI\UIManager.h">
       <Filter>Archivos de encabezado\UIManager</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\Src\ElHornoCEGUI\UILayout.h">
+      <Filter>Archivos de encabezado\Components</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\Src\ElHornoCEGUI\UIElement.cpp">
-      <Filter>Archivos de origen\UIManager</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\Src\ElHornoCEGUI\UIManager.cpp">
       <Filter>Archivos de origen\UIManager</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Src\ElHornoCEGUI\UILayout.cpp">
+      <Filter>Archivos de origen\Components</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
