@@ -65,6 +65,7 @@ namespace El_Horno {
 			SDL_GameControllerButtonBind b = SDL_GameControllerGetBindForButton(controller_, (SDL_GameControllerButton)i);
 			if (b.value.button == event.cbutton.button) {
 				button = i;
+				found = true;
 				break;
 			}
 		}
