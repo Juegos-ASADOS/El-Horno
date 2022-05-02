@@ -99,7 +99,7 @@ namespace El_Horno {
 
 		//Get/Set del bool active
 		inline bool isActive() { return active_; };
-		void setActive(bool act);
+		void setActive(bool act, bool actChild = true);
 		void changeVisibility(bool vis);
 
 		//Get/Set del nombre de la entidad

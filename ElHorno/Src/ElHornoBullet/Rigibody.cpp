@@ -118,10 +118,10 @@ namespace El_Horno {
 		rigid_->setFriction(friction_);
 
 		//Necesario indicarle al manager que lo agregue al mundo de Bullet (y a�ada sus flags)
-		if (group_ != -1 && mask_ != -1)
+		/*if (group_ != -1 && mask_ != -1)
 			phManager_->addBody(rigid_, group_, mask_);
 		else
-			phManager_->addBody(rigid_);
+			phManager_->addBody(rigid_);*/
 
 		if (isKinematic_)
 			rigid_->setCollisionFlags(rigid_->getCollisionFlags() | btCollisionObject::CF_KINEMATIC_OBJECT);
@@ -407,12 +407,14 @@ namespace El_Horno {
 	}
 	void RigidBody::onEnable()
 	{
-		if(rigid_ == nullptr)
+		if (group_ != -1 && mask_ != -1)
+			phManager_->addBody(rigid_, group_, mask_);
+		else
 			phManager_->addBody(rigid_);
 	}
 	void RigidBody::onDisable()
 	{
-		if(rigid_ != nullptr)
+		if (rigid_ != nullptr)
 			phManager_->removeBody(rigid_);
 	}
 }
