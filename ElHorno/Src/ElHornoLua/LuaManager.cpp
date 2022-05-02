@@ -110,20 +110,29 @@ namespace El_Horno {
 
         for (int i = 1; i <= numEnts; i++) {
             luabridge::LuaRef entity = getFromLua(allEnts[i]);
-            Entity* ent = s->addEntity(allEnts[i], "prueba");
-            ent->addComponent<Transform>("transform", HornoVector3(0, 0, 0), HornoVector3(0, 0, 0), HornoVector3(0, 0, 0));
+            Entity* ent = s->getEntity(allEnts[i]);;
+            if (ent == nullptr) {
+                ent = s->addEntity(allEnts[i], "prueba");
+                ent->addComponent<Transform>("transform", HornoVector3(0, 0, 0), HornoVector3(0, 0, 0), HornoVector3(0, 0, 0));
+            }
             lua_pushnil(entity);
             while (lua_next(entity, 0) != 0) {
                 std::string compName = lua_tostring(entity, -2);
 
                 std::string key;
 
-
                 luabridge::LuaRef component = entity[compName];
                 lua_pushnil(component);
 
                 if (compName == "parent") {
                     s->getEntity(component, "prueba")->addChild(ent);
+                    lua_pop(component, 1);
+                    lua_pop(entity, 1);
+                    continue;
+                }
+
+                if (compName == "dontDestroyOnLoad") {
+                    ent->setDontDestryOnLoad(true);
                     lua_pop(component, 1);
                     lua_pop(entity, 1);
                     continue;

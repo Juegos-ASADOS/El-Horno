@@ -23,6 +23,7 @@ class Entity;
 
 		bool deleteEntity(const std::string& name);
 		void deleteInstances();
+		void deleteAllExcepDontDestroyOnLoad();
 
 		void awake();
 		void start();
@@ -31,6 +32,9 @@ class Entity;
 		virtual void init(std::string name) {};
 
 		inline std::string getName() const { return name_; };
+
+		inline std::map<std::string, std::vector<Entity*>> getEntitesMap() const { return entities_; };
+		inline void setEntitiesMap(std::map<std::string, std::vector<Entity*>> ent) { entities_ = ent; };
 
 	protected:
 		std::map<std::string, std::vector<Entity*>> entities_;

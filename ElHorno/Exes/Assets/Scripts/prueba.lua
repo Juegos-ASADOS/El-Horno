@@ -1,11 +1,7 @@
 gamemanager = {
-	transform = {
-        position = " 0 ,0 ,0 ",
-        rotation = " 0 ,0 ,0 ",
-        scale = " 0 ,0 ,0 ",
-    },
-
     gamemanager = {      
+        state = "0",
+        productNum = "1",
     },
 }
 

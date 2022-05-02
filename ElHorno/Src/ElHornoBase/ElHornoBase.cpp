@@ -169,9 +169,6 @@ namespace El_Horno {
 		globalTimer_ = new Timer();
 		deltaTime_ = 0;
 
-		// Audio de prueba
-		SceneManager::getInstance()->getCurrentScene()->getEntity("player", "prueba")->getComponent<AudioComponent>("audioComponent")->playSound("Menu.mp3");
-
 		while (!exit_) {
 			globalTimer_->resetTimer();
 			processFrame(deltaTime_);

@@ -26,7 +26,7 @@ typedef void (*GameVoid)();
 		Scene* loadScene(const std::string& sceneName);
 
 		//TODO
-		void changeScene(const std::string& name);
+		void changeScene(Scene* scene, std::string s);
 
 		//TODO
 		void start(std::string initialScene);
