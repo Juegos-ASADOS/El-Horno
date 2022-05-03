@@ -102,4 +102,17 @@ namespace El_Horno {
 	{
 		return !(this == &b);
 	}
+	std::ostream& operator<<(std::ostream& os, const HornoVector3& vector)
+	{
+		os << vector.x_ << ", " << vector.y_ << ", " << vector.z_ << "\n";
+		return os;
+	}
+	std::istream& operator>>(std::istream& in, HornoVector3& vector)
+	{
+		in >> vector.x_;
+		in >> vector.y_;
+		in >> vector.z_;
+
+		return in;
+	}
 }

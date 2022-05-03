@@ -2,6 +2,7 @@
 #ifndef _HORNOVECTOR3_H
 #define _HORNOVECTOR3_H
 
+#include <iostream>
 namespace El_Horno {
 	class _declspec(dllexport) HornoVector3
 	{
@@ -36,6 +37,9 @@ namespace El_Horno {
 		bool operator==(const HornoVector3& b);
 		bool operator!=(const HornoVector3& b);
 		
+		friend std::ostream& operator<<(std::ostream& os, const HornoVector3& vector);
+		friend std::istream& operator>> (std::istream& in, HornoVector3& vector);
+
 		float x_, y_, z_;
 	};
 }
