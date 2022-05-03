@@ -44,6 +44,14 @@ namespace El_Horno {
 		void subscribeChildEvent(std::string layoutName, std::string childName, bool (*func)());
 		//void subscribeChildEvent(int layout, std::string childName, bool (*func)());
 
+		bool addImageFile(const std::string& imageName, const std::string& imageFile);
+
+		void addWidgetToLayout(const std::string& layoutName, const std::string& childName, const std::string& widgetType);
+		void removeWidgetFromLayout(const std::string& layoutName, const std::string& childPath);
+
+		void addProperty();
+		void setChildProperty(const std::string& layoutName, const std::string& childPath, const std::string& propertyName, const std::string& values);
+
 	private:
 		CEGUI::Window* getLayout(std::string layoutName);
 		//CEGUI::Window* getLayout(int layout);

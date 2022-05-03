@@ -155,6 +155,7 @@ namespace El_Horno {
 		auto it = layouts.begin();
 		while(it != layouts.end()){
 			(*it).second->destroy();
+			it++;
 		}
 		layouts.clear();
 	}
@@ -167,6 +168,48 @@ namespace El_Horno {
 			return (*it).second;
 
 		return nullptr;
+	}
+
+	bool UILayout::addImageFile(const std::string& imageName, const std::string& imageFile)
+	{
+		if (!CEGUI::ImageManager::getSingleton().isDefined(imageFile)) {
+			CEGUI::ImageManager::getSingleton().addFromImageFile(imageName, imageFile);
+		}
+	}
+
+	void UILayout::addWidgetToLayout(const std::string& layoutName, const std::string& childName, const std::string& widgetType)
+	{
+		CEGUI::Window* wnd = getLayout(layoutName);
+		if (wnd == nullptr) {
+			std::cout << "Couldnt add Widget. Layout not found!\n";
+			return;
+		}
+
+		CEGUI::Window* child = uiManager->getWinMngr()->createWindow(widgetType, childName);
+		wnd->addChild(child);
+	}
+
+	void UILayout::removeWidgetFromLayout(const std::string& layoutName, const std::string& childPath)
+	{
+		CEGUI::Window* wnd = getLayout(layoutName);
+		if (wnd == nullptr) {
+			std::cout << "Couldnt remove Widget. Layout not found!\n";
+			return;
+		}
+
+		wnd->destroyChild(childPath);
+	}
+
+	void UILayout::setChildProperty(const std::string& layoutName, const std::string& childPath, const std::string& propertyName, const std::string& values)
+	{
+		CEGUI::Window* wnd = getLayout(layoutName);
+		if (wnd == nullptr) {
+			std::cout << "Couldnt remove Widget. Layout not found!\n";
+			return;
+		}
+
+		//wdt->setProperty("SomeProperty", "True");
+		wnd->getChild(childPath)->setProperty(propertyName, values);
 	}
 
 	//CEGUI::Window* UILayout::getLayout(int layout)
