@@ -170,7 +170,7 @@ namespace El_Horno {
 		return nullptr;
 	}
 
-	bool UILayout::addImageFile(const std::string& imageName, const std::string& imageFile)
+	void UILayout::addImageFile(const std::string& imageName, const std::string& imageFile)
 	{
 		if (!CEGUI::ImageManager::getSingleton().isDefined(imageFile)) {
 			CEGUI::ImageManager::getSingleton().addFromImageFile(imageName, imageFile);
