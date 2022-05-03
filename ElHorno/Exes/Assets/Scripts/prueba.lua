@@ -1,6 +1,6 @@
 gamemanager = {
     gamemanager = {      
-        state = "0",
+        state = "3",
         productNum = "1",
     },
 }
@@ -119,14 +119,16 @@ cart = {
         colShape = "0",
     },
 
-    parent = "player",
+    parent = {
+        name = "player",
+    },
 }
 
 cartTrigger = {
     transform = {
-        position = " 3.5, 3, 3.5 ",
+        position = " 0, 0, 0 ",
         rotation = " 0 ,0 ,0 ",
-        scale = " 0.02, 0.02, 0.02 ",
+        scale = " 4, 4, 4 ",
     },
 
     rigidbody = {
@@ -140,7 +142,10 @@ cartTrigger = {
         type = "2";
         productType = "0";
         id = "";
-    }
+    },
+    parent = {
+        name = "cart",
+    },
 }
 
 moneco = {
