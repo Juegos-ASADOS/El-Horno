@@ -95,6 +95,7 @@ namespace El_Horno {
 		uiManager->defineScheme(schemeName);
 	}
 
+
 	void UILayout::setScale(std::string layoutName, float x, float y)
 	{
 		CEGUI::Window* wnd = getLayout(layoutName);

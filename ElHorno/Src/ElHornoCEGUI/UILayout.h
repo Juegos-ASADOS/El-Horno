@@ -32,8 +32,8 @@ namespace El_Horno {
 		void removeLayout(std::string layoutName);
 		void removeLayout(int layout);
 
+
 		void removeLayouts();
-		
 		void loadScheme(std::string shcemeName);
 
 		void setScale(std::string layoutName, float x, float y);
