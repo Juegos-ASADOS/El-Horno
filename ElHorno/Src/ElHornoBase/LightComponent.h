@@ -21,6 +21,18 @@ namespace El_Horno {
 		void setParameters(std::vector<std::pair<std::string, std::string>> parameters) override;
 		void start() override;
 
+		void setType(int type);
+		
+		void setDirection(const HornoVector3& dir);
+		
+		void setDiffuseColor(const HornoVector3& diffuse);
+		void setSpecularColor(const HornoVector3& specular);
+
+		void setPowerScale(float scale);
+		void setSpotlightNearClipDistance(float distance);
+		void setSpotlightInnerAngle(float degree);
+		void setSpotlightOuterAngle(float degree);
+
 	private:
 
 		// Acceso al nodo, Entidad de Ogre y Transform

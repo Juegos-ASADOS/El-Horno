@@ -51,8 +51,22 @@ namespace El_Horno {
 		// Creamos la luz
 		light_ = ElHornoBase::getInstance()->getGraphicsManager()->getSceneManager()->createLight();
 
+		setType(type_);
+
+		// Establecemos sus parametros basicos
+		light_->setDiffuseColour(1.0, 1.0, 1.0);
+		light_->setSpecularColour(.8, .7, .8);
+		light_->setPowerScale(1);
+		
+		tr_ = entity_->getComponent<Transform>("transform");
+		tr_->getNode()->attachObject(light_);
+		tr_->setDirection(Ogre::Vector3(0, -1, -0.3));
+	}
+	void LightComponent::setType(int type)
+	{
+		type_ = type;
 		// Seteamos su tipo
-		switch (type_)
+		switch (type)
 		{
 			// POINT
 		case 0:
@@ -67,22 +81,39 @@ namespace El_Horno {
 			// FOCO
 		case 2:
 			light_->setType(Ogre::Light::LT_SPOTLIGHT);
-			light_->setSpotlightNearClipDistance(1);
-			light_->setSpotlightInnerAngle(Ogre::Degree(15));
-			light_->setSpotlightOuterAngle(Ogre::Degree(90.0f));
 			break;
 
 		default:
 			light_->setType(Ogre::Light::LT_POINT);
 			break;
 		}
-
-		// Establecemos sus parametros basicos
-		light_->setDiffuseColour(1.0, 1.0, 1.0);
-
-		tr_ = entity_->getComponent<Transform>("transform");
-		tr_->getNode()->attachObject(light_);
-		//entity_->getComponent<Transform>("transform")->getNode()->attachObject(light_);
-		tr_->setDirection(dirLight_);
+	}
+	void LightComponent::setDirection(const HornoVector3& dir)
+	{
+		tr_->setDirection(dir);
+	}
+	void LightComponent::setDiffuseColor(const HornoVector3& diffuse)
+	{
+		light_->setDiffuseColour(diffuse.x_, diffuse.y_, diffuse.z_);
+	}
+	void LightComponent::setSpecularColor(const HornoVector3& specular)
+	{
+		light_->setSpecularColour(specular.x_, specular.y_, specular.z_);
+	}
+	void LightComponent::setPowerScale(float scale)
+	{
+		light_->setPowerScale(scale);
+	}
+	void LightComponent::setSpotlightNearClipDistance(float distance)
+	{
+		light_->setSpotlightNearClipDistance(distance);
+	}
+	void LightComponent::setSpotlightOuterAngle(float degree)
+	{
+		light_->setSpotlightOuterAngle(Ogre::Degree(degree));
+	}
+	void LightComponent::setSpotlightInnerAngle(float degree)
+	{
+		light_->setSpotlightInnerAngle(Ogre::Degree(degree));
 	}
 }
