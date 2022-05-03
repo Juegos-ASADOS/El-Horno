@@ -206,8 +206,10 @@ namespace El_Horno {
 	{
 		auto iter = entities_.begin();
 		while (iter != entities_.end()) {
-			for (Entity* e : iter->second)
-				if (e->isActive()) e->update();
+			/*for (Entity* e : iter->second)
+				if (e->isActive()) e->update();*/
+			for (int i = 0; i < iter->second.size(); i++)
+				if (iter->second[i]->isActive()) iter->second[i]->update();
 			iter++;
 		}
 	}

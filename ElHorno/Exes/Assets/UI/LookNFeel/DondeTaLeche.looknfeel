@@ -86,7 +86,7 @@
                 <UnifiedDim scale="1" type="Height" />
               </Dim>
             </Area>
-            <Image component="Hover" name="DondeTaLeche/FlechaDer_Over" />
+            <Image component="Hover"/>
           </FrameComponent>
           <ImageryComponent>
             <Area>
@@ -125,7 +125,7 @@
                 <UnifiedDim scale="1" type="Height" />
               </Dim>
             </Area>
-            <Image component="Clicked" name="DondeTaLeche/FlechaDer_Press" />
+            <Image component="Clicked" />
           </FrameComponent>
           <ImageryComponent>
             <Area>

@@ -150,12 +150,12 @@ namespace El_Horno {
 	{
 		if (!isKinematic_) {
 			btVector3 pos;
-			btQuaternion rot;
+			//btQuaternion rot;
 
 			pos = rigid_->getWorldTransform().getOrigin();
-			rot = rigid_->getWorldTransform().getRotation();
+			//rot = rigid_->getWorldTransform().getRotation();
 			transform_->setGlobalPosition(BulletVectorToOgre(pos));
-			transform_->setRotation(QuaternionToOgre(rot));
+			//transform_->setRotation(QuaternionToOgre(rot));
 		}
 	}
 
