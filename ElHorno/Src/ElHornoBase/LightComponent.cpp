@@ -31,7 +31,11 @@ namespace El_Horno {
 
 	LightComponent::~LightComponent()
 	{
-
+		//Ogre::SceneNode* node = ogreEntity_->getParentSceneNode();
+		//if (node != nullptr)
+		//	node->detachAllObjects();
+		ElHornoBase::getGraphicsManager()->getSceneManager()->destroyLight(light_);
+		light_ = nullptr;
 	}
 
 	void LightComponent::setParameters(std::vector<std::pair<std::string, std::string>> parameters)

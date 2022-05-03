@@ -151,6 +151,8 @@ namespace El_Horno {
 			EventManager::getInstance()->processEvents();
 
 			SceneManager::getInstance()->update();
+			if (SceneManager::getInstance()->getChangeScene())
+				SceneManager::getInstance()->changeScene();
 		}
 		else {
 			//SceneManager::getInstance()->pausedUpdate();

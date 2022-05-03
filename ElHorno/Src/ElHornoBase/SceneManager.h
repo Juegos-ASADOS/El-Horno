@@ -22,11 +22,13 @@ typedef void (*GameVoid)();
 		static void erase();
 
 		Scene* getCurrentScene();
+		bool getChangeScene();
 
 		Scene* loadScene(const std::string& sceneName);
 
 		//TODO
-		void changeScene(Scene* scene, std::string s);
+		void changeScene();
+		void nextScene(Scene* scene, std::string s);
 
 		//TODO
 		void start(std::string initialScene);
@@ -50,7 +52,9 @@ typedef void (*GameVoid)();
 		SceneManager();
 		~SceneManager();
 
-		std::string nextScene_ = "";
+		std::string nextSceneName_ = "";
+		Scene* nextScene_ = nullptr;
+		bool changeScene_ = false;
 
 	};
 }
