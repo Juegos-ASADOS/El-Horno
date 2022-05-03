@@ -81,8 +81,6 @@ namespace El_Horno {
 
 		root = nullptr;
 
-		winMngr = CEGUI::WindowManager::getSingletonPtr();
-
 		//Ventana por defecto a modo de GameObject
 		//Todos los botones texto etc se crean dentro de esta misma ventana
 		root = winMngr->createWindow("DefaultWindow", "Root");
@@ -99,18 +97,19 @@ namespace El_Horno {
 		//Seleccionamos el RenderTarget que usamos de ogre que usamos de Root de Renderizado
 		renderer = &CEGUI::OgreRenderer::bootstrapSystem(*GraphicsManager::getInstance()->getRenderWindow());
 
-		//renderer
-
-		//Creo que se crea as�
 		guiContext = &CEGUI::System::getSingleton().createGUIContext(renderer->getDefaultRenderTarget());
 
-		//CEGUI::SchemeManager::getSingleton().createFromFile("Layouts");
+		winMngr = CEGUI::WindowManager::getSingletonPtr();
+
 		//esto para que no se haga en la constructora
 		setUpResources();
 
 		createRoot();
 
-		//CEGUI::Window* window = winMngr->loadLayoutFromFile("TaharezLookOverview.layout");
+		/*defineScheme("Generic");
+		defineScheme("TaharezLook");
+
+		root->addChild(winMngr->loadLayoutFromFile("TaharezLookOverview.layout"));*/
 
 		//root->addChild(window);
 
@@ -155,30 +154,32 @@ namespace El_Horno {
 		createRoot();
 	}
 
-	CEGUI::Window* UIManager::loadLayout(std::string layoutName)
+	CEGUI::Window* UIManager::loadLayout(std::string layoutName, std::string name)
 	{
-		removeLayout();
+		//removeLayout();
 
-		CEGUI::Window* window = winMngr->loadLayoutFromFile(layoutName + ".layout");
-
-		guiContext->setRootWindow(window);
-		
-		root = window;
+		CEGUI::Window* window = createLayout(layoutName + ".layout", name);
+		//setRootLayout(window);
 
 		return window;
 	}
 
-	CEGUI::Window* UIManager::loadLayout(std::string layoutName, std::string name)
+	CEGUI::Window* UIManager::createLayout(std::string layoutName, std::string name)
 	{
-		removeLayout();
-
-		CEGUI::Window* window = winMngr->loadLayoutFromFile(layoutName + ".layout", name);
-
-		guiContext->setRootWindow(window);
-
-		root = window;
-
+		CEGUI::Window* window = nullptr;
+		if(name != "")
+			window = winMngr->loadLayoutFromFile(layoutName + ".layout", name);
+		else
+			window = winMngr->loadLayoutFromFile(layoutName + ".layout");
+		
 		return window;
+	}
+
+	void UIManager::setRootLayout(CEGUI::Window* nRoot)
+	{
+		guiContext->setRootWindow(nRoot);
+
+		root = nRoot;
 	}
 
 	void UIManager::changeScreenSize(int width, int height)
@@ -265,10 +266,6 @@ namespace El_Horno {
 		return winMngr;
 	}
 
-	void UIManager::setVisibleLayout(bool visible, int layout)
-	{
-		layouts[layout]->setVisible(visible);
-	}
 
 	void UIManager::changeAlpha(const std::string& imagePath, float alpha)
 	{
@@ -284,8 +281,4 @@ namespace El_Horno {
 		return thumbnail->getAlpha();
 	}
 
-	std::vector<CEGUI::Window*> UIManager::getLayouts()
-	{
-		return layouts;
-	}
 }
