@@ -124,31 +124,32 @@ namespace El_Horno {
                 luabridge::LuaRef component = entity[compName];
                 lua_pushnil(component);
 
-                if (compName == "parent") {
-                    s->getEntity(component, "prueba")->addChild(ent);
-                    lua_pop(component, 1);
-                    lua_pop(entity, 1);
-                    continue;
-                }
-
                 if (compName == "dontDestroyOnLoad") {
                     ent->setDontDestryOnLoad(true);
                     lua_pop(component, 1);
-                    lua_pop(entity, 1);
                     continue;
                 }
 
                 std::vector<std::pair<std::string, std::string>> parameters;
 
+
                 while (lua_next(component, 0) != 0) {
                     std::string key = lua_tostring(entity, -2);
                     std::string val = lua_tostring(entity, -1);
+
+                    if (compName == "parent") {
+                        s->getEntity(val, "prueba")->addChild(ent);
+                        lua_pop(component, 1);
+                        continue;
+                    }
 
                     parameters.push_back({ key, val });
                     lua_pop(component, 1);
                 }
 
-                ent->addComponent(compName, parameters);
+                if (compName != "parent"){
+                    ent->addComponent(compName, parameters);
+                }
                 lua_pop(entity, 1);
             }
         }
