@@ -70,6 +70,7 @@ namespace El_Horno {
 		RigidBody* rb1 = static_cast<RigidBody*>(manifold->getBody0()->getUserPointer());
 		RigidBody* rb2 = static_cast<RigidBody*>(manifold->getBody1()->getUserPointer());
 
+		if (rb1 == nullptr || rb2 == nullptr) return;
 		if (rb1 && rb2) {
 			Event* e;
 			
