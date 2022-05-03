@@ -49,6 +49,11 @@ namespace El_Horno {
 		return currentScene_;
 	}
 
+	bool SceneManager::getChangeScene()
+	{
+		return changeScene_;
+	}
+
 	Scene* SceneManager::loadScene(const std::string& sceneName)
 	{
 		currentScene_ = new Scene();
@@ -62,14 +67,22 @@ namespace El_Horno {
 		return currentScene_;
 	}
 
-	void SceneManager::changeScene(Scene* scene, std::string s)
+	void SceneManager::changeScene()
 	{
+		changeScene_ = false;
 		currentScene_->deleteAllExcepDontDestroyOnLoad();
-		scene->setEntitiesMap(currentScene_->getEntitesMap());
-		delete currentScene_;
-		currentScene_ = scene;
-		El_Horno::SceneManager::getInstance()->setScene(scene);
-		scene->init(s);
+		nextScene_->setEntitiesMap(currentScene_->getEntitesMap());
+		El_Horno::SceneManager::getInstance()->setScene(nextScene_);
+		currentScene_->init(nextSceneName_);
+		currentScene_->awake();
+		currentScene_->start();
+	}
+
+	void SceneManager::nextScene(Scene* scene, std::string s)
+	{
+		nextScene_ = scene;
+		nextSceneName_ = s;
+		changeScene_ = true;
 	}
 
 	void SceneManager::preUpdate()
