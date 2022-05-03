@@ -49,8 +49,8 @@ namespace El_Horno {
 	void GraphicsManager::init()
 	{
 		//Tamaño de la ventana
-		screenWidth_ = 1280;
-		screenHeight_ = 720;
+		screenWidth_ = 1920;
+		screenHeight_ = 1080;
 
 		SDL_Init(SDL_INIT_EVERYTHING);
 
