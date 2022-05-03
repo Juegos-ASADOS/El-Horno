@@ -4,6 +4,7 @@
     <Font filename="LemonJuice.font"/>
 	<Font filename="LemonJuice_Grande.font"/>
     <Font filename="LemonJuice_Medio.font"/>
+	    <Font filename="LemonJuice_Pequeño.font"/>
     <LookNFeel filename="DondeTaLeche.looknfeel"/>
     <WindowRendererSet filename="CEGUICoreWindowRendererSet"/>
     <FalagardMapping targetType="CEGUI/PushButton" lookNFeel="DondeTaLeche/Boton" renderer="Core/Button" windowType="VDondeTaLeche/Boton"/>
