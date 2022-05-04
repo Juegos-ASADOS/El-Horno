@@ -44,6 +44,8 @@ namespace El_Horno {
 
 	RigidBody::~RigidBody()
 	{
+		delete rigid_->getMotionState();
+		//delete rigid_->getCollisionShape();
 		rigid_->setUserPointer(nullptr);
 		phManager_->removeBody(rigid_);
 		delete rigid_; rigid_ = nullptr;

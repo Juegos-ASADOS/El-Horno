@@ -20,7 +20,7 @@ namespace El_Horno {
 		auto it = entities_.begin();
 		while (it != entities_.end()) {
 			for (auto e : it->second) {
-				if (e->dontDestroyOnLoad = false)
+				if (!e->dontDestroyOnLoad)
 					delete e;
 			}
 			it++;
