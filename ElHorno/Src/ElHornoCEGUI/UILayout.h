@@ -44,6 +44,8 @@ namespace El_Horno {
 
 		void subscribeChildEvent(std::string layoutName, std::string childName, std::function<bool(const CEGUI::EventArgs&)> func);
 
+
+		
 		template<class T>
 		void subscribeChildEvent(std::string layoutName, std::string childName, void (T::*func)(), T* comp);
 

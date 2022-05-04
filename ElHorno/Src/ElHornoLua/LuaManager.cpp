@@ -23,6 +23,9 @@ extern "C"
 #include "Scene.h"
 #include "CheckML.h"
 
+
+#include "UIManager.h"
+
 namespace El_Horno {
 
     LuaManager* LuaManager::instance_;
@@ -92,6 +95,7 @@ namespace El_Horno {
     luabridge::LuaRef LuaManager::getFromLua(std::string name)
     {
         return luabridge::getGlobal(luaState, name.c_str());
+
     }
 
     lua_State* LuaManager::getLuaState()
@@ -183,6 +187,26 @@ namespace El_Horno {
             .addFunction("changeScene", (&SceneManager::changeScene))
             .addFunction("nextScene", (&SceneManager::nextScene))
             .endClass();
+
+        //vamos con el uiManager y todo lo que necesitamos exposear para manejo de interfaces y menu
+        luabridge::getGlobalNamespace(luaState)
+            .beginClass<UIManager>("UIManager")
+            .addStaticFunction("getUIManager", &UIManager::getInstance)
+            .addFunction("setLayoutVisibility", (&UIManager::setLayoutVisibility))
+            .addFunction("addLayout", (&UIManager::addLayout))
+            .addFunction("removeLayout", (&UIManager::removeLayout))
+            .addFunction("removeLayouts", (&UIManager::removeLayouts))
+            .addFunction("setLayoutScale", (&UIManager::setLayoutScale))
+            .addFunction("subscribeLayoutChildEvent", (&UIManager::subscribeLayoutChildEvent))
+            .addFunction("subscribeChildEvent", (&UIManager::subscribeChildEvent))
+            .addFunction("addImageFile", (&UIManager::addImageFile))
+            .addFunction("addWidgetToLayout", (&UIManager::addWidgetToLayout))
+            .addFunction("removeWidgetFromLayout", (&UIManager::removeWidgetFromLayout))
+            .addFunction("setChildProperty", (&UIManager::setChildProperty))
+            .addFunction("getLayout", (&UIManager::getLayout))
+            .endClass();
+
+
     }
 
     void LuaManager::callLuaFunction(std::string name)

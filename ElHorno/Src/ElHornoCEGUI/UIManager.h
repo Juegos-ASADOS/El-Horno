@@ -4,6 +4,9 @@
 
 #include <string>
 #include <vector>
+#include <unordered_map>
+#include <functional>
+#include "LuaManager.h"
 
 namespace CEGUI {
 	class Window;
@@ -33,6 +36,9 @@ namespace El_Horno {
 
 		CEGUI::Window* root = nullptr;
 		CEGUI::GUIContext* guiContext;
+
+
+		std::unordered_map<std::string, CEGUI::Window*> layouts;
 	public:
 
 		~UIManager();
@@ -48,7 +54,7 @@ namespace El_Horno {
 
 		void defineScheme(std::string schemeName);
 
-		void removeLayout();
+		void removeLayoutRoot();
 
 		CEGUI::Window* loadLayout(std::string layoutName, std::string name = "");
 		CEGUI::Window* createLayout(std::string layoutName, std::string name = "");
@@ -88,6 +94,35 @@ namespace El_Horno {
 		//Cambiar la transparencia de una entidad
 		void changeAlpha(const std::string& image, float alpha);
 		float getAlpha(const std::string& namePath);
+
+
+
+
+
+		//todo a aprtir de aqui es para layouts y widgets y lo que se expone a Lua principalmente
+		void setLayoutVisibility(std::string layoutName, bool visible);
+
+		void addLayout(std::string layoutName, std::string name = "");
+		void removeLayout(std::string layoutName);
+
+		void removeLayouts();
+		//define scheme;
+
+
+		void setLayoutScale(std::string layoutName, float x, float y);
+
+		void subscribeLayoutChildEvent(std::string layoutName, std::string childName, std::function<bool(const CEGUI::EventArgs&)> func);
+		void subscribeChildEvent(std::string childName, std::function<bool(const CEGUI::EventArgs&)> func);
+
+
+		void addImageFile(const std::string& imageName, const std::string& imageFile);
+
+		void addWidgetToLayout(const std::string& layoutName, const std::string& childName, const std::string& widgetType);
+		void removeWidgetFromLayout(const std::string& layoutName, const std::string& childPath);
+
+		void setChildProperty(const std::string& layoutName, const std::string& childPath, const std::string& propertyName, const std::string& values);
+
+		CEGUI::Window* getLayout(std::string layoutName);
 	};
 }
 
