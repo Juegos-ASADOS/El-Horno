@@ -10,6 +10,7 @@
 class lua_State;
 namespace luabridge {
     class LuaRef;
+    class LuaResult;
 }
 typedef int (*lua_CFunction) (lua_State* L);
 
