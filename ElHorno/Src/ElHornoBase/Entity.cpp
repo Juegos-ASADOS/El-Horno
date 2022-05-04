@@ -22,11 +22,12 @@ namespace El_Horno {
 	// Elimina componentes, entidades hijas y se elimina del padre
 	Entity::~Entity() {
 
-		for (Component* c : compRef_) {
-			delete c;
-			c = nullptr;
+		for (int i = 0; i < compRef_.size(); ++i) {
+			delete compRef_[i];
+			compRef_[i] = nullptr;
 		}
 		comp_.clear();
+		compRef_.clear();
 
 		children_.clear();
 

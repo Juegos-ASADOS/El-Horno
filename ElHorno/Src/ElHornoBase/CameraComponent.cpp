@@ -9,12 +9,14 @@
 #include <OgreRenderWindow.h>
 #include <OgreViewport.h>
 #include "CheckML.h"
+#include "SceneManager.h"
+#include "Scene.h"
 #include <math.h>
 
 namespace El_Horno {
 
 	CameraComponent::CameraComponent(HornoVector3 pos, HornoVector3 lookAt, HornoVector3 color, float alpha, int nearClDis, int farClDis)
-	{		
+	{
 		camPos_ = HornoVectorToOgre(pos);
 		lookAtVec_ = HornoVectorToOgre(lookAt);
 		bgColor_ = Ogre::ColourValue(color.x_, color.y_, color.z_, alpha);
@@ -40,7 +42,7 @@ namespace El_Horno {
 	* Crea la camara, setea la distancia entre la que renderiza objetos (de 5 a 100000)
 	* Los aspect ratio utilizan un default
 	* La attachea al nodo del transform y coloca su posicion
-	* Pone la camara (NO EL TRANSFORM QUE TAMB TIENE UN LOOKAT) mirando hacie el punto 
+	* Pone la camara (NO EL TRANSFORM QUE TAMB TIENE UN LOOKAT) mirando hacie el punto
 	* Lo añade como viewport y seleccionames un color de fondo
 	* Todas las variable están cableadas hasta la existencia de un json que setee los parametros
 	*/
@@ -61,7 +63,20 @@ namespace El_Horno {
 				nearClipDistance_ = stoi(parameters[i].second);
 			}
 			else if (parameters[i].first == "farClDis") {
-				farClipDistance_  = stoi(parameters[i].second);
+				farClipDistance_ = stoi(parameters[i].second);
+			}
+			else if (parameters[i].first == "target") {
+				std::istringstream in(parameters[i].second);
+				std::string val;         
+				std::vector<std::string> values;          
+				while (getline(in, val, ',')) 
+					{ values.push_back(val); }
+				if (SceneManager::getInstance()->getCurrentScene()->getEntity(values[0]) != nullptr) {
+					target_ = SceneManager::getInstance()->getCurrentScene()->getEntity(values[0])->getComponent<Transform>("transform");
+					following = true;
+					lerpAmount_ = stof(values[1]);
+					followDistance_ = HornoVector3(stof(values[2]), stof(values[3]), stof(values[4]));
+				}
 			}
 		}
 	}

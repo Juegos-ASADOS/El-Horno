@@ -33,7 +33,7 @@ camera = {
         farClDis = "10000",
     },
 
-    audioListener = {
+    audiolistener = {
 
     },
 }
@@ -46,7 +46,7 @@ player = {
     },
 
     mesh = {
-        name = "pipo",
+        name = "pipo.mesh",
     },
 
     rigidbody = {
@@ -56,20 +56,19 @@ player = {
         colShape = "0",
     },
 
-    audioComponent = {
+    audiocomponent = {
 
     },
 
-    playerController = {
+    playercontroller = {
         speed = "1500",
         maxForce = "200",
     },
 
-    playerInteract = {
-
+    playerinteract = {
     },
 
-    animatorController = {
+    animatorcontroller = {
         Idle = "walk",
 		walk = "Idle",
 		Idle_with_product = "walk_with_product",
@@ -90,7 +89,7 @@ object = {
     },
 
     mesh = {
-        name = "cube",
+        name = "cube.mesh",
     },
 
     rigidbody = {
@@ -109,7 +108,7 @@ cart = {
     },
 
     mesh = {
-        name = "cube",
+        name = "cube.mesh",
     },
 
     rigidbody = {
@@ -138,7 +137,7 @@ cartTrigger = {
         colShape = "0",
     },
 
-    entityId = {
+    entityid = {
         type = "2";
         productType = "0";
         id = "";
@@ -156,7 +155,7 @@ moneco = {
     },
 
     mesh = {
-        name = "penguin",
+        name = "penguin.mesh",
     },
 
     rigidbody = {

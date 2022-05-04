@@ -24,11 +24,11 @@ namespace El_Horno {
 
 	UIManager::~UIManager()
 	{
-		if (root != nullptr)
-			root->destroy();
-		CEGUI::System::getSingleton().destroyGUIContext(*guiContext);
-		CEGUI::System::destroy();
-		CEGUI::OgreRenderer::destroy(*renderer);
+		//CEGUI::System::getSingleton().destroyGUIContext(*guiContext);
+		//CEGUI::System::getSingleton().destroy();
+		//CEGUI::OgreRenderer::destroy(*renderer);
+		winMngr->destroyAllWindows();
+		renderer->destroySystem();
 	}
 
 	UIManager* UIManager::getInstance()
@@ -129,7 +129,7 @@ namespace El_Horno {
 	void UIManager::deleteContext()
 	{
 		//Eliminamos todas las ventanas, destruimos el GUIContext y el render de ogre
-		removeLayout();
+		removeLayoutRoot();
 		CEGUI::System::getSingleton().destroyGUIContext(*guiContext);
 		renderer->destroySystem();
 	}
@@ -144,7 +144,7 @@ namespace El_Horno {
 		}
 	}
 
-	void UIManager::removeLayout()
+	void UIManager::removeLayoutRoot()
 	{
 		if (root != nullptr)
 			root->destroy();
@@ -279,6 +279,137 @@ namespace El_Horno {
 		//Si sale error hacer static_cast
 		CEGUI::Window* thumbnail = root->getChild(namePath);
 		return thumbnail->getAlpha();
+	}
+
+	void UIManager::subscribeLayoutChildEvent(std::string layoutName, std::string childName, std::function<bool(const CEGUI::EventArgs&)> func)
+	{
+		CEGUI::Window* wnd = getLayout(layoutName);
+		if (wnd != nullptr) {
+			wnd->getChild(childName)->subscribeEvent(CEGUI::PushButton::EventClicked, CEGUI::Event::Subscriber(func));
+		}
+		else {
+			std::cout << "Couldnt subscribe event. Layout not found!\n";
+		}
+
+	}
+
+	void UIManager::subscribeChildEvent( std::string childName, std::function<bool(const CEGUI::EventArgs&)> func)
+	{
+		//you better know what you doing!
+		root->getChild(childName)->subscribeEvent(CEGUI::PushButton::EventClicked, CEGUI::Event::Subscriber(func));
+	}
+
+	void UIManager::addImageFile(const std::string& imageName, const std::string& imageFile)
+	{
+		if (!CEGUI::ImageManager::getSingleton().isDefined(imageFile)) {
+			CEGUI::ImageManager::getSingleton().addFromImageFile(imageName, imageFile);
+		}
+	}
+
+	void UIManager::addWidgetToLayout(const std::string& layoutName, const std::string& childName, const std::string& widgetType)
+	{
+		CEGUI::Window* wnd = getLayout(layoutName);
+		if (wnd == nullptr) {
+			std::cout << "Couldnt add Widget. Layout not found!\n";
+			return;
+		}
+
+		CEGUI::Window* child = winMngr->createWindow(widgetType, childName);
+		wnd->addChild(child);
+	}
+
+	void UIManager::removeWidgetFromLayout(const std::string& layoutName, const std::string& childPath)
+	{
+		CEGUI::Window* wnd = getLayout(layoutName);
+		if (wnd == nullptr) {
+			std::cout << "Couldnt remove Widget. Layout not found!\n";
+			return;
+		}
+
+		wnd->destroyChild(childPath);
+	}
+
+	void UIManager::setChildProperty(const std::string& layoutName, const std::string& childPath, const std::string& propertyName, const std::string& values)
+	{
+		CEGUI::Window* wnd = getLayout(layoutName);
+		if (wnd == nullptr) {
+			std::cout << "Couldnt remove Widget. Layout not found!\n";
+			return;
+		}
+
+		//wdt->setProperty("SomeProperty", "True");
+		wnd->getChild(childPath)->setProperty(propertyName, values);
+	}
+
+
+	void UIManager::setLayoutVisibility(std::string layoutName, bool visible)
+	{
+		CEGUI::Window* wnd = getLayout(layoutName);
+		if (wnd != nullptr) {
+			wnd->setVisible(visible);
+			if (visible) wnd->activate();
+		}
+		else {
+			std::cout << "Layout not found!\n";
+		}
+	}
+
+	void UIManager::addLayout(std::string layoutName, std::string name)
+	{
+		if (getLayout(layoutName) != nullptr) {
+			std::cout << "Already defined layout!\n";
+		}
+
+		CEGUI::Window* wnd = createLayout(layoutName, name);
+		wnd->setVisible(false);
+		root->addChild(wnd);
+		layouts[layoutName] = wnd;
+	}
+
+	void UIManager::removeLayout(std::string layoutName)
+	{
+		CEGUI::Window* wnd = getLayout(layoutName);
+		if (wnd != nullptr) {
+			auto it = layouts.find(layoutName);
+			root->removeChild(wnd);
+			layouts.erase(it);
+		}
+		else {
+			std::cout << "Couldnt remove layout. Layout not found!\n";
+		}
+	}
+
+	void UIManager::removeLayouts()
+	{
+		auto it = layouts.begin();
+		while (it != layouts.end()) {
+			//CEGUI::WindowManager::getSingleton().de
+			(*it).second->destroy();
+			it++;
+		}
+		layouts.clear();
+	}
+
+
+	void UIManager::setLayoutScale(std::string layoutName, float x, float y)
+	{
+		CEGUI::Window* wnd = getLayout(layoutName);
+		if (wnd != nullptr) {
+			wnd->setSize(CEGUI::USize(CEGUI::UDim(x, 0), CEGUI::UDim(y, 0)));
+		}
+		else {
+			std::cout << "Layout not found!\n";
+		}
+	}
+
+	CEGUI::Window* UIManager::getLayout(std::string layoutName)
+	{
+		auto it = layouts.find(layoutName);
+
+		if (it != layouts.end())
+			return (*it).second;
+
+		return nullptr;
 	}
 
 }

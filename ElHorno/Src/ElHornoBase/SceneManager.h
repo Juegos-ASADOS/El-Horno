@@ -28,7 +28,7 @@ typedef void (*GameVoid)();
 
 		//TODO
 		void changeScene();
-		void nextScene(Scene* scene, std::string s);
+		void nextScene(std::string s);
 
 		//TODO
 		void start(std::string initialScene);
@@ -43,7 +43,13 @@ typedef void (*GameVoid)();
 			return new T();
 		}
 
+		template<typename T>
+		static Scene* addScene() {
+			return new T();
+		}
+
 		std::map<std::string, Component* (*)()> possibleComponents;
+		std::map<std::string, Scene* (*)()> allScenes;
 	private:
 		static SceneManager* instance_;
 

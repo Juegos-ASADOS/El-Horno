@@ -17,13 +17,14 @@ namespace El_Horno {
 	{
 	}
 
-	void InputManager::manageKeys(SDL_Event event)
+	void InputManager::manageKeys(const SDL_Event& event)
 	{
 		if (event.type == SDL_KEYDOWN) {
 			SDL_Scancode code = event.key.keysym.scancode;
 			if (!keys_[code].pressed_) {
 				keys_[code].down_ = true;
 				keys_[code].up_ = false;
+				keys_[code].pressed_ = true;
 				keysDownToFlush.push_back(code);
 			}
 		}
@@ -38,7 +39,7 @@ namespace El_Horno {
 
 	}
 
-	void InputManager::manageAxes(SDL_Event event)
+	void InputManager::manageAxes(const SDL_Event& event)
 	{
 		Uint8 axis = 0;
 		for (Uint8 i = 0; i < SDL_GameControllerAxis::SDL_CONTROLLER_AXIS_MAX; ++i) {
@@ -57,7 +58,7 @@ namespace El_Horno {
 			controllerAxes_[axis] = (event.caxis.value > AXESDEADZONE) ? abs(event.caxis.value) : 0;
 	}
 
-	void InputManager::manageButtons(SDL_Event event)
+	void InputManager::manageButtonDown(const SDL_Event& event)
 	{
 		Uint8 button = 0;
 		bool found = false;
@@ -70,25 +71,50 @@ namespace El_Horno {
 			}
 		}
 
-		if (found)
-			controllerButtons_[button] = event.cbutton.state;
+		if (found && !buttons_[button].pressed_) {
+			//controllerButtons_[button] = event.cbutton.state;
+			buttons_[button].down_ = true;
+			buttons_[button].pressed_ = true;
+			buttons_[button].up_ = false;
+			buttonsDownToFlush.push_back(button);
+		}
 	}
 
-	void InputManager::manageControllerAdded(SDL_Event event)
+	void InputManager::manageButtonUp(const SDL_Event& event)
+	{
+		Uint8 button = 0;
+		bool found = false;
+		for (Uint8 i = 0; i < SDL_GameControllerButton::SDL_CONTROLLER_BUTTON_MAX; ++i) {
+			SDL_GameControllerButtonBind b = SDL_GameControllerGetBindForButton(controller_, (SDL_GameControllerButton)i);
+			if (b.value.button == event.cbutton.button) {
+				button = i;
+				found = true;
+				break;
+			}
+		}
+
+		if (found) {
+			//controllerButtons_[button] = event.cbutton.state;
+			buttons_[button].down_ = false;
+			buttons_[button].pressed_ = false;
+			buttons_[button].up_ = true;
+			buttonsUpToFlush.push_back(button);
+		}
+	}
+
+	void InputManager::manageControllerAdded(const SDL_Event& event)
 	{
 		if (controller_ == nullptr) {
 			controller_ = SDL_GameControllerOpen(event.cdevice.which);
-			for (int i = 0; i < SDL_CONTROLLER_AXIS_MAX; ++i) 
+			for (int i = 0; i < SDL_CONTROLLER_AXIS_MAX; ++i)
 				controllerAxes_[i] = 0.0f;
-			for (int i = 0; i < SDL_CONTROLLER_BUTTON_MAX; ++i)
-				controllerButtons_[i] = false;
 
 			//std::cout << SDL_GameControllerName(controller_) << std::endl;
 			SDL_GameControllerEventState(SDL_ENABLE);
 		}
 	}
 
-	void InputManager::manageControllerRemoved(SDL_Event event)
+	void InputManager::manageControllerRemoved(const SDL_Event& event)
 	{
 		if (controller_ == SDL_GameControllerFromInstanceID(event.cdevice.which)) {
 			SDL_GameControllerClose(controller_);
@@ -96,8 +122,11 @@ namespace El_Horno {
 
 			for (float f : controllerAxes_)
 				f = 0.0f;
-			for (bool b : controllerButtons_)
-				b = false;
+			for (KeyState k : buttons_) {
+				k.down_ = false;
+				k.pressed_ = false;
+				k.up_ = false;
+			}
 		}
 	}
 
@@ -111,6 +140,12 @@ namespace El_Horno {
 		for (int c : keysDownToFlush)
 			keys_[c].down_ = false;
 		keysDownToFlush.clear();
+		for (int c : buttonsUpToFlush)
+			buttons_[c].up_ = false;
+		buttonsUpToFlush.clear();
+		for (int c : buttonsDownToFlush)
+			buttons_[c].down_ = false;
+		buttonsDownToFlush.clear();
 	}
 
 
@@ -149,7 +184,7 @@ namespace El_Horno {
 	}
 
 
-	 //auxilaires para injectar a cegui
+	//auxilaires para injectar a cegui
 	CEGUI::Key::Scan KeyCode_TO_CEGUI(SDL_KeyCode key)
 	{
 		using namespace CEGUI;
@@ -267,8 +302,10 @@ namespace El_Horno {
 			manageAxes(event);
 			break;
 		case SDL_CONTROLLERBUTTONDOWN:
+			manageButtonDown(event);
+			break;
 		case SDL_CONTROLLERBUTTONUP:
-			manageButtons(event);
+			manageButtonUp(event);
 			break;
 		case SDL_CONTROLLERDEVICEADDED:
 			manageControllerAdded(event);
@@ -314,8 +351,8 @@ namespace El_Horno {
 	}
 	bool InputManager::isButtonDown(SDL_GameControllerButton button)
 	{
-		if(controller_ != nullptr)
-			return controllerButtons_[button];
+		if (controller_ != nullptr)
+			return buttons_[button].down_;
 
 		return false;
 	}

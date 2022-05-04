@@ -29,21 +29,26 @@ namespace El_Horno {
 		KeyState keys_[SDL_NUM_SCANCODES];
 
 		std::vector<int> keysUpsToFlush;
-
 		std::vector<int> keysDownToFlush;
 
-		void manageKeys(SDL_Event event);
+		std::vector<int> buttonsDownToFlush;
+		std::vector<int> buttonsUpToFlush;
 
-		void manageAxes(SDL_Event event);
-		void manageButtons(SDL_Event event);
-		void manageControllerAdded(SDL_Event event);
-		void manageControllerRemoved(SDL_Event event);
+
+		void manageKeys(const SDL_Event& event);
+
+		void manageAxes(const SDL_Event& event);
+		void manageButtonDown(const SDL_Event& event);
+		void manageButtonUp(const SDL_Event& event);
+		void manageControllerAdded(const SDL_Event& event);
+		void manageControllerRemoved(const SDL_Event& event);
 
 		void flushInput();
 
 		SDL_GameController* controller_ = nullptr;
 		std::array<Sint16, SDL_GameControllerAxis::SDL_CONTROLLER_AXIS_MAX> controllerAxes_;
-		std::array<bool, SDL_GameControllerButton::SDL_CONTROLLER_BUTTON_MAX> controllerButtons_;
+		//std::array<bool, SDL_GameControllerButton::SDL_CONTROLLER_BUTTON_MAX> controllerButtons_;
+		KeyState buttons_[SDL_CONTROLLER_BUTTON_MAX];
 
 		const float AXESDEADZONE = 10000.0f;
 	public:

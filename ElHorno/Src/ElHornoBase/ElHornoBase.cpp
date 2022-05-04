@@ -128,11 +128,11 @@ namespace El_Horno {
 		facCreat->addFactory("light");
 		facCreat->addFactory("rigidbody");
 		facCreat->addFactory("particleSystem");
-		facCreat->addFactory("audioComponent");
-		facCreat->addFactory("audioListener");
+		facCreat->addFactory("audiocomponent");
+		facCreat->addFactory("audiolistener");
 		facCreat->addFactory("uilayout");
 		//facCreat->addFactory("UIPushButton");
-		facCreat->addFactory("animatorController");
+		facCreat->addFactory("animatorcontroller");
 
 	}
 
@@ -152,7 +152,7 @@ namespace El_Horno {
 
 			SceneManager::getInstance()->update();
 			if (SceneManager::getInstance()->getChangeScene())
-				SceneManager::getInstance()->changeScene();
+				LuaManager::getInstance()->callLuaFunction("changeNextScene");
 		}
 		else {
 			//SceneManager::getInstance()->pausedUpdate();

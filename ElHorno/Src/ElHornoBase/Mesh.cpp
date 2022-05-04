@@ -35,8 +35,8 @@ namespace El_Horno {
 	{
 		for (int i = 0; i < parameters.size(); i++) {
 			if (parameters[i].first == "name") {
-				meshName_ = parameters[i].second + ".mesh";
-				materialName_ = parameters[i].second + ".mesh";
+				meshName_ = parameters[i].second;
+				materialName_ = parameters[i].second;
 			}
 		}
 		castShadow_ = true;
