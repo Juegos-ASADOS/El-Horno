@@ -33,7 +33,7 @@ camera = {
         farClDis = "10000",
     },
 
-    audioListener = {
+    audiolistener = {
 
     },
 }
@@ -56,19 +56,19 @@ player = {
         colShape = "0",
     },
 
-    audioComponent = {
+    audiocomponent = {
 
     },
 
-    playerController = {
+    playercontroller = {
         speed = "1500",
         maxForce = "200",
     },
 
-    playerInteract = {
+    playerinteract = {
     },
 
-    animatorController = {
+    animatorcontroller = {
         Idle = "walk",
 		walk = "Idle",
 		Idle_with_product = "walk_with_product",
@@ -137,7 +137,7 @@ cartTrigger = {
         colShape = "0",
     },
 
-    entityId = {
+    entityid = {
         type = "2";
         productType = "0";
         id = "";
