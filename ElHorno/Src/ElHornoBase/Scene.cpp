@@ -101,6 +101,7 @@ namespace El_Horno {
 					return true;
 				}
 			}
+			it++;
 		}
 
 		return false;
