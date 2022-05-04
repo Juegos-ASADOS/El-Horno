@@ -2138,7 +2138,7 @@ Player = {
         speed = "1500.0",
          maxForce = "200"
     },
-    playerInteract = {
+    playerinteract = {
         
     },
     animatorController = {
