@@ -1,10 +1,11 @@
 <?xml version='1.0'?>
 <GUIScheme name="DondeTaLeche" version="5">
     <Imageset filename="DondeTaLeche.imageset"/>
+	<Imageset name ="Ovadillo" filename="DondeTaLeche2.imageset"/>
     <Font filename="LemonJuice.font"/>
 	<Font filename="LemonJuice_Grande.font"/>
     <Font filename="LemonJuice_Medio.font"/>
-	    <Font filename="LemonJuice_Pequeño.font"/>
+	<Font filename="LemonJuice_Pequeño.font"/>
     <LookNFeel filename="DondeTaLeche.looknfeel"/>
     <WindowRendererSet filename="CEGUICoreWindowRendererSet"/>
     <FalagardMapping targetType="CEGUI/PushButton" lookNFeel="DondeTaLeche/Boton" renderer="Core/Button" windowType="VDondeTaLeche/Boton"/>
