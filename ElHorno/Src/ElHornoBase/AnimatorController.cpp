@@ -57,17 +57,28 @@ namespace El_Horno {
 		// Generar la maquina de estados
 		for (int i = 0; i < animVector.size(); i++)
 		{
+			TransitionMap t;
 			std::string state = animVector[i].first;
 			std::string nextState = animVector[i].second;
-			TransitionMap t;
-			t.insert(std::pair<std::string, bool>(nextState, false));
-
-			// Si el estado no existe lo metemos
-			if (!animationStateMachine_.count(state))
+			if (state == "AnyState") {
+				std::istringstream in(nextState);
+				std::string val;
 				animationStateMachine_.insert(std::pair<std::string, TransitionMap>(state, t));
-			// Si existe metemos otro estado a las transiones de ese
-			else
-				animationStateMachine_.at(state).insert(std::pair<std::string, bool>(nextState, false));
+				while (getline(in, val, ','))
+				{
+					animationStateMachine_.at(state).insert(std::pair<std::string, bool>(val, false));
+				}
+			}
+			else {
+				t.insert(std::pair<std::string, bool>(nextState, false));
+
+				// Si el estado no existe lo metemos
+				if (!animationStateMachine_.count(state))
+					animationStateMachine_.insert(std::pair<std::string, TransitionMap>(state, t));
+				// Si existe metemos otro estado a las transiones de ese
+				else
+					animationStateMachine_.at(state).insert(std::pair<std::string, bool>(nextState, false));
+			}
 		}
 
 		// Seteamos el estado incial al primero de la maquina de estados
