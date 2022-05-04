@@ -12,6 +12,7 @@ namespace CEGUI {
 	class DefaultWindow;
 	class GUIContext;
 	class UDim;
+	class EventArgs;
 }
 
 namespace Ogre {
