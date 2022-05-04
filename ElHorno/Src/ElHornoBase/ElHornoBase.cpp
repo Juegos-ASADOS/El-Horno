@@ -152,7 +152,7 @@ namespace El_Horno {
 
 			SceneManager::getInstance()->update();
 			if (SceneManager::getInstance()->getChangeScene())
-				SceneManager::getInstance()->changeScene();
+				LuaManager::getInstance()->callLuaFunction("changeNextScene");
 		}
 		else {
 			//SceneManager::getInstance()->pausedUpdate();

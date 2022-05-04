@@ -56,6 +56,9 @@ namespace El_Horno {
 
         // load standard libs
         luaL_openlibs(luaState);
+
+        exposeFunctions();
+        readLuaScript("shop");
     }
 
     void LuaManager::report_errors(int status)
@@ -78,6 +81,12 @@ namespace El_Horno {
 
         // define error reporter for any Lua error
         report_errors(scriptLoadStatus);
+    }
+
+    void LuaManager::pushNumber(float var, std::string name)
+    {
+        lua_pushnumber(luaState, var);
+        lua_setglobal(luaState, name.c_str());
     }
 
     luabridge::LuaRef LuaManager::getFromLua(std::string name)
@@ -156,7 +165,7 @@ namespace El_Horno {
     }
 
     template<typename T>
-    void LuaManager::pushToLua(T var, std::string name) {
+    void LuaManager::pushToLua(T* var, std::string name) {
         luabridge::push(luaState, var);
         lua_setglobal(luaState, name.c_str());
     }
@@ -166,19 +175,38 @@ namespace El_Horno {
         lua_close(luaState);
     }
 
-    void LuaManager::exposeEntity()
+    void LuaManager::exposeFunctions()
     {
         luabridge::getGlobalNamespace(luaState)
-            .beginClass<Entity>("Entity")
-            .addConstructor<void(*) (std::string n, Scene* m, Entity* p)>()
-            .addConstructor<void(*) (Scene* m)>()
-            //.addFunction("addComponent", &(Entity::addComponent<>))
-            .addFunction("setParent", &(Entity::setParent))
-            .addFunction("addChild", &(Entity::addChild))
-            .addFunction("setActive", &(Entity::setActive))
+            .beginClass<SceneManager>("SceneManager")
+            .addStaticFunction("getSceneManager", &SceneManager::getInstance)
+            .addFunction("changeScene", (&SceneManager::changeScene))
+            .addFunction("nextScene", (&SceneManager::nextScene))
+            .endClass();
+    }
+
+    void LuaManager::callLuaFunction(std::string name)
+    {
+        luabridge::LuaRef s = getFromLua(name);
+        s();
+    }
+
+    void LuaManager::callLuaFunction(std::string name, int i)
+    {
+        luabridge::LuaRef s = getFromLua(name);
+        s(i);
+    }
+
+    template<typename T>
+    void LuaManager::pushCFunct(std::string classTypename, std::string name, void(*function)())
+    {
+        luabridge::getGlobalNamespace(luaState)
+            .beginClass<T>(classTypename)
+            .addFunction(name, &(T::function))
             .endClass();
     }
 }
+
 // create a global variable (an instance_ of a Greeter class) in Lua scope
 //auto globalGreeter = std::make_unique<Example>("noname");
 //std::error_code e = std::error_code();

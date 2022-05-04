@@ -46,7 +46,7 @@ player = {
     },
 
     mesh = {
-        name = "pipo",
+        name = "pipo.mesh",
     },
 
     rigidbody = {
@@ -66,7 +66,6 @@ player = {
     },
 
     playerInteract = {
-
     },
 
     animatorController = {
@@ -90,7 +89,7 @@ object = {
     },
 
     mesh = {
-        name = "cube",
+        name = "cube.mesh",
     },
 
     rigidbody = {
@@ -109,7 +108,7 @@ cart = {
     },
 
     mesh = {
-        name = "cube",
+        name = "cube.mesh",
     },
 
     rigidbody = {
@@ -156,7 +155,7 @@ moneco = {
     },
 
     mesh = {
-        name = "penguin",
+        name = "penguin.mesh",
     },
 
     rigidbody = {

@@ -25,18 +25,26 @@ namespace El_Horno {
         void readLuaScript(const std::string& path);
 
         template<typename T>
-        void pushToLua(T var, std::string name);
+        void pushToLua(T* var, std::string name);
+
+        void pushNumber(float var, std::string name);
+
         luabridge::LuaRef getFromLua(std::string name);
         lua_State* getLuaState();
         void exposeFunct(std::string name, lua_CFunction(*func)(lua_State* L));
         int luaGetTop(lua_State* L);
         void loadScene();
+        void callLuaFunction(std::string name);
+        void callLuaFunction(std::string name, int i);
+
+        template <typename T>
+        void pushCFunct(std::string classTypename, std::string name, void (*function)());
     private:
 
         LuaManager() {};
         ~LuaManager();
 
-        void exposeEntity();
+        void exposeFunctions();
 
         static LuaManager* instance_;
 

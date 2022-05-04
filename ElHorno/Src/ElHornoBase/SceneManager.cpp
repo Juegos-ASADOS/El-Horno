@@ -76,11 +76,13 @@ namespace El_Horno {
 		currentScene_->init(nextSceneName_);
 		currentScene_->awake();
 		currentScene_->start();
+		std::cout << "hola\n";
 	}
 
-	void SceneManager::nextScene(Scene* scene, std::string s)
+	void SceneManager::nextScene(std::string s)
 	{
-		nextScene_ = scene;
+		auto it = allScenes.find(s);
+		nextScene_ = (it->second)();;
 		nextSceneName_ = s;
 		changeScene_ = true;
 	}
