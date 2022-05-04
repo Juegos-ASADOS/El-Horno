@@ -40,6 +40,8 @@ namespace El_Horno {
 		void setScale(std::string layoutName, float x, float y);
 		//void setScale(int layout, float x, float y);
 
+		template<class T>
+		void subscribeChildEvent(std::string layoutName, std::string childName, void (T::*func)(), T* comp);
 
 		void subscribeChildEvent(std::string layoutName, std::string childName, bool (*func)());
 		void subscribeChildEvent(std::string layoutName, std::string childName, bool (*func)(const CEGUI::EventArgs& e));
