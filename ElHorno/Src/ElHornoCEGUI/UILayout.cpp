@@ -139,6 +139,17 @@ namespace El_Horno {
 		}
 	}
 
+	void UILayout::subscribeChildEvent(std::string layoutName, std::string childName, bool(*func)(const CEGUI::EventArgs& e))
+	{
+		CEGUI::Window* wnd = getLayout(layoutName);
+		if (wnd != nullptr) {
+			wnd->getChild(childName)->subscribeEvent(CEGUI::PushButton::EventClicked, CEGUI::Event::Subscriber(func));
+		}
+		else {
+			std::cout << "Couldnt subscribe event. Layout not found!\n";
+		}
+	}
+
 	//void UILayout::subscribeChildEvent(int layout, std::string childName, bool(*func)())
 	//{
 	//	CEGUI::Window* wnd = getLayout(layout);
@@ -154,6 +165,7 @@ namespace El_Horno {
 	{
 		auto it = layouts.begin();
 		while(it != layouts.end()){
+			//CEGUI::WindowManager::getSingleton().de
 			(*it).second->destroy();
 			it++;
 		}

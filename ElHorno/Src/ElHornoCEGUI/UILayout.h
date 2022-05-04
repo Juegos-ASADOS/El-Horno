@@ -42,6 +42,7 @@ namespace El_Horno {
 
 
 		void subscribeChildEvent(std::string layoutName, std::string childName, bool (*func)());
+		void subscribeChildEvent(std::string layoutName, std::string childName, bool (*func)(const CEGUI::EventArgs& e));
 		//void subscribeChildEvent(int layout, std::string childName, bool (*func)());
 
 		void addImageFile(const std::string& imageName, const std::string& imageFile);

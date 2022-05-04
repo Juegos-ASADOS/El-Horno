@@ -24,10 +24,8 @@ namespace El_Horno {
 
 	UIManager::~UIManager()
 	{
-		if (root != nullptr)
-			root->destroy();
 		CEGUI::System::getSingleton().destroyGUIContext(*guiContext);
-		CEGUI::System::destroy();
+		CEGUI::System::getSingleton().destroy();
 		CEGUI::OgreRenderer::destroy(*renderer);
 	}
 
