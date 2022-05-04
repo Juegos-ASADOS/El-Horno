@@ -75,9 +75,7 @@ player = {
 		walk_with_product = "Idle_with_product",
 		Idle_with_cart = "walk_with_cart",
 		walk_with_cart = "Idle_with_cart",
-		AnyState = "Idle",
-		AnyState = "Idle_with_product",
-		AnyState = "Idle_with_cart",
+		AnyState = "Idle_with_cart,Idle_with_product,Idle",
     },
 }
 
