@@ -27,6 +27,7 @@ namespace El_Horno {
 		//CEGUI::System::getSingleton().destroyGUIContext(*guiContext);
 		//CEGUI::System::getSingleton().destroy();
 		//CEGUI::OgreRenderer::destroy(*renderer);
+		winMngr->destroyAllWindows();
 		renderer->destroySystem();
 	}
 

@@ -24,6 +24,7 @@ namespace El_Horno {
 			if (!keys_[code].pressed_) {
 				keys_[code].down_ = true;
 				keys_[code].up_ = false;
+				keys_[code].pressed_ = true;
 				keysDownToFlush.push_back(code);
 			}
 		}
@@ -78,7 +79,7 @@ namespace El_Horno {
 	{
 		if (controller_ == nullptr) {
 			controller_ = SDL_GameControllerOpen(event.cdevice.which);
-			for (int i = 0; i < SDL_CONTROLLER_AXIS_MAX; ++i) 
+			for (int i = 0; i < SDL_CONTROLLER_AXIS_MAX; ++i)
 				controllerAxes_[i] = 0.0f;
 			for (int i = 0; i < SDL_CONTROLLER_BUTTON_MAX; ++i)
 				controllerButtons_[i] = false;
@@ -149,7 +150,7 @@ namespace El_Horno {
 	}
 
 
-	 //auxilaires para injectar a cegui
+	//auxilaires para injectar a cegui
 	CEGUI::Key::Scan KeyCode_TO_CEGUI(SDL_KeyCode key)
 	{
 		using namespace CEGUI;
@@ -314,7 +315,7 @@ namespace El_Horno {
 	}
 	bool InputManager::isButtonDown(SDL_GameControllerButton button)
 	{
-		if(controller_ != nullptr)
+		if (controller_ != nullptr)
 			return controllerButtons_[button];
 
 		return false;
