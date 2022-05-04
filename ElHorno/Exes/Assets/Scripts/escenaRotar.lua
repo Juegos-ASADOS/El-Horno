@@ -2107,6 +2107,7 @@ MainCamera = {
         color = "0 ,0.3 ,0.5,1 ",
         nearClDis = "5",
         farClDis = "10000",
+        target = "Player,0.2 ,0 ,40, 20",
     },
     audioListener = {
         
