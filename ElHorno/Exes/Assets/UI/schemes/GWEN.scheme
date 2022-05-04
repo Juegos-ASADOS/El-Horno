@@ -9,6 +9,7 @@
     <Font filename="LemonJuice_Grande.font"/>
     <Font filename="LemonJuice_Medio.font"/>
     <Font filename="LemonJuice_Normal.font"/>
+	<Font filename="LemonJuice_Pequeño.font"/>
     <Font filename="Default.font"/>
     <LookNFeel filename="GWEN.looknfeel"/>
     <WindowRendererSet filename="CEGUICoreWindowRendererSet"/>

@@ -33,4 +33,5 @@ int main()
 		}
 		FreeLibrary(game);
 	}
+	return 0;
 }

@@ -35,26 +35,30 @@ namespace El_Horno {
 		}
 	}
 
-	void UILayout::setLayoutVisibility(int layout, bool visible)
-	{
-		CEGUI::Window* wnd = getLayout(layout);
-		if (wnd != nullptr) {
-			wnd->setVisible(visible);
-			if (visible) wnd->activate();
-		}
-		else {
-			std::cout << "Layout not found!\n";
-		}
-	}
+	//void UILayout::setLayoutVisibility(int layout, bool visible)
+	//{
+	//	CEGUI::Window* wnd = getLayout(layout);
+	//	if (wnd != nullptr) {
+	//		wnd->setVisible(visible);
+	//		if (visible) wnd->activate();
+	//	}
+	//	else {
+	//		std::cout << "Layout not found!\n";
+	//	}
+	//}
 
 	//Añade un layout al vector y al root, y lo deja invisible
 	//Nombre del layout, y nombre interno cualquiera(que no se repita)
 	void UILayout::addLayout(std::string layoutName, std::string name)
 	{
+		if (getLayout(layoutName) != nullptr) {
+			std::cout << "Already defined layout!\n";
+		}
+
 		CEGUI::Window* wnd = uiManager->createLayout(layoutName, name);
 		wnd->setVisible(false);
 		uiManager->getRoot()->addChild(wnd);
-		layouts.push_back(wnd);
+		layouts[layoutName] = wnd;
 	}
 
 	//Borra un layout del vector y del root
@@ -62,10 +66,7 @@ namespace El_Horno {
 	{
 		CEGUI::Window* wnd = getLayout(layoutName);
 		if (wnd != nullptr) {
-			auto it = layouts.begin();
-			while(it != layouts.end() && *it != wnd) {
-				it++;
-			}
+			auto it = layouts.find(layoutName);
 			uiManager->getRoot()->removeChild(wnd);
 			layouts.erase(it);
 		}
@@ -74,17 +75,17 @@ namespace El_Horno {
 		}
 	}
 
-	void UILayout::removeLayout(int layout)
-	{
-		CEGUI::Window* wnd = getLayout(layout);
-		if (wnd != nullptr) {
-			uiManager->getRoot()->removeChild(wnd);
-			layouts.erase(layouts.begin() + layout);
-		}
-		else {
-			std::cout << "Couldnt remove layout. Layout not found!\n";
-		}
-	}
+	//void UILayout::removeLayout(int layout)
+	//{
+	//	CEGUI::Window* wnd = getLayout(layout);
+	//	if (wnd != nullptr) {
+	//		uiManager->getRoot()->removeChild(wnd);
+	//		layouts.erase(layouts.begin() + layout);
+	//	}
+	//	else {
+	//		std::cout << "Couldnt remove layout. Layout not found!\n";
+	//	}
+	//}
 	
 	void UILayout::setParameters(std::vector<std::pair<std::string, std::string>> parameters)
 	{
@@ -107,16 +108,16 @@ namespace El_Horno {
 		}
 	}
 	
-	void UILayout::setScale(int layout, float x, float y)
-	{
-		CEGUI::Window* wnd = getLayout(layout);
-		if (wnd != nullptr) {
-			wnd->setSize(CEGUI::USize(CEGUI::UDim(x, 0), CEGUI::UDim(y, 0)));
-		}
-		else {
-			std::cout << "Couldnt subscribe event. Layout not found!\n";
-		}
-	}
+	//void UILayout::setScale(int layout, float x, float y)
+	//{
+	//	CEGUI::Window* wnd = getLayout(layout);
+	//	if (wnd != nullptr) {
+	//		wnd->setSize(CEGUI::USize(CEGUI::UDim(x, 0), CEGUI::UDim(y, 0)));
+	//	}
+	//	else {
+	//		std::cout << "Couldnt subscribe event. Layout not found!\n";
+	//	}
+	//}
 
 	// For example, if this window has a child attached to it named "Panel" 
 	// which has its own children attached named "Okay" and "Cancel", 
@@ -138,9 +139,9 @@ namespace El_Horno {
 		}
 	}
 
-	void UILayout::subscribeChildEvent(int layout, std::string childName, bool(*func)())
+	void UILayout::subscribeChildEvent(std::string layoutName, std::string childName, bool(*func)(const CEGUI::EventArgs& e))
 	{
-		CEGUI::Window* wnd = getLayout(layout);
+		CEGUI::Window* wnd = getLayout(layoutName);
 		if (wnd != nullptr) {
 			wnd->getChild(childName)->subscribeEvent(CEGUI::PushButton::EventClicked, CEGUI::Event::Subscriber(func));
 		}
@@ -149,30 +150,87 @@ namespace El_Horno {
 		}
 	}
 
+	//void UILayout::subscribeChildEvent(int layout, std::string childName, bool(*func)())
+	//{
+	//	CEGUI::Window* wnd = getLayout(layout);
+	//	if (wnd != nullptr) {
+	//		wnd->getChild(childName)->subscribeEvent(CEGUI::PushButton::EventClicked, CEGUI::Event::Subscriber(func));
+	//	}
+	//	else {
+	//		std::cout << "Couldnt subscribe event. Layout not found!\n";
+	//	}
+	//}
+
 	void UILayout::removeLayouts()
 	{
-		for (auto* wnd : layouts) {
-			wnd->destroy();
+		auto it = layouts.begin();
+		while(it != layouts.end()){
+			//CEGUI::WindowManager::getSingleton().de
+			(*it).second->destroy();
+			it++;
 		}
+		layouts.clear();
 	}
 	
 	CEGUI::Window* UILayout::getLayout(std::string layoutName)
 	{
-		for (auto* wnd : layouts) {
-			if (wnd->getName() == layoutName) {
-				return wnd;
-			}
-		}
+		auto it = layouts.find(layoutName);
+
+		if (it != layouts.end())
+			return (*it).second;
+
 		return nullptr;
 	}
 
-	CEGUI::Window* UILayout::getLayout(int layout)
+	void UILayout::addImageFile(const std::string& imageName, const std::string& imageFile)
 	{
-		if (layout >= 0 && layout < layouts.size()) {
-			return layouts[layout];
+		if (!CEGUI::ImageManager::getSingleton().isDefined(imageFile)) {
+			CEGUI::ImageManager::getSingleton().addFromImageFile(imageName, imageFile);
 		}
-		return nullptr;
 	}
+
+	void UILayout::addWidgetToLayout(const std::string& layoutName, const std::string& childName, const std::string& widgetType)
+	{
+		CEGUI::Window* wnd = getLayout(layoutName);
+		if (wnd == nullptr) {
+			std::cout << "Couldnt add Widget. Layout not found!\n";
+			return;
+		}
+
+		CEGUI::Window* child = uiManager->getWinMngr()->createWindow(widgetType, childName);
+		wnd->addChild(child);
+	}
+
+	void UILayout::removeWidgetFromLayout(const std::string& layoutName, const std::string& childPath)
+	{
+		CEGUI::Window* wnd = getLayout(layoutName);
+		if (wnd == nullptr) {
+			std::cout << "Couldnt remove Widget. Layout not found!\n";
+			return;
+		}
+
+		wnd->destroyChild(childPath);
+	}
+
+	void UILayout::setChildProperty(const std::string& layoutName, const std::string& childPath, const std::string& propertyName, const std::string& values)
+	{
+		CEGUI::Window* wnd = getLayout(layoutName);
+		if (wnd == nullptr) {
+			std::cout << "Couldnt remove Widget. Layout not found!\n";
+			return;
+		}
+
+		//wdt->setProperty("SomeProperty", "True");
+		wnd->getChild(childPath)->setProperty(propertyName, values);
+	}
+
+	//CEGUI::Window* UILayout::getLayout(int layout)
+	//{
+	//	if (layout >= 0 && layout < layouts.size()) {
+	//		return layouts[layout];
+	//	}
+	//	return nullptr;
+	//}
 
 	//void UILayout::createButton(const std::string& scheme, const std::string& type, const std::string& name)
 	//{

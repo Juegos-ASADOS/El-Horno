@@ -24,11 +24,11 @@ namespace El_Horno {
 
 	UIManager::~UIManager()
 	{
-		if (root != nullptr)
-			root->destroy();
-		CEGUI::System::getSingleton().destroyGUIContext(*guiContext);
-		CEGUI::System::destroy();
-		CEGUI::OgreRenderer::destroy(*renderer);
+		//CEGUI::System::getSingleton().destroyGUIContext(*guiContext);
+		//CEGUI::System::getSingleton().destroy();
+		//CEGUI::OgreRenderer::destroy(*renderer);
+		winMngr->destroyAllWindows();
+		renderer->destroySystem();
 	}
 
 	UIManager* UIManager::getInstance()
@@ -81,8 +81,6 @@ namespace El_Horno {
 
 		root = nullptr;
 
-		winMngr = CEGUI::WindowManager::getSingletonPtr();
-
 		//Ventana por defecto a modo de GameObject
 		//Todos los botones texto etc se crean dentro de esta misma ventana
 		root = winMngr->createWindow("DefaultWindow", "Root");
@@ -99,18 +97,19 @@ namespace El_Horno {
 		//Seleccionamos el RenderTarget que usamos de ogre que usamos de Root de Renderizado
 		renderer = &CEGUI::OgreRenderer::bootstrapSystem(*GraphicsManager::getInstance()->getRenderWindow());
 
-		//renderer
-
-		//Creo que se crea as�
 		guiContext = &CEGUI::System::getSingleton().createGUIContext(renderer->getDefaultRenderTarget());
 
-		//CEGUI::SchemeManager::getSingleton().createFromFile("Layouts");
+		winMngr = CEGUI::WindowManager::getSingletonPtr();
+
 		//esto para que no se haga en la constructora
 		setUpResources();
 
 		createRoot();
 
-		//CEGUI::Window* window = winMngr->loadLayoutFromFile("TaharezLookOverview.layout");
+		/*defineScheme("Generic");
+		defineScheme("TaharezLook");
+
+		root->addChild(winMngr->loadLayoutFromFile("TaharezLookOverview.layout"));*/
 
 		//root->addChild(window);
 

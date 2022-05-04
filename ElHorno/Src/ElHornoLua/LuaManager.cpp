@@ -110,7 +110,7 @@ namespace El_Horno {
 
         for (int i = 1; i <= numEnts; i++) {
             luabridge::LuaRef entity = getFromLua(allEnts[i]);
-            Entity* ent = s->getEntity(allEnts[i]);;
+            Entity* ent = s->getEntity(allEnts[i]);
             if (ent == nullptr) {
                 ent = s->addEntity(allEnts[i], "prueba");
                 ent->addComponent<Transform>("transform", HornoVector3(0, 0, 0), HornoVector3(0, 0, 0), HornoVector3(0, 0, 0));

@@ -44,6 +44,9 @@ namespace El_Horno {
 
 	RigidBody::~RigidBody()
 	{
+		delete rigid_->getMotionState();
+		//delete rigid_->getCollisionShape();
+		rigid_->setUserPointer(nullptr);
 		phManager_->removeBody(rigid_);
 		delete rigid_; rigid_ = nullptr;
 		delete bttrasform_; bttrasform_ = nullptr;
@@ -150,12 +153,12 @@ namespace El_Horno {
 	{
 		if (!isKinematic_) {
 			btVector3 pos;
-			btQuaternion rot;
+			//btQuaternion rot;
 
 			pos = rigid_->getWorldTransform().getOrigin();
-			rot = rigid_->getWorldTransform().getRotation();
+			//rot = rigid_->getWorldTransform().getRotation();
 			transform_->setGlobalPosition(BulletVectorToOgre(pos));
-			transform_->setRotation(QuaternionToOgre(rot));
+			//transform_->setRotation(QuaternionToOgre(rot));
 		}
 	}
 

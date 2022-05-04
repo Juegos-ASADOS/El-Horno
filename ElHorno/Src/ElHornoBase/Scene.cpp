@@ -20,7 +20,8 @@ namespace El_Horno {
 		auto it = entities_.begin();
 		while (it != entities_.end()) {
 			for (auto e : it->second) {
-				delete e;
+				if (!e->dontDestroyOnLoad)
+					delete e;
 			}
 			it++;
 		}
@@ -164,7 +165,9 @@ namespace El_Horno {
 		//Metemos las entidades que decidimos NO borrar
 		for (std::pair<std::string, Entity*> i : dontDelete)
 		{
-			addEntity(i.second->getName(), i.first);
+			std::vector<Entity*> a = std::vector<Entity*>();
+			a.push_back(i.second);
+			entities_.insert(std::pair<std::string, std::vector<Entity*>>(i.first, a));
 		}
 		dontDelete.clear();
 	}
@@ -203,8 +206,10 @@ namespace El_Horno {
 	{
 		auto iter = entities_.begin();
 		while (iter != entities_.end()) {
-			for (Entity* e : iter->second)
-				if (e->isActive()) e->update();
+			/*for (Entity* e : iter->second)
+				if (e->isActive()) e->update();*/
+			for (int i = 0; i < iter->second.size(); i++)
+				if (iter->second[i]->isActive()) iter->second[i]->update();
 			iter++;
 		}
 	}
