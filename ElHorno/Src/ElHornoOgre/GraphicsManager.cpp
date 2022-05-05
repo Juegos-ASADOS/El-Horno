@@ -215,6 +215,9 @@ namespace El_Horno {
 		InputManager::getInstance()->flushInput();
 		while (SDL_PollEvent(&event))
 		{
+			if (event.type == SDL_QUIT)
+				return true;
+
 			InputManager::getInstance()->generalInputManagement(event);
 
 			//switch (event.type)
