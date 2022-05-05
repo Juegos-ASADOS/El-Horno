@@ -1,53 +1,55 @@
 function changeNextScene()
-    local manager = SceneManager.getSceneManager();
-    manager:changeScene();
+    local manager = SceneManager.getSceneManager()
+    manager:changeScene()
 end 
 
 function loadNextScene()
-    local manager = SceneManager.getSceneManager();
-    manager:nextScene("prueba");
+    local manager = SceneManager.getSceneManager()
+    manager:nextScene("prueba")
 end 
 
 function setMusicUp()
-    local manager = AudioManager.getAudioManager();
-    manager:upMusicVolume();
+    local manager = AudioManager.getAudioManager()
+    manager:upMusicVolume()
 end
 
 function setMusicDown()
-    local manager = AudioManager.getAudioManager();
-    manager:downMusicVolume();
+    local manager = AudioManager.getAudioManager()
+    manager:downMusicVolume()
 end
 
 function setFxUp()
-    local manager = AudioManager.getAudioManager();
-    manager:upFxVolume();
+    local manager = AudioManager.getAudioManager()
+    manager:upFxVolume()
 end
 
 function setFxDown()
-    local manager = AudioManager.getAudioManager();
-    manager:downFxVolume();
+    local manager = AudioManager.getAudioManager()
+    manager:downFxVolume()
 end
 
 function setResolutionUp()
-    local manager = GraphicsManager.getGraphicsManager();
-    manager:upResolution();
+    local manager = GraphicsManager.getGraphicsManager()
+    manager:upResolution()
 end
 
 function setResolutionDown()
-    local manager = GraphicsManager.getGraphicsManager();
-    manager:downResolution();
+    local manager = GraphicsManager.getGraphicsManager()
+    manager:downResolution()
 end
 
 function setPause()
-    local manager = ElHornoBase.getElHornoBase();
-    manager:pause();
+    local manager = ElHornoBase.getElHornoBase()
+    manager:pause()
 end
 
 function setExit()
-    local manager = ElHornoBase.getElHornoBase();
-    manager:exit();
+    local manager = ElHornoBase.getElHornoBase()
+    manager:exit()
 end
 
-function hola(num)
-    print(tostring(num))
+function setLayoutVisibility()     
+    local manager = UIManager.getUIManager()
+    print(button)
+    manager:setLayoutVisibility(button, vis)
 end

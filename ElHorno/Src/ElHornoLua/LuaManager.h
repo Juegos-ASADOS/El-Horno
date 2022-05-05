@@ -28,6 +28,8 @@ namespace El_Horno {
         template<typename T>
         void pushToLua(T* var, std::string name);
 
+        void pushString(std::string var, std::string name);
+        void pushBool(bool var, std::string name);
         void pushNumber(float var, std::string name);
 
         luabridge::LuaRef getFromLua(std::string name);
