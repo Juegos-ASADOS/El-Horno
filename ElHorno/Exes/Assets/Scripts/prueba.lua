@@ -171,4 +171,21 @@ moneco = {
     }
 }
 
-entities = {"gamemanager", "light", "camera", "player", "object", "cart", "cartTrigger", "moneco"}
+Peso = {
+    transform = {
+        position = "  23.443304 ,0.000000 ,-17.647099 " ,
+        rotation = "   0.000000, 0.000000, 0.000000, 0.000000 " ,
+        scale = "  1.000000 ,1.000000 ,1.000000 " ,
+    },
+    rigidbody = {
+        mass = "0.0",
+        isTrigger = "0",
+         isKinematic = "0",
+         colShape = "0"
+    },
+    mesh = {
+        name = "Peso.mesh",
+    }
+}
+
+entities = {"gamemanager", "light", "camera", "player", "object", "cart", "cartTrigger", "moneco", "Peso"}

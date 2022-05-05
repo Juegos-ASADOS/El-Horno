@@ -215,7 +215,7 @@ namespace El_Horno {
 		ErrorCheck(tFoundIt->second->setVolume(dbToVolume(fVolumedB)));
 	}
 
-	void AudioManager::upMusicVolume()
+	/*void AudioManager::upMusicVolume()
 	{
 		musicVolume += changeQuantity;
 		music->setVolume();
@@ -237,7 +237,7 @@ namespace El_Horno {
 	{
 		fxVolume -= changeQuantity;
 		fx->setVolume();
-	}
+	}*/
 
 	bool AudioManager::IsPlaying(int nChannelId) const
 	{

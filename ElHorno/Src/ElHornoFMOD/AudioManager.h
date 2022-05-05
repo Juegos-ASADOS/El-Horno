@@ -15,6 +15,7 @@ namespace FMOD {
 	class Channel;
 	class System;
 	class Sound;
+	class SoundGroup;
 	namespace Studio {
 		class System;
 		class Bank;
@@ -84,8 +85,8 @@ namespace El_Horno {
 	private:
 		static Implementation* sgpImplementation;
 		static AudioManager* instance_;
-		SoundGroup* music;
-		SoundGroup* fx;
+		FMOD::SoundGroup* music;
+		FMOD::SoundGroup* fx;
 
 		float changeQuantity = 0.1f; 
 
