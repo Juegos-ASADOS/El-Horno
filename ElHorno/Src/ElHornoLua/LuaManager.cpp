@@ -184,22 +184,12 @@ namespace El_Horno {
 
     void LuaManager::exposeFunctions()
     {
-       /* luabridge::getGlobalNamespace(luaState)
+        luabridge::getGlobalNamespace(luaState)
             .beginClass<SceneManager>("SceneManager")
             .addStaticFunction("getSceneManager", &SceneManager::getInstance)
             .addFunction("changeScene", (&SceneManager::changeScene))
             .addFunction("nextScene", (&SceneManager::nextScene))
             .addFunction("getCurrentScene", (&SceneManager::getCurrentScene))
-            .endClass();
-
-        luabridge::getGlobalNamespace(luaState)
-            .beginClass<Scene>("Scene")
-            .addFunction("getEntity", (&Scene::getEntity))
-            .endClass();
-
-        luabridge::getGlobalNamespace(luaState)
-            .beginClass<Entity>("Entity")
-            .addFunction("getEntity", (&Scene::getEntity))
             .endClass();
 
         luabridge::getGlobalNamespace(luaState)
@@ -223,7 +213,7 @@ namespace El_Horno {
             .addStaticFunction("getElHornoBase", &ElHornoBase::getInstance)
             .addFunction("pause", (&ElHornoBase::pause))
             .addFunction("exit", (&ElHornoBase::exit))
-            .endClass();*/
+            .endClass();
 
         //vamos con el uiManager y todo lo que necesitamos exposear para manejo de interfaces y menu
         //luabridge::getGlobalNamespace(luaState)
@@ -252,16 +242,16 @@ namespace El_Horno {
         s();
     }
 
-    void LuaManager::callLuaFunction(std::string name, int i)
-    {
-        luabridge::LuaRef s = getFromLua(name);
-    }
+    //void LuaManager::callLuaFunction(std::string name, int i)
+    //{
+    //    luabridge::LuaRef s = getFromLua(name);
+    //}
 
     template <class... Args>
     void LuaManager::callLuaFunction(std::string name, Args&&... args)
     {
         luabridge::LuaRef s = getFromLua(name);
-        s(false, false);
+        s(args...);
     }
 
     template<typename T>

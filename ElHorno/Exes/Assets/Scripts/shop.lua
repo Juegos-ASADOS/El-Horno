@@ -47,3 +47,7 @@ function setExit()
     local manager = ElHornoBase.getElHornoBase();
     manager:exit();
 end
+
+function hola(num)
+    print(tostring(num))
+end
