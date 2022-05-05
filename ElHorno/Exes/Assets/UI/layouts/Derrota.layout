@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<GUILayout version="4" >
+    <Window type="DefaultWindow" name="Carballo" >
+        <Property name="Area" value="{{0,3},{0,0},{1,3},{1,0}}" />
+        <Property name="MaxSize" value="{{1,0},{1,0}}" />
+        <Property name="RiseOnClickEnabled" value="false" />
+        <Window type="GWEN/StaticImage" name="Filtro" >
+            <Property name="Image" value="DondeTaLeche/Halo" />
+            <Property name="Area" value="{{0,0},{0,0},{1,0},{1,0}}" />
+            <Property name="MaxSize" value="{{1,0},{1,0}}" />
+            <Property name="Alpha" value="0.5" />
+            <Property name="RiseOnClickEnabled" value="false" />
+            <Property name="FrameEnabled" value="false" />
+            <Property name="BackgroundEnabled" value="false" />
+        </Window>
+        <Window type="GWEN/StaticImage" name="Panel" >
+            <Property name="Image" value="Unknown/Perder" />
+            <Property name="Area" value="{{0,529},{0,32},{1,-525},{1,-46}}" />
+            <Property name="MaxSize" value="{{1,0},{1,0}}" />
+            <Property name="AutoRenderingSurface" value="true" />
+            <Property name="RiseOnClickEnabled" value="false" />
+            <Property name="FrameEnabled" value="false" />
+            <Property name="BackgroundEnabled" value="false" />
+        </Window>
+        <Window type="VDondeTaLeche/Boton" name="Boton_Volver" >
+            <Property name="Area" value="{{0,-3},{0,359},{0,237},{0,461}}" />
+            <Property name="HorizontalAlignment" value="Centre" />
+            <Property name="CursorPassThroughEnabled" value="true" />
+            <Property name="VerticalAlignment" value="Centre" />
+            <Property name="HoverImage" value="DondeTaLeche/MenuBoton_Over" />
+            <Property name="NormalImage" value="DondeTaLeche/MenuBoton" />
+            <Property name="Text" value="Boton" />
+            <Property name="PushedImage" value="DondeTaLeche/MenuBoton_Press" />
+            <Property name="CursorInputPropagationEnabled" value="true" />
+            <UserString name="Text" value="Boton" />
+        </Window>
+    </Window>
+</GUILayout>

@@ -3,133 +3,97 @@
 <GUILayout version="4" >
     <Window type="DefaultWindow" name="MenuPausa" >
         <Property name="Area" value="{{0,0},{0,0},{1,0},{1,0}}" />
-        <Property name="MaxSize" value="{{1,0},{1,0}}" />
+        <Property name="CursorPassThroughEnabled" value="true" />
         <Window type="GWEN/StaticImage" name="Halo" >
-            <Property name="Area" value="{{0,0},{0,0},{1,0},{1,0}}" />
             <Property name="Image" value="DondeTaLeche/Halo" />
-            <Property name="MaxSize" value="{{1,0},{1,0}}" />
-            <Property name="FrameEnabled" value="true" />
+            <Property name="Area" value="{{0,0},{0,0},{1,0},{1,0}}" />
+            <Property name="FrameEnabled" value="false" />
             <Property name="BackgroundEnabled" value="true" />
         </Window>
         <Window type="GWEN/StaticImage" name="Menu" >
-            <Property name="Area" value="{{0,24},{0,0},{1,-772},{1,14}}" />
             <Property name="Image" value="DondeTaLeche/Pausa-Opciones" />
-            <Property name="MaxSize" value="{{1,0},{1,0}}" />
-            <Property name="AlwaysOnTop" value="true" />
-            <Property name="FrameEnabled" value="true" />
+            <Property name="Area" value="{{0,380},{0,-6},{1,-416},{1,8}}" />
+            <Property name="FrameEnabled" value="false" />
             <Property name="BackgroundEnabled" value="true" />
-            <Property name="HorizontalAlignment" value="Centre" />
-            <Window type="VDondeTaLeche/Boton" name="BotonOpciones" >
-                <Property name="Area" value="{{0,59},{0,586},{0,425},{0,717}}" />
-                <Property name="Text" value="Boton" />
-                <Property name="HoverImage" value="DondeTaLeche/MenuBoton_Over" />
-                <Property name="NormalImage" value="DondeTaLeche/MenuBoton" />
-                <Property name="PushedImage" value="DondeTaLeche/MenuBoton_Press" />
-                <Property name="HorizontalAlignment" value="Centre" />
-            </Window>
-            <Window type="VDondeTaLeche/Boton" name="BotonReanudar" >
-                <Property name="Area" value="{{0,57},{0,410},{0,423},{0,541}}" />
-                <Property name="Text" value="Boton" />
-                <Property name="HoverImage" value="DondeTaLeche/MenuBoton_Over" />
-                <Property name="NormalImage" value="DondeTaLeche/MenuBoton" />
-                <Property name="PushedImage" value="DondeTaLeche/MenuBoton_Press" />
-                <Property name="HorizontalAlignment" value="Centre" />
-            </Window>
-            <Window type="VDondeTaLeche/Boton" name="BotonSalir" >
-                <Property name="Area" value="{{0,55},{0,782},{0,421},{0,909}}" />
-                <Property name="Text" value="Boton" />
-                <Property name="HoverImage" value="DondeTaLeche/MenuBoton_Over" />
-                <Property name="NormalImage" value="DondeTaLeche/MenuBoton" />
-                <Property name="PushedImage" value="DondeTaLeche/MenuBoton_Press" />
-                <Property name="HorizontalAlignment" value="Centre" />
-            </Window>
-            <Window type="GWEN/StaticText" name="Text_Volver" >
-                <Property name="Area" value="{{0,25},{0,779},{1,-687},{1,-185}}" />
-                <Property name="Font" value="LemonJuice_Medio" />
+            <Window type="GWEN/StaticText" name="Text_Salir" >
+                <Property name="Area" value="{{0,353},{0,785},{1,-359},{1,-179}}" />
+                <Property name="Alpha" value="0.80000001" />
+                <Property name="Font" value="LemonJuice_Normal" />
                 <Property name="Text" value="- Salir" />
-                <Property name="Alpha" value="0.8" />
-                <Property name="MaxSize" value="{{1,0},{1,0}}" />
-                <Property name="FrameEnabled" value="true" />
-                <Property name="HorzFormatting" value="CentreAligned" />
+                <Property name="TextColours" value="ff494949" />
+                <Property name="FrameEnabled" value="false" />
                 <Property name="BackgroundEnabled" value="true" />
-                <Property name="HorizontalAlignment" value="Centre" />
-                <AutoWindow namePath="__auto_hscrollbar__" >
-                    <AutoWindow namePath="__auto_thumb__" >
-                        <Property name="MouseInputPropagationEnabled" value="true" />
-                    </AutoWindow>
-                </AutoWindow>
+                <Property name="HorzFormatting" value="CentreAligned" />
+                <UserString name="Text" value="- Salir" />
                 <AutoWindow namePath="__auto_vscrollbar__" >
                     <Property name="VerticalScrollbar" value="true" />
-                    <AutoWindow namePath="__auto_thumb__" >
-                        <Property name="MouseInputPropagationEnabled" value="true" />
-                    </AutoWindow>
-                </AutoWindow>
-            </Window>
-            <Window type="GWEN/StaticText" name="Text_VolEfectos" >
-                <Property name="Area" value="{{0,-8},{0,611},{1,-638},{1,-404}}" />
-                <Property name="Font" value="LemonJuice_Medio" />
-                <Property name="Text" value="- Opciones" />
-                <Property name="Alpha" value="0.8" />
-                <Property name="MaxSize" value="{{1,0},{1,0}}" />
-                <Property name="FrameEnabled" value="true" />
-                <Property name="HorzFormatting" value="CentreAligned" />
-                <Property name="BackgroundEnabled" value="true" />
-                <Property name="HorizontalAlignment" value="Centre" />
-                <AutoWindow namePath="__auto_hscrollbar__" >
-                    <AutoWindow namePath="__auto_thumb__" >
-                        <Property name="MouseInputPropagationEnabled" value="true" />
-                    </AutoWindow>
-                </AutoWindow>
-                <AutoWindow namePath="__auto_vscrollbar__" >
-                    <Property name="VerticalScrollbar" value="true" />
-                    <AutoWindow namePath="__auto_thumb__" >
-                        <Property name="MouseInputPropagationEnabled" value="true" />
-                    </AutoWindow>
-                </AutoWindow>
-            </Window>
-            <Window type="GWEN/StaticText" name="Text_VolMusica" >
-                <Property name="Area" value="{{0,-15},{0,437},{1,-643},{1,-574}}" />
-                <Property name="Font" value="LemonJuice_Medio" />
-                <Property name="Text" value="- Reanudar" />
-                <Property name="Alpha" value="0.8" />
-                <Property name="MaxSize" value="{{1,0},{1,0}}" />
-                <Property name="FrameEnabled" value="true" />
-                <Property name="HorzFormatting" value="CentreAligned" />
-                <Property name="BackgroundEnabled" value="true" />
-                <Property name="HorizontalAlignment" value="Centre" />
-                <AutoWindow namePath="__auto_hscrollbar__" >
-                    <AutoWindow namePath="__auto_thumb__" >
-                        <Property name="MouseInputPropagationEnabled" value="true" />
-                    </AutoWindow>
-                </AutoWindow>
-                <AutoWindow namePath="__auto_vscrollbar__" >
-                    <Property name="VerticalScrollbar" value="true" />
-                    <AutoWindow namePath="__auto_thumb__" >
-                        <Property name="MouseInputPropagationEnabled" value="true" />
-                    </AutoWindow>
                 </AutoWindow>
             </Window>
             <Window type="GWEN/StaticText" name="Text_Opciones" >
-                <Property name="Area" value="{{0,2},{0,50},{1,-264},{1,-824}}" />
-                <Property name="Font" value="LemonJuice_Grande" />
-                <Property name="Text" value="PAUSA" />
-                <Property name="Alpha" value="0.8" />
-                <Property name="MaxSize" value="{{1,0},{1,0}}" />
-                <Property name="FrameEnabled" value="true" />
-                <Property name="HorzFormatting" value="CentreAligned" />
+                <Property name="Area" value="{{0,320},{0,617},{1,-310},{1,-398}}" />
+                <Property name="Alpha" value="0.80000001" />
+                <Property name="Font" value="LemonJuice_Normal" />
+                <Property name="Text" value="- Opciones" />
+                <Property name="TextColours" value="ff494949" />
+                <Property name="FrameEnabled" value="false" />
                 <Property name="BackgroundEnabled" value="true" />
-                <Property name="HorizontalAlignment" value="Centre" />
-                <AutoWindow namePath="__auto_hscrollbar__" >
-                    <AutoWindow namePath="__auto_thumb__" >
-                        <Property name="MouseInputPropagationEnabled" value="true" />
-                    </AutoWindow>
-                </AutoWindow>
+                <Property name="HorzFormatting" value="CentreAligned" />
+                <UserString name="Text" value="- Opciones" />
                 <AutoWindow namePath="__auto_vscrollbar__" >
                     <Property name="VerticalScrollbar" value="true" />
-                    <AutoWindow namePath="__auto_thumb__" >
-                        <Property name="MouseInputPropagationEnabled" value="true" />
-                    </AutoWindow>
                 </AutoWindow>
+            </Window>
+            <Window type="GWEN/StaticText" name="Text_Reanudar" >
+                <Property name="Area" value="{{0,332},{0,392},{1,-318},{1,-533}}" />
+                <Property name="Alpha" value="0.80000001" />
+                <Property name="Font" value="LemonJuice_Normal" />
+                <Property name="Text" value="- Reanudar" />
+                <Property name="TextColours" value="ff494949" />
+                <Property name="FrameEnabled" value="false" />
+                <Property name="BackgroundEnabled" value="true" />
+                <Property name="HorzFormatting" value="CentreAligned" />
+                <UserString name="Text" value="- Reanudar" />
+                <AutoWindow namePath="__auto_vscrollbar__" >
+                    <Property name="VerticalScrollbar" value="true" />
+                </AutoWindow>
+            </Window>
+            <Window type="GWEN/StaticText" name="Text_Pausa" >
+                <Property name="Area" value="{{0,132},{0,32},{1,-134},{1,-842}}" />
+                <Property name="Alpha" value="0.80000001" />
+                <Property name="Font" value="LemonJuice_Medio" />
+                <Property name="Text" value="PAUSA" />
+                <Property name="TextColours" value="ff494949" />
+                <Property name="FrameEnabled" value="false" />
+                <Property name="BackgroundEnabled" value="true" />
+                <Property name="HorzFormatting" value="CentreAligned" />
+                <UserString name="Text" value="PAUSA" />
+                <AutoWindow namePath="__auto_vscrollbar__" >
+                    <Property name="VerticalScrollbar" value="true" />
+                </AutoWindow>
+            </Window>
+            <Window type="VDondeTaLeche/Boton" name="BotonOpciones" >
+                <Property name="Area" value="{{0,387},{0,592},{0,753},{0,723}}" />
+                <Property name="HoverImage" value="DondeTaLeche/MenuBoton_Over" />
+                <Property name="NormalImage" value="DondeTaLeche/MenuBoton" />
+                <Property name="Text" value="Boton" />
+                <Property name="PushedImage" value="DondeTaLeche/MenuBoton_Press" />
+                <UserString name="Text" value="Boton" />
+            </Window>
+            <Window type="VDondeTaLeche/Boton" name="BotonReanudar" >
+                <Property name="Area" value="{{0,385},{0,416},{0,751},{0,547}}" />
+                <Property name="HoverImage" value="DondeTaLeche/MenuBoton_Over" />
+                <Property name="NormalImage" value="DondeTaLeche/MenuBoton" />
+                <Property name="Text" value="Boton" />
+                <Property name="PushedImage" value="DondeTaLeche/MenuBoton_Press" />
+                <UserString name="Text" value="Boton" />
+            </Window>
+            <Window type="VDondeTaLeche/Boton" name="BotonSalir" >
+                <Property name="Area" value="{{0,383},{0,788},{0,749},{0,915}}" />
+                <Property name="HoverImage" value="DondeTaLeche/MenuBoton_Over" />
+                <Property name="NormalImage" value="DondeTaLeche/MenuBoton" />
+                <Property name="Text" value="Boton" />
+                <Property name="PushedImage" value="DondeTaLeche/MenuBoton_Press" />
+                <UserString name="Text" value="Boton" />
             </Window>
         </Window>
     </Window>
