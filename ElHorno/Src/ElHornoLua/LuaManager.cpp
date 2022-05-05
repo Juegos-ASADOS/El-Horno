@@ -64,8 +64,6 @@ namespace El_Horno {
         luaL_openlibs(luaState);
 
         exposeFunctions();
-        readLuaScript("shop");
-        readLuaScript("prefabs");
     }
 
     void LuaManager::report_errors(int status)
@@ -225,6 +223,7 @@ namespace El_Horno {
 
     void LuaManager::exposeFunctions()
     {
+
         luabridge::getGlobalNamespace(luaState)
             .beginClass<SceneManager>("SceneManager")
             .addStaticFunction("getSceneManager", &SceneManager::getInstance)
@@ -274,7 +273,7 @@ namespace El_Horno {
             .addFunction("getLayout", (&UIManager::getLayout))
             .endClass();
 
-
+        LuaManager::getInstance()->readLuaScript("engineFunctions");
     }
 
     void LuaManager::callLuaFunction(std::string name)
