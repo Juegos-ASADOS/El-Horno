@@ -210,6 +210,7 @@ namespace El_Horno {
 		if (sdlWindow_ == nullptr)
 			return false;  // SDL events not initialized
 		SDL_Event event;
+		InputManager::getInstance()->flushInput();
 		while (SDL_PollEvent(&event))
 		{
 			InputManager::getInstance()->generalInputManagement(event);
