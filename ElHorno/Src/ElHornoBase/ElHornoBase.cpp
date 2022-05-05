@@ -161,8 +161,8 @@ namespace El_Horno {
 		}
 
 		AudioManager::getInstance()->update();
-		GraphicsManager::getInstance()->render();
 		UIManager::getInstance()->update();
+		GraphicsManager::getInstance()->render();
 		SceneManager::getInstance()->deleteEntities();
 		//SceneManager::getInstance()->endFrame();
 	}
