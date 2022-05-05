@@ -5,8 +5,6 @@ gamemanager = {
         list = "Tomate,3,Zanahoria,2,Pizza,1",
         maxTime = "20",
     },
-    uimenus = {
-    },
     dontDestroyOnLoad = {
     },
 }
