@@ -50,6 +50,8 @@ namespace El_Horno {
 
 		std::string getResolution();
 		void setResolution(std::string value);
+		void setResolutionUp();
+		void setResolutionDown();
 		int getScreenWidth();
 		int getScreenHeight();
 		std::string getFSAA();
@@ -90,7 +92,8 @@ namespace El_Horno {
 
 		// Config de pantalla
 		std::map<std::string, Ogre::ConfigOption> graphicOptions_;
-
+		int currentResolution;
+		std::vector<std::string> resolutions;
 		std::string resolution_,
 			fsaa_;
 		int screenWidth_,

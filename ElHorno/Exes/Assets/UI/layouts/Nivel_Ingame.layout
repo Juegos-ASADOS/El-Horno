@@ -39,18 +39,22 @@
             <Property name="Image" value="DondeTaLeche/Tutoriales_MyVieja" />
             <Property name="Area" value="{{0,189},{0,700},{1,-578},{1,10}}" />
             <Property name="AutoRenderingSurface" value="true" />
+            <Property name="Visible" value="false" />
             <Property name="FrameEnabled" value="false" />
             <Property name="BackgroundEnabled" value="false" />
         </Window>
         <Window type="GWEN/StaticImage" name="Tutorial_Carne" >
             <Property name="Image" value="Unknown/Tuto_Carne" />
             <Property name="Area" value="{{0,540},{0,876},{1,-745},{1,-41}}" />
+            <Property name="AutoRenderingSurface" value="true" />
+            <Property name="Visible" value="false" />
             <Property name="FrameEnabled" value="false" />
             <Property name="BackgroundEnabled" value="false" />
         </Window>
         <Window type="GWEN/StaticImage" name="Tutorial_Pescado" >
             <Property name="Image" value="Unknown/Tuto_Pescado" />
             <Property name="Area" value="{{0,540},{0,891},{1,-780},{1,-41}}" />
+            <Property name="AutoRenderingSurface" value="true" />
             <Property name="Visible" value="false" />
             <Property name="FrameEnabled" value="false" />
             <Property name="BackgroundEnabled" value="false" />
@@ -58,6 +62,7 @@
         <Window type="GWEN/StaticImage" name="Tutorial_Fruta" >
             <Property name="Image" value="Unknown/Tuto_Fruta" />
             <Property name="Area" value="{{0,546},{0,886},{1,-783},{1,-30}}" />
+            <Property name="AutoRenderingSurface" value="true" />
             <Property name="Visible" value="false" />
             <Property name="FrameEnabled" value="false" />
             <Property name="BackgroundEnabled" value="false" />
@@ -65,6 +70,7 @@
         <Window type="GWEN/StaticImage" name="Tutorial_Baldas" >
             <Property name="Image" value="Unknown/Tuto_Baldas" />
             <Property name="Area" value="{{0,546},{0,878},{1,-783},{1,-38}}" />
+            <Property name="AutoRenderingSurface" value="true" />
             <Property name="Visible" value="false" />
             <Property name="FrameEnabled" value="false" />
             <Property name="BackgroundEnabled" value="false" />
@@ -73,6 +79,7 @@
             <Property name="AutoRenderingSurfaceStencilEnabled" value="true" />
             <Property name="Image" value="Unknown/Tuto_Inicio" />
             <Property name="Area" value="{{0,530},{0,880},{1,-757},{1,-20}}" />
+            <Property name="AutoRenderingSurface" value="true" />
             <Property name="Visible" value="false" />
             <Property name="FrameEnabled" value="false" />
             <Property name="BackgroundEnabled" value="false" />
@@ -115,6 +122,7 @@
             <Property name="Area" value="{{0,1564},{0,617},{1,8},{1,-198}}" />
             <Property name="AlwaysOnTop" value="true" />
             <Property name="AutoRenderingSurface" value="true" />
+            <Property name="Visible" value="false" />
             <Property name="FrameEnabled" value="false" />
             <Property name="BackgroundEnabled" value="true" />
         </Window>
@@ -123,6 +131,7 @@
             <Property name="Area" value="{{0,1556},{0,602},{1,20},{1,-198}}" />
             <Property name="AlwaysOnTop" value="true" />
             <Property name="AutoRenderingSurface" value="true" />
+            <Property name="Visible" value="false" />
             <Property name="FrameEnabled" value="false" />
             <Property name="BackgroundEnabled" value="true" />
         </Window>
