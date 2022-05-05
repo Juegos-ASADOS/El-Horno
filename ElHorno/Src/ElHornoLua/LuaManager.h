@@ -7,54 +7,61 @@
 
 #include <string>
 
+namespace El_Horno {
+	class Entity;
+	class Scene;
+}
+
 class lua_State;
 namespace luabridge {
-    class LuaRef;
-    class LuaResult;
+	class LuaRef;
+	class LuaResult;
 }
 typedef int (*lua_CFunction) (lua_State* L);
 
 namespace El_Horno {
-    class _declspec(dllexport) LuaManager {
-    public:
-        static LuaManager* getInstance();
-        static bool setupInstance();
-        static void erase();
+	class _declspec(dllexport) LuaManager {
+	public:
+		static LuaManager* getInstance();
+		static bool setupInstance();
+		static void erase();
 
-        void init();
-        void report_errors(int status);
-        void readLuaScript(const std::string& path);
+		void init();
+		void report_errors(int status);
+		void readLuaScript(const std::string& path);
 
-        template<typename T>
-        void pushToLua(T* var, std::string name);
+		template<typename T>
+		void pushToLua(T* var, std::string name);
 
-        void pushString(std::string var, std::string name);
-        void pushBool(bool var, std::string name);
-        void pushNumber(float var, std::string name);
+		void pushString(std::string var, std::string name);
+		void pushBool(bool var, std::string name);
+		void pushNumber(float var, std::string name);
 
-        luabridge::LuaRef getFromLua(std::string name);
-        lua_State* getLuaState();
-        void exposeFunct(std::string name, lua_CFunction(*func)(lua_State* L));
-        int luaGetTop(lua_State* L);
-        void loadScene();
-        void callLuaFunction(std::string name);
-        //void callLuaFunction(std::string name, int i);
+		luabridge::LuaRef getFromLua(std::string name);
+		lua_State* getLuaState();
+		void exposeFunct(std::string name, lua_CFunction(*func)(lua_State* L));
+		int luaGetTop(lua_State* L);
+		void loadScene();
+		Entity* loadPrefab(std::string name);
+		void setParams(luabridge::LuaRef entity, Entity* ent, Scene* s);
+		void callLuaFunction(std::string name);
+		//void callLuaFunction(std::string name, int i);
 
-        template<class ...Args>
-        void callLuaFunction(std::string name, Args && ...);
+		template<class ...Args>
+		void callLuaFunction(std::string name, Args && ...);
 
-        template <typename T>
-        void pushCFunct(std::string classTypename, std::string name, void (*function)());
-    private:
+		template <typename T>
+		void pushCFunct(std::string classTypename, std::string name, void (*function)());
+	private:
 
-        LuaManager() {};
-        ~LuaManager();
+		LuaManager() {};
+		~LuaManager();
 
-        void exposeFunctions();
+		void exposeFunctions();
 
-        static LuaManager* instance_;
+		static LuaManager* instance_;
 
-        lua_State* luaState;
-    };
+		lua_State* luaState;
+	};
 }
 #endif _EL_HORNO_BULLET_LUA_MANAGER_H

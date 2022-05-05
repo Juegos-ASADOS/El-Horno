@@ -44,6 +44,11 @@ namespace El_Horno {
 		void setFullScreen();
 		bool getFullScreen();
 
+		void setSkyBox(bool enable, std::string material, int dist = 5000, bool drawFirst = false);
+		void setSkyDome(bool enable, std::string material, int angle = 5, int tiling = 100);
+
+
+
 		bool getVSync();
 		void setVSync(bool val);
 		void toggleVSync();

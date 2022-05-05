@@ -72,6 +72,8 @@ namespace El_Horno {
 
 		setupResources();
 
+		ogreSceneManager_->setSkyDome(true, "Examples/CloudySky", 5, 80);
+
 		//Inicializa el debug en PhysicsManager
 		//if(debug)
 		PhysicsManager::getInstance()->debugStart();
@@ -318,6 +320,19 @@ namespace El_Horno {
 	bool GraphicsManager::getFullScreen()
 	{
 		return fullScreen_;
+	}
+
+	void GraphicsManager::setSkyBox(bool enable, std::string material, int dist, bool drawFirst)
+	{
+		if(ogreSceneManager_!= nullptr)
+			ogreSceneManager_->setSkyBox(enable, material, dist, drawFirst);
+	}
+
+	void GraphicsManager::setSkyDome(bool enable, std::string material, int angle, int tiling)
+	{
+		if(ogreSceneManager_ != nullptr)
+			ogreSceneManager_->setSkyDome(enable, material, angle, tiling);
+
 	}
 
 	bool GraphicsManager::getVSync()
