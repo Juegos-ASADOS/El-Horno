@@ -102,6 +102,8 @@ namespace El_Horno {
 		//todo a aprtir de aqui es para layouts y widgets y lo que se expone a Lua principalmente
 		void setLayoutVisibility(std::string layoutName, bool visible);
 
+		void subscribeLayoutChildVisibility(std::string layoutName, std::string childName, bool visible);
+
 		void addLayout(std::string layoutName, std::string name = "");
 		void removeLayout(std::string layoutName);
 

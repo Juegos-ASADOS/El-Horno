@@ -95,6 +95,8 @@ namespace El_Horno {
 
 		// Setup de manager de escena de ogre
 		ogreSceneManager_ = root_->createSceneManager();
+
+		ogreSceneManager_->setShadowTechnique(Ogre::SHADOWTYPE_STENCIL_MODULATIVE); // This enables shadow
 	}
 
 	/*
@@ -210,20 +212,21 @@ namespace El_Horno {
 		SDL_Event event;
 		while (SDL_PollEvent(&event))
 		{
-			switch (event.type)
-			{
-			case SDL_QUIT:
-				root_->queueEndRendering();
-				return true;
+			InputManager::getInstance()->generalInputManagement(event);
 
-				break;
-			default:
-				InputManager::getInstance()->generalInputManagement(event);
+			//switch (event.type)
+			//{
+			//case sdl_quit:
+				//root_->queueEndRendering();
+			//	return true;
 
-				//Con la tecla escape se cierra el juego
-				return InputManager::getInstance()->isKeyDown(SDL_SCANCODE_ESCAPE);
-				break;
-			}
+			//	break;
+			//default:
+			//	InputManager::getInstance()->generalInputManagement(event);
+
+			//	return false;
+			//	break;
+			//}
 
 		}
 		return false;
