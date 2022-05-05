@@ -43,7 +43,6 @@ namespace El_Horno {
 		void manageControllerAdded(const SDL_Event& event);
 		void manageControllerRemoved(const SDL_Event& event);
 
-		void flushInput();
 
 		SDL_GameController* controller_ = nullptr;
 		std::array<Sint16, SDL_GameControllerAxis::SDL_CONTROLLER_AXIS_MAX> controllerAxes_;
@@ -63,6 +62,7 @@ namespace El_Horno {
 		void injectCegui(SDL_Event event);
 
 		void setup();
+		void flushInput();
 
 		bool generalInputManagement(SDL_Event event);
 
