@@ -17,9 +17,9 @@ class Entity;
 		void setupScene(nlohmann::json& j) {};
 		void setupProcess(nlohmann::json& j) {};
 
-		Entity* getEntity(const std::string& name, const std::string& layer = "");
+		Entity* getEntity(const std::string& name, const std::string& layer = "prueba");
 
-		Entity* addEntity(const std::string& name, const std::string& layer, Entity* parent = nullptr, const std::string& group = "default");
+		Entity* addEntity(const std::string& name, const std::string& layer = "prueba", Entity* parent = nullptr, const std::string& group = "default");
 
 		bool deleteEntity(const std::string& name);
 		void deleteInstances();

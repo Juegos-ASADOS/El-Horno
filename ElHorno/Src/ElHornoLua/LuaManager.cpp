@@ -64,8 +64,6 @@ namespace El_Horno {
         luaL_openlibs(luaState);
 
         exposeFunctions();
-        readLuaScript("shop");
-        readLuaScript("prefabs");
     }
 
     void LuaManager::report_errors(int status)
@@ -135,34 +133,43 @@ namespace El_Horno {
         readLuaScript(s->getName());
 
         luabridge::LuaRef allEnts = getFromLua("entities");
+        luabridge::LuaRef layers = getFromLua("layers");
         int numEnts = allEnts.length();
 
         for (int i = 1; i <= numEnts; i++) {
             luabridge::LuaRef entity = getFromLua(allEnts[i]);
-            Entity* ent = s->getEntity(allEnts[i]);
+            std::string layer;
+            if (layers != luabridge::LuaNil()) {
+                luabridge::LuaRef l = getFromLua(allEnts[i]);
+                layer = l.tostring();
+            }
+            else
+                layer = "prueba";
+
+            Entity* ent = s->getEntity(allEnts[i], layer);
             if (ent == nullptr) {
-                ent = s->addEntity(allEnts[i], "prueba");
+                ent = s->addEntity(allEnts[i]);
                 ent->addComponent<Transform>("transform", HornoVector3(0, 0, 0), HornoVector3(0, 0, 0), HornoVector3(0, 0, 0));
             }
-            setParams(entity, ent, s);
+            setParams(entity, ent, s, layer);
         }
     }
 
-    Entity* LuaManager::loadPrefab(std::string name)
+    Entity* LuaManager::loadPrefab(std::string name, std::string layer)
     {
         Scene* s = SceneManager::getInstance()->getCurrentScene();
 
         luabridge::LuaRef entity = getFromLua(name);
-        Entity* ent = s->addEntity(name, "prueba");
+        Entity* ent = s->addEntity(name, layer);
         ent->addComponent<Transform>("transform", HornoVector3(0, 0, 0), HornoVector3(0, 0, 0), HornoVector3(0, 0, 0));
 
-        setParams(entity, ent, s);
+        setParams(entity, ent, s, layer);
         ent->awake();
         ent->start();
         return ent;
     }
 
-    void LuaManager::setParams(luabridge::LuaRef entity, Entity* ent, Scene* s)
+    void LuaManager::setParams(luabridge::LuaRef entity, Entity* ent, Scene* s, std::string layer)
     {
         lua_pushnil(entity);
         while (lua_next(entity, 0) != 0) {
@@ -187,7 +194,7 @@ namespace El_Horno {
                 std::string val = lua_tostring(entity, -1);
 
                 if (compName == "parent") {
-                    s->getEntity(val, "prueba")->addChild(ent);
+                    s->getEntity(val, layer)->addChild(ent);
                     lua_pop(component, 1);
                     continue;
                 }
@@ -216,6 +223,7 @@ namespace El_Horno {
 
     void LuaManager::exposeFunctions()
     {
+
         luabridge::getGlobalNamespace(luaState)
             .beginClass<SceneManager>("SceneManager")
             .addStaticFunction("getSceneManager", &SceneManager::getInstance)
@@ -265,7 +273,7 @@ namespace El_Horno {
             .addFunction("getLayout", (&UIManager::getLayout))
             .endClass();
 
-
+        LuaManager::getInstance()->readLuaScript("engineFunctions");
     }
 
     void LuaManager::callLuaFunction(std::string name)
