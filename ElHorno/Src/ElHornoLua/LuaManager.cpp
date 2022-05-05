@@ -252,11 +252,16 @@ namespace El_Horno {
         s();
     }
 
-    template <class... Args>
-    void LuaManager::callLuaFunction(std::string name, Args&&...)
+    void LuaManager::callLuaFunction(std::string name, int i)
     {
         luabridge::LuaRef s = getFromLua(name);
-        s();
+    }
+
+    template <class... Args>
+    void LuaManager::callLuaFunction(std::string name, Args&&... args)
+    {
+        luabridge::LuaRef s = getFromLua(name);
+        s(false, false);
     }
 
     template<typename T>

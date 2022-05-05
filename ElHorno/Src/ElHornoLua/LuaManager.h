@@ -36,6 +36,7 @@ namespace El_Horno {
         int luaGetTop(lua_State* L);
         void loadScene();
         void callLuaFunction(std::string name);
+        void callLuaFunction(std::string name, int i);
 
         template<class ...Args>
         void callLuaFunction(std::string name, Args && ...);
