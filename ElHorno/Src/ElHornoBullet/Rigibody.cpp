@@ -80,7 +80,7 @@ namespace El_Horno {
 				std::istringstream in(parameters[i].second);
 				std::string val;
 				std::vector<std::string> values;
-				while (getline(in, val, ','))
+				while (getline(in, val, ';'))
 				{
 					values.push_back(val);
 				}
