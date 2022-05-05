@@ -5,6 +5,7 @@
 #include <CEGUI/Window.h>
 #include <CEGUI/RendererModules/Ogre/Renderer.h>
 
+#include <InputManager.h>
 #include <OgreRenderWindow.h>
 #include "CheckML.h"
 #include <iostream>
@@ -216,18 +217,18 @@ namespace El_Horno {
 	//Para cambiar la imagen del rat�n
 	void UIManager::setMouseCursor(const std::string& imageFile)
 	{
-		CEGUI::System::getSingleton().getDefaultGUIContext().getMouseCursor().setDefaultImage(imageFile);
-
+		guiContext->getMouseCursor().setDefaultImage(imageFile);
 	}
 
 	void UIManager::showMouseCursor()
 	{
-		CEGUI::System::getSingleton().getDefaultGUIContext().getMouseCursor().show();
+		InputManager::getInstance()->hideMouse();
+		guiContext->getMouseCursor().show();
 	}
 
 	void UIManager::hideMouseCursor()
 	{
-		CEGUI::System::getSingleton().getDefaultGUIContext().getMouseCursor().hide();
+		guiContext->getMouseCursor().hide();
 	}
 
 	void UIManager::setFont(const std::string& font)
