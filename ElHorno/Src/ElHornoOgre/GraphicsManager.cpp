@@ -52,6 +52,15 @@ namespace El_Horno {
 		screenWidth_ = 1920;
 		screenHeight_ = 1080;
 
+		resolutions.push_back("800x600");
+		resolutions.push_back("1024x768");
+		resolutions.push_back("1280x720");
+		resolutions.push_back("1280x1024");
+		resolutions.push_back("1650x1080");
+		resolutions.push_back("1920x1080");
+
+		currentResolution = resolutions.size() - 1;
+
 		SDL_Init(SDL_INIT_EVERYTHING);
 
 		// Inicializa root de Ogre
@@ -347,6 +356,37 @@ namespace El_Horno {
 		Ogre::String token;
 		mode >> screenWidth_;
 		mode >> token;
+		mode >> screenHeight_;
+	}
+
+	void GraphicsManager::setResolutionUp()
+	{
+		if (currentResolution < resolutions.size() - 1) {
+			currentResolution += 1;
+		}
+		resolution_ = resolutions[currentResolution];
+
+		std::stringstream mode(resolution_);
+
+		Ogre::String token;
+		mode >> screenWidth_;
+		mode >> token;
+		mode >> screenHeight_;
+	}
+
+	void GraphicsManager::setResolutionDown()
+	{
+		if (currentResolution > 0) {
+			currentResolution -= 1;
+		}
+		resolution_ = resolutions[currentResolution];
+
+		std::stringstream mode(resolution_);
+
+		Ogre::String token;
+		mode >> screenWidth_;
+		mode >> token;
+		mode >> screenHeight_;
 		mode >> screenHeight_;
 	}
 

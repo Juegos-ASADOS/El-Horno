@@ -107,7 +107,7 @@ namespace El_Horno {
 	*/
 	void ElHornoBase::exit()
 	{
-
+		exit_ = true;
 	}
 
 	/*
