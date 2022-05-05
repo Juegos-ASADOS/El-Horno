@@ -5,7 +5,7 @@ end
 
 function loadNextScene()
     local manager = SceneManager.getSceneManager()
-    manager:nextScene("prueba")
+    manager:nextScene(scene)
 end 
 
 function setMusicUp()
@@ -50,6 +50,11 @@ end
 
 function setLayoutVisibility()     
     local manager = UIManager.getUIManager()
-    print(button)
     manager:setLayoutVisibility(button, vis)
+end
+
+function setLayoutWidgetText()     
+    local manager = UIManager.getUIManager()
+    -- print(texto)
+    manager:setChildProperty(layout, child, "Text", hora)
 end
