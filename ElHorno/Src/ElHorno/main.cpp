@@ -20,7 +20,7 @@ int main()
 #endif // _DEBUG
 	//158496
 	//488441
-	_CrtSetBreakAlloc(488441); //Deteccion de basura
+	//_CrtSetBreakAlloc(488441); //Deteccion de basura
 	if (game != NULL) {
 		El_Horno::ElHornoBase::setInstance();
 		El_Horno::ElHornoBase::getInstance()->init();
