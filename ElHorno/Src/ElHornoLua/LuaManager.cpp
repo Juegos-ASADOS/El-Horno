@@ -89,6 +89,18 @@ namespace El_Horno {
         report_errors(scriptLoadStatus);
     }
 
+    void LuaManager::pushString(std::string var, std::string name)
+    {
+        lua_pushstring(luaState, var.c_str());
+        lua_setglobal(luaState, name.c_str());
+    }
+
+    void LuaManager::pushBool(bool var, std::string name)
+    {
+        lua_pushboolean(luaState, (int)var);
+        lua_setglobal(luaState, name.c_str());
+    }
+
     void LuaManager::pushNumber(float var, std::string name)
     {
         lua_pushnumber(luaState, var);
@@ -184,22 +196,12 @@ namespace El_Horno {
 
     void LuaManager::exposeFunctions()
     {
-       /* luabridge::getGlobalNamespace(luaState)
+        luabridge::getGlobalNamespace(luaState)
             .beginClass<SceneManager>("SceneManager")
             .addStaticFunction("getSceneManager", &SceneManager::getInstance)
             .addFunction("changeScene", (&SceneManager::changeScene))
             .addFunction("nextScene", (&SceneManager::nextScene))
             .addFunction("getCurrentScene", (&SceneManager::getCurrentScene))
-            .endClass();
-
-        luabridge::getGlobalNamespace(luaState)
-            .beginClass<Scene>("Scene")
-            .addFunction("getEntity", (&Scene::getEntity))
-            .endClass();
-
-        luabridge::getGlobalNamespace(luaState)
-            .beginClass<Entity>("Entity")
-            .addFunction("getEntity", (&Scene::getEntity))
             .endClass();
 
         luabridge::getGlobalNamespace(luaState)
@@ -223,25 +225,25 @@ namespace El_Horno {
             .addStaticFunction("getElHornoBase", &ElHornoBase::getInstance)
             .addFunction("pause", (&ElHornoBase::pause))
             .addFunction("exit", (&ElHornoBase::exit))
-            .endClass();*/
+            .endClass();
 
         //vamos con el uiManager y todo lo que necesitamos exposear para manejo de interfaces y menu
-        //luabridge::getGlobalNamespace(luaState)
-        //    .beginClass<UIManager>("UIManager")
-        //    .addStaticFunction("getUIManager", &UIManager::getInstance)
-        //    .addFunction("setLayoutVisibility", (&UIManager::setLayoutVisibility))
-        //    .addFunction("addLayout", (&UIManager::addLayout))
-        //    .addFunction("removeLayout", (&UIManager::removeLayout))
-        //    .addFunction("removeLayouts", (&UIManager::removeLayouts))
-        //    .addFunction("setLayoutScale", (&UIManager::setLayoutScale))
-        //    .addFunction("subscribeLayoutChildEvent", (&UIManager::subscribeLayoutChildEvent))
-        //    .addFunction("subscribeChildEvent", (&UIManager::subscribeChildEvent))
-        //    .addFunction("addImageFile", (&UIManager::addImageFile))
-        //    .addFunction("addWidgetToLayout", (&UIManager::addWidgetToLayout))
-        //    .addFunction("removeWidgetFromLayout", (&UIManager::removeWidgetFromLayout))
-        //    .addFunction("setChildProperty", (&UIManager::setChildProperty))
-        //    .addFunction("getLayout", (&UIManager::getLayout))
-        //    .endClass();
+        luabridge::getGlobalNamespace(luaState)
+            .beginClass<UIManager>("UIManager")
+            .addStaticFunction("getUIManager", &UIManager::getInstance)
+            .addFunction("setLayoutVisibility", (&UIManager::setLayoutVisibility))
+            .addFunction("addLayout", (&UIManager::addLayout))
+            .addFunction("removeLayout", (&UIManager::removeLayout))
+            .addFunction("removeLayouts", (&UIManager::removeLayouts))
+            .addFunction("setLayoutScale", (&UIManager::setLayoutScale))
+            .addFunction("subscribeLayoutChildEvent", (&UIManager::subscribeLayoutChildEvent))
+            .addFunction("subscribeChildEvent", (&UIManager::subscribeChildEvent))
+            .addFunction("addImageFile", (&UIManager::addImageFile))
+            .addFunction("addWidgetToLayout", (&UIManager::addWidgetToLayout))
+            .addFunction("removeWidgetFromLayout", (&UIManager::removeWidgetFromLayout))
+            .addFunction("setChildProperty", (&UIManager::setChildProperty))
+            .addFunction("getLayout", (&UIManager::getLayout))
+            .endClass();
 
 
     }
@@ -252,9 +254,16 @@ namespace El_Horno {
         s();
     }
 
-    void LuaManager::callLuaFunction(std::string name, int i)
+    //void LuaManager::callLuaFunction(std::string name, int i)
+    //{
+    //    luabridge::LuaRef s = getFromLua(name);
+    //}
+
+    template <class... Args>
+    void LuaManager::callLuaFunction(std::string name, Args&&... args)
     {
         luabridge::LuaRef s = getFromLua(name);
+        s(args...);
     }
 
     template<typename T>

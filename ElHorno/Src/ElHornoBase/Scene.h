@@ -23,6 +23,7 @@ class Entity;
 
 		bool deleteEntity(const std::string& name);
 		void deleteInstances();
+		void deleteAllEntities();
 		void deleteAllExcepDontDestroyOnLoad();
 
 		void awake();

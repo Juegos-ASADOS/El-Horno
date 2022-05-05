@@ -215,29 +215,29 @@ namespace El_Horno {
 		ErrorCheck(tFoundIt->second->setVolume(dbToVolume(fVolumedB)));
 	}
 
-	/*void AudioManager::upMusicVolume()
+	void AudioManager::upMusicVolume()
 	{
 		musicVolume += changeQuantity;
-		music->setVolume();
+		music->setVolume(musicVolume);
 	}
 
 	void AudioManager::downMusicVolume()
 	{
 		musicVolume -= changeQuantity;
-		music->setVolume();
+		music->setVolume(musicVolume);
 	}
 
 	void AudioManager::upFxVolume()
 	{
 		fxVolume += changeQuantity;
-		fx->setVolume();
+		fx->setVolume(musicVolume);
 	}
 
 	void AudioManager::downFxVolume()
 	{
 		fxVolume -= changeQuantity;
-		fx->setVolume();
-	}*/
+		fx->setVolume(musicVolume);
+	}
 
 	bool AudioManager::IsPlaying(int nChannelId) const
 	{

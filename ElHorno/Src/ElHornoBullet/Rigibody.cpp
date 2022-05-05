@@ -67,10 +67,10 @@ namespace El_Horno {
 			else if (parameters[i].first == "mask") {
 				mask_ = stoi(parameters[i].second);
 			}
-			else if (parameters[i].first == "isTrigger") {
+			else if (parameters[i].first == "isKinematic") {
 				isKinematic_ = stoi(parameters[i].second);
 			}
-			else if (parameters[i].first == "isKinematic") {
+			else if (parameters[i].first == "isTrigger") {
 				isTrigger_ = stoi(parameters[i].second);
 			}
 			else if (parameters[i].first == "colShape") {

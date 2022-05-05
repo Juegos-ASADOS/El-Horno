@@ -18,7 +18,9 @@ int main()
 #ifdef _DEBUG
 	HMODULE game = LoadLibrary(TEXT("./ElHornoGame_d.dll"));
 #endif // _DEBUG
-	//_CrtSetBreakAlloc(74384); //Deteccion de basura
+	//158496
+	//488441
+	//_CrtSetBreakAlloc(488441); //Deteccion de basura
 	if (game != NULL) {
 		El_Horno::ElHornoBase::setInstance();
 		El_Horno::ElHornoBase::getInstance()->init();

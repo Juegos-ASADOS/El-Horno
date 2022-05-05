@@ -148,6 +148,18 @@ namespace El_Horno {
 		}
 	}
 
+	void Scene::deleteAllEntities()
+	{
+		auto it = entities_.begin();
+		while (it != entities_.end()) {
+			for (auto e : it->second) {
+				delete e;
+			}
+			it++;
+		}
+		entities_.clear();
+	}
+
 	void Scene::deleteAllExcepDontDestroyOnLoad()
 	{
 		std::map<std::string, Entity*> dontDelete;

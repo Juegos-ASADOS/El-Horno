@@ -28,6 +28,8 @@ namespace El_Horno {
         template<typename T>
         void pushToLua(T* var, std::string name);
 
+        void pushString(std::string var, std::string name);
+        void pushBool(bool var, std::string name);
         void pushNumber(float var, std::string name);
 
         luabridge::LuaRef getFromLua(std::string name);
@@ -36,7 +38,10 @@ namespace El_Horno {
         int luaGetTop(lua_State* L);
         void loadScene();
         void callLuaFunction(std::string name);
-        void callLuaFunction(std::string name, int i);
+        //void callLuaFunction(std::string name, int i);
+
+        template<class ...Args>
+        void callLuaFunction(std::string name, Args && ...);
 
         template <typename T>
         void pushCFunct(std::string classTypename, std::string name, void (*function)());
