@@ -134,7 +134,6 @@ namespace El_Horno {
 		facCreat->addFactory("audiocomponent");
 		facCreat->addFactory("audiolistener");
 		facCreat->addFactory("uilayout");
-		//facCreat->addFactory("UIPushButton");
 		facCreat->addFactory("animatorcontroller");
 
 	}
