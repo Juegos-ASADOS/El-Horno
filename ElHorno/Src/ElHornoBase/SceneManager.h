@@ -34,6 +34,7 @@ typedef void (*GameVoid)();
 		void start(std::string initialScene);
 		void preUpdate();
 		void update();
+		void pauseUpdate();
 		void deleteEntities();
 		void setScene(Scene* newScene);
 		std::map<std::string, Component* (*)()> getComponents();
