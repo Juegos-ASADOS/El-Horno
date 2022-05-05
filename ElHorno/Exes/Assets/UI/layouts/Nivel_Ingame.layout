@@ -7,7 +7,7 @@
         <Property name="RiseOnClickEnabled" value="false" />
         <Window type="GWEN/StaticImage" name="Filtro" >
             <Property name="Image" value="DondeTaLeche/Halo" />
-            <Property name="Area" value="{{0,0},{0,0},{1,0},{1,0}}" />
+            <Property name="Area" value="{{0,2},{0,0},{1,2},{1,0}}" />
             <Property name="MaxSize" value="{{1,0},{1,0}}" />
             <Property name="Alpha" value="0.5" />
             <Property name="RiseOnClickEnabled" value="false" />
@@ -30,6 +30,156 @@
             <Property name="Area" value="{{0,1457},{0,-164},{1,15},{1,-346}}" />
             <Property name="MaxSize" value="{{1,0},{1,0}}" />
             <Property name="AutoRenderingSurface" value="true" />
+            <Property name="RiseOnClickEnabled" value="false" />
+            <Property name="FrameEnabled" value="false" />
+            <Property name="BackgroundEnabled" value="false" />
+        </Window>
+        <Window type="GWEN/StaticImage" name="Producto_1" >
+            <Property name="Image" value="DondeTaLeche/MenuBoton" />
+            <Property name="Area" value="{{0,1631},{0,6},{1,-193},{1,-984}}" />
+            <Property name="MaxSize" value="{{1,0},{1,0}}" />
+            <Property name="RiseOnClickEnabled" value="false" />
+            <Property name="FrameEnabled" value="false" />
+            <Property name="BackgroundEnabled" value="false" />
+        </Window>
+        <Window type="GWEN/StaticImage" name="Producto_2" >
+            <Property name="Image" value="DondeTaLeche/MenuBoton" />
+            <Property name="Area" value="{{0,1629},{0,106},{1,-193},{1,-882}}" />
+            <Property name="MaxSize" value="{{1,0},{1,0}}" />
+            <Property name="RiseOnClickEnabled" value="false" />
+            <Property name="FrameEnabled" value="false" />
+            <Property name="BackgroundEnabled" value="false" />
+        </Window>
+        <Window type="GWEN/StaticImage" name="Producto_3" >
+            <Property name="Image" value="DondeTaLeche/MenuBoton" />
+            <Property name="Area" value="{{0,1631},{0,207},{1,-195},{1,-781}}" />
+            <Property name="MaxSize" value="{{1,0},{1,0}}" />
+            <Property name="RiseOnClickEnabled" value="false" />
+            <Property name="FrameEnabled" value="false" />
+            <Property name="BackgroundEnabled" value="false" />
+        </Window>
+        <Window type="GWEN/StaticImage" name="Producto_4" >
+            <Property name="Image" value="DondeTaLeche/MenuBoton" />
+            <Property name="Area" value="{{0,1632},{0,305},{1,-194},{1,-681}}" />
+            <Property name="MaxSize" value="{{1,0},{1,0}}" />
+            <Property name="RiseOnClickEnabled" value="false" />
+            <Property name="FrameEnabled" value="false" />
+            <Property name="BackgroundEnabled" value="false" />
+        </Window>
+        <Window type="GWEN/StaticImage" name="Producto_5" >
+            <Property name="Image" value="DondeTaLeche/MenuBoton" />
+            <Property name="Area" value="{{0,1633},{0,403},{1,-193},{1,-583}}" />
+            <Property name="MaxSize" value="{{1,0},{1,0}}" />
+            <Property name="RiseOnClickEnabled" value="false" />
+            <Property name="FrameEnabled" value="false" />
+            <Property name="BackgroundEnabled" value="false" />
+        </Window>
+        <Window type="GWEN/StaticImage" name="Producto_6" >
+            <Property name="Image" value="DondeTaLeche/MenuBoton" />
+            <Property name="Area" value="{{0,1631},{0,500},{1,-195},{1,-486}}" />
+            <Property name="MaxSize" value="{{1,0},{1,0}}" />
+            <Property name="RiseOnClickEnabled" value="false" />
+            <Property name="FrameEnabled" value="false" />
+            <Property name="BackgroundEnabled" value="false" />
+        </Window>
+        <Window type="GWEN/StaticImage" name="Tick_1" >
+            <Property name="Image" value="DondeTaLeche/Tick" />
+            <Property name="Area" value="{{0,1631},{0,6},{1,-193},{1,-984}}" />
+            <Property name="MaxSize" value="{{1,0},{1,0}}" />
+            <Property name="Visible" value="false" />
+            <Property name="RiseOnClickEnabled" value="false" />
+            <Property name="FrameEnabled" value="false" />
+            <Property name="BackgroundEnabled" value="false" />
+        </Window>
+        <Window type="GWEN/StaticImage" name="Tick_2" >
+            <Property name="Image" value="DondeTaLeche/Tick" />
+            <Property name="Area" value="{{0,1629},{0,106},{1,-193},{1,-882}}" />
+            <Property name="MaxSize" value="{{1,0},{1,0}}" />
+            <Property name="Visible" value="false" />
+            <Property name="RiseOnClickEnabled" value="false" />
+            <Property name="FrameEnabled" value="false" />
+            <Property name="BackgroundEnabled" value="false" />
+        </Window>
+        <Window type="GWEN/StaticImage" name="Tick_3" >
+            <Property name="Image" value="DondeTaLeche/Tick" />
+            <Property name="Area" value="{{0,1631},{0,207},{1,-195},{1,-781}}" />
+            <Property name="MaxSize" value="{{1,0},{1,0}}" />
+            <Property name="Visible" value="false" />
+            <Property name="RiseOnClickEnabled" value="false" />
+            <Property name="FrameEnabled" value="false" />
+            <Property name="BackgroundEnabled" value="false" />
+        </Window>
+        <Window type="GWEN/StaticImage" name="Tick_4" >
+            <Property name="Image" value="DondeTaLeche/Tick" />
+            <Property name="Area" value="{{0,1632},{0,305},{1,-194},{1,-681}}" />
+            <Property name="MaxSize" value="{{1,0},{1,0}}" />
+            <Property name="Visible" value="false" />
+            <Property name="RiseOnClickEnabled" value="false" />
+            <Property name="FrameEnabled" value="false" />
+            <Property name="BackgroundEnabled" value="false" />
+        </Window>
+        <Window type="GWEN/StaticImage" name="Tick_5" >
+            <Property name="Image" value="DondeTaLeche/Tick" />
+            <Property name="Area" value="{{0,1633},{0,403},{1,-193},{1,-583}}" />
+            <Property name="MaxSize" value="{{1,0},{1,0}}" />
+            <Property name="Visible" value="false" />
+            <Property name="RiseOnClickEnabled" value="false" />
+            <Property name="FrameEnabled" value="false" />
+            <Property name="BackgroundEnabled" value="false" />
+        </Window>
+        <Window type="GWEN/StaticImage" name="Tick_6" >
+            <Property name="Image" value="DondeTaLeche/Tick" />
+            <Property name="Area" value="{{0,1631},{0,500},{1,-195},{1,-486}}" />
+            <Property name="MaxSize" value="{{1,0},{1,0}}" />
+            <Property name="Visible" value="false" />
+            <Property name="RiseOnClickEnabled" value="false" />
+            <Property name="FrameEnabled" value="false" />
+            <Property name="BackgroundEnabled" value="false" />
+        </Window>
+        <Window type="GWEN/StaticImage" name="Num_1" >
+            <Property name="Image" value="DondeTaLeche/Producto_Vacio" />
+            <Property name="Area" value="{{0,1706},{0,7},{1,-118},{1,-983}}" />
+            <Property name="MaxSize" value="{{1,0},{1,0}}" />
+            <Property name="RiseOnClickEnabled" value="false" />
+            <Property name="FrameEnabled" value="false" />
+            <Property name="BackgroundEnabled" value="false" />
+        </Window>
+        <Window type="GWEN/StaticImage" name="Num_2" >
+            <Property name="Image" value="DondeTaLeche/Producto_Vacio" />
+            <Property name="Area" value="{{0,1704},{0,107},{1,-118},{1,-881}}" />
+            <Property name="MaxSize" value="{{1,0},{1,0}}" />
+            <Property name="RiseOnClickEnabled" value="false" />
+            <Property name="FrameEnabled" value="false" />
+            <Property name="BackgroundEnabled" value="false" />
+        </Window>
+        <Window type="GWEN/StaticImage" name="Num_3" >
+            <Property name="Image" value="DondeTaLeche/Producto_Vacio" />
+            <Property name="Area" value="{{0,1706},{0,208},{1,-120},{1,-780}}" />
+            <Property name="MaxSize" value="{{1,0},{1,0}}" />
+            <Property name="RiseOnClickEnabled" value="false" />
+            <Property name="FrameEnabled" value="false" />
+            <Property name="BackgroundEnabled" value="false" />
+        </Window>
+        <Window type="GWEN/StaticImage" name="Num_4" >
+            <Property name="Image" value="DondeTaLeche/Producto_Vacio" />
+            <Property name="Area" value="{{0,1707},{0,306},{1,-119},{1,-680}}" />
+            <Property name="MaxSize" value="{{1,0},{1,0}}" />
+            <Property name="RiseOnClickEnabled" value="false" />
+            <Property name="FrameEnabled" value="false" />
+            <Property name="BackgroundEnabled" value="false" />
+        </Window>
+        <Window type="GWEN/StaticImage" name="Num_5" >
+            <Property name="Image" value="DondeTaLeche/Producto_Vacio" />
+            <Property name="Area" value="{{0,1708},{0,404},{1,-118},{1,-582}}" />
+            <Property name="MaxSize" value="{{1,0},{1,0}}" />
+            <Property name="RiseOnClickEnabled" value="false" />
+            <Property name="FrameEnabled" value="false" />
+            <Property name="BackgroundEnabled" value="false" />
+        </Window>
+        <Window type="GWEN/StaticImage" name="Num_6" >
+            <Property name="Image" value="DondeTaLeche/Producto_Vacio" />
+            <Property name="Area" value="{{0,1706},{0,501},{1,-120},{1,-485}}" />
+            <Property name="MaxSize" value="{{1,0},{1,0}}" />
             <Property name="RiseOnClickEnabled" value="false" />
             <Property name="FrameEnabled" value="false" />
             <Property name="BackgroundEnabled" value="false" />
