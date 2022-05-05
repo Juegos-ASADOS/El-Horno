@@ -176,6 +176,7 @@ namespace El_Horno {
             if (compName == "dontDestroyOnLoad") {
                 ent->setDontDestryOnLoad(true);
                 lua_pop(component, 1);
+                lua_pop(component, 1);
                 continue;
             }
 

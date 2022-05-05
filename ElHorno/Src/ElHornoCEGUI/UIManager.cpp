@@ -373,6 +373,7 @@ namespace El_Horno {
 	{
 		if (getLayout(layoutName) != nullptr) {
 			std::cout << "Already defined layout!\n";
+			return;
 		}
 
 		CEGUI::Window* wnd = createLayout(layoutName, name);

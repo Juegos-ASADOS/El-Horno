@@ -35,7 +35,7 @@ class Entity;
 		inline std::string getName() const { return name_; };
 
 		inline std::map<std::string, std::vector<Entity*>> getEntitesMap() const { return entities_; };
-		inline void setEntitiesMap(std::map<std::string, std::vector<Entity*>> ent) { entities_ = ent; };
+		void setEntitiesMap(std::map<std::string, std::vector<Entity*>> ent);
 
 	protected:
 		std::map<std::string, std::vector<Entity*>> entities_;

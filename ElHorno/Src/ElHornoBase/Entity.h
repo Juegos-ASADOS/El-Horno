@@ -106,6 +106,7 @@ namespace El_Horno {
 		//Get/Set del nombre de la entidad
 		inline std::string getName() { return name_; };
 		inline Scene* getScene() { return scene_; };
+		inline void setScene(Scene* s) { scene_ = s; };
 
 		inline void setGroup(const std::string& g) { group_ = g; };
 		inline std::string getGroup() { return group_; };

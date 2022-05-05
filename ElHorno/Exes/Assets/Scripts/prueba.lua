@@ -173,7 +173,7 @@ moneco = {
         positions = "-150, 10, 0, 1, -250, 10, 0, 1, -250, 10, -100, 1, -150, 10, -100, 1",
     }
 }
--- CajaPagar = {
+--[[ CajaPagar = {
 --     transform = {
 --         position = "  0.476969 ,0.071519 ,250.477413 " ,
 --         rotation = "   0.000000, 0.000000, 0.000000, 0.000000 " ,
@@ -190,7 +190,7 @@ moneco = {
 --         name = "CajaPagar.mesh",
 --     }
 -- }
--- Se ve pochangano: papelera, charco, imagenes carteles, BaldaFrigorifica, baldacolision 
+-- Se ve pochangano: papelera, charco, imagenes carteles, BaldaFrigorifica, baldacolision --]]
 BaldaPlatanos = {
     transform = {
         position = "  40.834900 ,0.000000 ,-23.514296 " ,
@@ -205,7 +205,7 @@ BaldaPlatanos = {
          scale = "0.35, 0.75, 0.35",
     },
     mesh = {
-        name = "BaldaPlatanos.mesh",
+        name = "BaldaPlatano.mesh",
     }
 }
 
