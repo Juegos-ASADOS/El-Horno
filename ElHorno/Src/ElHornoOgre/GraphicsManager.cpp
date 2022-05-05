@@ -86,6 +86,8 @@ namespace El_Horno {
 
 		// Setup de manager de escena de ogre
 		ogreSceneManager_ = root_->createSceneManager();
+
+		ogreSceneManager_->setShadowTechnique(Ogre::SHADOWTYPE_STENCIL_MODULATIVE); // This enables shadow
 	}
 
 	/*
