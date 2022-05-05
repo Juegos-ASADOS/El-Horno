@@ -97,6 +97,11 @@ namespace El_Horno {
 		currentScene_->update();
 	}
 
+	void SceneManager::pauseUpdate()
+	{
+		currentScene_->pauseUpdate();
+	}
+
 	void SceneManager::deleteEntities()
 	{
 		currentScene_->deleteInstances();

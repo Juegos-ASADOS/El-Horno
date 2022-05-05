@@ -76,6 +76,14 @@ namespace El_Horno {
 		}
 	}
 
+	void Entity::pauseUpdate(){
+		std::size_t n = compRef_.size();
+		for (auto i = 0u; i < n; i++) {
+			if (compRef_[i]->isActive())
+				compRef_[i]->pauseUpdate();
+		}
+	}
+
 	// Renderiza
 	void Entity::render() {
 		std::size_t n = compRef_.size();

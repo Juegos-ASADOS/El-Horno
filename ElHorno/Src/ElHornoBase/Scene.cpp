@@ -224,6 +224,14 @@ namespace El_Horno {
 			iter++;
 		}
 	}
+	void Scene::pauseUpdate(){
+		auto iter = entities_.begin();
+		while (iter != entities_.end()) {
+			for (int i = 0; i < iter->second.size(); i++)
+				if (iter->second[i]->isActive()) iter->second[i]->pauseUpdate();
+			iter++;
+		}
+	}
 	void Scene::setEntitiesMap(std::map<std::string, std::vector<Entity*>> ent)
 	{
 		entities_ = ent;
