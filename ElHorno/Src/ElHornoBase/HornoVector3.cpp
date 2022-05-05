@@ -100,7 +100,7 @@ namespace El_Horno {
 	}
 	bool HornoVector3::operator!=(const HornoVector3& b)
 	{
-		return !(this == &b);
+		return (this->x_ != b.x_ || this->y_ != b.y_ || this->z_ != b.z_);
 	}
 	std::ostream& operator<<(std::ostream& os, const HornoVector3& vector)
 	{

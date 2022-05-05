@@ -20,6 +20,9 @@ extern "C"
 #include "AudioComponent.h"
 #include "AudioListenerComponent.h"
 #include "SceneManager.h"
+#include "AudioManager.h"
+#include "ElHornoBase.h"
+#include "GraphicsManager.h"
 #include "Scene.h"
 #include "CheckML.h"
 
@@ -61,7 +64,7 @@ namespace El_Horno {
         luaL_openlibs(luaState);
 
         exposeFunctions();
-        readLuaScript("shop");
+        LuaManager::getInstance()->readLuaScript("shop");
     }
 
     void LuaManager::report_errors(int status)
@@ -84,6 +87,18 @@ namespace El_Horno {
 
         // define error reporter for any Lua error
         report_errors(scriptLoadStatus);
+    }
+
+    void LuaManager::pushString(std::string var, std::string name)
+    {
+        lua_pushstring(luaState, var.c_str());
+        lua_setglobal(luaState, name.c_str());
+    }
+
+    void LuaManager::pushBool(bool var, std::string name)
+    {
+        lua_pushboolean(luaState, (int)var);
+        lua_setglobal(luaState, name.c_str());
     }
 
     void LuaManager::pushNumber(float var, std::string name)
@@ -186,6 +201,30 @@ namespace El_Horno {
             .addStaticFunction("getSceneManager", &SceneManager::getInstance)
             .addFunction("changeScene", (&SceneManager::changeScene))
             .addFunction("nextScene", (&SceneManager::nextScene))
+            .addFunction("getCurrentScene", (&SceneManager::getCurrentScene))
+            .endClass();
+
+        luabridge::getGlobalNamespace(luaState)
+            .beginClass<AudioManager>("AudioManager")
+            .addStaticFunction("getAudioManager", &AudioManager::getInstance)
+            .addFunction("upMusicVolume", (&AudioManager::upMusicVolume))
+            .addFunction("downMusicVolume", (&AudioManager::downMusicVolume))
+            .addFunction("upFxVolume", (&AudioManager::upFxVolume))
+            .addFunction("downFxVolume", (&AudioManager::downFxVolume))
+            .endClass();
+
+        luabridge::getGlobalNamespace(luaState)
+            .beginClass<GraphicsManager>("GraphicsManager")
+            .addStaticFunction("getGraphicsManager", &GraphicsManager::getInstance)
+            .addFunction("upResolution", (&GraphicsManager::setResolutionUp))
+            .addFunction("downResolution", (&GraphicsManager::setResolutionDown))
+            .endClass();
+
+        luabridge::getGlobalNamespace(luaState)
+            .beginClass<ElHornoBase>("ElHornoBase")
+            .addStaticFunction("getElHornoBase", &ElHornoBase::getInstance)
+            .addFunction("pause", (&ElHornoBase::pause))
+            .addFunction("exit", (&ElHornoBase::exit))
             .endClass();
 
         //vamos con el uiManager y todo lo que necesitamos exposear para manejo de interfaces y menu
@@ -215,10 +254,16 @@ namespace El_Horno {
         s();
     }
 
-    void LuaManager::callLuaFunction(std::string name, int i)
+    //void LuaManager::callLuaFunction(std::string name, int i)
+    //{
+    //    luabridge::LuaRef s = getFromLua(name);
+    //}
+
+    template <class... Args>
+    void LuaManager::callLuaFunction(std::string name, Args&&... args)
     {
         luabridge::LuaRef s = getFromLua(name);
-        s(i);
+        s(args...);
     }
 
     template<typename T>

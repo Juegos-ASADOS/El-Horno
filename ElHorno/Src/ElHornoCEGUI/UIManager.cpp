@@ -354,6 +354,21 @@ namespace El_Horno {
 		}
 	}
 
+	void UIManager::subscribeLayoutChildVisibility(std::string layoutName, std::string childName, bool visible)
+	{
+		CEGUI::Window* wnd = getLayout(layoutName);
+		if (wnd != nullptr) {
+			//wdt->setProperty("SomeProperty", "True");
+			wnd->getChild(childName)->setVisible(visible);
+			if (visible) wnd->getChild(childName)->activate();
+
+		}
+		else {
+			std::cout << "Layout not found!\n";
+		}
+
+	}
+
 	void UIManager::addLayout(std::string layoutName, std::string name)
 	{
 		if (getLayout(layoutName) != nullptr) {

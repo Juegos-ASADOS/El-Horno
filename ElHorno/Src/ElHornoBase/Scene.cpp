@@ -148,6 +148,18 @@ namespace El_Horno {
 		}
 	}
 
+	void Scene::deleteAllEntities()
+	{
+		auto it = entities_.begin();
+		while (it != entities_.end()) {
+			for (auto e : it->second) {
+				delete e;
+			}
+			it++;
+		}
+		entities_.clear();
+	}
+
 	void Scene::deleteAllExcepDontDestroyOnLoad()
 	{
 		std::map<std::string, Entity*> dontDelete;
@@ -207,8 +219,6 @@ namespace El_Horno {
 	{
 		auto iter = entities_.begin();
 		while (iter != entities_.end()) {
-			/*for (Entity* e : iter->second)
-				if (e->isActive()) e->update();*/
 			for (int i = 0; i < iter->second.size(); i++)
 				if (iter->second[i]->isActive()) iter->second[i]->update();
 			iter++;

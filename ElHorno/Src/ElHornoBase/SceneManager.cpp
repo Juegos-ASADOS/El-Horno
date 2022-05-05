@@ -82,7 +82,7 @@ namespace El_Horno {
 	void SceneManager::nextScene(std::string s)
 	{
 		auto it = allScenes.find(s);
-		nextScene_ = (it->second)();;
+		nextScene_ = (it->second)();
 		nextSceneName_ = s;
 		changeScene_ = true;
 	}
@@ -104,6 +104,7 @@ namespace El_Horno {
 
 	SceneManager::~SceneManager()
 	{
+		currentScene_->deleteAllEntities();
 		delete currentScene_;
 		currentScene_ = nullptr;
 	}

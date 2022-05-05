@@ -67,14 +67,27 @@ namespace El_Horno {
 			else if (parameters[i].first == "mask") {
 				mask_ = stoi(parameters[i].second);
 			}
-			else if (parameters[i].first == "isTrigger") {
+			else if (parameters[i].first == "isKinematic") {
 				isKinematic_ = stoi(parameters[i].second);
 			}
-			else if (parameters[i].first == "isKinematic") {
+			else if (parameters[i].first == "isTrigger") {
 				isTrigger_ = stoi(parameters[i].second);
 			}
 			else if (parameters[i].first == "colShape") {
 				colShape_ = stoi(parameters[i].second);
+			}
+			else if (parameters[i].first == "scale") {
+				std::istringstream in(parameters[i].second);
+				std::string val;
+				std::vector<std::string> values;
+				while (getline(in, val, ','))
+				{
+					values.push_back(val);
+				}
+				scale_ = HornoVector3(stof(values[0]), stof(values[1]), stof(values[2]));
+			}
+			else if (parameters[i].first == "angFactor") {
+				angFactor_ = stof(parameters[i].second);
 			}
 		}
 	}
@@ -414,6 +427,10 @@ namespace El_Horno {
 			phManager_->addBody(rigid_, group_, mask_);
 		else
 			phManager_->addBody(rigid_);
+
+		if (scale_ != HornoVector3(0, 0, 0))
+			setScale(scale_);
+		rigid_->setAngularFactor(angFactor_);
 	}
 	void RigidBody::onDisable()
 	{
