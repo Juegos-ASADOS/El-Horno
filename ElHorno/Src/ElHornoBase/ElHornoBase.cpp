@@ -90,6 +90,7 @@ namespace El_Horno {
 		//HornoLua
 		LuaManager::setupInstance();
 		LuaManager::getInstance()->init();
+		AudioManager::getInstance()->init();
 	}
 
 	/*
@@ -102,7 +103,6 @@ namespace El_Horno {
 		UIManager::getInstance()->createContext();
 		SceneManager::getInstance()->getCurrentScene()->awake(); //Inicializacion
 		SceneManager::getInstance()->getCurrentScene()->start(); //Toma de codependencias
-		AudioManager::getInstance()->init();
 	}
 
 	/*
@@ -228,51 +228,6 @@ namespace El_Horno {
 	{
 		return paused_;
 	}
-
-	//void ElHornoBase::setInvertedAxisX(bool value)
-	//{
-	//	invertedAxisX_ = value;
-	//}
-
-	//void ElHornoBase::setInvertedAxisY(bool value)
-	//{
-	//	invertedAxisY_ = value;
-	//}
-
-	///*
-	//* Preguntan el invertedAxisX al input manager
-	//*/
-	//bool ElHornoBase::getInvertedAxisXInput()
-	//{
-	//	return false;
-	//}
-
-	///*
-	//*  Preguntan el invertedAxisY al input manager
-	//*/
-	//bool ElHornoBase::getInvertedAxisYInput()
-	//{
-	//	return false;
-	//}
-
-	//bool ElHornoBase::getInvertedAxisXTemp()
-	//{
-	//	return invertedAxisX_;
-	//}
-
-	//bool ElHornoBase::getInvertedAxisYTemp()
-	//{
-	//	return invertedAxisY_;
-	//}
-
-	///*
-	//cambia opciones básicas en otros managers (Axis de input manager y
-	//volume de audio manager)
-	//*/
-	//void ElHornoBase::changeBasicOptions()
-	//{
-
-	//}
 
 	/*
 	* Devuelve el Timer global del proyecto
