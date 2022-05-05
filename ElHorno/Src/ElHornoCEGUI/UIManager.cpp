@@ -189,6 +189,7 @@ namespace El_Horno {
 
 	void UIManager::update()
 	{
+		guiContext->draw();
 		// draw GUI
 		//CEGUI::System::getSingleton().renderAllGUIContexts();
 
