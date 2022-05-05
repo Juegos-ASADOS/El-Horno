@@ -64,7 +64,8 @@ namespace El_Horno {
         luaL_openlibs(luaState);
 
         exposeFunctions();
-        LuaManager::getInstance()->readLuaScript("shop");
+        readLuaScript("shop");
+        readLuaScript("prefabs");
     }
 
     void LuaManager::report_errors(int status)
@@ -143,43 +144,61 @@ namespace El_Horno {
                 ent = s->addEntity(allEnts[i], "prueba");
                 ent->addComponent<Transform>("transform", HornoVector3(0, 0, 0), HornoVector3(0, 0, 0), HornoVector3(0, 0, 0));
             }
-            lua_pushnil(entity);
-            while (lua_next(entity, 0) != 0) {
-                std::string compName = lua_tostring(entity, -2);
+            setParams(entity, ent, s);
+        }
+    }
 
-                std::string key;
+    Entity* LuaManager::loadPrefab(std::string name)
+    {
+        Scene* s = SceneManager::getInstance()->getCurrentScene();
 
-                luabridge::LuaRef component = entity[compName];
-                lua_pushnil(component);
+        luabridge::LuaRef entity = getFromLua(name);
+        Entity* ent = s->addEntity(name, "prueba");
+        ent->addComponent<Transform>("transform", HornoVector3(0, 0, 0), HornoVector3(0, 0, 0), HornoVector3(0, 0, 0));
 
-                if (compName == "dontDestroyOnLoad") {
-                    ent->setDontDestryOnLoad(true);
+        setParams(entity, ent, s);
+        ent->awake();
+        ent->start();
+        return ent;
+    }
+
+    void LuaManager::setParams(luabridge::LuaRef entity, Entity* ent, Scene* s)
+    {
+        lua_pushnil(entity);
+        while (lua_next(entity, 0) != 0) {
+            std::string compName = lua_tostring(entity, -2);
+
+            std::string key;
+
+            luabridge::LuaRef component = entity[compName];
+            lua_pushnil(component);
+
+            if (compName == "dontDestroyOnLoad") {
+                ent->setDontDestryOnLoad(true);
+                lua_pop(component, 1);
+                continue;
+            }
+
+            std::vector<std::pair<std::string, std::string>> parameters;
+
+            while (lua_next(component, 0) != 0) {
+                std::string key = lua_tostring(entity, -2);
+                std::string val = lua_tostring(entity, -1);
+
+                if (compName == "parent") {
+                    s->getEntity(val, "prueba")->addChild(ent);
                     lua_pop(component, 1);
                     continue;
                 }
 
-                std::vector<std::pair<std::string, std::string>> parameters;
-
-
-                while (lua_next(component, 0) != 0) {
-                    std::string key = lua_tostring(entity, -2);
-                    std::string val = lua_tostring(entity, -1);
-
-                    if (compName == "parent") {
-                        s->getEntity(val, "prueba")->addChild(ent);
-                        lua_pop(component, 1);
-                        continue;
-                    }
-
-                    parameters.push_back({ key, val });
-                    lua_pop(component, 1);
-                }
-
-                if (compName != "parent"){
-                    ent->addComponent(compName, parameters);
-                }
-                lua_pop(entity, 1);
+                parameters.push_back({ key, val });
+                lua_pop(component, 1);
             }
+
+            if (compName != "parent") {
+                ent->addComponent(compName, parameters);
+            }
+            lua_pop(entity, 1);
         }
     }
 
