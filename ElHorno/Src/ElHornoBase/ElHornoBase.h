@@ -32,6 +32,7 @@ namespace El_Horno {
 		void exit();
 		void processFrame(const float dt);
 		void update();
+		void setExit();
 
 		// Managers
 		//GUI_Manager* getGUIManager();

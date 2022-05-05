@@ -37,6 +37,9 @@ namespace El_Horno {
 	ElHornoBase::~ElHornoBase()
 	{
 		delete globalTimer_; globalTimer_ = nullptr;
+
+		GraphicsManager::getInstance()->exit();
+
 		AudioManager::erase();
 		InputManager::erase();
 		FactoryCreator::erase();
@@ -140,7 +143,7 @@ namespace El_Horno {
 	Gestiona eventos y actualiza los managers
 	*/
 	void ElHornoBase::processFrame(float deltaTime) {
-		exit_ = GraphicsManager::getInstance()->pollEvents();
+		GraphicsManager::getInstance()->pollEvents();
 
 		if (!paused_) {
 			SceneManager::getInstance()->preUpdate();
@@ -179,6 +182,11 @@ namespace El_Horno {
 		}
 
 		erase();
+	}
+
+	void ElHornoBase::setExit()
+	{
+		exit_ = true;
 	}
 
 	SceneManager* ElHornoBase::getSceneManager()
