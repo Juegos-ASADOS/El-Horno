@@ -20,6 +20,9 @@ extern "C"
 #include "AudioComponent.h"
 #include "AudioListenerComponent.h"
 #include "SceneManager.h"
+#include "AudioManager.h"
+#include "ElHornoBase.h"
+#include "GraphicsManager.h"
 #include "Scene.h"
 #include "CheckML.h"
 
@@ -61,7 +64,7 @@ namespace El_Horno {
         luaL_openlibs(luaState);
 
         exposeFunctions();
-        readLuaScript("shop");
+        LuaManager::getInstance()->readLuaScript("shop");
     }
 
     void LuaManager::report_errors(int status)
@@ -181,30 +184,64 @@ namespace El_Horno {
 
     void LuaManager::exposeFunctions()
     {
-        luabridge::getGlobalNamespace(luaState)
+       /* luabridge::getGlobalNamespace(luaState)
             .beginClass<SceneManager>("SceneManager")
             .addStaticFunction("getSceneManager", &SceneManager::getInstance)
             .addFunction("changeScene", (&SceneManager::changeScene))
             .addFunction("nextScene", (&SceneManager::nextScene))
+            .addFunction("getCurrentScene", (&SceneManager::getCurrentScene))
             .endClass();
 
-        //vamos con el uiManager y todo lo que necesitamos exposear para manejo de interfaces y menu
         luabridge::getGlobalNamespace(luaState)
-            .beginClass<UIManager>("UIManager")
-            .addStaticFunction("getUIManager", &UIManager::getInstance)
-            .addFunction("setLayoutVisibility", (&UIManager::setLayoutVisibility))
-            .addFunction("addLayout", (&UIManager::addLayout))
-            .addFunction("removeLayout", (&UIManager::removeLayout))
-            .addFunction("removeLayouts", (&UIManager::removeLayouts))
-            .addFunction("setLayoutScale", (&UIManager::setLayoutScale))
-            .addFunction("subscribeLayoutChildEvent", (&UIManager::subscribeLayoutChildEvent))
-            .addFunction("subscribeChildEvent", (&UIManager::subscribeChildEvent))
-            .addFunction("addImageFile", (&UIManager::addImageFile))
-            .addFunction("addWidgetToLayout", (&UIManager::addWidgetToLayout))
-            .addFunction("removeWidgetFromLayout", (&UIManager::removeWidgetFromLayout))
-            .addFunction("setChildProperty", (&UIManager::setChildProperty))
-            .addFunction("getLayout", (&UIManager::getLayout))
+            .beginClass<Scene>("Scene")
+            .addFunction("getEntity", (&Scene::getEntity))
             .endClass();
+
+        luabridge::getGlobalNamespace(luaState)
+            .beginClass<Entity>("Entity")
+            .addFunction("getEntity", (&Scene::getEntity))
+            .endClass();
+
+        luabridge::getGlobalNamespace(luaState)
+            .beginClass<AudioManager>("AudioManager")
+            .addStaticFunction("getAudioManager", &AudioManager::getInstance)
+            .addFunction("upMusicVolume", (&AudioManager::upMusicVolume))
+            .addFunction("downMusicVolume", (&AudioManager::downMusicVolume))
+            .addFunction("upFxVolume", (&AudioManager::upFxVolume))
+            .addFunction("downFxVolume", (&AudioManager::downFxVolume))
+            .endClass();
+
+        luabridge::getGlobalNamespace(luaState)
+            .beginClass<GraphicsManager>("GraphicsManager")
+            .addStaticFunction("getGraphicsManager", &GraphicsManager::getInstance)
+            .addFunction("upResolution", (&GraphicsManager::setResolutionUp))
+            .addFunction("downResolution", (&GraphicsManager::setResolutionDown))
+            .endClass();
+
+        luabridge::getGlobalNamespace(luaState)
+            .beginClass<ElHornoBase>("ElHornoBase")
+            .addStaticFunction("getElHornoBase", &ElHornoBase::getInstance)
+            .addFunction("pause", (&ElHornoBase::pause))
+            .addFunction("exit", (&ElHornoBase::exit))
+            .endClass();*/
+
+        //vamos con el uiManager y todo lo que necesitamos exposear para manejo de interfaces y menu
+        //luabridge::getGlobalNamespace(luaState)
+        //    .beginClass<UIManager>("UIManager")
+        //    .addStaticFunction("getUIManager", &UIManager::getInstance)
+        //    .addFunction("setLayoutVisibility", (&UIManager::setLayoutVisibility))
+        //    .addFunction("addLayout", (&UIManager::addLayout))
+        //    .addFunction("removeLayout", (&UIManager::removeLayout))
+        //    .addFunction("removeLayouts", (&UIManager::removeLayouts))
+        //    .addFunction("setLayoutScale", (&UIManager::setLayoutScale))
+        //    .addFunction("subscribeLayoutChildEvent", (&UIManager::subscribeLayoutChildEvent))
+        //    .addFunction("subscribeChildEvent", (&UIManager::subscribeChildEvent))
+        //    .addFunction("addImageFile", (&UIManager::addImageFile))
+        //    .addFunction("addWidgetToLayout", (&UIManager::addWidgetToLayout))
+        //    .addFunction("removeWidgetFromLayout", (&UIManager::removeWidgetFromLayout))
+        //    .addFunction("setChildProperty", (&UIManager::setChildProperty))
+        //    .addFunction("getLayout", (&UIManager::getLayout))
+        //    .endClass();
 
 
     }
@@ -218,7 +255,6 @@ namespace El_Horno {
     void LuaManager::callLuaFunction(std::string name, int i)
     {
         luabridge::LuaRef s = getFromLua(name);
-        s(i);
     }
 
     template<typename T>

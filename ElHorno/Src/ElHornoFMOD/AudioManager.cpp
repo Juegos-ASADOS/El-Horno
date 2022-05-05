@@ -122,7 +122,7 @@ namespace El_Horno {
 	//	}
 	//}
 
-	void AudioManager::Loadsound(const std::string& strSoundName, bool b3d, bool bLooping, bool bStream)
+	void AudioManager::Loadsound(const std::string& strSoundName, bool b3d, bool bLooping, bool bStream, bool isMusic)
 	{
 		auto tFoundIt = sgpImplementation->mSounds.find(strSoundName);
 		if (tFoundIt != sgpImplementation->mSounds.end())
@@ -139,6 +139,10 @@ namespace El_Horno {
 		ErrorCheck(sgpImplementation->mpSystem->createSound(path.c_str(), eMode, nullptr, &pSound));
 		if (pSound) {
 			sgpImplementation->mSounds[strSoundName] = pSound;
+			if (isMusic)
+				pSound->setSoundGroup(music);
+			else
+				pSound->setSoundGroup(fx);
 		}
 	}
 
@@ -152,13 +156,13 @@ namespace El_Horno {
 		sgpImplementation->mSounds.erase(tFoundIt);
 	}
 
-	int AudioManager::playSound(const std::string& strSoundName, const FMOD_VECTOR& vPosition, float fVolumedB)
+	int AudioManager::playSound(const std::string& strSoundName, const FMOD_VECTOR& vPosition, float fVolumedB, bool isMusic)
 	{
 		int nChannelId = sgpImplementation->mnNextChannelId++;
 		auto tFoundIt = sgpImplementation->mSounds.find(strSoundName);
 		if (tFoundIt == sgpImplementation->mSounds.end())
 		{
-			Loadsound(strSoundName);
+			Loadsound(strSoundName, isMusic);
 			tFoundIt = sgpImplementation->mSounds.find(strSoundName);
 			if (tFoundIt == sgpImplementation->mSounds.end())
 			{
@@ -210,6 +214,30 @@ namespace El_Horno {
 
 		ErrorCheck(tFoundIt->second->setVolume(dbToVolume(fVolumedB)));
 	}
+
+	/*void AudioManager::upMusicVolume()
+	{
+		musicVolume += changeQuantity;
+		music->setVolume();
+	}
+
+	void AudioManager::downMusicVolume()
+	{
+		musicVolume -= changeQuantity;
+		music->setVolume();
+	}
+
+	void AudioManager::upFxVolume()
+	{
+		fxVolume += changeQuantity;
+		fx->setVolume();
+	}
+
+	void AudioManager::downFxVolume()
+	{
+		fxVolume -= changeQuantity;
+		fx->setVolume();
+	}*/
 
 	bool AudioManager::IsPlaying(int nChannelId) const
 	{

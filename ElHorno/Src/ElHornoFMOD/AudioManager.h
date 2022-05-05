@@ -15,6 +15,7 @@ namespace FMOD {
 	class Channel;
 	class System;
 	class Sound;
+	class SoundGroup;
 	namespace Studio {
 		class System;
 		class Bank;
@@ -37,9 +38,7 @@ namespace El_Horno {
 		typedef std::map<std::string, FMOD::Sound*> SoundMap;
 		typedef std::map<int, FMOD::Channel*> ChannelMap;
 		//typedef std::map<std::string, FMOD::Studio::EventInstance*> EventMap;
-		typedef std::map<std::string, FMOD::Studio::Bank*> BankMap;
 
-		BankMap mBanks;
 		//EventMap mEvents;
 		SoundMap mSounds;
 		ChannelMap mChannels;
@@ -57,10 +56,10 @@ namespace El_Horno {
 
 		//void LoadBank(const std::string& strBankName, FMOD::FMOD_STUDIO_LOAD_BANK_FLAGS flags);
 		//void LoadEvent(const string& strEventName);
-		void Loadsound(const std::string& strSoundName, bool b3d = true, bool bLooping = false, bool bStream = false);
+		void Loadsound(const std::string& strSoundName, bool b3d = true, bool bLooping = false, bool bStream = false, bool isMusic = false);
 		void UnLoadSound(const std::string& strSoundName);
 		//void Set3dListenerAndOrientation(const FMOD_VECTOR& vPos = { 0, 0, 0 }, float fVolumedB = 0.0f);
-		int playSound(const std::string& strSoundName, const FMOD_VECTOR& vPos, float fVolumedB = 1.0f);
+		int playSound(const std::string& strSoundName, const FMOD_VECTOR& vPos, float fVolumedB = 1.0f, bool isMusic = false);
 		//void PlayEvent(const string& strEventName);
 		void StopChannel(int nChannelId);
 		//void StopEvent(const string& strEventName, bool bImmediate = false);
@@ -69,6 +68,10 @@ namespace El_Horno {
 		void StopAllChannels();
 		void SetChannel3dPosition(int nChannelId, const FMOD_VECTOR& vPosition);
 		void SetChannelvolume(int nChannelId, float fVolumedB);
+		void upMusicVolume();
+		void downMusicVolume();
+		void upFxVolume();
+		void downFxVolume();
 		bool IsPlaying(int nChannelId) const;
 		//bool IsEventPlaying(const string& strEventName) const;
 		float dbToVolume(float db);
@@ -82,6 +85,13 @@ namespace El_Horno {
 	private:
 		static Implementation* sgpImplementation;
 		static AudioManager* instance_;
+		FMOD::SoundGroup* music;
+		FMOD::SoundGroup* fx;
+
+		float changeQuantity = 0.1f; 
+
+		float musicVolume;
+		float fxVolume;
 	};
 }
 #endif _AUDIO_MANAGER_AUDIO_MANAGER_H
