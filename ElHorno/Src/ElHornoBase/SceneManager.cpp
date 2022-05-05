@@ -104,6 +104,7 @@ namespace El_Horno {
 
 	SceneManager::~SceneManager()
 	{
+		currentScene_->deleteAllEntities();
 		delete currentScene_;
 		currentScene_ = nullptr;
 	}
