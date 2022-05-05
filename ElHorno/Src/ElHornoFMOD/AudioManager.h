@@ -66,6 +66,8 @@ namespace El_Horno {
 		//void GeteventParameter(const string& strEventName, const string% strEventParameter, float* parameter);
 		//void SetEventParameter(const string& strEventName, const string& strParameterName, flaot fValue);
 		void StopAllChannels();
+		void pauseAllChannels();
+		void resumeAllChannels();
 		void SetChannel3dPosition(int nChannelId, const FMOD_VECTOR& vPosition);
 		void SetChannelvolume(int nChannelId, float fVolumedB);
 		void upMusicVolume();
