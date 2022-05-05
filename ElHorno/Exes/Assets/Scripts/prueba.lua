@@ -1,9 +1,9 @@
 gamemanager = {
     gamemanager = {      
-        state = "3",
+        state = "0",
         productNum = "6",
         list = "Tomate,3,Zanahoria,2,Pizza,1",
-        maxTime = "180",
+        maxTime = "20",
     },
 }
 
@@ -205,7 +205,7 @@ BaldaPlatanos = {
          scale = "0.35, 0.75, 0.35",
     },
     mesh = {
-        name = "BaldaPlatanos.mesh",
+        name = "BaldaPlatano.mesh",
     }
 }
 
