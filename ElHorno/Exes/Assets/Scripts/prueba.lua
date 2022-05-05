@@ -54,6 +54,8 @@ player = {
         isTrigger = "0",
         isKinematic = "0",
         colShape = "0",
+        scale = "0.5, 0.7, 1.3",
+        angFactor = "0.0",
     },
 
     audiocomponent = {

@@ -115,6 +115,9 @@ namespace El_Horno {
 
 		int mask_ = -1;
 
+		HornoVector3 scale_ = {0,0,0};
+		float angFactor_ = 1.0;
+
 		//Rigidbody de bullet
 		btRigidBody* rigid_;
 
