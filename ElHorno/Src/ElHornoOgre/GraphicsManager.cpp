@@ -72,7 +72,7 @@ namespace El_Horno {
 
 		setupResources();
 
-		ogreSceneManager_->setSkyDome(true, "Examples/MorningSkyBox", 5, 10);
+		//ogreSceneManager_->setSkyDome(true, "Examples/MorningSkyBox", 5, 10);
 		//ogreSceneManager_->setSkyBox(true, "Examples/MorningSkyBox", 2000, false);
 		//Inicializa el debug en PhysicsManager
 		//if(debug)

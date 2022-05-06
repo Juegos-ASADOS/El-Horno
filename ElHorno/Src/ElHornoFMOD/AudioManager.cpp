@@ -90,7 +90,7 @@ namespace El_Horno {
 	int AudioManager::ErrorCheck(FMOD_RESULT result)
 	{
 		if (result != FMOD_OK) {
-			std::cout << "FMOD ERROR " << result << std::endl;
+			//::cout << "FMOD ERROR " << result << std::endl;
 			return 1;
 		}
 		// cout << "FMOD all good" << endl;
@@ -179,12 +179,24 @@ namespace El_Horno {
 			if (currMode & FMOD_3D) {
 				ErrorCheck(pChannel->set3DAttributes(&vPosition, nullptr));
 			}
-			ErrorCheck(pChannel->setVolume(dbToVolume(fVolumedB)));
+			if (isMusic && musicVolume != -1) {
+				ErrorCheck(pChannel->setVolume(dbToVolume(musicVolume)));
+			}
+			else if (!isMusic && fxVolume != -1) {
+				ErrorCheck(pChannel->setVolume(dbToVolume(fxVolume)));		
+			}
+			else {
+				ErrorCheck(pChannel->setVolume(dbToVolume(fVolumedB)));
+				if (isMusic)
+					musicVolume = fVolumedB;
+				else
+					fxVolume = fVolumedB;
+			}
 			ErrorCheck(pChannel->setPaused(false));
 			sgpImplementation->mChannels[nChannelId] = pChannel;
 			if (isMusic) {
-				musicChannel = nChannelId;
-				musicVolume = fVolumedB;
+				musicChannel = nChannelId;		
+				moveChannel = pChannel;
 			}
 		}
 		return nChannelId;
@@ -302,6 +314,12 @@ namespace El_Horno {
 	{
 		sgpImplementation->mChannels[channel]->set3DAttributes(&position, &velocity);
 	}
+
+	void AudioManager::moveChanelTo(const FMOD_VECTOR& vPosition, const FMOD_VECTOR& vVel)
+	{
+		moveChannel->set3DAttributes(&vPosition, &vVel);
+	}
+
 	void AudioManager::stopMusic()
 	{
 		StopChannel(musicChannel);

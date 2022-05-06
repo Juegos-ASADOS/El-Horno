@@ -58,8 +58,6 @@ namespace El_Horno {
 	{
 		currentScene_ = new Scene();
 
-		//TODO
-		//Creamos el evento de cambiar la escena??
 		Event* changeSceneEvent = new Event(EventType::ChangeScene);
 
 		EventManager::getInstance()->sendEvent(changeSceneEvent);
@@ -76,7 +74,6 @@ namespace El_Horno {
 		currentScene_->init(nextSceneName_);
 		currentScene_->awake();
 		currentScene_->start();
-		std::cout << "hola\n";
 	}
 
 	void SceneManager::nextScene(std::string s)

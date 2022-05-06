@@ -111,20 +111,6 @@ namespace El_Horno {
 		defineScheme("TaharezLook");
 
 		root->addChild(winMngr->loadLayoutFromFile("TaharezLookOverview.layout"));*/
-
-		//root->addChild(window);
-
-		//TODO
-		//aimai esto e sun ejemplo para que salga algo en la pantalla 
-		//CEGUI::FrameWindow* wnd = (CEGUI::FrameWindow*)winMngr->createWindow("TaharezLook/FrameWindow", "Sample Window");
-		//wnd->setPosition(CEGUI::UVector2(cegui_reldim(0.05f), cegui_reldim(0.05f)));
-		//wnd->setSize(CEGUI::USize(cegui_reldim(0.2f), cegui_reldim(0.1f)));
-		//wnd->setMaxSize(CEGUI::USize(cegui_reldim(1.0f), cegui_reldim(1.0f)));
-		//wnd->setMinSize(CEGUI::USize(cegui_reldim(0.01f), cegui_reldim(0.01f)));
-		//wnd->setText("HORNO works!");
-		//wnd->activate();
-
-
 	}
 
 	void UIManager::deleteContext()
@@ -139,9 +125,6 @@ namespace El_Horno {
 	{
 		if (!CEGUI::SchemeManager::getSingleton().isDefined(schemeName + ".scheme")) {
 			CEGUI::SchemeManager::getSingleton().createFromFile(schemeName + ".scheme"); 
-		}
-		else {
-			std::cout << "Already defined scheme!\n";
 		}
 	}
 
@@ -289,10 +272,6 @@ namespace El_Horno {
 		if (wnd != nullptr) {
 			wnd->getChild(childName)->subscribeEvent(CEGUI::PushButton::EventClicked, CEGUI::Event::Subscriber(func));
 		}
-		else {
-			std::cout << "Couldnt subscribe event. Layout not found!\n";
-		}
-
 	}
 
 	void UIManager::subscribeChildEvent( std::string childName, std::function<bool(const CEGUI::EventArgs&)> func)
@@ -312,7 +291,6 @@ namespace El_Horno {
 	{
 		CEGUI::Window* wnd = getLayout(layoutName);
 		if (wnd == nullptr) {
-			std::cout << "Couldnt add Widget. Layout not found!\n";
 			return;
 		}
 
@@ -324,7 +302,6 @@ namespace El_Horno {
 	{
 		CEGUI::Window* wnd = getLayout(layoutName);
 		if (wnd == nullptr) {
-			std::cout << "Couldnt remove Widget. Layout not found!\n";
 			return;
 		}
 
@@ -335,7 +312,6 @@ namespace El_Horno {
 	{
 		CEGUI::Window* wnd = getLayout(layoutName);
 		if (wnd == nullptr) {
-			std::cout << "Couldnt remove Widget. Layout not found!\n";
 			return;
 		}
 
@@ -351,9 +327,6 @@ namespace El_Horno {
 			wnd->setVisible(visible);
 			if (visible) wnd->activate();
 		}
-		else {
-			std::cout << "Layout not found!\n";
-		}
 	}
 
 	void UIManager::subscribeLayoutChildVisibility(std::string layoutName, std::string childName, bool visible)
@@ -365,16 +338,11 @@ namespace El_Horno {
 			if (visible) wnd->getChild(childName)->activate();
 
 		}
-		else {
-			std::cout << "Layout not found!\n";
-		}
-
 	}
 
 	void UIManager::addLayout(std::string layoutName, std::string name)
 	{
 		if (getLayout(layoutName) != nullptr) {
-			std::cout << "Already defined layout!\n";
 			return;
 		}
 
@@ -391,9 +359,6 @@ namespace El_Horno {
 			auto it = layouts.find(layoutName);
 			root->removeChild(wnd);
 			layouts.erase(it);
-		}
-		else {
-			std::cout << "Couldnt remove layout. Layout not found!\n";
 		}
 	}
 
@@ -414,9 +379,6 @@ namespace El_Horno {
 		CEGUI::Window* wnd = getLayout(layoutName);
 		if (wnd != nullptr) {
 			wnd->setSize(CEGUI::USize(CEGUI::UDim(x, 0), CEGUI::UDim(y, 0)));
-		}
-		else {
-			std::cout << "Layout not found!\n";
 		}
 	}
 

@@ -29,5 +29,6 @@ namespace El_Horno {
 		vel_.z = 0;
 
 		ElHornoBase::getInstance()->getAudioManager()->updateListener(listenerNumber_, OgreVectorToFmod(pos_), OgreVectorToFmod(vel_), OgreVectorToFmod(forward_), OgreVectorToFmod(up_));
+		ElHornoBase::getInstance()->getAudioManager()->moveChanelTo(OgreVectorToFmod(pos_), OgreVectorToFmod(vel_));
 	}
 }

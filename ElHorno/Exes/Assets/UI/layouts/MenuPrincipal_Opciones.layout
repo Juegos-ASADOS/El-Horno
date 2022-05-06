@@ -39,40 +39,8 @@
                     <Property name="VerticalScrollbar" value="true" />
                 </AutoWindow>
             </Window>
-            <Window type="GWEN/StaticText" name="Text_ResolNum" >
-                <Property name="Area" value="{{0,-7.5},{0,260.5},{0,392.5},{0,411.5}}" />
-                <Property name="HorizontalAlignment" value="Centre" />
-                <Property name="VerticalAlignment" value="Centre" />
-                <Property name="Alpha" value="0.80000001" />
-                <Property name="Font" value="LemonJuice_Normal" />
-                <Property name="Text" value="1920 x 1080" />
-                <Property name="TextColours" value="ff494949" />
-                <Property name="FrameEnabled" value="false" />
-                <Property name="BackgroundEnabled" value="true" />
-                <Property name="HorzFormatting" value="CentreAligned" />
-                <UserString name="Text" value="1920 x 1080" />
-                <AutoWindow namePath="__auto_vscrollbar__" >
-                    <Property name="VerticalScrollbar" value="true" />
-                </AutoWindow>
-            </Window>
-            <Window type="GWEN/StaticText" name="Text_Resol" >
-                <Property name="Area" value="{{0,-24.5},{0,189.5},{0,447.5},{0,338.5}}" />
-                <Property name="HorizontalAlignment" value="Centre" />
-                <Property name="VerticalAlignment" value="Centre" />
-                <Property name="Alpha" value="0.80000001" />
-                <Property name="Font" value="LemonJuice_Normal" />
-                <Property name="Text" value="- Resolución" />
-                <Property name="TextColours" value="ff494949" />
-                <Property name="FrameEnabled" value="false" />
-                <Property name="BackgroundEnabled" value="true" />
-                <Property name="HorzFormatting" value="CentreAligned" />
-                <UserString name="Text" value="- Resolución" />
-                <AutoWindow namePath="__auto_vscrollbar__" >
-                    <Property name="VerticalScrollbar" value="true" />
-                </AutoWindow>
-            </Window>
             <Window type="GWEN/StaticText" name="Text_VolEfectos" >
-                <Property name="Area" value="{{0,-16.5},{0,-33},{0,512.5},{0,162}}" />
+                <Property name="Area" value="{{0,-17.5},{0,74},{0,511.5},{0,269}}" />
                 <Property name="HorizontalAlignment" value="Centre" />
                 <Property name="VerticalAlignment" value="Centre" />
                 <Property name="Alpha" value="0.80000001" />
@@ -88,7 +56,7 @@
                 </AutoWindow>
             </Window>
             <Window type="GWEN/StaticText" name="Text_VolMusica" >
-                <Property name="Area" value="{{0,-12},{0,-241.5},{0,507},{0,-65.5}}" />
+                <Property name="Area" value="{{0,-13},{0,-134.5},{0,506},{0,41.5}}" />
                 <Property name="HorizontalAlignment" value="Centre" />
                 <Property name="VerticalAlignment" value="Centre" />
                 <Property name="Alpha" value="0.80000001" />
@@ -120,64 +88,40 @@
                 </AutoWindow>
             </Window>
             <Window type="VDondeTaLeche/Boton" name="RestaEfectos" >
-                <Property name="Area" value="{{0,-91},{0,59},{0,39},{0,161}}" />
+                <Property name="Area" value="{{0,-92},{0,166},{0,38},{0,268}}" />
                 <Property name="HorizontalAlignment" value="Centre" />
                 <Property name="VerticalAlignment" value="Centre" />
                 <Property name="HoverImage" value="DondeTaLeche/Menos_Over" />
                 <Property name="NormalImage" value="DondeTaLeche/Menos" />
                 <Property name="AlwaysOnTop" value="true" />
                 <Property name="PushedImage" value="DondeTaLeche/Menos_Press" />
-                <UserString name="Text" value="Boton" />
             </Window>
             <Window type="VDondeTaLeche/Boton" name="RestaMusica" >
-                <Property name="Area" value="{{0,-90},{0,-156},{0,40},{0,-54}}" />
+                <Property name="Area" value="{{0,-91},{0,-49},{0,39},{0,53}}" />
                 <Property name="HorizontalAlignment" value="Centre" />
                 <Property name="VerticalAlignment" value="Centre" />
                 <Property name="HoverImage" value="DondeTaLeche/Menos_Over" />
                 <Property name="NormalImage" value="DondeTaLeche/Menos" />
                 <Property name="AlwaysOnTop" value="true" />
                 <Property name="PushedImage" value="DondeTaLeche/Menos_Press" />
-                <UserString name="Text" value="Boton" />
-            </Window>
-            <Window type="VDondeTaLeche/Boton" name="FlechaIz" >
-                <Property name="Area" value="{{0,-228},{0,186},{0,-91},{0,291}}" />
-                <Property name="HorizontalAlignment" value="Centre" />
-                <Property name="VerticalAlignment" value="Centre" />
-                <Property name="HoverImage" value="DondeTaLeche/FlechaIz_Over" />
-                <Property name="NormalImage" value="DondeTaLeche/FlechaIz" />
-                <Property name="AlwaysOnTop" value="true" />
-                <Property name="PushedImage" value="DondeTaLeche/FlechaIz_Press" />
-                <UserString name="Text" value="Boton" />
-            </Window>
-            <Window type="VDondeTaLeche/Boton" name="FlechaDer" >
-                <Property name="Area" value="{{0,216},{0,194},{0,346},{0,296}}" />
-                <Property name="HorizontalAlignment" value="Centre" />
-                <Property name="VerticalAlignment" value="Centre" />
-                <Property name="HoverImage" value="DondeTaLeche/FlechaDer_Over" />
-                <Property name="NormalImage" value="DondeTaLeche/FlechaDer" />
-                <Property name="AlwaysOnTop" value="true" />
-                <Property name="PushedImage" value="DondeTaLeche/FlechaDer_Press" />
-                <UserString name="Text" value="Boton" />
             </Window>
             <Window type="VDondeTaLeche/Boton" name="SumaEfectos" >
-                <Property name="Area" value="{{0,82},{0,54},{0,212},{0,156}}" />
+                <Property name="Area" value="{{0,81},{0,161},{0,211},{0,263}}" />
                 <Property name="HorizontalAlignment" value="Centre" />
                 <Property name="VerticalAlignment" value="Centre" />
                 <Property name="HoverImage" value="DondeTaLeche/Suma_Over" />
                 <Property name="NormalImage" value="DondeTaLeche/Suma" />
                 <Property name="AlwaysOnTop" value="true" />
                 <Property name="PushedImage" value="DondeTaLeche/Suma_Press" />
-                <UserString name="Text" value="Boton" />
             </Window>
             <Window type="VDondeTaLeche/Boton" name="SumaMusica" >
-                <Property name="Area" value="{{0,82},{0,-157},{0,212},{0,-55}}" />
+                <Property name="Area" value="{{0,81},{0,-50},{0,211},{0,52}}" />
                 <Property name="HorizontalAlignment" value="Centre" />
                 <Property name="VerticalAlignment" value="Centre" />
                 <Property name="HoverImage" value="DondeTaLeche/Suma_Over" />
                 <Property name="NormalImage" value="DondeTaLeche/Suma" />
                 <Property name="AlwaysOnTop" value="true" />
                 <Property name="PushedImage" value="DondeTaLeche/Suma_Press" />
-                <UserString name="Text" value="Boton" />
             </Window>
             <Window type="VDondeTaLeche/Boton" name="BotonVolver" >
                 <Property name="Area" value="{{0,-27},{0,415},{0,317},{0,542}}" />
@@ -187,7 +131,6 @@
                 <Property name="NormalImage" value="DondeTaLeche/MenuBoton" />
                 <Property name="AlwaysOnTop" value="true" />
                 <Property name="PushedImage" value="DondeTaLeche/MenuBoton_Press" />
-                <UserString name="Text" value="Boton" />
             </Window>
         </Window>
     </Window>

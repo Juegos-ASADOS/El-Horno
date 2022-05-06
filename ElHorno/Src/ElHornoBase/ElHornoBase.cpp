@@ -29,6 +29,7 @@ namespace El_Horno {
 	ElHornoBase::ElHornoBase()
 	{
 		paused_ = false;
+		forcedExit_ = false;
 	}
 
 	/*
@@ -142,7 +143,7 @@ namespace El_Horno {
 	Gestiona eventos y actualiza los managers
 	*/
 	void ElHornoBase::processFrame(float deltaTime) {
-		exit_ = GraphicsManager::getInstance()->pollEvents();
+		exit_ = forcedExit_ || GraphicsManager::getInstance()->pollEvents();
 
 		if (!paused_) {
 			SceneManager::getInstance()->preUpdate();
@@ -166,6 +167,7 @@ namespace El_Horno {
 		GraphicsManager::getInstance()->render();
 		SceneManager::getInstance()->deleteEntities();
 		//SceneManager::getInstance()->endFrame();
+
 	}
 
 	void ElHornoBase::update()
@@ -186,7 +188,7 @@ namespace El_Horno {
 
 	void ElHornoBase::setExit()
 	{
-		exit_ = true;
+		forcedExit_ = true;
 	}
 
 	SceneManager* ElHornoBase::getSceneManager()
