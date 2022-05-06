@@ -90,7 +90,7 @@ namespace El_Horno {
 	int AudioManager::ErrorCheck(FMOD_RESULT result)
 	{
 		if (result != FMOD_OK) {
-			std::cout << "FMOD ERROR " << result << std::endl;
+			//::cout << "FMOD ERROR " << result << std::endl;
 			return 1;
 		}
 		// cout << "FMOD all good" << endl;
