@@ -70,7 +70,7 @@ namespace El_Horno {
 		changeScene_ = false;
 		currentScene_->deleteAllExcepDontDestroyOnLoad();
 		nextScene_->setEntitiesMap(currentScene_->getEntitesMap());
-		El_Horno::SceneManager::getInstance()->setScene(nextScene_);
+		setScene(nextScene_);
 		currentScene_->init(nextSceneName_);
 		currentScene_->awake();
 		currentScene_->start();
