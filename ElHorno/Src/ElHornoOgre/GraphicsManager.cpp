@@ -72,7 +72,7 @@ namespace El_Horno {
 
 		setupResources();
 
-		ogreSceneManager_->setSkyDome(true, "Examples/MorningSkyBox", 5, 10);
+		//ogreSceneManager_->setSkyDome(true, "Examples/MorningSkyBox", 5, 10);
 		//ogreSceneManager_->setSkyBox(true, "Examples/MorningSkyBox", 2000, false);
 		//Inicializa el debug en PhysicsManager
 		//if(debug)
@@ -296,7 +296,7 @@ namespace El_Horno {
 	// Actualiza el tamaño de la ventana de SDL y de CEGUI
 	void GraphicsManager::resizeScreen(int width, int height)
 	{
-		//SDL_SetWindowSize(sdlWindow_, width, height);
+		SDL_SetWindowSize(sdlWindow_, width, height);
 		//sdlWindow_->windowMovedOrResized();
 	}
 
@@ -393,6 +393,8 @@ namespace El_Horno {
 		mode >> screenWidth_;
 		mode >> token;
 		mode >> screenHeight_;
+
+		resizeScreen(screenWidth_, screenHeight_);
 	}
 
 	void GraphicsManager::setResolutionDown()
@@ -409,6 +411,9 @@ namespace El_Horno {
 		mode >> token;
 		mode >> screenHeight_;
 		mode >> screenHeight_;
+
+		resizeScreen(screenWidth_, screenHeight_);
+
 	}
 
 	int GraphicsManager::getScreenWidth()

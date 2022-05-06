@@ -44,6 +44,8 @@ namespace El_Horno {
 		void debugStart();
 		void update(const float& dt);
 		
+		void setDebug(bool dbg);
+
 		void updateDebug(const int& debugFlags);
 		void removeDebug();
 
@@ -101,6 +103,8 @@ namespace El_Horno {
 
 		//Necesaria para renderizar el debug
 		OgreDebugDrawer* debugDrawer_ = nullptr;
+
+		bool debug_ = false;
 	};
 }
 

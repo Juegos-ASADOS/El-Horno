@@ -1,6 +1,19 @@
 light = {
     transform = {
-        position = " 0 ,200 ,200 ",
+        position = " 0 ,400 ,600 ",
+        rotation = " 0 ,0 ,0 ",
+        scale = " 0 ,0 ,0 ",
+    },
+
+    light = {
+        type = "0",
+        dirLight = " 0 ,0 ,0 ",
+    },
+}
+
+light2 = {
+    transform = {
+        position = " 0 ,200 ,400 ",
         rotation = " 0 ,0 ,0 ",
         scale = " 0 ,0 ,0 ",
     },
@@ -22,7 +35,7 @@ Peso = {
         isTrigger = "0",
          isKinematic = "0",
          colShape = "0",
-        scale = "0.35; 0.35; 0.35"
+        scale = "0.8; 0.8; 0.8"
     },
     mesh = {
         name = "Peso.mesh",
@@ -57,7 +70,7 @@ Pescaderia = {
         isTrigger = "0",
          isKinematic = "0",
          colShape = "0",
-        scale = "0.6;0.6;0.6",
+        scale = "0.85;0.85;0.85",
         
     },
     mesh = {
@@ -75,7 +88,7 @@ Carniceria = {
         isTrigger = "0",
          isKinematic = "0",
          colShape = "0",
-        scale = "0.6;0.6;0.6",
+        scale = "0.85;0.85;0.85",
         
     },
     mesh = {
@@ -110,7 +123,7 @@ BaldaDobleManzana = {
         isTrigger = "0",
          isKinematic = "0",
          colShape = "0",
-        scale = "0.35; 0.25; 0.65",
+        scale = "1.0; 1.0; 1.0",
         
     },
     mesh = {
@@ -128,7 +141,7 @@ BaldaDobleCola = {
         isTrigger = "0",
          isKinematic = "0",
          colShape = "0",
-        scale = "0.6;0.6;0.6",
+        scale = "1.0; 1.0; 0.8",
         
     },
     mesh = {
@@ -173,9 +186,9 @@ BaldaPlatano = {
 }
 cart = {
     transform = {
-        position = "  0.000000 ,0.000000 ,2.500000 " ,
+        position = "  0.000000 ,-2.000000 ,3.000000 " ,
         rotation = "   0.000000, 0.000000, 0.000000, 0.000000 " ,
-        scale = "  1.000000 ,1.000000 ,1.000000 " ,
+        scale = "  0.156 ,0.156 ,0.156 " ,
     },
     parent = {
         name = "player",
@@ -219,8 +232,8 @@ gamemanager = {
     gamemanager = {
         state = "0",
         productNum = "6",
-        list = "Tomate,3,Zanahoria,2,Pizza,1",
-        maxTime = "20",
+        list = "Manzana,3,Cocacola,2,PezRosa,1",
+        maxTime = "180",
     },
 }
 player = {
@@ -401,7 +414,7 @@ TriggerBaldaPlatano = {
 }
 TriggerBaldaDobleCola = {
     transform = {
-        position = "  0.000000 ,11.054862 ,-0.000000 " ,
+        position = "  0.000000 ,11.054862 ,10.000000 " ,
         rotation = "   0.000000, 0.000000, 0.000000, 0.000000 " ,
         scale = "  1.000000 ,1.000000 ,1.000000 " ,
     },
@@ -414,7 +427,7 @@ TriggerBaldaDobleCola = {
           isTrigger = "1",
         isKinematic = "0",
         colShape = "0",
-        scale = "8.0; 5.0; 5.0",
+        scale = "9.0; 5.0; 5.0",
         
     },
     entityid = {
@@ -462,7 +475,7 @@ TriggerBaldaDobleManzana = {
           isTrigger = "1",
         isKinematic = "0",
         colShape = "0",
-        scale = "8.0; 5.0; 5.0",
+        scale = "20.0; 5.0; 10.0",
         
     },
     entityid = {
@@ -472,4 +485,308 @@ TriggerBaldaDobleManzana = {
     },
 }
 
-entities = {"light","player","Peso", "TicketDispenser", "Pescaderia", "Carniceria", "Floor", "BaldaDobleManzana", "BaldaDobleCola", "BaldaDoblePezAzul", "BaldaPlatano", "cart", "camera", "GameManager",  "TriggerCarniceria", "TriggerPeso", "TriggerTicketDispenser", "TriggerPescaderia", "cartTrigger", "TriggerBaldaPlatano", "TriggerBaldaDobleCola", "TriggerBaldaDoblePezAzul", "TriggerBaldaDobleManzana" }
+BaldaSimpleUva = {
+    transform = {
+        position = "  160.236511 ,-0.597879 ,118.056419 " ,
+        rotation = "   0.000000, 0.000000, 0.000000, 0.000000 " ,
+        scale = "  1.000000 ,1.000000 ,1.000000 " ,
+    },
+    rigidbody = {
+        mass = "0.0",
+        isTrigger = "0",
+         isKinematic = "0",
+         colShape = "0",
+        scale = "1.0; 1.0; 1.0",
+        
+    },
+    mesh = {
+        name = "BaldaSimpleUva.mesh",
+    }
+}
+BaldaSimpleHuevos = {
+    transform = {
+        position = "  -0.434120 ,-0.597879 ,177.428406 " ,
+        rotation = "   0.000000, 0.000000, 0.000000, 0.000000 " ,
+        scale = "  1.000000 ,1.000000 ,1.000000 " ,
+    },
+    rigidbody = {
+        mass = "0.0",
+        isTrigger = "0",
+         isKinematic = "0",
+         colShape = "0",
+        scale = "1.0; 1.0; 1.0",
+        
+    },
+    mesh = {
+        name = "BaldaSimpleHuevos.mesh",
+    }
+}
+TriggerBaldaSimpleHuevos = {
+    transform = {
+        position = "  0.000000 ,11.054862 ,10.000000 " ,
+        rotation = "   0.000000, 0.000000, 0.000000, 0.000000 " ,
+        scale = "  1.000000 ,1.000000 ,1.000000 " ,
+    },
+    entityid = {
+        type = "1",
+        prodtype = "1",
+         id = "Huevos"
+    },
+    rigidbody = {
+         mass = "0.0",
+          isTrigger = "1",
+        isKinematic = "0",
+        colShape = "0",
+        scale = "4.0;5.0;5.0"
+    },
+    parent = {
+        name = "BaldaSimpleHuevos",
+        
+    },
+}
+TriggerBaldaSimpleUva = {
+    transform = {
+        position = "  0.000000 ,11.054862 ,-0.000000 " ,
+        rotation = "   0.000000, 0.000000, 0.000000, 0.000000 " ,
+        scale = "  1.000000 ,1.000000 ,1.000000 " ,
+    },
+    entityid = {
+        type = "1",
+        prodtype = "2",
+         id = "Uva"
+    },
+    rigidbody = {
+         mass = "0.0",
+          isTrigger = "1",
+        isKinematic = "0",
+        colShape = "0",
+        scale = "10.0;5.0;10.0"
+    },
+    parent = {
+        name = "BaldaSimpleUva",
+        
+    },
+}
+CajaPagar = {
+    transform = {
+        position = "  -281.750824 ,12.879817 ,-281.052643 " ,
+        rotation = "   0.000000, 0.000000, 0.000000, 0.000000 " ,
+        scale = "  1.000000 ,1.000000 ,1.000000 " ,
+    },
+    rigidbody = {
+        mass = "0.0",
+        isTrigger = "0",
+         isKinematic = "0",
+         colShape = "0",
+         scale = "0.5;1.0;1.0"
+    },
+    mesh = {
+        name = "CajaPagar.mesh",
+    }
+}
+CajaPagarHijo0 = {
+    transform = {
+        position = "  -281.750824 ,12.879817 ,-281.052643 " ,
+        rotation = "   0.000000, 0.000000, 0.000000, 0.000000 " ,
+        scale = "  1.000000 ,1.000000 ,1.000000 " ,
+    },
+    rigidbody = {
+        mass = "0.0",
+        isTrigger = "1",
+         isKinematic = "0",
+         colShape = "0",
+    },
+    mesh = {
+        name = "CajaPagarHijo0.mesh",
+    }
+}
+CajaPagarHijo1 = {
+    transform = {
+        position = "  -212.028687 ,13.214218 ,-203.516418 " ,
+        rotation = "   0.000000, 0.000000, 0.000000, 0.000000 " ,
+        scale = "  1.000000 ,1.000000 ,1.000000 " ,
+    },
+    rigidbody = {
+        mass = "0.0",
+        isTrigger = "0",
+         isKinematic = "0",
+         colShape = "0"
+    },
+    mesh = {
+        name = "CajaPagarHijo1.mesh",
+    }
+}
+CartelCarnes = {
+    transform = {
+        position = "  80.284416 ,345.700531 ,-331.748016 " ,
+        rotation = "   0.000000, 0.000000, 0.000000, 0.000000 " ,
+        scale = "  1.000000 ,1.000000 ,1.000000 " ,
+    },
+    mesh = {
+        name = "CartelCarnes.mesh",
+    }
+}
+CuboFregona = {
+    transform = {
+        position = "  0.579445 ,-0.597879 ,-164.194855 " ,
+        rotation = "   0.000000, 0.000000, 0.000000, 0.000000 " ,
+        scale = "  1.000000 ,1.000000 ,1.000000 " ,
+    },
+    rigidbody = {
+        mass = "0.0",
+        isTrigger = "0",
+         isKinematic = "0",
+         colShape = "0",
+        scale = "1.0; 1.0; 1.0",
+        
+    },
+    mesh = {
+        name = "CuboFregona.mesh",
+    }
+}
+Caja = {
+    transform = {
+        position = "  40.606834 ,-0.597879 ,-202.817596 " ,
+        rotation = "   0.000000, 0.000000, 0.000000, 0.000000 " ,
+        scale = "  1.000000 ,1.000000 ,1.000000 " ,
+    },
+    rigidbody = {
+        mass = "0",
+        isTrigger = "0",
+         isKinematic = "0",
+         colShape = "0",
+        scale = "1.0; 1.0; 1.0",
+        
+    },
+    mesh = {
+        name = "Caja.mesh",
+    }
+}
+PaleCaja = {
+    transform = {
+        position = "  149.514069 ,-0.597879 ,-192.486298 " ,
+        rotation = "   0.000000, 0.000000, 0.000000, 0.000000 " ,
+        scale = "  1.000000 ,1.000000 ,1.000000 " ,
+    },
+    rigidbody = {
+        mass = "0.0",
+        isTrigger = "0",
+         isKinematic = "0",
+         colShape = "0",
+        scale = "0.5; 0.5; 0.5",
+        
+    },
+    mesh = {
+        name = "PaleCaja.mesh",
+    }
+}
+AvisoMojado = {
+    transform = {
+        position = "  0.383064 ,-0.597879 ,-124.443275 " ,
+        rotation = "   0.000000, 0.000000, 0.000000, 0.000000 " ,
+        scale = "  1.000000 ,1.000000 ,1.000000 " ,
+    },
+    rigidbody = {
+        mass = "0.0",
+        isTrigger = "0",
+         isKinematic = "0",
+         colShape = "0",
+        scale = "0.35; 0.35;0.35",
+        
+    },
+    mesh = {
+        name = "AvisoMojado.mesh",
+    }
+}
+Papelera = {
+    transform = {
+        position = "  -253.312790 ,-0.597879 ,-182.474503 " ,
+        rotation = "   0.000000, 0.000000, 0.000000, 0.000000 " ,
+        scale = "  1.000000 ,1.000000 ,1.000000 " ,
+    },
+    rigidbody = {
+        mass = "0.0",
+        isTrigger = "0",
+         isKinematic = "0",
+         colShape = "0",
+        scale = "0.35; 0.35; 0.35",
+        
+    },
+    mesh = {
+        name = "Papelera.mesh",
+    }
+}
+Puerta = {
+    transform = {
+        position = "  131.300568 ,-0.164935 ,-354.773285 " ,
+        rotation = "   0.000000, 0.000000, 0.000000, 0.000000 " ,
+        scale = "  1.000000 ,1.000000 ,1.000000 " ,
+    },
+    rigidbody = {
+        mass = "0.0",
+        isTrigger = "0",
+         isKinematic = "0",
+         colShape = "0",
+        scale = "0.3; 1; 0.5",
+        
+    },
+    mesh = {
+        name = "Puerta.mesh",
+    }
+}
+ParedPreset = {
+    transform = {
+        position = "  157.225342 ,8.908201 ,-242.360641 " ,
+        rotation = "   0.000000, 0.000000, 0.000000, 0.000000 " ,
+        scale = "  1.000000 ,1.000000 ,1.000000 " ,
+    },
+    rigidbody = {
+        mass = "0.0",
+        isTrigger = "0",
+         isKinematic = "0",
+         colShape = "0",
+        scale = "0.35; 0.35; 0.35",
+        
+    },
+    mesh = {
+        name = "ParedPreset.mesh",
+    }
+}
+Cartel_7 = {
+    transform = {
+        position = "  80.024330 ,-0.597879 ,-123.493492 " ,
+        rotation = "   0.000000, 0.000000, 0.000000, 0.000000 " ,
+        scale = "  1.000000 ,1.000000 ,1.000000 " ,
+    },
+    rigidbody = {
+        mass = "0.0",
+        isTrigger = "0",
+         isKinematic = "0",
+         colShape = "0",
+         scale = "0.3; 0.7; 0.3",
+        
+    },
+    mesh = {
+        name = "Cartel_7.mesh",
+    }
+}
+EntradaDerecha = {
+    transform = {
+        position = "  41.231224 ,-0.597879 ,-261.909912 " ,
+        rotation = "   0.000000, 0.000000, 0.000000, 0.000000 " ,
+        scale = "  1.000000 ,1.000000 ,1.000000 " ,
+    },
+    rigidbody = {
+        mass = "0.0",
+        isTrigger = "0",
+         isKinematic = "0",
+         colShape = "0",
+        scale = "0.55; 0.35; 0.1",
+        
+    },
+    mesh = {
+        name = "EntradaDerecha.mesh",
+    }
+}
+
+entities = {"light","player","Peso", "TicketDispenser", "Pescaderia", "Carniceria", "Floor", "BaldaDobleManzana", "BaldaDobleCola", "BaldaDoblePezAzul", "BaldaPlatano", "cart", "camera", "gamemanager",  "TriggerCarniceria", "TriggerPeso", "TriggerTicketDispenser", "TriggerPescaderia", "cartTrigger", "TriggerBaldaPlatano", "TriggerBaldaDobleCola", "TriggerBaldaDoblePezAzul", "TriggerBaldaDobleManzana" }

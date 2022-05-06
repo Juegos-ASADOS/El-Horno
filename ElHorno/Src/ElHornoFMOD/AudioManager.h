@@ -5,6 +5,7 @@
 #include <string>
 #include <map>
 #include "fmod_common.h"
+#include "HornoVector3.h"
 //struct FMOD_VECTOR;
 //enum FMOD_RESULT;
 
@@ -69,6 +70,7 @@ namespace El_Horno {
 		void pauseAllChannels();
 		void resumeAllChannels();
 		void SetChannel3dPosition(int nChannelId, const FMOD_VECTOR& vPosition);
+		void SetChannel3dPosition(int nChannelId, const HornoVector3& vPosition);
 		void SetChannelvolume(int nChannelId, float fVolumedB);
 		void upMusicVolume();
 		void downMusicVolume();
@@ -84,15 +86,20 @@ namespace El_Horno {
 		void updateListener(int Listener, const FMOD_VECTOR& position, const FMOD_VECTOR& velocity, const FMOD_VECTOR& forward, const FMOD_VECTOR& up);
 		void updateSound(const FMOD_VECTOR& position, const FMOD_VECTOR& velocity, int channel);
 
+
+
+		void stopMusic();
+		int getMusicChannel();
 	private:
 		static Implementation* sgpImplementation;
 		static AudioManager* instance_;
 		FMOD::SoundGroup* music;
+		int musicChannel;
 		FMOD::SoundGroup* fx;
 
-		float changeQuantity = 0.1f; 
+		float changeQuantity = 5.0f;
 
-		float musicVolume;
+		float musicVolume = -1;
 		float fxVolume;
 	};
 }

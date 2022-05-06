@@ -1,3 +1,4 @@
+#include "AudioListenerComponent.h"
 #include "CameraComponent.h"
 #include "ElHornoBase.h"
 #include "GraphicsManager.h"
@@ -107,6 +108,7 @@ namespace El_Horno {
 			actualPos.z_ += (targetPos.z_ - actualPos.z_) * lerpAmount_;
 			camPos_ = HornoVectorToOgre(actualPos);
 			tr_->setGlobalPosition(camPos_);
+
 		}
 	}
 

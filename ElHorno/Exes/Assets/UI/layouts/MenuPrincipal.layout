@@ -3,7 +3,6 @@
 <GUILayout version="4" >
     <Window type="DefaultWindow" name="MenuPrincipal" >
         <Property name="Area" value="{{0,0},{0,0},{1,0},{1,0}}" />
-        <Property name="CursorPassThroughEnabled" value="true" />
         <Window type="GWEN/StaticImage" name="Fondo" >
             <Property name="Image" value="DondeTaLeche/Fondo" />
             <Property name="Area" value="{{0,0},{0,2},{1,0},{1,2}}" />
@@ -30,48 +29,36 @@
             <Window type="VDondeTaLeche/Boton" name="Boton4" >
                 <Property name="Area" value="{{0,50},{0,924},{0,367},{0,1032}}" />
                 <Property name="HorizontalAlignment" value="Centre" />
-                <Property name="CursorPassThroughEnabled" value="true" />
                 <Property name="HoverImage" value="DondeTaLeche/MenuBoton_Over" />
                 <Property name="NormalImage" value="DondeTaLeche/MenuBoton" />
                 <Property name="AutoRepeatDelay" value="0.029999999" />
-                <Property name="Text" value="Boton" />
                 <Property name="PushedImage" value="DondeTaLeche/MenuBoton_Press" />
-                <Property name="CursorInputPropagationEnabled" value="true" />
                 <UserString name="Text" value="Boton" />
             </Window>
             <Window type="VDondeTaLeche/Boton" name="Boton3" >
                 <Property name="Area" value="{{0,30},{0,784},{0,362},{0,901}}" />
                 <Property name="HorizontalAlignment" value="Centre" />
-                <Property name="CursorPassThroughEnabled" value="true" />
                 <Property name="HoverImage" value="DondeTaLeche/MenuBoton_Over" />
                 <Property name="NormalImage" value="DondeTaLeche/MenuBoton" />
                 <Property name="AutoRepeatDelay" value="0.029999999" />
-                <Property name="Text" value="Boton" />
                 <Property name="PushedImage" value="DondeTaLeche/MenuBoton_Press" />
-                <Property name="CursorInputPropagationEnabled" value="true" />
                 <UserString name="Text" value="Boton" />
             </Window>
             <Window type="VDondeTaLeche/Boton" name="Boton2" >
                 <Property name="Area" value="{{0,5},{0,650},{0,371},{0,777}}" />
                 <Property name="HorizontalAlignment" value="Centre" />
-                <Property name="CursorPassThroughEnabled" value="true" />
                 <Property name="HoverImage" value="DondeTaLeche/MenuBoton_Over" />
                 <Property name="NormalImage" value="DondeTaLeche/MenuBoton" />
                 <Property name="AutoRepeatDelay" value="0.029999999" />
-                <Property name="Text" value="Boton" />
                 <Property name="PushedImage" value="DondeTaLeche/MenuBoton_Press" />
-                <Property name="CursorInputPropagationEnabled" value="true" />
                 <UserString name="Text" value="Boton" />
             </Window>
             <Window type="VDondeTaLeche/Boton" name="Boton" >
                 <Property name="Area" value="{{0,13},{0,523},{0,337},{0,641}}" />
                 <Property name="HorizontalAlignment" value="Centre" />
-                <Property name="CursorPassThroughEnabled" value="true" />
                 <Property name="HoverImage" value="DondeTaLeche/MenuBoton_Over" />
                 <Property name="NormalImage" value="DondeTaLeche/MenuBoton" />
-                <Property name="Text" value="Boton" />
                 <Property name="PushedImage" value="DondeTaLeche/MenuBoton_Press" />
-                <Property name="CursorInputPropagationEnabled" value="true" />
                 <UserString name="Text" value="Boton" />
             </Window>
         </Window>
