@@ -38,6 +38,7 @@ namespace El_Horno {
 		void start();
 		void preUpdate();
 		void update();
+		void pauseUpdate();
 		void render();
 
 		//Métodos para añadir/quitar/comprobar sobre los componentes de la entidad

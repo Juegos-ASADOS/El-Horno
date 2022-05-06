@@ -72,8 +72,8 @@ namespace El_Horno {
 
 		setupResources();
 
-		ogreSceneManager_->setSkyDome(true, "Examples/CloudySky", 5, 80);
-
+		ogreSceneManager_->setSkyDome(true, "Examples/MorningSkyBox", 5, 10);
+		//ogreSceneManager_->setSkyBox(true, "Examples/MorningSkyBox", 2000, false);
 		//Inicializa el debug en PhysicsManager
 		//if(debug)
 		PhysicsManager::getInstance()->debugStart();
@@ -215,6 +215,9 @@ namespace El_Horno {
 		InputManager::getInstance()->flushInput();
 		while (SDL_PollEvent(&event))
 		{
+			if (event.type == SDL_QUIT)
+				return true;
+
 			InputManager::getInstance()->generalInputManagement(event);
 
 			//switch (event.type)

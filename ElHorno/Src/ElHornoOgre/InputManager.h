@@ -72,6 +72,9 @@ namespace El_Horno {
 
 		Sint16 getAxis(SDL_GameControllerAxis axis);
 		bool isButtonDown(SDL_GameControllerButton button);
+
+		void hideMouse();
+		void showMouse();
 	};
 }
 #endif _INPUT_MANAGER_H

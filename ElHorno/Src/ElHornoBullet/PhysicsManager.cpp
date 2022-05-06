@@ -117,7 +117,7 @@ namespace El_Horno {
 		dynamicsWorld_ = new btDiscreteDynamicsWorld(dispatcher_, broadphaseInterface_, constraintSolver_, collisionConfiguration_);
 
 		//Gravedad por defecto
-		dynamicsWorld_->setGravity(btVector3(0, -9.8, 0));
+		dynamicsWorld_->setGravity(btVector3(0, -50, 0));
 
 		layers_ = new CollisionLayers();
 	}

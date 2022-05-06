@@ -197,6 +197,20 @@ namespace El_Horno {
 		}
 	}
 
+	void AudioManager::pauseAllChannels()
+	{
+		for (int i = 0; i < sgpImplementation->mChannels.size(); ++i) {
+			sgpImplementation->mChannels[i]->setPaused(true);
+		}
+	}
+
+	void AudioManager::resumeAllChannels()
+	{
+		for (int i = 0; i < sgpImplementation->mChannels.size(); ++i) {
+			sgpImplementation->mChannels[i]->setPaused(false);
+		}
+	}
+
 	void AudioManager::SetChannel3dPosition(int nChannelId, const FMOD_VECTOR& vPosition)
 	{
 		auto tFoundIt = sgpImplementation->mChannels.find(nChannelId);

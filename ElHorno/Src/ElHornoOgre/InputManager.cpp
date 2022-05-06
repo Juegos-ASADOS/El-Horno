@@ -355,6 +355,15 @@ namespace El_Horno {
 
 		return false;
 	}
+	void InputManager::hideMouse()
+	{
+		SDL_ShowCursor(false);
+	}
+
+	void InputManager::showMouse()
+	{
+		SDL_ShowCursor(true);
+	}
 }
 
 //http://cegui.org.uk/wiki/Using_CEGUI_with_SDL_and_OpenGL_(0.7) //la referencia que voya a usar

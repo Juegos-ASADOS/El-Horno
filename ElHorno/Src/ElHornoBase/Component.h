@@ -30,6 +30,7 @@ namespace El_Horno {
 		virtual void start() {};	//Esto es para codependencias de nuestros componentes
 		virtual void preUpdate() {};
 		virtual void update() {};
+		virtual void pauseUpdate() {};
 		virtual void render() {};
 
 		virtual void onEnable() {};
