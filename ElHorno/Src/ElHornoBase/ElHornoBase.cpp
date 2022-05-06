@@ -142,7 +142,7 @@ namespace El_Horno {
 	Gestiona eventos y actualiza los managers
 	*/
 	void ElHornoBase::processFrame(float deltaTime) {
-		exit_ = GraphicsManager::getInstance()->pollEvents();
+		GraphicsManager::getInstance()->pollEvents();
 
 		if (!paused_) {
 			SceneManager::getInstance()->preUpdate();
