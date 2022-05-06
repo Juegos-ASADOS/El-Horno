@@ -18,11 +18,15 @@
 #include <OgreColourValue.h>
 
 namespace El_Horno {
-	LightComponent::LightComponent(int type, HornoVector3 dirLight/*, Ogre::ColourValue colourLight*/)
+
+	LightComponent::LightComponent(int type, HornoVector3 dirLight, HornoVector3 diffuse, HornoVector3 specular, float powerS)
 	{
 		type_ = type;
-		dirLight_ = HornoVectorToOgre(dirLight);
-		//colourLight_ = colourLight;
+		dirLight_ = dirLight;
+		diffuse_  = diffuse;
+		specular_ = specular;
+		powerScale_ = powerS;
+		
 	}
 
 	LightComponent::LightComponent()
@@ -48,7 +52,16 @@ namespace El_Horno {
 				type_ = stoi(parameters[i].second);
 			}
 			else if (parameters[i].first == "dirLight") {
-				dirLight_ = StringToVector(parameters[i].second);
+				dirLight_ = StringToHorno(parameters[i].second);
+			}
+			else if (parameters[i].first == "diffuse") {
+				diffuse_ = StringToHorno(parameters[i].second);
+			}
+			else if (parameters[i].first == "specular") {
+				specular_ = StringToHorno(parameters[i].second);
+			}
+			else if (parameters[i].first == "powerScale") {
+				powerScale_ = stof(parameters[i].second);
 			}
 		}
 	}
@@ -61,9 +74,9 @@ namespace El_Horno {
 		setType(type_);
 
 		// Establecemos sus parametros basicos
-		/*light_->setDiffuseColour(1.0, 1.0, 1.0);
-		light_->setSpecularColour(.8, .7, .8);
-		light_->setPowerScale(1);*/
+		light_->setDiffuseColour(diffuse_.x_, diffuse_.y_, diffuse_.z_);
+		light_->setSpecularColour(specular_.x_, specular_.y_, specular_.z_);
+		light_->setPowerScale(powerScale_);
 
 		tr_ = entity_->getComponent<Transform>("transform");
 		tr_->getNode()->attachObject(light_);

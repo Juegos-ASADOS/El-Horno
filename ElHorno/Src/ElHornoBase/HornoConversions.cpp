@@ -56,6 +56,20 @@ namespace El_Horno {
 		return fVec;
 	}
 
+	El_Horno::HornoVector3 StringToHorno(std::string vec)
+	{
+
+		std::istringstream in(vec);
+		std::string val;
+		std::vector<float> values;
+
+		while (getline(in, val, ',')) {
+			values.push_back(std::stod(val));
+		}
+
+		return El_Horno::HornoVector3(values[0], values[1], values[2]);
+	}
+
 	btQuaternion QuaternionToBullet(const Ogre::Quaternion& q)
 	{
 		return btQuaternion(q.x, q.y, q.z, q.w);

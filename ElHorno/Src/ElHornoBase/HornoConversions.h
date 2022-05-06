@@ -29,6 +29,8 @@ namespace El_Horno {
 	_declspec(dllexport) El_Horno::HornoVector3 OgreVectorToHorno(const Ogre::Vector3& v);
 	_declspec(dllexport) El_Horno::HornoVector3 BulletVectorToHorno(const btVector3& v);
 	_declspec(dllexport) FMOD_VECTOR HornoVectorToFmod(const El_Horno::HornoVector3& v);
+	_declspec(dllexport) El_Horno::HornoVector3 StringToHorno(std::string vec);
+
 
 	_declspec(dllexport) btQuaternion QuaternionToBullet(const Ogre::Quaternion& q);
 	_declspec(dllexport) Ogre::Quaternion QuaternionToOgre(const btQuaternion& q);

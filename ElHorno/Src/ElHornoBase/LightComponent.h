@@ -3,18 +3,22 @@
 #define _LightComponent_H
 
 #include "Component.h"
-#include <OgreVector3.h>
+#include "HornoVector3.h"
+//#include <OgreVector3.h>
 //#include <map>
 
+namespace Ogre {
+	class Light;
+}
+
 namespace El_Horno {
-	class HornoVector3;
 	class Transform;
 
 	class _declspec(dllexport) LightComponent : public Component
 	{
 	public:
 
-		LightComponent(int type, HornoVector3 dirLight/*, Ogre::ColourValue colourLight*/);
+		LightComponent(int type, HornoVector3 dirLight, HornoVector3 diffuse = HornoVector3(0.5,0.5,0.5), HornoVector3 specular = HornoVector3(0.5, 0.5, 0.5), float powerS = 1);
 		LightComponent();
 		~LightComponent();
 
@@ -41,7 +45,10 @@ namespace El_Horno {
 		// Luz de ogre
 		Ogre::Light* light_ = nullptr;
 		int type_;
-		Ogre::Vector3 dirLight_;
+		HornoVector3 dirLight_;
+		HornoVector3 diffuse_;
+		HornoVector3 specular_;
+		float powerScale_;
 		//Ogre::ColourValue colourLight_;
 	};
 }
