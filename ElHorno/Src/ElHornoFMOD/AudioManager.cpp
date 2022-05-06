@@ -179,12 +179,23 @@ namespace El_Horno {
 			if (currMode & FMOD_3D) {
 				ErrorCheck(pChannel->set3DAttributes(&vPosition, nullptr));
 			}
-			ErrorCheck(pChannel->setVolume(dbToVolume(fVolumedB)));
+			if (isMusic && musicVolume != -1) {
+					ErrorCheck(pChannel->setVolume(dbToVolume(musicVolume)));
+			}
+			else if (!isMusic && fxVolume != -1) {
+				ErrorCheck(pChannel->setVolume(dbToVolume(fxVolume)));		
+			}
+			else {
+				ErrorCheck(pChannel->setVolume(dbToVolume(fVolumedB)));
+				if (isMusic)
+					musicVolume = fVolumedB;
+				else
+					fxVolume = fVolumedB;
+			}
 			ErrorCheck(pChannel->setPaused(false));
 			sgpImplementation->mChannels[nChannelId] = pChannel;
 			if (isMusic) {
-				musicChannel = nChannelId;
-				musicVolume = fVolumedB;
+				musicChannel = nChannelId;		
 			}
 		}
 		return nChannelId;
