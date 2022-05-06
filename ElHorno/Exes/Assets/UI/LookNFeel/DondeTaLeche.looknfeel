@@ -2,6 +2,10 @@
 <Falagard version="7">
     <!--Boton-->
     <WidgetLook name="DondeTaLeche/Boton">
+      <PropertyDefinition initialValue="FF525252" name="NormalTextColour" redrawOnWrite="true" />
+      <PropertyDefinition initialValue="FF2E72B2" name="HoverTextColour" redrawOnWrite="true" />
+      <PropertyDefinition initialValue="FFFFFFFF" name="PushedTextColour" redrawOnWrite="true" />
+      <PropertyDefinition initialValue="FF777777" name="DisabledTextColour" redrawOnWrite="true" />
         <PropertyDefinition initialValue="CentreAligned" name="VertLabelFormatting" />
         <PropertyDefinition initialValue="CentreAligned" name="HorzLabelFormatting" />
         <PropertyDefinition initialValue="" name="NormalImage" redrawOnWrite="true" />

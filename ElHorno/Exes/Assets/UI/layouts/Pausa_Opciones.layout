@@ -3,7 +3,6 @@
 <GUILayout version="4" >
     <Window type="DefaultWindow" name="MenuPausa_Opciones" >
         <Property name="Area" value="{{0,0},{0,0},{1,0},{1,0}}" />
-        <Property name="CursorPassThroughEnabled" value="true" />
         <Window type="GWEN/StaticImage" name="Halo" >
             <Property name="Image" value="DondeTaLeche/Halo" />
             <Property name="Area" value="{{0,0},{0,0},{1,0},{1,0}}" />
@@ -19,7 +18,6 @@
                 <Property name="Area" value="{{0,417},{0,612},{0,547},{0,714}}" />
                 <Property name="HoverImage" value="DondeTaLeche/Menos_Over" />
                 <Property name="NormalImage" value="DondeTaLeche/Menos" />
-                <Property name="Text" value="Boton" />
                 <Property name="PushedImage" value="DondeTaLeche/Menos_Press" />
                 <UserString name="Text" value="Boton" />
             </Window>
@@ -27,7 +25,6 @@
                 <Property name="Area" value="{{0,410},{0,407},{0,540},{0,509}}" />
                 <Property name="HoverImage" value="DondeTaLeche/Menos_Over" />
                 <Property name="NormalImage" value="DondeTaLeche/Menos" />
-                <Property name="Text" value="Boton" />
                 <Property name="PushedImage" value="DondeTaLeche/Menos_Press" />
                 <UserString name="Text" value="Boton" />
             </Window>
@@ -35,7 +32,6 @@
                 <Property name="Area" value="{{0,233},{0,737},{0,370},{0,842}}" />
                 <Property name="HoverImage" value="DondeTaLeche/FlechaIz_Over" />
                 <Property name="NormalImage" value="DondeTaLeche/FlechaIz" />
-                <Property name="Text" value="Boton" />
                 <Property name="PushedImage" value="DondeTaLeche/FlechaIz_Press" />
                 <UserString name="Text" value="Boton" />
             </Window>
@@ -43,7 +39,6 @@
                 <Property name="Area" value="{{0,770},{0,740},{0,900},{0,842}}" />
                 <Property name="HoverImage" value="DondeTaLeche/FlechaDer_Over" />
                 <Property name="NormalImage" value="DondeTaLeche/FlechaDer" />
-                <Property name="Text" value="Boton" />
                 <Property name="PushedImage" value="DondeTaLeche/FlechaDer_Press" />
                 <UserString name="Text" value="Boton" />
             </Window>
@@ -51,7 +46,6 @@
                 <Property name="Area" value="{{0,602},{0,611},{0,732},{0,713}}" />
                 <Property name="HoverImage" value="DondeTaLeche/Suma_Over" />
                 <Property name="NormalImage" value="DondeTaLeche/Suma" />
-                <Property name="Text" value="Boton" />
                 <Property name="PushedImage" value="DondeTaLeche/Suma_Press" />
                 <UserString name="Text" value="Boton" />
             </Window>
@@ -59,7 +53,6 @@
                 <Property name="Area" value="{{0,610},{0,411},{0,740},{0,513}}" />
                 <Property name="HoverImage" value="DondeTaLeche/Suma_Over" />
                 <Property name="NormalImage" value="DondeTaLeche/Suma" />
-                <Property name="Text" value="Boton" />
                 <Property name="PushedImage" value="DondeTaLeche/Suma_Press" />
                 <UserString name="Text" value="Boton" />
             </Window>
@@ -151,7 +144,6 @@
                 <Property name="Area" value="{{0,387},{0,912},{0,753},{0,1039}}" />
                 <Property name="HoverImage" value="DondeTaLeche/MenuBoton_Over" />
                 <Property name="NormalImage" value="DondeTaLeche/MenuBoton" />
-                <Property name="Text" value="Boton" />
                 <Property name="PushedImage" value="DondeTaLeche/MenuBoton_Press" />
                 <UserString name="Text" value="Boton" />
             </Window>

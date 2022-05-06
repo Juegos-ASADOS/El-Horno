@@ -15,7 +15,6 @@
             <Property name="BackgroundEnabled" value="false" />
         </Window>
         <Window type="GWEN/StaticImage" name="Controles" >
-            <Property name="AutoRenderingSurfaceStencilEnabled" value="true" />
             <Property name="Image" value="Unknown/Controles" />
             <Property name="Area" value="{{0,75},{0,48},{1,-1538},{1,-874}}" />
             <Property name="MaxSize" value="{{1,0},{1,0}}" />
@@ -25,7 +24,6 @@
             <Property name="BackgroundEnabled" value="false" />
         </Window>
         <Window type="GWEN/StaticImage" name="Lista" >
-            <Property name="AutoRenderingSurfaceStencilEnabled" value="true" />
             <Property name="Image" value="DondeTaLeche/Lista" />
             <Property name="Area" value="{{0,1457},{0,-164},{1,15},{1,-346}}" />
             <Property name="MaxSize" value="{{1,0},{1,0}}" />
@@ -185,7 +183,6 @@
             <Property name="BackgroundEnabled" value="false" />
         </Window>
         <Window type="GWEN/StaticImage" name="Tutorial" >
-            <Property name="AutoRenderingSurfaceStencilEnabled" value="true" />
             <Property name="Image" value="DondeTaLeche/Tutoriales_MyVieja" />
             <Property name="Area" value="{{0,189},{0,700},{1,-578},{1,10}}" />
             <Property name="AutoRenderingSurface" value="true" />
@@ -226,7 +223,6 @@
             <Property name="BackgroundEnabled" value="false" />
         </Window>
         <Window type="GWEN/StaticImage" name="Tutorial_Inico" >
-            <Property name="AutoRenderingSurfaceStencilEnabled" value="true" />
             <Property name="Image" value="Unknown/Tuto_Inicio" />
             <Property name="Area" value="{{0,530},{0,880},{1,-757},{1,-20}}" />
             <Property name="AutoRenderingSurface" value="true" />
@@ -235,7 +231,6 @@
             <Property name="BackgroundEnabled" value="false" />
         </Window>
         <Window type="GWEN/StaticImage" name="Reloj" >
-            <Property name="AutoRenderingSurfaceStencilEnabled" value="true" />
             <Property name="Image" value="DondeTaLeche/Reloj" />
             <Property name="Area" value="{{0,1513},{0,860},{1,29},{1,26}}" />
             <Property name="AutoRenderingSurface" value="true" />
@@ -243,7 +238,6 @@
             <Property name="FrameEnabled" value="false" />
             <Property name="BackgroundEnabled" value="false" />
             <Window type="GWEN/StaticText" name="Texto_Reloj" >
-                <Property name="AutoRenderingSurfaceStencilEnabled" value="true" />
                 <Property name="Area" value="{{0,112},{0,78},{1,-78},{1,-50}}" />
                 <Property name="AutoRenderingSurface" value="true" />
                 <Property name="Font" value="LemonJuice_Normal" />

@@ -186,9 +186,9 @@ BaldaPlatano = {
 }
 cart = {
     transform = {
-        position = "  0.000000 ,0.000000 ,2.500000 " ,
+        position = "  0.000000 ,-2.000000 ,3.000000 " ,
         rotation = "   0.000000, 0.000000, 0.000000, 0.000000 " ,
-        scale = "  1.000000 ,1.000000 ,1.000000 " ,
+        scale = "  0.156 ,0.156 ,0.156 " ,
     },
     parent = {
         name = "player",
@@ -788,4 +788,5 @@ EntradaDerecha = {
         name = "EntradaDerecha.mesh",
     }
 }
-entities = {"light","player","Peso", "TicketDispenser", "Pescaderia", "Carniceria", "Floor", "BaldaDobleManzana", "BaldaDobleCola", "BaldaDoblePezAzul", "BaldaPlatano", "cart", "camera", "GameManager",  "TriggerCarniceria", "TriggerPeso", "TriggerTicketDispenser", "TriggerPescaderia", "cartTrigger", "TriggerBaldaPlatano", "TriggerBaldaDobleCola", "TriggerBaldaDoblePezAzul", "TriggerBaldaDobleManzana","BaldaSimpleUva", "BaldaSimpleHuevos", "TriggerBaldaSimpleHuevos", "TriggerBaldaSimpleUva","Caja","CuboFregona", "CajaPagar" }
+
+entities = {"light","player","Peso", "TicketDispenser", "Pescaderia", "Carniceria", "Floor", "BaldaDobleManzana", "BaldaDobleCola", "BaldaDoblePezAzul", "BaldaPlatano", "cart", "camera", "gamemanager",  "TriggerCarniceria", "TriggerPeso", "TriggerTicketDispenser", "TriggerPescaderia", "cartTrigger", "TriggerBaldaPlatano", "TriggerBaldaDobleCola", "TriggerBaldaDoblePezAzul", "TriggerBaldaDobleManzana" }

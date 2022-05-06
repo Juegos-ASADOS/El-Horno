@@ -3,7 +3,6 @@
 <GUILayout version="4" >
     <Window type="DefaultWindow" name="MenuPrincipal_Opciones" >
         <Property name="Area" value="{{0,0},{0,0},{1,0},{1,0}}" />
-        <Property name="CursorPassThroughEnabled" value="true" />
         <Window type="GWEN/StaticImage" name="Fondo" >
             <Property name="Image" value="DondeTaLeche/Fondo" />
             <Property name="Area" value="{{0,0},{0,2},{1,0},{1,2}}" />
@@ -127,7 +126,6 @@
                 <Property name="HoverImage" value="DondeTaLeche/Menos_Over" />
                 <Property name="NormalImage" value="DondeTaLeche/Menos" />
                 <Property name="AlwaysOnTop" value="true" />
-                <Property name="Text" value="Boton" />
                 <Property name="PushedImage" value="DondeTaLeche/Menos_Press" />
                 <UserString name="Text" value="Boton" />
             </Window>
@@ -138,7 +136,6 @@
                 <Property name="HoverImage" value="DondeTaLeche/Menos_Over" />
                 <Property name="NormalImage" value="DondeTaLeche/Menos" />
                 <Property name="AlwaysOnTop" value="true" />
-                <Property name="Text" value="Boton" />
                 <Property name="PushedImage" value="DondeTaLeche/Menos_Press" />
                 <UserString name="Text" value="Boton" />
             </Window>
@@ -149,7 +146,6 @@
                 <Property name="HoverImage" value="DondeTaLeche/FlechaIz_Over" />
                 <Property name="NormalImage" value="DondeTaLeche/FlechaIz" />
                 <Property name="AlwaysOnTop" value="true" />
-                <Property name="Text" value="Boton" />
                 <Property name="PushedImage" value="DondeTaLeche/FlechaIz_Press" />
                 <UserString name="Text" value="Boton" />
             </Window>
@@ -160,7 +156,6 @@
                 <Property name="HoverImage" value="DondeTaLeche/FlechaDer_Over" />
                 <Property name="NormalImage" value="DondeTaLeche/FlechaDer" />
                 <Property name="AlwaysOnTop" value="true" />
-                <Property name="Text" value="Boton" />
                 <Property name="PushedImage" value="DondeTaLeche/FlechaDer_Press" />
                 <UserString name="Text" value="Boton" />
             </Window>
@@ -171,7 +166,6 @@
                 <Property name="HoverImage" value="DondeTaLeche/Suma_Over" />
                 <Property name="NormalImage" value="DondeTaLeche/Suma" />
                 <Property name="AlwaysOnTop" value="true" />
-                <Property name="Text" value="Boton" />
                 <Property name="PushedImage" value="DondeTaLeche/Suma_Press" />
                 <UserString name="Text" value="Boton" />
             </Window>
@@ -182,21 +176,17 @@
                 <Property name="HoverImage" value="DondeTaLeche/Suma_Over" />
                 <Property name="NormalImage" value="DondeTaLeche/Suma" />
                 <Property name="AlwaysOnTop" value="true" />
-                <Property name="Text" value="Boton" />
                 <Property name="PushedImage" value="DondeTaLeche/Suma_Press" />
                 <UserString name="Text" value="Boton" />
             </Window>
             <Window type="VDondeTaLeche/Boton" name="BotonVolver" >
                 <Property name="Area" value="{{0,-27},{0,415},{0,317},{0,542}}" />
                 <Property name="HorizontalAlignment" value="Centre" />
-                <Property name="CursorPassThroughEnabled" value="true" />
                 <Property name="VerticalAlignment" value="Centre" />
                 <Property name="HoverImage" value="DondeTaLeche/MenuBoton_Over" />
                 <Property name="NormalImage" value="DondeTaLeche/MenuBoton" />
                 <Property name="AlwaysOnTop" value="true" />
-                <Property name="Text" value="Boton" />
                 <Property name="PushedImage" value="DondeTaLeche/MenuBoton_Press" />
-                <Property name="CursorInputPropagationEnabled" value="true" />
                 <UserString name="Text" value="Boton" />
             </Window>
         </Window>
