@@ -38,22 +38,22 @@ Peso = {
         name = "Peso.mesh",
     }
 }
-CajaPagar = {
-    transform = {
-        position = "  22.476969 ,0.071519 ,-5.477413 " ,
-        rotation = "   0.000000, 0.000000, 0.000000, 0.000000 " ,
-        scale = "  1.000000 ,1.000000 ,1.000000 " ,
-    },
-    rigidbody = {
-        mass = "0.0",
-        isTrigger = "0",
-         isKinematic = "0",
-         colShape = "0"
-    },
-    mesh = {
-        name = "CajaPagar.mesh",
-    }
-}
+-- CajaPagar = {
+--     transform = {
+--         position = "  22.476969 ,0.071519 ,-5.477413 " ,
+--         rotation = "   0.000000, 0.000000, 0.000000, 0.000000 " ,
+--         scale = "  1.000000 ,1.000000 ,1.000000 " ,
+--     },
+--     rigidbody = {
+--         mass = "0.0",
+--         isTrigger = "0",
+--          isKinematic = "0",
+--          colShape = "0"
+--     },
+--     mesh = {
+--         name = "CajaPagar.mesh",
+--     }
+-- }
 TicketDispenser = {
     transform = {
         position = "  23.502407 ,0.000000 ,-16.502031 " ,
@@ -231,38 +231,38 @@ CartelLeche = {
         name = "CartelLeche.mesh",
     }
 }
-CuboFregona = {
-    transform = {
-        position = "  21.408035 ,0.000000 ,-19.547150 " ,
-        rotation = "   0.000000, 0.000000, 0.000000, 0.000000 " ,
-        scale = "  1.000000 ,1.000000 ,1.000000 " ,
-    },
-    rigidbody = {
-        mass = "4.0",
-        isTrigger = "0",
-         isKinematic = "0",
-         colShape = "0"
-    },
-    mesh = {
-        name = "CuboFregona.mesh",
-    }
-}
-Caja = {
-    transform = {
-        position = "  19.476898 ,0.000000 ,-21.548521 " ,
-        rotation = "   0.000000, 0.000000, 0.000000, 0.000000 " ,
-        scale = "  1.000000 ,1.000000 ,1.000000 " ,
-    },
-    rigidbody = {
-        mass = "4.0",
-        isTrigger = "0",
-         isKinematic = "0",
-         colShape = "0"
-    },
-    mesh = {
-        name = "Caja.mesh",
-    }
-}
+-- CuboFregona = {
+--     transform = {
+--         position = "  21.408035 ,0.000000 ,-19.547150 " ,
+--         rotation = "   0.000000, 0.000000, 0.000000, 0.000000 " ,
+--         scale = "  1.000000 ,1.000000 ,1.000000 " ,
+--     },
+--     rigidbody = {
+--         mass = "4.0",
+--         isTrigger = "0",
+--          isKinematic = "0",
+--          colShape = "0"
+--     },
+--     mesh = {
+--         name = "CuboFregona.mesh",
+--     }
+-- }
+-- Caja = {
+--     transform = {
+--         position = "  19.476898 ,0.000000 ,-21.548521 " ,
+--         rotation = "   0.000000, 0.000000, 0.000000, 0.000000 " ,
+--         scale = "  1.000000 ,1.000000 ,1.000000 " ,
+--     },
+--     rigidbody = {
+--         mass = "4.0",
+--         isTrigger = "0",
+--          isKinematic = "0",
+--          colShape = "0"
+--     },
+--     mesh = {
+--         name = "Caja.mesh",
+--     }
+-- }
 PaleCaja = {
     transform = {
         position = "  19.993464 ,0.000000 ,-26.993883 " ,
@@ -2182,4 +2182,4 @@ light = {
     },
 }
 
-entities = {"light", "Player", "CarritoScene", "MainCamera", "GameManager",  "TriggerCarro", "Peso", "CajaPagar", "TicketDispenser", "Pescaderia", "Carniceria", "Floor", "CartelCarnes", "CartelPescados", "CartelCocacolas", "CartelTomates", "CartelSandias", "CartelCereales", "CartelLeche", "CuboFregona", "Caja", "PaleCaja", "Maceta", "Cestas", "AvisoMojado", "Papelera", "Pale", "Puerta", "Charco", "ParedPreset", "Cartel_1", "Cartel_2", "Cartel_0", "Cartel_3", "Cartel_5", "Cartel_6", "Cartel_4", "Cartel_7", "BaldaDobleColision", "BaldaDobleFrigorifica", "BaldaDobleMadera", "BaldaSimpleColision", "BaldaSimpleFrigorifica", "BaldaSimpleMadera", "BaldaDobleFruta", "BaldaSimpleFruta", "EntradaIzquierda", "EntradaDerecha", "Carne_1", "Carne_0", "BolsaPapas", "Pan", "Sandia", "Pina", "Calabaza", "Zanahoria", "Mandarina", "Manzana", "Uvas", "Cocacola", "FantaLimon", "Agua", "FantaNaranja", "Leche", "Nata", "Cafe", "CerealesRojos", "PezAzul", "PezRosa", "Huevos", "BotellaVino", "Pizza", "Donut", "Platano", "Tomate", "CerealesNaranjas", "CerealesVerdes", "BaldaDobleSandias", "BaldaSimpleSandia", "BaldaDobleLeche", "BaldaSimpleLeche", "BaldaDobleVino", "BaldaSimpleVino", "BaldaDoblePinas", "BaldaSimplePinas", "BaldaDobleZanahorias", "BaldaSimpleZanahorias", "BaldaDobleMandarinas", "BaldaSimpleMandarinas", "BaldaDobleCalabazas", "BaldaSimpleCalabazas", "BaldaDobleUvas", "BaldaSimpleUvas", "BaldaDobleManzanas", "BaldaSimpleManzanas", "BaldaDobleNata", "BaldaDobleCafe", "BaldaDobleCerealesRojos", "BaldaSimpleCerealesRojos", "BaldaDobleHuevos", "BaldaSimpleHuevos", "BaldaDobleCola", "BaldaSimpleCola", "BaldaDobleFantaNaranja", "BaldaSimpleFantaNaranja", "BaldaDobleFantaLimon", "BaldaSimpleFantaLimon", "BaldaDobleAgua", "BaldaSimpleAgua", "BaldaDoblePezAzul", "BaldaSimplePezAzul", "BaldaDoblePezRosa", "BaldaSimplePezRosa", "BaldaPlatanos", "BaldaDoblePizza", "BaldaSimplePizza", "BaldaSimpleDonut", "BaldaDobleDonut", "BaldaSimpleCarne_0", "BaldaDobleCarne_0", "BaldaSimpleCarne_1", "BaldaDobleCarne_1", "BaldaDoblePatatas", "BaldaSimplePatatas", "BaldaDoblePan", "BaldaSimplePan", "BaldaSimpleTomates", "BaldaDobleTomates", "BaldaSimpleCafe", "BaldaSimpleNata", "BaldaDobleCerealesNaranjas", "BaldaSimpleCerealesNaranjas", "BaldaDobleCerealesVerdes", "BaldaSimpleCerealesVerdes" }
+entities = {"light", "Player", "CarritoScene", "MainCamera", "GameManager" }
