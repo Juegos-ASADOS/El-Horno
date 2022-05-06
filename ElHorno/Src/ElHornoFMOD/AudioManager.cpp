@@ -180,7 +180,7 @@ namespace El_Horno {
 				ErrorCheck(pChannel->set3DAttributes(&vPosition, nullptr));
 			}
 			if (isMusic && musicVolume != -1) {
-					ErrorCheck(pChannel->setVolume(dbToVolume(musicVolume)));
+				ErrorCheck(pChannel->setVolume(dbToVolume(musicVolume)));
 			}
 			else if (!isMusic && fxVolume != -1) {
 				ErrorCheck(pChannel->setVolume(dbToVolume(fxVolume)));		
@@ -196,6 +196,7 @@ namespace El_Horno {
 			sgpImplementation->mChannels[nChannelId] = pChannel;
 			if (isMusic) {
 				musicChannel = nChannelId;		
+				moveChannel = pChannel;
 			}
 		}
 		return nChannelId;
@@ -313,6 +314,12 @@ namespace El_Horno {
 	{
 		sgpImplementation->mChannels[channel]->set3DAttributes(&position, &velocity);
 	}
+
+	void AudioManager::moveChanelTo(const FMOD_VECTOR& vPosition, const FMOD_VECTOR& vVel)
+	{
+		moveChannel->set3DAttributes(&vPosition, &vVel);
+	}
+
 	void AudioManager::stopMusic()
 	{
 		StopChannel(musicChannel);
