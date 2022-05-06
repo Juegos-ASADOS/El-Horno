@@ -14,7 +14,12 @@ Carne_1 = {
     },
     mesh = {
         name = "Carne_1.mesh",
-    }
+    },
+    entityid = {
+        type = "1",
+        productType = "1",
+        id = "Carne_1",       
+    },
 }
 Carne_0 = {
     transform = {
@@ -32,7 +37,12 @@ Carne_0 = {
     },
     mesh = {
         name = "Carne_0.mesh",
-    }
+    },
+    entityid = {
+        type = "0",
+        productType = "1",
+        id = "Carne_0",       
+    },
 }
 Patatas = {
     transform = {
@@ -50,7 +60,12 @@ Patatas = {
     },
     mesh = {
         name = "BolsaPapas.mesh",
-    }
+    },
+    entityid = {
+        type = "1",
+        productType = "1",
+        id = "BolsaPapas",       
+    },
 }
 Pan = {
     transform = {
@@ -68,7 +83,12 @@ Pan = {
     },
     mesh = {
         name = "Pan.mesh",
-    }
+    },
+    entityid = {
+        type = "1",
+        productType = "1",
+        id = "Pan",       
+    },
 }
 Sandia = {
     transform = {
@@ -86,7 +106,12 @@ Sandia = {
     },
     mesh = {
         name = "Sandia.mesh",
-    }
+    },
+    entityid = {
+        type = "1",
+        productType = "2",
+        id = "Sandia",       
+    },
 }
 Pina = {
     transform = {
@@ -104,7 +129,12 @@ Pina = {
     },
     mesh = {
         name = "Pina.mesh",
-    }
+    },
+    entityid = {
+        type = "1",
+        productType = "2",
+        id = "Pina",       
+    },
 }
 Calabaza = {
     transform = {
@@ -122,7 +152,12 @@ Calabaza = {
     },
     mesh = {
         name = "Calabaza.mesh",
-    }
+    },
+    entityid = {
+        type = "1",
+        productType = "2",
+        id = "Calabaza",       
+    },
 }
 Zanahoria = {
     transform = {
@@ -140,7 +175,12 @@ Zanahoria = {
     },
     mesh = {
         name = "Zanahoria.mesh",
-    }
+    },
+    entityid = {
+        type = "1",
+        productType = "2",
+        id = "Zanahoria",       
+    },
 }
 Mandarina = {
     transform = {
@@ -158,7 +198,12 @@ Mandarina = {
     },
     mesh = {
         name = "Mandarina.mesh",
-    }
+    },
+    entityid = {
+        type = "1",
+        productType = "2",
+        id = "Mandarina",       
+    },
 }
 Manzana = {
     transform = {
@@ -176,7 +221,12 @@ Manzana = {
     },
     mesh = {
         name = "Manzana.mesh",
-    }
+    },
+    entityid = {
+        type = "1",
+        productType = "2",
+        id = "Manzana"
+    },
 }
 Uva = {
     transform = {
@@ -194,7 +244,12 @@ Uva = {
     },
     mesh = {
         name = "Uva.mesh",
-    }
+    },
+    entityid = {
+        type = "1",
+        productType = "2",
+        id = "Uvas",       
+    },
 }
 Cocacola = {
     transform = {
@@ -212,7 +267,12 @@ Cocacola = {
     },
     mesh = {
         name = "Cocacola.mesh",
-    }
+    },
+    entityid = {
+        type = "1",
+         productType = "1",
+         id = "Cocacola",       
+    },
 }
 FantaLimon = {
     transform = {
@@ -230,7 +290,12 @@ FantaLimon = {
     },
     mesh = {
         name = "FantaLimon.mesh",
-    }
+    },
+    entityid = {
+        type = "1",
+         productType = "1",
+         id = "FantaLimon",       
+    },
 }
 Agua = {
     transform = {
@@ -248,7 +313,12 @@ Agua = {
     },
     mesh = {
         name = "Agua.mesh",
-    }
+    },
+    entityid = {
+        type = "0",
+         productType = "1",
+         id = "Agua",       
+    },
 }
 FantaNaranja = {
     transform = {
@@ -266,7 +336,12 @@ FantaNaranja = {
     },
     mesh = {
         name = "FantaNaranja.mesh",
-    }
+    },
+    entityid = {
+        type = "1",
+         productType = "1",
+         id = "FantaNaranja",       
+    },
 }
 Leche = {
     transform = {
@@ -284,7 +359,12 @@ Leche = {
     },
     mesh = {
         name = "Leche.mesh",
-    }
+    },
+    entityid = {
+        type = "1",
+         productType = "1",
+         id = "Leche",       
+    },
 }
 Nata = {
     transform = {
@@ -302,7 +382,12 @@ Nata = {
     },
     mesh = {
         name = "Nata.mesh",
-    }
+    },
+    entityid = {
+        type = "1",
+         productType = "1",
+         id = "Nata",       
+    },
 }
 Cafe = {
     transform = {
@@ -320,7 +405,12 @@ Cafe = {
     },
     mesh = {
         name = "Cafe.mesh",
-    }
+    },
+    entityid = {
+        type = "1",
+         productType = "1",
+         id = "Cafe",       
+    },
 }
 CerealesRojos = {
     transform = {
@@ -338,7 +428,12 @@ CerealesRojos = {
     },
     mesh = {
         name = "CerealesRojos.mesh",
-    }
+    },
+    entityid = {
+        type = "1",
+         productType = "1",
+         id = "CerealesRojos",       
+    },
 }
 PezAzul = {
     transform = {
@@ -356,7 +451,12 @@ PezAzul = {
     },
     mesh = {
         name = "PezAzul.mesh",
-    }
+    },
+    entityid = {
+        type = "1",
+        productType = "3",
+        id = "PezAzul",       
+    },
 }
 PezRosa = {
     transform = {
@@ -374,7 +474,12 @@ PezRosa = {
     },
     mesh = {
         name = "PezRosa.mesh",
-    }
+    },
+    entityid = {
+        type = "1",
+         productType = "1",
+         id = "PezRosa",       
+    },
 }
 Huevos = {
     transform = {
@@ -392,7 +497,12 @@ Huevos = {
     },
     mesh = {
         name = "Huevos.mesh",
-    }
+    },
+    entityid = {
+        type = "1",
+         productType = "1",
+         id = "Huevos",       
+    },
 }
 BotellaVino = {
     transform = {
@@ -410,7 +520,12 @@ BotellaVino = {
     },
     mesh = {
         name = "BotellaVino.mesh",
-    }
+    },
+    entityid = {
+        type = "1",
+         productType = "1",
+         id = "BotellaVino",       
+    },
 }
 Pizza = {
     transform = {
@@ -428,7 +543,12 @@ Pizza = {
     },
     mesh = {
         name = "Pizza.mesh",
-    }
+    },
+    entityid = {
+        type = "1",
+         productType = "1",
+         id = "Pizza",       
+    },
 }
 Donut = {
     transform = {
@@ -446,7 +566,12 @@ Donut = {
     },
     mesh = {
         name = "Donut.mesh",
-    }
+    },
+    entityid = {
+        type = "1",
+         productType = "1",
+         id = "Donut",       
+    },
 }
 Platano = {
     transform = {
@@ -464,7 +589,12 @@ Platano = {
     },
     mesh = {
         name = "Platano.mesh",
-    }
+    },
+    entityid = {
+        type = "1",
+         productType = "2",
+         id = "Platano",       
+    },
 }
 Tomate = {
     transform = {
@@ -482,7 +612,12 @@ Tomate = {
     },
     mesh = {
         name = "Tomate.mesh",
-    }
+    },
+    entityid = {
+        type = "1",
+         productType = "2",
+         id = "Tomate",       
+    },
 }
 CerealesNaranjas = {
     transform = {
@@ -500,7 +635,12 @@ CerealesNaranjas = {
     },
     mesh = {
         name = "CerealesNaranjas.mesh",
-    }
+    },
+    entityid = {
+        type = "1",
+         productType = "1",
+         id = "CerealesNaranjas",       
+    },
 }
 CerealesVerdes = {
     transform = {
@@ -518,8 +658,13 @@ CerealesVerdes = {
     },
     mesh = {
         name = "CerealesVerdes.mesh",
-    }
+    },
+    entityid = {
+        type = "1",
+         productType = "1",
+         id = "CerealesVerdes",       
+    },
 }
 
-entities = { "Carne_1", "Carne_0", "Patatas", "Pan", "Sandia", "Pina", "Calabaza", "Zanahoria", "Mandarina", "Manzana", "Uva", "Cocacola", "FantaLimon", "Agua", "FantaNaranja", "Leche", "Nata", "Cafe", "CerealesRojos", "PezAzul", "PezRosa", "Huevos", "BotellaVino", "Pizza", "Donut", "Platano", "Tomate", "CerealesNaranjas", "CerealesVerdes" }
+--entities = { "Carne_1", "Carne_0", "Patatas", "Pan", "Sandia", "Pina", "Calabaza", "Zanahoria", "Mandarina", "Manzana", "Uva", "Cocacola", "FantaLimon", "Agua", "FantaNaranja", "Leche", "Nata", "Cafe", "CerealesRojos", "PezAzul", "PezRosa", "Huevos", "BotellaVino", "Pizza", "Donut", "Platano", "Tomate", "CerealesNaranjas", "CerealesVerdes" }
 -- "light", "Player", "CarritoScene", "MainCamera", "GameManager" 
