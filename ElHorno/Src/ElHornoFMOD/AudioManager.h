@@ -95,13 +95,14 @@ namespace El_Horno {
 		static AudioManager* instance_;
 		FMOD::SoundGroup* music;
 		int musicChannel;
+		int fxChannel;
 		FMOD::Channel* moveChannel;
 		FMOD::SoundGroup* fx;
 
-		float changeQuantity = 5.0f;
+		float changeQuantity = 10;
 
 		float musicVolume = -1;
-		float fxVolume = -1;
+		float fxVolume = 50;
 	};
 }
 #endif _AUDIO_MANAGER_AUDIO_MANAGER_H

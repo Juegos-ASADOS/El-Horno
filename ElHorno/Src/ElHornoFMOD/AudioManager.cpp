@@ -254,30 +254,38 @@ namespace El_Horno {
 	void AudioManager::upMusicVolume()
 	{
 		musicVolume += changeQuantity;
+		if (musicVolume >= 60)
+			musicVolume = 60;
 		sgpImplementation->mChannels[musicChannel]->setVolume(dbToVolume(musicVolume));
 	}
 
 	void AudioManager::downMusicVolume()
 	{
 		musicVolume -= changeQuantity;
+		if (musicVolume <= 0)
+			musicVolume = 0;
 		sgpImplementation->mChannels[musicChannel]->setVolume(dbToVolume(musicVolume));
 	}
 
 	void AudioManager::upFxVolume()
 	{
 		fxVolume += changeQuantity;
+		if (fxVolume >= 60)
+			fxVolume = 60;
 		for (int i = 0; i < sgpImplementation->mChannels.size(); ++i) {
 			if (i != musicChannel)
-				sgpImplementation->mChannels[i]->setVolume(dbToVolume(musicVolume));
+				sgpImplementation->mChannels[i]->setVolume(dbToVolume(fxVolume));
 		}
 	}
 
 	void AudioManager::downFxVolume()
 	{
 		fxVolume -= changeQuantity;
+		if (fxVolume <= 0)
+			fxVolume = 0;
 		for (int i = 0; i < sgpImplementation->mChannels.size(); ++i) {
 			if (i != musicChannel)
-				sgpImplementation->mChannels[i]->setVolume(dbToVolume(musicVolume));
+				sgpImplementation->mChannels[i]->setVolume(dbToVolume(fxVolume));
 		}
 	}
 
