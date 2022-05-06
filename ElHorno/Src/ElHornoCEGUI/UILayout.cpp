@@ -30,9 +30,6 @@ namespace El_Horno {
 			wnd->setVisible(visible);
 			if (visible) wnd->activate();
 		}
-		else {
-			std::cout << "Layout not found!\n";
-		}
 	}
 
 	//void UILayout::setLayoutVisibility(int layout, bool visible)
@@ -52,7 +49,7 @@ namespace El_Horno {
 	void UILayout::addLayout(std::string layoutName, std::string name)
 	{
 		if (getLayout(layoutName) != nullptr) {
-			std::cout << "Already defined layout!\n";
+			return;
 		}
 
 		CEGUI::Window* wnd = uiManager->createLayout(layoutName, name);
@@ -69,9 +66,6 @@ namespace El_Horno {
 			auto it = layouts.find(layoutName);
 			uiManager->getRoot()->removeChild(wnd);
 			layouts.erase(it);
-		}
-		else {
-			std::cout << "Couldnt remove layout. Layout not found!\n";
 		}
 	}
 
@@ -103,9 +97,6 @@ namespace El_Horno {
 		if (wnd != nullptr) {
 			wnd->setSize(CEGUI::USize(CEGUI::UDim(x, 0), CEGUI::UDim(y, 0)));
 		}
-		else {
-			std::cout << "Layout not found!\n";
-		}
 	}
 	
 	//void UILayout::setScale(int layout, float x, float y)
@@ -135,9 +126,6 @@ namespace El_Horno {
 		if (wnd != nullptr) {
 			wnd->getChild(childName)->subscribeEvent(CEGUI::PushButton::EventClicked, CEGUI::Event::Subscriber(func, comp));
 		}
-		else {
-			std::cout << "Couldnt subscribe event. Layout not found!\n";
-		}
 	}	
 	
 	void UILayout::subscribeChildEvent(std::string layoutName, std::string childName, bool(*func)())
@@ -145,9 +133,6 @@ namespace El_Horno {
 		CEGUI::Window* wnd = getLayout(layoutName);
 		if (wnd != nullptr) {
 			wnd->getChild(childName)->subscribeEvent(CEGUI::PushButton::EventClicked, CEGUI::Event::Subscriber(func));
-		}
-		else {
-			std::cout << "Couldnt subscribe event. Layout not found!\n";
 		}
 	}
 
@@ -157,9 +142,6 @@ namespace El_Horno {
 		if (wnd != nullptr) {
 			wnd->getChild(childName)->subscribeEvent(CEGUI::PushButton::EventClicked, CEGUI::Event::Subscriber(func));
 		}
-		else {
-			std::cout << "Couldnt subscribe event. Layout not found!\n";
-		}
 	}
 
 	void UILayout::subscribeChildEvent(std::string layoutName, std::string childName, std::function<bool(const CEGUI::EventArgs&)> func)
@@ -168,9 +150,6 @@ namespace El_Horno {
 		CEGUI::Window* wnd = getLayout(layoutName);
 		if (wnd != nullptr) {
 			wnd->getChild(childName)->subscribeEvent(CEGUI::PushButton::EventClicked, CEGUI::Event::Subscriber(func));
-		}
-		else {
-			std::cout << "Couldnt subscribe event. Layout not found!\n";
 		}
 	}
 
@@ -206,7 +185,7 @@ namespace El_Horno {
 	{
 		CEGUI::Window* wnd = getLayout(layoutName);
 		if (wnd == nullptr) {
-			std::cout << "Couldnt add Widget. Layout not found!\n";
+			//std::cout << "Couldnt add Widget. Layout not found!\n";
 			return;
 		}
 
@@ -218,7 +197,7 @@ namespace El_Horno {
 	{
 		CEGUI::Window* wnd = getLayout(layoutName);
 		if (wnd == nullptr) {
-			std::cout << "Couldnt remove Widget. Layout not found!\n";
+			//std::cout << "Couldnt remove Widget. Layout not found!\n";
 			return;
 		}
 
@@ -229,7 +208,7 @@ namespace El_Horno {
 	{
 		CEGUI::Window* wnd = getLayout(layoutName);
 		if (wnd == nullptr) {
-			std::cout << "Couldnt remove Widget. Layout not found!\n";
+			//std::cout << "Couldnt remove Widget. Layout not found!\n";
 			return;
 		}
 

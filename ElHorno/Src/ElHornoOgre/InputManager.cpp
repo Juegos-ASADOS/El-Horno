@@ -109,7 +109,6 @@ namespace El_Horno {
 			for (int i = 0; i < SDL_CONTROLLER_AXIS_MAX; ++i)
 				controllerAxes_[i] = 0.0f;
 
-			//std::cout << SDL_GameControllerName(controller_) << std::endl;
 			SDL_GameControllerEventState(SDL_ENABLE);
 		}
 	}
