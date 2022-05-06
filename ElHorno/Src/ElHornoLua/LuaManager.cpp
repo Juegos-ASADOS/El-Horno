@@ -144,26 +144,40 @@ namespace El_Horno {
                 ent = s->addEntity(allEnts[i], "prueba");
                 ent->addComponent<Transform>("transform", HornoVector3(0, 0, 0), HornoVector3(0, 0, 0), HornoVector3(0, 0, 0));
             }
-            setParams(entity, ent, s);
+            setParams(entity, ent, s, false);
         }
-    }
-
-    Entity* LuaManager::loadPrefab(std::string name)
-    {
-        Scene* s = SceneManager::getInstance()->getCurrentScene();
-
-        luabridge::LuaRef entity = getFromLua(name);
-        Entity* ent = s->addEntity(name, "prueba");
-        ent->addComponent<Transform>("transform", HornoVector3(0, 0, 0), HornoVector3(0, 0, 0), HornoVector3(0, 0, 0));
+    }
 
-        setParams(entity, ent, s);
+
+
+    Entity* LuaManager::loadPrefab(std::string name, bool handAt)
+
+    {
+
+        Scene* s = SceneManager::getInstance()->getCurrentScene();
+
+
+
+        luabridge::LuaRef entity = getFromLua(name);
+
+        Entity* ent = s->addEntity(name, "prueba");
+        ent->addComponent<Transform>("transform", HornoVector3(0, 0, 0), HornoVector3(0, 0, 0), HornoVector3(0, 0, 0), handAt);
+
+
+        setParams(entity, ent, s, handAt);
+
         ent->awake();
-        ent->start();
-        return ent;
-    }
-
-    void LuaManager::setParams(luabridge::LuaRef entity, Entity* ent, Scene* s)
-    {
+        ent->start();
+
+        return ent;
+
+    }
+
+
+
+    void LuaManager::setParams(luabridge::LuaRef entity, Entity* ent, Scene* s, bool handAt)
+    {
+
         lua_pushnil(entity);
         while (lua_next(entity, 0) != 0) {
             std::string compName = lua_tostring(entity, -2);
@@ -179,6 +193,14 @@ namespace El_Horno {
                 lua_pop(entity, 1);
                 continue;
             }
+        
+            else if (compName == "rigidbody" && handAt)
+            {
+                lua_pop(component, 1);
+                lua_pop(entity, 1);
+                continue;
+            }
+
 
             std::vector<std::pair<std::string, std::string>> parameters;
 
@@ -200,7 +222,8 @@ namespace El_Horno {
                 ent->addComponent(compName, parameters);
             }
             lua_pop(entity, 1);
-        }
+        }
+
     }
 
     template<typename T>

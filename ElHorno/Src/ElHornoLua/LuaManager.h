@@ -42,8 +42,8 @@ namespace El_Horno {
 		void exposeFunct(std::string name, lua_CFunction(*func)(lua_State* L));
 		int luaGetTop(lua_State* L);
 		void loadScene();
-		Entity* loadPrefab(std::string name);
-		void setParams(luabridge::LuaRef entity, Entity* ent, Scene* s);
+		Entity* loadPrefab(std::string name, bool handAt);
+		void setParams(luabridge::LuaRef entity, Entity* ent, Scene* s, bool handAt);
 		void callLuaFunction(std::string name);
 		//void callLuaFunction(std::string name, int i);
 
