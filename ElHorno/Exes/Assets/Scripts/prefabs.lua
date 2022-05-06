@@ -864,8 +864,8 @@ Manzana = {
     },
     entityid = {
         type = "1",
-        prodtype = "2",
-         id = "Manzana"
+        productType = "2",
+        id = "Manzana"
     },
 }
 Uvas = {
@@ -898,7 +898,12 @@ Cocacola = {
     },
     mesh = {
         name = "Cocacola.mesh",
-    }
+    },
+    entityid = {
+        type = "1",
+         productType = "1",
+         id = "Cocacola",       
+    },
 }
 FantaLimon = {
     transform = {
@@ -1031,7 +1036,12 @@ PezAzul = {
     },
     mesh = {
         name = "PezAzul.mesh",
-    }
+    },
+    entityid = {
+        type = "1",
+         productType = "3",
+         id = "PezAzul",       
+    },
 }
 PezRosa = {
     transform = {
@@ -1047,7 +1057,12 @@ PezRosa = {
     },
     mesh = {
         name = "PezRosa.mesh",
-    }
+    },
+    entityid = {
+        type = "1",
+         productType = "1",
+         id = "PezRosa",       
+    },
 }
 Huevos = {
     transform = {
