@@ -26,13 +26,10 @@
         <Window type="VDondeTaLeche/Boton" name="Boton_Volver" >
             <Property name="Area" value="{{0,-3},{0,359},{0,237},{0,461}}" />
             <Property name="HorizontalAlignment" value="Centre" />
-            <Property name="CursorPassThroughEnabled" value="true" />
             <Property name="VerticalAlignment" value="Centre" />
             <Property name="HoverImage" value="DondeTaLeche/MenuBoton_Over" />
             <Property name="NormalImage" value="DondeTaLeche/MenuBoton" />
-            <Property name="Text" value="Boton" />
             <Property name="PushedImage" value="DondeTaLeche/MenuBoton_Press" />
-            <Property name="CursorInputPropagationEnabled" value="true" />
             <UserString name="Text" value="Boton" />
         </Window>
     </Window>
