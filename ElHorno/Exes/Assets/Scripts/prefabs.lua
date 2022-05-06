@@ -728,7 +728,12 @@ Carne_0 = {
     },
     mesh = {
         name = "Carne_0.mesh",
-    }
+    },
+    entityid = {
+        type = "0",
+        productType = "1",
+        id = "Carne_0",       
+    },
 }
 BolsaPapas = {
     transform = {
@@ -856,7 +861,12 @@ Manzana = {
     },
     mesh = {
         name = "Manzana.mesh",
-    }
+    },
+    entityid = {
+        type = "1",
+        prodtype = "2",
+         id = "Manzana"
+    },
 }
 Uvas = {
     transform = {
@@ -1117,7 +1127,12 @@ Platano = {
     },
     mesh = {
         name = "Platano.mesh",
-    }
+    },
+    entityid = {
+        type = "1",
+         productType = "2",
+         id = "Platano",       
+    },
 }
 Tomate = {
     transform = {
