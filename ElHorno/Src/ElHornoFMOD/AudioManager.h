@@ -86,7 +86,7 @@ namespace El_Horno {
 		void updateListener(int Listener, const FMOD_VECTOR& position, const FMOD_VECTOR& velocity, const FMOD_VECTOR& forward, const FMOD_VECTOR& up);
 		void updateSound(const FMOD_VECTOR& position, const FMOD_VECTOR& velocity, int channel);
 
-
+		void moveChanelTo(const FMOD_VECTOR& vPosition, const FMOD_VECTOR& vVel);
 
 		void stopMusic();
 		int getMusicChannel();
@@ -95,6 +95,7 @@ namespace El_Horno {
 		static AudioManager* instance_;
 		FMOD::SoundGroup* music;
 		int musicChannel;
+		FMOD::Channel* moveChannel;
 		FMOD::SoundGroup* fx;
 
 		float changeQuantity = 5.0f;

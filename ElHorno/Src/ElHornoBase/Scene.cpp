@@ -14,7 +14,6 @@ namespace El_Horno {
 	{	
 	}
 
-	//TODO Destruir VierwPorts y camaras lo primero de todo
 	Scene::~Scene()
 	{
 		auto it = entities_.begin();
