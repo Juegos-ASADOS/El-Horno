@@ -100,7 +100,7 @@ namespace El_Horno {
 		float changeQuantity = 5.0f;
 
 		float musicVolume = -1;
-		float fxVolume;
+		float fxVolume = -1;
 	};
 }
 #endif _AUDIO_MANAGER_AUDIO_MANAGER_H
