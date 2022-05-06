@@ -149,6 +149,7 @@ namespace El_Horno {
             Entity* ent = s->getEntity(allEnts[i], layer);
             if (ent == nullptr) {
                 ent = s->addEntity(allEnts[i]);
+                std::cout << "Loading entity: " <<ent->getName() << "\n";
                 ent->addComponent<Transform>("transform", HornoVector3(0, 0, 0), HornoVector3(0, 0, 0), HornoVector3(0, 0, 0));
             }
             setParams(entity, ent, s, false, layer);
@@ -183,7 +184,7 @@ namespace El_Horno {
         lua_pushnil(entity);
         while (lua_next(entity, 0) != 0) {
             std::string compName = lua_tostring(entity, -2);
-
+            std::cout << "       Loading component: " << compName << "\n";
             std::string key;
 
             luabridge::LuaRef component = entity[compName];
