@@ -219,8 +219,8 @@ gamemanager = {
     gamemanager = {
         state = "0",
         productNum = "6",
-        list = "Tomate,3,Zanahoria,2,Pizza,1",
-        maxTime = "20",
+        list = "Manzana,3,Cocacola,2,PezRosa,1",
+        maxTime = "180",
     },
 }
 player = {
@@ -472,4 +472,4 @@ TriggerBaldaDobleManzana = {
     },
 }
 
-entities = {"light","player","Peso", "TicketDispenser", "Pescaderia", "Carniceria", "Floor", "BaldaDobleManzana", "BaldaDobleCola", "BaldaDoblePezAzul", "BaldaPlatano", "cart", "camera", "GameManager",  "TriggerCarniceria", "TriggerPeso", "TriggerTicketDispenser", "TriggerPescaderia", "cartTrigger", "TriggerBaldaPlatano", "TriggerBaldaDobleCola", "TriggerBaldaDoblePezAzul", "TriggerBaldaDobleManzana" }
+entities = {"light","player","Peso", "TicketDispenser", "Pescaderia", "Carniceria", "Floor", "BaldaDobleManzana", "BaldaDobleCola", "BaldaDoblePezAzul", "BaldaPlatano", "cart", "camera", "gamemanager",  "TriggerCarniceria", "TriggerPeso", "TriggerTicketDispenser", "TriggerPescaderia", "cartTrigger", "TriggerBaldaPlatano", "TriggerBaldaDobleCola", "TriggerBaldaDoblePezAzul", "TriggerBaldaDobleManzana" }

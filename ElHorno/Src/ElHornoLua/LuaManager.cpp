@@ -155,8 +155,6 @@ namespace El_Horno {
         }
     }
 
-
-
     Entity* LuaManager::loadPrefab(std::string name, bool handAt, std::string layer)
     {
 
