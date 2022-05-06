@@ -40,6 +40,9 @@ namespace El_Horno {
 
 	void LightComponent::setParameters(std::vector<std::pair<std::string, std::string>> parameters)
 	{
+		// Creamos la luz
+		light_ = ElHornoBase::getInstance()->getGraphicsManager()->getSceneManager()->createLight();
+
 		for (int i = 0; i < parameters.size(); i++) {
 			if (parameters[i].first == "type") {
 				type_ = stoi(parameters[i].second);
@@ -52,19 +55,19 @@ namespace El_Horno {
 
 	void LightComponent::start()
 	{
-		// Creamos la luz
-		light_ = ElHornoBase::getInstance()->getGraphicsManager()->getSceneManager()->createLight();
+		//// Creamos la luz
+		//light_ = ElHornoBase::getInstance()->getGraphicsManager()->getSceneManager()->createLight();
 
 		setType(type_);
 
 		// Establecemos sus parametros basicos
-		light_->setDiffuseColour(1.0, 1.0, 1.0);
+		/*light_->setDiffuseColour(1.0, 1.0, 1.0);
 		light_->setSpecularColour(.8, .7, .8);
-		light_->setPowerScale(1);
-		
+		light_->setPowerScale(1);*/
+
 		tr_ = entity_->getComponent<Transform>("transform");
 		tr_->getNode()->attachObject(light_);
-		tr_->setDirection(Ogre::Vector3(0, -1, -0.3));
+		//tr_->setDirection(Ogre::Vector3(0, -1, -0.3));
 	}
 	void LightComponent::setType(int type)
 	{

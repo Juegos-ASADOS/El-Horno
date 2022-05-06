@@ -3,6 +3,7 @@
 #include "fmod_studio.hpp"
 #include "fmod.hpp"
 #include "fmod.h"
+#include "HornoConversions.h"
 #include <filesystem>
 
 
@@ -181,6 +182,8 @@ namespace El_Horno {
 			ErrorCheck(pChannel->setVolume(dbToVolume(fVolumedB)));
 			ErrorCheck(pChannel->setPaused(false));
 			sgpImplementation->mChannels[nChannelId] = pChannel;
+			if (isMusic)
+				musicChannel = nChannelId;
 		}
 		return nChannelId;
 	}
@@ -218,6 +221,11 @@ namespace El_Horno {
 			return;
 
 		ErrorCheck(tFoundIt->second->set3DAttributes(&vPosition, NULL));
+	}
+
+	void AudioManager::SetChannel3dPosition(int nChannelId, const HornoVector3& vPosition)
+	{
+		SetChannel3dPosition(nChannelId, HornoVectorToFmod(vPosition));
 	}
 
 	void AudioManager::SetChannelvolume(int nChannelId, float fVolumedB)
@@ -285,5 +293,13 @@ namespace El_Horno {
 	void AudioManager::updateSound(const FMOD_VECTOR& position, const FMOD_VECTOR& velocity, int channel)
 	{
 		sgpImplementation->mChannels[channel]->set3DAttributes(&position, &velocity);
+	}
+	void AudioManager::stopMusic()
+	{
+		StopChannel(musicChannel);
+	}
+	int AudioManager::getMusicChannel()
+	{
+		return musicChannel;
 	}
 }

@@ -1,6 +1,19 @@
 light = {
     transform = {
-        position = " 0 ,200 ,200 ",
+        position = " 0 ,400 ,600 ",
+        rotation = " 0 ,0 ,0 ",
+        scale = " 0 ,0 ,0 ",
+    },
+
+    light = {
+        type = "0",
+        dirLight = " 0 ,0 ,0 ",
+    },
+}
+
+light2 = {
+    transform = {
+        position = " 0 ,200 ,400 ",
         rotation = " 0 ,0 ,0 ",
         scale = " 0 ,0 ,0 ",
     },
