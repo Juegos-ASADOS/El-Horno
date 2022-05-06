@@ -68,7 +68,8 @@ namespace El_Horno {
 		bool paused_,
 			invertedAxisX_,
 			invertedAxisY_,
-			exit_;
+			exit_,
+			forcedExit_;
 
 		Timer* globalTimer_;
 		double deltaTime_;
