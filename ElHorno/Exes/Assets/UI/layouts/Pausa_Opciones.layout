@@ -18,33 +18,25 @@
                 <Property name="Area" value="{{0,420},{0,690},{0,550},{0,792}}" />
                 <Property name="HoverImage" value="DondeTaLeche/Menos_Over" />
                 <Property name="NormalImage" value="DondeTaLeche/Menos" />
-                <Property name="Text" value="Boton" />
                 <Property name="PushedImage" value="DondeTaLeche/Menos_Press" />
-                <UserString name="Text" value="Boton" />
             </Window>
             <Window type="VDondeTaLeche/Boton" name="RestaMusica" >
                 <Property name="Area" value="{{0,413},{0,485},{0,543},{0,587}}" />
                 <Property name="HoverImage" value="DondeTaLeche/Menos_Over" />
                 <Property name="NormalImage" value="DondeTaLeche/Menos" />
-                <Property name="Text" value="Boton" />
                 <Property name="PushedImage" value="DondeTaLeche/Menos_Press" />
-                <UserString name="Text" value="Boton" />
             </Window>
             <Window type="VDondeTaLeche/Boton" name="SumaEfectos" >
                 <Property name="Area" value="{{0,605},{0,689},{0,735},{0,791}}" />
                 <Property name="HoverImage" value="DondeTaLeche/Suma_Over" />
                 <Property name="NormalImage" value="DondeTaLeche/Suma" />
-                <Property name="Text" value="Boton" />
                 <Property name="PushedImage" value="DondeTaLeche/Suma_Press" />
-                <UserString name="Text" value="Boton" />
             </Window>
             <Window type="VDondeTaLeche/Boton" name="SumaMusica" >
                 <Property name="Area" value="{{0,613},{0,489},{0,743},{0,591}}" />
                 <Property name="HoverImage" value="DondeTaLeche/Suma_Over" />
                 <Property name="NormalImage" value="DondeTaLeche/Suma" />
-                <Property name="Text" value="Boton" />
                 <Property name="PushedImage" value="DondeTaLeche/Suma_Press" />
-                <UserString name="Text" value="Boton" />
             </Window>
             <Window type="GWEN/StaticText" name="Text_Volver" >
                 <Property name="Area" value="{{0,357},{0,909},{1,-355},{1,-55}}" />
@@ -106,9 +98,7 @@
                 <Property name="Area" value="{{0,387},{0,912},{0,753},{0,1039}}" />
                 <Property name="HoverImage" value="DondeTaLeche/MenuBoton_Over" />
                 <Property name="NormalImage" value="DondeTaLeche/MenuBoton" />
-                <Property name="Text" value="Boton" />
                 <Property name="PushedImage" value="DondeTaLeche/MenuBoton_Press" />
-                <UserString name="Text" value="Boton" />
             </Window>
         </Window>
     </Window>

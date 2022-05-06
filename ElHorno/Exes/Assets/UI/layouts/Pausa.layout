@@ -75,21 +75,18 @@
                 <Property name="HoverImage" value="DondeTaLeche/MenuBoton_Over" />
                 <Property name="NormalImage" value="DondeTaLeche/MenuBoton" />
                 <Property name="PushedImage" value="DondeTaLeche/MenuBoton_Press" />
-                <UserString name="Text" value="Boton" />
             </Window>
             <Window type="VDondeTaLeche/Boton" name="BotonReanudar" >
                 <Property name="Area" value="{{0,385},{0,416},{0,751},{0,547}}" />
                 <Property name="HoverImage" value="DondeTaLeche/MenuBoton_Over" />
                 <Property name="NormalImage" value="DondeTaLeche/MenuBoton" />
                 <Property name="PushedImage" value="DondeTaLeche/MenuBoton_Press" />
-                <UserString name="Text" value="Boton" />
             </Window>
             <Window type="VDondeTaLeche/Boton" name="BotonSalir" >
                 <Property name="Area" value="{{0,383},{0,788},{0,749},{0,915}}" />
                 <Property name="HoverImage" value="DondeTaLeche/MenuBoton_Over" />
                 <Property name="NormalImage" value="DondeTaLeche/MenuBoton" />
                 <Property name="PushedImage" value="DondeTaLeche/MenuBoton_Press" />
-                <UserString name="Text" value="Boton" />
             </Window>
         </Window>
     </Window>
