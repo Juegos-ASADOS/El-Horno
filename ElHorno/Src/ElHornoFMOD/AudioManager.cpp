@@ -182,8 +182,10 @@ namespace El_Horno {
 			ErrorCheck(pChannel->setVolume(dbToVolume(fVolumedB)));
 			ErrorCheck(pChannel->setPaused(false));
 			sgpImplementation->mChannels[nChannelId] = pChannel;
-			if (isMusic)
+			if (isMusic) {
 				musicChannel = nChannelId;
+				musicVolume = fVolumedB;
+			}
 		}
 		return nChannelId;
 	}
@@ -240,25 +242,31 @@ namespace El_Horno {
 	void AudioManager::upMusicVolume()
 	{
 		musicVolume += changeQuantity;
-		music->setVolume(musicVolume);
+		sgpImplementation->mChannels[musicChannel]->setVolume(dbToVolume(musicVolume));
 	}
 
 	void AudioManager::downMusicVolume()
 	{
 		musicVolume -= changeQuantity;
-		music->setVolume(musicVolume);
+		sgpImplementation->mChannels[musicChannel]->setVolume(dbToVolume(musicVolume));
 	}
 
 	void AudioManager::upFxVolume()
 	{
 		fxVolume += changeQuantity;
-		fx->setVolume(musicVolume);
+		for (int i = 0; i < sgpImplementation->mChannels.size(); ++i) {
+			if (i != musicChannel)
+				sgpImplementation->mChannels[i]->setVolume(dbToVolume(musicVolume));
+		}
 	}
 
 	void AudioManager::downFxVolume()
 	{
 		fxVolume -= changeQuantity;
-		fx->setVolume(musicVolume);
+		for (int i = 0; i < sgpImplementation->mChannels.size(); ++i) {
+			if (i != musicChannel)
+				sgpImplementation->mChannels[i]->setVolume(dbToVolume(musicVolume));
+		}
 	}
 
 	bool AudioManager::IsPlaying(int nChannelId) const

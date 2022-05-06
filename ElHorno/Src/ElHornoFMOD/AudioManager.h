@@ -97,9 +97,9 @@ namespace El_Horno {
 		int musicChannel;
 		FMOD::SoundGroup* fx;
 
-		float changeQuantity = 0.1f;
+		float changeQuantity = 5.0f;
 
-		float musicVolume;
+		float musicVolume = -1;
 		float fxVolume;
 	};
 }
