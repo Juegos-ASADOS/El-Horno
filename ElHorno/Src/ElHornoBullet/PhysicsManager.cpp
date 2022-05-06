@@ -143,9 +143,14 @@ namespace El_Horno {
 		}
 	}
 
+	void PhysicsManager::setDebug(bool dbg)
+	{
+		debug_ = dbg;
+	}
+
 	void PhysicsManager::updateDebug(const int& debugFlags)
 	{
-		if (dynamicsWorld_ && dynamicsWorld_->getDebugDrawer()) {
+		if (debug_ && dynamicsWorld_ && dynamicsWorld_->getDebugDrawer()) {
 			dynamicsWorld_->getDebugDrawer()->setDebugMode(debugFlags);
 			dynamicsWorld_->debugDrawWorld();
 		}
