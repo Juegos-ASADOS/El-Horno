@@ -11,7 +11,7 @@
         </Window>
         <Window type="GWEN/StaticImage" name="Menu" >
             <Property name="Image" value="DondeTaLeche/Pausa-Opciones" />
-            <Property name="Area" value="{{0,380},{0,-6},{1,-416},{1,8}}" />
+            <Property name="Area" value="{{0.19583333,4},{-0.0018518502,-4},{0.78229213,2},{1.0129626,-6}}" />
             <Property name="FrameEnabled" value="false" />
             <Property name="BackgroundEnabled" value="true" />
             <Window type="GWEN/StaticText" name="Text_Salir" >
