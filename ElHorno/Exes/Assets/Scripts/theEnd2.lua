@@ -1199,7 +1199,7 @@ gamemanager = {
     },
     gamemanager = {
         state = "0",
-        productNum = "1",
+        productNum = "11",
         list = "Tomate,2,Carne_0,1,PezRosa,1,Leche,3,Pizza,2,Cafe,2",
          maxTime = "120",
     },
@@ -1208,7 +1208,7 @@ player = {
     transform = {
         position = "  -1467.507202 ,19.596855 ,-358.942047 " ,
         rotation = "   0.000000, 0.000000, 0.000000, 0.000000 " ,
-        scale = "  8.000000 ,8.000000 ,8.000000 " ,
+        scale = "  6.000000 ,6.000000 ,6.000000 " ,
     },
     mesh = {
         name = "pipo.mesh"
