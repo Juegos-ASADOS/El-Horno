@@ -1268,7 +1268,7 @@ gamemanager = {
         state = "0",
         productNum = "11",
         list = "Tomate,2,Carne_0,1,PezRosa,1,Leche,3,Pizza,2,Cafe,2",
-         maxTime = "180",
+         maxTime = "240",
     },
 }
 player = {
