@@ -144,7 +144,7 @@ Caja = {
         scale = "  1.000000 ,1.000000 ,1.000000 " ,
     },
     rigidbody = {
-        mass = "2.0",
+        mass = "0.0",
         isTrigger = "0",
          isKinematic = "0",
          colShape = "0",
@@ -326,24 +326,24 @@ CharcoB = {
         name = "Charco.005.mesh",
     }
 }
-ParedPreset = {
-    transform = {
-        position = "  -1175.475952 ,8.908201 ,-293.239624 " ,
-        rotation = "   0.000000, 0.000000, 0.000000, 0.000000 " ,
-        scale = "  1.000000 ,1.000000 ,1.000000 " ,
-    },
-    rigidbody = {
-        mass = "0.0",
-        isTrigger = "0",
-         isKinematic = "0",
-         colShape = "0",
-        scale = "1.0;1.0;1.0",
+-- ParedPreset = {
+--     transform = {
+--         position = "  -1175.475952 ,8.908201 ,-293.239624 " ,
+--         rotation = "   0.000000, 0.000000, 0.000000, 0.000000 " ,
+--         scale = "  1.000000 ,1.000000 ,1.000000 " ,
+--     },
+--     rigidbody = {
+--         mass = "0.0",
+--         isTrigger = "0",
+--          isKinematic = "0",
+--          colShape = "0",
+--         scale = "1.0;1.0;1.0",
         
-    },
-    mesh = {
-        name = "ParedPreset.mesh",
-    }
-}
+--     },
+--     mesh = {
+--         name = "ParedPreset.mesh",
+--     }
+-- }
 Cartel_1 = {
     transform = {
         position = "  -910.944763 ,-0.597879 ,-91.755630 " ,
@@ -418,7 +418,7 @@ Cartel_3 = {
 }
 Cartel_5 = {
     transform = {
-        position = "  -1219.304565 ,-0.597879 ,-275.257385 " ,
+        position = "  -1219.304565 ,-0.597879 ,-300.257385 " ,
         rotation = "   0.000000, 0.000000, 0.000000, 0.000000 " ,
         scale = "  1.000000 ,1.000000 ,1.000000 " ,
     },
@@ -508,8 +508,8 @@ BaldaDobleSandia = {
 }
 BaldaDobleLeche = {
     transform = {
-        position = "  -1248.344727 ,-0.597879 ,-132.301086 " ,
-        rotation = "   0.000000, 0.000000, 0.000000, 0.000000 " ,
+        position = "  -1249.344727 ,-0.597879 ,-132.301086 " ,
+        rotation = "   0.000000, 90.000000, 0.000000, 0.000000 " ,
         scale = "  1.000000 ,1.000000 ,1.000000 " ,
     },
     rigidbody = {
@@ -527,7 +527,7 @@ BaldaDobleLeche = {
 BaldaDobleVino = {
     transform = {
         position = "  -851.825378 ,-0.597879 ,-76.456505 " ,
-        rotation = "   0.000000, 0.000000, 0.000000, 0.000000 " ,
+        rotation = "   0.000000, -90.000000, 0.000000, 0.000000 " ,
         scale = "  1.000000 ,1.000000 ,1.000000 " ,
     },
     rigidbody = {
@@ -560,28 +560,28 @@ BaldaSimplePina = {
         name = "BaldaSimplePina.mesh",
     }
 }
-BaldaDobleMandarina = {
-    transform = {
-        position = "  -947.464233 ,-0.597879 ,-113.611160 " ,
-        rotation = "   0.000000, 0.000000, 0.000000, 0.000000 " ,
-        scale = "  1.000000 ,1.000000 ,1.000000 " ,
-    },
-    rigidbody = {
-        mass = "0.0",
-        isTrigger = "0",
-         isKinematic = "0",
-         colShape = "0",
-        scale = "1.0; 1.0; 1.0",
+-- BaldaDobleMandarina = {
+--     transform = {
+--         position = "  -947.464233 ,-0.597879 ,-113.611160 " ,
+--         rotation = "   0.000000, 0.000000, 0.000000, 0.000000 " ,
+--         scale = "  1.000000 ,1.000000 ,1.000000 " ,
+--     },
+--     rigidbody = {
+--         mass = "0.0",
+--         isTrigger = "0",
+--          isKinematic = "0",
+--          colShape = "0",
+--         scale = "1.0; 1.0; 1.0",
         
-    },
-    mesh = {
-        name = "BaldaDobleMandarina.mesh",
-    }
-}
+--     },
+--     mesh = {
+--         name = "BaldaDobleMandarina.mesh",
+--     }
+-- }
 BaldaDobleCalabaza = {
     transform = {
         position = "  -1082.442993 ,-0.597879 ,-44.457333 " ,
-        rotation = "   0.000000, 0.000000, 0.000000, 0.000000 " ,
+        rotation = "   0.000000, 90.000000, 0.000000, 0.000000 " ,
         scale = "  1.000000 ,1.000000 ,1.000000 " ,
     },
     rigidbody = {
@@ -652,8 +652,8 @@ BaldaSimpleUva = {
 }
 BaldaDobleManzana = {
     transform = {
-        position = "  -1194.595581 ,-0.597879 ,-45.668213 " ,
-        rotation = "   0.000000, 0.000000, 0.000000, 0.000000 " ,
+        position = "  -1190.595581 ,-0.597879 ,-45.668213 " ,
+        rotation = "   0.000000, 90.000000, 0.000000, 0.000000 " ,
         scale = "  1.000000 ,1.000000 ,1.000000 " ,
     },
     rigidbody = {
@@ -661,7 +661,7 @@ BaldaDobleManzana = {
         isTrigger = "0",
          isKinematic = "0",
          colShape = "0",
-        scale = "0.35; 0.25; 0.65",
+        scale = "1; 1; 1",
         
     },
     mesh = {
@@ -670,8 +670,8 @@ BaldaDobleManzana = {
 }
 BaldaDobleNata = {
     transform = {
-        position = "  -1333.868164 ,-0.597879 ,-131.072845 " ,
-        rotation = "   0.000000, 0.000000, 0.000000, 0.000000 " ,
+        position = "  -1335.868164 ,-0.597879 ,-131.072845 " ,
+        rotation = "   0.000000, 90.000000, 0.000000, 0.000000 " ,
         scale = "  1.000000 ,1.000000 ,1.000000 " ,
     },
     rigidbody = {
@@ -688,7 +688,7 @@ BaldaDobleNata = {
 }
 BaldaDobleCafe = {
     transform = {
-        position = "  -1277.398071 ,-0.597879 ,-18.074661 " ,
+        position = "  -1277.398071 ,-0.597879 ,-28.074661 " ,
         rotation = "   0.000000, 0.000000, 0.000000, 0.000000 " ,
         scale = "  1.000000 ,1.000000 ,1.000000 " ,
     },
@@ -724,8 +724,8 @@ BaldaDobleCerealesRojos = {
 }
 BaldaDobleHuevos = {
     transform = {
-        position = "  -1278.765747 ,-0.597879 ,-37.917816 " ,
-        rotation = "   0.000000, 0.000000, 0.000000, 0.000000 " ,
+        position = "  -1278.765747 ,-0.597879 ,-47.917816 " ,
+        rotation = "   0.000000, 180.000000, 0.000000, 0.000000 " ,
         scale = "  1.000000 ,1.000000 ,1.000000 " ,
     },
     rigidbody = {
@@ -743,7 +743,7 @@ BaldaDobleHuevos = {
 BaldaDobleCola = {
     transform = {
         position = "  -851.349731 ,-0.597879 ,-16.966187 " ,
-        rotation = "   0.000000, 0.000000, 0.000000, 0.000000 " ,
+        rotation = "   0.000000, -90.000000, 0.000000, 0.000000 " ,
         scale = "  1.000000 ,1.000000 ,1.000000 " ,
     },
     rigidbody = {
@@ -761,7 +761,7 @@ BaldaDobleCola = {
 BaldaDobleFantaNaranja = {
     transform = {
         position = "  -1012.240356 ,-1.520734 ,-78.110764 " ,
-        rotation = "   0.000000, 0.000000, 0.000000, 0.000000 " ,
+        rotation = "   0.000000, -90.000000, 0.000000, 0.000000 " ,
         scale = "  1.000000 ,1.000000 ,1.000000 " ,
     },
     rigidbody = {
@@ -779,7 +779,7 @@ BaldaDobleFantaNaranja = {
 BaldaDobleFantaLimon = {
     transform = {
         position = "  -992.773315 ,-0.597879 ,-79.768997 " ,
-        rotation = "   0.000000, 0.000000, 0.000000, 0.000000 " ,
+        rotation = "   0.000000, 90.000000, 0.000000, 0.000000 " ,
         scale = "  1.000000 ,1.000000 ,1.000000 " ,
     },
     rigidbody = {
@@ -833,7 +833,7 @@ BaldaSimpleAgua = {
 BaldaDoblePizza = {
     transform = {
         position = "  -1269.451416 ,-0.597879 ,-133.173141 " ,
-        rotation = "   0.000000, 0.000000, 0.000000, 0.000000 " ,
+        rotation = "   0.000000, -90.000000, 0.000000, 0.000000 " ,
         scale = "  1.000000 ,1.000000 ,1.000000 " ,
     },
     rigidbody = {
@@ -869,7 +869,7 @@ BaldaDobleDonut = {
 BaldaDoblePatatas = {
     transform = {
         position = "  -1355.357788 ,-0.597879 ,-131.101807 " ,
-        rotation = "   0.000000, 0.000000, 0.000000, 0.000000 " ,
+        rotation = "   0.000000, -90.000000, 0.000000, 0.000000 " ,
         scale = "  1.000000 ,1.000000 ,1.000000 " ,
     },
     rigidbody = {
@@ -1484,7 +1484,7 @@ TriggerBaldaDobleCerealesVerdes = {
 TriggerBaldaDobleCola = {
     transform = {
         position = "  0.000000 ,11.054862 ,10.000000 " ,
-        rotation = "   0.000000, 0.000000, 0.000000, 0.000000 " ,
+        rotation = "   0.000000, 90.000000, 0.000000, 0.000000 " ,
         scale = "  1.000000 ,1.000000 ,1.000000 " ,
     },
     parent = {
@@ -1532,7 +1532,7 @@ TriggerBaldaDobleDonut = {
 TriggerBaldaDobleFantaLimon = {
     transform = {
         position = "  0.000000 ,11.054900 ,10.000000 " ,
-        rotation = "   0.000000, 0.000000, 0.000000, 0.000000 " ,
+        rotation = "   0.000000, 90.000000, 0.000000, 0.000000 " ,
         scale = "  1.000000 ,1.000000 ,1.000000 " ,
     },
     parent = {
@@ -1556,7 +1556,7 @@ TriggerBaldaDobleFantaLimon = {
 TriggerBaldaDobleFantaNaranja = {
     transform = {
         position = "  0.000000 ,11.054862 ,10.000000 " ,
-        rotation = "   0.000000, 0.000000, 0.000000, 0.000000 " ,
+        rotation = "   0.000000, -90.000000, 0.000000, 0.000000 " ,
         scale = "  1.000000 ,1.000000 ,1.000000 " ,
     },
     parent = {
@@ -1580,7 +1580,7 @@ TriggerBaldaDobleFantaNaranja = {
 TriggerBaldaDobleHuevos = {
     transform = {
         position = "  0.000000 ,11.054862 ,10.000000 " ,
-        rotation = "   0.000000, 0.000000, 0.000000, 0.000000 " ,
+        rotation = "   0.000000, 180.000000, 0.000000, 0.000000 " ,
         scale = "  1.000000 ,1.000000 ,1.000000 " ,
     },
     parent = {
@@ -1604,7 +1604,7 @@ TriggerBaldaDobleHuevos = {
 TriggerBaldaDobleLeche = {
     transform = {
         position = "  0.000000 ,11.054862 ,10.000000 " ,
-        rotation = "   0.000000, 0.000000, 0.000000, 0.000000 " ,
+        rotation = "   0.000000, 90.000000, 0.000000, 0.000000 " ,
         scale = "  1.000000 ,1.000000 ,1.000000 " ,
     },
     parent = {
@@ -1628,7 +1628,7 @@ TriggerBaldaDobleLeche = {
 TriggerBaldaDobleNata = {
     transform = {
         position = "  0.000000 ,11.054862 ,10.000000 " ,
-        rotation = "   0.000000, 0.000000, 0.000000, 0.000000 " ,
+        rotation = "   0.000000, 90.000000, 0.000000, 0.000000 " ,
         scale = "  1.000000 ,1.000000 ,1.000000 " ,
     },
     parent = {
@@ -1676,8 +1676,8 @@ TriggerBaldaDoblePan = {
 TriggerBaldaDoblePatatas = {
     transform = {
         position = "  0.000000 ,11.054862 ,10.000000 " ,
-        rotation = "   0.000000, 0.000000, 0.000000, 0.000000 " ,
-        scale = "  1.000000 ,1.000000 ,1.000000 " ,
+        rotation = "   0.000000, -90.000000, 0.000000, 0.000000 " ,
+        scale = "  1.00000 ,1.000000 ,1.00000 " ,
     },
     parent = {
         name = "BaldaDoblePatatas",
@@ -1748,7 +1748,7 @@ TriggerBaldaDoblePezRosa = {
 TriggerBaldaDoblePizza = {
     transform = {
         position = "  0.000000 ,11.054862 ,10.000000 " ,
-        rotation = "   0.000000, 0.000000, 0.000000, 0.000000 " ,
+        rotation = "   0.000000, 90.000000, 0.000000, 0.000000 " ,
         scale = "  1.000000 ,1.000000 ,1.000000 " ,
     },
     parent = {
@@ -1772,7 +1772,7 @@ TriggerBaldaDoblePizza = {
 TriggerBaldaDobleVino = {
     transform = {
         position = "  0.000000 ,11.054862 ,10.000000 " ,
-        rotation = "   0.000000, 0.000000, 0.000000, 0.000000 " ,
+        rotation = "   0.000000, -90.000000, 0.000000, 0.000000 " ,
         scale = "  1.000000 ,1.000000 ,1.000000 " ,
     },
     parent = {
@@ -1796,7 +1796,7 @@ TriggerBaldaDobleVino = {
 TriggerBaldaDobleCalabaza = {
     transform = {
         position = "  0.000000 ,11.054862 ,-0.000000 " ,
-        rotation = "   0.000000, 0.000000, 0.000000, 0.000000 " ,
+        rotation = "   0.000000, 90.000000, 0.000000, 0.000000 " ,
         scale = "  1.000000 ,1.000000 ,1.000000 " ,
     },
     parent = {
@@ -1908,33 +1908,33 @@ TriggerBaldaDobleZanahoria = {
          id = "Zanahoria"
     },
 }
-TriggerBaldaDobleMandarina = {
-    transform = {
-        position = "  0.000000 ,11.054862 ,-0.000000 " ,
-        rotation = "   0.000000, 0.000000, 0.000000, 0.000000 " ,
-        scale = "  1.000000 ,1.000000 ,1.000000 " ,
-    },
-    parent = {
-        name = "BaldaDobleMandarina",
+-- TriggerBaldaDobleMandarina = {
+--     transform = {
+--         position = "  0.000000 ,11.054862 ,-0.000000 " ,
+--         rotation = "   0.000000, 0.000000, 0.000000, 0.000000 " ,
+--         scale = "  1.000000 ,1.000000 ,1.000000 " ,
+--     },
+--     parent = {
+--         name = "BaldaDobleMandarina",
         
-    },
-    rigidbody = {
-         mass = "0.0",
-          isTrigger = "1",
-        isKinematic = "0",
-        colShape = "0",
-         scale="20.0; 5.0; 10.0"
-    },
-    entityid = {
-        type = "1",
-        prodtype = "2",
-         id = "Mandarina"
-    },
-}
+--     },
+--     rigidbody = {
+--          mass = "0.0",
+--           isTrigger = "1",
+--         isKinematic = "0",
+--         colShape = "0",
+--          scale="20.0; 5.0; 10.0"
+--     },
+--     entityid = {
+--         type = "1",
+--         prodtype = "2",
+--          id = "Mandarina"
+--     },
+-- }
 TriggerBaldaDobleManzana = {
     transform = {
         position = "  0.000000 ,11.054862 ,-0.000000 " ,
-        rotation = "   0.000000, 0.000000, 0.000000, 0.000000 " ,
+        rotation = "   0.000000, 90.000000, 0.000000, 0.000000 " ,
         scale = "  1.000000 ,1.000000 ,1.000000 " ,
     },
     parent = {
@@ -2143,7 +2143,7 @@ TriggerBaldaSimpleDonut = {
 TriggerBaldaSimpleNata = {
     transform = {
         position = "  0.000000 ,11.054862 ,10.000000 " ,
-        rotation = "   0.000000, 0.000000, 0.000000, 0.000000 " ,
+        rotation = "   0.000000, -90.000000, 0.000000, 0.000000 " ,
         scale = "  1.000000 ,1.000000 ,1.000000 " ,
     },
     entityid = {
@@ -2282,7 +2282,7 @@ TriggerBaldaSimpleHuevos = {
 TriggerBaldaSimplePizza = {
     transform = {
         position = "  0.000000 ,11.054862 ,10.000000 " ,
-        rotation = "   0.000000, 0.000000, 0.000000, 0.000000 " ,
+        rotation = "   0.000000, -90.000000, 0.000000, 0.000000 " ,
         scale = "  1.000000 ,1.000000 ,1.000000 " ,
     },
     entityid = {
@@ -2681,4 +2681,4 @@ EdificioA = {
     }
 }
 
-entities = {"light","player","Peso", "CajaPagar", "TicketDispenser", "Pescaderia", "Carniceria", "CajaPagarHijo0", "CajaPagarHijo1", "Caja","Ground", "Suelo", "EdificioA", "EdificioB", "EdificioC" , "EdificioD" ,"PaleCaja", "Maceta", "Cestas", "AvisoMojado", "Papelera", "Pale", "Charco", "CharcoA", "CharcoB", "ParedPreset", "Cartel_1", "Cartel_2", "Cartel_0", "Cartel_3", "Cartel_5", "Cartel_6", "Cartel_4", "Cartel_7", "BaldaDobleSandia", "BaldaDobleLeche", "BaldaDobleVino", "BaldaSimplePina", "BaldaDobleMandarina", "BaldaDobleCalabaza", "BaldaSimpleCalabaza", "BaldaDobleUva", "CartelCocacolas", "CartelTomates", "CartelSandias", "CartelCereales", "CartelLeche", "CuboFregona", "BaldaSimpleUva", "BaldaDobleManzana", "BaldaDobleNata", "BaldaDobleCafe", "BaldaDobleCerealesRojos", "BaldaDobleHuevos", "BaldaDobleCola", "BaldaDobleFantaNaranja", "BaldaDobleFantaLimon", "BaldaSimpleFantaLimon", "BaldaSimpleAgua", "BaldaDoblePizza", "BaldaDobleDonut", "BaldaDoblePatatas", "BaldaDoblePan", "BaldaDobleTomate", "BaldaDobleCerealesNaranjas", "BaldaDobleCerealesVerdes", "BaldaPlatano", "BaldaSimpleZanahoria", "BaldaDoblePezAzul", "BaldaSimplePezAzul", "cart", "camera", "gamemanager",  "TriggerCarniceria", "TriggerPeso", "TriggerTicketDispenser", "TriggerPescaderia", "TriggerCajaPagar", "cartTrigger", "TriggerBaldaPlatano", "TriggerBaldaDobleCafe", "TriggerBaldaDobleCerealesNaranjas", "TriggerBaldaDobleCerealesRojos", "TriggerBaldaDobleCerealesVerdes", "TriggerBaldaDobleCola", "TriggerBaldaDobleDonut", "TriggerBaldaDobleFantaLimon", "TriggerBaldaDobleFantaNaranja", "TriggerBaldaDobleHuevos", "TriggerBaldaDobleLeche", "TriggerBaldaDobleNata", "TriggerBaldaDoblePan", "TriggerBaldaDoblePatatas", "TriggerBaldaDoblePezAzul", "TriggerBaldaDoblePizza", "TriggerBaldaDobleVino", "TriggerBaldaDobleCalabaza", "TriggerBaldaDobleSandia", "TriggerBaldaDobleUva", "TriggerBaldaDobleMandarina", "TriggerBaldaDobleManzana", "TriggerBaldaDobleTomate", "TriggerBaldaSimpleAgua", "TriggerBaldaSimplePezAzul", "TriggerBaldaSimpleCalabaza", "TriggerBaldaSimplePina", "TriggerBaldaSimpleUva", "TriggerBaldaSimpleZanahoria", "TriggerBaldaSimpleFantaLimon" }
+entities = {"light","player","Peso", "CajaPagar", "TicketDispenser", "Pescaderia", "Carniceria", "CajaPagarHijo0", "CajaPagarHijo1", "Caja","Ground", "Suelo", "EdificioA", "EdificioB", "EdificioC" , "EdificioD" ,"PaleCaja", "Maceta", "Cestas", "AvisoMojado", "Papelera", "Pale", "Charco", "CharcoA", "CharcoB", "Cartel_1", "Cartel_2", "Cartel_0", "Cartel_3", "Cartel_5", "Cartel_6", "Cartel_4", "Cartel_7", "BaldaDobleSandia", "BaldaDobleLeche", "BaldaDobleVino", "BaldaSimplePina", "BaldaDobleCalabaza", "BaldaSimpleCalabaza", "BaldaDobleUva", "CartelCocacolas", "CartelTomates", "CartelSandias", "CartelCereales", "CartelLeche", "CuboFregona", "BaldaSimpleUva", "BaldaDobleManzana", "BaldaDobleNata", "BaldaDobleCafe", "BaldaDobleCerealesRojos", "BaldaDobleHuevos", "BaldaDobleCola", "BaldaDobleFantaNaranja", "BaldaDobleFantaLimon", "BaldaSimpleFantaLimon", "BaldaSimpleAgua", "BaldaDoblePizza", "BaldaDobleDonut", "BaldaDoblePatatas", "BaldaDoblePan", "BaldaDobleTomate", "BaldaDobleCerealesNaranjas", "BaldaDobleCerealesVerdes", "BaldaPlatano", "BaldaSimpleZanahoria", "BaldaDoblePezAzul", "BaldaSimplePezAzul", "cart", "camera", "gamemanager",  "TriggerCarniceria", "TriggerPeso", "TriggerTicketDispenser", "TriggerPescaderia", "TriggerCajaPagar", "cartTrigger", "TriggerBaldaPlatano", "TriggerBaldaDobleCafe", "TriggerBaldaDobleCerealesNaranjas", "TriggerBaldaDobleCerealesRojos", "TriggerBaldaDobleCerealesVerdes", "TriggerBaldaDobleCola", "TriggerBaldaDobleDonut", "TriggerBaldaDobleFantaLimon", "TriggerBaldaDobleFantaNaranja", "TriggerBaldaDobleHuevos", "TriggerBaldaDobleLeche", "TriggerBaldaDobleNata", "TriggerBaldaDoblePan", "TriggerBaldaDoblePatatas", "TriggerBaldaDoblePezAzul", "TriggerBaldaDoblePizza", "TriggerBaldaDobleVino", "TriggerBaldaDobleCalabaza", "TriggerBaldaDobleSandia", "TriggerBaldaDobleUva", "TriggerBaldaDobleManzana", "TriggerBaldaDobleTomate", "TriggerBaldaSimpleAgua", "TriggerBaldaSimplePezAzul", "TriggerBaldaSimpleCalabaza", "TriggerBaldaSimplePina", "TriggerBaldaSimpleUva", "TriggerBaldaSimpleZanahoria", "TriggerBaldaSimpleFantaLimon" }
