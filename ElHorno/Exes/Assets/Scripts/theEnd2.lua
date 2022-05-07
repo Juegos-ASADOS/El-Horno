@@ -68,7 +68,7 @@ TicketDispenser = {
 Pescaderia = {
     transform = {
         position = "  -1005.483643 ,-0.500147 ,-367.563843 " ,
-        rotation = "   0.000000, 0.000000, 0.000000, 0.000000 " ,
+        rotation = "   0.000000, 90.000000, 0.000000, 0.000000 " ,
         scale = "  1.000000 ,1.000000 ,1.000000 " ,
     },
     rigidbody = {
@@ -144,7 +144,7 @@ Caja = {
         scale = "  1.000000 ,1.000000 ,1.000000 " ,
     },
     rigidbody = {
-        mass = "0.0",
+        mass = "2.0",
         isTrigger = "0",
          isKinematic = "0",
          colShape = "0",
@@ -1138,9 +1138,9 @@ BaldaSimplePezAzul = {
 }
 cart = {
     transform = {
-        position = "  -1417.507202 ,-0.403147 ,-356.442047 " ,
+        position = "  0 ,-2.0 ,3.0 " ,
         rotation = "   0.000000, 0.000000, 0.000000, 0.000000 " ,
-        scale = "  1.000000 ,1.000000 ,1.000000 " ,
+        scale = "  0.156 ,0.156 ,0.156 " ,
     },
     parent = {
         name = "player",
@@ -1159,17 +1159,17 @@ cart = {
 }
 camera = {
     transform = {
-        position = "  -1417.507202 ,-0.403147 ,-358.942047 " ,
+        position = "0,0,0" ,
         rotation = "   0.000000, 0.000000, 0.000000, 0.000000 " ,
         scale = "  20.000000 ,20.000000 ,20.000000 " ,
     },
     camera = {
-        position = " 0,100,450",
+        position = " 0,150,100",
         lookAt = "   0,0,0 ",
         color = "0 ,0.3 ,0.5,1 ",
         nearClDis = "5",
         farClDis = "10000",
-        target = "player,0.2, 0,600,300"
+        target = "player,0.2, 0,200,100"
     },
     audiolistener = {
         
@@ -1183,8 +1183,8 @@ gamemanager = {
     },
     gamemanager = {
         state = "0",
-        productNum = "6",
-        list = "Tomate,3,Zanahoria,2,Pizza,1",
+        productNum = "1",
+        list = "Tomate,2,Carne_0,1,PezRosa,1,Leche,3,Pizza,2,Cafe,2",
          maxTime = "120",
     },
 }
@@ -1318,9 +1318,9 @@ TriggerPescaderia = {
 }
 TriggerCajaPagar = {
     transform = {
-        position = "  0.000000 ,0.000000 ,-0.000000 " ,
+        position = "  0.000000 ,0.000000 ,100.000000 " ,
         rotation = "   0.000000, 0.000000, 0.000000, 0.000000 " ,
-        scale = "  1.000000 ,1.000000 ,1.000000 " ,
+        scale = "  4.00000 ,2.000000 ,5.000000 " ,
     },
     entityid = {
         type = "3",
