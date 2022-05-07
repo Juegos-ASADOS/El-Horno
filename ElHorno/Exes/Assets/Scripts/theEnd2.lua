@@ -1,6 +1,22 @@
 light = {
     transform = {
-        position = " 0 ,200 ,200 ",
+        position = " -800 ,200 ,200 ",
+        rotation = " 0 ,0 ,0 ",
+        scale = " 0 ,0 ,0 ",
+    },
+
+    light = {
+        type = "0",
+        dirLight = " 0 ,-1 ,0.3 ",
+        diffuse = " 1 ,1 ,1 ",
+        specular = " 1 ,1 ,1 ",
+        powerScale = "1",
+    },
+}
+
+light = {
+    transform = {
+        position = " -1200 ,200 ,200 ",
         rotation = " 0 ,0 ,0 ",
         scale = " 0 ,0 ,0 ",
     },
@@ -323,7 +339,7 @@ CharcoB = {
         type = "8"
     },
     mesh = {
-        name = "Charco.005.mesh",
+        name = "Charco.003.mesh",
     }
 }
 -- ParedPreset = {
