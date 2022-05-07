@@ -260,8 +260,8 @@ namespace El_Horno {
 	void AudioManager::upMusicVolume()
 	{
 		musicVolume += changeQuantity;
-		if (musicVolume >= 60)
-			musicVolume = 60;
+		if (musicVolume >= 10)
+			musicVolume = 10;
 		sgpImplementation->mChannels[musicChannel]->setVolume(musicVolume);
 	}
 
@@ -276,8 +276,8 @@ namespace El_Horno {
 	void AudioManager::upFxVolume()
 	{
 		fxVolume += changeQuantity;
-		if (fxVolume >= 60)
-			fxVolume = 60;
+		if (fxVolume >= 10)
+			fxVolume = 10;
 		for (int i = 0; i < sgpImplementation->mChannels.size(); ++i) {
 			if (i != musicChannel)
 				sgpImplementation->mChannels[i]->setVolume(fxVolume);

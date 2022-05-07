@@ -99,10 +99,10 @@ namespace El_Horno {
 		FMOD::Channel* moveChannel;
 		FMOD::SoundGroup* fx;
 
-		float changeQuantity = 10;
+		float changeQuantity = 1;
 
 		float musicVolume = -1;
-		float fxVolume = 50;
+		float fxVolume = 5;
 	};
 }
 #endif _AUDIO_MANAGER_AUDIO_MANAGER_H
