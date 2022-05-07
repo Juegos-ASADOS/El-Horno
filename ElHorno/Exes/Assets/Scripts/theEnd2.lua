@@ -1,6 +1,22 @@
 light = {
     transform = {
-        position = " 0 ,200 ,200 ",
+        position = " -800 ,200 ,200 ",
+        rotation = " 0 ,0 ,0 ",
+        scale = " 0 ,0 ,0 ",
+    },
+
+    light = {
+        type = "0",
+        dirLight = " 0 ,-1 ,0.3 ",
+        diffuse = " 1 ,1 ,1 ",
+        specular = " 1 ,1 ,1 ",
+        powerScale = "1",
+    },
+}
+
+light = {
+    transform = {
+        position = " -1200 ,200 ,200 ",
         rotation = " 0 ,0 ,0 ",
         scale = " 0 ,0 ,0 ",
     },
@@ -323,7 +339,7 @@ CharcoB = {
         type = "8"
     },
     mesh = {
-        name = "Charco.005.mesh",
+        name = "Charco.003.mesh",
     }
 }
 -- ParedPreset = {
@@ -1136,6 +1152,60 @@ BaldaSimplePezAzul = {
         name = "BaldaSimplePezAzul.001.mesh",
     }
 }
+Vieja = {
+    transform = {
+        position = " -1156.490479 ,17.0 ,-369.668701 " ,
+        rotation = " 0.000000, 0.000000, 0.000000, 0.000000 " ,
+        scale = "  7.000000 ,7.000000 ,7.000000 " ,
+    },
+    rigidbody = {
+        mass = "0.0",
+        isTrigger = "0",
+         isKinematic = "0",
+         colShape = "0",
+        scale = "1.0; 1.0; 1.0",
+        
+    },
+    mesh = {
+        name = "miVieja.mesh",
+    },
+    animatorcontroller = {
+        Idle = "cut",
+        AnyState = "Idle",     
+    },
+    -- patrol = {
+    --     speed = "200",
+    --     position = "-1156.490479 ,3.597879 ,-369.668701,-1186.490479 ,3.597879 ,-369.668701, "
+    -- }
+}
+Carnicero = {
+    transform = {
+        position = "  -879.641479 , 19.0 ,-155.666000 " ,
+        rotation = " 0.000000, -90.000000, 0.000000, 0.000000 " ,
+        scale = "  7.000000 ,7.000000 ,7.000000 " ,
+    },
+    mesh = {
+        name = "carnicero.mesh",
+    },
+    animatorcontroller = {
+        Idle = "cut",
+        AnyState = "Idle",     
+    },
+}
+Pescadero = {
+    transform = {
+        position = "  -1005.483643 ,19.0  ,-367.563843 " ,
+        rotation = " 0.000000, 0.000000, 0.000000, 0.000000 " ,
+        scale = "  7.000000 ,7.000000 ,7.000000 " ,
+    },
+    mesh = {
+        name = "pescadero.mesh",
+    },
+    animatorcontroller = {
+        Idle = "cut",
+        AnyState = "Idle",     
+    },
+}
 cart = {
     transform = {
         position = "  0 ,-2.0 ,3.0 " ,
@@ -1164,7 +1234,7 @@ camera = {
         scale = "  20.000000 ,20.000000 ,20.000000 " ,
     },
     camera = {
-        position = " 0,150,100",
+        position = " 0,115,110",
         lookAt = "   0,0,0 ",
         color = "0 ,0.3 ,0.5,1 ",
         nearClDis = "5",
@@ -1183,16 +1253,16 @@ gamemanager = {
     },
     gamemanager = {
         state = "0",
-        productNum = "1",
+        productNum = "11",
         list = "Tomate,2,Carne_0,1,PezRosa,1,Leche,3,Pizza,2,Cafe,2",
-         maxTime = "120",
+         maxTime = "180",
     },
 }
 player = {
     transform = {
         position = "  -1467.507202 ,19.596855 ,-358.942047 " ,
         rotation = "   0.000000, 0.000000, 0.000000, 0.000000 " ,
-        scale = "  8.000000 ,8.000000 ,8.000000 " ,
+        scale = "  6.000000 ,6.000000 ,6.000000 " ,
     },
     mesh = {
         name = "pipo.mesh"
@@ -2681,4 +2751,4 @@ EdificioA = {
     }
 }
 
-entities = {"light","player","Peso", "CajaPagar", "TicketDispenser", "Pescaderia", "Carniceria", "CajaPagarHijo0", "CajaPagarHijo1", "Caja","Ground", "Suelo", "EdificioA", "EdificioB", "EdificioC" , "EdificioD" ,"PaleCaja", "Maceta", "Cestas", "AvisoMojado", "Papelera", "Pale", "Charco", "CharcoA", "CharcoB", "Cartel_1", "Cartel_2", "Cartel_0", "Cartel_3", "Cartel_5", "Cartel_6", "Cartel_4", "Cartel_7", "BaldaDobleSandia", "BaldaDobleLeche", "BaldaDobleVino", "BaldaSimplePina", "BaldaDobleCalabaza", "BaldaSimpleCalabaza", "BaldaDobleUva", "CartelCocacolas", "CartelTomates", "CartelSandias", "CartelCereales", "CartelLeche", "CuboFregona", "BaldaSimpleUva", "BaldaDobleManzana", "BaldaDobleNata", "BaldaDobleCafe", "BaldaDobleCerealesRojos", "BaldaDobleHuevos", "BaldaDobleCola", "BaldaDobleFantaNaranja", "BaldaDobleFantaLimon", "BaldaSimpleFantaLimon", "BaldaSimpleAgua", "BaldaDoblePizza", "BaldaDobleDonut", "BaldaDoblePatatas", "BaldaDoblePan", "BaldaDobleTomate", "BaldaDobleCerealesNaranjas", "BaldaDobleCerealesVerdes", "BaldaPlatano", "BaldaSimpleZanahoria", "BaldaDoblePezAzul", "BaldaSimplePezAzul", "cart", "camera", "gamemanager",  "TriggerCarniceria", "TriggerPeso", "TriggerTicketDispenser", "TriggerPescaderia", "TriggerCajaPagar", "cartTrigger", "TriggerBaldaPlatano", "TriggerBaldaDobleCafe", "TriggerBaldaDobleCerealesNaranjas", "TriggerBaldaDobleCerealesRojos", "TriggerBaldaDobleCerealesVerdes", "TriggerBaldaDobleCola", "TriggerBaldaDobleDonut", "TriggerBaldaDobleFantaLimon", "TriggerBaldaDobleFantaNaranja", "TriggerBaldaDobleHuevos", "TriggerBaldaDobleLeche", "TriggerBaldaDobleNata", "TriggerBaldaDoblePan", "TriggerBaldaDoblePatatas", "TriggerBaldaDoblePezAzul", "TriggerBaldaDoblePizza", "TriggerBaldaDobleVino", "TriggerBaldaDobleCalabaza", "TriggerBaldaDobleSandia", "TriggerBaldaDobleUva", "TriggerBaldaDobleManzana", "TriggerBaldaDobleTomate", "TriggerBaldaSimpleAgua", "TriggerBaldaSimplePezAzul", "TriggerBaldaSimpleCalabaza", "TriggerBaldaSimplePina", "TriggerBaldaSimpleUva", "TriggerBaldaSimpleZanahoria", "TriggerBaldaSimpleFantaLimon" }
+entities = {"light","player","Peso", "CajaPagar", "TicketDispenser", "Pescaderia", "Carniceria", "CajaPagarHijo0", "CajaPagarHijo1", "Caja","Ground", "Suelo", "EdificioA", "EdificioB", "EdificioC" , "EdificioD" ,"PaleCaja", "Maceta", "Cestas", "AvisoMojado", "Papelera", "Pale", "Charco", "CharcoA", "CharcoB", "Cartel_1", "Cartel_2", "Cartel_0", "Cartel_3", "Cartel_5", "Cartel_6", "Cartel_4", "Cartel_7", "BaldaDobleSandia", "BaldaDobleLeche", "BaldaDobleVino", "BaldaSimplePina", "BaldaDobleCalabaza", "BaldaSimpleCalabaza", "BaldaDobleUva", "CartelCocacolas", "CartelTomates", "CartelSandias", "CartelCereales", "CartelLeche", "CuboFregona", "BaldaSimpleUva", "BaldaDobleManzana", "BaldaDobleNata", "BaldaDobleCafe", "BaldaDobleCerealesRojos", "BaldaDobleHuevos", "BaldaDobleCola", "BaldaDobleFantaNaranja", "BaldaDobleFantaLimon", "BaldaSimpleFantaLimon", "BaldaSimpleAgua", "BaldaDoblePizza", "BaldaDobleDonut", "BaldaDoblePatatas", "BaldaDoblePan", "BaldaDobleTomate", "BaldaDobleCerealesNaranjas", "BaldaDobleCerealesVerdes", "BaldaPlatano", "BaldaSimpleZanahoria", "BaldaDoblePezAzul", "BaldaSimplePezAzul", "Vieja", "Carnicero", "Pescadero", "cart", "camera", "gamemanager",  "TriggerCarniceria", "TriggerPeso", "TriggerTicketDispenser", "TriggerPescaderia", "TriggerCajaPagar", "cartTrigger", "TriggerBaldaPlatano", "TriggerBaldaDobleCafe", "TriggerBaldaDobleCerealesNaranjas", "TriggerBaldaDobleCerealesRojos", "TriggerBaldaDobleCerealesVerdes", "TriggerBaldaDobleCola", "TriggerBaldaDobleDonut", "TriggerBaldaDobleFantaLimon", "TriggerBaldaDobleFantaNaranja", "TriggerBaldaDobleHuevos", "TriggerBaldaDobleLeche", "TriggerBaldaDobleNata", "TriggerBaldaDoblePan", "TriggerBaldaDoblePatatas", "TriggerBaldaDoblePezAzul", "TriggerBaldaDoblePizza", "TriggerBaldaDobleVino", "TriggerBaldaDobleCalabaza", "TriggerBaldaDobleSandia", "TriggerBaldaDobleUva", "TriggerBaldaDobleManzana", "TriggerBaldaDobleTomate", "TriggerBaldaSimpleAgua", "TriggerBaldaSimplePezAzul", "TriggerBaldaSimpleCalabaza", "TriggerBaldaSimplePina", "TriggerBaldaSimpleUva", "TriggerBaldaSimpleZanahoria", "TriggerBaldaSimpleFantaLimon" }
