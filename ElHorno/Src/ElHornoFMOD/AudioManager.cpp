@@ -123,7 +123,7 @@ namespace El_Horno {
 	//	}
 	//}
 
-	void AudioManager::Loadsound(const std::string& strSoundName, bool b3d, bool bLooping, bool bStream, bool isMusic)
+	void AudioManager::Loadsound(const std::string& strSoundName, bool isMusic, bool b3d, bool bLooping, bool bStream)
 	{
 		auto tFoundIt = sgpImplementation->mSounds.find(strSoundName);
 		if (tFoundIt != sgpImplementation->mSounds.end())
@@ -182,30 +182,24 @@ namespace El_Horno {
 			if (currMode & FMOD_3D) {
 				ErrorCheck(pChannel->set3DAttributes(&vPosition, nullptr));
 			}
-			if (isMusic && musicVolume != -1) {
-				ErrorCheck(pChannel->setVolume(musicVolume));
-			}
-			else if (!isMusic && fxVolume != -1) {
-				ErrorCheck(pChannel->setVolume(fxVolume));		
-			}
-			else {
-				ErrorCheck(pChannel->setVolume(fVolumedB));
-				if (isMusic)
-					musicVolume = fVolumedB;
-				else
-					fxVolume = fVolumedB;
-			}
+			//if (isMusic && musicVolume != -1) {
+			ErrorCheck(pChannel->setVolume(fVolumedB));
+			//}
+			//if (!isMusic && fxVolume != -1) {
+			ErrorCheck(pChannel->setVolume(fVolumedB));
+			//}
+			//else {
+			ErrorCheck(pChannel->setVolume(fVolumedB));
+			//}
 			ErrorCheck(pChannel->setPaused(false));
 			sgpImplementation->mChannels[nChannelId] = pChannel;
 			if (isMusic) {
-				musicChannel = nChannelId;		
+				musicChannel = nChannelId;
 				moveChannel = pChannel;
-				sgpImplementation->mChannels[musicChannel]->setVolume(musicVolume);
-
-
+				//sgpImplementation->mChannels[musicChannel]->setVolume(musicVolume);
 			}
 			else {
-				sgpImplementation->mChannels[nChannelId]->setVolume(fxVolume);
+				//sgpImplementation->mChannels[nChannelId]->setVolume(fxVolume);
 			}
 		}
 		return nChannelId;
@@ -263,38 +257,38 @@ namespace El_Horno {
 	void AudioManager::upMusicVolume()
 	{
 		musicVolume += changeQuantity;
-		if (musicVolume >= 10)
-			musicVolume = 10;
-		sgpImplementation->mChannels[musicChannel]->setVolume(musicVolume);
+		if (changeQuantity >= 1)
+			changeQuantity = 1;
+		sgpImplementation->mChannels[musicChannel]->setVolume(musicVolume * changeQuantity);
 	}
 
 	void AudioManager::downMusicVolume()
 	{
 		musicVolume -= changeQuantity;
-		if (musicVolume <= 0)
-			musicVolume = 0;
-		sgpImplementation->mChannels[musicChannel]->setVolume(musicVolume);
+		if (changeQuantity <= 0)
+			changeQuantity = 0;
+		sgpImplementation->mChannels[musicChannel]->setVolume(musicVolume * changeQuantity);
 	}
 
 	void AudioManager::upFxVolume()
 	{
 		fxVolume += changeQuantity;
-		if (fxVolume >= 10)
-			fxVolume = 10;
+		if (changeQuantity >= 1)
+			fxVolume = 1;
 		for (int i = 0; i < sgpImplementation->mChannels.size(); ++i) {
 			if (i != musicChannel)
-				sgpImplementation->mChannels[i]->setVolume(fxVolume);
+				sgpImplementation->mChannels[i]->setVolume(fxVolume * changeQuantity);
 		}
 	}
 
 	void AudioManager::downFxVolume()
 	{
 		fxVolume -= changeQuantity;
-		if (fxVolume <= 0)
-			fxVolume = 0;
+		if (changeQuantity <= 0)
+			changeQuantity = 0;
 		for (int i = 0; i < sgpImplementation->mChannels.size(); ++i) {
 			if (i != musicChannel)
-				sgpImplementation->mChannels[i]->setVolume(fxVolume);
+				sgpImplementation->mChannels[i]->setVolume(fxVolume * changeQuantity);
 		}
 	}
 

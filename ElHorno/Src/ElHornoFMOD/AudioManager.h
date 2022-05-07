@@ -57,7 +57,7 @@ namespace El_Horno {
 
 		//void LoadBank(const std::string& strBankName, FMOD::FMOD_STUDIO_LOAD_BANK_FLAGS flags);
 		//void LoadEvent(const string& strEventName);
-		void Loadsound(const std::string& strSoundName, bool b3d = true, bool bLooping = false, bool bStream = false, bool isMusic = false);
+		void Loadsound(const std::string& strSoundName, bool isMusic = false, bool b3d = true, bool bLooping = false, bool bStream = false);
 		void UnLoadSound(const std::string& strSoundName);
 		//void Set3dListenerAndOrientation(const FMOD_VECTOR& vPos = { 0, 0, 0 }, float fVolumedB = 0.0f);
 		int playSound(const std::string& strSoundName, const FMOD_VECTOR& vPos, float fVolumedB = 1.0f, bool isMusic = false);
@@ -99,10 +99,10 @@ namespace El_Horno {
 		FMOD::Channel* moveChannel;
 		FMOD::SoundGroup* fx;
 
-		float changeQuantity = 1;
+		float changeQuantity = 0.1f;
 
-		float musicVolume = -1;
-		float fxVolume = 5;
+		float musicVolume = 1;
+		float fxVolume = 1;
 	};
 }
 #endif _AUDIO_MANAGER_AUDIO_MANAGER_H

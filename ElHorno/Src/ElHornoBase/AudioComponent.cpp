@@ -28,8 +28,8 @@ namespace El_Horno {
 		ElHornoBase::getInstance()->getAudioManager()->updateSound(OgreVectorToFmod(pos_), OgreVectorToFmod(vel_), nChannel_);
 	}
 
-	void AudioComponent::playSound(std::string path)
+	void AudioComponent::playSound(std::string path, int vol)
 	{
-		nChannel_ = ElHornoBase::getInstance()->getAudioManager()->playSound(path, OgreVectorToFmod(pos_), vol_);
+		nChannel_ = ElHornoBase::getInstance()->getAudioManager()->playSound(path, OgreVectorToFmod(pos_), vol);
 	}
 }

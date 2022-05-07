@@ -23,7 +23,7 @@ namespace El_Horno {
 		void onEnable() override {};
 		void onDisable()override {};
 
-		virtual void playSound(std::string path);
+		virtual void playSound(std::string path, int vol = 60.0f);
 
 	private:
 		Ogre::Vector3 pos_;
