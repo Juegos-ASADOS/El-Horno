@@ -57,7 +57,6 @@
             <Property name="Area" value="{{0,829},{0,847},{0,1069},{0,949}}" />
             <Property name="HoverImage" value="DondeTaLeche/MenuBoton_Over" />
             <Property name="NormalImage" value="DondeTaLeche/MenuBoton" />
-            <Property name="Text" value="Boton" />
             <UserString name="Text" value="Boton" />
         </Window>
     </Window>
