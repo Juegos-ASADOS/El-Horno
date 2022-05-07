@@ -1170,8 +1170,10 @@ Vieja = {
         name = "miVieja.mesh",
     },
     animatorcontroller = {
-        Idle = "cut",
+        Idle = "npc_walk",
+		npc_walk = "Idle",
         AnyState = "Idle",     
+		InitialState = "Idle",
     },
     -- patrol = {
     --     speed = "200",
@@ -1189,7 +1191,9 @@ Carnicero = {
     },
     animatorcontroller = {
         Idle = "cut",
-        AnyState = "Idle",     
+		cut = "Idle",
+        AnyState = "Idle",    
+		InitialState = "cut",
     },
 }
 Pescadero = {
@@ -1203,7 +1207,9 @@ Pescadero = {
     },
     animatorcontroller = {
         Idle = "cut",
-        AnyState = "Idle",     
+		cut = "Idle",
+        AnyState = "Idle",      
+		InitialState = "cut",
     },
 }
 cart = {
@@ -1287,13 +1293,14 @@ player = {
         
     },
     animatorcontroller = {
-        Idle = "walk",
+         Idle = "walk",
          walk = "Idle",
          Idle_with_product = "walk_with_product",
          walk_with_product = "Idle_with_product",
          Idle_with_cart = "walk_with_cart",
          walk_with_cart = "Idle_with_cart",
          AnyState = "Idle_with_cart,Idle_with_product,Idle",     
+		 InitialState = "Idle_with_cart", 
     },
 }
 TriggerCarniceria = {

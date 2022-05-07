@@ -39,7 +39,8 @@ namespace El_Horno {
 		}
 
 		// Seteamos el estado incial al primero de la maquina de estados
-		currentState_.name = animVector[0].first;
+		initialState_ = animVector[0].first;
+		currentState_.name = initialState_;
 	}
 
 	AnimatorController::AnimatorController()
@@ -57,6 +58,7 @@ namespace El_Horno {
 		// Generar la maquina de estados
 		for (int i = 0; i < animVector.size(); i++)
 		{
+
 			TransitionMap t;
 			std::string state = animVector[i].first;
 			std::string nextState = animVector[i].second;
@@ -68,6 +70,10 @@ namespace El_Horno {
 				{
 					animationStateMachine_.at(state).insert(std::pair<std::string, bool>(val, false));
 				}
+			}
+			else if (state == "InitialState")
+			{
+				initialState_ = nextState;
 			}
 			else {
 				t.insert(std::pair<std::string, bool>(nextState, false));
@@ -82,7 +88,7 @@ namespace El_Horno {
 		}
 
 		// Seteamos el estado incial al primero de la maquina de estados
-		currentState_.name = "Idle";
+		currentState_.name = initialState_;
 	}
 
 	void AnimatorController::start()
@@ -100,15 +106,6 @@ namespace El_Horno {
 		currentState_.state = animStatesMap_->getAnimationState(currentState_.name);
 		currentState_.state->setEnabled(true);
 		currentState_.state->setLoop(true);
-
-		//auto it = animStatesMap_->getAnimationStateIterator().begin();
-		//while (it != animStatesMap_->getAnimationStateIterator().end())
-		//{
-		//	//it->second->setEnabled(true);
-		//	//it->second->setLoop(true);
-		//	++it;
-		//}
-
 	}
 
 	void AnimatorController::update()

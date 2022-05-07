@@ -63,20 +63,12 @@ namespace El_Horno {
 
 		// Mapa de Ogre con todas las animaciones de la malla 
 		Ogre::AnimationStateSet* animStatesMap_;
-		/* PARA RECORRER EL MAPA EN CASO NECESARIO
-		auto it = animStatesMap_->getAnimationStateIterator().begin();
-		while (it != animStatesMap_->getAnimationStateIterator().end())
-		{
-			auto s = it->first; ++it;
-		}
-		*/
 
 		// Estado actual
 		AnimationStateInfo currentState_;
 
-		//// es un mapa con el estado y sus transiciones si es que tiene
-		////nombre del estado   //nombre de la transicion
-		//std::map<std::string, std::map<std::string, Transition*>> transitionsMap_;
+		// Estado inicial 
+		std::string initialState_;
 
 		void manageTransitions();
 
