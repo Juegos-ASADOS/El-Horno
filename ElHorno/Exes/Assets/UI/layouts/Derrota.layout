@@ -16,7 +16,7 @@
         </Window>
         <Window type="GWEN/StaticImage" name="Panel" >
             <Property name="Image" value="Unknown/Perder" />
-            <Property name="Area" value="{{0,529},{0,32},{1,-525},{1,-46}}" />
+            <Property name="Area" value="{{0.27291664,5},{0.029629642,0},{0.72916698,-5},{0.96296334,-6}}" />
             <Property name="MaxSize" value="{{1,0},{1,0}}" />
             <Property name="AutoRenderingSurface" value="true" />
             <Property name="RiseOnClickEnabled" value="false" />
@@ -24,13 +24,10 @@
             <Property name="BackgroundEnabled" value="false" />
         </Window>
         <Window type="VDondeTaLeche/Boton" name="Boton_Volver" >
-            <Property name="Area" value="{{0,-3},{0,359},{0,237},{0,461}}" />
-            <Property name="HorizontalAlignment" value="Centre" />
-            <Property name="VerticalAlignment" value="Centre" />
+            <Property name="Area" value="{{0.43255219,4.5},{0.77916712,1.5},{0.56119788,-2.5},{0.87638879,-1.5}}" />
             <Property name="HoverImage" value="DondeTaLeche/MenuBoton_Over" />
             <Property name="NormalImage" value="DondeTaLeche/MenuBoton" />
             <Property name="PushedImage" value="DondeTaLeche/MenuBoton_Press" />
-            <UserString name="Text" value="Boton" />
         </Window>
     </Window>
 </GUILayout>

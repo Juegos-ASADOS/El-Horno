@@ -24,9 +24,7 @@
             <Property name="FrameEnabled" value="false" />
             <Property name="BackgroundEnabled" value="true" />
             <Window type="GWEN/StaticText" name="Text_Volver" >
-                <Property name="Area" value="{{0,-29},{0,416},{0,295},{0,540}}" />
-                <Property name="HorizontalAlignment" value="Centre" />
-                <Property name="VerticalAlignment" value="Centre" />
+                <Property name="Area" value="{{0.32918161,-101},{0.82084095,0},{0.63523114,111},{0.93784273,-4}}" />
                 <Property name="Alpha" value="0.80000001" />
                 <Property name="Font" value="LemonJuice_Normal" />
                 <Property name="Text" value="- Volver" />
@@ -40,9 +38,7 @@
                 </AutoWindow>
             </Window>
             <Window type="GWEN/StaticText" name="Text_VolEfectos" >
-                <Property name="Area" value="{{0,-17.5},{0,74},{0,511.5},{0,269}}" />
-                <Property name="HorizontalAlignment" value="Centre" />
-                <Property name="VerticalAlignment" value="Centre" />
+                <Property name="Area" value="{{0.24733107,-206.5},{0.42413163,5},{0.72597873,244.5},{0.60877502,-2}}" />
                 <Property name="Alpha" value="0.80000001" />
                 <Property name="Font" value="LemonJuice_Normal" />
                 <Property name="Text" value="- Volumen Efectos" />
@@ -56,9 +52,7 @@
                 </AutoWindow>
             </Window>
             <Window type="GWEN/StaticText" name="Text_VolMusica" >
-                <Property name="Area" value="{{0,-13},{0,-134.5},{0,506},{0,41.5}}" />
-                <Property name="HorizontalAlignment" value="Centre" />
-                <Property name="VerticalAlignment" value="Centre" />
+                <Property name="Area" value="{{0.25266904,-216},{0.21572211,4.5},{0.71886134,247},{0.37842786,2.5}}" />
                 <Property name="Alpha" value="0.80000001" />
                 <Property name="Font" value="LemonJuice_Normal" />
                 <Property name="Text" value="- Volumen Música" />
@@ -72,9 +66,7 @@
                 </AutoWindow>
             </Window>
             <Window type="GWEN/StaticText" name="Text_Opciones" >
-                <Property name="Area" value="{{0,0.5},{0,-428.5},{0,564.5},{0,-243.5}}" />
-                <Property name="HorizontalAlignment" value="Centre" />
-                <Property name="VerticalAlignment" value="Centre" />
+                <Property name="Area" value="{{0.24021356,3.5},{0.042047549,-6.5},{0.73843431,7.5},{0.20840952,4.5}}" />
                 <Property name="Alpha" value="0.80000001" />
                 <Property name="Font" value="LemonJuice_Medio" />
                 <Property name="Text" value="OPCIONES" />
@@ -87,46 +79,64 @@
                     <Property name="VerticalScrollbar" value="true" />
                 </AutoWindow>
             </Window>
+            <Window type="GWEN/StaticText" name="Text_Resol" >
+                <Property name="Area" value="{{0.26334512,-191.5},{0.65813518,8},{0.7170819,190.5},{0.7769652,2}}" />
+                <Property name="Alpha" value="0.80000001" />
+                <Property name="Font" value="LemonJuice_Normal" />
+                <Property name="Text" value="- Resolución" />
+                <Property name="TextColours" value="ff494949" />
+                <Property name="FrameEnabled" value="false" />
+                <Property name="BackgroundEnabled" value="true" />
+                <Property name="HorzFormatting" value="CentreAligned" />
+                <UserString name="Text" value="- Resolución" />
+                <AutoWindow namePath="__auto_vscrollbar__" >
+                    <Property name="VerticalScrollbar" value="true" />
+                </AutoWindow>
+            </Window>
+            <Window type="VDondeTaLeche/Boton" name="FlechaDer" >
+                <Property name="Area" value="{{0.65213501,-2},{0.67961621,-4.5},{0.77135217,-6},{0.76828122,0.5}}" />
+                <Property name="HoverImage" value="DondeTaLeche/FlechaDer_Over" />
+                <Property name="NormalImage" value="DondeTaLeche/FlechaDer" />
+                <Property name="AlwaysOnTop" value="true" />
+                <Property name="PushedImage" value="DondeTaLeche/FlechaDer_Press" />
+            </Window>
+            <Window type="VDondeTaLeche/Boton" name="FlechaIz" >
+                <Property name="Area" value="{{0.21886122,8},{0.67093235,6},{0.34697506,-6},{0.77330899,-4}}" />
+                <Property name="HoverImage" value="DondeTaLeche/FlechaIz_Over" />
+                <Property name="NormalImage" value="DondeTaLeche/FlechaIz" />
+                <Property name="AlwaysOnTop" value="true" />
+                <Property name="PushedImage" value="DondeTaLeche/FlechaIz_Press" />
+            </Window>
             <Window type="VDondeTaLeche/Boton" name="RestaEfectos" >
-                <Property name="Area" value="{{0,-92},{0,166},{0,38},{0,268}}" />
-                <Property name="HorizontalAlignment" value="Centre" />
-                <Property name="VerticalAlignment" value="Centre" />
+                <Property name="Area" value="{{0.35409254,3},{0.55758697,-3},{0.47330964,-1},{0.64716625,1}}" />
                 <Property name="HoverImage" value="DondeTaLeche/Menos_Over" />
                 <Property name="NormalImage" value="DondeTaLeche/Menos" />
                 <Property name="AlwaysOnTop" value="true" />
                 <Property name="PushedImage" value="DondeTaLeche/Menos_Press" />
             </Window>
             <Window type="VDondeTaLeche/Boton" name="RestaMusica" >
-                <Property name="Area" value="{{0,-91},{0,-49},{0,39},{0,53}}" />
-                <Property name="HorizontalAlignment" value="Centre" />
-                <Property name="VerticalAlignment" value="Centre" />
+                <Property name="Area" value="{{0.35943073,4},{0.34552097,6},{0.48042697,-2},{0.44972581,-6}}" />
                 <Property name="HoverImage" value="DondeTaLeche/Menos_Over" />
                 <Property name="NormalImage" value="DondeTaLeche/Menos" />
                 <Property name="AlwaysOnTop" value="true" />
                 <Property name="PushedImage" value="DondeTaLeche/Menos_Press" />
             </Window>
             <Window type="VDondeTaLeche/Boton" name="SumaEfectos" >
-                <Property name="Area" value="{{0,81},{0,161},{0,211},{0,263}}" />
-                <Property name="HorizontalAlignment" value="Centre" />
-                <Property name="VerticalAlignment" value="Centre" />
+                <Property name="Area" value="{{0.51067621,1},{0.55758691,-2},{0.62989342,-3},{0.64899457,0}}" />
                 <Property name="HoverImage" value="DondeTaLeche/Suma_Over" />
                 <Property name="NormalImage" value="DondeTaLeche/Suma" />
                 <Property name="AlwaysOnTop" value="true" />
                 <Property name="PushedImage" value="DondeTaLeche/Suma_Press" />
             </Window>
             <Window type="VDondeTaLeche/Boton" name="SumaMusica" >
-                <Property name="Area" value="{{0,81},{0,-50},{0,211},{0,52}}" />
-                <Property name="HorizontalAlignment" value="Centre" />
-                <Property name="VerticalAlignment" value="Centre" />
+                <Property name="Area" value="{{0.50355887,-5},{0.34917742,4},{0.61921692,-5},{0.44972575,-4}}" />
                 <Property name="HoverImage" value="DondeTaLeche/Suma_Over" />
                 <Property name="NormalImage" value="DondeTaLeche/Suma" />
                 <Property name="AlwaysOnTop" value="true" />
                 <Property name="PushedImage" value="DondeTaLeche/Suma_Press" />
             </Window>
             <Window type="VDondeTaLeche/Boton" name="BotonVolver" >
-                <Property name="Area" value="{{0,-27},{0,415},{0,317},{0,542}}" />
-                <Property name="HorizontalAlignment" value="Centre" />
-                <Property name="VerticalAlignment" value="Centre" />
+                <Property name="Area" value="{{0.33451962,3},{0.81535649,-1},{0.64768708,-5},{0.93418634,-4}}" />
                 <Property name="HoverImage" value="DondeTaLeche/MenuBoton_Over" />
                 <Property name="NormalImage" value="DondeTaLeche/MenuBoton" />
                 <Property name="AlwaysOnTop" value="true" />

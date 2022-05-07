@@ -16,7 +16,7 @@
         </Window>
         <Window type="GWEN/StaticImage" name="Panel" >
             <Property name="Image" value="Unknown/Ganar" />
-            <Property name="Area" value="{{0,529},{0,32},{1,-525},{1,-46}}" />
+            <Property name="Area" value="{{0.27395836,3},{0.027777774,2},{0.72604108,1},{0.9574073,0}}" />
             <Property name="MaxSize" value="{{1,0},{1,0}}" />
             <Property name="AutoRenderingSurface" value="true" />
             <Property name="RiseOnClickEnabled" value="false" />
@@ -25,7 +25,7 @@
         </Window>
         <Window type="GWEN/StaticImage" name="Ovo3" >
             <Property name="Image" value="Unknown/Ovo" />
-            <Property name="Area" value="{{0,1035},{0,292},{1,-728},{1,-600}}" />
+            <Property name="Area" value="{{0.53750026,3},{0.26851857,2},{0.62395835,-6},{0.45000017,-6}}" />
             <Property name="MaxSize" value="{{1,0},{1,0}}" />
             <Property name="AutoRenderingSurface" value="true" />
             <Property name="Visible" value="false" />
@@ -35,7 +35,7 @@
         </Window>
         <Window type="GWEN/StaticImage" name="Ovo2" >
             <Property name="Image" value="Unknown/Ovo" />
-            <Property name="Area" value="{{0,871},{0,276},{1,-892},{1,-616}}" />
+            <Property name="Area" value="{{0.45312509,1},{0.25370377,2},{0.53854191,-6},{0.4351849,-6}}" />
             <Property name="MaxSize" value="{{1,0},{1,0}}" />
             <Property name="AutoRenderingSurface" value="true" />
             <Property name="Visible" value="false" />
@@ -45,19 +45,17 @@
         </Window>
         <Window type="GWEN/StaticImage" name="Ovo1" >
             <Property name="Image" value="Unknown/Ovo" />
-            <Property name="Area" value="{{0,709},{0,292},{1,-1054},{1,-600}}" />
+            <Property name="Area" value="{{0.36666682,5},{0.26481482,6},{0.45624959,-10},{0.45185131,-8}}" />
             <Property name="MaxSize" value="{{1,0},{1,0}}" />
             <Property name="AutoRenderingSurface" value="true" />
-            <Property name="Visible" value="true" />
             <Property name="RiseOnClickEnabled" value="false" />
             <Property name="FrameEnabled" value="false" />
             <Property name="BackgroundEnabled" value="false" />
         </Window>
         <Window type="VDondeTaLeche/Boton" name="Boton_Volver" >
-            <Property name="Area" value="{{0,829},{0,847},{0,1069},{0,949}}" />
+            <Property name="Area" value="{{0.43124974,1},{0.78333318,1},{0.5583334,-3},{0.87777793,1}}" />
             <Property name="HoverImage" value="DondeTaLeche/MenuBoton_Over" />
             <Property name="NormalImage" value="DondeTaLeche/MenuBoton" />
-            <UserString name="Text" value="Boton" />
         </Window>
     </Window>
 </GUILayout>
