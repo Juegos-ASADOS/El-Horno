@@ -50,8 +50,8 @@ namespace El_Horno {
 	void GraphicsManager::init()
 	{
 		//Tamaño de la ventana
-		screenWidth_ = 1280;
-		screenHeight_ = 1024;
+		screenWidth_ = 1920;
+		screenHeight_ = 1080;
 
 		resolutions.push_back("800 600");
 		resolutions.push_back("1024 768");
