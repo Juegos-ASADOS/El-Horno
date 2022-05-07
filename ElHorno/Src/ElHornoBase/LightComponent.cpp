@@ -23,10 +23,10 @@ namespace El_Horno {
 	{
 		type_ = type;
 		dirLight_ = dirLight;
-		diffuse_  = diffuse;
+		diffuse_ = diffuse;
 		specular_ = specular;
 		powerScale_ = powerS;
-		
+
 	}
 
 	LightComponent::LightComponent()
@@ -47,18 +47,28 @@ namespace El_Horno {
 		// Creamos la luz
 		light_ = ElHornoBase::getInstance()->getGraphicsManager()->getSceneManager()->createLight();
 
+
+
 		for (int i = 0; i < parameters.size(); i++) {
+			std::istringstream in(parameters[i].second);
+			std::string val;
+			std::vector<std::string> values;
+			while (getline(in, val, ';'))
+			{
+				values.push_back(val);
+			}
+
 			if (parameters[i].first == "type") {
 				type_ = stoi(parameters[i].second);
 			}
 			else if (parameters[i].first == "dirLight") {
-				dirLight_ = StringToHorno(parameters[i].second);
+				dirLight_ = HornoVector3(stof(values[0]), stof(values[1]), stof(values[2]));
 			}
 			else if (parameters[i].first == "diffuse") {
-				diffuse_ = StringToHorno(parameters[i].second);
+				diffuse_ = HornoVector3(stof(values[0]), stof(values[1]), stof(values[2]));
 			}
 			else if (parameters[i].first == "specular") {
-				specular_ = StringToHorno(parameters[i].second);
+				specular_ = HornoVector3(stof(values[0]), stof(values[1]), stof(values[2]));
 			}
 			else if (parameters[i].first == "powerScale") {
 				powerScale_ = stof(parameters[i].second);
@@ -131,6 +141,10 @@ namespace El_Horno {
 	void LightComponent::setSpotlightOuterAngle(float degree)
 	{
 		light_->setSpotlightOuterAngle(Ogre::Degree(degree));
+	}
+	void LightComponent::setAttenuation(float range, float constant, float linear, float quadratic)
+	{
+		light_->setAttenuation(range, constant, linear, quadratic);
 	}
 	void LightComponent::setSpotlightInnerAngle(float degree)
 	{

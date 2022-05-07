@@ -54,7 +54,7 @@ namespace El_Horno {
 
 	void AudioManager::init()
 	{
-		//// Inicialización de FMOD core
+		//// Inicializaciï¿½n de FMOD core
 		//FMOD_RESULT result;
 		//FMOD::System* system = nullptr;
 
@@ -128,6 +128,9 @@ namespace El_Horno {
 		auto tFoundIt = sgpImplementation->mSounds.find(strSoundName);
 		if (tFoundIt != sgpImplementation->mSounds.end())
 			return;
+
+		if (isMusic)
+			bLooping = true;
 
 		FMOD_MODE eMode = FMOD_DEFAULT;
 		eMode |= b3d ? FMOD_3D : FMOD_2D;

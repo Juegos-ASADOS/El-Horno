@@ -1,34 +1,3 @@
-light = {
-    transform = {
-        position = " -800 ,200 ,200 ",
-        rotation = " 0 ,0 ,0 ",
-        scale = " 0 ,0 ,0 ",
-    },
-
-    light = {
-        type = "0",
-        dirLight = " 0 ,-1 ,0.3 ",
-        diffuse = " 1 ,1 ,1 ",
-        specular = " 1 ,1 ,1 ",
-        powerScale = "1",
-    },
-}
-
-light = {
-    transform = {
-        position = " -1200 ,200 ,200 ",
-        rotation = " 0 ,0 ,0 ",
-        scale = " 0 ,0 ,0 ",
-    },
-
-    light = {
-        type = "0",
-        dirLight = " 0 ,-1 ,0.3 ",
-        diffuse = " 1 ,1 ,1 ",
-        specular = " 1 ,1 ,1 ",
-        powerScale = "1",
-    },
-}
 Peso = {
     transform = {
         position = "  -1035.853394 ,-0.597879 ,-161.101654 " ,
@@ -2796,4 +2765,32 @@ EdificioA = {
     }
 }
 
-entities = {"light","player","Peso","Madre","Cajera", "CajaPagar", "TicketDispenser", "Pescaderia", "Carniceria", "CajaPagarHijo0", "CajaPagarHijo1", "Caja","Ground", "Suelo", "EdificioA", "EdificioB", "EdificioC" , "EdificioD" ,"PaleCaja", "Maceta", "Cestas", "AvisoMojado", "Papelera", "Pale", "Charco", "CharcoA", "CharcoB", "Cartel_1", "Cartel_2", "Cartel_0", "Cartel_3", "Cartel_5", "Cartel_6", "Cartel_4", "Cartel_7", "BaldaDobleSandia", "BaldaDobleLeche", "BaldaDobleVino", "BaldaSimplePina", "BaldaDobleCalabaza", "BaldaSimpleCalabaza", "BaldaDobleUva", "CartelCocacolas", "CartelTomates", "CartelSandias", "CartelCereales", "CartelLeche", "CuboFregona", "BaldaSimpleUva", "BaldaDobleManzana", "BaldaDobleNata", "BaldaDobleCafe", "BaldaDobleCerealesRojos", "BaldaDobleHuevos", "BaldaDobleCola", "BaldaDobleFantaNaranja", "BaldaDobleFantaLimon", "BaldaSimpleFantaLimon", "BaldaSimpleAgua", "BaldaDoblePizza", "BaldaDobleDonut", "BaldaDoblePatatas", "BaldaDoblePan", "BaldaDobleTomate", "BaldaDobleCerealesNaranjas", "BaldaDobleCerealesVerdes", "BaldaPlatano", "BaldaSimpleZanahoria", "BaldaDoblePezAzul", "BaldaSimplePezAzul", "npc1","Carnicero", "Pescadero", "cart", "camera", "gamemanager",  "TriggerCarniceria", "TriggerPeso", "TriggerTicketDispenser", "TriggerPescaderia", "TriggerCajaPagar", "cartTrigger", "TriggerBaldaPlatano", "TriggerBaldaDobleCafe", "TriggerBaldaDobleCerealesNaranjas", "TriggerBaldaDobleCerealesRojos", "TriggerBaldaDobleCerealesVerdes", "TriggerBaldaDobleCola", "TriggerBaldaDobleDonut", "TriggerBaldaDobleFantaLimon", "TriggerBaldaDobleFantaNaranja", "TriggerBaldaDobleHuevos", "TriggerBaldaDobleLeche", "TriggerBaldaDobleNata", "TriggerBaldaDoblePan", "TriggerBaldaDoblePatatas", "TriggerBaldaDoblePezAzul", "TriggerBaldaDoblePizza", "TriggerBaldaDobleVino", "TriggerBaldaDobleCalabaza", "TriggerBaldaDobleSandia", "TriggerBaldaDobleUva", "TriggerBaldaDobleManzana", "TriggerBaldaDobleTomate", "TriggerBaldaSimpleAgua", "TriggerBaldaSimplePezAzul", "TriggerBaldaSimpleCalabaza", "TriggerBaldaSimplePina", "TriggerBaldaSimpleUva", "TriggerBaldaSimpleZanahoria", "TriggerBaldaSimpleFantaLimon" }
+luz14 = {
+    transform = {
+        position = "  -1520.285767 ,300 ,200 " ,
+        rotation = "   0.000000, 0.000000, 0.000000, 0.000000 " ,
+        scale = "  1 ,1,1 " ,    },
+    light = {
+         type = "0",
+        dirLight = " 0 ;-1 ;0.3 ",
+        diffuse = " 1 ;1 ;1 ",
+        specular = " 1 ;1 ;1 ",
+        powerScale = "1",
+        
+    },
+}
+luz10 = {
+    transform = {
+        position = "  -867.219971 ,300 ,200.272385 " ,
+        rotation = "   0.000000, 0.000000, 0.000000, 0.000000 " ,
+        scale = "  1 ,1,1 " ,    },
+    light = {
+         type = "0",
+        dirLight = " 0 ;-1 ;0.3 ",
+        diffuse = " 1 ;1 ;1 ",
+        specular = " 1 ;1 ;1 ",
+        powerScale = "1",
+        
+    },
+}
+entities = { "luz14", "luz10", "player","Peso","CajaPagar", "TicketDispenser", "Pescaderia", "Carniceria", "CajaPagarHijo0", "CajaPagarHijo1", "Caja","Ground", "Suelo", "EdificioA", "EdificioB", "EdificioC" , "EdificioD" ,"PaleCaja", "Maceta", "Cestas", "AvisoMojado", "Papelera", "Pale", "Charco", "CharcoA", "CharcoB", "Cartel_1", "Cartel_2", "Cartel_0", "Cartel_3", "Cartel_5", "Cartel_6", "Cartel_4", "Cartel_7", "BaldaDobleSandia", "BaldaDobleLeche", "BaldaDobleVino", "BaldaSimplePina", "BaldaDobleCalabaza", "BaldaSimpleCalabaza", "BaldaDobleUva", "CartelCocacolas", "CartelTomates", "CartelSandias", "CartelCereales", "CartelLeche", "CuboFregona", "BaldaSimpleUva", "BaldaDobleManzana", "BaldaDobleNata", "BaldaDobleCafe", "BaldaDobleCerealesRojos", "BaldaDobleHuevos", "BaldaDobleCola", "BaldaDobleFantaNaranja", "BaldaDobleFantaLimon", "BaldaSimpleFantaLimon", "BaldaSimpleAgua", "BaldaDoblePizza", "BaldaDobleDonut", "BaldaDoblePatatas", "BaldaDoblePan", "BaldaDobleTomate", "BaldaDobleCerealesNaranjas", "BaldaDobleCerealesVerdes", "BaldaPlatano", "BaldaSimpleZanahoria", "BaldaDoblePezAzul", "BaldaSimplePezAzul", "cart", "camera", "gamemanager",  "TriggerCarniceria", "TriggerPeso", "TriggerTicketDispenser", "TriggerPescaderia", "TriggerCajaPagar", "cartTrigger", "TriggerBaldaPlatano", "TriggerBaldaDobleCafe", "TriggerBaldaDobleCerealesNaranjas", "TriggerBaldaDobleCerealesRojos", "TriggerBaldaDobleCerealesVerdes", "TriggerBaldaDobleCola", "TriggerBaldaDobleDonut", "TriggerBaldaDobleFantaLimon", "TriggerBaldaDobleFantaNaranja", "TriggerBaldaDobleHuevos", "TriggerBaldaDobleLeche", "TriggerBaldaDobleNata", "TriggerBaldaDoblePan", "TriggerBaldaDoblePatatas", "TriggerBaldaDoblePezAzul", "TriggerBaldaDoblePizza", "TriggerBaldaDobleVino", "TriggerBaldaDobleCalabaza", "TriggerBaldaDobleSandia", "TriggerBaldaDobleUva", "TriggerBaldaDobleManzana", "TriggerBaldaDobleTomate", "TriggerBaldaSimpleAgua", "TriggerBaldaSimplePezAzul", "TriggerBaldaSimpleCalabaza", "TriggerBaldaSimplePina", "TriggerBaldaSimpleUva", "TriggerBaldaSimpleZanahoria", "TriggerBaldaSimpleFantaLimon" }

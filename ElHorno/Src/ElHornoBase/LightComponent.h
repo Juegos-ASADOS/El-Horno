@@ -36,7 +36,7 @@ namespace El_Horno {
 		void setSpotlightNearClipDistance(float distance);
 		void setSpotlightInnerAngle(float degree);
 		void setSpotlightOuterAngle(float degree);
-
+		void setAttenuation(float range, float constant, float linear, float quadratic);
 	private:
 
 		// Acceso al nodo, Entidad de Ogre y Transform
