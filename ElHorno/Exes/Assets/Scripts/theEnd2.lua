@@ -515,7 +515,7 @@ BaldaDobleSandia = {
         isTrigger = "0",
          isKinematic = "0",
          colShape = "0",
-        scale = "1.0; 1.0; 1.0",
+        scale = "1.0; 1.5; 1.0",
         
     },
     mesh = {
@@ -569,7 +569,7 @@ BaldaSimplePina = {
         isTrigger = "0",
          isKinematic = "0",
          colShape = "0",
-        scale = "1.0; 1.0; 1.0",
+        scale = "1.0; 1.5; 1.0",
         
     },
     mesh = {
@@ -605,7 +605,7 @@ BaldaDobleCalabaza = {
         isTrigger = "0",
          isKinematic = "0",
          colShape = "0",
-        scale = "1.0; 1.0; 1.0",
+        scale = "1.0; 1.5; 1.0",
         
     },
     mesh = {
@@ -623,7 +623,7 @@ BaldaSimpleCalabaza = {
         isTrigger = "0",
          isKinematic = "0",
          colShape = "0",
-        scale = "1.0; 1.0; 1.0",
+        scale = "1.0; 1.5; 1.0",
         
     },
     mesh = {
@@ -641,7 +641,7 @@ BaldaDobleUva = {
         isTrigger = "0",
          isKinematic = "0",
          colShape = "0",
-        scale = "1.0; 1.0; 1.0",
+        scale = "1.0; 1.5; 1.0",
         
     },
     mesh = {
@@ -659,7 +659,7 @@ BaldaSimpleUva = {
         isTrigger = "0",
          isKinematic = "0",
          colShape = "0",
-        scale = "1.0; 1.0; 1.0",
+        scale = "1.0; 1.5; 1.0",
         
     },
     mesh = {
@@ -677,7 +677,7 @@ BaldaDobleManzana = {
         isTrigger = "0",
          isKinematic = "0",
          colShape = "0",
-        scale = "1; 1; 1",
+        scale = "1.0; 1.5; 1.0",
         
     },
     mesh = {
@@ -929,7 +929,7 @@ BaldaDobleTomate = {
         isTrigger = "0",
          isKinematic = "0",
          colShape = "0",
-        scale = "1.0; 1.0; 1.0",
+        scale = "1.0; 1.5; 1.0",
         
     },
     mesh = {
@@ -965,7 +965,7 @@ CartelTomates = {
         isTrigger = "0",
          isKinematic = "0",
          colShape = "0",
-        scale = "1.0; 1.0; 0.8",
+        scale = "1.0; 1.5; 1.0",
         
     },
     mesh = {
@@ -983,7 +983,7 @@ CartelSandias = {
         isTrigger = "0",
          isKinematic = "0",
          colShape = "0",
-        scale = "1.0; 1.0; 0.8",
+        scale = "1.0; 1.5; 1.0",
         
     },
     mesh = {
