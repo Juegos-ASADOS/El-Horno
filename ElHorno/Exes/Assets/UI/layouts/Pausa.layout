@@ -15,7 +15,7 @@
             <Property name="FrameEnabled" value="false" />
             <Property name="BackgroundEnabled" value="true" />
             <Window type="GWEN/StaticText" name="Text_Salir" >
-                <Property name="Area" value="{{0,353},{0,785},{1,-359},{1,-179}}" />
+                <Property name="Area" value="{{0.12455513,7},{0.67093241,3},{0.90925252,-11},{0.90859222,-9}}" />
                 <Property name="Alpha" value="0.80000001" />
                 <Property name="Font" value="LemonJuice_Normal" />
                 <Property name="Text" value="- Salir" />
@@ -29,7 +29,7 @@
                 </AutoWindow>
             </Window>
             <Window type="GWEN/StaticText" name="Text_Opciones" >
-                <Property name="Area" value="{{0,320},{0,617},{1,-310},{1,-398}}" />
+                <Property name="Area" value="{{0.13701066,10},{0.50822681,7},{0.87900364,-2},{0.70383912,-4}}" />
                 <Property name="Alpha" value="0.80000001" />
                 <Property name="Font" value="LemonJuice_Normal" />
                 <Property name="Text" value="- Opciones" />
@@ -43,7 +43,7 @@
                 </AutoWindow>
             </Window>
             <Window type="GWEN/StaticText" name="Text_Reanudar" >
-                <Property name="Area" value="{{0,332},{0,392},{1,-318},{1,-533}}" />
+                <Property name="Area" value="{{0.13879003,6},{0.29616094,4},{0.86121017,-4},{0.57403982,-5}}" />
                 <Property name="Alpha" value="0.80000001" />
                 <Property name="Font" value="LemonJuice_Normal" />
                 <Property name="Text" value="- Reanudar" />
@@ -57,7 +57,7 @@
                 </AutoWindow>
             </Window>
             <Window type="GWEN/StaticText" name="Text_Pausa" >
-                <Property name="Area" value="{{0,132},{0,32},{1,-134},{1,-842}}" />
+                <Property name="Area" value="{{0.11209968,6},{0.027422305,2},{0.8843416,-4},{0.23583178,-6}}" />
                 <Property name="Alpha" value="0.80000001" />
                 <Property name="Font" value="LemonJuice_Medio" />
                 <Property name="Text" value="PAUSA" />
@@ -71,19 +71,19 @@
                 </AutoWindow>
             </Window>
             <Window type="VDondeTaLeche/Boton" name="BotonOpciones" >
-                <Property name="Area" value="{{0,387},{0,592},{0,753},{0,723}}" />
+                <Property name="Area" value="{{0.33985764,5},{0.53564906,6},{0.67615664,-7},{0.66727614,-7}}" />
                 <Property name="HoverImage" value="DondeTaLeche/MenuBoton_Over" />
                 <Property name="NormalImage" value="DondeTaLeche/MenuBoton" />
                 <Property name="PushedImage" value="DondeTaLeche/MenuBoton_Press" />
             </Window>
             <Window type="VDondeTaLeche/Boton" name="BotonReanudar" >
-                <Property name="Area" value="{{0,385},{0,416},{0,751},{0,547}}" />
+                <Property name="Area" value="{{0.33807832,5},{0.38025597,0},{0.67081833,-3},{0.50457031,-5}}" />
                 <Property name="HoverImage" value="DondeTaLeche/MenuBoton_Over" />
                 <Property name="NormalImage" value="DondeTaLeche/MenuBoton" />
                 <Property name="PushedImage" value="DondeTaLeche/MenuBoton_Press" />
             </Window>
             <Window type="VDondeTaLeche/Boton" name="BotonSalir" >
-                <Property name="Area" value="{{0,383},{0,788},{0,749},{0,915}}" />
+                <Property name="Area" value="{{0.34163699,-1},{0.7184642,2},{0.67437726,-9},{0.83729434,-1}}" />
                 <Property name="HoverImage" value="DondeTaLeche/MenuBoton_Over" />
                 <Property name="NormalImage" value="DondeTaLeche/MenuBoton" />
                 <Property name="PushedImage" value="DondeTaLeche/MenuBoton_Press" />

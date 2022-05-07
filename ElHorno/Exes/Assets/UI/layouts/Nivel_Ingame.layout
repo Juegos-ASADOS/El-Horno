@@ -193,7 +193,6 @@
         <Window type="GWEN/StaticImage" name="Tutorial_Carne" >
             <Property name="Image" value="Unknown/Tuto_Carne" />
             <Property name="Area" value="{{0.27604172,10},{0.8037039,8},{0.61145842,1},{0.98148131,-21}}" />
-            <Property name="AutoRenderingSurface" value="true" />
             <Property name="Visible" value="false" />
             <Property name="FrameEnabled" value="false" />
             <Property name="BackgroundEnabled" value="false" />
@@ -201,7 +200,6 @@
         <Window type="GWEN/StaticImage" name="Tutorial_Pescado" >
             <Property name="Image" value="Unknown/Tuto_Pescado" />
             <Property name="Area" value="{{0.27604175,10},{0.80740756,19},{0.61458325,-40},{0.99259257,-33}}" />
-            <Property name="AutoRenderingSurface" value="true" />
             <Property name="Visible" value="false" />
             <Property name="FrameEnabled" value="false" />
             <Property name="BackgroundEnabled" value="false" />
@@ -209,7 +207,6 @@
         <Window type="GWEN/StaticImage" name="Tutorial_Fruta" >
             <Property name="Image" value="Unknown/Tuto_Fruta" />
             <Property name="Area" value="{{0.27812514,12},{0.81111103,10},{0.61249995,-39},{0.99259257,-22}}" />
-            <Property name="AutoRenderingSurface" value="true" />
             <Property name="Visible" value="false" />
             <Property name="FrameEnabled" value="false" />
             <Property name="BackgroundEnabled" value="false" />
@@ -217,7 +214,6 @@
         <Window type="GWEN/StaticImage" name="Tutorial_Baldas" >
             <Property name="Image" value="Unknown/Tuto_Baldas" />
             <Property name="Area" value="{{0.27291664,22},{0.8037039,10},{0.61145782,-37},{0.98148137,-18}}" />
-            <Property name="AutoRenderingSurface" value="true" />
             <Property name="Visible" value="false" />
             <Property name="FrameEnabled" value="false" />
             <Property name="BackgroundEnabled" value="false" />
@@ -225,7 +221,6 @@
         <Window type="GWEN/StaticImage" name="Tutorial_Inico" >
             <Property name="Image" value="Unknown/Tuto_Inicio" />
             <Property name="Area" value="{{0.27291679,4},{0.80925936,6},{0.60833347,-7},{0.98703718,-6}}" />
-            <Property name="AutoRenderingSurface" value="true" />
             <Property name="Visible" value="false" />
             <Property name="FrameEnabled" value="false" />
             <Property name="BackgroundEnabled" value="false" />

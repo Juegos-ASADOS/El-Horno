@@ -301,6 +301,9 @@ namespace El_Horno {
 		SDL_UpdateWindowSurface(sdlWindow_);
 		UIManager::getInstance()->changeScreenSize(width, height);
 		//sdlWindow_->windowMovedOrResized();
+		ogreWindow_->resize(width, height);
+
+
 	}
 
 	/*
