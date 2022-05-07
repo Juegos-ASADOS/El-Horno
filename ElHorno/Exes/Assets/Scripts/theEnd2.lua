@@ -57,7 +57,7 @@ CajaPagar = {
         isTrigger = "0",
          isKinematic = "0",
          colShape = "0",
-        scale = "0.5;1.0;1.0"
+        scale = "0.5;1.0;1.7"
     },
     mesh = {
         name = "CajaPagar.mesh",
@@ -164,7 +164,7 @@ Caja = {
         isTrigger = "0",
          isKinematic = "0",
          colShape = "0",
-        scale = "1.0;1.0;1.0",
+        scale = "1.0;2.0;1.0",
         
     },
     mesh = {
@@ -182,7 +182,7 @@ PaleCaja = {
         isTrigger = "0",
          isKinematic = "0",
          colShape = "0",
-        scale = "0.5; 0.5; 0.5",
+        scale = "1.0; 2.0; 1.0",
         
     },
     mesh = {
@@ -200,7 +200,7 @@ Maceta = {
         isTrigger = "0",
          isKinematic = "0",
          colShape = "0",
-        scale = "1.0;1.0;1.0",
+        scale = "1.0;2.0;1.0",
         
     },
     mesh = {
@@ -218,7 +218,7 @@ Cestas = {
         isTrigger = "0",
          isKinematic = "0",
          colShape = "0",
-        scale = "1.0;1.0;1.0",
+        scale = "1.0;2.0;1.0",
         
     },
     mesh = {
@@ -236,7 +236,7 @@ AvisoMojado = {
         isTrigger = "0",
          isKinematic = "0",
          colShape = "0",
-        scale = "1.0;1.0;1.0",
+        scale = "1.0;2.0;1.0",
         
     },
     mesh = {
@@ -254,7 +254,7 @@ Papelera = {
         isTrigger = "0",
          isKinematic = "0",
          colShape = "0",
-        scale = "0.35; 0.35; 0.35",
+        scale = "1.0; 2.0; 1.0",
         
     },
     mesh = {
@@ -272,7 +272,7 @@ Pale = {
         isTrigger = "0",
          isKinematic = "0",
          colShape = "0",
-        scale = "0.5; 0.45; 0.5",
+        scale = "1.0; 2.0; 1.0",
         
     },
     mesh = {
@@ -1152,34 +1152,65 @@ BaldaSimplePezAzul = {
         name = "BaldaSimplePezAzul.001.mesh",
     }
 }
-Vieja = {
+npc1 = {
     transform = {
-        position = " -1156.490479 ,17.0 ,-369.668701 " ,
+        position = " -1180.0 ,17.0 ,-369.668701 " ,
         rotation = " 0.000000, 0.000000, 0.000000, 0.000000 " ,
         scale = "  7.000000 ,7.000000 ,7.000000 " ,
     },
     rigidbody = {
-        mass = "0.0",
+        mass = "7.0",
         isTrigger = "0",
          isKinematic = "0",
          colShape = "0",
-        scale = "1.0; 1.0; 1.0",
+        scale = "0.25; 0.7; 0.25",
         
     },
     mesh = {
-        name = "miVieja.mesh",
+        name = "hombre1.mesh",
     },
     animatorcontroller = {
         Idle = "npc_walk",
-		npc_walk = "Idle",
+        npc_walk = "Idle",
         AnyState = "Idle",     
 		InitialState = "Idle",
     },
-    -- patrol = {
-    --     speed = "200",
-    --     position = "-1156.490479 ,3.597879 ,-369.668701,-1186.490479 ,3.597879 ,-369.668701, "
-    -- }
+    patrol = {
+        speed = "50",
+        positions = "-1180.0 ,17.0 ,-370.0,0.0,-1140.0 ,17.0 ,-300.0, 0.0,-1110.0 ,17.0 ,-370.0, 5.0 "
+    }
 }
+-- Cajera = {
+--     transform = {
+--         position = " -1480.652710 ,12.879817 ,-100.927429 " ,
+--         rotation = " 0.000000, -90.000000, 0.000000, 0.000000 " ,
+--         scale = "  7.000000 ,7.000000 ,7.000000 " ,
+--     },
+--     mesh = {
+--         name = "abuela1.mesh",
+--     },
+--     animatorcontroller = {
+--         npc_idle_abuela = "npc_walk_abuela",
+--         AnyState = "npc_idle_abuela",    
+-- 		InitialState = "npc_idle_abuela",
+--     },
+-- }
+-- Madre = {
+--     transform = {
+--         position = "-1520.652710 ,12.879817 ,-100.927429 " ,
+--         rotation = " 0.000000, -90.000000, 0.000000, 0.000000 " ,
+--         scale = "  7.000000 ,7.000000 ,7.000000 " ,
+--     },
+--     mesh = {
+--         name = "miVieja.mesh",
+--     },
+--     animatorcontroller = {
+--         Idle = "npc_walk",
+-- 		npc_walk = "Idle",
+--         AnyState = "Idle",    
+-- 		InitialState = "Idle",
+--     },
+-- }
 Carnicero = {
     transform = {
         position = "  -879.641479 , 19.0 ,-155.666000 " ,
@@ -1227,7 +1258,6 @@ cart = {
         isTrigger = "1",
          isKinematic = "1",
          colShape = "0",
-        
     },
     mesh = {
         name = "cart.mesh",
@@ -1278,12 +1308,12 @@ player = {
         isTrigger = "0",
          isKinematic = "0",
          colShape = "0",
-        scale = "0.5; 0.7; 1.3",
+        scale = "0.3; 0.7; 1.3",
         angFactor = "0.0",
         
     },
     playercontroller = {
-        speed = "1500.0",
+        speed = "450.0",
          maxForce = "200"
     },
     audiocomponent = {
@@ -1397,7 +1427,7 @@ TriggerCajaPagar = {
     transform = {
         position = "  0.000000 ,0.000000 ,100.000000 " ,
         rotation = "   0.000000, 0.000000, 0.000000, 0.000000 " ,
-        scale = "  4.00000 ,2.000000 ,5.000000 " ,
+        scale = "  5.00000 ,2.000000 ,5.000000 " ,
     },
     entityid = {
         type = "3",
@@ -2758,4 +2788,4 @@ EdificioA = {
     }
 }
 
-entities = {"light","player","Peso", "CajaPagar", "TicketDispenser", "Pescaderia", "Carniceria", "CajaPagarHijo0", "CajaPagarHijo1", "Caja","Ground", "Suelo", "EdificioA", "EdificioB", "EdificioC" , "EdificioD" ,"PaleCaja", "Maceta", "Cestas", "AvisoMojado", "Papelera", "Pale", "Charco", "CharcoA", "CharcoB", "Cartel_1", "Cartel_2", "Cartel_0", "Cartel_3", "Cartel_5", "Cartel_6", "Cartel_4", "Cartel_7", "BaldaDobleSandia", "BaldaDobleLeche", "BaldaDobleVino", "BaldaSimplePina", "BaldaDobleCalabaza", "BaldaSimpleCalabaza", "BaldaDobleUva", "CartelCocacolas", "CartelTomates", "CartelSandias", "CartelCereales", "CartelLeche", "CuboFregona", "BaldaSimpleUva", "BaldaDobleManzana", "BaldaDobleNata", "BaldaDobleCafe", "BaldaDobleCerealesRojos", "BaldaDobleHuevos", "BaldaDobleCola", "BaldaDobleFantaNaranja", "BaldaDobleFantaLimon", "BaldaSimpleFantaLimon", "BaldaSimpleAgua", "BaldaDoblePizza", "BaldaDobleDonut", "BaldaDoblePatatas", "BaldaDoblePan", "BaldaDobleTomate", "BaldaDobleCerealesNaranjas", "BaldaDobleCerealesVerdes", "BaldaPlatano", "BaldaSimpleZanahoria", "BaldaDoblePezAzul", "BaldaSimplePezAzul", "Vieja", "Carnicero", "Pescadero", "cart", "camera", "gamemanager",  "TriggerCarniceria", "TriggerPeso", "TriggerTicketDispenser", "TriggerPescaderia", "TriggerCajaPagar", "cartTrigger", "TriggerBaldaPlatano", "TriggerBaldaDobleCafe", "TriggerBaldaDobleCerealesNaranjas", "TriggerBaldaDobleCerealesRojos", "TriggerBaldaDobleCerealesVerdes", "TriggerBaldaDobleCola", "TriggerBaldaDobleDonut", "TriggerBaldaDobleFantaLimon", "TriggerBaldaDobleFantaNaranja", "TriggerBaldaDobleHuevos", "TriggerBaldaDobleLeche", "TriggerBaldaDobleNata", "TriggerBaldaDoblePan", "TriggerBaldaDoblePatatas", "TriggerBaldaDoblePezAzul", "TriggerBaldaDoblePizza", "TriggerBaldaDobleVino", "TriggerBaldaDobleCalabaza", "TriggerBaldaDobleSandia", "TriggerBaldaDobleUva", "TriggerBaldaDobleManzana", "TriggerBaldaDobleTomate", "TriggerBaldaSimpleAgua", "TriggerBaldaSimplePezAzul", "TriggerBaldaSimpleCalabaza", "TriggerBaldaSimplePina", "TriggerBaldaSimpleUva", "TriggerBaldaSimpleZanahoria", "TriggerBaldaSimpleFantaLimon" }
+entities = {"light","player","Peso", "CajaPagar", "TicketDispenser", "Pescaderia", "Carniceria", "CajaPagarHijo0", "CajaPagarHijo1", "Caja","Ground", "Suelo", "EdificioA", "EdificioB", "EdificioC" , "EdificioD" ,"PaleCaja", "Maceta", "Cestas", "AvisoMojado", "Papelera", "Pale", "Charco", "CharcoA", "CharcoB", "Cartel_1", "Cartel_2", "Cartel_0", "Cartel_3", "Cartel_5", "Cartel_6", "Cartel_4", "Cartel_7", "BaldaDobleSandia", "BaldaDobleLeche", "BaldaDobleVino", "BaldaSimplePina", "BaldaDobleCalabaza", "BaldaSimpleCalabaza", "BaldaDobleUva", "CartelCocacolas", "CartelTomates", "CartelSandias", "CartelCereales", "CartelLeche", "CuboFregona", "BaldaSimpleUva", "BaldaDobleManzana", "BaldaDobleNata", "BaldaDobleCafe", "BaldaDobleCerealesRojos", "BaldaDobleHuevos", "BaldaDobleCola", "BaldaDobleFantaNaranja", "BaldaDobleFantaLimon", "BaldaSimpleFantaLimon", "BaldaSimpleAgua", "BaldaDoblePizza", "BaldaDobleDonut", "BaldaDoblePatatas", "BaldaDoblePan", "BaldaDobleTomate", "BaldaDobleCerealesNaranjas", "BaldaDobleCerealesVerdes", "BaldaPlatano", "BaldaSimpleZanahoria", "BaldaDoblePezAzul", "BaldaSimplePezAzul", "npc1","Carnicero", "Pescadero", "cart", "camera", "gamemanager",  "TriggerCarniceria", "TriggerPeso", "TriggerTicketDispenser", "TriggerPescaderia", "TriggerCajaPagar", "cartTrigger", "TriggerBaldaPlatano", "TriggerBaldaDobleCafe", "TriggerBaldaDobleCerealesNaranjas", "TriggerBaldaDobleCerealesRojos", "TriggerBaldaDobleCerealesVerdes", "TriggerBaldaDobleCola", "TriggerBaldaDobleDonut", "TriggerBaldaDobleFantaLimon", "TriggerBaldaDobleFantaNaranja", "TriggerBaldaDobleHuevos", "TriggerBaldaDobleLeche", "TriggerBaldaDobleNata", "TriggerBaldaDoblePan", "TriggerBaldaDoblePatatas", "TriggerBaldaDoblePezAzul", "TriggerBaldaDoblePizza", "TriggerBaldaDobleVino", "TriggerBaldaDobleCalabaza", "TriggerBaldaDobleSandia", "TriggerBaldaDobleUva", "TriggerBaldaDobleManzana", "TriggerBaldaDobleTomate", "TriggerBaldaSimpleAgua", "TriggerBaldaSimplePezAzul", "TriggerBaldaSimpleCalabaza", "TriggerBaldaSimplePina", "TriggerBaldaSimpleUva", "TriggerBaldaSimpleZanahoria", "TriggerBaldaSimpleFantaLimon" }
