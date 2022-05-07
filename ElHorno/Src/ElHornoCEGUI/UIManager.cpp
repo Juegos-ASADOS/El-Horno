@@ -168,7 +168,8 @@ namespace El_Horno {
 
 	void UIManager::changeScreenSize(int width, int height)
 	{
-		CEGUI::System::getSingleton().getRenderer()->setDisplaySize(CEGUI::Size<float>(width, height));
+		renderer->setDisplaySize(CEGUI::Size<float>(width, height));
+		CEGUI::System::getSingleton().notifyDisplaySizeChanged(CEGUI::Size<float>(width, height));
 	}
 
 	void UIManager::update()
