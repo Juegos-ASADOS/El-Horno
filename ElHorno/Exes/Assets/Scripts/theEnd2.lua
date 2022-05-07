@@ -1,31 +1,18 @@
 light = {
     transform = {
-        position = " -1000 ,200 ,200 ",
+        position = " 0 ,200 ,200 ",
         rotation = " 0 ,0 ,0 ",
         scale = " 0 ,0 ,0 ",
     },
 
     light = {
-        type = "1",
+        type = "0",
         dirLight = " 0 ,-1 ,0.3 ",
         diffuse = " 1 ,1 ,1 ",
         specular = " 1 ,1 ,1 ",
         powerScale = "1",
     },
 }
-
-light2 = {
-    transform = {
-        position = " -1000 ,200 ,500 ",
-        rotation = " 0 ,0 ,0 ",
-        scale = " 0 ,0 ,0 ",
-    },
-
-    light = {
-        type = "0"
-    },
-}
-
 Peso = {
     transform = {
         position = "  -1035.853394 ,-0.597879 ,-161.101654 " ,
@@ -274,91 +261,6 @@ Pale = {
     },
     mesh = {
         name = "Pale.mesh",
-    }
-}
-Ground = {
-    transform = {
-        position = "  -1548.363525 ,-11.503410 ,-30.484741 " ,
-        rotation = "   0.000000, 0.000000, 0.000000, 0.000000 " ,
-        scale = "  1.000000 ,1.000000 ,1.000000 " ,
-    },
-    rigidbody = {
-         mass = "0",
-         isTrigger = "0",
-         isKinematic = "0",
-         colShape = "0",
-        
-    },
-    mesh = {
-        name = "Ground.mesh",
-    }
-}
-Suelo = {
-    transform = {
-        position = "  -1548.363525 ,0.350874 ,10.484741 " ,
-        rotation = "   0.000000, 0.000000, 0.000000, 0.000000 " ,
-        scale = "  1.000000 ,1.000000 ,1.000000 " ,
-    },
-    rigidbody = {
-         mass = "0",
-         isTrigger = "0",
-         isKinematic = "0",
-         colShape = "0",
-        
-    },
-    mesh = {
-        name = "Suelo.mesh",
-    }
-}
-EdificioA = {
-    transform = {
-        position = "  -1548.363525 ,0.852900 ,10.484741 " ,
-        rotation = "   0.000000, 0.000000, 0.000000, 0.000000 " ,
-        scale = "  1.000000 ,1.000000 ,1.000000 " ,
-    },
-    rigidbody = {
-         mass = "0",
-         isTrigger = "0",
-         isKinematic = "0",
-         colShape = "0",
-        
-    },
-    mesh = {
-        name = "EdificioA.mesh",
-    }
-}
-EdificioB = {
-    transform = {
-        position = "  -1548.363525 ,0.852900 ,10.484741 " ,
-        rotation = "   0.000000, 0.000000, 0.000000, 0.000000 " ,
-        scale = "  1.000000 ,1.000000 ,1.000000 " ,
-    },
-    rigidbody = {
-         mass = "0",
-         isTrigger = "0",
-         isKinematic = "0",
-         colShape = "0",
-        
-    },
-    mesh = {
-        name = "EdificioB.mesh",
-    }
-}
-EdificioC = {
-    transform = {
-        position = "  -1548.363525 ,0.852900 ,10.484741 " ,
-        rotation = "   0.000000, 0.000000, 0.000000, 0.000000 " ,
-        scale = "  1.000000 ,1.000000 ,1.000000 " ,
-    },
-    rigidbody = {
-         mass = "0",
-         isTrigger = "0",
-         isKinematic = "0",
-         colShape = "0",
-        
-    },
-    mesh = {
-        name = "EdificioC.mesh",
     }
 }
 Charco = {
@@ -1236,9 +1138,9 @@ BaldaSimplePezAzul = {
 }
 cart = {
     transform = {
-        position = "  -0 ,-2.0 , 3.0" ,
+        position = "  -1417.507202 ,-0.403147 ,-356.442047 " ,
         rotation = "   0.000000, 0.000000, 0.000000, 0.000000 " ,
-        scale = "  0.156 ,0.156 ,0.156 " ,
+        scale = "  1.000000 ,1.000000 ,1.000000 " ,
     },
     parent = {
         name = "player",
@@ -1282,7 +1184,7 @@ gamemanager = {
     gamemanager = {
         state = "0",
         productNum = "6",
-        list = "Manzana,3,Cocacola,2,PezRosa,1,Carne_0,1",
+        list = "Tomate,3,Zanahoria,2,Pizza,1",
          maxTime = "120",
     },
 }
@@ -1306,11 +1208,13 @@ player = {
     },
     playercontroller = {
         speed = "1500.0",
-        maxForce = "200"
+         maxForce = "200"
     },
-    audiocomponent = {    
+    audiocomponent = {
+        
     },
-    playerinteract = {    
+    playerinteract = {
+        
     },
     animatorcontroller = {
         Idle = "walk",
@@ -2674,5 +2578,107 @@ TriggerBaldaSimpleFantaLimon = {
         
     },
 }
+EdificioD = {
+    transform = {
+        position = "  -1200.544678 ,14.450851 ,34.313263 " ,
+        rotation = "   0.000000, 0.000000, 0.000000, 0.000000 " ,
+        scale = "  1.000000 ,1.000000 ,1.000000 " ,
+    },
+    rigidbody = {
+         mass = "0",
+         isTrigger = "0",
+         isKinematic = "0",
+         colShape = "0",
+        
+    },
+    mesh = {
+        name = "EdificioD.mesh",
+    }
+}
+Ground = {
+    transform = {
+        position = "  -1199.077881 ,-13.530863 ,-188.375809 " ,
+        rotation = "   0.000000, 0.000000, 0.000000, 0.000000 " ,
+        scale = "  1.000000 ,1.000000 ,1.000000 " ,
+    },
+    rigidbody = {
+         mass = "0",
+         isTrigger = "0",
+         isKinematic = "0",
+         colShape = "0",
+        
+    },
+    mesh = {
+        name = "Ground.mesh",
+    }
+}
+Suelo = {
+    transform = {
+        position = "  -1200.626953 ,-0.430249 ,-186.180496 " ,
+        rotation = "   0.000000, 0.000000, 0.000000, 0.000000 " ,
+        scale = "  1.000000 ,1.000000 ,1.000000 " ,
+    },
+    rigidbody = {
+         mass = "0",
+         isTrigger = "0",
+         isKinematic = "0",
+         colShape = "0",
+        
+    },
+    mesh = {
+        name = "Suelo.mesh",
+    }
+}
+EdificioC = {
+    transform = {
+        position = "  -1566.728638 ,41.689186 ,-227.993988 " ,
+        rotation = "   0.000000, 0.000000, 0.000000, 0.000000 " ,
+        scale = "  1.000000 ,1.000000 ,1.000000 " ,
+    },
+    rigidbody = {
+         mass = "0",
+         isTrigger = "0",
+         isKinematic = "0",
+         colShape = "0",
+        
+    },
+    mesh = {
+        name = "EdificioC.mesh",
+    }
+}
+EdificioB = {
+    transform = {
+        position = "  -835.556763 ,42.155834 ,-189.976639 " ,
+        rotation = "   0.000000, 0.000000, 0.000000, 0.000000 " ,
+        scale = "  1.000000 ,1.000000 ,1.000000 " ,
+    },
+    rigidbody = {
+         mass = "0",
+         isTrigger = "0",
+         isKinematic = "0",
+         colShape = "0",
+        
+    },
+    mesh = {
+        name = "EdificioB.mesh",
+    }
+}
+EdificioA = {
+    transform = {
+        position = "  -1200.026245 ,68.787277 ,-405.163025 " ,
+        rotation = "   0.000000, 0.000000, 0.000000, 0.000000 " ,
+        scale = "  1.000000 ,1.000000 ,1.000000 " ,
+    },
+    rigidbody = {
+         mass = "0",
+         isTrigger = "0",
+         isKinematic = "0",
+         colShape = "0",
+        
+    },
+    mesh = {
+        name = "EdificioA.mesh",
+    }
+}
 
-entities = {"light", "light2","player","Peso", "CajaPagar", "TicketDispenser", "Pescaderia", "Carniceria", "CajaPagarHijo0", "CajaPagarHijo1", "Caja","Ground", "Suelo", "EdificioA", "EdificioB", "EdificioC" , "PaleCaja", "Maceta", "Cestas", "AvisoMojado", "Papelera", "Pale", "Charco", "CharcoA", "CharcoB", "ParedPreset", "Cartel_1", "Cartel_2", "Cartel_0", "Cartel_3", "Cartel_5", "Cartel_6", "Cartel_4", "Cartel_7", "BaldaDobleSandia", "BaldaDobleLeche", "BaldaDobleVino", "BaldaSimplePina", "BaldaDobleMandarina", "BaldaDobleCalabaza", "BaldaSimpleCalabaza", "BaldaDobleUva", "CartelCocacolas", "CartelTomates", "CartelSandias", "CartelCereales", "CartelLeche", "CuboFregona", "BaldaSimpleUva", "BaldaDobleManzana", "BaldaDobleNata", "BaldaDobleCafe", "BaldaDobleCerealesRojos", "BaldaDobleHuevos", "BaldaDobleCola", "BaldaDobleFantaNaranja", "BaldaDobleFantaLimon", "BaldaSimpleFantaLimon", "BaldaSimpleAgua", "BaldaDoblePizza", "BaldaDobleDonut", "BaldaDoblePatatas", "BaldaDoblePan", "BaldaDobleTomate", "BaldaDobleCerealesNaranjas", "BaldaDobleCerealesVerdes", "BaldaPlatano", "BaldaSimpleZanahoria", "BaldaDoblePezAzul", "BaldaSimplePezAzul", "cart", "camera", "gamemanager",  "TriggerCarniceria", "TriggerPeso", "TriggerTicketDispenser", "TriggerPescaderia", "TriggerCajaPagar", "cartTrigger", "TriggerBaldaPlatano", "TriggerBaldaDobleCafe", "TriggerBaldaDobleCerealesNaranjas", "TriggerBaldaDobleCerealesRojos", "TriggerBaldaDobleCerealesVerdes", "TriggerBaldaDobleCola", "TriggerBaldaDobleDonut", "TriggerBaldaDobleFantaLimon", "TriggerBaldaDobleFantaNaranja", "TriggerBaldaDobleHuevos", "TriggerBaldaDobleLeche", "TriggerBaldaDobleNata", "TriggerBaldaDoblePan", "TriggerBaldaDoblePatatas", "TriggerBaldaDoblePezAzul", "TriggerBaldaDoblePizza", "TriggerBaldaDobleVino", "TriggerBaldaDobleCalabaza", "TriggerBaldaDobleSandia", "TriggerBaldaDobleUva", "TriggerBaldaDobleMandarina", "TriggerBaldaDobleManzana", "TriggerBaldaDobleTomate", "TriggerBaldaSimpleAgua", "TriggerBaldaSimplePezAzul", "TriggerBaldaSimpleCalabaza", "TriggerBaldaSimplePina", "TriggerBaldaSimpleUva", "TriggerBaldaSimpleZanahoria", "TriggerBaldaSimpleFantaLimon" }
+entities = {"light","player","Peso", "CajaPagar", "TicketDispenser", "Pescaderia", "Carniceria", "CajaPagarHijo0", "CajaPagarHijo1", "Caja","Ground", "Suelo", "EdificioA", "EdificioB", "EdificioC" , "EdificioD" ,"PaleCaja", "Maceta", "Cestas", "AvisoMojado", "Papelera", "Pale", "Charco", "CharcoA", "CharcoB", "ParedPreset", "Cartel_1", "Cartel_2", "Cartel_0", "Cartel_3", "Cartel_5", "Cartel_6", "Cartel_4", "Cartel_7", "BaldaDobleSandia", "BaldaDobleLeche", "BaldaDobleVino", "BaldaSimplePina", "BaldaDobleMandarina", "BaldaDobleCalabaza", "BaldaSimpleCalabaza", "BaldaDobleUva", "CartelCocacolas", "CartelTomates", "CartelSandias", "CartelCereales", "CartelLeche", "CuboFregona", "BaldaSimpleUva", "BaldaDobleManzana", "BaldaDobleNata", "BaldaDobleCafe", "BaldaDobleCerealesRojos", "BaldaDobleHuevos", "BaldaDobleCola", "BaldaDobleFantaNaranja", "BaldaDobleFantaLimon", "BaldaSimpleFantaLimon", "BaldaSimpleAgua", "BaldaDoblePizza", "BaldaDobleDonut", "BaldaDoblePatatas", "BaldaDoblePan", "BaldaDobleTomate", "BaldaDobleCerealesNaranjas", "BaldaDobleCerealesVerdes", "BaldaPlatano", "BaldaSimpleZanahoria", "BaldaDoblePezAzul", "BaldaSimplePezAzul", "cart", "camera", "gamemanager",  "TriggerCarniceria", "TriggerPeso", "TriggerTicketDispenser", "TriggerPescaderia", "TriggerCajaPagar", "cartTrigger", "TriggerBaldaPlatano", "TriggerBaldaDobleCafe", "TriggerBaldaDobleCerealesNaranjas", "TriggerBaldaDobleCerealesRojos", "TriggerBaldaDobleCerealesVerdes", "TriggerBaldaDobleCola", "TriggerBaldaDobleDonut", "TriggerBaldaDobleFantaLimon", "TriggerBaldaDobleFantaNaranja", "TriggerBaldaDobleHuevos", "TriggerBaldaDobleLeche", "TriggerBaldaDobleNata", "TriggerBaldaDoblePan", "TriggerBaldaDoblePatatas", "TriggerBaldaDoblePezAzul", "TriggerBaldaDoblePizza", "TriggerBaldaDobleVino", "TriggerBaldaDobleCalabaza", "TriggerBaldaDobleSandia", "TriggerBaldaDobleUva", "TriggerBaldaDobleMandarina", "TriggerBaldaDobleManzana", "TriggerBaldaDobleTomate", "TriggerBaldaSimpleAgua", "TriggerBaldaSimplePezAzul", "TriggerBaldaSimpleCalabaza", "TriggerBaldaSimplePina", "TriggerBaldaSimpleUva", "TriggerBaldaSimpleZanahoria", "TriggerBaldaSimpleFantaLimon" }
