@@ -100,7 +100,7 @@
         </Window>
         <Window type="GWEN/StaticImage" name="Tick_3" >
             <Property name="Image" value="DondeTaLeche/Tick" />
-            <Property name="Area" value="{{0.84791678,-2},{0.10185184,-3},{0.89791644,-4},{0.18703696,-3}}" />
+            <Property name="Area" value="{{0.84791678,0},{0.10185184,98},{0.89791644,-2},{0.18703696,98}}" />
             <Property name="MaxSize" value="{{1,0},{1,0}}" />
             <Property name="Visible" value="false" />
             <Property name="RiseOnClickEnabled" value="false" />
