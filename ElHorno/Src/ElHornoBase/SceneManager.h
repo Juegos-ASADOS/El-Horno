@@ -42,10 +42,7 @@ typedef void (*GameVoid)();
 			return new T();
 		}
 
-		template<typename T>
-		static Scene* addScene() {
-			return new T();
-		}
+		static Scene* addScene();
 
 		std::map<std::string, Component* (*)()> possibleComponents;
 		std::map<std::string, Scene* (*)()> allScenes;

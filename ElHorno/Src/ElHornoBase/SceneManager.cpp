@@ -119,4 +119,9 @@ namespace El_Horno {
 	{
 		return possibleComponents;
 	}
+
+	Scene* SceneManager::addScene()
+	{
+		return new Scene();
+	}
 }

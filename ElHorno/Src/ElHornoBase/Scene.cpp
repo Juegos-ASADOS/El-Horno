@@ -3,6 +3,7 @@
 #include <iostream>
 #include <fstream>
 #include <OgreVector.h>
+#include <LuaManager.h>
 
 //ESTO DEBERIA QUITARSE DE AQUI
 #include "LightComponent.h" 
@@ -231,6 +232,13 @@ namespace El_Horno {
 			iter++;
 		}
 	}
+
+	void Scene::init(std::string name)
+	{
+		name_ = name;
+		LuaManager::getInstance()->loadScene();
+	}
+
 	void Scene::setEntitiesMap(std::map<std::string, std::vector<Entity*>> ent)
 	{
 		entities_ = ent;
